@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  site-7aylabs:
+    container_name: site-7aylabs-local
+    build: .
+    restart: unless-stopped
+    networks:
+      - site_net
+    environment:
+      NODE_ENV: production
+      HOSTNAME: 0.0.0.0
+      PORT: "8082"
+    ports:
+      - "8082:8082"
+
+networks:
+  site_net:
+    driver: bridge
