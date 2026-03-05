@@ -20,11 +20,10 @@ body {
   @apply antialiased font-sans;
 }
 
-/* Dark mode body gradient (matches old repo exactly) */
+/* Dark mode body background — pure black */
 :root:not([data-theme="light"]) body,
 [data-theme="dark"] body {
-  background: linear-gradient(180deg, #0b0d12 0%, #0e1118 40%, #0a0c11 70%, #07090d 100%);
-  background-attachment: fixed;
+  background: #060606;
 }
 
 ::selection {
