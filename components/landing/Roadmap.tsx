@@ -118,7 +118,7 @@ export default function Roadmap() {
         {/* Timeline */}
         <div className="relative">
           {/* Vertical line */}
-          <div className="absolute left-[22px] sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-white/20 via-white/10 to-transparent sm:-translate-x-px" />
+          <div aria-hidden="true" className="absolute left-[22px] sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-white/20 via-white/10 to-transparent sm:-translate-x-px" />
 
           <div className="space-y-12">
             {phases.map((phase, idx) => {
@@ -139,6 +139,7 @@ export default function Roadmap() {
                 >
                   {/* Timeline dot */}
                   <div
+                    aria-hidden="true"
                     className={`absolute left-0 sm:left-1/2 sm:-translate-x-1/2 w-11 h-11 rounded-full ${config.bg} ${config.border} border flex items-center justify-center z-10`}
                   >
                     <Icon className={`w-5 h-5 ${config.color}`} />
@@ -176,6 +177,7 @@ export default function Roadmap() {
                           }`}
                         >
                           <span
+                            aria-hidden="true"
                             className={`w-1 h-1 rounded-full shrink-0 ${
                               phase.status === "completed"
                                 ? "bg-emerald-400/60"

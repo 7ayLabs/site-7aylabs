@@ -104,15 +104,16 @@ export default function UpdatesPage() {
         </motion.div>
 
         {/* Filters */}
-        <div className="mt-4 mb-8 flex flex-wrap gap-2">
+        <div className="mt-4 mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter updates by type">
           {FILTERS.map((key) => (
             <button
               key={key}
               onClick={() => setFilter(key)}
-              className={`rounded-full px-4 py-1.5 text-xs uppercase tracking-wide transition-colors duration-fast ${
+              aria-pressed={filter === key}
+              className={`rounded-full px-4 py-1.5 min-h-[36px] text-xs uppercase tracking-wide transition-colors duration-fast focus-visible:ring-2 focus-visible:ring-white/60 ${
                 filter === key
                   ? "bg-white text-black"
-                  : "border border-white/15 text-white/50 hover:border-white/30"
+                  : "border border-white/15 text-white/50 hover:border-white/30 hover:text-white/70"
               }`}
             >
               {key === "all" ? "All updates" : key}
@@ -157,7 +158,7 @@ export default function UpdatesPage() {
                     </p>
 
                     <button
-                      className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-white/60 hover:text-white transition-colors duration-fast"
+                      className="mt-2 inline-flex items-center gap-1 py-1 text-sm font-medium text-white/60 hover:text-white focus-visible:text-white transition-colors duration-fast"
                       onClick={() => setOpenIndex(isOpen ? null : idx)}
                       aria-expanded={isOpen}
                       aria-controls={`update-content-${idx}`}

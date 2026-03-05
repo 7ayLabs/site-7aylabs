@@ -49,16 +49,16 @@ export default function MobileAccordion({ onClose }: MobileAccordionProps) {
               href={item.href}
               onClick={onClose}
               className={cn(
-                "relative inline-block tracking-wide hover:tracking-wider",
+                "relative inline-block py-1 tracking-wide hover:tracking-wider",
                 "transition-all duration-300 ease-out",
                 isActive
                   ? "text-white"
-                  : "text-white/70 hover:text-white hover:opacity-100",
+                  : "text-white/70 hover:text-white focus-visible:text-white hover:opacity-100",
                 // Underline indicator
                 "after:absolute after:left-0 after:-bottom-1",
                 "after:h-px after:bg-white",
                 "after:transition-all after:duration-300",
-                isActive ? "after:w-full" : "after:w-0 hover:after:w-full"
+                isActive ? "after:w-full" : "after:w-0 hover:after:w-full focus-visible:after:w-full"
               )}
               aria-current={isActive ? "page" : undefined}
             >

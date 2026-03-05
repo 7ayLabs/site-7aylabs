@@ -56,7 +56,11 @@ function HeroComponent() {
         </motion.div>
 
         {/* Rotating tagline */}
-        <div className="mt-1 sm:mt-3 h-8 sm:h-9 flex items-center justify-center overflow-hidden relative">
+        <div
+          className="mt-1 sm:mt-3 h-8 sm:h-9 flex items-center justify-center overflow-hidden relative"
+          aria-live="polite"
+          aria-atomic="true"
+        >
           <AnimatePresence mode="sync" initial={false}>
             <motion.p
               key={PHRASES[index]}
@@ -84,13 +88,13 @@ function HeroComponent() {
         >
           <Link
             href={ROUTES.waitlist}
-            className="inline-flex items-center justify-center rounded-full px-8 py-3 bg-white text-black font-medium text-sm hover:bg-white/90 transition-colors duration-normal"
+            className="inline-flex items-center justify-center rounded-full px-8 py-3 min-h-[44px] bg-white text-black font-medium text-sm hover:bg-white/90 focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-dark transition-colors duration-normal"
           >
             Join the Waitlist
           </Link>
           <Link
             href={ROUTES.tech}
-            className="inline-flex items-center justify-center rounded-full px-8 py-3 border border-white/20 text-white/80 font-medium text-sm hover:border-white/40 hover:text-white transition-colors duration-normal"
+            className="inline-flex items-center justify-center rounded-full px-8 py-3 min-h-[44px] border border-white/20 text-white/80 font-medium text-sm hover:border-white/40 hover:text-white focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-dark transition-colors duration-normal"
           >
             Explore the Tech
           </Link>

@@ -110,7 +110,7 @@ export default function ServicesPage() {
         </p>
         <Link
           href={ROUTES.waitlist}
-          className="inline-flex items-center justify-center rounded-full px-10 py-4 bg-white text-black font-medium hover:bg-white/90 transition-colors duration-normal"
+          className="inline-flex items-center justify-center rounded-full px-10 py-4 min-h-[44px] bg-white text-black font-medium hover:bg-white/90 focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-dark transition-colors duration-normal"
         >
           Join the Waitlist
         </Link>

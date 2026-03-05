@@ -21,6 +21,8 @@ export default function AnnouncementBanner({
     <AnimatePresence>
       {visible && (
         <motion.div
+          role="banner"
+          aria-label="Announcement"
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{
@@ -69,21 +71,21 @@ export default function AnnouncementBanner({
 
               <Link
                 href={ROUTES.services}
-                className="text-[var(--color-accent-tertiary)] text-[9.5px] sm:text-[10px] font-medium hover:opacity-80 transition whitespace-nowrap"
+                className="text-[var(--color-accent-tertiary)] text-[9.5px] sm:text-[10px] font-medium hover:opacity-80 focus-visible:opacity-80 transition whitespace-nowrap"
               >
                 See what we build
               </Link>
             </div>
           </motion.div>
 
-          {/* Close button */}
+          {/* Close button -- 44px touch target with smaller visual */}
           <button
             onClick={onDismiss}
             className={cn(
-              "absolute right-2 sm:right-4 top-1/2 -translate-y-1/2",
-              "w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center",
+              "absolute right-1 sm:right-2 top-1/2 -translate-y-1/2",
+              "w-11 h-11 flex items-center justify-center",
               "rounded-full text-white/40 hover:text-white",
-              "hover:bg-white/10 transition text-sm"
+              "hover:bg-white/10 focus-visible:text-white transition text-sm"
             )}
             aria-label="Dismiss announcement"
           >
@@ -95,6 +97,7 @@ export default function AnnouncementBanner({
               stroke="currentColor"
               strokeWidth="1.5"
               strokeLinecap="round"
+              aria-hidden="true"
             >
               <path d="M1 1l8 8M9 1l-8 8" />
             </svg>

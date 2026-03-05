@@ -11,7 +11,7 @@ export default function PublicLayout({
     <>
       <AmbientBackground />
       <Navbar />
-      <main className="relative z-10">{children}</main>
+      <main id="main-content" className="relative z-10">{children}</main>
       <Footer />
     </>
   );

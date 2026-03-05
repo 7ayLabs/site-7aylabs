@@ -18,7 +18,7 @@ export default function TechPage() {
       />
 
       {/* Real World Presence */}
-      <Section title="Real World Presence" className="pb-36">
+      <Section title="Real World Presence" className="pb-20 md:pb-36">
         <p className="italic text-white/70 text-lg leading-relaxed mb-10 max-w-3xl">
           As automation grows, products need a reliable way to know when people
           actually show up.
@@ -48,7 +48,7 @@ export default function TechPage() {
 
       {/* Security Through Presence */}
       <Section maxWidth="6xl" className="pb-24">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           <div>
             <span className="block text-sm uppercase tracking-widest text-white/40 mb-4">
               Core Technology
@@ -80,8 +80,8 @@ export default function TechPage() {
       </Section>
 
       {/* Proof, Not Profiles */}
-      <Section maxWidth="6xl" className="pt-12 pb-28">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+      <Section maxWidth="6xl" className="pt-12 pb-20 md:pb-28">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           <div>
             <span className="block text-sm uppercase tracking-widest text-white/40 mb-4">
               Human Verification
@@ -114,8 +114,8 @@ export default function TechPage() {
       </Section>
 
       {/* Earned Participation */}
-      <Section maxWidth="6xl" className="pb-36">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+      <Section maxWidth="6xl" className="pb-20 md:pb-36">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           <div>
             <span className="block text-sm uppercase tracking-widest text-white/40 mb-4">
               Incentive Design
@@ -146,8 +146,8 @@ export default function TechPage() {
       </Section>
 
       {/* AI-Resilient */}
-      <Section maxWidth="6xl" className="pb-40">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+      <Section maxWidth="6xl" className="pb-24 md:pb-40">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           <div>
             <span className="block text-sm uppercase tracking-widest text-white/40 mb-4">
               AI-Resilient Infrastructure
@@ -179,7 +179,7 @@ export default function TechPage() {
       </Section>
 
       {/* Built for Real Use */}
-      <Section centered className="pb-40" maxWidth="5xl">
+      <Section centered className="pb-24 md:pb-40" maxWidth="5xl">
         <h2 className="font-serif font-bold text-3xl md:text-4xl text-white mb-6">
           Presence, Built for Real Use
         </h2>

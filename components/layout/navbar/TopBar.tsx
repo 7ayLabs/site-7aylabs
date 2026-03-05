@@ -81,7 +81,7 @@ export default function TopBar({ menuOpen, onToggleMenu }: TopBarProps) {
             <Link
               key={link.href}
               href={link.href}
-              className="hover:text-white transition-colors duration-fast"
+              className="hover:text-white focus-visible:text-white transition-colors duration-fast"
             >
               {link.label}
             </Link>
@@ -102,17 +102,17 @@ export default function TopBar({ menuOpen, onToggleMenu }: TopBarProps) {
             className={cn(
               "rounded-full border border-white/20",
               "bg-white text-black text-xs font-medium",
-              "hover:bg-white/90 transition-colors duration-fast",
+              "hover:bg-white/90 focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-dark transition-colors duration-fast",
               scrolled ? "px-3 py-1" : "px-4 py-1.5"
             )}
           >
             Join Waitlist
           </Link>
 
-          {/* Mobile menu toggle */}
+          {/* Mobile menu toggle -- min 44x44px touch target */}
           <button
             onClick={onToggleMenu}
-            className="md:hidden p-1 rounded-full text-white/70 hover:text-white transition-colors duration-fast"
+            className="md:hidden flex items-center justify-center w-11 h-11 -mr-2 rounded-full text-white/70 hover:text-white hover:bg-white/10 focus-visible:text-white transition-colors duration-fast"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
           >
@@ -124,6 +124,7 @@ export default function TopBar({ menuOpen, onToggleMenu }: TopBarProps) {
               stroke="currentColor"
               strokeWidth="1.5"
               strokeLinecap="round"
+              aria-hidden="true"
               className={cn(
                 "transition-transform duration-300",
                 menuOpen && "rotate-180"

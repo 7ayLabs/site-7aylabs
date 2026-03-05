@@ -43,6 +43,7 @@ export default function Section({
   return (
     <Tag
       id={id}
+      aria-label={title || label}
       className={cn(
         "mx-auto px-6 md:px-12",
         maxWidthStyles[maxWidth],

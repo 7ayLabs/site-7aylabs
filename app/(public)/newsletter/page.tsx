@@ -73,7 +73,7 @@ export default function NewsletterPage() {
             href={EXTERNAL_LINKS.twitter}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-3 rounded-full bg-white text-black px-8 py-3 text-sm font-medium hover:bg-white/90 transition-colors duration-normal"
+            className="inline-flex items-center justify-center gap-3 rounded-full bg-white text-black px-8 py-3 min-h-[44px] text-sm font-medium hover:bg-white/90 focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-dark transition-colors duration-normal"
           >
             <Mail size={16} aria-hidden="true" />
             Follow on X

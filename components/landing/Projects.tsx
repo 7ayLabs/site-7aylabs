@@ -85,7 +85,7 @@ export default function Projects() {
 
         {/* Bottom facets */}
         <div className="w-full max-w-4xl mt-6 flex flex-col gap-6">
-          <div className="h-px w-full bg-white/10" />
+          <div aria-hidden="true" className="h-px w-full bg-white/10" />
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
             {FACETS.map((facet, i) => (

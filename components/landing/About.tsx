@@ -28,7 +28,8 @@ const VALUE_PROPS = [
 export default function About() {
   return (
     <section aria-label="About 7ayLabs" className="relative w-full">
-      <div className="w-full px-8 md:px-20 lg:px-32 py-14 md:py-16">
+      <h2 className="sr-only">Core Value Propositions</h2>
+      <div className="w-full px-6 sm:px-8 md:px-20 lg:px-32 py-14 md:py-16">
         <div className="max-w-[960px] mx-auto">
           <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10 text-white text-center place-items-center"

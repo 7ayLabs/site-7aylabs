@@ -34,6 +34,35 @@ body {
   background: var(--color-fg-muted);
 }
 
+/* Respect prefers-reduced-motion globally for CSS animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus-visible outline for all interactive elements */
+@layer base {
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    @apply outline-2 outline-offset-2 outline-white/60 rounded-sm;
+  }
+
+  /* Skip-to-content link (visually hidden until focused) */
+  .skip-to-content {
+    @apply absolute left-4 top-4 z-[100] -translate-y-20 rounded-md bg-white px-4 py-2 text-black text-sm font-medium transition-transform duration-fast focus-visible:translate-y-0;
+  }
+}
+
 @layer components {
   .golden-animated {
     background: linear-gradient(

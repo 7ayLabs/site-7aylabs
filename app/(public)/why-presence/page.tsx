@@ -108,7 +108,7 @@ export default function WhyPresencePage() {
       </Section>
 
       {/* Showing up is the new standard */}
-      <Section maxWidth="6xl" className="pb-32 md:pb-40">
+      <Section maxWidth="6xl" className="pb-24 md:pb-40">
         <div className="mb-12">
           <span className="block text-sm uppercase tracking-widest text-white/40 mb-4">
             Real-World Signal
@@ -170,7 +170,7 @@ export default function WhyPresencePage() {
       </Section>
 
       {/* Business Impact */}
-      <Section maxWidth="6xl" className="pb-32 md:pb-40">
+      <Section maxWidth="6xl" className="pb-24 md:pb-40">
         <div className="mb-12 text-center">
           <span className="block text-sm uppercase tracking-widest text-white/40 mb-4">
             Where Presence Unlocks Value
@@ -250,7 +250,7 @@ export default function WhyPresencePage() {
           href={EXTERNAL_LINKS.twitter}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-3 rounded-full bg-white text-black px-8 py-4 text-sm font-medium hover:bg-white/90 transition-colors duration-normal"
+          className="inline-flex items-center justify-center gap-3 rounded-full bg-white text-black px-8 py-4 min-h-[44px] text-sm font-medium hover:bg-white/90 focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-dark transition-colors duration-normal"
         >
           Follow on X
         </Link>
