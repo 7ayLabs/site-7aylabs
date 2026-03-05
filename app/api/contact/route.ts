@@ -1,94 +1,41 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
+import { isValidEmail, sanitizeInput, checkRateLimit, getClientIp } from "@/lib/api/validation";
+import { successResponse, errorResponse } from "@/lib/api/response";
+import type { ContactRequest } from "@/types/api";
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
-
-interface ContactRequest {
-  email: string;
-  name: string;
-  message: string;
-}
-
-interface ApiSuccessResponse {
-  success: true;
-  message: string;
-}
-
-interface ApiErrorResponse {
-  success: false;
-  error: string;
-}
-
-type ApiResponse = ApiSuccessResponse | ApiErrorResponse;
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-function isValidEmail(email: unknown): email is string {
-  return typeof email === "string" && EMAIL_REGEX.test(email);
-}
-
-function isNonEmptyString(value: unknown): value is string {
-  return typeof value === "string" && value.trim().length > 0;
-}
-
-// ---------------------------------------------------------------------------
-// POST /api/contact
-// ---------------------------------------------------------------------------
-
-export async function POST(
-  request: NextRequest,
-): Promise<NextResponse<ApiResponse>> {
+export async function POST(request: NextRequest) {
   try {
+    const ip = getClientIp(request);
+    if (!checkRateLimit(ip)) {
+      return errorResponse("Too many requests. Try again later.", 429);
+    }
+
     const body: unknown = await request.json();
 
-    if (body === null || typeof body !== "object") {
-      return NextResponse.json(
-        { success: false, error: "Invalid request body." },
-        { status: 400 },
-      );
+    if (!body || typeof body !== "object") {
+      return errorResponse("Invalid request body.");
     }
 
-    const { email, name, message } = body as ContactRequest;
-
-    // --- Validation --------------------------------------------------------
-
+    const { email, name, subject, message } = body as ContactRequest;
     const errors: string[] = [];
 
-    if (!isValidEmail(email)) {
-      errors.push("A valid email address is required.");
-    }
-
-    if (!isNonEmptyString(name)) {
-      errors.push("Name is required.");
-    }
-
-    if (!isNonEmptyString(message)) {
-      errors.push("Message is required.");
-    }
+    if (!isValidEmail(email)) errors.push("A valid email address is required.");
+    if (!name || typeof name !== "string" || !name.trim()) errors.push("Name is required.");
+    if (!message || typeof message !== "string" || !message.trim()) errors.push("Message is required.");
 
     if (errors.length > 0) {
-      return NextResponse.json(
-        { success: false, error: errors.join(" ") },
-        { status: 400 },
-      );
+      return errorResponse("Validation failed.", 400, errors);
     }
 
-    // TODO: Replace with actual email / CRM integration.
-    console.log("[contact] New message:", { email, name, message });
+    console.log("[contact] New message:", {
+      email,
+      name: sanitizeInput(name),
+      subject: subject ? sanitizeInput(subject) : undefined,
+      message: sanitizeInput(message),
+    });
 
-    return NextResponse.json(
-      { success: true, message: "Your message has been received." },
-      { status: 200 },
-    );
+    return successResponse("Your message has been received.");
   } catch {
-    return NextResponse.json(
-      { success: false, error: "Internal server error." },
-      { status: 500 },
-    );
+    return errorResponse("Internal server error.", 500);
   }
 }

@@ -1,92 +1,50 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
+import { isValidEmail, sanitizeInput, checkRateLimit, getClientIp } from "@/lib/api/validation";
+import { successResponse, errorResponse } from "@/lib/api/response";
+import type { WaitlistRequest } from "@/types/api";
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
+const VALID_ROLES = ["developer", "validator", "community"] as const;
 
-interface WaitlistRequest {
-  email: string;
-  name?: string;
-  interest?: string;
-}
-
-interface ApiSuccessResponse {
-  success: true;
-  message: string;
-}
-
-interface ApiErrorResponse {
-  success: false;
-  error: string;
-}
-
-type ApiResponse = ApiSuccessResponse | ApiErrorResponse;
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-function isValidEmail(email: unknown): email is string {
-  return typeof email === "string" && EMAIL_REGEX.test(email);
-}
-
-function isOptionalString(value: unknown): value is string | undefined {
-  return value === undefined || typeof value === "string";
-}
-
-// ---------------------------------------------------------------------------
-// POST /api/waitlist
-// ---------------------------------------------------------------------------
-
-export async function POST(
-  request: NextRequest,
-): Promise<NextResponse<ApiResponse>> {
+export async function POST(request: NextRequest) {
   try {
+    const ip = getClientIp(request);
+    if (!checkRateLimit(ip)) {
+      return errorResponse("Too many requests. Try again later.", 429);
+    }
+
     const body: unknown = await request.json();
 
-    if (body === null || typeof body !== "object") {
-      return NextResponse.json(
-        { success: false, error: "Invalid request body." },
-        { status: 400 },
-      );
+    if (!body || typeof body !== "object") {
+      return errorResponse("Invalid request body.");
     }
 
-    const { email, name, interest } = body as WaitlistRequest;
+    const { email, name, interest, role } = body as WaitlistRequest;
 
     if (!isValidEmail(email)) {
-      return NextResponse.json(
-        { success: false, error: "A valid email address is required." },
-        { status: 400 },
-      );
+      return errorResponse("A valid email address is required.");
     }
 
-    if (!isOptionalString(name)) {
-      return NextResponse.json(
-        { success: false, error: "Name must be a string." },
-        { status: 400 },
-      );
+    if (name !== undefined && typeof name !== "string") {
+      return errorResponse("Name must be a string.");
     }
 
-    if (!isOptionalString(interest)) {
-      return NextResponse.json(
-        { success: false, error: "Interest must be a string." },
-        { status: 400 },
-      );
+    if (interest !== undefined && typeof interest !== "string") {
+      return errorResponse("Interest must be a string.");
     }
 
-    // TODO: Replace with actual waitlist storage integration.
-    console.log("[waitlist] New submission:", { email, name, interest });
+    if (role !== undefined && !VALID_ROLES.includes(role)) {
+      return errorResponse("Role must be developer, validator, or community.");
+    }
 
-    return NextResponse.json(
-      { success: true, message: "Successfully added to the waitlist." },
-      { status: 200 },
-    );
+    console.log("[waitlist] New submission:", {
+      email,
+      name: name ? sanitizeInput(name) : undefined,
+      interest: interest ? sanitizeInput(interest) : undefined,
+      role,
+    });
+
+    return successResponse("Successfully added to the waitlist.");
   } catch {
-    return NextResponse.json(
-      { success: false, error: "Internal server error." },
-      { status: 500 },
-    );
+    return errorResponse("Internal server error.", 500);
   }
 }
