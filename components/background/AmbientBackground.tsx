@@ -62,7 +62,7 @@ function AmbientBackgroundComponent() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        style={{ background: AMBIENT_GRADIENT }}
+        style={{ background: AMBIENT_GRADIENT, willChange: "opacity" }}
       />
 
       {/* Subtle noise texture overlay */}
@@ -77,6 +77,7 @@ function AmbientBackgroundComponent() {
         style={{
           backgroundImage: "url(/noise.png)",
           backgroundRepeat: "repeat",
+          willChange: "opacity",
         }}
       />
     </div>
