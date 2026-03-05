@@ -11,47 +11,50 @@ import type { RoadmapPhase, PhaseStatus } from "@/types/components";
 
 const phases: RoadmapPhase[] = [
   {
-    version: "v0.1",
-    title: "Presence Finalization",
-    description: "Core presence certification mechanism",
+    version: "v0.1\u2013v0.3",
+    title: "Presence & Epoch Core",
+    description: "Foundational presence lifecycle and epoch management",
     status: "completed",
     items: [
-      "Presence state transitions (None \u2192 Finalized)",
-      "Idempotent finalization logic",
-      "Actor/epoch isolation",
+      "Presence state machine (Declared \u2192 Attested \u2192 Triangulated \u2192 Finalized)",
+      "Epoch lifecycle with commit-reveal scheme",
+      "Actor/epoch isolation and quorum consensus",
     ],
   },
   {
-    version: "v0.2",
-    title: "Epoch Lifecycle",
-    description: "Temporal epoch management system",
+    version: "v0.4\u2013v0.6",
+    title: "Validators, ZK & Triangulation",
+    description: "Decentralized validation with witness circles and zero-knowledge proofs",
     status: "completed",
     items: [
-      "5-state epoch model (Scheduled \u2192 Active \u2192 Closed \u2192 Finalized)",
-      "Dynamic state derivation from block.timestamp",
-      "Authority-controlled mutations",
+      "Validator registration, staking, and slashing",
+      "Witness-circle triangulation via network latency",
+      "ZK proof generation and on-chain verification",
+      "Dispute resolution with evidence and voting",
     ],
   },
   {
-    version: "v0.3",
-    title: "Declaration Layer",
-    description: "Presence declaration before finalization",
+    version: "v0.7\u2013v0.8",
+    title: "Governance, Vaults & Semantic Layer",
+    description: "On-chain governance, secure vaults, and semantic linking",
+    status: "completed",
+    items: [
+      "Governance proposals, voting, and delegation",
+      "Vault creation, sharing, and recovery",
+      "Semantic linking and trust graphs",
+      "Device scanning and autonomous detection",
+    ],
+  },
+  {
+    version: "v0.9+",
+    title: "Testnet & Network Expansion",
+    description: "Public testnet launch and ecosystem growth",
     status: "in-progress",
     items: [
-      "declarePresence() function",
-      "Declared state management",
-      "Pre-finalization validation",
-    ],
-  },
-  {
-    version: "v0.4+",
-    title: "Validators & Disputes",
-    description: "Decentralized validation and slashing",
-    status: "planned",
-    items: [
-      "Validator registration",
-      "Dispute resolution mechanism",
-      "Slashing conditions",
+      "Public testnet deployment",
+      "Multi-node devnet stabilization",
+      "Developer SDK and tooling",
+      "Ecosystem integrations and partnerships",
     ],
   },
 ];
@@ -118,7 +121,7 @@ export default function Roadmap() {
         {/* Timeline */}
         <div className="relative">
           {/* Vertical line */}
-          <div className="absolute left-[22px] sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-white/20 via-white/10 to-transparent sm:-translate-x-px" />
+          <div aria-hidden="true" className="absolute left-[22px] sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-white/20 via-white/10 to-transparent sm:-translate-x-px" />
 
           <div className="space-y-12">
             {phases.map((phase, idx) => {
@@ -139,6 +142,7 @@ export default function Roadmap() {
                 >
                   {/* Timeline dot */}
                   <div
+                    aria-hidden="true"
                     className={`absolute left-0 sm:left-1/2 sm:-translate-x-1/2 w-11 h-11 rounded-full ${config.bg} ${config.border} border flex items-center justify-center z-10`}
                   >
                     <Icon className={`w-5 h-5 ${config.color}`} />
@@ -176,6 +180,7 @@ export default function Roadmap() {
                           }`}
                         >
                           <span
+                            aria-hidden="true"
                             className={`w-1 h-1 rounded-full shrink-0 ${
                               phase.status === "completed"
                                 ? "bg-emerald-400/60"

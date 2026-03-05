@@ -5,7 +5,7 @@ import Newsletter from "@/components/landing/Newsletter";
 export const metadata: Metadata = {
   title: "Technology",
   description:
-    "Explore Proof of Presence — a simple way to verify real human presence so digital products work with people, not bots.",
+    "Explore 7aychain and its Proof of Presence protocol — validators form witness circles, measure network latency, and triangulate positions on-chain. No GPS, no oracles.",
 };
 
 export default function TechPage() {
@@ -13,32 +13,36 @@ export default function TechPage() {
     <>
       <PageHero
         label="Technology"
-        title="Presence, Verified"
-        description="A simple way to verify real human presence — so digital products work with people, not bots."
+        title="Presence, Verified On-Chain"
+        description="7aychain is a Layer 1 blockchain where validators form witness circles, measure network latency, and triangulate physical presence — no GPS, no external oracles, no special hardware."
       />
 
-      {/* Real World Presence */}
-      <Section title="Real World Presence" className="pb-36">
+      {/* How 7aychain Works */}
+      <Section title="How 7aychain Works" className="pb-20 md:pb-36">
         <p className="italic text-white/70 text-lg leading-relaxed mb-10 max-w-3xl">
-          As automation grows, products need a reliable way to know when people
-          actually show up.
+          A Layer 1 blockchain built to answer one question: is this actor
+          actually here?
         </p>
 
         <div className="space-y-6 max-w-4xl text-white/60 leading-relaxed">
           <p>
-            Digital products rely on signals &mdash; clicks, accounts, activity.
-            At scale, those signals break. Bots, farms, and automation overwhelm
-            systems designed for people.
+            7aychain uses the{" "}
+            <strong className="text-white/80">Proof of Presence protocol</strong>{" "}
+            where every presence declaration goes through an epoch-bound
+            lifecycle: declared, attested by witnesses, triangulated, and
+            finalized by validators with quorum consensus.
           </p>
           <p>
-            As AI accelerates this problem, it becomes harder to know what
-            activity is real, what metrics can be trusted, and who is actually
-            participating.
+            Validators form witness circles, measure network latency between
+            peers, and triangulate positions &mdash; no GPS, no external
+            oracles, no special hardware. Presence is verified through the
+            protocol itself and finalized on-chain.
           </p>
           <p>
-            Proof of Presence introduces a simple shift: actions only count when
-            a real person is physically present. No guessing, no inference
-            &mdash; just real participation.
+            The chain is built on Substrate (Polkadot SDK) and includes ZK
+            proof generation and on-chain verification, dispute resolution with
+            evidence and voting, and a commit-reveal scheme for presence
+            declarations.
           </p>
           <p className="font-medium text-white">
             When presence is real, trust follows.
@@ -46,24 +50,27 @@ export default function TechPage() {
         </div>
       </Section>
 
-      {/* Security Through Presence */}
+      {/* Protocol Architecture */}
       <Section maxWidth="6xl" className="pb-24">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           <div>
             <span className="block text-sm uppercase tracking-widest text-white/40 mb-4">
-              Core Technology
+              Protocol Architecture
             </span>
             <h2 className="font-serif font-bold text-3xl md:text-4xl text-white mb-6">
-              Security Through Presence
+              Witness Circles & Triangulation
             </h2>
             <p className="text-white/60 leading-relaxed mb-6">
-              Security models based on reputation, heuristics, and accounts
-              collapse under automation and coordinated abuse.
+              Validators form witness circles around presence declarations.
+              Each validator measures network latency to peers and uses
+              multilateration and centroid algorithms to triangulate physical
+              position &mdash; without GPS or external hardware.
             </p>
             <p className="text-white/60 leading-relaxed">
-              Proof of Presence secures systems by requiring real-world human
-              participation &mdash; not assumptions, scores, or identity
-              profiles.
+              Presence claims follow an epoch-bound lifecycle with
+              commit-reveal: actors commit to a presence hash, reveal during
+              the active window, and validators vote to finalize with quorum
+              consensus. Malicious actors face on-chain slashing.
             </p>
           </div>
 
@@ -79,25 +86,27 @@ export default function TechPage() {
         </div>
       </Section>
 
-      {/* Proof, Not Profiles */}
-      <Section maxWidth="6xl" className="pt-12 pb-28">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+      {/* ZK Proofs & On-Chain Verification */}
+      <Section maxWidth="6xl" className="pt-12 pb-20 md:pb-28">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           <div>
             <span className="block text-sm uppercase tracking-widest text-white/40 mb-4">
-              Human Verification
+              Zero-Knowledge Verification
             </span>
             <h2 className="font-serif font-bold text-3xl md:text-4xl text-white mb-6">
               Proof, Not Profiles
             </h2>
             <p className="text-white/60 leading-relaxed mb-6">
-              Identity-based verification relies on credentials, accounts, and
-              behavioral inference &mdash; all increasingly exploitable by
-              synthetic actors.
+              7aychain uses ZK circuits to prove presence without revealing
+              exact locations. Actors generate zero-knowledge proofs that
+              validators verify on-chain &mdash; no persistent identity,
+              no surveillance, no data extraction.
             </p>
             <p className="text-white/60 leading-relaxed">
-              Proof of Presence verifies moments, events, and participation
-              &mdash; without persistent identity, surveillance, or data
-              extraction.
+              The protocol includes position-bound tokens (PBTs) that tie
+              cryptographic claims to attested positions, semantic linking
+              for trust graphs between entities, and a vault system for
+              secure data sharing and recovery.
             </p>
           </div>
 
@@ -114,8 +123,8 @@ export default function TechPage() {
       </Section>
 
       {/* Earned Participation */}
-      <Section maxWidth="6xl" className="pb-36">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+      <Section maxWidth="6xl" className="pb-20 md:pb-36">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           <div>
             <span className="block text-sm uppercase tracking-widest text-white/40 mb-4">
               Incentive Design
@@ -146,8 +155,8 @@ export default function TechPage() {
       </Section>
 
       {/* AI-Resilient */}
-      <Section maxWidth="6xl" className="pb-40">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+      <Section maxWidth="6xl" className="pb-24 md:pb-40">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           <div>
             <span className="block text-sm uppercase tracking-widest text-white/40 mb-4">
               AI-Resilient Infrastructure
@@ -179,16 +188,26 @@ export default function TechPage() {
       </Section>
 
       {/* Built for Real Use */}
-      <Section centered className="pb-40" maxWidth="5xl">
+      <Section centered className="pb-24 md:pb-40" maxWidth="5xl">
         <h2 className="font-serif font-bold text-3xl md:text-4xl text-white mb-6">
-          Presence, Built for Real Use
+          7aychain: Presence, Built for Real Use
         </h2>
         <p className="text-white/60 text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
-          Proof of Presence enables products to reward real participation, not
-          automated activity.
+          7aychain is currently at v0.8.26 with a full protocol stack: presence
+          lifecycle, validator staking, ZK verification, governance, vaults,
+          semantic linking, dispute resolution, and more &mdash; all running
+          on a multi-node devnet.
         </p>
         <p className="text-white font-medium text-lg">
-          7ayLabs helps teams build systems where real people matter.
+          Built on Substrate. Licensed under BUSL-1.1. Open source at{" "}
+          <a
+            href="https://github.com/7ayLabs/7aychain"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4 hover:text-white/80 focus-visible:text-white/80 transition-colors"
+          >
+            github.com/7ayLabs/7aychain
+          </a>.
         </p>
       </Section>
 

@@ -14,6 +14,7 @@ export const ROUTES = {
 export const EXTERNAL_LINKS = {
   twitter: "https://x.com/7ayLabs",
   github: "https://github.com/7ayLabs",
+  githubRepo: "https://github.com/7ayLabs/7aychain",
 } as const;
 
 export type Route = (typeof ROUTES)[keyof typeof ROUTES];

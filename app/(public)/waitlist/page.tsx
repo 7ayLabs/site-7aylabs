@@ -127,7 +127,7 @@ function WaitlistPageComponent() {
               onSubmit={handleSubmit}
               className="flex w-full max-w-md flex-col gap-3"
             >
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <label htmlFor="waitlist-email" className="sr-only">
                   Work email address
                 </label>
@@ -138,12 +138,13 @@ function WaitlistPageComponent() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="work@email.com"
                   disabled={status === "loading" || status === "success"}
-                  className="flex-1 bg-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-1 focus:ring-white/40 disabled:opacity-50 disabled:cursor-not-allowed"
+                  aria-describedby="waitlist-privacy"
+                  className="flex-1 bg-white/10 rounded-xl px-4 py-3 min-h-[44px] text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/40 disabled:opacity-50 disabled:cursor-not-allowed"
                 />
                 <button
                   type="submit"
                   disabled={status === "loading" || status === "success"}
-                  className="bg-white text-black rounded-xl px-6 py-3 text-sm font-medium hover:bg-white/90 transition-colors duration-normal disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-white text-black rounded-xl px-6 py-3 min-h-[44px] text-sm font-medium hover:bg-white/90 focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-dark transition-colors duration-normal disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                 >
                   {status === "loading"
                     ? "Joining..."
@@ -168,6 +169,7 @@ function WaitlistPageComponent() {
             </motion.form>
 
             <motion.p
+              id="waitlist-privacy"
               variants={fadeUpItem}
               className="mt-6 text-xs text-white/40"
             >

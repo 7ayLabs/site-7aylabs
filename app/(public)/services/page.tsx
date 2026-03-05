@@ -23,7 +23,7 @@ const SERVICES = [
   {
     title: "Protocol Consulting",
     description:
-      "Technical guidance on presence-first architecture, smart contract design, and infrastructure decisions for teams building on the protocol.",
+      "Technical guidance on presence-first architecture, 7aychain integration, and infrastructure decisions for teams building on the Proof of Presence protocol.",
   },
   {
     title: "Custom Solutions",
@@ -110,7 +110,7 @@ export default function ServicesPage() {
         </p>
         <Link
           href={ROUTES.waitlist}
-          className="inline-flex items-center justify-center rounded-full px-10 py-4 bg-white text-black font-medium hover:bg-white/90 transition-colors duration-normal"
+          className="inline-flex items-center justify-center rounded-full px-10 py-4 min-h-[44px] bg-white text-black font-medium hover:bg-white/90 focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-dark transition-colors duration-normal"
         >
           Join the Waitlist
         </Link>

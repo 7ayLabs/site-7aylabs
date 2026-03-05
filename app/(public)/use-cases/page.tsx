@@ -93,8 +93,8 @@ export default function UseCasesPage() {
       />
 
       {/* Core Use Cases */}
-      <Section maxWidth="6xl" className="pb-36">
-        <div className="grid md:grid-cols-2 gap-20">
+      <Section maxWidth="6xl" className="pb-24 md:pb-36">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-20">
           <div>
             <h2 className="font-serif font-bold text-xl md:text-2xl text-white mb-4">
               Show up. That&apos;s the signal.
@@ -143,7 +143,7 @@ export default function UseCasesPage() {
       </Section>
 
       {/* Where Presence Works */}
-      <Section maxWidth="6xl" className="pb-40">
+      <Section maxWidth="6xl" className="pb-24 md:pb-40">
         <div className="text-center mb-20">
           <h2 className="font-serif font-bold text-3xl md:text-4xl text-white mb-4">
             Where Presence Works
@@ -155,7 +155,7 @@ export default function UseCasesPage() {
         </div>
 
         {/* Signal cards */}
-        <div className="grid grid-cols-2 gap-6 mb-24 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-24 max-w-4xl mx-auto">
           {SIGNAL_CARDS.map((card) => (
             <Card key={card.title} variant="outline" padding="md">
               <div className="text-sm font-serif font-bold mb-1">
@@ -169,7 +169,7 @@ export default function UseCasesPage() {
         </div>
 
         {/* Use case areas */}
-        <div className="grid md:grid-cols-2 gap-20">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-20">
           {USE_CASE_AREAS.map((area) => (
             <div key={area.title}>
               <h3 className="font-serif font-bold text-xl text-white mb-4">
@@ -184,7 +184,7 @@ export default function UseCasesPage() {
       </Section>
 
       {/* Built to start small */}
-      <Section maxWidth="6xl" className="pb-40">
+      <Section maxWidth="6xl" className="pb-24 md:pb-40">
         <h2 className="font-serif font-bold text-3xl md:text-4xl text-white mb-4">
           Built to start small
         </h2>
@@ -212,7 +212,7 @@ export default function UseCasesPage() {
 
       {/* Closing */}
       <Section maxWidth="6xl" className="pb-20">
-        <div className="grid md:grid-cols-2 gap-20">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-20">
           <div>
             <h2 className="font-serif font-bold text-3xl md:text-4xl text-white mb-6">
               Built for real products
@@ -259,7 +259,7 @@ export default function UseCasesPage() {
         </p>
         <Link
           href={ROUTES.waitlist}
-          className="inline-flex items-center justify-center rounded-full px-10 py-4 bg-white text-black font-medium hover:bg-white/90 transition-colors duration-normal"
+          className="inline-flex items-center justify-center rounded-full px-10 py-4 min-h-[44px] bg-white text-black font-medium hover:bg-white/90 focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-dark transition-colors duration-normal"
         >
           Join the waitlist
         </Link>

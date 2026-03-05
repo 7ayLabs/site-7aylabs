@@ -6,7 +6,7 @@ import { EXTERNAL_LINKS } from "@/lib/constants/routes";
 export const metadata: Metadata = {
   title: "Why Presence",
   description:
-    "The internet lost the human signal. Discover why Proof of Presence is the infrastructure layer that anchors digital systems to real human participation.",
+    "The internet lost the human signal. Discover why 7aychain and Proof of Presence anchor digital systems to real human participation through on-chain validator triangulation.",
 };
 
 const METRICS = [
@@ -86,8 +86,10 @@ export default function WhyPresencePage() {
       <Section title="Presence Infrastructure" className="pb-20 md:pb-24">
         <div className="space-y-4 md:space-y-6 max-w-3xl text-white/60 text-base sm:text-lg leading-relaxed">
           <p>
-            At the core of 7ayLabs is a simple idea: presence is the most
-            reliable signal systems can use.
+            At the core of 7ayLabs is 7aychain &mdash; a Layer 1 blockchain
+            where validators form witness circles and triangulate physical
+            presence through network latency, proving who is actually here
+            without GPS or external hardware.
           </p>
           <p>
             Modern platforms rely on accounts, credentials, and inferred
@@ -108,7 +110,7 @@ export default function WhyPresencePage() {
       </Section>
 
       {/* Showing up is the new standard */}
-      <Section maxWidth="6xl" className="pb-32 md:pb-40">
+      <Section maxWidth="6xl" className="pb-24 md:pb-40">
         <div className="mb-12">
           <span className="block text-sm uppercase tracking-widest text-white/40 mb-4">
             Real-World Signal
@@ -170,7 +172,7 @@ export default function WhyPresencePage() {
       </Section>
 
       {/* Business Impact */}
-      <Section maxWidth="6xl" className="pb-32 md:pb-40">
+      <Section maxWidth="6xl" className="pb-24 md:pb-40">
         <div className="mb-12 text-center">
           <span className="block text-sm uppercase tracking-widest text-white/40 mb-4">
             Where Presence Unlocks Value
@@ -250,7 +252,7 @@ export default function WhyPresencePage() {
           href={EXTERNAL_LINKS.twitter}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-3 rounded-full bg-white text-black px-8 py-4 text-sm font-medium hover:bg-white/90 transition-colors duration-normal"
+          className="inline-flex items-center justify-center gap-3 rounded-full bg-white text-black px-8 py-4 min-h-[44px] text-sm font-medium hover:bg-white/90 focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-dark transition-colors duration-normal"
         >
           Follow on X
         </Link>

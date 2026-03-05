@@ -14,7 +14,7 @@ const TOPICS = [
   {
     title: "Protocol progress",
     description:
-      "Detailed updates on Proof of Presence development, from smart contract milestones to testnet deployments.",
+      "Detailed updates on 7aychain development, from protocol milestones and ZK verification to devnet deployments.",
   },
   {
     title: "Product insights",
@@ -65,7 +65,7 @@ export default function NewsletterPage() {
         </h2>
         <p className="text-white/60 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
           The newsletter is coming soon. In the meantime, follow us on X for
-          real-time updates on Proof of Presence and 7ayLabs.
+          real-time updates on 7aychain and 7ayLabs.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -73,7 +73,7 @@ export default function NewsletterPage() {
             href={EXTERNAL_LINKS.twitter}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-3 rounded-full bg-white text-black px-8 py-3 text-sm font-medium hover:bg-white/90 transition-colors duration-normal"
+            className="inline-flex items-center justify-center gap-3 rounded-full bg-white text-black px-8 py-3 min-h-[44px] text-sm font-medium hover:bg-white/90 focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-dark transition-colors duration-normal"
           >
             <Mail size={16} aria-hidden="true" />
             Follow on X
@@ -81,7 +81,7 @@ export default function NewsletterPage() {
         </div>
 
         <p className="mt-6 text-white/40 text-sm">
-          No spam. Just signal from the team building presence infrastructure.
+          No spam. Just signal from the team building 7aychain.
         </p>
       </Section>
     </>

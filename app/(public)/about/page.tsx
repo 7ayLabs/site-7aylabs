@@ -4,7 +4,7 @@ import { PageHero, Section } from "@/components/ui";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about 7ayLabs, our mission to restore trust through real presence, and our vision for presence-first infrastructure.",
+    "Learn about 7ayLabs, the team building 7aychain — a Layer 1 blockchain with on-chain Proof of Presence where validators triangulate physical presence through network latency.",
 };
 
 export default function AboutPage() {
@@ -27,11 +27,12 @@ export default function AboutPage() {
       >
         <div className="space-y-4 max-w-3xl text-white/60 leading-relaxed">
           <p>
-            Presence-first infrastructure means designing software where actions
-            only register when a real person is physically or digitally
-            verifiably present. It&apos;s about ensuring that participation is
-            genuine and that every interaction reflects actual human involvement,
-            not automated or fake activity.
+            7ayLabs builds 7aychain, a Layer 1 blockchain with on-chain Proof
+            of Presence. Validators form witness circles, measure network
+            latency between peers, and triangulate positions &mdash; no GPS,
+            no external oracles, no special hardware. Presence is verified
+            through the protocol itself and finalized on-chain with quorum
+            consensus.
           </p>
           <p>
             When presence is optional or ignored, systems break down &mdash;
@@ -41,11 +42,11 @@ export default function AboutPage() {
             error.
           </p>
           <p>
-            Proof of Presence is not just a feature we add on; it&apos;s a
-            foundational layer that underpins the integrity of digital
-            coordination. We build infrastructure that makes presence
-            verification a default, enabling stronger, more trustworthy systems
-            across industries and use cases.
+            On 7aychain, every presence declaration goes through an epoch-bound
+            lifecycle: declared, attested by witnesses, triangulated, and
+            finalized by validators. This foundational layer underpins the
+            integrity of digital coordination, enabling stronger, more
+            trustworthy systems across industries and use cases.
           </p>
           <p>
             For businesses, presence-first infrastructure delivers measurable
@@ -85,11 +86,11 @@ export default function AboutPage() {
             and accountability.
           </p>
           <p>
-            7ayLabs is building the infrastructure to support this long-term
-            coordination, focusing on durable, foundational technology rather
-            than chasing trends. Our goal is to enable systems that last &mdash;
-            systems that maintain integrity and trust as the digital landscape
-            evolves.
+            7ayLabs is building 7aychain to support this long-term
+            coordination, focusing on durable, foundational blockchain
+            technology built on Substrate (Polkadot SDK) rather than chasing
+            trends. Our goal is to enable systems that last &mdash; systems
+            that maintain integrity and trust as the digital landscape evolves.
           </p>
           <p>
             Over time, presence-first standards will shape an ecosystem where

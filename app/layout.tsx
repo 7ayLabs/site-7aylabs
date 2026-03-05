@@ -7,27 +7,29 @@ export const metadata: Metadata = {
     template: "%s | 7ayLabs",
   },
   description:
-    "7ayLabs provides the Proof-of-Presence infrastructure powering human-verified participation, decentralized applications, programmable incentives and presence-backed cryptoeconomic systems built on $7AY.",
+    "7ayLabs builds 7aychain, a Layer 1 blockchain with on-chain Proof of Presence. Validators triangulate physical presence through network latency — no GPS, no oracles, no special hardware. Powered by $7AY.",
   keywords: [
     "7ayLabs",
+    "7aychain",
     "Proof of Presence",
     "PoP protocol",
     "presence layer",
+    "Layer 1 blockchain",
     "Web3 infrastructure",
     "blockchain verification",
     "$7AY token",
     "on-chain presence",
-    "decentralized apps",
-    "web3 identity",
+    "witness circles",
+    "network latency triangulation",
+    "Substrate",
     "presence economy",
-    "modular blockchain",
   ],
   metadataBase: new URL("https://7aylabs.com"),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "7ayLabs — Proof-of-Presence Infrastructure for Web3",
+    title: "7ayLabs — 7aychain: Layer 1 Blockchain with Proof of Presence",
     description:
-      "The presence layer enabling human-native applications, on-chain verified actions, decentralized participation and new cryptoeconomic primitives powered by $7AY.",
+      "7aychain is a Layer 1 blockchain where validators form witness circles and triangulate physical presence through network latency. No GPS, no oracles. Powered by $7AY.",
     url: "https://7aylabs.com",
     siteName: "7ayLabs",
     images: [
@@ -35,7 +37,7 @@ export const metadata: Metadata = {
         url: "/og/7aylabs-og.png",
         width: 1200,
         height: 630,
-        alt: "7ayLabs Proof-of-Presence Web3 Infrastructure",
+        alt: "7ayLabs — 7aychain Proof of Presence Layer 1 Blockchain",
       },
     ],
     type: "website",
@@ -43,9 +45,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "7ayLabs — The Proof-of-Presence Layer for Web3",
+    title: "7ayLabs — 7aychain: Proof of Presence Layer 1",
     description:
-      "Infrastructure for verified human presence, decentralized experiences and presence-native incentives. Powered by $7AY.",
+      "7aychain: a Layer 1 blockchain where validators triangulate physical presence through network latency. No GPS, no oracles. Built on Substrate. Powered by $7AY.",
     images: ["/og/7aylabs-og.png"],
     creator: "@7aylabs",
   },
@@ -72,6 +74,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="min-h-screen text-white antialiased selection:bg-white/10 selection:text-white bg-[linear-gradient(180deg,#0b0d12_0%,#0e1118_40%,#0a0c11_70%,#07090d_100%)]">
+        <a href="#main-content" className="skip-to-content">
+          Skip to main content
+        </a>
         {children}
       </body>
     </html>

@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <AmbientBackground />
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <About />
         <Projects />

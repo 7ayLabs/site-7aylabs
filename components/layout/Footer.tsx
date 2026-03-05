@@ -47,12 +47,12 @@ export default function Footer() {
         </div>
 
         {/* Links and social */}
-        <div className="flex items-center justify-center gap-6 text-white/50 md:justify-end">
+        <nav aria-label="Footer navigation" className="flex items-center justify-center gap-6 text-white/50 md:justify-end">
           {FOOTER_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="hover:text-white transition-colors duration-fast"
+              className="hover:text-white focus-visible:text-white transition-colors duration-fast"
             >
               {link.label}
             </Link>
@@ -63,7 +63,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Follow 7ayLabs on X"
-            className="hover:text-white transition-colors duration-fast"
+            className="hover:text-white focus-visible:text-white transition-colors duration-fast"
           >
             <XIcon />
           </Link>
@@ -73,11 +73,11 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="7ayLabs on GitHub"
-            className="hover:text-white transition-colors duration-fast"
+            className="hover:text-white focus-visible:text-white transition-colors duration-fast"
           >
             <GitHubIcon />
           </Link>
-        </div>
+        </nav>
       </div>
     </footer>
   );

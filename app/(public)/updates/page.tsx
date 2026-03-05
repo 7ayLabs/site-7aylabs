@@ -21,27 +21,51 @@ interface UpdateEntry {
 
 const updatesLog: UpdateEntry[] = [
   {
-    title: "MVP flow prototype",
-    date: "Dec 12, 2025",
-    summary: "Validating first end-to-end PoP flow.",
+    title: "7aychain v0.8.26 released",
+    date: "Feb 28, 2026",
+    summary: "Latest stable release with full protocol stack.",
     content:
-      "Validating first end-to-end Proof of Presence flow. This milestone represents the initial prototype that connects presence declaration, validation, and finalization into a single user journey. Testing is focused on real-world viability and edge-case handling.",
-    type: "app",
-  },
-  {
-    title: "Presence signal design",
-    date: "Dec 09 - Dec 11, 2025",
-    summary: "Defined first verifiable presence signal.",
-    content:
-      "Defined first verifiable presence signal. Established the core data model for presence events, including spatial context, temporal bounds, and actor isolation. This forms the foundation for all downstream verification logic.",
+      "Released 7aychain v0.8.26, the latest stable version of the Layer 1 blockchain. This release includes the complete protocol stack: presence lifecycle with commit-reveal, witness-circle triangulation, ZK proof verification, validator staking and slashing, governance, vaults, semantic linking, dispute resolution, device scanning, and autonomous detection. Multi-node devnet running with 6 validators.",
     type: "platform",
   },
   {
-    title: "Assumption mapping",
-    date: "Dec 06 - Dec 08, 2025",
-    summary: "Mapped assumptions around presence signals.",
+    title: "Governance and vault system",
+    date: "Feb 2026",
+    summary: "On-chain governance and secure vault infrastructure shipped.",
     content:
-      "Mapped assumptions around presence signals. Documented key hypotheses about how presence should be captured, verified, and consumed. Identified critical unknowns around spoofing vectors, latency requirements, and privacy constraints.",
+      "Shipped on-chain governance with proposals, voting, and delegation. Implemented the vault system with create, share, recover, register-file, request-unlock, and authorize-unlock operations. Added semantic linking for trust graphs between on-chain entities.",
+    type: "platform",
+  },
+  {
+    title: "ZK circuits and triangulation",
+    date: "Jan 2026",
+    summary: "Zero-knowledge proofs and multilateration algorithms integrated.",
+    content:
+      "Integrated ZK proof generation and on-chain verification for privacy-preserving presence attestation. Implemented multilateration and centroid triangulation algorithms that allow validators to determine position from network latency measurements without GPS. Added position-bound tokens (PBTs) for cryptographic position claims.",
+    type: "platform",
+  },
+  {
+    title: "Validator system and dispute resolution",
+    date: "Jan 2026",
+    summary: "Full validator lifecycle with staking, slashing, and disputes.",
+    content:
+      "Implemented the complete validator system: registration, activation, deactivation, withdrawal, staking, and slashing. Added dispute resolution with evidence submission, voting, and on-chain resolution. Validators form witness circles and participate in quorum-based presence finalization.",
+    type: "platform",
+  },
+  {
+    title: "Multi-node devnet and CLI",
+    date: "Jan 2026",
+    summary: "Hybrid devnet with Laud Networks CLI for protocol interaction.",
+    content:
+      "Launched multi-node hybrid devnet with Alice running natively and remaining validators (Bob, Charlie, Dave, Eve, Ferdie) in Docker. Released the Laud Networks CLI with interactive commands for all protocol modules: presence, epoch, validator, triangulation, ZK, governance, vault, semantic, and more.",
+    type: "platform",
+  },
+  {
+    title: "Presence and epoch core",
+    date: "Dec 2025",
+    summary: "Foundational presence lifecycle and epoch management shipped.",
+    content:
+      "Built the core presence state machine (Declared, Attested, Triangulated, Finalized) with epoch-bound lifecycle. Implemented the 5-state epoch model with dynamic state derivation from block timestamps. Established actor/epoch isolation and authority-controlled mutations. This formed the foundation for the full 7aychain protocol.",
     type: "platform",
   },
   {
@@ -81,7 +105,7 @@ export default function UpdatesPage() {
             Project Status
           </h1>
           <p className="mt-1 mb-4 text-base md:text-lg text-white/45 max-w-2xl">
-            Last updated &middot; Dec 12, 2025
+            Last updated &middot; Feb 28, 2026
           </p>
         </motion.div>
       </section>
@@ -97,22 +121,23 @@ export default function UpdatesPage() {
             variants={fadeUpItem}
             className="max-w-2xl text-base leading-relaxed text-white/45 mt-0 mb-4"
           >
-            This log tracks real progress across the 7ayLabs project &mdash;
-            decisions, validations, and shipped signals. Each update expands
-            with full context.
+            This log tracks real progress across 7aychain and the 7ayLabs
+            project &mdash; protocol milestones, shipped features, and
+            infrastructure updates. Each update expands with full context.
           </motion.p>
         </motion.div>
 
         {/* Filters */}
-        <div className="mt-4 mb-8 flex flex-wrap gap-2">
+        <div className="mt-4 mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter updates by type">
           {FILTERS.map((key) => (
             <button
               key={key}
               onClick={() => setFilter(key)}
-              className={`rounded-full px-4 py-1.5 text-xs uppercase tracking-wide transition-colors duration-fast ${
+              aria-pressed={filter === key}
+              className={`rounded-full px-4 py-1.5 min-h-[36px] text-xs uppercase tracking-wide transition-colors duration-fast focus-visible:ring-2 focus-visible:ring-white/60 ${
                 filter === key
                   ? "bg-white text-black"
-                  : "border border-white/15 text-white/50 hover:border-white/30"
+                  : "border border-white/15 text-white/50 hover:border-white/30 hover:text-white/70"
               }`}
             >
               {key === "all" ? "All updates" : key}
@@ -157,7 +182,7 @@ export default function UpdatesPage() {
                     </p>
 
                     <button
-                      className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-white/60 hover:text-white transition-colors duration-fast"
+                      className="mt-2 inline-flex items-center gap-1 py-1 text-sm font-medium text-white/60 hover:text-white focus-visible:text-white transition-colors duration-fast"
                       onClick={() => setOpenIndex(isOpen ? null : idx)}
                       aria-expanded={isOpen}
                       aria-controls={`update-content-${idx}`}

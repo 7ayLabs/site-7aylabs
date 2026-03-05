@@ -40,7 +40,7 @@ export default function Newsletter() {
           variants={fadeUpItem}
           href="/newsletter"
           aria-label="Read the 7ayLabs newsletter"
-          className="mt-6 inline-flex items-center gap-3 px-8 py-3 rounded-full bg-white text-black font-medium text-base md:text-lg transition-colors duration-normal hover:bg-white/90"
+          className="mt-6 inline-flex items-center gap-3 px-8 py-3 min-h-[44px] rounded-full bg-white text-black font-medium text-base md:text-lg transition-colors duration-normal hover:bg-white/90 focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-dark"
         >
           <Mail size={16} aria-hidden="true" />
           Read the Newsletter

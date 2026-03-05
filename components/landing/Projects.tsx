@@ -48,10 +48,10 @@ export default function Projects() {
 
         <PopReveal delay={0.08}>
           <p className="text-white/65 text-lg leading-relaxed text-center max-w-3xl mb-2 mt-0">
-            Proof of Presence anchors digital systems to real human activity. It
-            restores trust, reduces noise from automation, and enables scalable
-            business models built on verified participation &mdash; not bots or
-            synthetic engagement.
+            7aychain anchors digital systems to real human activity through
+            on-chain Proof of Presence. Validators triangulate physical presence
+            via network latency &mdash; restoring trust and enabling scalable
+            systems built on verified participation.
           </p>
         </PopReveal>
 

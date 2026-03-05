@@ -34,6 +34,7 @@ export default function PopReveal({
   return (
     <motion.div
       ref={ref}
+      style={{ willChange: "opacity, transform, filter" }}
       variants={{
         hidden: {
           opacity: 0,
