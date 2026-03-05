@@ -1,0 +1,54 @@
+@import "./tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply box-border;
+}
+
+html,
+body {
+  @apply min-h-screen bg-dark text-white antialiased font-sans;
+}
+
+::selection {
+  @apply bg-white/10 text-white;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-secondary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-fg-muted);
+}
+
+@layer components {
+  .golden-animated {
+    background: linear-gradient(
+      90deg,
+      #d4af37 0%,
+      #f9e076 25%,
+      #fff2c4 50%,
+      #d4af37 75%,
+      #f4d36b 100%
+    );
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+    animation: shineGold 4.6s linear infinite;
+  }
+}
