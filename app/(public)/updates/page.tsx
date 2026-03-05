@@ -7,7 +7,7 @@ import {
   fadeUpItem,
   defaultViewport,
 } from "@/lib/constants/animations";
-import { Badge } from "@/components/ui";
+import { Badge, Card } from "@/components/ui";
 
 type UpdateType = "all" | "platform" | "website" | "app";
 
@@ -39,7 +39,8 @@ const updatesLog: UpdateEntry[] = [
   {
     title: "ZK circuits and triangulation",
     date: "Jan 2026",
-    summary: "Zero-knowledge proofs and multilateration algorithms integrated.",
+    summary:
+      "Zero-knowledge proofs and multilateration algorithms integrated.",
     content:
       "Integrated ZK proof generation and on-chain verification for privacy-preserving presence attestation. Implemented multilateration and centroid triangulation algorithms that allow validators to determine position from network latency measurements without GPS. Added position-bound tokens (PBTs) for cryptographic position claims.",
     type: "platform",
@@ -65,7 +66,7 @@ const updatesLog: UpdateEntry[] = [
     date: "Dec 2025",
     summary: "Foundational presence lifecycle and epoch management shipped.",
     content:
-      "Built the core presence state machine (Declared, Attested, Triangulated, Finalized) with epoch-bound lifecycle. Implemented the 5-state epoch model with dynamic state derivation from block timestamps. Established actor/epoch isolation and authority-controlled mutations. This formed the foundation for the full 7aychain protocol.",
+      "Built the core presence state machine (Declared, Attested, Triangulated, Finalized) with epoch-bound lifecycle. Implemented the 5-state epoch model with dynamic state derivation from block timestamps. Established actor/epoch isolation and authority-controlled mutations.",
     type: "platform",
   },
   {
@@ -91,20 +92,20 @@ export default function UpdatesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="max-w-5xl mx-auto px-6 md:px-12 pt-16 md:pt-24 pb-0">
+      <section className="max-w-5xl mx-auto px-6 md:px-12 pt-24 md:pt-32 pb-8">
         <motion.div
           className="max-w-3xl"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <span className="block mb-3 text-sm uppercase tracking-widest text-white/40">
+          <span className="block mb-4 text-sm uppercase tracking-widest text-accent">
             Updates
           </span>
-          <h1 className="font-serif font-bold text-4xl md:text-5xl tracking-tight leading-tight mb-2">
+          <h1 className="font-sans font-bold text-4xl md:text-5xl tracking-tight leading-tight mb-3">
             Project Status
           </h1>
-          <p className="mt-1 mb-4 text-base md:text-lg text-white/45 max-w-2xl">
+          <p className="text-base md:text-lg text-white/40 max-w-2xl">
             Last updated &middot; Feb 28, 2026
           </p>
         </motion.div>
@@ -119,25 +120,29 @@ export default function UpdatesPage() {
         >
           <motion.p
             variants={fadeUpItem}
-            className="max-w-2xl text-base leading-relaxed text-white/45 mt-0 mb-4"
+            className="max-w-2xl text-base leading-relaxed text-white/40 mb-6"
           >
             This log tracks real progress across 7aychain and the 7ayLabs
             project &mdash; protocol milestones, shipped features, and
-            infrastructure updates. Each update expands with full context.
+            infrastructure updates.
           </motion.p>
         </motion.div>
 
         {/* Filters */}
-        <div className="mt-4 mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter updates by type">
+        <div
+          className="mb-8 flex flex-wrap gap-2"
+          role="group"
+          aria-label="Filter updates by type"
+        >
           {FILTERS.map((key) => (
             <button
               key={key}
               onClick={() => setFilter(key)}
               aria-pressed={filter === key}
-              className={`rounded-full px-4 py-1.5 min-h-[36px] text-xs uppercase tracking-wide transition-colors duration-fast focus-visible:ring-2 focus-visible:ring-white/60 ${
+              className={`rounded-full px-4 py-1.5 min-h-[36px] text-xs uppercase tracking-wide transition-colors duration-fast ${
                 filter === key
-                  ? "bg-white text-black"
-                  : "border border-white/15 text-white/50 hover:border-white/30 hover:text-white/70"
+                  ? "bg-accent text-black font-semibold"
+                  : "border border-white/[0.1] text-white/45 hover:border-white/20 hover:text-white/60"
               }`}
             >
               {key === "all" ? "All updates" : key}
@@ -145,13 +150,8 @@ export default function UpdatesPage() {
           ))}
         </div>
 
-        <p className="mb-4 text-sm text-white/35 max-w-2xl">
-          Updates are ordered by real execution, not announcements. Click any
-          entry to expand full context.
-        </p>
-
         {/* Log entries */}
-        <div>
+        <div className="space-y-1">
           {filtered.map((item, idx) => {
             const isOpen = openIndex === idx;
             const isLatest = idx === 0;
@@ -163,51 +163,67 @@ export default function UpdatesPage() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={defaultViewport}
-                className={`border-b border-white/10 py-4 max-w-5xl ${
-                  isLatest ? "bg-white/[0.02]" : ""
-                }`}
               >
-                <div className="flex gap-4">
-                  {/* Content column */}
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3">
-                      <h3 className="font-serif text-xl md:text-2xl font-semibold tracking-tight text-white leading-snug">
+                <Card
+                  variant="default"
+                  padding="md"
+                  className={
+                    isLatest ? "border-accent/15" : ""
+                  }
+                >
+                  <div className="flex items-start justify-between gap-4 mb-2">
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <h3 className="font-sans text-lg md:text-xl font-semibold tracking-tight text-white leading-snug">
                         {item.title}
                       </h3>
                       {isLatest && <Badge variant="accent">Latest</Badge>}
                     </div>
-
-                    <p className="mt-1 text-sm md:text-base text-white/35">
+                    <span className="text-sm text-white/30 whitespace-nowrap shrink-0 mt-1">
                       {item.date}
-                    </p>
-
-                    <button
-                      className="mt-2 inline-flex items-center gap-1 py-1 text-sm font-medium text-white/60 hover:text-white focus-visible:text-white transition-colors duration-fast"
-                      onClick={() => setOpenIndex(isOpen ? null : idx)}
-                      aria-expanded={isOpen}
-                      aria-controls={`update-content-${idx}`}
-                    >
-                      {isOpen ? "Close" : "View update"} &rarr;
-                    </button>
-
-                    <AnimatePresence>
-                      {isOpen && (
-                        <motion.div
-                          id={`update-content-${idx}`}
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.25 }}
-                          className="overflow-hidden"
-                        >
-                          <p className="mt-4 text-base leading-relaxed text-white/60 max-w-xl">
-                            {item.content}
-                          </p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    </span>
                   </div>
-                </div>
+
+                  <p className="text-sm text-white/45 mb-3">{item.summary}</p>
+
+                  <button
+                    className="inline-flex items-center gap-1 text-sm font-medium text-accent/80 hover:text-accent transition-colors duration-fast"
+                    onClick={() => setOpenIndex(isOpen ? null : idx)}
+                    aria-expanded={isOpen}
+                    aria-controls={`update-content-${idx}`}
+                  >
+                    {isOpen ? "Close" : "View details"}
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      className={`transition-transform duration-200 ${isOpen ? "rotate-90" : ""}`}
+                      aria-hidden="true"
+                    >
+                      <path d="M4 2l4 4-4 4" />
+                    </svg>
+                  </button>
+
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        id={`update-content-${idx}`}
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="overflow-hidden"
+                      >
+                        <p className="mt-4 pt-4 border-t border-white/[0.06] text-sm leading-relaxed text-white/55">
+                          {item.content}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </Card>
               </motion.div>
             );
           })}
