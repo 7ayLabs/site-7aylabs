@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Use Cases",
   description:
     "Discover how Proof of Presence turns real-world presence into actionable signal across events, spaces, communities, and operations.",
+  keywords: ["presence verification use cases", "Sybil resistant airdrops", "event attendance blockchain", "anti-bot verification", "DePIN location proof", "human verification DeFi"],
 };
 
 const SIGNAL_CARDS = [

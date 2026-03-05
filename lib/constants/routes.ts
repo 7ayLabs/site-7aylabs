@@ -8,7 +8,7 @@ export const ROUTES = {
   waitlist: "/waitlist",
   newsletter: "/newsletter",
   services: "/services",
-  roadmap: "/#roadmap",
+  roadmap: "/roadmap",
 } as const;
 
 export const EXTERNAL_LINKS = {

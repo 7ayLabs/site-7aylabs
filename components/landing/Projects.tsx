@@ -35,19 +35,19 @@ const COLUMNS: readonly ColumnItem[] = [
 
 const STATS: readonly StatItem[] = [
   {
-    label: "Presence as Signal",
+    label: "No Hardware Needed",
     description:
-      "Real participation becomes a first\u2011class input for products, governance, and incentive systems.",
+      "Unlike iris scanners or DePIN sensors, 7aychain uses existing network infrastructure. Any device, any validator.",
   },
   {
-    label: "Operational Efficiency",
+    label: "On-Chain Finality",
     description:
-      "Rewards, access, and logistics scale with real usage \u2014 not inflated demand or automated abuse.",
+      "Presence attestations are finalized by validator quorum with commit\u2011reveal \u2014 not stored in a centralized database.",
   },
   {
-    label: "AI\u2011Resilient Systems",
+    label: "Cryptoeconomic Security",
     description:
-      "Physical presence introduces friction that synthetic agents cannot easily replicate or fake.",
+      "Validators stake $7AY and face slashing for dishonest triangulation. Manipulation costs real capital.",
   },
 ] as const;
 
@@ -60,7 +60,7 @@ const DELAY_STEP = 0.06;
 
 export default function Projects() {
   return (
-    <section className="relative w-full mx-auto px-6 py-24 text-white">
+    <section className="relative w-full mx-auto px-6 py-24 text-fg">
       <div className="max-w-5xl mx-auto flex flex-col items-center gap-12">
         {/* Main heading */}
         <PopReveal delay={0}>
@@ -71,7 +71,7 @@ export default function Projects() {
 
         {/* Main description */}
         <PopReveal delay={DELAY_STEP}>
-          <p className="text-white/65 text-lg leading-relaxed text-center max-w-3xl mb-2 mt-0">
+          <p className="text-fg-secondary text-lg leading-relaxed text-center max-w-3xl mb-2 mt-0">
             Proof of Presence anchors digital systems to real human activity. It
             restores trust, reduces noise from automation, and enables scalable
             business models built on verified participation&nbsp;&mdash; not bots
@@ -89,7 +89,7 @@ export default function Projects() {
                 </h3>
               </PopReveal>
               <PopReveal delay={DELAY_STEP * (4 + i * 2)}>
-                <p className="text-white/65 leading-relaxed">
+                <p className="text-fg-secondary leading-relaxed">
                   {col.description}
                 </p>
               </PopReveal>
@@ -99,7 +99,7 @@ export default function Projects() {
 
         {/* Extra paragraph */}
         <PopReveal delay={DELAY_STEP * 7}>
-          <p className="mt-6 text-center text-white/60 text-base leading-relaxed max-w-4xl">
+          <p className="mt-6 text-center text-fg-secondary text-base leading-relaxed max-w-4xl">
             Beyond trust and security, Proof of Presence unlocks real&#x2011;world
             logistics and AI&#x2011;resilient systems&nbsp;&mdash; enabling fair
             access control, verifiable attendance, and human&#x2011;only
@@ -110,18 +110,18 @@ export default function Projects() {
 
         {/* Stats section */}
         <div className="w-full max-w-4xl mt-6 flex flex-col gap-6">
-          <div className="h-px w-full bg-white/10" />
+          <div className="h-px w-full bg-[var(--color-border-primary)]" />
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
             {STATS.map((stat, i) => (
               <div key={stat.label} className="flex flex-col gap-2">
                 <PopReveal delay={DELAY_STEP * (8 + i * 2)}>
-                  <p className="text-sm tracking-wide text-white/40 uppercase">
+                  <p className="text-sm tracking-wide text-fg-muted uppercase">
                     {stat.label}
                   </p>
                 </PopReveal>
                 <PopReveal delay={DELAY_STEP * (9 + i * 2)}>
-                  <p className="text-white/70 text-sm leading-relaxed">
+                  <p className="text-fg-secondary text-sm leading-relaxed">
                     {stat.description}
                   </p>
                 </PopReveal>

@@ -38,7 +38,7 @@ export default function TopBar({ open, setOpen }: TopBarProps) {
     <header
       className={`
         sticky top-0 z-50 w-full
-        bg-[#060606] border-b border-white/10 backdrop-blur-xl
+        bg-[var(--color-bg-primary)] border-b border-[var(--color-border-primary)] backdrop-blur-xl
         transition-[height,transform] duration-300 ease-out
         ${scrolled ? "h-12 md:h-14" : "h-16"}
       `}
@@ -61,7 +61,7 @@ export default function TopBar({ open, setOpen }: TopBarProps) {
           `}
         >
           <Image
-            src={theme === "dark" ? "/7aylabs_white_logo.svg" : "/7aylabs_logo.svg"}
+            src={theme === "dark" ? "/7aylabs_white_logo.svg" : "/7aylabs_blacklogo.png"}
             alt="7ayLabs Logo"
             width={84}
             height={20}
@@ -77,7 +77,7 @@ export default function TopBar({ open, setOpen }: TopBarProps) {
         <div
           className={`
             hidden md:flex items-center
-            text-sm text-white/60
+            text-sm text-fg-secondary
             transition-[gap,transform] duration-300 ease-out
             ${scrolled ? "gap-6 mr-4" : "gap-8 mr-6"}
           `}
@@ -86,7 +86,7 @@ export default function TopBar({ open, setOpen }: TopBarProps) {
             <Link
               key={link.href}
               href={link.href}
-              className="hover:text-white transition"
+              className="hover:text-fg transition"
             >
               {link.label}
             </Link>
@@ -107,10 +107,10 @@ export default function TopBar({ open, setOpen }: TopBarProps) {
             <Link
               href={ROUTES.waitlist}
               className={`
-                rounded-full border border-white/20
-                bg-white text-black
+                rounded-full border border-[var(--color-border-secondary)]
+                bg-fg text-bg
                 text-xs font-medium
-                hover:bg-white/90 transition
+                hover:opacity-90 transition
                 ${scrolled ? "px-3 py-1" : "px-4 py-1.5"}
               `}
             >
@@ -122,7 +122,7 @@ export default function TopBar({ open, setOpen }: TopBarProps) {
             onClick={() => setOpen(!open)}
             className="
               md:hidden p-1 rounded-full
-              text-white/70 hover:text-white
+              text-fg-secondary hover:text-fg
               transition-transform duration-300 ease-out
             "
             aria-label={open ? "Close menu" : "Open menu"}

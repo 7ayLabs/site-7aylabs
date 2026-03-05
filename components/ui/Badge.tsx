@@ -16,9 +16,9 @@ interface BadgeProps {
 }
 
 const variantStyles: Record<BadgeVariant, string> = {
-  default: "bg-white/10 text-white/80",
-  outline: "bg-transparent border border-white/20 text-white/70",
-  muted: "bg-white/5 text-white/50",
+  default: "bg-[var(--color-bg-card-hover)] text-fg-secondary",
+  outline: "bg-transparent border border-[var(--color-border-secondary)] text-fg-muted",
+  muted: "bg-[var(--color-bg-card)] text-fg-tertiary",
   accent:
     "bg-[var(--color-accent-dim)] text-accent border border-[var(--color-border-accent)]",
   success:

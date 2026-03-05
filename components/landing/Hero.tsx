@@ -3,15 +3,17 @@
 import { memo, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useTheme } from "@/components/providers/ThemeProvider";
 
 /* ------------------------------------------------------------------ */
 /*  Constants                                                          */
 /* ------------------------------------------------------------------ */
 
 const PHRASES = [
-  "Proof of Presence",
-  "Human Verified",
-  "Presence Matters",
+  "Prove you're here. No biometrics.",
+  "Sybil resistance through physics",
+  "The presence layer for Web3",
+  "Human-verified. On-chain.",
 ] as const;
 
 /** Rotation interval for tagline phrases (ms) */
@@ -29,6 +31,7 @@ const PHRASE_TRANSITION = {
 
 function HeroComponent() {
   const [index, setIndex] = useState(0);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -38,7 +41,7 @@ function HeroComponent() {
   }, []);
 
   return (
-    <section className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden text-white bg-[linear-gradient(180deg,#000000_0%,#0a0a0a_40%,#000000_100%)]">
+    <section className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden text-fg bg-[var(--color-bg-primary)]">
       {/* Ambient radial gradients */}
       <div
         aria-hidden
@@ -54,7 +57,7 @@ function HeroComponent() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <Image
-            src="/7aylabs_white_logo.svg"
+            src={theme === "dark" ? "/7aylabs_white_logo.svg" : "/7aylabs_blacklogo.png"}
             alt="7ayLabs"
             width={300}
             height={96}
@@ -68,7 +71,7 @@ function HeroComponent() {
           <AnimatePresence mode="sync" initial={false}>
             <motion.p
               key={PHRASES[index]}
-              className="absolute text-[0.95rem] sm:text-xl text-white/70 tracking-wide text-center"
+              className="absolute text-[0.95rem] sm:text-xl text-fg-secondary tracking-wide text-center"
               style={{ willChange: "opacity, filter" }}
               initial={{ opacity: 0.001, filter: "blur(10px)" }}
               animate={{ opacity: 1, filter: "blur(0px)" }}

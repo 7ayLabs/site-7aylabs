@@ -102,7 +102,7 @@ export default function UpdatesPage() {
           <span className="block mb-4 text-sm uppercase tracking-widest text-accent">
             Updates
           </span>
-          <h1 className="font-sans font-bold text-4xl md:text-5xl tracking-tight leading-tight mb-3">
+          <h1 className="font-serif font-bold text-4xl md:text-5xl tracking-tight leading-tight mb-3">
             Project Status
           </h1>
           <p className="text-base md:text-lg text-fg-muted max-w-2xl">

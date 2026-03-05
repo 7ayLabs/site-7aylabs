@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: "%s | 7ayLabs",
   },
   description:
-    "7ayLabs builds 7aychain, a Layer 1 blockchain with on-chain Proof of Presence. Validators triangulate physical presence through network latency — no GPS, no oracles, no special hardware. Powered by $7AY.",
+    "7aychain is a Layer 1 blockchain for Sybil-resistant human verification. Validators triangulate physical presence through network latency — no GPS, no biometrics, no hardware. The presence layer for Web3. Powered by $7AY.",
   keywords: [
     "7ayLabs",
     "7aychain",
@@ -24,13 +24,28 @@ export const metadata: Metadata = {
     "network latency triangulation",
     "Substrate",
     "presence economy",
+    "Sybil resistance",
+    "proof of humanity",
+    "on-chain governance",
+    "decentralized identity",
+    "human verification blockchain",
+    "anti-bot blockchain",
+    "location verification protocol",
+    "DAO governance token",
+    "zero knowledge presence",
+    "Polkadot SDK",
+    "DePIN protocol",
+    "real world asset verification",
+    "validator staking",
+    "on-chain dispute resolution",
+    "AI resistant blockchain",
   ],
   metadataBase: new URL("https://7aylabs.com"),
   alternates: { canonical: "/" },
   openGraph: {
     title: "7ayLabs — 7aychain: Layer 1 Blockchain with Proof of Presence",
     description:
-      "7aychain is a Layer 1 blockchain where validators form witness circles and triangulate physical presence through network latency. No GPS, no oracles. Powered by $7AY.",
+      "7aychain: a Layer 1 blockchain where validators triangulate physical presence through network latency. Sybil-resistant human verification — no GPS, no biometrics, no hardware. The presence layer for Web3.",
     url: "https://7aylabs.com",
     siteName: "7ayLabs",
     images: [
@@ -48,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "7ayLabs — 7aychain: Proof of Presence Layer 1",
     description:
-      "7aychain: a Layer 1 blockchain where validators triangulate physical presence through network latency. No GPS, no oracles. Built on Substrate. Powered by $7AY.",
+      "7aychain: Sybil-resistant human verification through physical presence. Validators triangulate via network latency. No GPS, no biometrics. The presence layer for Web3. Powered by $7AY.",
     images: ["/og/7aylabs-og.png"],
     creator: "@7aylabs",
   },

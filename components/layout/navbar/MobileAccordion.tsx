@@ -35,7 +35,7 @@ export default function MobileAccordion({
         pb-12
         text-[22px]
         font-medium
-        text-white/85
+        text-fg
       "
     >
       {NAV_LINKS.map((item, i) => (
@@ -58,9 +58,9 @@ export default function MobileAccordion({
               relative inline-block
               tracking-wide hover:tracking-wider
               transition-all duration-300 ease-out
-              ${pathname === item.href ? "text-white" : "text-white/70 hover:text-white hover:opacity-100"}
+              ${pathname === item.href ? "text-fg" : "text-fg-secondary hover:text-fg hover:opacity-100"}
               after:absolute after:left-0 after:-bottom-1
-              after:h-px after:bg-white
+              after:h-px after:bg-fg
               after:transition-all after:duration-300
               ${pathname === item.href ? "after:w-full" : "after:w-0 hover:after:w-full"}
             `}

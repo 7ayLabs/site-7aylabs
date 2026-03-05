@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Why Presence",
   description:
     "The internet lost the human signal. Discover why 7aychain and Proof of Presence anchor digital systems to real human participation through on-chain validator triangulation.",
+  keywords: ["why presence matters", "Sybil resistance", "bot prevention blockchain", "human verification", "proof of humanity alternative", "AI resistant verification"],
 };
 
 const METRICS = [
@@ -106,7 +107,7 @@ export default function WhyPresencePage() {
           <span className="block text-sm uppercase tracking-widest text-accent mb-4">
             Real-World Signal
           </span>
-          <h2 className="font-sans font-bold text-3xl md:text-4xl text-fg mb-4">
+          <h2 className="font-serif font-bold text-3xl md:text-4xl text-fg mb-4">
             Showing up is the new standard
           </h2>
           <p className="max-w-3xl text-fg-tertiary text-lg leading-relaxed">
@@ -148,7 +149,7 @@ export default function WhyPresencePage() {
           <span className="block text-xs uppercase tracking-widest text-accent mb-4">
             Fun fact
           </span>
-          <h3 className="font-sans font-bold text-xl md:text-2xl text-fg mb-3">
+          <h3 className="font-serif font-bold text-xl md:text-2xl text-fg mb-3">
             Attendance is one of the most faked signals in software
           </h3>
           <p className="text-fg-tertiary leading-relaxed">
@@ -165,7 +166,7 @@ export default function WhyPresencePage() {
           <span className="block text-sm uppercase tracking-widest text-accent mb-4">
             Where Presence Unlocks Value
           </span>
-          <h2 className="font-sans font-bold text-3xl md:text-4xl text-fg mb-4">
+          <h2 className="font-serif font-bold text-3xl md:text-4xl text-fg mb-4">
             Different problems. One missing signal.
           </h2>
           <p className="max-w-3xl text-fg-tertiary text-lg mx-auto leading-relaxed">
@@ -215,7 +216,7 @@ export default function WhyPresencePage() {
         <span className="block text-sm uppercase tracking-widest text-accent mb-4">
           Live signal
         </span>
-        <h3 className="font-sans font-bold text-2xl md:text-3xl text-fg mb-4">
+        <h3 className="font-serif font-bold text-2xl md:text-3xl text-fg mb-4">
           Follow the signal as it evolves
         </h3>
         <p className="mx-auto max-w-xl text-fg-tertiary text-lg leading-relaxed mb-8">

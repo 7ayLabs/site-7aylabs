@@ -47,14 +47,14 @@ function PageHeroComponent({
       >
         <motion.span
           variants={fadeUpItem}
-          className="block text-sm uppercase tracking-widest text-white/40 mb-6"
+          className="block text-sm uppercase tracking-widest text-fg-muted mb-6"
         >
           {label}
         </motion.span>
 
         <motion.h1
           variants={fadeUpItem}
-          className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight text-white"
+          className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight text-fg"
         >
           {title}
         </motion.h1>
@@ -63,7 +63,7 @@ function PageHeroComponent({
           <motion.p
             key={index}
             variants={fadeUpItem}
-            className="mt-6 mx-auto max-w-2xl text-white/60 text-base sm:text-lg leading-relaxed"
+            className="mt-6 mx-auto max-w-2xl text-fg-secondary text-base sm:text-lg leading-relaxed"
           >
             {desc}
           </motion.p>

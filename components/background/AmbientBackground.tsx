@@ -30,7 +30,7 @@ function AmbientBackgroundComponent() {
         className="fixed inset-0 -z-10 pointer-events-none overflow-hidden"
         aria-hidden="true"
       >
-        <div className="absolute inset-0 bg-[#060606]" />
+        <div className="absolute inset-0 bg-[var(--color-bg-primary)]" />
         <div
           className="absolute inset-0 opacity-60"
           style={{

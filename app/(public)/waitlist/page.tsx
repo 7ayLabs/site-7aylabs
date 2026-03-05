@@ -118,7 +118,7 @@ function WaitlistPageComponent() {
 
             <motion.h1
               variants={fadeUpItem}
-              className="font-sans font-bold text-4xl md:text-5xl tracking-tight mb-4"
+              className="font-serif font-bold text-4xl md:text-5xl tracking-tight mb-4"
             >
               Get early access
             </motion.h1>
@@ -206,7 +206,7 @@ function WaitlistPageComponent() {
 
             <motion.h2
               variants={fadeUpItem}
-              className="font-sans font-bold text-3xl md:text-4xl tracking-tight text-fg mb-6"
+              className="font-serif font-bold text-3xl md:text-4xl tracking-tight text-fg mb-6"
             >
               How early access works
             </motion.h2>

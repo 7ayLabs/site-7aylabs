@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "Learn about 7ayLabs, the team building 7aychain — a Layer 1 blockchain with on-chain Proof of Presence where validators triangulate physical presence through network latency.",
+  keywords: ["7ayLabs team", "blockchain company", "presence layer builders", "7aychain creators", "Web3 infrastructure team"],
 };
 
 const PRINCIPLES = [

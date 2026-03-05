@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Newsletter",
   description:
     "Stay updated with 7ayLabs — product insights, protocol progress, and real-world presence infrastructure updates.",
+  keywords: ["7ayLabs newsletter", "blockchain updates", "Web3 newsletter", "presence economy insights"],
 };
 
 const TOPICS = [
@@ -56,7 +57,7 @@ export default function NewsletterPage() {
       </Section>
 
       <Section centered className="py-20 md:py-28">
-        <h2 className="font-sans font-bold text-3xl md:text-4xl text-fg mb-6">
+        <h2 className="font-serif font-bold text-3xl md:text-4xl text-fg mb-6">
           Follow our progress
         </h2>
         <p className="text-fg-tertiary text-lg leading-relaxed max-w-2xl mx-auto mb-10">

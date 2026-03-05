@@ -38,7 +38,7 @@ export default function Newsletter() {
         {/* Heading */}
         <motion.h2
           id="newsletter-title"
-          className="text-3xl md:text-4xl font-semibold text-white tracking-tight font-serif leading-tight"
+          className="text-3xl md:text-4xl font-semibold text-fg tracking-tight font-serif leading-tight"
           variants={itemVariant}
           initial="hidden"
           whileInView="visible"
@@ -50,7 +50,7 @@ export default function Newsletter() {
 
         {/* Description */}
         <motion.p
-          className="font-normal text-white/65 text-lg md:text-xl max-w-xl leading-relaxed"
+          className="font-normal text-fg-secondary text-lg md:text-xl max-w-xl leading-relaxed"
           variants={itemVariant}
           initial="hidden"
           whileInView="visible"
@@ -65,7 +65,7 @@ export default function Newsletter() {
         <motion.a
           href="/newsletter"
           aria-label="Read the 7ayLabs newsletter"
-          className="mt-6 inline-flex items-center gap-3 px-8 py-3 rounded-full bg-white text-black font-medium text-base md:text-lg transition-colors duration-200 hover:bg-white/90"
+          className="mt-6 inline-flex items-center gap-3 px-8 py-3 rounded-full bg-fg text-bg font-medium text-base md:text-lg transition-colors duration-200 hover:opacity-90"
           variants={itemVariant}
           initial="hidden"
           whileInView="visible"

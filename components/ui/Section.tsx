@@ -88,7 +88,7 @@ export default function Section({
           {label && (
             <motion.span
               variants={fadeUpItem}
-              className="block text-sm uppercase tracking-widest text-white/40 mb-6"
+              className="block text-sm uppercase tracking-widest text-fg-muted mb-6"
             >
               {label}
             </motion.span>
@@ -97,7 +97,7 @@ export default function Section({
           {title && (
             <motion.h2
               variants={fadeUpItem}
-              className="font-serif font-bold text-2xl md:text-3xl text-white mb-6"
+              className="font-serif font-bold text-2xl md:text-3xl text-fg mb-6"
             >
               {title}
             </motion.h2>
@@ -107,7 +107,7 @@ export default function Section({
             <motion.p
               variants={fadeUpItem}
               className={cn(
-                "text-white/60 text-base sm:text-lg leading-relaxed mb-6",
+                "text-fg-secondary text-base sm:text-lg leading-relaxed mb-6",
                 centered && "mx-auto max-w-2xl"
               )}
             >

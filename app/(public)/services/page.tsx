@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "7ayLabs helps teams integrate Proof of Presence into their products — from early pilots to production-grade deployments.",
+  keywords: ["7ayLabs services", "presence infrastructure", "blockchain integration", "Proof of Presence API", "validator setup"],
 };
 
 const SERVICES = [
@@ -97,7 +98,7 @@ export default function ServicesPage() {
       </Section>
 
       <Section centered className="py-20 md:py-28">
-        <h2 className="font-sans font-bold text-3xl md:text-4xl text-fg mb-6">
+        <h2 className="font-serif font-bold text-3xl md:text-4xl text-fg mb-6">
           Ready to explore presence?
         </h2>
         <p className="text-fg-tertiary text-lg leading-relaxed max-w-2xl mx-auto mb-10">

@@ -93,9 +93,9 @@ const statusConfig: Record<
   },
   planned: {
     icon: Circle,
-    color: "text-white/40",
-    bg: "bg-white/5",
-    border: "border-white/10",
+    color: "text-fg-muted",
+    bg: "bg-[var(--color-bg-card)]",
+    border: "border-[var(--color-border-primary)]",
     label: "Planned",
   },
 };
@@ -104,9 +104,8 @@ const statusConfig: Record<
 
 export default function Roadmap() {
   return (
-    <section id="roadmap" className="relative py-24 sm:py-32 bg-[#060606]">
-      <div className="max-w-5xl mx-auto px-6">
-        {/* Header */}
+    <div id="roadmap" className="max-w-5xl mx-auto px-6">
+      {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -114,10 +113,10 @@ export default function Roadmap() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-semibold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-fg mb-4">
             Roadmap
           </h2>
-          <p className="text-white/60 max-w-2xl mx-auto">
+          <p className="text-fg-secondary max-w-2xl mx-auto">
             Building the infrastructure for verifiable human presence on-chain
           </p>
         </motion.div>
@@ -125,7 +124,7 @@ export default function Roadmap() {
         {/* Timeline */}
         <div className="relative">
           {/* Vertical timeline line */}
-          <div className="absolute left-[22px] sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-white/20 via-white/10 to-transparent sm:-translate-x-px" />
+          <div className="absolute left-[22px] sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--color-border-secondary)] via-[var(--color-border-primary)] to-transparent sm:-translate-x-px" />
 
           <div className="space-y-12">
             {phases.map((phase, idx) => {
@@ -162,10 +161,10 @@ export default function Roadmap() {
                     >
                       {phase.version} — {config.label}
                     </div>
-                    <h3 className="text-xl font-semibold text-white mb-2">
+                    <h3 className="text-xl font-semibold text-fg mb-2">
                       {phase.title}
                     </h3>
-                    <p className="text-white/50 text-sm mb-4">
+                    <p className="text-fg-tertiary text-sm mb-4">
                       {phase.description}
                     </p>
                     <ul
@@ -176,7 +175,7 @@ export default function Roadmap() {
                       {phase.items.map((item, i) => (
                         <li
                           key={i}
-                          className={`text-sm text-white/40 flex items-center gap-2 ${
+                          className={`text-sm text-fg-muted flex items-center gap-2 ${
                             isEven ? "sm:justify-end" : "sm:justify-start"
                           }`}
                         >
@@ -184,7 +183,7 @@ export default function Roadmap() {
                             className={`w-1 h-1 rounded-full ${
                               phase.status === "completed"
                                 ? "bg-emerald-400/60"
-                                : "bg-white/20"
+                                : "bg-[var(--color-border-secondary)]"
                             }`}
                           />
                           {item}
@@ -200,7 +199,6 @@ export default function Roadmap() {
             })}
           </div>
         </div>
-      </div>
-    </section>
+    </div>
   );
 }

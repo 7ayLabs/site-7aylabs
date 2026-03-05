@@ -18,17 +18,17 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const variantStyles: Record<CardVariant, string> = {
   default:
-    "bg-white/5 border border-white/10 rounded-2xl",
+    "bg-[var(--color-bg-card)] border border-[var(--color-border-primary)] rounded-2xl",
   elevated:
-    "bg-white/5 border border-white/10 rounded-2xl backdrop-blur",
+    "bg-[var(--color-bg-card)] border border-[var(--color-border-primary)] rounded-2xl backdrop-blur",
   outline:
-    "bg-transparent border border-white/20 rounded-2xl",
+    "bg-transparent border border-[var(--color-border-secondary)] rounded-2xl",
   interactive:
-    "bg-white/5 border border-white/10 rounded-2xl hover:bg-white/[0.08] hover:border-white/20 transition-all duration-normal cursor-pointer group",
+    "bg-[var(--color-bg-card)] border border-[var(--color-border-primary)] rounded-2xl hover:bg-[var(--color-bg-card-hover)] hover:border-[var(--color-border-secondary)] transition-all duration-normal cursor-pointer group",
   glass: "glass rounded-2xl",
-  link: "bg-white/5 border border-white/10 rounded-2xl hover:bg-white/[0.08] hover:border-white/20 transition-all duration-normal group",
+  link: "bg-[var(--color-bg-card)] border border-[var(--color-border-primary)] rounded-2xl hover:bg-[var(--color-bg-card-hover)] hover:border-[var(--color-border-secondary)] transition-all duration-normal group",
   feature:
-    "bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-normal",
+    "bg-[var(--color-bg-card)] border border-[var(--color-border-primary)] rounded-2xl overflow-hidden hover:border-[var(--color-border-secondary)] transition-all duration-normal",
 } as const;
 
 const paddingStyles: Record<CardPadding, string> = {

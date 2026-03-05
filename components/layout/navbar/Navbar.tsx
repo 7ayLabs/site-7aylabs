@@ -37,8 +37,8 @@ export default function Navbar() {
               className="
                 fixed top-12 md:top-16 right-0 bottom-0 z-[40]
                 w-[53%] sm:w-[420px]
-                bg-[#060606]
-                border-l border-white/10
+                bg-[var(--color-bg-primary)]
+                border-l border-[var(--color-border-primary)]
                 flex flex-col
               "
               initial={{ x: "100%" }}

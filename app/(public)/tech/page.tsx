@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Technology",
   description:
     "Explore 7aychain and its Proof of Presence protocol — validators form witness circles, measure network latency, and triangulate positions on-chain. No GPS, no oracles.",
+  keywords: ["7aychain technology", "Proof of Presence protocol", "witness circle triangulation", "ZK presence proofs", "Substrate blockchain", "Polkadot SDK", "validator consensus", "commit-reveal epochs"],
 };
 
 const TECH_FEATURES = [
