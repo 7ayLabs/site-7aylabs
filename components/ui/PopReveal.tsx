@@ -34,13 +34,12 @@ export default function PopReveal({
   return (
     <motion.div
       ref={ref}
-      style={{ willChange: "opacity, transform, filter" }}
       variants={{
         hidden: {
           opacity: 0,
-          scale: 0.82,
-          y: 18,
-          filter: "blur(10px)",
+          scale: 0.85,
+          y: 16,
+          filter: "blur(8px)",
         },
         show: {
           opacity: 1,
@@ -48,18 +47,18 @@ export default function PopReveal({
           y: 0,
           filter: "blur(0px)",
           transition: {
-            duration: 0.34,
+            duration: 0.4,
             delay,
             ease: EASING.bounce,
           },
         },
         exit: {
           opacity: 0,
-          scale: 0.9,
-          y: -18,
-          filter: "blur(6px)",
+          scale: 0.92,
+          y: -12,
+          filter: "blur(4px)",
           transition: {
-            duration: 0.28,
+            duration: 0.25,
             ease: [0.4, 0.0, 0.2, 1],
           },
         },

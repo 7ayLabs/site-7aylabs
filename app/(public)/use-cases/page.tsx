@@ -36,7 +36,7 @@ const USE_CASE_AREAS = [
   {
     title: "Live events",
     description:
-      "Validate real attendance and participation. No inflated numbers, no fake engagement — just people who actually showed up.",
+      "Validate real attendance and participation. No inflated numbers, no fake engagement -- just people who actually showed up.",
   },
   {
     title: "Physical spaces",
@@ -56,7 +56,7 @@ const USE_CASE_AREAS = [
   {
     title: "Retail & brands",
     description:
-      "Capture real visit data and campaign participation with signals that can't be farmed or spoofed.",
+      "Capture real visit data and campaign participation with signals that cannot be farmed or spoofed.",
   },
   {
     title: "Public programs",
@@ -74,7 +74,7 @@ const BUILD_FEATURES = [
   {
     title: "Hard to fake",
     description:
-      "Presence-based signals resist bots, scripts, and automation by design. If it didn't happen in the real world, it doesn't count.",
+      "Presence-based signals resist bots, scripts, and automation by design. If it did not happen in the real world, it does not count.",
   },
   {
     title: "Easy to test",
@@ -89,17 +89,16 @@ export default function UseCasesPage() {
       <PageHero
         label="Use Cases"
         title="From Presence to Action"
-        description="Proof of Presence turns real-world presence into something products can trust, measure, and act on — across events, spaces, communities, and operations where showing up actually matters."
+        description="Proof of Presence turns real-world presence into something products can trust, measure, and act on -- across events, spaces, communities, and operations where showing up actually matters."
       />
 
-      {/* Core Use Cases */}
-      <Section maxWidth="6xl" className="pb-24 md:pb-36">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-20">
+      <Section className="py-16 md:py-20">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16">
           <div>
-            <h2 className="font-serif font-bold text-xl md:text-2xl text-white mb-4">
+            <h2 className="heading-sm text-white mb-4">
               Show up. That&apos;s the signal.
             </h2>
-            <div className="space-y-6 text-white/60 leading-relaxed">
+            <div className="space-y-5 text-white/55 leading-relaxed">
               <p>
                 Most platforms rely on accounts, clicks, or inferred behavior. At
                 scale, those signals break &mdash; bots inflate numbers, farms
@@ -110,18 +109,13 @@ export default function UseCasesPage() {
                 real person physically shows up. No fake engagement, no simulated
                 activity, no guessing who&apos;s real.
               </p>
-              <p>
-                If something happened, someone was there. That&apos;s the
-                advantage &mdash; simple, verifiable, and hard to exploit.
-              </p>
             </div>
           </div>
-
           <div>
-            <h2 className="font-serif font-bold text-xl md:text-2xl text-white mb-4">
+            <h2 className="heading-sm text-white mb-4">
               Built for real-world coordination
             </h2>
-            <div className="space-y-6 text-white/60 leading-relaxed">
+            <div className="space-y-5 text-white/55 leading-relaxed">
               <p>
                 Proof of Presence works wherever people move through the physical
                 world &mdash; events, cities, campuses, retail, fleets, and
@@ -129,53 +123,48 @@ export default function UseCasesPage() {
               </p>
               <p>
                 Teams can unlock access, actions, or workflows only when people
-                are actually present &mdash; visiting a place, attending an
-                event, or completing something on-site.
-              </p>
-              <p>
-                The result is a coordination layer grounded in reality:
-                lightweight to deploy, easy to integrate, and resilient against
-                automation at scale.
+                are actually present &mdash; a coordination layer grounded in
+                reality.
               </p>
             </div>
           </div>
         </div>
       </Section>
 
-      {/* Where Presence Works */}
-      <Section maxWidth="6xl" className="pb-24 md:pb-40">
-        <div className="text-center mb-20">
-          <h2 className="font-serif font-bold text-3xl md:text-4xl text-white mb-4">
+      <Section className="py-16 md:py-24">
+        <div className="text-center mb-16">
+          <span className="label-sm block mb-4">
+            Applications
+          </span>
+          <h2 className="heading-md text-white mb-4">
             Where Presence Works
           </h2>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
+          <p className="body-lg max-w-2xl mx-auto">
             Concrete scenarios where Proof of Presence solves real problems in
             early-stage products, pilots, and real-world operations.
           </p>
         </div>
 
-        {/* Signal cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-24 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-20 max-w-4xl mx-auto">
           {SIGNAL_CARDS.map((card) => (
-            <Card key={card.title} variant="outline" padding="md">
-              <div className="text-sm font-serif font-bold mb-1">
+            <Card key={card.title} variant="interactive" padding="md">
+              <h3 className="font-sans font-semibold text-base text-white mb-1.5">
                 {card.title}
-              </div>
-              <div className="text-white/50 text-xs leading-tight">
+              </h3>
+              <p className="text-white/45 text-sm leading-relaxed">
                 {card.description}
-              </div>
+              </p>
             </Card>
           ))}
         </div>
 
-        {/* Use case areas */}
-        <div className="grid md:grid-cols-2 gap-12 md:gap-20">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {USE_CASE_AREAS.map((area) => (
             <div key={area.title}>
-              <h3 className="font-serif font-bold text-xl text-white mb-4">
+              <h3 className="font-sans font-semibold text-lg text-white mb-3">
                 {area.title}
               </h3>
-              <p className="text-white/60 leading-relaxed">
+              <p className="body-base">
                 {area.description}
               </p>
             </div>
@@ -183,87 +172,48 @@ export default function UseCasesPage() {
         </div>
       </Section>
 
-      {/* Built to start small */}
-      <Section maxWidth="6xl" className="pb-24 md:pb-40">
-        <h2 className="font-serif font-bold text-3xl md:text-4xl text-white mb-4">
+      <Section className="py-16 md:py-20">
+        <span className="label-sm block mb-4">
+          Getting started
+        </span>
+        <h2 className="heading-md text-white mb-4">
           Built to start small
         </h2>
-        <p className="text-white/60 text-lg max-w-2xl mb-16">
+        <p className="body-lg max-w-2xl mb-12">
           Proof of Presence is designed for early pilots and real-world testing
           &mdash; clear signals, minimal setup, and no unnecessary complexity.
         </p>
 
-        <div className="space-y-14">
+        <div className="grid md:grid-cols-3 gap-6">
           {BUILD_FEATURES.map((feature) => (
-            <div
-              key={feature.title}
-              className="grid md:grid-cols-[260px_1fr] gap-8"
-            >
-              <h3 className="font-serif font-bold text-xl text-white">
+            <Card key={feature.title} variant="default" padding="lg">
+              <h3 className="font-sans font-semibold text-lg text-white mb-3">
                 {feature.title}
               </h3>
-              <p className="text-white/60 leading-relaxed max-w-3xl">
+              <p className="body-base">
                 {feature.description}
               </p>
-            </div>
+            </Card>
           ))}
         </div>
       </Section>
 
-      {/* Closing */}
-      <Section maxWidth="6xl" className="pb-20">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-20">
-          <div>
-            <h2 className="font-serif font-bold text-3xl md:text-4xl text-white mb-6">
-              Built for real products
-            </h2>
-            <p className="text-white/60 leading-relaxed mb-6">
-              Proof of Presence is designed to live inside real products &mdash;
-              not as a concept, but as a practical signal teams can rely on from
-              day one.
-            </p>
-            <p className="text-white/60 leading-relaxed">
-              By anchoring actions to physical presence, products gain cleaner
-              data, stronger coordination, and trust that doesn&apos;t collapse
-              at scale.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="font-serif font-bold text-3xl md:text-4xl text-white mb-6">
-              What comes next
-            </h2>
-            <p className="text-white/60 leading-relaxed mb-6">
-              7ayLabs is starting with focused pilots and real-world deployments
-              &mdash; learning where presence matters most and how teams actually
-              use it.
-            </p>
-            <p className="text-white/60 leading-relaxed">
-              The goal is simple: prove the signal, refine the protocol, and
-              expand from real use into scalable infrastructure for
-              human-verified systems.
-            </p>
-          </div>
-        </div>
-      </Section>
-
-      {/* Final CTA */}
-      <Section centered className="pt-12 md:pt-16 pb-20 md:pb-28">
-        <h2 className="font-serif font-bold text-3xl md:text-4xl text-white mb-6">
+      <Section centered className="py-20 md:py-28">
+        <h2 className="heading-md text-white mb-6">
           Start with presence
         </h2>
-        <p className="text-white/60 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
+        <p className="body-lg max-w-2xl mx-auto mb-10">
           We&apos;re opening early access for teams exploring real-world
           presence as a product signal. Small pilots, real environments, clear
           feedback.
         </p>
         <Link
           href={ROUTES.waitlist}
-          className="inline-flex items-center justify-center rounded-full px-10 py-4 min-h-[44px] bg-white text-black font-medium hover:bg-white/90 focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-dark transition-colors duration-normal"
+          className="inline-flex items-center justify-center rounded-full px-10 py-4 bg-accent text-black font-semibold hover:bg-accent-secondary transition-colors duration-normal"
         >
           Join the waitlist
         </Link>
-        <p className="text-white/40 text-sm max-w-xl mx-auto mt-4">
+        <p className="text-white/30 text-sm max-w-xl mx-auto mt-4">
           Early pilots only. No hype &mdash; just real signals, tested in the
           field.
         </p>

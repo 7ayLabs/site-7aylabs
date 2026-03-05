@@ -9,7 +9,7 @@ import {
 import { cn } from "@/lib/utils/cn";
 import type { SectionProps } from "@/types/components";
 
-type MaxWidth = "md" | "lg" | "xl" | "2xl" | "5xl" | "6xl" | "7xl";
+type MaxWidth = "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl";
 
 interface Props extends SectionProps {
   label?: string;
@@ -24,6 +24,8 @@ const maxWidthStyles: Record<MaxWidth, string> = {
   lg: "max-w-lg",
   xl: "max-w-xl",
   "2xl": "max-w-2xl",
+  "3xl": "max-w-3xl",
+  "4xl": "max-w-4xl",
   "5xl": "max-w-5xl",
   "6xl": "max-w-6xl",
   "7xl": "max-w-7xl",
@@ -38,14 +40,14 @@ export default function Section({
   title,
   subtitle,
   centered = false,
-  maxWidth = "5xl",
+  maxWidth = "7xl",
 }: Props) {
   return (
     <Tag
       id={id}
       aria-label={title || label}
       className={cn(
-        "mx-auto px-6 md:px-12",
+        "mx-auto px-5 sm:px-6 lg:px-8 py-20 md:py-28",
         maxWidthStyles[maxWidth],
         centered && "text-center",
         className
@@ -60,7 +62,7 @@ export default function Section({
         {label && (
           <motion.span
             variants={fadeUpItem}
-            className="block text-sm uppercase tracking-widest text-white/40 mb-6"
+            className="label-sm block mb-4"
           >
             {label}
           </motion.span>
@@ -69,7 +71,7 @@ export default function Section({
         {title && (
           <motion.h2
             variants={fadeUpItem}
-            className="font-serif font-bold text-2xl md:text-3xl text-white mb-6"
+            className="heading-md text-white mb-4"
           >
             {title}
           </motion.h2>
@@ -79,7 +81,7 @@ export default function Section({
           <motion.p
             variants={fadeUpItem}
             className={cn(
-              "text-white/60 text-base sm:text-lg leading-relaxed mb-6",
+              "body-lg mb-10",
               centered && "mx-auto max-w-2xl"
             )}
           >

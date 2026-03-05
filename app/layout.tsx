@@ -73,7 +73,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen text-white antialiased selection:bg-white/10 selection:text-white bg-[linear-gradient(180deg,#0b0d12_0%,#0e1118_40%,#0a0c11_70%,#07090d_100%)]">
+      <body className="min-h-screen text-white antialiased bg-dark">
         <a href="#main-content" className="skip-to-content">
           Skip to main content
         </a>

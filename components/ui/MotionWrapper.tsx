@@ -10,9 +10,7 @@ import { cn } from "@/lib/utils/cn";
 import type { AnimatedComponentProps } from "@/types/components";
 
 interface MotionWrapperProps extends AnimatedComponentProps {
-  /** Custom animation variants (defaults to fadeUpItem) */
   variants?: Variants;
-  /** HTML tag to render as via motion */
   as?: "div" | "span" | "article" | "section";
 }
 

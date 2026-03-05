@@ -36,7 +36,7 @@ const PRESENCE_PILLARS = [
   {
     title: "Built for real operations",
     description:
-      "Access, approvals, and workflows rely on physical reality — not logins, timestamps, or assumptions.",
+      "Access, approvals, and workflows rely on physical reality -- not logins, timestamps, or assumptions.",
   },
 ] as const;
 
@@ -79,12 +79,11 @@ export default function WhyPresencePage() {
       <PageHero
         label="Why Presence"
         title="The Internet Lost the Human Signal"
-        description="Digital systems were built for people — but today they are dominated by bots, automation, and synthetic activity at scale."
+        description="Digital systems were built for people -- but today they are dominated by bots, automation, and synthetic activity at scale."
       />
 
-      {/* Presence Infrastructure */}
-      <Section title="Presence Infrastructure" className="pb-20 md:pb-24">
-        <div className="space-y-4 md:space-y-6 max-w-3xl text-white/60 text-base sm:text-lg leading-relaxed">
+      <Section title="Presence Infrastructure" className="py-16 md:py-20">
+        <div className="space-y-5 max-w-3xl text-white/55 text-base sm:text-lg leading-relaxed">
           <p>
             At the core of 7ayLabs is 7aychain &mdash; a Layer 1 blockchain
             where validators form witness circles and triangulate physical
@@ -93,170 +92,146 @@ export default function WhyPresencePage() {
           </p>
           <p>
             Modern platforms rely on accounts, credentials, and inferred
-            behavior to decide what counts as real. At scale, those signals fail
-            &mdash; they can be automated, shared, or faked.
+            behavior to decide what counts as real. At scale, those signals fail.
           </p>
           <p>
             Proof of Presence introduces a different foundation. Instead of
             trusting profiles or activity logs, systems verify that a real person
             was actually present, at a specific moment, in a specific context.
           </p>
-          <p>
-            Presence can&apos;t be copied or scaled by automation. It anchors
-            digital actions to reality &mdash; creating signals that remain
-            trustworthy as systems grow.
-          </p>
         </div>
       </Section>
 
-      {/* Showing up is the new standard */}
-      <Section maxWidth="6xl" className="pb-24 md:pb-40">
+      <Section maxWidth="6xl" className="py-16 md:py-24">
         <div className="mb-12">
-          <span className="block text-sm uppercase tracking-widest text-white/40 mb-4">
+          <span className="block text-sm uppercase tracking-widest text-accent mb-4">
             Real-World Signal
           </span>
-          <h2 className="font-serif font-bold text-3xl md:text-4xl text-white mb-4">
+          <h2 className="font-sans font-bold text-3xl md:text-4xl text-white mb-4">
             Showing up is the new standard
           </h2>
-          <p className="max-w-3xl text-white/60 text-base sm:text-lg leading-relaxed">
+          <p className="max-w-3xl text-white/55 text-lg leading-relaxed">
             Modern operations break when showing up is optional. Real progress
-            happens when systems recognize who actually did the work &mdash; not
-            who clicked a button.
+            happens when systems recognize who actually did the work.
           </p>
         </div>
 
-        {/* Metric cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           {METRICS.map((metric) => (
-            <Card key={metric.label} variant="default" padding="md">
-              <div className="text-sm uppercase tracking-widest text-white/40 mb-2">
+            <Card key={metric.label} variant="default" padding="lg">
+              <span className="block text-xs uppercase tracking-widest text-accent mb-3">
                 {metric.label}
-              </div>
-              <div className="text-4xl md:text-5xl font-semibold text-white mb-2">
+              </span>
+              <span className="block text-5xl md:text-6xl font-bold text-white mb-2 tabular-nums">
                 {metric.value}
-              </div>
-              <p className="text-white/50 text-sm">{metric.description}</p>
+              </span>
+              <p className="text-white/45 text-sm">{metric.description}</p>
             </Card>
           ))}
         </div>
 
-        {/* Three pillars */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {PRESENCE_PILLARS.map((pillar) => (
-            <div key={pillar.title}>
-              <h3 className="font-serif text-xl text-white mb-3">
+            <Card key={pillar.title} variant="interactive" padding="md">
+              <h3 className="font-sans font-semibold text-lg text-white mb-3">
                 {pillar.title}
               </h3>
-              <p className="text-white/60 leading-relaxed">
+              <p className="text-white/55 text-sm leading-relaxed">
                 {pillar.description}
               </p>
-            </div>
+            </Card>
           ))}
         </div>
       </Section>
 
-      {/* Fun Fact */}
-      <Section className="pb-24 md:pb-32">
-        <span className="block text-sm uppercase tracking-widest text-white/40 mb-4">
-          Fun fact
-        </span>
-        <h3 className="font-serif font-bold text-2xl md:text-3xl text-white mb-4">
-          Attendance is one of the most faked signals in software
-        </h3>
-        <p className="max-w-3xl text-white/60 text-base sm:text-lg leading-relaxed">
-          In most tools, showing up is just a checkbox. People can clock in
-          remotely, approve tasks without being there, or validate presence from
-          anywhere. Proof of Presence replaces that assumption with a simple
-          rule: if it mattered, someone actually showed up.
-        </p>
+      <Section className="py-16 md:py-20">
+        <Card variant="elevated" padding="lg" className="max-w-3xl">
+          <span className="block text-xs uppercase tracking-widest text-accent mb-4">
+            Fun fact
+          </span>
+          <h3 className="font-sans font-bold text-xl md:text-2xl text-white mb-3">
+            Attendance is one of the most faked signals in software
+          </h3>
+          <p className="text-white/55 leading-relaxed">
+            In most tools, showing up is just a checkbox. People can clock in
+            remotely, approve tasks without being there, or validate presence from
+            anywhere. Proof of Presence replaces that assumption with a simple
+            rule: if it mattered, someone actually showed up.
+          </p>
+        </Card>
       </Section>
 
-      {/* Business Impact */}
-      <Section maxWidth="6xl" className="pb-24 md:pb-40">
+      <Section maxWidth="6xl" className="py-16 md:py-24">
         <div className="mb-12 text-center">
-          <span className="block text-sm uppercase tracking-widest text-white/40 mb-4">
+          <span className="block text-sm uppercase tracking-widest text-accent mb-4">
             Where Presence Unlocks Value
           </span>
-          <h2 className="font-serif font-bold text-3xl md:text-4xl text-white mb-4">
+          <h2 className="font-sans font-bold text-3xl md:text-4xl text-white mb-4">
             Different problems. One missing signal.
           </h2>
-          <p className="max-w-3xl text-white/60 text-base sm:text-lg mx-auto leading-relaxed">
+          <p className="max-w-3xl text-white/55 text-lg mx-auto leading-relaxed">
             In workflows, spaces, access systems and participation tools,
             presence isn&apos;t optional &mdash; it&apos;s the signal that makes
-            decisions reliable and operations accountable.
+            decisions reliable.
           </p>
         </div>
 
-        {/* Progress indicators */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {PROGRESS_GROUPS.map((group) => (
-            <div key={group.title} className="text-left max-w-sm mx-auto">
-              <div className="text-white font-medium mb-4">{group.title}</div>
+            <Card key={group.title} variant="default" padding="md">
+              <h4 className="text-white font-semibold mb-4">{group.title}</h4>
               <div className="space-y-3">
                 {group.quarters.map((q) => (
                   <div key={q.label} className="flex items-center gap-3">
-                    <span className="text-xs text-white/40 w-6">
+                    <span className="text-xs text-white/35 w-6 font-mono">
                       {q.label}
                     </span>
-                    <div className="flex-1 h-2 bg-white/10 rounded-full overflow-hidden">
+                    <div className="flex-1 h-2 bg-white/[0.06] rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-white rounded-full transition-all duration-slow"
+                        className="h-full bg-accent rounded-full"
                         style={{ width: `${q.value}%` }}
                       />
                     </div>
-                    <span className="text-xs text-white/60 w-8">
+                    <span className="text-xs text-white/50 w-8 text-right font-mono">
                       {q.value}%
                     </span>
                   </div>
                 ))}
               </div>
-              <p className="text-white/50 text-sm mt-4">{group.note}</p>
-            </div>
+              <p className="text-white/40 text-xs mt-4 leading-relaxed">{group.note}</p>
+            </Card>
           ))}
         </div>
 
-        {/* Business narrative */}
-        <div className="space-y-6 max-w-4xl mx-auto text-white/60">
+        <div className="space-y-5 max-w-4xl mx-auto text-white/55 text-center">
           <p>
             Teams lose time and trust when systems rely on assumptions.
             Presence-verified signals cut through noise, reduce disputes, and
             make accountability obvious.
           </p>
-          <p>
-            In physical environments, knowing who actually arrived changes how
-            access, compliance, and service delivery are managed &mdash; with far
-            less overhead.
-          </p>
-          <p>
-            For participation-driven products, presence turns engagement into
-            something measurable and defensible, not just another metric to
-            inflate.
-          </p>
         </div>
       </Section>
 
-      {/* Follow the signal */}
-      <Section centered className="pb-24 md:pb-32">
-        <span className="block text-sm uppercase tracking-widest text-white/40 mb-4">
+      <Section centered className="py-20 md:py-28">
+        <span className="block text-sm uppercase tracking-widest text-accent mb-4">
           Live signal
         </span>
-        <h3 className="font-serif font-bold text-2xl md:text-3xl text-white mb-3">
+        <h3 className="font-sans font-bold text-2xl md:text-3xl text-white mb-4">
           Follow the signal as it evolves
         </h3>
-        <p className="mx-auto max-w-xl text-white/60 text-base sm:text-lg leading-relaxed mb-8">
+        <p className="mx-auto max-w-xl text-white/55 text-lg leading-relaxed mb-8">
           We share progress in real time &mdash; what&apos;s being tested,
-          what&apos;s breaking, and where presence actually changes outcomes. No
-          hype. No launches-for-attention. Just signal.
+          what&apos;s breaking, and where presence actually changes outcomes.
         </p>
         <Link
           href={EXTERNAL_LINKS.twitter}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-3 rounded-full bg-white text-black px-8 py-4 min-h-[44px] text-sm font-medium hover:bg-white/90 focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-dark transition-colors duration-normal"
+          className="inline-flex items-center justify-center gap-3 rounded-full bg-accent text-black px-8 py-3.5 min-h-[48px] text-sm font-semibold hover:bg-accent-secondary transition-colors duration-normal"
         >
           Follow on X
         </Link>
-        <p className="mt-6 text-white/40 text-sm">
+        <p className="mt-6 text-white/35 text-sm">
           Early signal only &middot; Current access wave: Phase 0
         </p>
       </Section>
