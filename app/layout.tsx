@@ -95,6 +95,31 @@ export default function RootLayout({
             __html: `(function(){try{document.documentElement.setAttribute('data-theme',window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark')}catch(e){document.documentElement.setAttribute('data-theme','dark')}})()`,
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  name: "7ayLabs",
+                  url: "https://7aylabs.com",
+                  logo: "https://7aylabs.com/7aylabs_white_logo.svg",
+                  sameAs: [
+                    "https://x.com/7ayLabs",
+                    "https://github.com/7ayLabs",
+                  ],
+                },
+                {
+                  "@type": "WebSite",
+                  name: "7ayLabs",
+                  url: "https://7aylabs.com",
+                },
+              ],
+            }),
+          }}
+        />
       </head>
       <body className="min-h-screen antialiased bg-bg text-fg">
         <ThemeProvider>

@@ -1,12 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { ROUTES, NAV_LINKS } from "@/lib/constants/routes";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+
+/** Minimum scroll distance from top before header can collapse */
+const SCROLL_THRESHOLD = 60;
+/** Minimum scroll delta (px) to prevent micro-scroll jitter */
+const SCROLL_DELTA = 5;
 
 interface TopBarProps {
   open: boolean;
@@ -17,27 +22,51 @@ export default function TopBar({ open, setOpen }: TopBarProps) {
   const [scrolled, setScrolled] = useState(false);
   const { theme } = useTheme();
 
-  useEffect(() => {
-    let lastY = window.scrollY;
+  const lastYRef = useRef(0);
+  const ticking = useRef(false);
 
-    const onScroll = () => {
-      const y = window.scrollY;
-      if (y > lastY && y > 12) {
+  const updateScrollState = useCallback(() => {
+    const y = window.scrollY;
+    const lastY = lastYRef.current;
+    const delta = y - lastY;
+
+    // Always expand header when near the top
+    if (y < SCROLL_THRESHOLD) {
+      setScrolled(false);
+    }
+    // Only toggle if scroll delta exceeds hysteresis threshold
+    else if (Math.abs(delta) >= SCROLL_DELTA) {
+      if (delta > 0) {
+        // Scrolling down past threshold — collapse
         setScrolled(true);
-      } else if (y < lastY) {
+      } else {
+        // Scrolling up with sufficient delta — expand
         setScrolled(false);
       }
-      lastY = y;
+    }
+
+    lastYRef.current = y;
+    ticking.current = false;
+  }, []);
+
+  useEffect(() => {
+    lastYRef.current = window.scrollY;
+
+    const onScroll = () => {
+      if (!ticking.current) {
+        ticking.current = true;
+        requestAnimationFrame(updateScrollState);
+      }
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [updateScrollState]);
 
   return (
     <header
       className={`
-        sticky top-0 z-50 w-full
+        sticky top-0 z-50 w-full will-change-transform
         bg-[var(--color-bg-primary)] border-b border-[var(--color-border-primary)] backdrop-blur-xl
         transition-[height,transform] duration-300 ease-out
         ${scrolled ? "h-12 md:h-14" : "h-16"}

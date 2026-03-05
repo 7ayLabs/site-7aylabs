@@ -1,75 +1,113 @@
 import type { Metadata } from "next";
 import { PageHero, Section, Card, Button } from "@/components/ui";
-import { EXTERNAL_LINKS } from "@/lib/constants/routes";
+import { EXTERNAL_LINKS, ROUTES } from "@/lib/constants/routes";
 
 export const metadata: Metadata = {
   title: "Why Presence",
   description:
-    "The internet lost the human signal. Discover why 7aychain and Proof of Presence anchor digital systems to real human participation through on-chain validator triangulation.",
-  keywords: ["why presence matters", "Sybil resistance", "bot prevention blockchain", "human verification", "proof of humanity alternative", "AI resistant verification"],
+    "The internet lost the human signal. Learn why 7aychain uses physics-based Proof of Presence for Sybil resistance instead of biometrics, and how it compares to Worldcoin, BrightID, and Gitcoin Passport.",
+  keywords: [
+    "why presence matters",
+    "Sybil resistance",
+    "bot prevention blockchain",
+    "human verification",
+    "proof of humanity alternative",
+    "AI resistant verification",
+    "Worldcoin alternative",
+    "BrightID comparison",
+  ],
 };
-
-const METRICS = [
-  {
-    label: "Verified actions",
-    value: "92%",
-    description: "of recorded actions tied to real presence",
-  },
-  {
-    label: "Automation drop",
-    value: "\u221267%",
-    description: "reduction in scripted or proxy activity",
-  },
-] as const;
 
 const PRESENCE_PILLARS = [
   {
-    title: "Work that actually happened",
+    title: "Physics, not biometrics",
     description:
-      "Processes only move forward when someone is truly there. No proxies, no shortcuts, no background activity pretending to be work.",
+      "Network latency is constrained by the speed of light. 7aychain uses this physical limit to triangulate presence -- no iris scans, no selfies, no hardware.",
   },
   {
-    title: "Clear responsibility",
+    title: "One place at a time",
     description:
-      "Presence ties actions to real people in real contexts. Teams gain clarity on who showed up, where it happened, and when it mattered.",
+      "A single person can create unlimited wallets, but they can only be physically present in one location. This is the fundamental constraint that makes Sybil attacks expensive.",
   },
   {
-    title: "Built for real operations",
+    title: "Disposable verification",
     description:
-      "Access, approvals, and workflows rely on physical reality -- not logins, timestamps, or assumptions.",
+      "Each presence attestation is contextual and epoch-bound. No persistent identity, no behavioral profile, no data extraction. Prove you were here, then forget.",
   },
 ] as const;
 
-const PROGRESS_GROUPS = [
+const COMPARISON_TABLE = [
   {
-    title: "Operational clarity",
-    note: "Operational clarity improves as presence-verified signals replace assumptions.",
-    quarters: [
-      { label: "Q1", value: 62 },
-      { label: "Q2", value: 68 },
-      { label: "Q3", value: 76 },
-      { label: "Q4", value: 84 },
-    ],
+    dimension: "Method",
+    sevenychain: "Network latency triangulation",
+    worldcoin: "Iris biometric scan",
+    brightid: "Social graph analysis",
+    passport: "Credential aggregation",
   },
   {
-    title: "Access confidence",
-    note: "Access decisions become more reliable when tied to real presence.",
-    quarters: [
-      { label: "Q1", value: 65 },
-      { label: "Q2", value: 72 },
-      { label: "Q3", value: 81 },
-      { label: "Q4", value: 90 },
-    ],
+    dimension: "Hardware Required",
+    sevenychain: "None (existing network)",
+    worldcoin: "Custom Orb device",
+    brightid: "None",
+    passport: "None",
   },
   {
-    title: "Participation quality",
-    note: "Participation metrics stabilize when activity reflects real people.",
-    quarters: [
-      { label: "Q1", value: 58 },
-      { label: "Q2", value: 64 },
-      { label: "Q3", value: 72 },
-      { label: "Q4", value: 79 },
-    ],
+    dimension: "Biometrics",
+    sevenychain: "No",
+    worldcoin: "Yes (iris)",
+    brightid: "No",
+    passport: "No",
+  },
+  {
+    dimension: "Privacy Model",
+    sevenychain: "ZK proofs, no persistent identity",
+    worldcoin: "Iris hash stored, World ID",
+    brightid: "Social graph visible",
+    passport: "Credential history visible",
+  },
+  {
+    dimension: "What It Proves",
+    sevenychain: "Physical presence at a location",
+    worldcoin: "Unique human (biometric)",
+    brightid: "Social vouching (human network)",
+    passport: "Activity history (credentials)",
+  },
+  {
+    dimension: "Chain",
+    sevenychain: "7aychain (Substrate L1)",
+    worldcoin: "Optimism (L2)",
+    brightid: "IDChain / multi-chain",
+    passport: "Multi-chain (off-chain scoring)",
+  },
+  {
+    dimension: "Stage",
+    sevenychain: "Devnet (v0.8.26)",
+    worldcoin: "Mainnet",
+    brightid: "Mainnet",
+    passport: "Mainnet",
+  },
+] as const;
+
+const SYBIL_ARGUMENTS = [
+  {
+    problem: "Bots generate behavior at scale",
+    response:
+      "AI can produce text, transactions, and social interactions. But generating physical presence across multiple locations simultaneously is constrained by physics.",
+  },
+  {
+    problem: "Multi-accounting is trivially easy",
+    response:
+      "Creating wallets costs nothing. Being physically present in multiple places at once is impossible. Proof of Presence converts an economic problem into a physical one.",
+  },
+  {
+    problem: "Biometric systems create surveillance risk",
+    response:
+      "Iris scans and facial recognition create persistent identity databases. Network latency measurement leaves no biometric trace and requires no special hardware.",
+  },
+  {
+    problem: "Social graphs can be manufactured",
+    response:
+      "Social vouching systems are vulnerable to coordinated Sybil rings. Physical presence is independently verifiable by validator triangulation without trust assumptions.",
   },
 ] as const;
 
@@ -79,7 +117,7 @@ export default function WhyPresencePage() {
       <PageHero
         label="Why Presence"
         title="The Internet Lost the Human Signal"
-        description="Digital systems were built for people -- but today they are dominated by bots, automation, and synthetic activity at scale."
+        description="Digital systems were built for people -- but today they are dominated by bots, automation, and synthetic activity at scale. Proof of Presence restores the missing signal."
       />
 
       <Section title="Presence Infrastructure" className="py-16 md:py-20">
@@ -93,41 +131,26 @@ export default function WhyPresencePage() {
           <p>
             Modern platforms rely on accounts, credentials, and inferred
             behavior to decide what counts as real. At scale, those signals fail.
-          </p>
-          <p>
-            Proof of Presence introduces a different foundation. Instead of
-            trusting profiles or activity logs, systems verify that a real person
-            was actually present, at a specific moment, in a specific context.
+            Proof of Presence introduces a different foundation: physics-based
+            Sybil resistance.
           </p>
         </div>
       </Section>
 
+      {/* Core Pillars */}
       <Section maxWidth="6xl" className="py-16 md:py-24">
         <div className="mb-12">
           <span className="block text-sm uppercase tracking-widest text-accent mb-4">
-            Real-World Signal
+            The Physics Argument
           </span>
           <h2 className="font-serif font-bold text-3xl md:text-4xl text-fg mb-4">
-            Showing up is the new standard
+            Sybil resistance through physical reality
           </h2>
           <p className="max-w-3xl text-fg-tertiary text-lg leading-relaxed">
-            Modern operations break when showing up is optional. Real progress
-            happens when systems recognize who actually did the work.
+            Instead of trusting profiles, credentials, or biometrics, 7aychain
+            exploits a fundamental physical constraint: you can only be in one
+            place at a time.
           </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {METRICS.map((metric) => (
-            <Card key={metric.label} variant="default" padding="lg">
-              <span className="block text-xs uppercase tracking-widest text-accent mb-3">
-                {metric.label}
-              </span>
-              <span className="block text-5xl md:text-6xl font-bold text-fg mb-2 tabular-nums">
-                {metric.value}
-              </span>
-              <p className="text-fg-muted text-sm">{metric.description}</p>
-            </Card>
-          ))}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -144,91 +167,120 @@ export default function WhyPresencePage() {
         </div>
       </Section>
 
+      {/* Sybil Resistance Arguments */}
       <Section className="py-16 md:py-20">
-        <Card variant="elevated" padding="lg" className="max-w-3xl">
+        <Card variant="elevated" padding="lg" className="mb-12 max-w-3xl">
           <span className="block text-xs uppercase tracking-widest text-accent mb-4">
-            Fun fact
+            Core Insight
           </span>
           <h3 className="font-serif font-bold text-xl md:text-2xl text-fg mb-3">
-            Attendance is one of the most faked signals in software
+            In a world of perfect simulation, physical reality becomes the scarce resource
           </h3>
           <p className="text-fg-tertiary leading-relaxed">
-            In most tools, showing up is just a checkbox. People can clock in
-            remotely, approve tasks without being there, or validate presence from
-            anywhere. Proof of Presence replaces that assumption with a simple
-            rule: if it mattered, someone actually showed up.
+            AI can generate convincing text, behavior, and interaction at scale.
+            But replicating physical presence &mdash; being at a specific location
+            at a specific time, measurable through network physics &mdash; remains
+            constrained by the laws of nature.
           </p>
         </Card>
+
+        <div className="space-y-6 max-w-4xl">
+          {SYBIL_ARGUMENTS.map((arg) => (
+            <div key={arg.problem} className="grid md:grid-cols-2 gap-4 md:gap-8">
+              <div>
+                <span className="text-xs uppercase tracking-widest text-fg-muted block mb-2">Problem</span>
+                <p className="text-fg font-medium">{arg.problem}</p>
+              </div>
+              <div>
+                <span className="text-xs uppercase tracking-widest text-accent block mb-2">7aychain Response</span>
+                <p className="text-fg-tertiary text-sm leading-relaxed">{arg.response}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </Section>
 
+      {/* Comparison Table */}
       <Section maxWidth="6xl" className="py-16 md:py-24">
         <div className="mb-12 text-center">
           <span className="block text-sm uppercase tracking-widest text-accent mb-4">
-            Where Presence Unlocks Value
+            Comparison
           </span>
           <h2 className="font-serif font-bold text-3xl md:text-4xl text-fg mb-4">
-            Different problems. One missing signal.
+            How 7aychain compares
           </h2>
           <p className="max-w-3xl text-fg-tertiary text-lg mx-auto leading-relaxed">
-            In workflows, spaces, access systems and participation tools,
-            presence isn&apos;t optional &mdash; it&apos;s the signal that makes
-            decisions reliable.
+            Different approaches to the human verification problem. Each makes
+            different trade-offs on privacy, hardware, and what they actually prove.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {PROGRESS_GROUPS.map((group) => (
-            <Card key={group.title} variant="default" padding="md">
-              <h4 className="text-fg font-semibold mb-4">{group.title}</h4>
-              <div className="space-y-3">
-                {group.quarters.map((q) => (
-                  <div key={q.label} className="flex items-center gap-3">
-                    <span className="text-xs text-fg-faint w-6 font-mono">
-                      {q.label}
-                    </span>
-                    <div className="flex-1 h-2 bg-[var(--color-bg-card-hover)] rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-accent rounded-full"
-                        style={{ width: `${q.value}%` }}
-                      />
-                    </div>
-                    <span className="text-xs text-fg-tertiary w-8 text-right font-mono">
-                      {q.value}%
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <p className="text-fg-muted text-xs mt-4 leading-relaxed">{group.note}</p>
-            </Card>
-          ))}
-        </div>
-
-        <div className="space-y-5 max-w-4xl mx-auto text-fg-tertiary text-center">
-          <p>
-            Teams lose time and trust when systems rely on assumptions.
-            Presence-verified signals cut through noise, reduce disputes, and
-            make accountability obvious.
-          </p>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse min-w-[640px]">
+            <thead>
+              <tr className="border-b border-[var(--color-border-primary)]">
+                <th className="text-left py-3 px-4 text-fg-muted font-medium uppercase tracking-wider text-xs w-36">
+                  Dimension
+                </th>
+                <th className="text-left py-3 px-4 text-accent font-medium text-xs uppercase tracking-wider">
+                  7aychain
+                </th>
+                <th className="text-left py-3 px-4 text-fg-muted font-medium text-xs uppercase tracking-wider">
+                  Worldcoin
+                </th>
+                <th className="text-left py-3 px-4 text-fg-muted font-medium text-xs uppercase tracking-wider">
+                  BrightID
+                </th>
+                <th className="text-left py-3 px-4 text-fg-muted font-medium text-xs uppercase tracking-wider">
+                  Gitcoin Passport
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {COMPARISON_TABLE.map((row) => (
+                <tr key={row.dimension} className="border-b border-[var(--color-border-primary)]">
+                  <td className="py-3 px-4 font-medium text-fg whitespace-nowrap">
+                    {row.dimension}
+                  </td>
+                  <td className="py-3 px-4 text-fg-secondary">
+                    {row.sevenychain}
+                  </td>
+                  <td className="py-3 px-4 text-fg-tertiary">
+                    {row.worldcoin}
+                  </td>
+                  <td className="py-3 px-4 text-fg-tertiary">
+                    {row.brightid}
+                  </td>
+                  <td className="py-3 px-4 text-fg-tertiary">
+                    {row.passport}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </Section>
 
+      {/* CTA */}
       <Section centered className="py-20 md:py-28">
         <span className="block text-sm uppercase tracking-widest text-accent mb-4">
-          Live signal
+          Follow the Signal
         </span>
         <h3 className="font-serif font-bold text-2xl md:text-3xl text-fg mb-4">
-          Follow the signal as it evolves
+          Presence is the missing primitive
         </h3>
         <p className="mx-auto max-w-xl text-fg-tertiary text-lg leading-relaxed mb-8">
           We share progress in real time &mdash; what&apos;s being tested,
           what&apos;s breaking, and where presence actually changes outcomes.
         </p>
-        <Button href={EXTERNAL_LINKS.twitter} external size="lg">
-          Follow on X
-        </Button>
-        <p className="mt-6 text-fg-faint text-sm">
-          Early signal only &middot; Current access wave: Phase 0
-        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href={EXTERNAL_LINKS.twitter} external size="lg">
+            Follow on X
+          </Button>
+          <Button href={ROUTES.technology} variant="secondary" size="lg">
+            Explore Technology
+          </Button>
+        </div>
       </Section>
     </>
   );

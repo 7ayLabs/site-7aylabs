@@ -5,81 +5,82 @@ import { ROUTES } from "@/lib/constants/routes";
 export const metadata: Metadata = {
   title: "Use Cases",
   description:
-    "Discover how Proof of Presence turns real-world presence into actionable signal across events, spaces, communities, and operations.",
-  keywords: ["presence verification use cases", "Sybil resistant airdrops", "event attendance blockchain", "anti-bot verification", "DePIN location proof", "human verification DeFi"],
+    "Discover how Proof of Presence enables Sybil-resistant airdrops, DAO governance, presence-gated DeFi, event verification, access control, and DePIN verification.",
+  keywords: [
+    "Sybil resistant airdrops",
+    "DAO governance presence",
+    "presence gated DeFi",
+    "event verification blockchain",
+    "DePIN location proof",
+    "human verification use cases",
+  ],
 };
 
 const SIGNAL_CARDS = [
   {
-    title: "Pilot-ready",
+    title: "Sybil-resistant",
     description:
-      "Built to test real-world assumptions fast, without heavy infrastructure.",
+      "Presence signals grounded in physics, not accounts or behavior models.",
   },
   {
-    title: "Bot-resistant",
-    description:
-      "Presence signals grounded in reality, not accounts or behavior models.",
-  },
-  {
-    title: "Low overhead",
-    description:
-      "Designed for lightweight deployments and early operational scale.",
-  },
-  {
-    title: "Privacy-first",
+    title: "Privacy-preserving",
     description:
       "Verifies presence without identities, tracking, or surveillance.",
   },
-] as const;
-
-const USE_CASE_AREAS = [
   {
-    title: "Live events",
+    title: "On-chain verifiable",
     description:
-      "Validate real attendance and participation. No inflated numbers, no fake engagement -- just people who actually showed up.",
+      "Every attestation is finalized by validator quorum with ZK proofs.",
   },
   {
-    title: "Physical spaces",
+    title: "No hardware needed",
     description:
-      "Understand real space usage and access patterns without manual check-ins or invasive tracking.",
-  },
-  {
-    title: "Mobility ops",
-    description:
-      "Confirm task completion through verified human presence at the right place and time.",
-  },
-  {
-    title: "Communities",
-    description:
-      "Measure participation based on presence, not wallets, rewards, or speculative incentives.",
-  },
-  {
-    title: "Retail & brands",
-    description:
-      "Capture real visit data and campaign participation with signals that cannot be farmed or spoofed.",
-  },
-  {
-    title: "Public programs",
-    description:
-      "Track civic participation and engagement using privacy-preserving, human-verified presence data.",
+      "Works with existing network infrastructure. No iris scanners, no GPS.",
   },
 ] as const;
 
-const BUILD_FEATURES = [
+const USE_CASES = [
   {
-    title: "Real people",
+    title: "Sybil-Resistant Airdrops",
     description:
-      "Participation only counts when someone physically shows up. No accounts to game, no fake engagement to inflate.",
+      "Prevent airdrop farming by requiring verified physical presence. Each airdrop claim is backed by a position-bound token (PBT) that proves a real human was present -- not a bot farm or multi-account setup.",
+    detail:
+      "Token distributions become meaningful when every recipient is a verified, unique human actor. Proof of Presence eliminates the Sybil vectors that drain airdrop budgets.",
   },
   {
-    title: "Hard to fake",
+    title: "DAO Governance",
     description:
-      "Presence-based signals resist bots, scripts, and automation by design. If it did not happen in the real world, it does not count.",
+      "Enable one-person-one-vote governance where participation is tied to physical presence. Validators triangulate that each voter is a real human, preventing governance capture by wallet farms.",
+    detail:
+      "DAOs can gate proposal voting, quorum participation, and delegation based on presence attestations, ensuring decisions reflect genuine community members.",
   },
   {
-    title: "Easy to test",
+    title: "Presence-Gated DeFi",
     description:
-      "Built for MVPs: lightweight deployment, fast iteration, and clear feedback from real-world usage.",
+      "Require physical presence for specific DeFi operations. High-value transactions, vault access, or protocol governance can require a fresh presence attestation before execution.",
+    detail:
+      "This adds a physical security layer to on-chain finance that cannot be bypassed by compromised keys alone, since the attacker would also need to be physically present.",
+  },
+  {
+    title: "Event Verification",
+    description:
+      "Validate real attendance at conferences, meetups, workshops, and on-chain events. No inflated numbers, no fake engagement -- just people who actually showed up.",
+    detail:
+      "POAPs backed by Proof of Presence carry real weight. Event organizers get accurate attendance data while attendees earn verifiable credentials.",
+  },
+  {
+    title: "Access Control and Communities",
+    description:
+      "Gate access to physical and digital spaces based on verified presence. Communities form around earned participation rather than speculative behavior or purchased access.",
+    detail:
+      "Presence-gated systems ensure that access, rewards, and membership reflect real engagement, not accounts that were created to farm value.",
+  },
+  {
+    title: "DePIN Verification",
+    description:
+      "Verify that decentralized physical infrastructure nodes are actually deployed at their claimed locations. Proof of Presence confirms physical presence of hardware operators.",
+    detail:
+      "DePIN networks can use presence attestations to validate node locations, prevent virtual spoofing, and ensure infrastructure rewards go to legitimate operators.",
   },
 ] as const;
 
@@ -88,43 +89,45 @@ export default function UseCasesPage() {
     <>
       <PageHero
         label="Use Cases"
-        title="From Presence to Action"
-        description="Proof of Presence turns real-world presence into something products can trust, measure, and act on -- across events, spaces, communities, and operations where showing up actually matters."
+        title="Presence as a Primitive"
+        description="Proof of Presence enables crypto-native applications where Sybil resistance, physical verification, and human uniqueness matter. Built on physics, not profiles."
       />
 
       <Section className="py-16 md:py-20">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16">
           <div>
             <h2 className="heading-sm text-fg mb-4">
-              Show up. That&apos;s the signal.
+              The Sybil problem is everywhere
             </h2>
             <div className="space-y-5 text-fg-tertiary leading-relaxed">
               <p>
-                Most platforms rely on accounts, clicks, or inferred behavior. At
-                scale, those signals break &mdash; bots inflate numbers, farms
-                game incentives, and trust disappears.
+                Airdrops get farmed. Governance gets captured. DeFi protocols
+                cannot distinguish one person from a thousand wallets. The root
+                cause is the same: there is no reliable way to verify that a
+                unique human is behind an action.
               </p>
               <p>
-                Proof of Presence changes the rule: actions only matter when a
-                real person physically shows up. No fake engagement, no simulated
-                activity, no guessing who&apos;s real.
+                Proof of Presence solves this at the physics layer. Validators
+                triangulate physical presence through network latency &mdash;
+                creating Sybil resistance that does not depend on biometrics,
+                identity documents, or hardware.
               </p>
             </div>
           </div>
           <div>
             <h2 className="heading-sm text-fg mb-4">
-              Built for real-world coordination
+              Physical reality as security
             </h2>
             <div className="space-y-5 text-fg-tertiary leading-relaxed">
               <p>
-                Proof of Presence works wherever people move through the physical
-                world &mdash; events, cities, campuses, retail, fleets, and
-                shared spaces.
+                A single person can create unlimited wallets, but they can only
+                be in one place at a time. Proof of Presence exploits this
+                fundamental constraint to create on-chain Sybil resistance.
               </p>
               <p>
-                Teams can unlock access, actions, or workflows only when people
-                are actually present &mdash; a coordination layer grounded in
-                reality.
+                When DeFi operations, governance votes, or token claims require
+                verified physical presence, the cost of attack scales from
+                near-zero to physically impractical.
               </p>
             </div>
           </div>
@@ -137,11 +140,11 @@ export default function UseCasesPage() {
             Applications
           </span>
           <h2 className="heading-md text-fg mb-4">
-            Where Presence Works
+            Where Presence Changes the Game
           </h2>
           <p className="body-lg max-w-2xl mx-auto">
-            Concrete scenarios where Proof of Presence solves real problems in
-            early-stage products, pilots, and real-world operations.
+            Crypto-native use cases where Proof of Presence provides the missing
+            Sybil resistance layer.
           </p>
         </div>
 
@@ -158,40 +161,22 @@ export default function UseCasesPage() {
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {USE_CASE_AREAS.map((area) => (
-            <div key={area.title}>
-              <h3 className="font-sans font-semibold text-lg text-fg mb-3">
-                {area.title}
-              </h3>
-              <p className="body-base">
-                {area.description}
+        <div className="space-y-8 max-w-4xl mx-auto">
+          {USE_CASES.map((useCase, i) => (
+            <Card key={useCase.title} variant="default" padding="lg">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="w-8 h-8 rounded-full bg-[var(--color-accent-dim)] text-accent text-sm font-bold flex items-center justify-center shrink-0">
+                  {i + 1}
+                </span>
+                <h3 className="font-serif font-bold text-xl text-fg">
+                  {useCase.title}
+                </h3>
+              </div>
+              <p className="text-fg-secondary leading-relaxed mb-3">
+                {useCase.description}
               </p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section className="py-16 md:py-20">
-        <span className="label-sm block mb-4">
-          Getting started
-        </span>
-        <h2 className="heading-md text-fg mb-4">
-          Built to start small
-        </h2>
-        <p className="body-lg max-w-2xl mb-12">
-          Proof of Presence is designed for early pilots and real-world testing
-          &mdash; clear signals, minimal setup, and no unnecessary complexity.
-        </p>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {BUILD_FEATURES.map((feature) => (
-            <Card key={feature.title} variant="default" padding="lg">
-              <h3 className="font-sans font-semibold text-lg text-fg mb-3">
-                {feature.title}
-              </h3>
-              <p className="body-base">
-                {feature.description}
+              <p className="text-fg-tertiary text-sm leading-relaxed">
+                {useCase.detail}
               </p>
             </Card>
           ))}
@@ -200,20 +185,20 @@ export default function UseCasesPage() {
 
       <Section centered className="py-20 md:py-28">
         <h2 className="heading-md text-fg mb-6">
-          Start with presence
+          Build with Proof of Presence
         </h2>
         <p className="body-lg max-w-2xl mx-auto mb-10">
-          We&apos;re opening early access for teams exploring real-world
-          presence as a product signal. Small pilots, real environments, clear
-          feedback.
+          The devnet is live. Start building Sybil-resistant applications on
+          7aychain today.
         </p>
-        <Button href={ROUTES.waitlist} size="lg">
-          Join the waitlist
-        </Button>
-        <p className="text-fg-faint text-sm max-w-xl mx-auto mt-4">
-          Early pilots only. No hype &mdash; just real signals, tested in the
-          field.
-        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href={ROUTES.devnet} size="lg">
+            Connect to Devnet
+          </Button>
+          <Button href={ROUTES.waitlist} variant="secondary" size="lg">
+            Join the Waitlist
+          </Button>
+        </div>
       </Section>
     </>
   );

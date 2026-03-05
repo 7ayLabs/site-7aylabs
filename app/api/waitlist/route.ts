@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { isValidEmail, sanitizeInput, checkRateLimit, getClientIp } from "@/lib/api/validation";
 import { successResponse, errorResponse } from "@/lib/api/response";
+import { prisma } from "@/lib/db/prisma";
 import type { WaitlistRequest } from "@/types/api";
 
 const VALID_ROLES = ["developer", "validator", "community"] as const;
@@ -36,12 +37,25 @@ export async function POST(request: NextRequest) {
       return errorResponse("Role must be developer, validator, or community.");
     }
 
-    console.log("[waitlist] New submission:", {
-      email,
-      name: name ? sanitizeInput(name) : undefined,
-      interest: interest ? sanitizeInput(interest) : undefined,
-      role,
-    });
+    try {
+      await prisma.waitlistEntry.create({
+        data: {
+          email: email.trim().toLowerCase(),
+          name: name ? sanitizeInput(name) : undefined,
+          interest: interest ? sanitizeInput(interest) : undefined,
+          role: role ?? undefined,
+        },
+      });
+    } catch (error: unknown) {
+      if (
+        error instanceof Error &&
+        "code" in error &&
+        (error as { code: string }).code === "P2002"
+      ) {
+        return errorResponse("This email is already on the waitlist.", 409);
+      }
+      throw error;
+    }
 
     return successResponse("Successfully added to the waitlist.");
   } catch {
