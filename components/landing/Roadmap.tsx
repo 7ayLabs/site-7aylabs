@@ -46,7 +46,7 @@ const phases: RoadmapPhase[] = [
     ],
   },
   {
-    version: "v0.9+",
+    version: "v1.0",
     title: "Testnet & Network Expansion",
     description: "Public testnet launch and ecosystem growth",
     status: "in-progress",
