@@ -1,80 +1,80 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  staggerContainer,
-  fadeUpItem,
-  defaultViewport,
-} from "@/lib/constants/animations";
+import { Mail } from "lucide-react";
+import { motion, type Variants } from "framer-motion";
+
+/* ------------------------------------------------------------------ */
+/*  Animation variants                                                 */
+/* ------------------------------------------------------------------ */
+
+/** Per-item variant with staggered delay based on custom index */
+const itemVariant: Variants = {
+  hidden: { opacity: 0, y: 14 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.08 * i,
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+};
+
+/** Shared viewport config for whileInView triggers */
+const VIEWPORT = { once: true, margin: "-80px" } as const;
+
+/* ------------------------------------------------------------------ */
+/*  Component                                                          */
+/* ------------------------------------------------------------------ */
 
 export default function Newsletter() {
   return (
     <section
       aria-labelledby="newsletter-title"
-      className="relative w-full section-padding overflow-hidden"
+      className="w-full px-6 py-24 md:py-32 flex items-center justify-center text-center relative"
     >
-      {/* Accent gradient background */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(ellipse_800px_400px_at_50%_50%,rgba(20,184,166,0.05),transparent_70%)]"
-      />
+      <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center gap-6">
+        {/* Heading */}
+        <motion.h2
+          id="newsletter-title"
+          className="text-3xl md:text-4xl font-semibold text-white tracking-tight font-serif leading-tight"
+          variants={itemVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT}
+          custom={0}
+        >
+          Stay Updated
+        </motion.h2>
 
-      <div className="section-container">
-        <div className="relative z-10 max-w-3xl mx-auto">
-          <motion.div
-            className="flex flex-col items-center text-center"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={defaultViewport}
-          >
-            <motion.span
-              variants={fadeUpItem}
-              className="label-sm block mb-4"
-            >
-              Stay connected
-            </motion.span>
+        {/* Description */}
+        <motion.p
+          className="font-normal text-white/65 text-lg md:text-xl max-w-xl leading-relaxed"
+          variants={itemVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT}
+          custom={1}
+        >
+          Product insights, launches, and real&#x2011;world presence
+          infrastructure.
+        </motion.p>
 
-            <motion.h2
-              id="newsletter-title"
-              variants={fadeUpItem}
-              className="heading-lg text-white mb-4"
-            >
-              Stay Updated
-            </motion.h2>
-
-            <motion.p
-              variants={fadeUpItem}
-              className="body-lg max-w-xl mb-10"
-            >
-              Product insights, protocol progress, and real-world presence
-              infrastructure updates. Signal, not noise.
-            </motion.p>
-
-            <motion.a
-              variants={fadeUpItem}
-              href="/newsletter"
-              aria-label="Read the 7ayLabs newsletter"
-              className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-accent text-black font-semibold text-sm transition-colors duration-normal hover:bg-accent-secondary"
-            >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-                <path d="M22 4L12 13 2 4" />
-              </svg>
-              Read the Newsletter
-            </motion.a>
-          </motion.div>
-        </div>
+        {/* CTA button */}
+        <motion.a
+          href="/newsletter"
+          aria-label="Read the 7ayLabs newsletter"
+          className="mt-6 inline-flex items-center gap-3 px-8 py-3 rounded-full bg-white text-black font-medium text-base md:text-lg transition-colors duration-200 hover:bg-white/90"
+          variants={itemVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT}
+          custom={2}
+        >
+          <Mail size={16} />
+          Read the Newsletter
+        </motion.a>
       </div>
     </section>
   );

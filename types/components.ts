@@ -18,11 +18,11 @@ export interface NavItem {
   label: string;
   href: string;
   icon?: ReactNode;
+  external?: boolean;
 }
 
 export interface NavCategory {
   label: string;
-  description: string;
   items: NavItem[];
 }
 
@@ -34,4 +34,21 @@ export interface RoadmapPhase {
   description: string;
   status: PhaseStatus;
   items: string[];
+}
+
+export type Theme = "light" | "dark";
+
+export interface LinkCardItem {
+  icon: ReactNode;
+  title: string;
+  href: string;
+  description?: string;
+}
+
+export interface FeatureCardItem {
+  title: string;
+  description: string;
+  illustration?: ReactNode;
+  illustrationBg?: string;
+  cta?: { label: string; href: string };
 }

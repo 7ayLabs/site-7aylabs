@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { PageHero, Section, Card } from "@/components/ui";
+import { PageHero, Section, Card, Button } from "@/components/ui";
 import { ROUTES } from "@/lib/constants/routes";
 
 export const metadata: Metadata = {
@@ -95,10 +94,10 @@ export default function UseCasesPage() {
       <Section className="py-16 md:py-20">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16">
           <div>
-            <h2 className="heading-sm text-white mb-4">
+            <h2 className="heading-sm text-fg mb-4">
               Show up. That&apos;s the signal.
             </h2>
-            <div className="space-y-5 text-white/55 leading-relaxed">
+            <div className="space-y-5 text-fg-tertiary leading-relaxed">
               <p>
                 Most platforms rely on accounts, clicks, or inferred behavior. At
                 scale, those signals break &mdash; bots inflate numbers, farms
@@ -112,10 +111,10 @@ export default function UseCasesPage() {
             </div>
           </div>
           <div>
-            <h2 className="heading-sm text-white mb-4">
+            <h2 className="heading-sm text-fg mb-4">
               Built for real-world coordination
             </h2>
-            <div className="space-y-5 text-white/55 leading-relaxed">
+            <div className="space-y-5 text-fg-tertiary leading-relaxed">
               <p>
                 Proof of Presence works wherever people move through the physical
                 world &mdash; events, cities, campuses, retail, fleets, and
@@ -136,7 +135,7 @@ export default function UseCasesPage() {
           <span className="label-sm block mb-4">
             Applications
           </span>
-          <h2 className="heading-md text-white mb-4">
+          <h2 className="heading-md text-fg mb-4">
             Where Presence Works
           </h2>
           <p className="body-lg max-w-2xl mx-auto">
@@ -148,10 +147,10 @@ export default function UseCasesPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-20 max-w-4xl mx-auto">
           {SIGNAL_CARDS.map((card) => (
             <Card key={card.title} variant="interactive" padding="md">
-              <h3 className="font-sans font-semibold text-base text-white mb-1.5">
+              <h3 className="font-sans font-semibold text-base text-fg mb-1.5">
                 {card.title}
               </h3>
-              <p className="text-white/45 text-sm leading-relaxed">
+              <p className="text-fg-muted text-sm leading-relaxed">
                 {card.description}
               </p>
             </Card>
@@ -161,7 +160,7 @@ export default function UseCasesPage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {USE_CASE_AREAS.map((area) => (
             <div key={area.title}>
-              <h3 className="font-sans font-semibold text-lg text-white mb-3">
+              <h3 className="font-sans font-semibold text-lg text-fg mb-3">
                 {area.title}
               </h3>
               <p className="body-base">
@@ -176,7 +175,7 @@ export default function UseCasesPage() {
         <span className="label-sm block mb-4">
           Getting started
         </span>
-        <h2 className="heading-md text-white mb-4">
+        <h2 className="heading-md text-fg mb-4">
           Built to start small
         </h2>
         <p className="body-lg max-w-2xl mb-12">
@@ -187,7 +186,7 @@ export default function UseCasesPage() {
         <div className="grid md:grid-cols-3 gap-6">
           {BUILD_FEATURES.map((feature) => (
             <Card key={feature.title} variant="default" padding="lg">
-              <h3 className="font-sans font-semibold text-lg text-white mb-3">
+              <h3 className="font-sans font-semibold text-lg text-fg mb-3">
                 {feature.title}
               </h3>
               <p className="body-base">
@@ -199,7 +198,7 @@ export default function UseCasesPage() {
       </Section>
 
       <Section centered className="py-20 md:py-28">
-        <h2 className="heading-md text-white mb-6">
+        <h2 className="heading-md text-fg mb-6">
           Start with presence
         </h2>
         <p className="body-lg max-w-2xl mx-auto mb-10">
@@ -207,13 +206,10 @@ export default function UseCasesPage() {
           presence as a product signal. Small pilots, real environments, clear
           feedback.
         </p>
-        <Link
-          href={ROUTES.waitlist}
-          className="inline-flex items-center justify-center rounded-full px-10 py-4 bg-accent text-black font-semibold hover:bg-accent-secondary transition-colors duration-normal"
-        >
+        <Button href={ROUTES.waitlist} size="lg">
           Join the waitlist
-        </Link>
-        <p className="text-white/30 text-sm max-w-xl mx-auto mt-4">
+        </Button>
+        <p className="text-fg-faint text-sm max-w-xl mx-auto mt-4">
           Early pilots only. No hype &mdash; just real signals, tested in the
           field.
         </p>

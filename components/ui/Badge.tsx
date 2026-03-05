@@ -1,6 +1,13 @@
 import { cn } from "@/lib/utils/cn";
 
-type BadgeVariant = "default" | "outline" | "muted" | "accent" | "success" | "warning";
+type BadgeVariant =
+  | "default"
+  | "outline"
+  | "muted"
+  | "accent"
+  | "success"
+  | "warning"
+  | "label";
 
 interface BadgeProps {
   children: React.ReactNode;
@@ -12,9 +19,14 @@ const variantStyles: Record<BadgeVariant, string> = {
   default: "bg-white/10 text-white/80",
   outline: "bg-transparent border border-white/20 text-white/70",
   muted: "bg-white/5 text-white/50",
-  accent: "bg-accent/10 text-accent-secondary border border-accent/20",
-  success: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20",
-  warning: "bg-amber-500/10 text-amber-400 border border-amber-500/20",
+  accent:
+    "bg-[var(--color-accent-dim)] text-accent border border-[var(--color-border-accent)]",
+  success:
+    "bg-emerald-400/10 text-emerald-400 border border-emerald-400/30",
+  warning:
+    "bg-amber-400/10 text-amber-400 border border-amber-400/30",
+  label:
+    "bg-[var(--color-accent-dim)] text-accent border border-[var(--color-border-accent)] uppercase tracking-[0.15em] text-[10px]",
 } as const;
 
 export default function Badge({

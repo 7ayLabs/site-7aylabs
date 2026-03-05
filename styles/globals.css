@@ -14,12 +14,21 @@ html {
 
 html,
 body {
-  @apply min-h-screen bg-dark text-white antialiased font-sans;
+  min-height: 100vh;
+  background-color: var(--color-bg-primary);
+  color: var(--color-fg-primary);
+  @apply antialiased font-sans;
+}
+
+/* Dark mode body gradient (matches old repo exactly) */
+:root:not([data-theme="light"]) body,
+[data-theme="dark"] body {
+  background: linear-gradient(180deg, #0b0d12 0%, #0e1118 40%, #0a0c11 70%, #07090d 100%);
+  background-attachment: fixed;
 }
 
 ::selection {
-  background: rgba(20, 184, 166, 0.25);
-  color: #fff;
+  @apply bg-white/10 text-white;
 }
 
 ::-webkit-scrollbar {
@@ -65,8 +74,9 @@ body {
 
   /* Skip-to-content link (visually hidden until focused) */
   .skip-to-content {
-    @apply absolute left-4 top-4 z-[100] -translate-y-20 rounded-md px-4 py-2 text-black text-sm font-medium transition-transform duration-fast focus-visible:translate-y-0;
+    @apply absolute left-4 top-4 z-[100] -translate-y-20 rounded-md px-4 py-2 text-sm font-medium transition-transform duration-fast focus-visible:translate-y-0;
     background-color: var(--color-accent-primary);
+    color: #000;
   }
 }
 
@@ -80,23 +90,23 @@ body {
   }
 
   .glass {
-    background: rgba(255, 255, 255, 0.03);
-    @apply border border-white/[0.06];
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-primary);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
   }
 
   .glass-strong {
-    background: rgba(6, 6, 6, 0.85);
-    @apply border-b border-white/[0.06];
+    background-color: var(--color-bg-elevated);
+    border-bottom: 1px solid var(--color-border-primary);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
   }
 
   .bg-grid {
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      linear-gradient(var(--color-border-primary) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-border-primary) 1px, transparent 1px);
     background-size: 64px 64px;
   }
 
@@ -127,16 +137,87 @@ body {
 
   .body-lg {
     @apply text-lg md:text-xl leading-relaxed;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--color-fg-tertiary);
   }
 
   .body-base {
     @apply text-base leading-relaxed;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--color-fg-tertiary);
   }
 
   .label-sm {
     @apply text-sm uppercase tracking-widest font-medium;
     color: var(--color-accent-primary);
+  }
+
+  .card-link {
+    @apply block rounded-2xl transition-all duration-normal;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-primary);
+  }
+
+  .card-link:hover {
+    background: var(--color-bg-card-hover);
+    border-color: var(--color-border-secondary);
+  }
+
+  /* Animation utility classes (from old repo) */
+  .animate-bounce-in {
+    animation: bounceIn 0.4s ease-out forwards;
+  }
+
+  .animate-fade-slide {
+    animation: fadeSlide 0.3s ease forwards;
+  }
+
+  /* Neumorphic button (dark variant, small) */
+  .neu-button-dark-sm {
+    background-color: var(--color-bg-tertiary);
+    border-radius: var(--radius-full);
+    box-shadow:
+      inset 2px 2px 4px var(--color-bg-elevated),
+      inset -2px -2px 4px #2a2a2a;
+    color: var(--color-fg-secondary);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    padding: 10px 20px;
+    transition: all var(--transition-normal);
+    border: 1px solid #2e2e2e;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+  }
+
+  .neu-button-dark-sm:hover,
+  .neu-button-dark-sm:focus {
+    background-color: var(--color-fg-secondary);
+    color: var(--color-bg-tertiary);
+    box-shadow:
+      inset 1px 1px 3px #bcbcbc,
+      inset -1px -1px 3px #ffffff,
+      1px 1px 4px rgba(0, 0, 0, 0.2),
+      -1px -1px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Animated golden gradient text */
+  .golden-animated {
+    background: linear-gradient(
+      90deg,
+      #d4af37 0%,
+      #f9e076 25%,
+      #fff2c4 50%,
+      #d4af37 75%,
+      #f4d36b 100%
+    );
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+    animation: shineGold 4.6s linear infinite;
+    cursor: pointer;
+    text-decoration: underline;
   }
 }

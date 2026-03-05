@@ -67,7 +67,20 @@ function WaitlistPageComponent() {
       setErrorMessage("");
 
       try {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        const res = await fetch("/api/waitlist", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          setStatus("error");
+          setErrorMessage(data.message || "Something went wrong. Please try again.");
+          return;
+        }
+
         setStatus("success");
         setEmail("");
       } catch {
@@ -112,7 +125,7 @@ function WaitlistPageComponent() {
 
             <motion.p
               variants={fadeUpItem}
-              className="text-white/55 max-w-md mb-10 text-lg"
+              className="text-fg-tertiary max-w-md mb-10 text-lg"
             >
               Private access for teams testing real-world presence in
               production.
@@ -135,7 +148,7 @@ function WaitlistPageComponent() {
                   placeholder="work@email.com"
                   disabled={status === "loading" || status === "success"}
                   aria-describedby="waitlist-privacy"
-                  className="flex-1 bg-white/[0.06] border border-white/[0.08] rounded-xl px-4 py-3 min-h-[48px] text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/30 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="flex-1 bg-[var(--color-bg-card)] border border-[var(--color-border-primary)] rounded-xl px-4 py-3 min-h-[48px] text-fg placeholder:text-fg-faint focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/30 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 />
                 <button
                   type="submit"
@@ -167,7 +180,7 @@ function WaitlistPageComponent() {
             <motion.p
               id="waitlist-privacy"
               variants={fadeUpItem}
-              className="mt-6 text-xs text-white/35"
+              className="mt-6 text-xs text-fg-faint"
             >
               We only store your email to contact you about access. No sharing,
               no tracking, no marketing lists.
@@ -193,14 +206,14 @@ function WaitlistPageComponent() {
 
             <motion.h2
               variants={fadeUpItem}
-              className="font-sans font-bold text-3xl md:text-4xl tracking-tight text-white mb-6"
+              className="font-sans font-bold text-3xl md:text-4xl tracking-tight text-fg mb-6"
             >
               How early access works
             </motion.h2>
 
             <motion.p
               variants={fadeUpItem}
-              className="text-white/55 max-w-lg leading-relaxed mb-10"
+              className="text-fg-tertiary max-w-lg leading-relaxed mb-10"
             >
               We&apos;re opening Proof of Presence in controlled waves &mdash;
               prioritizing teams that need real-world validation today.
@@ -225,22 +238,22 @@ function WaitlistPageComponent() {
                         className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold ${
                           phase.active
                             ? "bg-accent text-black"
-                            : "border border-white/15 text-white/50"
+                            : "border border-[var(--color-border-secondary)] text-fg-muted"
                         }`}
                       >
                         {phase.number}
                       </div>
-                      <span className="text-xs uppercase tracking-widest text-white/40">
+                      <span className="text-xs uppercase tracking-widest text-fg-muted">
                         {phase.label}
                       </span>
                       {phase.status && (
                         <Badge variant="success">{phase.status}</Badge>
                       )}
                     </div>
-                    <h3 className="text-white font-semibold mb-1 ml-11">
+                    <h3 className="text-fg font-semibold mb-1 ml-11">
                       {phase.title}
                     </h3>
-                    <p className="text-sm text-white/50 leading-relaxed ml-11">
+                    <p className="text-sm text-fg-tertiary leading-relaxed ml-11">
                       {phase.description}
                     </p>
                   </Card>

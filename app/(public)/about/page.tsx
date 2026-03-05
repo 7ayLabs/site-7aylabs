@@ -43,7 +43,7 @@ export default function AboutPage() {
         className="py-16 md:py-20"
       >
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start mt-6">
-          <div className="space-y-5 text-white/55 leading-relaxed">
+          <div className="space-y-5 text-fg-tertiary leading-relaxed">
             <p>
               7ayLabs builds 7aychain, a Layer 1 blockchain with on-chain Proof
               of Presence. Validators form witness circles, measure network
@@ -63,7 +63,7 @@ export default function AboutPage() {
               integrity of digital coordination.
             </p>
           </div>
-          <div className="space-y-5 text-white/55 leading-relaxed">
+          <div className="space-y-5 text-fg-tertiary leading-relaxed">
             <p>
               For businesses, presence-first infrastructure delivers measurable
               value &mdash; reducing fraud, streamlining compliance, and improving
@@ -85,7 +85,7 @@ export default function AboutPage() {
         title="Our Vision"
         className="py-16 md:py-20"
       >
-        <div className="space-y-5 max-w-3xl text-white/55 leading-relaxed mt-2">
+        <div className="space-y-5 max-w-3xl text-fg-tertiary leading-relaxed mt-2">
           <p>
             We envision a future where presence is a default system signal
             &mdash; embedded deeply in the architecture of digital ecosystems.
@@ -115,7 +115,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
           {PRINCIPLES.map((principle) => (
             <Card key={principle.title} variant="interactive" padding="lg">
-              <h3 className="font-sans font-semibold text-lg text-white mb-3">
+              <h3 className="font-sans font-semibold text-lg text-fg mb-3">
                 {principle.title}
               </h3>
               <p className="body-base">

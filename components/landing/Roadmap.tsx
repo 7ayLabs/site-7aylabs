@@ -1,17 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  staggerContainer,
-  fadeUpItem,
-  defaultViewport,
-} from "@/lib/constants/animations";
-import { cn } from "@/lib/utils/cn";
-import Badge from "@/components/ui/Badge";
-import Card from "@/components/ui/Card";
-import type { RoadmapPhase, PhaseStatus } from "@/types/components";
+import { CheckCircle2, Circle, Clock } from "lucide-react";
+import type { PhaseStatus } from "@/types/components";
 
-const phases: RoadmapPhase[] = [
+/* ─── Phase data ─── */
+
+interface Phase {
+  version: string;
+  title: string;
+  description: string;
+  status: PhaseStatus;
+  items: string[];
+}
+
+const phases: Phase[] = [
   {
     version: "v0.1\u2013v0.3",
     title: "Presence & Epoch Core",
@@ -62,137 +65,141 @@ const phases: RoadmapPhase[] = [
   },
 ];
 
+/* ─── Status configuration ─── */
+
 const statusConfig: Record<
   PhaseStatus,
-  { badgeVariant: "success" | "warning" | "muted"; label: string; dotColor: string; barColor: string }
+  {
+    icon: typeof CheckCircle2;
+    color: string;
+    bg: string;
+    border: string;
+    label: string;
+  }
 > = {
   completed: {
-    badgeVariant: "success",
+    icon: CheckCircle2,
+    color: "text-emerald-400",
+    bg: "bg-emerald-400/10",
+    border: "border-emerald-400/30",
     label: "Completed",
-    dotColor: "bg-emerald-400",
-    barColor: "bg-gradient-to-r from-emerald-500 to-emerald-400",
   },
   "in-progress": {
-    badgeVariant: "warning",
+    icon: Clock,
+    color: "text-amber-400",
+    bg: "bg-amber-400/10",
+    border: "border-amber-400/30",
     label: "In Progress",
-    dotColor: "bg-amber-400",
-    barColor: "bg-gradient-to-r from-amber-500 to-amber-400",
   },
   planned: {
-    badgeVariant: "muted",
+    icon: Circle,
+    color: "text-white/40",
+    bg: "bg-white/5",
+    border: "border-white/10",
     label: "Planned",
-    dotColor: "bg-white/30",
-    barColor: "",
   },
 };
 
+/* ─── Timeline component ─── */
+
 export default function Roadmap() {
   return (
-    <section
-      id="roadmap"
-      aria-label="Roadmap"
-      className="relative section-padding"
-    >
-      <div className="section-container">
+    <section id="roadmap" className="relative py-24 sm:py-32 bg-[#060606]">
+      <div className="max-w-5xl mx-auto px-6">
+        {/* Header */}
         <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={defaultViewport}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <motion.span
-            variants={fadeUpItem}
-            className="label-sm block mb-4"
-          >
-            Development
-          </motion.span>
-          <motion.h2
-            variants={fadeUpItem}
-            className="heading-lg text-white mb-4"
-          >
+          <h2 className="text-3xl sm:text-4xl font-semibold text-white mb-4">
             Roadmap
-          </motion.h2>
-          <motion.p
-            variants={fadeUpItem}
-            className="body-lg max-w-2xl mx-auto"
-          >
+          </h2>
+          <p className="text-white/60 max-w-2xl mx-auto">
             Building the infrastructure for verifiable human presence on-chain
-          </motion.p>
+          </p>
         </motion.div>
 
-        {/* Phase cards grid */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={defaultViewport}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-        >
-          {phases.map((phase) => {
-            const config = statusConfig[phase.status];
+        {/* Timeline */}
+        <div className="relative">
+          {/* Vertical timeline line */}
+          <div className="absolute left-[22px] sm:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-white/20 via-white/10 to-transparent sm:-translate-x-px" />
 
-            return (
-              <motion.div key={phase.version} variants={fadeUpItem}>
-                <Card
-                  variant="default"
-                  padding="lg"
-                  className={cn(
-                    "h-full relative overflow-hidden",
-                    phase.status === "in-progress" &&
-                      "border-amber-400/20"
-                  )}
+          <div className="space-y-12">
+            {phases.map((phase, idx) => {
+              const config = statusConfig[phase.status];
+              const Icon = config.icon;
+              const isEven = idx % 2 === 0;
+
+              return (
+                <motion.div
+                  key={phase.version}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className={`relative flex flex-col sm:flex-row ${
+                    isEven ? "sm:flex-row" : "sm:flex-row-reverse"
+                  } items-start sm:items-center gap-6 sm:gap-12`}
                 >
-                  {/* Progress indicator bar */}
+                  {/* Timeline dot */}
                   <div
-                    aria-hidden="true"
-                    className={cn(
-                      "absolute top-0 left-0 h-0.5 rounded-full",
-                      phase.status === "completed"
-                        ? "w-full"
-                        : phase.status === "in-progress"
-                          ? "w-2/3"
-                          : "w-0",
-                      config.barColor
-                    )}
-                  />
-
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="text-sm font-mono text-white/35">
-                      {phase.version}
-                    </span>
-                    <Badge variant={config.badgeVariant}>{config.label}</Badge>
+                    className={`absolute left-0 sm:left-1/2 sm:-translate-x-1/2 w-11 h-11 rounded-full ${config.bg} ${config.border} border flex items-center justify-center z-10`}
+                  >
+                    <Icon className={`w-5 h-5 ${config.color}`} />
                   </div>
 
-                  <h3 className="heading-sm text-white mb-2">
-                    {phase.title}
-                  </h3>
-                  <p className="text-white/45 text-sm mb-6">
-                    {phase.description}
-                  </p>
+                  {/* Content card */}
+                  <div
+                    className={`ml-16 sm:ml-0 sm:w-[calc(50%-3rem)] ${
+                      isEven ? "sm:text-right sm:pr-0" : "sm:text-left sm:pl-0"
+                    }`}
+                  >
+                    <div
+                      className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 ${config.bg} ${config.color} ${config.border} border`}
+                    >
+                      {phase.version} — {config.label}
+                    </div>
+                    <h3 className="text-xl font-semibold text-white mb-2">
+                      {phase.title}
+                    </h3>
+                    <p className="text-white/50 text-sm mb-4">
+                      {phase.description}
+                    </p>
+                    <ul
+                      className={`space-y-2 ${
+                        isEven ? "sm:text-right" : "sm:text-left"
+                      }`}
+                    >
+                      {phase.items.map((item, i) => (
+                        <li
+                          key={i}
+                          className={`text-sm text-white/40 flex items-center gap-2 ${
+                            isEven ? "sm:justify-end" : "sm:justify-start"
+                          }`}
+                        >
+                          <span
+                            className={`w-1 h-1 rounded-full ${
+                              phase.status === "completed"
+                                ? "bg-emerald-400/60"
+                                : "bg-white/20"
+                            }`}
+                          />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                  <ul className="space-y-3" role="list">
-                    {phase.items.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-start gap-3 text-sm text-white/40"
-                      >
-                        <span
-                          aria-hidden="true"
-                          className={cn(
-                            "mt-1.5 w-1.5 h-1.5 rounded-full shrink-0",
-                            config.dotColor
-                          )}
-                        />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </Card>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+                  {/* Empty space for alternating layout */}
+                  <div className="hidden sm:block sm:w-[calc(50%-3rem)]" />
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { PageHero, Section, Card } from "@/components/ui";
+import { PageHero, Section, Card, Button } from "@/components/ui";
 import { ROUTES } from "@/lib/constants/routes";
 
 export const metadata: Metadata = {
@@ -67,10 +66,10 @@ export default function ServicesPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
           {SERVICES.map((service) => (
             <Card key={service.title} variant="interactive" padding="lg">
-              <h3 className="font-sans font-semibold text-xl text-white mb-3">
+              <h3 className="font-sans font-semibold text-xl text-fg mb-3">
                 {service.title}
               </h3>
-              <p className="text-white/55 leading-relaxed text-sm">
+              <p className="text-fg-tertiary leading-relaxed text-sm">
                 {service.description}
               </p>
             </Card>
@@ -86,10 +85,10 @@ export default function ServicesPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
           {PRINCIPLES.map((principle) => (
             <Card key={principle.title} variant="default" padding="lg">
-              <h3 className="font-sans font-semibold text-lg text-white mb-3">
+              <h3 className="font-sans font-semibold text-lg text-fg mb-3">
                 {principle.title}
               </h3>
-              <p className="text-white/55 text-sm leading-relaxed">
+              <p className="text-fg-tertiary text-sm leading-relaxed">
                 {principle.description}
               </p>
             </Card>
@@ -98,19 +97,16 @@ export default function ServicesPage() {
       </Section>
 
       <Section centered className="py-20 md:py-28">
-        <h2 className="font-sans font-bold text-3xl md:text-4xl text-white mb-6">
+        <h2 className="font-sans font-bold text-3xl md:text-4xl text-fg mb-6">
           Ready to explore presence?
         </h2>
-        <p className="text-white/55 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
+        <p className="text-fg-tertiary text-lg leading-relaxed max-w-2xl mx-auto mb-10">
           Join the waitlist to discuss how Proof of Presence can work for your
           team, product, or platform.
         </p>
-        <Link
-          href={ROUTES.waitlist}
-          className="inline-flex items-center justify-center rounded-full px-10 py-4 min-h-[48px] bg-accent text-black font-semibold hover:bg-accent-secondary transition-colors duration-normal"
-        >
+        <Button href={ROUTES.waitlist} size="lg">
           Join the Waitlist
-        </Link>
+        </Button>
       </Section>
     </>
   );

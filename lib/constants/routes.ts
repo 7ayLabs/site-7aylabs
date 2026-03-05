@@ -28,23 +28,62 @@ export const NAV_LINKS = [
   { href: ROUTES.updates, label: "Updates" },
 ] as const;
 
+export const NAV_CATEGORIES = [
+  {
+    label: "Learn",
+    items: [
+      { href: ROUTES.about, label: "About" },
+      { href: ROUTES.whyPresence, label: "Why Presence" },
+      { href: ROUTES.tech, label: "Technology" },
+    ],
+  },
+  {
+    label: "Use",
+    items: [
+      { href: ROUTES.useCases, label: "Use Cases" },
+      { href: ROUTES.services, label: "Services" },
+    ],
+  },
+  {
+    label: "Build",
+    items: [
+      { href: ROUTES.roadmap, label: "Roadmap" },
+      { href: ROUTES.updates, label: "Updates" },
+      { href: EXTERNAL_LINKS.githubRepo, label: "GitHub", external: true },
+    ],
+  },
+  {
+    label: "Participate",
+    items: [
+      { href: ROUTES.waitlist, label: "Waitlist" },
+      { href: ROUTES.newsletter, label: "Newsletter" },
+      { href: EXTERNAL_LINKS.twitter, label: "X", external: true },
+    ],
+  },
+] as const;
+
 export const FOOTER_LINK_GROUPS = [
   {
-    title: "Protocol",
+    title: "Learn",
     links: [
-      { href: ROUTES.tech, label: "Technology" },
+      { href: ROUTES.about, label: "About" },
       { href: ROUTES.whyPresence, label: "Why Presence" },
+      { href: ROUTES.tech, label: "Technology" },
+    ],
+  },
+  {
+    title: "Use",
+    links: [
       { href: ROUTES.useCases, label: "Use Cases" },
+      { href: ROUTES.services, label: "Services" },
       { href: ROUTES.roadmap, label: "Roadmap" },
     ],
   },
   {
-    title: "Company",
+    title: "Build",
     links: [
-      { href: ROUTES.about, label: "About" },
-      { href: ROUTES.services, label: "Services" },
       { href: ROUTES.updates, label: "Updates" },
-      { href: ROUTES.newsletter, label: "Newsletter" },
+      { href: EXTERNAL_LINKS.githubRepo, label: "GitHub", external: true },
     ],
   },
   {
@@ -53,6 +92,7 @@ export const FOOTER_LINK_GROUPS = [
       { href: EXTERNAL_LINKS.twitter, label: "X (Twitter)", external: true },
       { href: EXTERNAL_LINKS.github, label: "GitHub", external: true },
       { href: ROUTES.waitlist, label: "Join Waitlist" },
+      { href: ROUTES.newsletter, label: "Newsletter" },
     ],
   },
 ] as const;

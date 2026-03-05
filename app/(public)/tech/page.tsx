@@ -65,15 +65,15 @@ export default function TechPage() {
       />
 
       <Section title="How 7aychain Works" className="py-16 md:py-20">
-        <p className="text-accent/80 text-lg leading-relaxed mb-8 max-w-3xl font-medium">
+        <p className="text-accent text-lg leading-relaxed mb-8 max-w-3xl font-medium">
           A Layer 1 blockchain built to answer one question: is this actor
           actually here?
         </p>
 
-        <div className="space-y-5 max-w-4xl text-white/55 leading-relaxed">
+        <div className="space-y-5 max-w-4xl text-fg-tertiary leading-relaxed">
           <p>
             7aychain uses the{" "}
-            <strong className="text-white/80">Proof of Presence protocol</strong>{" "}
+            <strong className="text-fg-secondary">Proof of Presence protocol</strong>{" "}
             where every presence declaration goes through an epoch-bound
             lifecycle: declared, attested by witnesses, triangulated, and
             finalized by validators with quorum consensus.
@@ -84,7 +84,7 @@ export default function TechPage() {
             evidence and voting, and a commit-reveal scheme for presence
             declarations.
           </p>
-          <p className="font-medium text-white">
+          <p className="font-medium text-fg">
             When presence is real, trust follows.
           </p>
         </div>
@@ -97,7 +97,7 @@ export default function TechPage() {
               <span className="label-sm block mb-4">
                 {feature.label}
               </span>
-              <h2 className="heading-sm text-white mb-6">
+              <h2 className="heading-sm text-fg mb-6">
                 {feature.title}
               </h2>
               <p className="body-base mb-5">
@@ -109,10 +109,10 @@ export default function TechPage() {
             </div>
 
             <Card variant="elevated" padding="lg">
-              <p className="italic text-white/65 text-lg leading-relaxed mb-4">
+              <p className="italic text-fg-secondary text-lg leading-relaxed mb-4">
                 &ldquo;{feature.quote}&rdquo;
               </p>
-              <span className="block text-white/30 text-sm">
+              <span className="block text-fg-faint text-sm">
                 &mdash; {feature.quoteSource}
               </span>
             </Card>
@@ -121,7 +121,7 @@ export default function TechPage() {
       ))}
 
       <Section centered className="py-20 md:py-28">
-        <h2 className="heading-md text-white mb-6">
+        <h2 className="heading-md text-fg mb-6">
           7aychain: Presence, Built for Real Use
         </h2>
         <p className="body-lg mb-8 max-w-2xl mx-auto">
@@ -130,7 +130,7 @@ export default function TechPage() {
           semantic linking, dispute resolution, and more &mdash; all running
           on a multi-node devnet.
         </p>
-        <p className="text-white font-medium text-lg">
+        <p className="text-fg font-medium text-lg">
           Built on Substrate. Licensed under BUSL-1.1. Open source at{" "}
           <a
             href="https://github.com/7ayLabs/7aychain"

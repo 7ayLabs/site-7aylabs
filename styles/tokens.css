@@ -1,42 +1,24 @@
+/* =============================================
+   7ayLabs Design Tokens — Dual Theme System
+   ============================================= */
+
+/* Shared tokens (both themes) */
 :root {
-  /* Background palette */
-  --color-bg-primary: #060606;
-  --color-bg-secondary: #0a0a0a;
-  --color-bg-tertiary: #111111;
-  --color-bg-elevated: #0d0d0d;
-  --color-bg-surface: #141414;
-  --color-bg-card: rgba(255, 255, 255, 0.02);
-  --color-bg-card-hover: rgba(255, 255, 255, 0.05);
-
-  /* Foreground palette */
-  --color-fg-primary: #ffffff;
-  --color-fg-secondary: rgba(255, 255, 255, 0.7);
-  --color-fg-tertiary: rgba(255, 255, 255, 0.5);
-  --color-fg-muted: rgba(255, 255, 255, 0.4);
-  --color-fg-faint: rgba(255, 255, 255, 0.25);
-
-  /* Accent palette – teal/cyan family */
+  /* Accent palette – teal/cyan family (shared) */
   --color-accent-primary: #14b8a6;
   --color-accent-secondary: #00ffc6;
   --color-accent-tertiary: rgba(120, 255, 180, 0.95);
   --color-accent-dim: rgba(20, 184, 166, 0.15);
   --color-accent-glow: rgba(20, 184, 166, 0.08);
 
-  /* Status colors */
+  /* Status colors (shared) */
   --color-status-success: #22c55e;
   --color-status-warning: #f59e0b;
   --color-status-error: #ef4444;
 
-  /* Roadmap colors */
+  /* Roadmap colors (shared) */
   --color-roadmap-completed: #34d399;
   --color-roadmap-progress: #fbbf24;
-  --color-roadmap-planned: rgba(255, 255, 255, 0.4);
-
-  /* Border palette */
-  --color-border-primary: rgba(255, 255, 255, 0.08);
-  --color-border-secondary: rgba(255, 255, 255, 0.14);
-  --color-border-accent: rgba(20, 184, 166, 0.25);
-  --color-border-hover: rgba(255, 255, 255, 0.2);
 
   /* Spacing scale */
   --spacing-xs: 0.25rem;
@@ -57,14 +39,6 @@
   --radius-2xl: 1.25rem;
   --radius-3xl: 1.5rem;
   --radius-full: 9999px;
-
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
-  --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.25);
-  --shadow-glow: 0 0 30px rgba(20, 184, 166, 0.2);
-  --shadow-glow-lg: 0 0 60px rgba(20, 184, 166, 0.15);
 
   /* Typography scale */
   --font-size-xs: 0.75rem;
@@ -102,4 +76,100 @@
   --z-modal: 50;
   --z-popover: 60;
   --z-tooltip: 70;
+}
+
+/* ===== DARK THEME (default) ===== */
+:root,
+[data-theme="dark"] {
+  --color-bg-primary: #060606;
+  --color-bg-secondary: #0a0a0a;
+  --color-bg-tertiary: #1a1a1a;
+  --color-bg-elevated: #0d0d0d;
+  --color-bg-surface: #141414;
+  --color-bg-card: rgba(255, 255, 255, 0.05);
+  --color-bg-card-hover: rgba(255, 255, 255, 0.08);
+
+  --color-fg-primary: #ffffff;
+  --color-fg-secondary: rgba(255, 255, 255, 0.7);
+  --color-fg-tertiary: rgba(255, 255, 255, 0.5);
+  --color-fg-muted: rgba(255, 255, 255, 0.4);
+  --color-fg-faint: rgba(255, 255, 255, 0.25);
+
+  --color-border-primary: rgba(255, 255, 255, 0.1);
+  --color-border-secondary: rgba(255, 255, 255, 0.2);
+  --color-border-accent: rgba(20, 184, 166, 0.3);
+  --color-border-hover: rgba(255, 255, 255, 0.25);
+
+  --color-roadmap-planned: rgba(255, 255, 255, 0.4);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 20px rgba(20, 184, 166, 0.3);
+  --shadow-glow-lg: 0 0 60px rgba(20, 184, 166, 0.15);
+}
+
+/* ===== LIGHT THEME ===== */
+[data-theme="light"] {
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8f9fa;
+  --color-bg-tertiary: #f1f3f5;
+  --color-bg-elevated: #ffffff;
+  --color-bg-surface: #f8f9fa;
+  --color-bg-card: rgba(0, 0, 0, 0.02);
+  --color-bg-card-hover: rgba(0, 0, 0, 0.04);
+
+  --color-fg-primary: #1b1b1b;
+  --color-fg-secondary: rgba(0, 0, 0, 0.72);
+  --color-fg-tertiary: rgba(0, 0, 0, 0.55);
+  --color-fg-muted: rgba(0, 0, 0, 0.4);
+  --color-fg-faint: rgba(0, 0, 0, 0.25);
+
+  --color-border-primary: rgba(0, 0, 0, 0.08);
+  --color-border-secondary: rgba(0, 0, 0, 0.14);
+  --color-border-accent: rgba(20, 184, 166, 0.25);
+  --color-border-hover: rgba(0, 0, 0, 0.2);
+
+  --color-roadmap-planned: rgba(0, 0, 0, 0.3);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.12);
+  --shadow-glow: 0 0 30px rgba(20, 184, 166, 0.15);
+  --shadow-glow-lg: 0 0 60px rgba(20, 184, 166, 0.1);
+}
+
+/* ===== System preference fallback (no JS) ===== */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f8f9fa;
+    --color-bg-tertiary: #f1f3f5;
+    --color-bg-elevated: #ffffff;
+    --color-bg-surface: #f8f9fa;
+    --color-bg-card: rgba(0, 0, 0, 0.02);
+    --color-bg-card-hover: rgba(0, 0, 0, 0.04);
+
+    --color-fg-primary: #1b1b1b;
+    --color-fg-secondary: rgba(0, 0, 0, 0.72);
+    --color-fg-tertiary: rgba(0, 0, 0, 0.55);
+    --color-fg-muted: rgba(0, 0, 0, 0.4);
+    --color-fg-faint: rgba(0, 0, 0, 0.25);
+
+    --color-border-primary: rgba(0, 0, 0, 0.08);
+    --color-border-secondary: rgba(0, 0, 0, 0.14);
+    --color-border-accent: rgba(20, 184, 166, 0.25);
+    --color-border-hover: rgba(0, 0, 0, 0.2);
+
+    --color-roadmap-planned: rgba(0, 0, 0, 0.3);
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.08);
+    --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.12);
+    --shadow-glow: 0 0 30px rgba(20, 184, 166, 0.15);
+    --shadow-glow-lg: 0 0 60px rgba(20, 184, 166, 0.1);
+  }
 }

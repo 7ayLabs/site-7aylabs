@@ -105,7 +105,7 @@ export default function UpdatesPage() {
           <h1 className="font-sans font-bold text-4xl md:text-5xl tracking-tight leading-tight mb-3">
             Project Status
           </h1>
-          <p className="text-base md:text-lg text-white/40 max-w-2xl">
+          <p className="text-base md:text-lg text-fg-muted max-w-2xl">
             Last updated &middot; Feb 28, 2026
           </p>
         </motion.div>
@@ -120,7 +120,7 @@ export default function UpdatesPage() {
         >
           <motion.p
             variants={fadeUpItem}
-            className="max-w-2xl text-base leading-relaxed text-white/40 mb-6"
+            className="max-w-2xl text-base leading-relaxed text-fg-muted mb-6"
           >
             This log tracks real progress across 7aychain and the 7ayLabs
             project &mdash; protocol milestones, shipped features, and
@@ -142,7 +142,7 @@ export default function UpdatesPage() {
               className={`rounded-full px-4 py-1.5 min-h-[36px] text-xs uppercase tracking-wide transition-colors duration-fast ${
                 filter === key
                   ? "bg-accent text-black font-semibold"
-                  : "border border-white/[0.1] text-white/45 hover:border-white/20 hover:text-white/60"
+                  : "border border-[var(--color-border-primary)] text-fg-muted hover:border-[var(--color-border-secondary)] hover:text-fg-tertiary"
               }`}
             >
               {key === "all" ? "All updates" : key}
@@ -168,25 +168,25 @@ export default function UpdatesPage() {
                   variant="default"
                   padding="md"
                   className={
-                    isLatest ? "border-accent/15" : ""
+                    isLatest ? "border-[var(--color-border-accent)]" : ""
                   }
                 >
                   <div className="flex items-start justify-between gap-4 mb-2">
                     <div className="flex items-center gap-3 flex-wrap">
-                      <h3 className="font-sans text-lg md:text-xl font-semibold tracking-tight text-white leading-snug">
+                      <h3 className="font-sans text-lg md:text-xl font-semibold tracking-tight text-fg leading-snug">
                         {item.title}
                       </h3>
                       {isLatest && <Badge variant="accent">Latest</Badge>}
                     </div>
-                    <span className="text-sm text-white/30 whitespace-nowrap shrink-0 mt-1">
+                    <span className="text-sm text-fg-faint whitespace-nowrap shrink-0 mt-1">
                       {item.date}
                     </span>
                   </div>
 
-                  <p className="text-sm text-white/45 mb-3">{item.summary}</p>
+                  <p className="text-sm text-fg-muted mb-3">{item.summary}</p>
 
                   <button
-                    className="inline-flex items-center gap-1 text-sm font-medium text-accent/80 hover:text-accent transition-colors duration-fast"
+                    className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:text-accent-secondary transition-colors duration-fast"
                     onClick={() => setOpenIndex(isOpen ? null : idx)}
                     aria-expanded={isOpen}
                     aria-controls={`update-content-${idx}`}
@@ -217,7 +217,7 @@ export default function UpdatesPage() {
                         transition={{ duration: 0.25 }}
                         className="overflow-hidden"
                       >
-                        <p className="mt-4 pt-4 border-t border-white/[0.06] text-sm leading-relaxed text-white/55">
+                        <p className="mt-4 pt-4 border-t border-[var(--color-border-primary)] text-sm leading-relaxed text-fg-tertiary">
                           {item.content}
                         </p>
                       </motion.div>

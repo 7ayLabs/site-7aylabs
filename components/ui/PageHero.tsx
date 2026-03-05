@@ -10,9 +10,15 @@ import {
 import { cn } from "@/lib/utils/cn";
 
 interface PageHeroProps {
+  /** Small label above the title (e.g., "WHO WE ARE") */
   label: string;
+  /** Main page title */
   title: string;
+  /** Description paragraph(s) */
   description: string | string[];
+  /** Optional illustration element below description */
+  illustration?: React.ReactNode;
+  /** Additional className for the section */
   className?: string;
 }
 
@@ -20,60 +26,54 @@ function PageHeroComponent({
   label,
   title,
   description,
+  illustration,
   className,
 }: PageHeroProps) {
-  const paragraphs = Array.isArray(description) ? description : [description];
+  const descriptions = Array.isArray(description) ? description : [description];
 
   return (
     <section
       aria-label={title}
       className={cn(
-        "relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-28 md:pt-36 pb-16 md:pb-20",
+        "max-w-5xl mx-auto px-6 md:px-12 pt-20 md:pt-28 pb-20 md:pb-24 text-center",
         className
       )}
     >
-      {/* Decorative gradient blob */}
-      <div
-        aria-hidden="true"
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(20,184,166,0.06),transparent_70%)]"
-      />
-
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={defaultViewport}
-        className="relative max-w-3xl"
       >
         <motion.span
           variants={fadeUpItem}
-          className="label-sm inline-block mb-6"
+          className="block text-sm uppercase tracking-widest text-white/40 mb-6"
         >
           {label}
         </motion.span>
 
         <motion.h1
           variants={fadeUpItem}
-          className="heading-xl text-white"
+          className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight text-white"
         >
           {title}
         </motion.h1>
 
-        <motion.div
-          variants={fadeUpItem}
-          className="mt-6 h-1 w-16 rounded-full bg-gradient-to-r from-accent to-accent-secondary"
-          aria-hidden="true"
-        />
-
-        {paragraphs.map((text, i) => (
+        {descriptions.map((desc, index) => (
           <motion.p
-            key={i}
+            key={index}
             variants={fadeUpItem}
-            className="mt-6 max-w-2xl body-lg"
+            className="mt-6 mx-auto max-w-2xl text-white/60 text-base sm:text-lg leading-relaxed"
           >
-            {text}
+            {desc}
           </motion.p>
         ))}
+
+        {illustration && (
+          <motion.div variants={fadeUpItem} className="mt-10">
+            {illustration}
+          </motion.div>
+        )}
       </motion.div>
     </section>
   );
