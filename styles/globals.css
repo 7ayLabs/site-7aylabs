@@ -1,0 +1,142 @@
+@import "./tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply box-border;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  @apply min-h-screen bg-dark text-white antialiased font-sans;
+}
+
+::selection {
+  background: rgba(20, 184, 166, 0.25);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-secondary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-fg-muted);
+}
+
+/* Respect prefers-reduced-motion globally for CSS animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus-visible outline for all interactive elements */
+@layer base {
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    @apply outline-2 outline-offset-2 rounded-sm;
+    outline-color: var(--color-accent-primary);
+  }
+
+  /* Skip-to-content link (visually hidden until focused) */
+  .skip-to-content {
+    @apply absolute left-4 top-4 z-[100] -translate-y-20 rounded-md px-4 py-2 text-black text-sm font-medium transition-transform duration-fast focus-visible:translate-y-0;
+    background-color: var(--color-accent-primary);
+  }
+}
+
+@layer components {
+  .gradient-text {
+    background: linear-gradient(135deg, #14b8a6 0%, #00ffc6 50%, #14b8a6 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    @apply border border-white/[0.06];
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .glass-strong {
+    background: rgba(6, 6, 6, 0.85);
+    @apply border-b border-white/[0.06];
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-5 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  .heading-xl {
+    @apply font-sans font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight;
+    line-height: 1.08;
+  }
+
+  .heading-lg {
+    @apply font-sans font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight leading-tight;
+  }
+
+  .heading-md {
+    @apply font-sans font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight;
+  }
+
+  .heading-sm {
+    @apply font-sans font-semibold text-xl md:text-2xl tracking-tight;
+  }
+
+  .body-lg {
+    @apply text-lg md:text-xl leading-relaxed;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .body-base {
+    @apply text-base leading-relaxed;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .label-sm {
+    @apply text-sm uppercase tracking-widest font-medium;
+    color: var(--color-accent-primary);
+  }
+}
