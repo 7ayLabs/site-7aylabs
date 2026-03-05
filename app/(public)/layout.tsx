@@ -1,3 +1,7 @@
+import Navbar from "@/components/layout/navbar/Navbar";
+import Footer from "@/components/layout/Footer";
+import AmbientBackground from "@/components/background/AmbientBackground";
+
 export default function PublicLayout({
   children,
 }: {
@@ -5,7 +9,10 @@ export default function PublicLayout({
 }) {
   return (
     <>
+      <AmbientBackground />
+      <Navbar />
       <main className="relative z-10">{children}</main>
+      <Footer />
     </>
   );
 }

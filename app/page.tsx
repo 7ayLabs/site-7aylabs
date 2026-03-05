@@ -1,9 +1,25 @@
+import Navbar from "@/components/layout/navbar/Navbar";
+import Hero from "@/components/landing/Hero";
+import About from "@/components/landing/About";
+import Projects from "@/components/landing/Projects";
+import Roadmap from "@/components/landing/Roadmap";
+import Newsletter from "@/components/landing/Newsletter";
+import Footer from "@/components/layout/Footer";
+import AmbientBackground from "@/components/background/AmbientBackground";
+
 export default function Home() {
   return (
-    <main className="bg-[#060606] text-white">
-      <section className="flex min-h-screen items-center justify-center">
-        <h1 className="text-4xl font-bold">7ayLabs</h1>
-      </section>
-    </main>
+    <>
+      <AmbientBackground />
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Projects />
+        <Roadmap />
+        <Newsletter />
+      </main>
+      <Footer />
+    </>
   );
 }
