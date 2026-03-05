@@ -41,7 +41,7 @@ function HeroComponent() {
   }, []);
 
   return (
-    <section className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden text-fg bg-[var(--color-bg-primary)]">
+    <section className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden text-fg">
       {/* Ambient radial gradients */}
       <div
         aria-hidden

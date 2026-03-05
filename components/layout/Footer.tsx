@@ -15,7 +15,7 @@ export default function Footer() {
       : "/7aylabs_white_logo.svg";
 
   return (
-    <footer className="w-full bg-bg-secondary border-t border-[var(--color-border-primary)]">
+    <footer className="w-full border-t border-[var(--color-border-primary)]">
       {/* Main footer grid */}
       <div className="max-w-screen-xl mx-auto px-6 md:px-12 pt-12 pb-8">
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6 lg:gap-12">

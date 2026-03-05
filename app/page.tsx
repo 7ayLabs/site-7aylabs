@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main id="main-content" className="bg-[var(--color-bg-primary)] text-fg">
+      <main id="main-content">
         <Hero />
         <About />
         <Projects />

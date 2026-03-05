@@ -58,7 +58,7 @@ function AmbientBackgroundComponent() {
       aria-hidden="true"
     >
       {/* Base dark layer */}
-      <div className="absolute inset-0 bg-[#060606]" />
+      <div className="absolute inset-0 bg-[var(--color-bg-primary)]" />
 
       {/* Animated ambient light */}
       <motion.div
