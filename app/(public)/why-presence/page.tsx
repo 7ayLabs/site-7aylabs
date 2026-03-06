@@ -5,72 +5,71 @@ import { EXTERNAL_LINKS, ROUTES } from "@/lib/constants/routes";
 export const metadata: Metadata = {
   title: "Why Presence",
   description:
-    "The internet lost the human signal. Learn why 7aychain uses physics-based Proof of Presence for Sybil resistance instead of biometrics, and how it compares to Worldcoin, BrightID, and Gitcoin Passport.",
+    "When bots can do everything humans can do online, the only thing left that proves you're real is being physically present. Learn how 7aychain uses physics instead of biometrics.",
   keywords: [
     "why presence matters",
-    "Sybil resistance",
-    "bot prevention blockchain",
+    "bot prevention",
     "human verification",
-    "proof of humanity alternative",
-    "AI resistant verification",
+    "privacy preserving identity",
     "Worldcoin alternative",
     "BrightID comparison",
+    "no biometrics verification",
   ],
 };
 
 const PRESENCE_PILLARS = [
   {
-    title: "Physics, not biometrics",
+    title: "Physics, Not Scans",
     description:
-      "Network latency is constrained by the speed of light. 7aychain uses this physical limit to triangulate presence -- no iris scans, no selfies, no hardware.",
+      "Internet signals have a speed limit — the speed of light. 7aychain uses this fact to confirm where you are. No iris scans, no selfies, no fingerprints.",
   },
   {
-    title: "One place at a time",
+    title: "One Place at a Time",
     description:
-      "A single person can create unlimited wallets, but they can only be physically present in one location. This is the fundamental constraint that makes Sybil attacks expensive.",
+      "You can create a million accounts, but you can only physically be in one spot. That's the constraint that makes faking presence nearly impossible.",
   },
   {
-    title: "Disposable verification",
+    title: "No Lasting Footprint",
     description:
-      "Each presence attestation is contextual and epoch-bound. No persistent identity, no behavioral profile, no data extraction. Prove you were here, then forget.",
+      "Each verification is a one-time event. No persistent profile, no behavioral tracking, no data stored about you. Prove you were here, then it's done.",
   },
 ] as const;
 
 const COMPARISON_TABLE = [
   {
     dimension: "Method",
-    sevenychain: "Network latency triangulation",
-    worldcoin: "Iris biometric scan",
-    brightid: "Social graph analysis",
-    passport: "Credential aggregation",
+    sevenychain: "Measures internet connection timing",
+    worldcoin: "Scans your iris with a special device",
+    brightid: "Friends vouch for you on video",
+    passport: "Links your online accounts for a trust score",
   },
   {
     dimension: "Hardware Required",
-    sevenychain: "None (existing network)",
+    sevenychain: "None (any internet connection)",
     worldcoin: "Custom Orb device",
     brightid: "None",
     passport: "None",
   },
   {
-    dimension: "Biometrics",
+    dimension: "Collects Body Data?",
     sevenychain: "No",
-    worldcoin: "Yes (iris)",
-    brightid: "No",
+    worldcoin: "Yes (iris scan)",
+    brightid: "No (but face visible)",
     passport: "No",
   },
   {
-    dimension: "Privacy Model",
-    sevenychain: "ZK proofs, no persistent identity",
-    worldcoin: "Iris hash stored, World ID",
-    brightid: "Social graph visible",
-    passport: "Credential history visible",
+    dimension: "Privacy",
+    sevenychain: "High — location only, never identity",
+    worldcoin: "Low — stores iris biometric data",
+    brightid: "Medium — your face is seen on video",
+    passport: "Medium — links your online accounts",
   },
   {
     dimension: "What It Proves",
-    sevenychain: "Physical presence at a location",
-    worldcoin: "Unique human (biometric)",
-    brightid: "Social vouching (human network)",
-    passport: "Activity history (credentials)",
+    sevenychain: "You're physically at a real location",
+    worldcoin: "You're a unique human (biometric)",
+    brightid: "People vouch that you're real",
+    passport: "You have active online accounts",
   },
   {
     dimension: "Chain",
@@ -90,24 +89,24 @@ const COMPARISON_TABLE = [
 
 const SYBIL_ARGUMENTS = [
   {
-    problem: "Bots generate behavior at scale",
+    problem: "Bots can fake behavior at scale",
     response:
-      "AI can produce text, transactions, and social interactions. But generating physical presence across multiple locations simultaneously is constrained by physics.",
+      "AI can fake text, transactions, and social activity. But it can't fake being somewhere — physical presence is constrained by the laws of physics.",
   },
   {
-    problem: "Multi-accounting is trivially easy",
+    problem: "Anyone can create unlimited accounts",
     response:
-      "Creating wallets costs nothing. Being physically present in multiple places at once is impossible. Proof of Presence converts an economic problem into a physical one.",
+      "Making a new wallet costs nothing. Being in two places at once is impossible. 7aychain turns a digital problem into a physical one.",
   },
   {
-    problem: "Biometric systems create surveillance risk",
+    problem: "Biometric systems are surveillance",
     response:
-      "Iris scans and facial recognition create persistent identity databases. Network latency measurement leaves no biometric trace and requires no special hardware.",
+      "Iris scans and facial recognition create permanent databases of your body. 7aychain measures internet timing — it never sees your face or knows your name.",
   },
   {
-    problem: "Social graphs can be manufactured",
+    problem: "Social networks can be faked",
     response:
-      "Social vouching systems are vulnerable to coordinated Sybil rings. Physical presence is independently verifiable by validator triangulation without trust assumptions.",
+      "Coordinated groups can create fake social proof. Physical presence is independently verified by the network — no trust required.",
   },
 ] as const;
 
@@ -117,22 +116,23 @@ export default function WhyPresencePage() {
       <PageHero
         label="Why Presence"
         title="The Internet Lost the Human Signal"
-        description="Digital systems were built for people -- but today they are dominated by bots, automation, and synthetic activity at scale. Proof of Presence restores the missing signal."
+        accentWords={["Human", "Signal"]}
+        description="When bots can do everything humans can do online, the only thing left that proves you're real is being physically present."
       />
 
       <Section title="Presence Infrastructure" className="py-16 md:py-20">
         <div className="space-y-5 max-w-3xl text-fg-tertiary text-base sm:text-lg leading-relaxed">
           <p>
-            At the core of 7ayLabs is 7aychain &mdash; a Layer 1 blockchain
-            where validators form witness circles and triangulate physical
-            presence through network latency, proving who is actually here
-            without GPS or external hardware.
+            At the heart of 7aychain is a simple idea: your internet connection
+            can prove where you are. Validators across the network measure
+            connection timing from multiple points, confirming your physical
+            location without GPS, cameras, or special hardware.
           </p>
           <p>
-            Modern platforms rely on accounts, credentials, and inferred
-            behavior to decide what counts as real. At scale, those signals fail.
-            Proof of Presence introduces a different foundation: physics-based
-            Sybil resistance.
+            Most systems try to figure out if you&apos;re real by looking at
+            your behavior, your accounts, or your credentials. At scale, all of
+            those can be faked. 7aychain takes a different approach: it uses the
+            laws of physics.
           </p>
         </div>
       </Section>
@@ -143,7 +143,7 @@ export default function WhyPresencePage() {
           <span className="block text-sm uppercase tracking-widest text-accent mb-4">
             The Physics Argument
           </span>
-          <h2 className="font-serif font-bold text-3xl md:text-4xl text-fg mb-4">
+          <h2 className="font-display font-bold text-3xl md:text-4xl text-fg mb-4">
             Sybil resistance through physical reality
           </h2>
           <p className="max-w-3xl text-fg-tertiary text-lg leading-relaxed">
@@ -173,7 +173,7 @@ export default function WhyPresencePage() {
           <span className="block text-xs uppercase tracking-widest text-accent mb-4">
             Core Insight
           </span>
-          <h3 className="font-serif font-bold text-xl md:text-2xl text-fg mb-3">
+          <h3 className="font-display font-bold text-xl md:text-2xl text-fg mb-3">
             In a world of perfect simulation, physical reality becomes the scarce resource
           </h3>
           <p className="text-fg-tertiary leading-relaxed">
@@ -206,7 +206,7 @@ export default function WhyPresencePage() {
           <span className="block text-sm uppercase tracking-widest text-accent mb-4">
             Comparison
           </span>
-          <h2 className="font-serif font-bold text-3xl md:text-4xl text-fg mb-4">
+          <h2 className="font-display font-bold text-3xl md:text-4xl text-fg mb-4">
             How 7aychain compares
           </h2>
           <p className="max-w-3xl text-fg-tertiary text-lg mx-auto leading-relaxed">
@@ -222,7 +222,7 @@ export default function WhyPresencePage() {
                 <th className="text-left py-3 px-4 text-fg-muted font-medium uppercase tracking-wider text-xs w-36">
                   Dimension
                 </th>
-                <th className="text-left py-3 px-4 text-accent font-medium text-xs uppercase tracking-wider">
+                <th className="text-left py-3 px-4 text-accent font-medium text-xs uppercase tracking-wider bg-[var(--color-accent-dim)] rounded-t-lg">
                   7aychain
                 </th>
                 <th className="text-left py-3 px-4 text-fg-muted font-medium text-xs uppercase tracking-wider">
@@ -242,7 +242,7 @@ export default function WhyPresencePage() {
                   <td className="py-3 px-4 font-medium text-fg whitespace-nowrap">
                     {row.dimension}
                   </td>
-                  <td className="py-3 px-4 text-fg-secondary">
+                  <td className="py-3 px-4 text-accent font-medium bg-[var(--color-accent-dim)]">
                     {row.sevenychain}
                   </td>
                   <td className="py-3 px-4 text-fg-tertiary">
@@ -266,7 +266,7 @@ export default function WhyPresencePage() {
         <span className="block text-sm uppercase tracking-widest text-accent mb-4">
           Follow the Signal
         </span>
-        <h3 className="font-serif font-bold text-2xl md:text-3xl text-fg mb-4">
+        <h3 className="font-display font-bold text-2xl md:text-3xl text-fg mb-4">
           Presence is the missing primitive
         </h3>
         <p className="mx-auto max-w-xl text-fg-tertiary text-lg leading-relaxed mb-8">

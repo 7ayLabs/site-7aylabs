@@ -112,24 +112,24 @@ const ZK_MIGRATION = [
 
 const TECH_PILLARS = [
   {
-    title: "Physics-Based Verification",
+    title: "Based on Real Physics",
     description:
-      "Network latency between peers is constrained by the speed of light. 7aychain exploits this physical limit to triangulate position without GPS or external sensors.",
+      "Internet signals travel at a known speed. By measuring timing from multiple points, the network can pinpoint where you are — without GPS or any special equipment.",
   },
   {
-    title: "Zero-Knowledge Privacy",
+    title: "Privacy Built In",
     description:
-      "Actors prove they were present without revealing where. ZK circuits generate compact proofs that validators verify on-chain -- no persistent identity, no surveillance.",
+      "The network proves you were present without revealing exactly where. Your location stays private — no one sees it, not even the validators.",
   },
   {
-    title: "Cryptoeconomic Security",
+    title: "Validators Have Skin in the Game",
     description:
-      "Validators stake $7AY and face slashing for dishonest attestations. The cost of attack scales with the number of colluding validators required.",
+      "Every validator puts up real value to participate. If they try to lie about someone's location, they lose what they staked. Cheating costs real money.",
   },
   {
-    title: "AI-Resilient Design",
+    title: "AI Can't Fake This",
     description:
-      "AI can generate text, behavior, and interaction at scale -- but it cannot replicate physical presence bound by the laws of physics.",
+      "AI can write emails, generate fake reviews, and simulate behavior. But it can't physically be somewhere. That's what makes presence the ultimate proof of humanity.",
   },
 ] as const;
 
@@ -139,16 +139,12 @@ export default function TechnologyPage() {
       <PageHero
         label="Technology"
         title="Presence, Verified On-Chain"
-        description="7aychain is a Layer 1 blockchain where validators form witness circles, measure network latency, and triangulate physical presence. No GPS, no external oracles, no special hardware."
+        accentWords={["Verified"]}
+        description="7aychain is a blockchain that answers one question: is this person really here? Using the physics of internet connections, we verify presence — no GPS, no cameras, no special devices."
       />
 
       {/* Overview */}
-      <Section title="How 7aychain Works" className="py-16 md:py-20">
-        <p className="text-accent text-lg leading-relaxed mb-8 max-w-3xl font-medium">
-          A Layer 1 blockchain built to answer one question: is this actor
-          actually here?
-        </p>
-
+      <Section title="How 7aychain Works" className="py-20 md:py-28">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
           {TECH_PILLARS.map((pillar) => (
             <Card key={pillar.title} variant="interactive" padding="lg">
@@ -167,12 +163,12 @@ export default function TechnologyPage() {
       <Section
         label="Protocol Flow"
         title="Presence lifecycle"
-        className="py-16 md:py-24"
+        className="py-20 md:py-28"
       >
         <p className="text-fg-tertiary leading-relaxed mb-8 max-w-3xl">
-          Every presence declaration on 7aychain follows a six-phase epoch-bound lifecycle.
-          Each phase is enforced by the protocol &mdash; skipping steps or submitting out
-          of order is rejected at the runtime level.
+          Every time someone proves their presence on 7aychain, it follows a
+          six-step process &mdash; from announcing intent to receiving a
+          permanent, verifiable record.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -207,18 +203,18 @@ export default function TechnologyPage() {
       {/* Pallet Groups */}
       <Section
         label="Runtime Architecture"
-        title="16 protocol pallets"
-        className="py-16 md:py-20"
+        title="16 Core Modules"
+        className="py-20 md:py-28"
       >
         <p className="text-fg-tertiary leading-relaxed mb-8 max-w-3xl">
-          7aychain&apos;s runtime is built on Substrate (Polkadot SDK, polkadot-stable2503)
-          with 16 custom pallets organized into four functional groups.
+          7aychain&apos;s engine is built from 16 specialized modules, each
+          handling a different part of the verification process.
         </p>
 
         <div className="space-y-8">
           {PALLET_GROUPS.map((group) => (
             <Card key={group.category} variant="elevated" padding="lg">
-              <h3 className="font-serif font-bold text-xl text-fg mb-2">
+              <h3 className="font-display font-bold text-xl text-fg mb-2">
                 {group.category}
               </h3>
               <p className="text-fg-tertiary text-sm leading-relaxed mb-5">
@@ -251,7 +247,7 @@ export default function TechnologyPage() {
       <Section
         label="Zero-Knowledge"
         title="ZK proof migration path"
-        className="py-16 md:py-24"
+        className="py-20 md:py-28"
       >
         <p className="text-fg-tertiary leading-relaxed mb-8 max-w-3xl">
           7aychain implements a three-stage migration for ZK verification, moving from
@@ -285,7 +281,7 @@ export default function TechnologyPage() {
       </Section>
 
       {/* Stack Info */}
-      <Section centered className="py-16 md:py-20">
+      <Section centered className="py-20 md:py-28">
         <h2 className="heading-md text-fg mb-6">
           7aychain: Presence, Built for Real Use
         </h2>

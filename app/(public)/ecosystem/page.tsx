@@ -109,6 +109,7 @@ export default function EcosystemPage() {
       <PageHero
         label="Ecosystem"
         title="Build on the Presence Layer"
+        accentWords={["Presence"]}
         description="Developer tools, SDK integrations, and protocol modules for building applications on 7aychain's Proof of Presence infrastructure."
       />
 
@@ -116,7 +117,7 @@ export default function EcosystemPage() {
       <Section
         label="Developer Tools"
         title="Tools for interacting with 7aychain"
-        className="py-16 md:py-20"
+        className="py-20 md:py-28"
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
           {DEVELOPER_TOOLS.map((tool) => (
@@ -135,7 +136,7 @@ export default function EcosystemPage() {
       <Section
         label="SDK Integration"
         title="Connect from any language"
-        className="py-16 md:py-20"
+        className="py-20 md:py-28"
       >
         <p className="text-fg-tertiary leading-relaxed mb-8 max-w-3xl">
           7aychain exposes a standard Substrate RPC interface. Use any Substrate-compatible
@@ -143,7 +144,7 @@ export default function EcosystemPage() {
         </p>
         <div className="space-y-6">
           {SDK_EXAMPLES.map((sdk) => (
-            <Card key={sdk.language} variant="default" padding="md">
+            <Card key={sdk.language} variant="glass" padding="md" className="glow-border">
               <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-3">
                 <h3 className="font-semibold text-fg">{sdk.language}</h3>
                 <span className="text-fg-muted text-sm">&mdash; {sdk.description}</span>
@@ -159,8 +160,8 @@ export default function EcosystemPage() {
       {/* Protocol Modules */}
       <Section
         label="Protocol Modules"
-        title="16 pallets to build with"
-        className="py-16 md:py-24"
+        title="16 Modules to Build With"
+        className="py-20 md:py-28"
       >
         <p className="text-fg-tertiary leading-relaxed mb-8 max-w-3xl">
           7aychain&apos;s runtime is composed of 16 custom pallets organized into four
@@ -192,7 +193,7 @@ export default function EcosystemPage() {
       <Section
         label="Community"
         title="Join the 7aychain community"
-        className="py-16 md:py-20"
+        className="py-20 md:py-28"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4 max-w-2xl">
           <Card variant="interactive" padding="lg">

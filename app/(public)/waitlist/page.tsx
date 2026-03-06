@@ -2,51 +2,38 @@
 
 import { useState, useCallback, memo, type FormEvent } from "react";
 import { motion } from "framer-motion";
+import { Sparkles, MessageSquare, Award, Loader2 } from "lucide-react";
 import {
   staggerContainer,
   fadeUpItem,
-  defaultViewport,
 } from "@/lib/constants/animations";
-import { Badge, Card } from "@/components/ui";
+import { Badge } from "@/components/ui";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
-interface Phase {
-  number: number;
-  label: string;
-  title: string;
-  description: string;
-  status?: string;
-  active?: boolean;
-  isLast?: boolean;
-}
+const BENEFITS = [
+  {
+    icon: Sparkles,
+    title: "First to verify",
+    description: "Access the network before anyone else and be among the first to prove your presence.",
+  },
+  {
+    icon: MessageSquare,
+    title: "Shape the network",
+    description: "Your feedback directly influences what we build and how the protocol evolves.",
+  },
+  {
+    icon: Award,
+    title: "Founding member status",
+    description: "Permanent on-chain record as a founding participant of the 7aychain network.",
+  },
+] as const;
 
-const PHASES: Phase[] = [
-  {
-    number: 0,
-    label: "Phase 0",
-    title: "Early production access",
-    description:
-      "Small teams validating Proof of Presence in real environments, with direct feedback loops and hands-on support.",
-    status: "Live",
-    active: true,
-  },
-  {
-    number: 1,
-    label: "Phase 1",
-    title: "Expanded pilots",
-    description:
-      "Broader access for teams running pilots across multiple locations, workflows, or communities.",
-  },
-  {
-    number: 2,
-    label: "Phase 2",
-    title: "Broader availability",
-    description:
-      "Wider access as the protocol stabilizes and teams deploy at higher scale with minimal onboarding friction.",
-    isLast: true,
-  },
-];
+const PHASES = [
+  { label: "Phase 0", title: "Early access", status: "Live", active: true },
+  { label: "Phase 1", title: "Expanded pilots", status: null, active: false },
+  { label: "Phase 2", title: "Broader availability", status: null, active: false },
+] as const;
 
 function WaitlistPageComponent() {
   const [email, setEmail] = useState("");
@@ -92,176 +79,173 @@ function WaitlistPageComponent() {
   );
 
   return (
-    <section className="relative px-6 py-24 md:py-32">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-        {/* Left column - Form */}
-        <div className="relative flex flex-col">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="flex flex-col items-start text-left"
+    <section className="relative min-h-[80svh] flex items-center justify-center px-6 py-24 md:py-32">
+      {/* Ambient orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div
+          className="absolute w-[600px] h-[600px] rounded-full top-[10%] left-[20%]"
+          style={{ background: "radial-gradient(circle, rgba(23,142,119,0.06), transparent 70%)" }}
+        />
+        <div
+          className="absolute w-[400px] h-[400px] rounded-full bottom-[10%] right-[15%]"
+          style={{ background: "radial-gradient(circle, rgba(139,92,246,0.04), transparent 70%)" }}
+        />
+      </div>
+
+      <div className="relative z-10 max-w-3xl mx-auto w-full">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col items-center text-center"
+        >
+          {/* Badge */}
+          <motion.div variants={fadeUpItem}>
+            <Badge variant="accent">Early Access — Phase 0 Live</Badge>
+          </motion.div>
+
+          {/* Headline */}
+          <motion.h1
+            variants={fadeUpItem}
+            className="mt-8 font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tight text-fg"
           >
-            <motion.div
-              variants={fadeUpItem}
-              className="flex items-center gap-3 mb-6"
-            >
-              <Badge variant="accent">Phase 0 -- Live</Badge>
-            </motion.div>
+            The network is{" "}
+            <span className="gradient-text-accent">waking up</span>.
+          </motion.h1>
 
-            <motion.span
-              variants={fadeUpItem}
-              className="block text-sm uppercase tracking-widest text-accent mb-4"
-            >
-              Waitlist
-            </motion.span>
+          {/* Sub-headline */}
+          <motion.p
+            variants={fadeUpItem}
+            className="mt-6 text-fg-secondary text-lg md:text-xl max-w-2xl leading-relaxed"
+          >
+            Be among the first to prove you&apos;re here — join the people
+            building a world where presence matters more than passwords.
+          </motion.p>
 
-            <motion.h1
-              variants={fadeUpItem}
-              className="font-serif font-bold text-4xl md:text-5xl tracking-tight mb-4"
-            >
-              Get early access
-            </motion.h1>
-
-            <motion.p
-              variants={fadeUpItem}
-              className="text-fg-tertiary max-w-md mb-10 text-lg"
-            >
-              Private access for teams testing real-world presence in
-              production.
-            </motion.p>
-
-            <motion.form
-              variants={fadeUpItem}
-              onSubmit={handleSubmit}
-              className="flex w-full max-w-md flex-col gap-3"
-            >
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                <label htmlFor="waitlist-email" className="sr-only">
-                  Work email address
-                </label>
-                <input
-                  id="waitlist-email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="work@email.com"
-                  disabled={status === "loading" || status === "success"}
-                  aria-describedby="waitlist-privacy"
-                  className="flex-1 bg-[var(--color-bg-card)] border border-[var(--color-border-primary)] rounded-xl px-4 py-3 min-h-[48px] text-fg placeholder:text-fg-faint focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent/30 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                />
-                <button
-                  type="submit"
-                  disabled={status === "loading" || status === "success"}
-                  className="bg-accent text-black rounded-xl px-6 py-3 min-h-[48px] text-sm font-semibold hover:bg-accent-secondary transition-colors duration-normal disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
-                >
-                  {status === "loading"
-                    ? "Joining..."
-                    : status === "success"
-                      ? "Joined!"
-                      : "Join Waitlist"}
-                </button>
-              </div>
+          {/* Glass form panel */}
+          <motion.div
+            variants={fadeUpItem}
+            className="mt-10 w-full max-w-md glass-card p-8 md:p-10 glow-border"
+          >
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <label htmlFor="waitlist-email" className="sr-only">
+                Email address
+              </label>
+              <input
+                id="waitlist-email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@email.com"
+                disabled={status === "loading" || status === "success"}
+                aria-describedby="waitlist-privacy"
+                className="w-full bg-[var(--color-bg-card)] border border-[var(--color-border-primary)] rounded-xl px-4 py-3.5 min-h-[48px] text-fg placeholder:text-fg-faint focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-primary)]/50 focus:border-[var(--color-accent-primary)]/30 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              />
+              <button
+                type="submit"
+                disabled={status === "loading" || status === "success"}
+                className="w-full bg-[var(--color-accent-primary)] text-white rounded-xl px-6 py-3.5 min-h-[48px] text-base font-semibold hover:brightness-110 hover:shadow-[var(--shadow-glow)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              >
+                {status === "loading" && <Loader2 className="w-4 h-4 animate-spin" />}
+                {status === "loading"
+                  ? "Joining..."
+                  : status === "success"
+                    ? "You're in!"
+                    : "Get Early Access"}
+              </button>
 
               {status === "error" && (
-                <p role="alert" className="text-red-400 text-sm">
+                <p role="alert" className="text-red-400 text-sm text-center">
                   {errorMessage}
                 </p>
               )}
 
               {status === "success" && (
-                <p role="status" className="text-emerald-400 text-sm">
-                  You&apos;re on the list! We&apos;ll reach out when access
-                  opens.
+                <p role="status" className="text-emerald-400 text-sm text-center">
+                  Welcome aboard! We&apos;ll reach out when access opens.
                 </p>
               )}
-            </motion.form>
+            </form>
 
-            <motion.p
+            <p
               id="waitlist-privacy"
-              variants={fadeUpItem}
-              className="mt-6 text-xs text-fg-faint"
+              className="mt-4 text-xs text-fg-faint text-center"
             >
-              We only store your email to contact you about access. No sharing,
-              no tracking, no marketing lists.
-            </motion.p>
+              We only need your email. No biometrics, no personal ID, no location data.
+            </p>
           </motion.div>
-        </div>
 
-        {/* Right column - Access waves */}
-        <div className="relative w-full pb-12">
+          {/* Benefit cards */}
           <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={defaultViewport}
-            className="flex flex-col items-start"
+            variants={fadeUpItem}
+            className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full"
           >
-            <motion.span
-              variants={fadeUpItem}
-              className="block text-sm uppercase tracking-widest text-accent mb-4"
-            >
-              Access waves
-            </motion.span>
-
-            <motion.h2
-              variants={fadeUpItem}
-              className="font-serif font-bold text-3xl md:text-4xl tracking-tight text-fg mb-6"
-            >
-              How early access works
-            </motion.h2>
-
-            <motion.p
-              variants={fadeUpItem}
-              className="text-fg-tertiary max-w-lg leading-relaxed mb-10"
-            >
-              We&apos;re opening Proof of Presence in controlled waves &mdash;
-              prioritizing teams that need real-world validation today.
-            </motion.p>
-
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={defaultViewport}
-              className="relative flex flex-col gap-6 w-full"
-            >
-              {PHASES.map((phase) => (
-                <motion.div key={phase.number} variants={fadeUpItem}>
-                  <Card
-                    variant={phase.active ? "interactive" : "default"}
-                    padding="md"
-                    className={phase.active ? "border-accent/20" : ""}
-                  >
-                    <div className="flex items-center gap-3 mb-2">
-                      <div
-                        className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold ${
-                          phase.active
-                            ? "bg-accent text-black"
-                            : "border border-[var(--color-border-secondary)] text-fg-muted"
-                        }`}
-                      >
-                        {phase.number}
-                      </div>
-                      <span className="text-xs uppercase tracking-widest text-fg-muted">
-                        {phase.label}
-                      </span>
-                      {phase.status && (
-                        <Badge variant="success">{phase.status}</Badge>
-                      )}
-                    </div>
-                    <h3 className="text-fg font-semibold mb-1 ml-11">
-                      {phase.title}
-                    </h3>
-                    <p className="text-sm text-fg-tertiary leading-relaxed ml-11">
-                      {phase.description}
-                    </p>
-                  </Card>
-                </motion.div>
-              ))}
-            </motion.div>
+            {BENEFITS.map((benefit) => (
+              <div
+                key={benefit.title}
+                className="glass-card p-5 text-center flex flex-col items-center gap-3"
+              >
+                <div className="w-10 h-10 rounded-xl bg-[var(--color-accent-dim)] flex items-center justify-center">
+                  <benefit.icon
+                    className="w-5 h-5 text-[var(--color-accent-primary)]"
+                    strokeWidth={1.75}
+                  />
+                </div>
+                <h3 className="font-semibold text-fg text-sm">
+                  {benefit.title}
+                </h3>
+                <p className="text-fg-tertiary text-xs leading-relaxed">
+                  {benefit.description}
+                </p>
+              </div>
+            ))}
           </motion.div>
-        </div>
+
+          {/* Timeline */}
+          <motion.div
+            variants={fadeUpItem}
+            className="mt-12 flex items-center justify-center gap-0"
+          >
+            {PHASES.map((phase, i) => (
+              <div key={phase.label} className="flex items-center">
+                <div className="flex items-center gap-2 px-4 py-2">
+                  <div
+                    className={`w-2.5 h-2.5 rounded-full ${
+                      phase.active
+                        ? "bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.4)]"
+                        : "bg-[var(--color-border-secondary)]"
+                    }`}
+                  />
+                  <span className={`text-xs font-mono ${phase.active ? "text-fg" : "text-fg-muted"}`}>
+                    {phase.label}
+                  </span>
+                  {phase.status && (
+                    <Badge variant="success" className="text-[10px] px-2 py-0.5">
+                      {phase.status}
+                    </Badge>
+                  )}
+                </div>
+                {i < PHASES.length - 1 && (
+                  <div className="w-8 h-px bg-[var(--color-border-secondary)]" />
+                )}
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Social proof / trust strip */}
+          <motion.div
+            variants={fadeUpItem}
+            className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-mono text-fg-faint"
+          >
+            <span>Devnet live</span>
+            <span className="hidden sm:inline">·</span>
+            <span>6 active nodes</span>
+            <span className="hidden sm:inline">·</span>
+            <span>16 core modules</span>
+            <span className="hidden sm:inline">·</span>
+            <span>v0.8.26</span>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

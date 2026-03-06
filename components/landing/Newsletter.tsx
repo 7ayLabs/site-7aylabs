@@ -32,20 +32,29 @@ export default function Newsletter() {
   return (
     <section
       aria-labelledby="newsletter-title"
-      className="w-full px-6 py-24 md:py-32 flex items-center justify-center text-center relative"
+      className="relative w-full px-6 py-24 md:py-32 flex items-center justify-center text-center"
     >
-      <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center gap-6">
+      {/* Teal ambient orb */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
+        <div
+          className="absolute w-[600px] h-[400px] rounded-full top-[20%] left-[30%]"
+          style={{ background: "radial-gradient(circle, rgba(23,142,119,0.08), transparent 70%)" }}
+        />
+      </div>
+
+      {/* Glass panel */}
+      <div className="relative z-10 glass-card max-w-2xl mx-auto p-10 md:p-14 flex flex-col items-center gap-6 text-center glow-border">
         {/* Heading */}
         <motion.h2
           id="newsletter-title"
-          className="text-3xl md:text-4xl font-semibold text-fg tracking-tight font-serif leading-tight"
+          className="text-3xl md:text-4xl font-semibold text-fg tracking-tight font-display leading-tight"
           variants={itemVariant}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
           custom={0}
         >
-          Stay Updated
+          Stay in the Loop
         </motion.h2>
 
         {/* Description */}
@@ -57,15 +66,15 @@ export default function Newsletter() {
           viewport={VIEWPORT}
           custom={1}
         >
-          Product insights, launches, and real&#x2011;world presence
-          infrastructure.
+          Protocol updates, presence insights, and early access
+          announcements&nbsp;&mdash; straight to your inbox.
         </motion.p>
 
         {/* CTA button */}
         <motion.a
           href="/newsletter"
-          aria-label="Read the 7ayLabs newsletter"
-          className="mt-6 inline-flex items-center gap-3 px-8 py-3 rounded-full bg-fg text-bg font-medium text-base md:text-lg transition-colors duration-200 hover:opacity-90"
+          aria-label="Subscribe to 7ayLabs updates"
+          className="mt-4 inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-[var(--color-accent-primary)] text-white font-semibold text-base hover:shadow-glow transition-all duration-300"
           variants={itemVariant}
           initial="hidden"
           whileInView="visible"
@@ -73,8 +82,20 @@ export default function Newsletter() {
           custom={2}
         >
           <Mail size={16} />
-          Read the Newsletter
+          Subscribe to Updates
         </motion.a>
+
+        {/* Trust line */}
+        <motion.p
+          className="font-mono text-xs text-fg-faint mt-6"
+          variants={itemVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT}
+          custom={3}
+        >
+          No spam. Unsubscribe anytime.
+        </motion.p>
       </div>
     </section>
   );

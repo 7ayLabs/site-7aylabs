@@ -32,50 +32,46 @@ export default function AboutPage() {
       <PageHero
         label="Who We Are"
         title="Our Story"
+        accentWords={["Story"]}
         description={[
-          "Built to restore trust through real presence.",
-          "Presence is the foundation for accountable systems.",
+          "We started 7ayLabs with a simple question: what if you could prove you were somewhere without revealing who you are?",
+          "That question became 7aychain — a network that verifies presence using the physics of the internet itself.",
         ]}
       />
 
       <Section
         label="What We're Building"
         title="Our Mission"
-        className="py-16 md:py-20"
+        className="py-20 md:py-28"
       >
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start mt-6">
           <div className="space-y-5 text-fg-tertiary leading-relaxed">
             <p>
-              7ayLabs builds 7aychain, a Layer 1 blockchain with on-chain Proof
-              of Presence. Validators form witness circles, measure network
-              latency between peers, and triangulate positions &mdash; no GPS,
-              no external oracles, no special hardware.
+              7ayLabs builds 7aychain, a new kind of blockchain. Instead of
+              scanning your eyes or asking for ID, our network verifies that
+              you&apos;re physically present at a location &mdash; using nothing
+              more than your internet connection.
             </p>
             <p>
-              When presence is optional or ignored, systems break down &mdash;
-              processes become unreliable, trust erodes, and accountability
-              disappears. Without a clear signal that someone was truly there,
-              outcomes lose meaning.
+              Validators across the network measure connection timing to confirm
+              your location. No GPS. No cameras. No special hardware.
             </p>
             <p>
-              On 7aychain, every presence declaration goes through an epoch-bound
-              lifecycle: declared, attested by witnesses, triangulated, and
-              finalized by validators. This foundational layer underpins the
-              integrity of digital coordination.
+              When the world can&apos;t tell real people from bots, presence
+              becomes the most valuable signal. We&apos;re building the
+              infrastructure to make that signal available to everyone.
             </p>
           </div>
           <div className="space-y-5 text-fg-tertiary leading-relaxed">
             <p>
-              For businesses, presence-first infrastructure delivers measurable
-              value &mdash; reducing fraud, streamlining compliance, and improving
-              operational clarity. Workflows become more efficient, outcomes are
-              auditable, and teams can trust the data.
+              For businesses, this means fraud drops, compliance gets simpler,
+              and every process that depends on &ldquo;was this person actually
+              here?&rdquo; finally gets a reliable answer.
             </p>
             <p>
-              By anchoring digital actions to verified presence, organizations
-              unlock new forms of accountability and coordination. This impact
-              extends beyond technology: it transforms how people collaborate
-              and how trust is established at every operational level.
+              For people, it means proving you were somewhere without handing
+              over your identity. No surveillance. No data harvesting. Just
+              proof.
             </p>
           </div>
         </div>
@@ -84,26 +80,18 @@ export default function AboutPage() {
       <Section
         label="Our Long-Term View"
         title="Our Vision"
-        className="py-16 md:py-20"
+        className="py-20 md:py-28"
       >
         <div className="space-y-5 max-w-3xl text-fg-tertiary leading-relaxed mt-2">
           <p>
-            We envision a future where presence is a default system signal
-            &mdash; embedded deeply in the architecture of digital ecosystems.
-            Instead of being an afterthought, presence will be a primary data
-            point that drives trust, access, and meaningful interaction.
+            We see a future where &ldquo;being there&rdquo; is a first-class
+            digital signal &mdash; not an afterthought. As AI gets better at
+            faking everything else, physical presence becomes the one thing that
+            can&apos;t be simulated.
           </p>
           <p>
-            As AI and automation scale rapidly, distinguishing real human
-            participation from synthetic behavior becomes critical. Systems
-            without strong presence verification will be vulnerable to
-            manipulation.
-          </p>
-          <p>
-            7ayLabs is building 7aychain to support this long-term
-            coordination, focusing on durable, foundational blockchain
-            technology built on Substrate (Polkadot SDK) rather than chasing
-            trends. Our goal is to enable systems that last.
+            7ayLabs is building the infrastructure for that future. Slowly,
+            carefully, and with the kind of rigor that real-world systems demand.
           </p>
         </div>
       </Section>
@@ -111,7 +99,7 @@ export default function AboutPage() {
       <Section
         label="How We Think"
         title="Principles that guide our work"
-        className="py-16 md:py-24"
+        className="py-20 md:py-28"
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
           {PRINCIPLES.map((principle) => (

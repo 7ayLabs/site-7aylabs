@@ -33,6 +33,7 @@ export default function NewsletterPage() {
       <PageHero
         label="Newsletter"
         title="Stay in the Loop"
+        accentWords={["Loop"]}
         description="Product insights, protocol progress, and real-world presence infrastructure -- delivered when it matters."
       />
 
@@ -57,7 +58,7 @@ export default function NewsletterPage() {
       </Section>
 
       <Section centered className="py-20 md:py-28">
-        <h2 className="font-serif font-bold text-3xl md:text-4xl text-fg mb-6">
+        <h2 className="font-display font-bold text-3xl md:text-4xl text-fg mb-6">
           Follow our progress
         </h2>
         <p className="text-fg-tertiary text-lg leading-relaxed max-w-2xl mx-auto mb-10">

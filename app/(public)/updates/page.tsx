@@ -102,8 +102,8 @@ export default function UpdatesPage() {
           <span className="block mb-4 text-sm uppercase tracking-widest text-accent">
             Updates
           </span>
-          <h1 className="font-serif font-bold text-4xl md:text-5xl tracking-tight leading-tight mb-3">
-            Project Status
+          <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tight leading-tight mb-3">
+            Project <span className="gradient-text-accent">Status</span>
           </h1>
           <p className="text-base md:text-lg text-fg-muted max-w-2xl">
             Last updated &middot; Feb 28, 2026
@@ -139,9 +139,9 @@ export default function UpdatesPage() {
               key={key}
               onClick={() => setFilter(key)}
               aria-pressed={filter === key}
-              className={`rounded-full px-4 py-1.5 min-h-[36px] text-xs uppercase tracking-wide transition-colors duration-fast ${
+              className={`rounded-full px-4 py-1.5 min-h-[36px] text-xs uppercase tracking-wide transition-all duration-300 ${
                 filter === key
-                  ? "bg-accent text-black font-semibold"
+                  ? "glass-card border-[var(--color-border-accent)] text-accent font-semibold"
                   : "border border-[var(--color-border-primary)] text-fg-muted hover:border-[var(--color-border-secondary)] hover:text-fg-tertiary"
               }`}
             >
@@ -168,7 +168,7 @@ export default function UpdatesPage() {
                   variant="default"
                   padding="md"
                   className={
-                    isLatest ? "border-[var(--color-border-accent)]" : ""
+                    isLatest ? "border-l-2 border-l-[var(--color-accent-primary)] border-[var(--color-border-accent)]" : ""
                   }
                 >
                   <div className="flex items-start justify-between gap-4 mb-2">

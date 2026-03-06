@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
+import { staggerContainer, fadeUpItem } from "@/lib/constants/animations";
 
 /* ------------------------------------------------------------------ */
 /*  Constants                                                          */
@@ -15,43 +16,26 @@ interface Step {
 const STEPS: readonly Step[] = [
   {
     number: "01",
-    title: "Declare Presence",
+    title: "Open the App",
     description:
-      "An actor commits a cryptographic hash of their presence data to the chain. The actual location remains hidden during the commit phase.",
+      "Connect from any device — your phone, laptop, or tablet. No downloads, no equipment, no setup.",
   },
   {
     number: "02",
-    title: "Witness Circle Validates",
+    title: "We Confirm You're There",
     description:
-      "A pseudorandom set of validators forms a witness circle. Each validator independently measures network latency and triangulates the actor\u2019s physical position.",
+      "The network measures your connection from multiple points to confirm your real-world location — privately and instantly.",
   },
   {
     number: "03",
-    title: "On-Chain Finality",
+    title: "You Get Your Proof",
     description:
-      "A ZK proof is generated, the witness circle reaches quorum, and the presence attestation is finalized on-chain. A position-bound token (PBT) is minted.",
+      "Your verified presence is recorded permanently on a public record you own. No company can change or revoke it.",
   },
 ] as const;
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.45, ease: "easeOut" },
-  },
-};
+/** Flow indicator labels corresponding to each step */
+const FLOW_LABELS = ["Connect", "Verify", "Own"] as const;
 
 /* ------------------------------------------------------------------ */
 /*  Component                                                          */
@@ -59,41 +43,45 @@ const itemVariants: Variants = {
 
 export default function HowItWorks() {
   return (
-    <section className="relative w-full px-6 md:px-12 py-24 md:py-32">
+    <section
+      id="how-it-works"
+      className="relative w-full px-6 md:px-12 py-24 md:py-32"
+    >
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          variants={containerVariants}
+          variants={staggerContainer}
         >
           <motion.span
-            variants={itemVariants}
+            variants={fadeUpItem}
             className="block text-sm uppercase tracking-widest text-fg-muted mb-6 text-center"
           >
             How It Works
           </motion.span>
 
           <motion.h2
-            variants={itemVariants}
-            className="font-serif font-bold text-3xl md:text-4xl text-fg text-center mb-16"
+            variants={fadeUpItem}
+            className="font-display font-bold text-3xl md:text-4xl text-fg text-center mb-16"
           >
             From presence to proof in three steps
           </motion.h2>
 
+          {/* Step cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
             {STEPS.map((step) => (
               <motion.div
                 key={step.number}
-                variants={itemVariants}
-                className="relative flex flex-col"
+                variants={fadeUpItem}
+                className="glass-card p-6 md:p-8 glow-border group relative flex flex-col rounded-2xl"
               >
                 {/* Step number */}
-                <span className="text-5xl font-bold text-[var(--color-accent-dim)] font-mono mb-4 select-none">
+                <span className="text-5xl font-extrabold font-display gradient-text-accent mb-4 select-none block">
                   {step.number}
                 </span>
 
-                <h3 className="font-serif font-semibold text-xl text-fg mb-3">
+                <h3 className="font-display font-semibold text-xl text-fg mb-3">
                   {step.title}
                 </h3>
 
@@ -104,22 +92,27 @@ export default function HowItWorks() {
             ))}
           </div>
 
-          {/* Arrow flow indicator */}
+          {/* Flow indicator: glass pills connected by gradient lines */}
           <motion.div
-            variants={itemVariants}
-            className="hidden md:flex items-center justify-center gap-4 mt-12 text-fg-muted text-sm"
+            variants={fadeUpItem}
+            className="hidden md:flex items-center justify-center gap-0 mt-12"
           >
-            <span className="px-4 py-1.5 rounded-full border border-[var(--color-border-primary)] text-fg-secondary">
-              Declare
-            </span>
-            <span>&rarr;</span>
-            <span className="px-4 py-1.5 rounded-full border border-[var(--color-border-primary)] text-fg-secondary">
-              Validate
-            </span>
-            <span>&rarr;</span>
-            <span className="px-4 py-1.5 rounded-full border border-[var(--color-border-primary)] text-fg-secondary">
-              Finalize
-            </span>
+            {FLOW_LABELS.map((label, i) => (
+              <span key={label} className="contents">
+                <span className="px-5 py-2 glass-card rounded-full font-mono text-[var(--color-accent-primary)] text-xs">
+                  {label}
+                </span>
+                {i < FLOW_LABELS.length - 1 && (
+                  <div
+                    className={`w-12 h-px ${
+                      i === 0
+                        ? "bg-gradient-to-r from-[var(--color-accent-primary)] to-[var(--color-accent-secondary)]"
+                        : "bg-gradient-to-r from-[var(--color-accent-secondary)] to-[var(--color-accent-tertiary)]"
+                    }`}
+                  />
+                )}
+              </span>
+            ))}
           </motion.div>
         </motion.div>
       </div>

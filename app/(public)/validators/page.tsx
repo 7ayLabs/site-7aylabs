@@ -104,7 +104,8 @@ export default function ValidatorsPage() {
       <PageHero
         label="Validators"
         title="Run a 7aychain Validator"
-        description="Validators are the backbone of 7aychain. They form witness circles, measure network latency, triangulate physical presence, and finalize attestations with quorum consensus."
+        accentWords={["Validator"]}
+        description="Validators power the 7aychain network. They form groups, measure internet connections, confirm people's locations, and keep the network honest."
       />
 
       {/* Role Overview */}
@@ -116,10 +117,10 @@ export default function ValidatorsPage() {
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start mt-4">
           <div className="space-y-5 text-fg-tertiary leading-relaxed">
             <p>
-              On 7aychain, validators do more than produce blocks. They actively
-              participate in the Proof of Presence protocol by forming{" "}
-              <strong className="text-fg-secondary">witness circles</strong> around
-              presence declarations.
+              On 7aychain, validators do more than keep the network running. They
+              actively verify that people are where they claim to be &mdash; forming
+              groups that independently confirm each person&apos;s location using
+              internet connection measurements.
             </p>
             <p>
               Each validator in a witness circle measures network latency to the
@@ -130,10 +131,9 @@ export default function ValidatorsPage() {
           </div>
           <div className="space-y-5 text-fg-tertiary leading-relaxed">
             <p>
-              Once a sufficient quorum of validators agrees on a position estimate,
-              the presence declaration is finalized on-chain. Validators that provide
-              honest attestations earn staking rewards, while dishonest behavior
-              triggers slashing.
+              When enough validators agree on someone&apos;s location, their presence
+              is confirmed and permanently recorded. Honest validators earn rewards.
+              Dishonest ones lose their stake.
             </p>
             <p>
               The validator set rotates per epoch, ensuring no single group of

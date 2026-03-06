@@ -26,16 +26,6 @@ export interface NavCategory {
   items: NavItem[];
 }
 
-export type PhaseStatus = "completed" | "in-progress" | "planned";
-
-export interface RoadmapPhase {
-  version: string;
-  title: string;
-  description: string;
-  status: PhaseStatus;
-  items: string[];
-}
-
 export type Theme = "light" | "dark";
 
 export interface LinkCardItem {

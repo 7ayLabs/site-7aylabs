@@ -188,6 +188,7 @@ export default function GlossaryPage() {
       <PageHero
         label="Glossary"
         title="7aychain Terminology"
+        accentWords={["Terminology"]}
         description="Definitions of key terms, pallets, and concepts in the 7aychain Proof of Presence protocol."
       />
 
@@ -198,7 +199,7 @@ export default function GlossaryPage() {
             <a
               key={letter}
               href={`#letter-${letter}`}
-              className="w-9 h-9 rounded-lg bg-[var(--color-bg-card)] border border-[var(--color-border-primary)] text-fg-secondary text-sm font-medium flex items-center justify-center hover:bg-[var(--color-bg-card-hover)] hover:text-fg transition-colors"
+              className="w-9 h-9 rounded-full glass-card text-fg-secondary text-sm font-medium flex items-center justify-center hover:text-fg hover:shadow-[var(--glow-cyan-sm)] transition-all duration-300"
             >
               {letter}
             </a>
@@ -213,12 +214,12 @@ export default function GlossaryPage() {
             const termsForLetter = GLOSSARY_TERMS.filter((t) => t.letter === letter);
             return (
               <div key={letter} id={`letter-${letter}`}>
-                <h2 className="font-serif font-bold text-3xl text-fg mb-6 border-b border-[var(--color-border-primary)] pb-3">
+                <h2 className="font-display font-bold text-3xl text-fg mb-6 border-b border-[var(--color-border-primary)] pb-3">
                   {letter}
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {termsForLetter.map((item) => (
-                    <Card key={item.term} variant="default" padding="md">
+                    <Card key={item.term} variant="glass" padding="md" className="glow-border">
                       <h3 className="font-semibold text-fg text-lg mb-2">
                         {item.term}
                       </h3>

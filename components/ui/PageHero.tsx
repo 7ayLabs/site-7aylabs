@@ -1,6 +1,6 @@
 "use client";
 
-import { memo } from "react";
+import { memo, useMemo } from "react";
 import { motion } from "framer-motion";
 import {
   staggerContainer,
@@ -14,6 +14,8 @@ interface PageHeroProps {
   label: string;
   /** Main page title */
   title: string;
+  /** Words in the title that should get gradient-text-accent treatment */
+  accentWords?: string[];
   /** Description paragraph(s) */
   description: string | string[];
   /** Optional illustration element below description */
@@ -22,14 +24,34 @@ interface PageHeroProps {
   className?: string;
 }
 
+function renderTitleWithAccent(title: string, accentWords?: string[]) {
+  if (!accentWords || accentWords.length === 0) return title;
+
+  const pattern = new RegExp(`(${accentWords.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join("|")})`, "gi");
+  const parts = title.split(pattern);
+
+  return parts.map((part, i) => {
+    const isAccent = accentWords.some(w => w.toLowerCase() === part.toLowerCase());
+    return isAccent ? (
+      <span key={i} className="gradient-text-accent">
+        {part}
+      </span>
+    ) : (
+      <span key={i}>{part}</span>
+    );
+  });
+}
+
 function PageHeroComponent({
   label,
   title,
+  accentWords,
   description,
   illustration,
   className,
 }: PageHeroProps) {
   const descriptions = Array.isArray(description) ? description : [description];
+  const renderedTitle = useMemo(() => renderTitleWithAccent(title, accentWords), [title, accentWords]);
 
   return (
     <section
@@ -54,9 +76,9 @@ function PageHeroComponent({
 
         <motion.h1
           variants={fadeUpItem}
-          className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight text-fg"
+          className="font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tight text-fg"
         >
-          {title}
+          {renderedTitle}
         </motion.h1>
 
         {descriptions.map((desc, index) => (

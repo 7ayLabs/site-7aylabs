@@ -13,7 +13,6 @@ export const ROUTES = {
   waitlist: "/waitlist",
   newsletter: "/newsletter",
   services: "/services",
-  roadmap: "/roadmap",
 } as const;
 
 export const EXTERNAL_LINKS = {
@@ -40,7 +39,6 @@ export const NAV_CATEGORIES = [
       { href: ROUTES.technology, label: "Technology" },
       { href: ROUTES.whyPresence, label: "Why Presence" },
       { href: ROUTES.glossary, label: "Glossary" },
-      { href: ROUTES.roadmap, label: "Roadmap" },
     ],
   },
   {
@@ -76,7 +74,6 @@ export const FOOTER_LINK_GROUPS = [
       { href: ROUTES.technology, label: "Technology" },
       { href: ROUTES.whyPresence, label: "Why Presence" },
       { href: ROUTES.glossary, label: "Glossary" },
-      { href: ROUTES.roadmap, label: "Roadmap" },
     ],
   },
   {

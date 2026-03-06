@@ -3,51 +3,34 @@
 import PopReveal from "@/components/ui/PopReveal";
 
 /* ------------------------------------------------------------------ */
-/*  Types                                                              */
-/* ------------------------------------------------------------------ */
-
-interface StatItem {
-  readonly label: string;
-  readonly description: string;
-}
-
-interface ColumnItem {
-  readonly heading: string;
-  readonly description: string;
-}
-
-/* ------------------------------------------------------------------ */
 /*  Constants                                                          */
 /* ------------------------------------------------------------------ */
 
-const COLUMNS: readonly ColumnItem[] = [
-  {
-    heading: "Signal you can trust",
-    description:
-      "Proof of Presence turns real\u2011world participation into high\u2011quality signal. Platforms get cleaner data, stronger communities, and decisions backed by reality \u2014 not inflated metrics or synthetic behavior.",
-  },
-  {
-    heading: "Secure by physical reality",
-    description:
-      "By tying access and incentives to physical presence, Proof of Presence adds a natural security layer against fraud, replay attacks, and synthetic behavior \u2014 while enabling efficient growth without burning capital.",
-  },
-] as const;
+interface ValueCard {
+  readonly title: string;
+  readonly description: string;
+}
 
-const STATS: readonly StatItem[] = [
+const CARDS: readonly ValueCard[] = [
   {
-    label: "No Hardware Needed",
+    title: "Your presence is your proof",
     description:
-      "Unlike iris scanners or DePIN sensors, 7aychain uses existing network infrastructure. Any device, any validator.",
+      "In a world full of bots and fake accounts, prove something no one can fake: that you were actually there.",
   },
   {
-    label: "On-Chain Finality",
+    title: "Be somewhere. Prove it. Own it.",
     description:
-      "Presence attestations are finalized by validator quorum with commit\u2011reveal \u2014 not stored in a centralized database.",
+      "Turn the simple act of being at a place into a verifiable digital record you control\u00A0\u2014\u00A0forever.",
   },
   {
-    label: "Cryptoeconomic Security",
+    title: "Private by nature, not by promise",
     description:
-      "Validators stake $7AY and face slashing for dishonest triangulation. Manipulation costs real capital.",
+      "We don\u2019t scan your body. We don\u2019t track your identity. We verify where you are\u00A0\u2014\u00A0that\u2019s all we need.",
+  },
+  {
+    title: "Built for humans, not hardware",
+    description:
+      "No special devices. No eye scans. No fingerprint readers. Phone\u00A0+\u00A0internet\u00A0=\u00A0you\u2019re in.",
   },
 ] as const;
 
@@ -58,76 +41,40 @@ const DELAY_STEP = 0.06;
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
 
-export default function Projects() {
+export default function WhyChain() {
   return (
     <section className="relative w-full mx-auto px-6 py-24 text-fg">
       <div className="max-w-5xl mx-auto flex flex-col items-center gap-12">
-        {/* Main heading */}
+        {/* Section heading */}
         <PopReveal delay={0}>
-          <h2 className="font-serif text-4xl sm:text-5xl font-semibold leading-snug tracking-tight text-center mb-1">
-            A human&#x2011;verified internet layer
+          <h2 className="heading-lg text-center">
+            Why{" "}
+            <span className="gradient-text-accent">7aychain</span>?
           </h2>
         </PopReveal>
 
-        {/* Main description */}
+        {/* Section description */}
         <PopReveal delay={DELAY_STEP}>
-          <p className="text-fg-secondary text-lg leading-relaxed text-center max-w-3xl mb-2 mt-0">
-            Proof of Presence anchors digital systems to real human activity. It
-            restores trust, reduces noise from automation, and enables scalable
-            business models built on verified participation&nbsp;&mdash; not bots
-            or synthetic engagement.
+          <p className="text-fg-secondary text-lg leading-relaxed text-center max-w-3xl mt-0">
+            In a world of bots and fake accounts, presence is the one thing
+            that can&rsquo;t be faked.
           </p>
         </PopReveal>
 
-        {/* Two-column grid */}
+        {/* 2-column value proposition grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
-          {COLUMNS.map((col, i) => (
-            <div key={col.heading} className="flex flex-col gap-3 sm:gap-4">
-              <PopReveal delay={DELAY_STEP * (3 + i * 2)}>
-                <h3 className="font-serif text-2xl sm:text-3xl font-semibold">
-                  {col.heading}
+          {CARDS.map((card, i) => (
+            <PopReveal key={card.title} delay={DELAY_STEP * (2 + i)}>
+              <div className="glass-card glow-border p-6 md:p-8 flex flex-col gap-3 h-full">
+                <h3 className="heading-sm text-fg">
+                  {card.title}
                 </h3>
-              </PopReveal>
-              <PopReveal delay={DELAY_STEP * (4 + i * 2)}>
                 <p className="text-fg-secondary leading-relaxed">
-                  {col.description}
+                  {card.description}
                 </p>
-              </PopReveal>
-            </div>
-          ))}
-        </div>
-
-        {/* Extra paragraph */}
-        <PopReveal delay={DELAY_STEP * 7}>
-          <p className="mt-6 text-center text-fg-secondary text-base leading-relaxed max-w-4xl">
-            Beyond trust and security, Proof of Presence unlocks real&#x2011;world
-            logistics and AI&#x2011;resilient systems&nbsp;&mdash; enabling fair
-            access control, verifiable attendance, and human&#x2011;only
-            participation in environments where automation and synthetic actors
-            would otherwise dominate.
-          </p>
-        </PopReveal>
-
-        {/* Stats section */}
-        <div className="w-full max-w-4xl mt-6 flex flex-col gap-6">
-          <div className="h-px w-full bg-[var(--color-border-primary)]" />
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
-            {STATS.map((stat, i) => (
-              <div key={stat.label} className="flex flex-col gap-2">
-                <PopReveal delay={DELAY_STEP * (8 + i * 2)}>
-                  <p className="text-sm tracking-wide text-fg-muted uppercase">
-                    {stat.label}
-                  </p>
-                </PopReveal>
-                <PopReveal delay={DELAY_STEP * (9 + i * 2)}>
-                  <p className="text-fg-secondary text-sm leading-relaxed">
-                    {stat.description}
-                  </p>
-                </PopReveal>
               </div>
-            ))}
-          </div>
+            </PopReveal>
+          ))}
         </div>
       </div>
     </section>

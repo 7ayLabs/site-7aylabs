@@ -1,17 +1,59 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { motion, type Variants } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion";
+
+/* ------------------------------------------------------------------ */
+/*  Animated counter hook                                              */
+/* ------------------------------------------------------------------ */
+
+function useCountUp(target: number, duration = 1500, active = false) {
+  const [value, setValue] = useState(0);
+  const hasRun = useRef(false);
+
+  useEffect(() => {
+    if (!active || hasRun.current) return;
+    hasRun.current = true;
+
+    let start: number | null = null;
+    let rafId: number;
+
+    const step = (timestamp: number) => {
+      if (start === null) start = timestamp;
+      const elapsed = timestamp - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // ease-out cubic for a natural deceleration
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setValue(Math.round(eased * target));
+
+      if (progress < 1) {
+        rafId = requestAnimationFrame(step);
+      }
+    };
+
+    rafId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafId);
+  }, [active, target, duration]);
+
+  return value;
+}
 
 /* ------------------------------------------------------------------ */
 /*  Constants                                                          */
 /* ------------------------------------------------------------------ */
 
-const STATS = [
+interface Stat {
+  readonly label: string;
+  readonly numericValue?: number;
+  readonly description: string;
+}
+
+const STATS: readonly Stat[] = [
   { label: "v0.8.26", description: "Devnet version" },
-  { label: "6", description: "Validators" },
-  { label: "16", description: "Pallets" },
-  { label: "111", description: "Spec version" },
+  { label: "6", numericValue: 6, description: "Active Nodes" },
+  { label: "16", numericValue: 16, description: "Core Modules" },
+  { label: "111", numericValue: 111, description: "Version" },
 ] as const;
 
 const containerVariants: Variants = {
@@ -35,13 +77,39 @@ const itemVariants: Variants = {
 };
 
 /* ------------------------------------------------------------------ */
+/*  Stat cell with optional count-up                                   */
+/* ------------------------------------------------------------------ */
+
+function StatCell({ stat, inView }: { stat: Stat; inView: boolean }) {
+  const animated = useCountUp(stat.numericValue ?? 0, 1500, inView);
+  const display = stat.numericValue != null ? animated : stat.label;
+
+  return (
+    <motion.div
+      variants={itemVariants}
+      className="text-center glass-card px-4 py-4"
+    >
+      <span className="block text-2xl font-bold font-mono text-[var(--color-accent-primary)] mb-1">
+        {display}
+      </span>
+      <span className="text-xs text-fg-muted uppercase tracking-wider font-mono">
+        {stat.description}
+      </span>
+    </motion.div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
 
 export default function DevnetStatus() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(sectionRef, { once: true, margin: "-60px" });
+
   return (
     <section className="relative w-full px-6 md:px-12 py-16 md:py-24">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto" ref={sectionRef}>
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -50,37 +118,33 @@ export default function DevnetStatus() {
         >
           <Link
             href="/devnet"
-            className="block rounded-2xl border border-[var(--color-border-primary)] bg-[var(--color-bg-card)] p-8 md:p-10 hover:bg-[var(--color-bg-card-hover)] hover:border-[var(--color-border-secondary)] transition-all duration-300 group"
+            className="block glass-card glow-border p-8 md:p-12 group transition-all duration-300"
           >
             <motion.div variants={itemVariants} className="flex flex-col items-center text-center">
-              {/* Status indicator */}
+              {/* Status indicator -- animated ping dot */}
               <div className="flex items-center gap-2 mb-6">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-sm font-medium text-emerald-400">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400" />
+                </span>
+                <span className="text-sm font-medium text-emerald-400 font-mono">
                   Devnet Running
                 </span>
               </div>
 
-              <h2 className="font-serif font-bold text-2xl md:text-3xl text-fg mb-4">
+              <h2 className="font-display font-bold text-2xl md:text-3xl text-fg mb-4">
                 7aychain Devnet is Live
               </h2>
 
               <p className="text-fg-secondary text-base leading-relaxed max-w-xl mb-8">
-                A full Proof of Presence protocol stack running on a multi-node
-                devnet. Clone, build, and start interacting.
+                A working network running the full Proof of Presence protocol.
+                Real nodes, real verification, real results.
               </p>
 
-              {/* Stats grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 w-full max-w-lg">
+              {/* Stats grid -- glass panels with count-up */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full max-w-lg">
                 {STATS.map((stat) => (
-                  <motion.div key={stat.description} variants={itemVariants} className="text-center">
-                    <span className="block text-2xl font-bold font-mono text-accent mb-1">
-                      {stat.label}
-                    </span>
-                    <span className="text-xs text-fg-muted uppercase tracking-wider">
-                      {stat.description}
-                    </span>
-                  </motion.div>
+                  <StatCell key={stat.description} stat={stat} inView={inView} />
                 ))}
               </div>
 

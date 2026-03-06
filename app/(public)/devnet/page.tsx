@@ -6,7 +6,7 @@ import Newsletter from "@/components/landing/Newsletter";
 export const metadata: Metadata = {
   title: "Devnet",
   description:
-    "Connect to the 7aychain devnet. Clone, build, and run a Substrate-based Proof of Presence node with 6 validators, 16 pallets, and full protocol stack.",
+    "Connect to the 7aychain devnet. Clone, build, and run a Substrate-based Proof of Presence node with 6 validators, 16 modules, and the full protocol stack.",
   keywords: [
     "7aychain devnet",
     "Substrate devnet setup",
@@ -58,7 +58,8 @@ export default function DevnetPage() {
       <PageHero
         label="Devnet"
         title="Connect to 7aychain"
-        description="The 7aychain devnet is live at v0.8.26 with 6 validators, 16 protocol pallets, and the full Proof of Presence stack. Clone the repo, build the node, and start interacting with the network."
+        accentWords={["7aychain"]}
+        description="The 7aychain devnet is live with 6 nodes, 16 core modules, and the full verification stack. Clone the repo, build, and start interacting."
       />
 
       {/* Quick Start */}
@@ -152,7 +153,7 @@ export default function DevnetPage() {
       {/* Multi-Node Setup */}
       <Section
         label="Multi-Node Setup"
-        title="6-node devnet topology"
+        title="6-Node Network Setup"
         className="py-16 md:py-20"
       >
         <p className="text-fg-tertiary leading-relaxed mb-6 max-w-3xl">
@@ -201,12 +202,12 @@ docker-compose up bob charlie dave eve ferdie`}</code>
       {/* Laud CLI */}
       <Section
         label="Laud Networks CLI"
-        title="Interact with every pallet"
+        title="Interact with Every Module"
         className="py-16 md:py-20"
       >
         <p className="text-fg-tertiary leading-relaxed mb-4 max-w-3xl">
           The Laud Networks CLI is a Python-based TUI tool for interacting with 7aychain
-          pallets directly from the command line.
+          modules directly from the command line.
         </p>
 
         <Card variant="default" padding="md" className="mb-8 max-w-3xl">
@@ -312,7 +313,7 @@ python3 laud-cli.py`}</code>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-accent mt-1 shrink-0">&bull;</span>
-                Query pallet storage (presence, epoch, validator, etc.)
+                Query module storage (presence, epoch, validator, etc.)
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-accent mt-1 shrink-0">&bull;</span>
