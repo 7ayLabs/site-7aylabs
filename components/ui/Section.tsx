@@ -19,7 +19,7 @@ type MaxWidth =
   | "5xl"
   | "6xl"
   | "7xl";
-type SectionBg = "default" | "secondary" | "tertiary";
+type SectionBg = "default" | "secondary" | "tertiary" | "glass" | "mesh";
 
 interface Props extends SectionProps {
   label?: string;
@@ -47,6 +47,8 @@ const bgStyles: Record<SectionBg, string> = {
   default: "",
   secondary: "bg-bg-secondary",
   tertiary: "bg-bg-tertiary",
+  glass: "glass-card mx-4 md:mx-8 lg:mx-12 my-4",
+  mesh: "gradient-mesh",
 } as const;
 
 export default function Section({
@@ -97,7 +99,7 @@ export default function Section({
           {title && (
             <motion.h2
               variants={fadeUpItem}
-              className="font-serif font-bold text-2xl md:text-3xl text-fg mb-6"
+              className="font-display font-bold text-2xl md:text-3xl text-fg mb-6"
             >
               {title}
             </motion.h2>

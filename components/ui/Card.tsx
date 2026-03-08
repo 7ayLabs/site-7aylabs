@@ -8,7 +8,8 @@ type CardVariant =
   | "interactive"
   | "glass"
   | "link"
-  | "feature";
+  | "feature"
+  | "bento";
 type CardPadding = "none" | "sm" | "md" | "lg" | "xl";
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -17,18 +18,18 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const variantStyles: Record<CardVariant, string> = {
-  default:
-    "bg-[var(--color-bg-card)] border border-[var(--color-border-primary)] rounded-2xl",
-  elevated:
-    "bg-[var(--color-bg-card)] border border-[var(--color-border-primary)] rounded-2xl backdrop-blur",
+  default: "glass-card",
+  elevated: "glass-card shadow-lg",
   outline:
-    "bg-transparent border border-[var(--color-border-secondary)] rounded-2xl",
+    "bg-transparent border border-[var(--glass-border-hover)] rounded-2xl",
   interactive:
-    "bg-[var(--color-bg-card)] border border-[var(--color-border-primary)] rounded-2xl hover:bg-[var(--color-bg-card-hover)] hover:border-[var(--color-border-secondary)] transition-all duration-normal cursor-pointer group",
-  glass: "glass rounded-2xl",
-  link: "bg-[var(--color-bg-card)] border border-[var(--color-border-primary)] rounded-2xl hover:bg-[var(--color-bg-card-hover)] hover:border-[var(--color-border-secondary)] transition-all duration-normal group",
+    "glass-card hover:shadow-glow-sm cursor-pointer group transition-all duration-300",
+  glass: "glass-card",
+  link: "glass-card hover:shadow-glow-sm group transition-all duration-300",
   feature:
-    "bg-[var(--color-bg-card)] border border-[var(--color-border-primary)] rounded-2xl overflow-hidden hover:border-[var(--color-border-secondary)] transition-all duration-normal",
+    "glass-card overflow-hidden hover:shadow-glow-sm transition-all duration-300",
+  bento:
+    "glass-card overflow-hidden hover:shadow-glow-sm transition-all duration-300",
 } as const;
 
 const paddingStyles: Record<CardPadding, string> = {

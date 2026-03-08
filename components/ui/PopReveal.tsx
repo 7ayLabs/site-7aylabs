@@ -1,15 +1,15 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { EASING } from "@/lib/constants/animations";
 import { cn } from "@/lib/utils/cn";
 import type { AnimatedComponentProps } from "@/types/components";
 
 /**
  * Scroll-triggered pop reveal animation.
- * Elements scale up and blur in when entering the viewport,
- * then scale down and blur out when leaving.
+ * Elements scale up and blur in when entering the viewport.
+ * Fires once to avoid continuous IntersectionObserver churn.
  */
 export default function PopReveal({
   children,
@@ -18,53 +18,35 @@ export default function PopReveal({
 }: AnimatedComponentProps) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, {
+    once: true,
     amount: 0.35,
     margin: "0px 0px -10% 0px",
   });
-  const controls = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("show");
-    } else {
-      controls.start("exit");
-    }
-  }, [inView, controls]);
 
   return (
     <motion.div
       ref={ref}
-      variants={{
-        hidden: {
-          opacity: 0,
-          scale: 0.85,
-          y: 16,
-          filter: "blur(8px)",
-        },
-        show: {
-          opacity: 1,
-          scale: 1,
-          y: 0,
-          filter: "blur(0px)",
-          transition: {
-            duration: 0.4,
-            delay,
-            ease: EASING.bounce,
-          },
-        },
-        exit: {
-          opacity: 0,
-          scale: 0.92,
-          y: -12,
-          filter: "blur(4px)",
-          transition: {
-            duration: 0.25,
-            ease: [0.4, 0.0, 0.2, 1],
-          },
-        },
+      initial={{
+        opacity: 0,
+        scale: 0.82,
+        y: 20,
+        filter: "blur(12px)",
       }}
-      initial="hidden"
-      animate={controls}
+      animate={
+        inView
+          ? {
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              filter: "blur(0px)",
+            }
+          : undefined
+      }
+      transition={{
+        duration: 0.5,
+        delay,
+        ease: EASING.bounce,
+      }}
       className={cn(className)}
     >
       {children}

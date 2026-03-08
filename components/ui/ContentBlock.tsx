@@ -34,7 +34,7 @@ export default function ContentBlock({
       className="flex flex-col justify-center"
     >
       {label && <SectionLabel className="mb-5">{label}</SectionLabel>}
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-fg tracking-tight mb-5">
+      <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-fg tracking-tight mb-5">
         {title}
       </h2>
       <div className="text-fg-tertiary text-base leading-relaxed space-y-4">

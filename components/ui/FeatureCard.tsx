@@ -23,8 +23,7 @@ export default function FeatureCard({
   return (
     <div
       className={cn(
-        "group rounded-2xl border border-[var(--color-border-primary)] bg-[var(--color-bg-card)] overflow-hidden",
-        "hover:border-[var(--color-border-secondary)] transition-all duration-normal",
+        "group glass-card overflow-hidden glow-border",
         className
       )}
     >
@@ -46,7 +45,7 @@ export default function FeatureCard({
       <div className={cn("p-6", size === "lg" && "p-8")}>
         <h3
           className={cn(
-            "font-semibold text-fg mb-2",
+            "font-display font-semibold text-fg mb-2",
             size === "lg" ? "text-xl md:text-2xl" : "text-lg"
           )}
         >

@@ -7,7 +7,9 @@ type BadgeVariant =
   | "accent"
   | "success"
   | "warning"
-  | "label";
+  | "label"
+  | "violet"
+  | "glass";
 
 interface BadgeProps {
   children: React.ReactNode;
@@ -16,17 +18,21 @@ interface BadgeProps {
 }
 
 const variantStyles: Record<BadgeVariant, string> = {
-  default: "bg-[var(--color-bg-card-hover)] text-fg-secondary",
-  outline: "bg-transparent border border-[var(--color-border-secondary)] text-fg-muted",
-  muted: "bg-[var(--color-bg-card)] text-fg-tertiary",
+  default: "bg-[var(--glass-bg)] text-fg-secondary backdrop-blur-sm",
+  outline:
+    "bg-transparent border border-[var(--glass-border-hover)] text-fg-muted backdrop-blur-sm",
+  muted: "bg-[var(--glass-bg)] text-fg-tertiary backdrop-blur-sm",
   accent:
-    "bg-[var(--color-accent-dim)] text-accent border border-[var(--color-border-accent)]",
+    "bg-[var(--color-accent-dim)] text-[var(--color-accent-primary)] border border-[var(--color-border-accent)] backdrop-blur-sm",
   success:
-    "bg-emerald-400/10 text-emerald-400 border border-emerald-400/30",
+    "bg-emerald-400/10 text-emerald-400 border border-emerald-400/20 backdrop-blur-sm",
   warning:
-    "bg-amber-400/10 text-amber-400 border border-amber-400/30",
+    "bg-amber-400/10 text-amber-400 border border-amber-400/20 backdrop-blur-sm",
   label:
-    "bg-[var(--color-accent-dim)] text-accent border border-[var(--color-border-accent)] uppercase tracking-[0.15em] text-[10px]",
+    "bg-[var(--color-accent-dim)] text-[var(--color-accent-primary)] border border-[var(--color-border-accent)] uppercase tracking-[0.15em] text-[10px] backdrop-blur-sm",
+  violet:
+    "bg-[var(--color-accent-violet-dim)] text-[var(--color-accent-tertiary)] border border-[rgba(139,92,246,0.2)] backdrop-blur-sm",
+  glass: "glass-card text-fg-secondary text-xs",
 } as const;
 
 export default function Badge({

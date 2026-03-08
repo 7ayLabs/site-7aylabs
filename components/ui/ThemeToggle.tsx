@@ -19,8 +19,8 @@ export default function ThemeToggle({
     <button
       onClick={toggleTheme}
       className={cn(
-        "flex items-center justify-center w-9 h-9 rounded-lg transition-colors duration-fast",
-        "text-fg-muted hover:text-fg hover:bg-bg-tertiary",
+        "flex items-center justify-center w-9 h-9 rounded-xl transition-colors duration-fast",
+        "text-fg-muted hover:text-[var(--color-accent-primary)] hover:bg-[var(--glass-bg-hover)] hover:shadow-glow-sm",
         className
       )}
       aria-label={

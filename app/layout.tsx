@@ -1,6 +1,28 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans, Syne, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import "@/styles/globals.css";
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const syne = Syne({
+  subsets: ["latin"],
+  variable: "--font-syne",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: {
@@ -88,7 +110,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`scroll-smooth ${plusJakarta.variable} ${syne.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{

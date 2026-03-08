@@ -7,13 +7,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        /* Semantic background aliases (new system) */
+        /* Semantic background aliases */
         bg: "var(--color-bg-primary)",
         "bg-secondary": "var(--color-bg-secondary)",
         "bg-tertiary": "var(--color-bg-tertiary)",
         "bg-elevated": "var(--color-bg-elevated)",
         "bg-surface": "var(--color-bg-surface)",
-        /* Legacy background aliases (old repo compatibility) */
+        /* Legacy background aliases */
         dark: "var(--color-bg-primary)",
         "dark-secondary": "var(--color-bg-secondary)",
         "dark-tertiary": "var(--color-bg-tertiary)",
@@ -27,7 +27,13 @@ module.exports = {
         /* Accent colors */
         accent: "var(--color-accent-primary)",
         "accent-secondary": "var(--color-accent-secondary)",
+        "accent-tertiary": "var(--color-accent-tertiary)",
+        "accent-warm": "var(--color-accent-warm)",
+        "accent-warm-light": "var(--color-accent-warm-light)",
         "accent-dim": "var(--color-accent-dim)",
+        /* Glass */
+        "glass-bg": "var(--glass-bg)",
+        "glass-border": "var(--glass-border)",
         /* Status colors */
         success: "var(--color-status-success)",
         warning: "var(--color-status-warning)",
@@ -66,6 +72,37 @@ module.exports = {
           "0%, 100%": { opacity: "0.4" },
           "50%": { opacity: "0.8" },
         },
+        orbFloat: {
+          "0%, 100%": { transform: "translate(0, 0) scale(1)" },
+          "25%": { transform: "translate(30px, -20px) scale(1.05)" },
+          "50%": { transform: "translate(-20px, 15px) scale(0.95)" },
+          "75%": { transform: "translate(15px, 25px) scale(1.02)" },
+        },
+        gradientShift: {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
+        glowPulse: {
+          "0%, 100%": { opacity: "0.4" },
+          "50%": { opacity: "0.7" },
+        },
+        textReveal: {
+          "0%": { clipPath: "inset(0 100% 0 0)", opacity: "0" },
+          "100%": { clipPath: "inset(0 0 0 0)", opacity: "1" },
+        },
+        gridDrift: {
+          "0%": { backgroundPosition: "0 0" },
+          "100%": { backgroundPosition: "48px 48px" },
+        },
+        orbBreath: {
+          "0%, 100%": { opacity: "0.4" },
+          "50%": { opacity: "0.65" },
+        },
+        noisePulse: {
+          "0%, 100%": { opacity: "0.03" },
+          "50%": { opacity: "0.05" },
+        },
       },
       animation: {
         fadeIn: "fadeIn 0.6s ease-out forwards",
@@ -75,9 +112,16 @@ module.exports = {
         shimmer: "shimmer 3s linear infinite",
         float: "float 6s ease-in-out infinite",
         "pulse-glow": "pulse-glow 4s ease-in-out infinite",
+        orbFloat: "orbFloat 20s ease-in-out infinite",
+        gradientShift: "gradientShift 8s ease infinite",
+        glowPulse: "glowPulse 4s ease-in-out infinite",
+        textReveal: "textReveal 0.8s ease-out forwards",
+        gridDrift: "gridDrift 20s linear infinite",
       },
       fontFamily: {
         sans: [
+          "var(--font-plus-jakarta)",
+          "Plus Jakarta Sans",
           "Inter",
           "ui-sans-serif",
           "system-ui",
@@ -89,15 +133,16 @@ module.exports = {
           "Arial",
           "sans-serif",
         ],
-        serif: [
-          "ui-serif",
-          "Georgia",
-          "Cambria",
-          "Times New Roman",
-          "Times",
-          "serif",
+        display: [
+          "var(--font-syne)",
+          "Syne",
+          "Plus Jakarta Sans",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
         ],
         mono: [
+          "var(--font-jetbrains)",
           "JetBrains Mono",
           "ui-monospace",
           "SFMono-Regular",
@@ -132,6 +177,17 @@ module.exports = {
         modal: "50",
         popover: "60",
         tooltip: "70",
+      },
+      backdropBlur: {
+        glass: "16px",
+        "glass-strong": "24px",
+      },
+      boxShadow: {
+        glow: "var(--glow-cyan)",
+        "glow-sm": "var(--glow-cyan-sm)",
+        "glow-violet": "var(--glow-violet)",
+        "glow-green": "var(--glow-green)",
+        "glow-warm": "var(--glow-warm)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

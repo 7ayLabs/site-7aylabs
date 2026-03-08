@@ -1,30 +1,18 @@
 "use client";
 
-import { memo, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { memo } from "react";
 import { useTheme } from "@/components/providers/ThemeProvider";
 
+/**
+ * Site-wide ambient background.
+ * Uses pure CSS animations (compositor-optimized) instead of
+ * Framer Motion infinite loops to avoid dev-server overhead.
+ */
 function AmbientBackgroundComponent() {
   const { theme } = useTheme();
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
-
-    const handleChange = (event: MediaQueryListEvent) => {
-      setPrefersReducedMotion(event.matches);
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, []);
-
-  // In light mode, no ambient background needed
-  if (theme === "light") return null;
-
-  // Static background for users who prefer reduced motion
-  if (prefersReducedMotion) {
+  /* ───── Light theme ───── */
+  if (theme === "light") {
     return (
       <div
         className="fixed inset-0 -z-10 pointer-events-none overflow-hidden"
@@ -32,26 +20,25 @@ function AmbientBackgroundComponent() {
       >
         <div className="absolute inset-0 bg-[var(--color-bg-primary)]" />
         <div
-          className="absolute inset-0 opacity-60"
+          className="absolute w-[600px] h-[400px] rounded-full top-[-10%] left-[40%] opacity-40"
           style={{
-            background: `
-              radial-gradient(
-                900px 600px at 50% -20%,
-                rgba(0, 255, 170, 0.10),
-                transparent 65%
-              ),
-              radial-gradient(
-                700px 500px at 85% 35%,
-                rgba(255, 255, 255, 0.04),
-                transparent 70%
-              )
-            `,
+            background:
+              "radial-gradient(circle, rgba(18,107,90,0.06), transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
           }}
         />
       </div>
     );
   }
 
+  /* ───── Dark theme ───── */
   return (
     <div
       className="fixed inset-0 -z-10 pointer-events-none overflow-hidden"
@@ -60,41 +47,39 @@ function AmbientBackgroundComponent() {
       {/* Base dark layer */}
       <div className="absolute inset-0 bg-[var(--color-bg-primary)]" />
 
-      {/* Animated ambient light */}
-      <motion.div
-        className="absolute inset-0"
-        initial={{ opacity: 0.6 }}
-        animate={{ opacity: [0.55, 0.75, 0.55] }}
-        transition={{
-          duration: 24,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        style={{
-          background: `
-            radial-gradient(
-              900px 600px at 50% -20%,
-              rgba(0, 255, 170, 0.10),
-              transparent 65%
-            ),
-            radial-gradient(
-              700px 500px at 85% 35%,
-              rgba(255, 255, 255, 0.04),
-              transparent 70%
-            )
-          `,
-        }}
-      />
+      {/* Animated gradient mesh orbs — pure CSS, runs on compositor thread */}
+      <div className="absolute inset-0 animate-[orbBreath_20s_ease-in-out_infinite]">
+        <div
+          className="absolute w-[800px] h-[600px] rounded-full top-[-15%] left-[30%] animate-orbFloat"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(23,142,119,0.1), transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute w-[600px] h-[500px] rounded-full top-[30%] right-[5%] animate-orbFloat"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(139,92,246,0.06), transparent 70%)",
+            animationDelay: "-7s",
+          }}
+        />
+        <div
+          className="absolute w-[500px] h-[400px] rounded-full bottom-[5%] left-[10%] animate-orbFloat"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(0,255,198,0.05), transparent 70%)",
+            animationDelay: "-14s",
+          }}
+        />
+      </div>
 
-      {/* Subtle animated noise */}
-      <motion.div
-        className="absolute inset-0 opacity-[0.045]"
-        animate={{ opacity: [0.035, 0.06, 0.035] }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      {/* Grid overlay */}
+      <div className="absolute inset-0 grid-overlay opacity-30" />
+
+      {/* Noise grain — pure CSS opacity pulse */}
+      <div
+        className="absolute inset-0 animate-[noisePulse_15s_ease-in-out_infinite]"
         style={{
           backgroundImage: "url(/noise.png)",
           backgroundRepeat: "repeat",

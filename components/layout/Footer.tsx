@@ -15,7 +15,7 @@ export default function Footer() {
       : "/7aylabs_white_logo.svg";
 
   return (
-    <footer className="w-full border-t border-[var(--color-border-primary)]">
+    <footer className="w-full border-t border-[var(--glass-border)] bg-[var(--color-bg-secondary)]/50 backdrop-blur-sm">
       {/* Main footer grid */}
       <div className="max-w-screen-xl mx-auto px-6 md:px-12 pt-12 pb-8">
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6 lg:gap-12">
@@ -43,7 +43,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Follow 7ayLabs on X"
-                className="text-fg-muted hover:text-fg transition-colors"
+                className="text-fg-muted hover:text-[var(--color-accent-primary)] transition-colors"
               >
                 <svg
                   width="16"
@@ -60,7 +60,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="7ayLabs on GitHub"
-                className="text-fg-muted hover:text-fg transition-colors"
+                className="text-fg-muted hover:text-[var(--color-accent-primary)] transition-colors"
               >
                 <Github size={16} />
               </Link>
@@ -70,7 +70,7 @@ export default function Footer() {
           {/* Link group columns */}
           {FOOTER_LINK_GROUPS.map((group) => (
             <nav key={group.title} aria-label={`${group.title} links`}>
-              <h3 className="text-fg text-xs font-semibold uppercase tracking-widest mb-4">
+              <h3 className="text-fg text-xs font-semibold uppercase tracking-widest mb-4 font-display">
                 {group.title}
               </h3>
               <ul className="space-y-2.5">
@@ -83,14 +83,14 @@ export default function Footer() {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-fg-muted text-sm hover:text-fg transition-colors"
+                          className="text-fg-muted text-sm hover:text-[var(--color-accent-primary)] transition-colors"
                         >
                           {link.label}
                         </a>
                       ) : (
                         <Link
                           href={link.href}
-                          className="text-fg-muted text-sm hover:text-fg transition-colors"
+                          className="text-fg-muted text-sm hover:text-[var(--color-accent-primary)] transition-colors"
                         >
                           {link.label}
                         </Link>
@@ -105,7 +105,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-[var(--color-border-primary)]">
+      <div className="border-t border-[var(--glass-border)]">
         <div className="max-w-screen-xl mx-auto px-6 md:px-12 py-5 flex flex-col items-center justify-between gap-3 sm:flex-row">
           <p className="text-fg-faint text-xs">
             &copy; {new Date().getFullYear()} 7ayLabs. All rights reserved.

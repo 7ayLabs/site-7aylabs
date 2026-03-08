@@ -67,7 +67,7 @@ export default function TopBar({ open, setOpen }: TopBarProps) {
     <header
       className={`
         sticky top-0 z-50 w-full will-change-transform
-        bg-[var(--color-bg-primary)] border-b border-[var(--color-border-primary)] backdrop-blur-xl
+        bg-[var(--color-bg-primary)]/80 border-b border-[var(--glass-border)] backdrop-blur-[24px]
         transition-[height,transform] duration-300 ease-out
         ${scrolled ? "h-12 md:h-14" : "h-16"}
       `}
@@ -115,7 +115,7 @@ export default function TopBar({ open, setOpen }: TopBarProps) {
             <Link
               key={link.href}
               href={link.href}
-              className="hover:text-fg transition"
+              className="hover:text-[var(--color-accent-primary)] transition-colors duration-200"
             >
               {link.label}
             </Link>
@@ -136,10 +136,10 @@ export default function TopBar({ open, setOpen }: TopBarProps) {
             <Link
               href={ROUTES.waitlist}
               className={`
-                rounded-full border border-[var(--color-border-secondary)]
-                bg-fg text-bg
-                text-xs font-medium
-                hover:opacity-90 transition
+                rounded-full
+                bg-[var(--color-accent-primary)] text-white
+                text-xs font-semibold
+                hover:shadow-glow-sm transition-all duration-300
                 ${scrolled ? "px-3 py-1" : "px-4 py-1.5"}
               `}
             >
