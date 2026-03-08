@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import Navbar from "@/components/layout/navbar/Navbar";
 import AmbientBackground from "@/components/background/AmbientBackground";
 import Hero from "@/components/landing/Hero";
+import Connections from "@/components/landing/Connections";
 import HowItWorks from "@/components/landing/HowItWorks";
 import Footer from "@/components/layout/Footer";
 
@@ -23,6 +24,7 @@ export default function Home() {
       <Navbar />
       <main id="main-content">
         <Hero />
+        <Connections />
         <HowItWorks />
         <WhyChain />
         <ComparisonTable />
