@@ -23,8 +23,8 @@ export default function Home() {
       <Navbar />
       <main id="main-content">
         <Hero />
-        <WhyChain />
         <HowItWorks />
+        <WhyChain />
         <ComparisonTable />
         <Newsletter />
       </main>

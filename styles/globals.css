@@ -355,6 +355,12 @@ body {
   animation: chainFlow 1.5s linear infinite;
 }
 
+/* Chain connector draw-in (used by HowItWorks timeline) */
+@keyframes chainDraw {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+
 /* Typewriter cursor blink */
 @keyframes cursorBlink {
   0%, 100% { opacity: 1; }
