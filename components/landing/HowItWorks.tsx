@@ -52,8 +52,8 @@ const PHASES: readonly Phase[] = [
 
 const LATENCY_LABELS = ["48ms", "52ms", "47ms"] as const;
 
-const SPRING = { stiffness: 100, damping: 30, mass: 0.8 } as const;
-const SPRING_SMOOTH = { stiffness: 80, damping: 28 } as const;
+const SPRING = { stiffness: 60, damping: 20, mass: 0.6 } as const;
+const SPRING_SMOOTH = { stiffness: 50, damping: 22 } as const;
 
 /* ------------------------------------------------------------------ */
 /*  Geometry — equilateral triangle inscribed in a circle              */
@@ -120,41 +120,41 @@ function TriangulationDiagram({
     SPRING,
   );
 
-  // Witness A (top) — flies in from above
+  // Witness A (top) — flies in from far above
   const witnessAOpacity = useSpring(
-    useTransform(progress, [0.04, 0.16], [0, 1]),
+    useTransform(progress, [0.02, 0.12], [0, 1]),
     SPRING_SMOOTH,
   );
   const witnessAY = useSpring(
-    useTransform(progress, [0.04, 0.18], [-200, 0]),
+    useTransform(progress, [0.02, 0.20], [-450, 0]),
     SPRING,
   );
 
-  // Witness B (bottom-left) — flies in from lower-left
+  // Witness B (bottom-left) — flies in from far lower-left
   const witnessBOpacity = useSpring(
-    useTransform(progress, [0.06, 0.18], [0, 1]),
+    useTransform(progress, [0.05, 0.15], [0, 1]),
     SPRING_SMOOTH,
   );
   const witnessBX = useSpring(
-    useTransform(progress, [0.06, 0.20], [-150, 0]),
+    useTransform(progress, [0.05, 0.22], [-350, 0]),
     SPRING,
   );
   const witnessBY = useSpring(
-    useTransform(progress, [0.06, 0.20], [150, 0]),
+    useTransform(progress, [0.05, 0.22], [350, 0]),
     SPRING,
   );
 
-  // Witness C (bottom-right) — flies in from lower-right
+  // Witness C (bottom-right) — flies in from far lower-right
   const witnessCOpacity = useSpring(
-    useTransform(progress, [0.08, 0.20], [0, 1]),
+    useTransform(progress, [0.08, 0.18], [0, 1]),
     SPRING_SMOOTH,
   );
   const witnessCX = useSpring(
-    useTransform(progress, [0.08, 0.22], [150, 0]),
+    useTransform(progress, [0.08, 0.24], [350, 0]),
     SPRING,
   );
   const witnessCY = useSpring(
-    useTransform(progress, [0.08, 0.22], [150, 0]),
+    useTransform(progress, [0.08, 0.24], [350, 0]),
     SPRING,
   );
 
@@ -195,7 +195,7 @@ function TriangulationDiagram({
     SPRING_SMOOTH,
   );
   const centerGlowScale = useSpring(
-    useTransform(progress, [0.55, 0.75], [1, 1.75]),
+    useTransform(progress, [0.55, 0.75], [0.5, 2.5]),
     SPRING,
   );
   const centerGlowOpacity = useSpring(
@@ -238,14 +238,14 @@ function TriangulationDiagram({
   const centerFill = phaseColor;
 
   /* --- Extract ALL useTransform calls out of JSX to avoid hook-in-render --- */
-  const dashedLineOpacity = useTransform(lineDrawProgress, (v) => v * 0.5);
-  const triangleFillFinalOpacity = useTransform(triangleFillOpacity, (v) => v * 0.08);
-  const latencyLabelFinalOpacity = useTransform(latencyLabelsOpacity, (v) => v * 0.6);
-  const secondaryNodeFinalOpacity = useTransform(secondaryNodesOpacity, (v) => v * 0.6);
+  const dashedLineOpacity = useTransform(lineDrawProgress, (v) => v * 0.7);
+  const triangleFillFinalOpacity = useTransform(triangleFillOpacity, (v) => v * 0.15);
+  const latencyLabelFinalOpacity = useTransform(latencyLabelsOpacity, (v) => v * 0.8);
+  const secondaryNodeFinalOpacity = useTransform(secondaryNodesOpacity, (v) => v * 0.8);
 
   const sizeClass = isMobile
-    ? "w-[min(70vw,300px)] h-[min(70vw,300px)]"
-    : "w-[55vmin] h-[55vmin] max-w-[520px] max-h-[520px]";
+    ? "w-[min(75vw,320px)] h-[min(75vw,320px)]"
+    : "w-[62vmin] h-[62vmin] max-w-[620px] max-h-[620px]";
 
   return (
     <div className={cn("relative", sizeClass)}>
@@ -261,7 +261,7 @@ function TriangulationDiagram({
           cy={CY}
           r={R}
           fill="none"
-          strokeWidth="1"
+          strokeWidth="1.5"
           strokeDasharray={`${2 * Math.PI * R}`}
           style={{
             stroke: strokeColor,
@@ -277,8 +277,8 @@ function TriangulationDiagram({
           y1={A.y}
           x2={CX}
           y2={CY}
-          strokeWidth="1"
-          strokeDasharray="6 4"
+          strokeWidth="1.5"
+          strokeDasharray="8 5"
           pathLength="200"
           style={{
             stroke: strokeColor,
@@ -292,8 +292,8 @@ function TriangulationDiagram({
           y1={B.y}
           x2={CX}
           y2={CY}
-          strokeWidth="1"
-          strokeDasharray="6 4"
+          strokeWidth="1.5"
+          strokeDasharray="8 5"
           pathLength="200"
           style={{
             stroke: strokeColor,
@@ -307,8 +307,8 @@ function TriangulationDiagram({
           y1={C.y}
           x2={CX}
           y2={CY}
-          strokeWidth="1"
-          strokeDasharray="6 4"
+          strokeWidth="1.5"
+          strokeDasharray="8 5"
           pathLength="200"
           style={{
             stroke: strokeColor,
@@ -320,17 +320,17 @@ function TriangulationDiagram({
         {/* ===== Solid replacement lines (phase 3) ===== */}
         <motion.line
           x1={A.x} y1={A.y} x2={CX} y2={CY}
-          strokeWidth="1.5"
+          strokeWidth="2"
           style={{ stroke: strokeColor, opacity: solidLineOpacity }}
         />
         <motion.line
           x1={B.x} y1={B.y} x2={CX} y2={CY}
-          strokeWidth="1.5"
+          strokeWidth="2"
           style={{ stroke: strokeColor, opacity: solidLineOpacity }}
         />
         <motion.line
           x1={C.x} y1={C.y} x2={CX} y2={CY}
-          strokeWidth="1.5"
+          strokeWidth="2"
           style={{ stroke: strokeColor, opacity: solidLineOpacity }}
         />
 
@@ -345,7 +345,7 @@ function TriangulationDiagram({
 
         {/* ===== Signal pulses (animated dots traveling along lines) ===== */}
         <motion.circle
-          r="3"
+          r="5"
           style={{
             cx: pulseAX,
             cy: pulseAY,
@@ -354,7 +354,7 @@ function TriangulationDiagram({
           }}
         />
         <motion.circle
-          r="3"
+          r="5"
           style={{
             cx: pulseBX,
             cy: pulseBY,
@@ -363,7 +363,7 @@ function TriangulationDiagram({
           }}
         />
         <motion.circle
-          r="3"
+          r="5"
           style={{
             cx: pulseCX,
             cy: pulseCY,
@@ -403,21 +403,21 @@ function TriangulationDiagram({
 
         {/* ===== Secondary nodes (on the circle between witnesses) ===== */}
         <motion.circle
-          cx={S1.x} cy={S1.y} r="3"
+          cx={S1.x} cy={S1.y} r="5"
           style={{
             fill: strokeColor,
             opacity: secondaryNodeFinalOpacity,
           }}
         />
         <motion.circle
-          cx={S2.x} cy={S2.y} r="3"
+          cx={S2.x} cy={S2.y} r="5"
           style={{
             fill: strokeColor,
             opacity: secondaryNodeFinalOpacity,
           }}
         />
         <motion.circle
-          cx={S3.x} cy={S3.y} r="3"
+          cx={S3.x} cy={S3.y} r="5"
           style={{
             fill: strokeColor,
             opacity: secondaryNodeFinalOpacity,
@@ -434,18 +434,18 @@ function TriangulationDiagram({
           <circle
             cx={A.x}
             cy={A.y}
-            r="8"
+            r="12"
             fill="var(--color-bg-primary)"
             stroke={PHASES[0].color}
-            strokeWidth="2"
+            strokeWidth="2.5"
           />
           {/* Pulse ring (phase 3) */}
           <motion.circle
             cx={A.x}
             cy={A.y}
-            r="14"
+            r="18"
             fill="none"
-            strokeWidth="1"
+            strokeWidth="1.5"
             style={{
               stroke: strokeColor,
               opacity: nodePulseOpacity,
@@ -453,7 +453,7 @@ function TriangulationDiagram({
           >
             <animate
               attributeName="r"
-              values="10;18;10"
+              values="14;26;14"
               dur="2s"
               repeatCount="indefinite"
             />
@@ -477,17 +477,17 @@ function TriangulationDiagram({
           <circle
             cx={B.x}
             cy={B.y}
-            r="8"
+            r="12"
             fill="var(--color-bg-primary)"
             stroke={PHASES[0].color}
-            strokeWidth="2"
+            strokeWidth="2.5"
           />
           <motion.circle
             cx={B.x}
             cy={B.y}
-            r="14"
+            r="18"
             fill="none"
-            strokeWidth="1"
+            strokeWidth="1.5"
             style={{
               stroke: strokeColor,
               opacity: nodePulseOpacity,
@@ -495,7 +495,7 @@ function TriangulationDiagram({
           >
             <animate
               attributeName="r"
-              values="10;18;10"
+              values="14;26;14"
               dur="2.3s"
               repeatCount="indefinite"
             />
@@ -519,17 +519,17 @@ function TriangulationDiagram({
           <circle
             cx={C.x}
             cy={C.y}
-            r="8"
+            r="12"
             fill="var(--color-bg-primary)"
             stroke={PHASES[0].color}
-            strokeWidth="2"
+            strokeWidth="2.5"
           />
           <motion.circle
             cx={C.x}
             cy={C.y}
-            r="14"
+            r="18"
             fill="none"
-            strokeWidth="1"
+            strokeWidth="1.5"
             style={{
               stroke: strokeColor,
               opacity: nodePulseOpacity,
@@ -537,7 +537,7 @@ function TriangulationDiagram({
           >
             <animate
               attributeName="r"
-              values="10;18;10"
+              values="14;26;14"
               dur="2.6s"
               repeatCount="indefinite"
             />
@@ -554,7 +554,7 @@ function TriangulationDiagram({
         <motion.circle
           cx={CX}
           cy={CY}
-          r="4"
+          r="8"
           style={{
             fill: centerFill,
             opacity: centerDotOpacity,
@@ -566,9 +566,9 @@ function TriangulationDiagram({
         <motion.circle
           cx={CX}
           cy={CY}
-          r="20"
+          r="30"
           fill="none"
-          strokeWidth="1"
+          strokeWidth="2"
           style={{
             stroke: strokeColor,
             opacity: centerGlowOpacity,
@@ -581,9 +581,9 @@ function TriangulationDiagram({
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
         style={{
-          width: 60,
-          height: 60,
-          background: `radial-gradient(circle, ${PHASES[2].color}40 0%, ${PHASES[2].color}00 70%)`,
+          width: 140,
+          height: 140,
+          background: `radial-gradient(circle, ${PHASES[2].color}50 0%, ${PHASES[2].color}15 40%, ${PHASES[2].color}00 70%)`,
           opacity: centerGlowOpacity,
           scale: centerGlowScale,
         }}
@@ -593,11 +593,11 @@ function TriangulationDiagram({
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
         style={{
-          width: 14,
-          height: 14,
+          width: 20,
+          height: 20,
           backgroundColor: PHASES[2].color,
           opacity: centerGlowOpacity,
-          boxShadow: `0 0 20px ${PHASES[2].color}80, 0 0 40px ${PHASES[2].color}40`,
+          boxShadow: `0 0 30px ${PHASES[2].color}90, 0 0 60px ${PHASES[2].color}50, 0 0 100px ${PHASES[2].color}20`,
         }}
       />
     </div>
@@ -682,17 +682,20 @@ function DesktopLayout() {
 
   return (
     <div className="hidden md:block">
-      {/* 150vh scroll container */}
-      <div ref={containerRef} className="relative" style={{ height: "150vh" }}>
+      {/* 180vh scroll container */}
+      <div ref={containerRef} className="relative" style={{ height: "180vh" }}>
         {/* Sticky viewport */}
         <div className="sticky top-0 h-screen w-full overflow-hidden">
           {/* Section heading — top center */}
           <motion.div
-            className="absolute top-[6vh] inset-x-0 text-center z-10 pointer-events-none"
+            className="absolute top-[10vh] inset-x-0 text-center z-10 pointer-events-none px-6"
             style={{ opacity: headingOpacity }}
           >
-            <h2 className="text-sm tracking-[0.2em] uppercase text-fg-muted">
+            <span className="block text-xs tracking-[0.2em] uppercase text-fg-muted mb-3">
               How It Works
+            </span>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight text-fg">
+              From presence to proof
             </h2>
           </motion.div>
 
@@ -753,8 +756,8 @@ function MobileLayout() {
 
   return (
     <div className="md:hidden">
-      {/* 130vh scroll container on mobile */}
-      <div ref={containerRef} className="relative" style={{ height: "130vh" }}>
+      {/* 160vh scroll container on mobile */}
+      <div ref={containerRef} className="relative" style={{ height: "160vh" }}>
         {/* Sticky viewport */}
         <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-center">
           {/* Section heading */}
@@ -762,8 +765,11 @@ function MobileLayout() {
             className="relative z-10 pt-20 pb-4 text-center px-5"
             style={{ opacity: headingOpacity }}
           >
-            <h2 className="text-xs tracking-[0.2em] uppercase text-fg-muted">
+            <span className="block text-xs tracking-[0.2em] uppercase text-fg-muted mb-2">
               How It Works
+            </span>
+            <h2 className="font-display font-bold text-2xl sm:text-3xl tracking-tight text-fg">
+              From presence to proof
             </h2>
           </motion.div>
 
@@ -798,11 +804,14 @@ function StaticFallback() {
       <div className="max-w-2xl mx-auto px-5 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-16 md:mb-20">
+          <span className="block text-xs tracking-[0.2em] uppercase text-fg-muted mb-3">
+            How It Works
+          </span>
           <h2
             id="how-it-works-heading-static"
-            className="text-sm tracking-[0.2em] uppercase text-fg-muted"
+            className="font-display font-bold text-3xl md:text-5xl tracking-tight text-fg"
           >
-            How It Works
+            From presence to proof
           </h2>
         </div>
 
