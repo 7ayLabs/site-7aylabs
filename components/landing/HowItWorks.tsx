@@ -10,799 +10,1071 @@ import {
   type MotionValue,
 } from "framer-motion";
 import { cn } from "@/lib/utils/cn";
-import SectionLabel from "@/components/ui/SectionLabel";
-import { EASING, DURATION } from "@/lib/constants/animations";
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
 /* ------------------------------------------------------------------ */
 
-type NodeColor = "teal" | "violet" | "cyan";
-
-interface NetworkNode {
-  id: number;
-  x: number;
-  y: number;
-  tier: 1 | 2 | 3;
-  color: NodeColor;
-  distanceFromCenter: number;
-}
-
-interface NetworkLink {
-  from: number;
-  to: number;
-}
-
-interface Step {
-  readonly number: string;
+interface Phase {
+  readonly id: number;
+  readonly code: string;
   readonly label: string;
   readonly title: string;
   readonly description: string;
-  readonly accentColor: string;
-  readonly glowColor: string;
+  readonly statusBar: string;
+  readonly statusLabel: string;
+  readonly color: string;
 }
 
 /* ------------------------------------------------------------------ */
 /*  Constants                                                          */
 /* ------------------------------------------------------------------ */
 
-const COLOR_MAP: Record<NodeColor, { base: string; bright: string }> = {
-  teal: { base: "#178E77", bright: "#00FFC6" },
-  violet: { base: "#8B5CF6", bright: "#C084FC" },
-  cyan: { base: "#0891B2", bright: "#22D3EE" },
-};
-
-const NODES: NetworkNode[] = [
-  // Core cluster (center) - settle first
-  { id: 0, x: 50, y: 44, tier: 1, color: "teal", distanceFromCenter: 0 },
-  { id: 1, x: 42, y: 36, tier: 1, color: "teal", distanceFromCenter: 0.15 },
-  { id: 2, x: 58, y: 36, tier: 1, color: "teal", distanceFromCenter: 0.15 },
-  // Inner ring
-  { id: 3, x: 35, y: 50, tier: 2, color: "violet", distanceFromCenter: 0.3 },
-  { id: 4, x: 65, y: 50, tier: 2, color: "cyan", distanceFromCenter: 0.3 },
-  { id: 5, x: 50, y: 60, tier: 2, color: "violet", distanceFromCenter: 0.35 },
-  { id: 6, x: 38, y: 26, tier: 2, color: "cyan", distanceFromCenter: 0.35 },
-  { id: 7, x: 62, y: 26, tier: 2, color: "violet", distanceFromCenter: 0.35 },
-  // Outer ring - settle last
-  { id: 8, x: 22, y: 38, tier: 3, color: "teal", distanceFromCenter: 0.6 },
-  { id: 9, x: 78, y: 38, tier: 3, color: "teal", distanceFromCenter: 0.6 },
-  { id: 10, x: 20, y: 58, tier: 3, color: "cyan", distanceFromCenter: 0.7 },
-  { id: 11, x: 80, y: 58, tier: 3, color: "violet", distanceFromCenter: 0.7 },
-  { id: 12, x: 32, y: 68, tier: 3, color: "teal", distanceFromCenter: 0.65 },
-  { id: 13, x: 68, y: 68, tier: 3, color: "cyan", distanceFromCenter: 0.65 },
-];
-
-const LINKS: NetworkLink[] = [
-  // Core triangle
-  { from: 0, to: 1 },
-  { from: 0, to: 2 },
-  { from: 1, to: 2 },
-  // Core to inner ring
-  { from: 1, to: 3 },
-  { from: 2, to: 4 },
-  { from: 0, to: 5 },
-  { from: 1, to: 6 },
-  { from: 2, to: 7 },
-  // Inner ring connections
-  { from: 3, to: 5 },
-  { from: 4, to: 5 },
-  { from: 6, to: 7 },
-  // Inner to outer ring
-  { from: 6, to: 8 },
-  { from: 7, to: 9 },
-  { from: 3, to: 10 },
-  { from: 4, to: 11 },
-  { from: 5, to: 12 },
-  { from: 5, to: 13 },
-  // Outer ring cross-links
-  { from: 8, to: 10 },
-  { from: 9, to: 11 },
-  { from: 12, to: 13 },
-];
-
-const STEPS: readonly Step[] = [
+const PHASES: readonly Phase[] = [
   {
-    number: "01",
+    id: 1,
+    code: "01",
     label: "CONNECT",
-    title: "Open the App",
+    title: "OPEN THE APP",
     description:
-      "Connect from any device — your phone, laptop, or tablet. No downloads, no equipment, no setup.",
-    accentColor: "var(--color-accent-primary)",
-    glowColor: "rgba(23, 142, 119, 0.15)",
+      "Connect from any device \u2014 your\nphone, laptop, or tablet. No\ndownloads, no equipment, no setup.",
+    statusBar: "\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588",
+    statusLabel: "READY",
+    color: "#00FFC6",
   },
   {
-    number: "02",
+    id: 2,
+    code: "02",
     label: "VERIFY",
-    title: "We Confirm You're There",
+    title: "CONFIRMING PRESENCE",
     description:
-      "The network measures your connection from multiple points to confirm your real-world location — privately and instantly.",
-    accentColor: "var(--color-accent-tertiary)",
-    glowColor: "rgba(139, 92, 246, 0.15)",
+      "The network measures your connection\nfrom multiple points to confirm your\nreal-world location \u2014 privately and\ninstantly.",
+    statusBar: "\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591",
+    statusLabel: "SCANNING",
+    color: "#C084FC",
   },
   {
-    number: "03",
+    id: 3,
+    code: "03",
     label: "OWN",
-    title: "You Get Your Proof",
+    title: "PROOF RECORDED",
     description:
-      "Your verified presence is recorded permanently on a public record you own. No company can change or revoke it.",
-    accentColor: "var(--color-accent-secondary)",
-    glowColor: "rgba(0, 255, 198, 0.12)",
+      "Your verified presence is recorded\npermanently on a public record you\nown. No company can change or\nrevoke it.",
+    statusBar: "\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588",
+    statusLabel: "VERIFIED \u2713",
+    color: "#22D3EE",
   },
 ] as const;
 
-/** Spring config shared across all scroll-driven transforms */
-const SPRING_CONFIG = { stiffness: 100, damping: 30, mass: 0.8 } as const;
+const SPRING_CFG = { stiffness: 100, damping: 30, mass: 0.8 } as const;
 const OPACITY_SPRING = { stiffness: 120, damping: 30 } as const;
 
-function nodeRadius(tier: 1 | 2 | 3): number {
-  return tier === 1 ? 6 : tier === 2 ? 4 : 2.5;
+/* ------------------------------------------------------------------ */
+/*  Utility: derive phase-based accent color from scroll               */
+/* ------------------------------------------------------------------ */
+
+function usePhaseColor(
+  scrollYProgress: MotionValue<number>,
+): MotionValue<string> {
+  return useTransform(scrollYProgress, (v) => {
+    if (v < 0.30) return PHASES[0].color;
+    if (v < 0.60) return PHASES[1].color;
+    return PHASES[2].color;
+  });
 }
 
 /* ------------------------------------------------------------------ */
-/*  SVG Illustrations (per step card)                                  */
+/*  Sub-component: Radar Display (SVG)                                 */
 /* ------------------------------------------------------------------ */
 
-const illustrationNodeVariant = {
-  hidden: { scale: 0, opacity: 0 },
-  visible: (i: number) => ({
-    scale: 1,
-    opacity: 1,
-    transition: {
-      duration: DURATION.slow,
-      delay: 0.2 + i * 0.1,
-      ease: EASING.snappy,
-    },
-  }),
-};
+function RadarDisplay({
+  sweepAngle,
+  phaseColor,
+  blipPositions,
+  showTriangle,
+  centerGlow,
+}: {
+  sweepAngle: MotionValue<number>;
+  phaseColor: MotionValue<string>;
+  blipPositions: {
+    outer: MotionValue<number>;
+    middle: MotionValue<number>;
+    center: MotionValue<number>;
+  };
+  showTriangle: MotionValue<number>;
+  centerGlow: MotionValue<number>;
+}) {
+  const sweepRotate = useTransform(sweepAngle, (v) => `rotate(${v}deg)`);
 
-const illustrationLineVariant = {
-  hidden: { pathLength: 0, opacity: 0 },
-  visible: (i: number) => ({
-    pathLength: 1,
-    opacity: 1,
-    transition: {
-      duration: 0.8,
-      delay: 0.4 + i * 0.12,
-      ease: "easeOut",
-    },
-  }),
-};
+  /* Extract useTransform calls out of JSX to avoid hook-in-render violations */
+  const trailBackground = useTransform(
+    phaseColor,
+    (c) =>
+      `conic-gradient(from 0deg at 50% 50%, ${c}00 0deg, ${c}08 270deg, ${c}30 350deg, ${c}60 358deg, ${c}00 360deg)`,
+  );
+  const sweepLineBackground = useTransform(
+    phaseColor,
+    (c) =>
+      `linear-gradient(to top, ${c}00 0%, ${c}99 70%, ${c} 100%)`,
+  );
 
-function ConnectIllustration({ color }: { color: string }) {
   return (
-    <svg
-      viewBox="0 0 200 200"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-full"
-      aria-hidden="true"
-    >
-      <motion.rect
-        x="72" y="60" width="56" height="80" rx="8"
-        stroke={color} strokeWidth="2" fill="none"
-        variants={illustrationNodeVariant} custom={0}
-      />
-      <motion.rect
-        x="78" y="68" width="44" height="56" rx="4"
-        stroke={color} strokeWidth="1" strokeOpacity="0.4" fill="none"
-        variants={illustrationNodeVariant} custom={1}
-      />
-      <motion.circle
-        cx="100" cy="132" r="3"
-        stroke={color} strokeWidth="1.5" fill="none"
-        variants={illustrationNodeVariant} custom={1}
-      />
-      {[28, 40, 52].map((r, i) => (
-        <motion.path
-          key={r}
-          d={`M ${100 + r} 96 A ${r} ${r} 0 0 0 ${100 + r * 0.7} ${96 - r * 0.7}`}
-          stroke={color} strokeWidth="1.5" strokeOpacity={0.6 - i * 0.15}
-          strokeLinecap="round" fill="none"
-          variants={illustrationLineVariant} custom={i}
+    <div className="relative w-[60vmin] h-[60vmin] md:w-[65vmin] md:h-[65vmin] max-w-[600px] max-h-[600px]">
+      {/* Concentric rings + crosshairs (SVG) */}
+      <svg
+        viewBox="0 0 400 400"
+        className="absolute inset-0 w-full h-full"
+        aria-hidden="true"
+      >
+        {/* Ring 1: 33% radius */}
+        <circle
+          cx="200"
+          cy="200"
+          r="66"
+          fill="none"
+          className="stroke-[var(--radar-ring)]"
+          strokeWidth="0.6"
+          strokeDasharray="4 6"
         />
-      ))}
-      {[
-        { cx: 160, cy: 50 },
-        { cx: 170, cy: 100 },
-        { cx: 155, cy: 150 },
-      ].map((pos, i) => (
-        <motion.circle
-          key={i} cx={pos.cx} cy={pos.cy} r="6"
-          stroke={color} strokeWidth="1.5" fill="none"
-          variants={illustrationNodeVariant} custom={i + 2}
+        {/* Ring 2: 66% radius */}
+        <circle
+          cx="200"
+          cy="200"
+          r="132"
+          fill="none"
+          className="stroke-[var(--radar-ring)]"
+          strokeWidth="0.6"
+          strokeDasharray="4 6"
+        />
+        {/* Ring 3: 100% radius */}
+        <circle
+          cx="200"
+          cy="200"
+          r="198"
+          fill="none"
+          className="stroke-[var(--radar-ring)]"
+          strokeWidth="0.6"
+          strokeDasharray="4 6"
+        />
+
+        {/* Crosshairs: horizontal */}
+        <line
+          x1="2"
+          y1="200"
+          x2="398"
+          y2="200"
+          className="stroke-[var(--radar-ring)]"
+          strokeWidth="0.4"
+          strokeDasharray="6 10"
+        />
+        {/* Crosshairs: vertical */}
+        <line
+          x1="200"
+          y1="2"
+          x2="200"
+          y2="398"
+          className="stroke-[var(--radar-ring)]"
+          strokeWidth="0.4"
+          strokeDasharray="6 10"
+        />
+
+        {/* Diagonal crosshairs (45deg) */}
+        <line
+          x1="60"
+          y1="60"
+          x2="340"
+          y2="340"
+          className="stroke-[var(--radar-ring)]"
+          strokeWidth="0.3"
+          strokeDasharray="4 12"
+        />
+        <line
+          x1="340"
+          y1="60"
+          x2="60"
+          y2="340"
+          className="stroke-[var(--radar-ring)]"
+          strokeWidth="0.3"
+          strokeDasharray="4 12"
+        />
+
+        {/* Center dot */}
+        <circle
+          cx="200"
+          cy="200"
+          r="2"
+          className="fill-[var(--radar-ring)]"
+        />
+      </svg>
+
+      {/* Sweep line + conic trail */}
+      <motion.div
+        className="absolute inset-0 rounded-full"
+        style={{ transform: sweepRotate }}
+      >
+        {/* Conic trail (the afterglow) */}
+        <motion.div
+          className="absolute inset-0 rounded-full"
+          style={{ background: trailBackground }}
+        />
+        {/* Sweep line itself */}
+        <motion.div
+          className="absolute top-0 left-1/2 w-[1px] h-1/2 origin-bottom"
+          style={{ background: sweepLineBackground }}
+        />
+      </motion.div>
+
+      {/* Blip: outer ring (Phase 1) */}
+      <motion.div
+        className="absolute"
+        style={{
+          top: "1%",
+          left: "50%",
+          x: "-50%",
+          opacity: blipPositions.outer,
+        }}
+      >
+        <div className="relative">
+          <motion.div
+            className="w-3 h-3 rounded-full"
+            style={{ backgroundColor: PHASES[0].color }}
+          />
+          <motion.div
+            className="absolute inset-0 w-3 h-3 rounded-full animate-ping"
+            style={{ backgroundColor: PHASES[0].color, opacity: 0.4 }}
+          />
+        </div>
+      </motion.div>
+
+      {/* Blip: middle ring (Phase 2) — with triangulation */}
+      <motion.svg
+        viewBox="0 0 400 400"
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        aria-hidden="true"
+        style={{ opacity: showTriangle }}
+      >
+        {/* Triangulation dots */}
+        <circle cx="200" cy="134" r="5" fill={PHASES[1].color} opacity="0.9">
+          <animate
+            attributeName="r"
+            values="4;6;4"
+            dur="2s"
+            repeatCount="indefinite"
+          />
+        </circle>
+        <circle cx="143" cy="234" r="5" fill={PHASES[1].color} opacity="0.9">
+          <animate
+            attributeName="r"
+            values="4;6;4"
+            dur="2.3s"
+            repeatCount="indefinite"
+          />
+        </circle>
+        <circle cx="257" cy="234" r="5" fill={PHASES[1].color} opacity="0.9">
+          <animate
+            attributeName="r"
+            values="4;6;4"
+            dur="2.6s"
+            repeatCount="indefinite"
+          />
+        </circle>
+        {/* Triangulation lines */}
+        <polygon
+          points="200,134 143,234 257,234"
+          fill="none"
+          stroke={PHASES[1].color}
+          strokeWidth="1"
+          strokeDasharray="6 4"
+          opacity="0.5"
         >
           <animate
-            attributeName="r" values="5;7;5"
-            dur={`${3 + i * 0.5}s`} repeatCount="indefinite"
+            attributeName="opacity"
+            values="0.3;0.6;0.3"
+            dur="3s"
+            repeatCount="indefinite"
           />
-        </motion.circle>
-      ))}
-      {[
-        "M 148 75 L 160 50",
-        "M 152 96 L 170 100",
-        "M 148 117 L 155 150",
-      ].map((d, i) => (
-        <motion.path
-          key={d} d={d}
-          stroke={color} strokeWidth="1" strokeOpacity="0.3"
-          strokeDasharray="4 4" fill="none"
-          variants={illustrationLineVariant} custom={i + 2}
+        </polygon>
+        {/* Inner fill */}
+        <polygon
+          points="200,134 143,234 257,234"
+          fill={PHASES[1].color}
+          opacity="0.03"
         />
-      ))}
-    </svg>
-  );
-}
+      </motion.svg>
 
-function VerifyIllustration({ color }: { color: string }) {
-  return (
-    <svg
-      viewBox="0 0 200 200"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-full"
-      aria-hidden="true"
-    >
-      {[
-        { cx: 100, cy: 40 },
-        { cx: 40, cy: 160 },
-        { cx: 160, cy: 160 },
-      ].map((pos, i) => (
-        <motion.g key={i}>
-          <motion.circle
-            cx={pos.cx} cy={pos.cy} r="10"
-            stroke={color} strokeWidth="2" fill="none"
-            variants={illustrationNodeVariant} custom={i}
+      {/* Blip: center (Phase 3) — center glow */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+        style={{ opacity: centerGlow }}
+      >
+        <div className="relative flex items-center justify-center">
+          <div
+            className="absolute w-24 h-24 rounded-full blur-xl"
+            style={{ backgroundColor: PHASES[2].color, opacity: 0.3 }}
           />
-          <motion.circle
-            cx={pos.cx} cy={pos.cy} r="4"
-            fill={color} fillOpacity="0.6"
-            variants={illustrationNodeVariant} custom={i}
+          <div
+            className="absolute w-16 h-16 rounded-full blur-md"
+            style={{ backgroundColor: PHASES[2].color, opacity: 0.4 }}
+          />
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+            className="relative z-10"
           >
-            <animate
-              attributeName="fill-opacity" values="0.3;0.8;0.3"
-              dur={`${2.5 + i * 0.3}s`} repeatCount="indefinite"
+            <circle
+              cx="16"
+              cy="16"
+              r="14"
+              stroke={PHASES[2].color}
+              strokeWidth="1.5"
+              fill="none"
             />
-          </motion.circle>
-        </motion.g>
-      ))}
-      {[
-        "M 100 52 L 100 90",
-        "M 48 154 L 90 108",
-        "M 152 154 L 110 108",
-      ].map((d, i) => (
-        <motion.path
-          key={d} d={d}
-          stroke={color} strokeWidth="1.5" strokeDasharray="6 4"
-          strokeLinecap="round" fill="none"
-          variants={illustrationLineVariant} custom={i}
-        />
-      ))}
-      {[
-        "M 100 40 L 40 160",
-        "M 40 160 L 160 160",
-        "M 160 160 L 100 40",
-      ].map((d, i) => (
-        <motion.path
-          key={d} d={d}
-          stroke={color} strokeWidth="1" strokeOpacity="0.2" fill="none"
-          variants={illustrationLineVariant} custom={i + 3}
-        />
-      ))}
-      <motion.circle
-        cx="100" cy="105" r="14"
-        stroke={color} strokeWidth="2" fill="none"
-        variants={illustrationNodeVariant} custom={4}
-      >
-        <animate
-          attributeName="r" values="12;16;12"
-          dur="3s" repeatCount="indefinite"
-        />
-      </motion.circle>
-      <motion.path
-        d="M 92 105 L 98 112 L 110 98"
-        stroke={color} strokeWidth="2.5" strokeLinecap="round"
-        strokeLinejoin="round" fill="none"
-        variants={illustrationLineVariant} custom={5}
-      />
-    </svg>
+            <path
+              d="M10 16L14 20L22 12"
+              stroke={PHASES[2].color}
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
+      </motion.div>
+    </div>
   );
 }
 
-function OwnIllustration({ color }: { color: string }) {
-  return (
-    <svg
-      viewBox="0 0 200 200"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-full"
-      aria-hidden="true"
-    >
-      <motion.path
-        d="M 100 30 L 150 55 L 150 110 Q 150 150 100 175 Q 50 150 50 110 L 50 55 Z"
-        stroke={color} strokeWidth="2" fill="none"
-        variants={illustrationNodeVariant} custom={0}
-      />
-      <motion.path
-        d="M 100 45 L 138 64 L 138 108 Q 138 140 100 160 Q 62 140 62 108 L 62 64 Z"
-        stroke={color} strokeWidth="1" strokeOpacity="0.3" fill="none"
-        variants={illustrationNodeVariant} custom={1}
-      />
-      <motion.rect
-        x="82" y="90" width="36" height="30" rx="4"
-        stroke={color} strokeWidth="2" fill="none"
-        variants={illustrationNodeVariant} custom={2}
-      />
-      <motion.path
-        d="M 90 90 L 90 78 A 10 10 0 0 1 110 78 L 110 90"
-        stroke={color} strokeWidth="2" strokeLinecap="round" fill="none"
-        variants={illustrationLineVariant} custom={2}
-      />
-      <motion.circle
-        cx="100" cy="102" r="4"
-        fill={color} fillOpacity="0.6"
-        variants={illustrationNodeVariant} custom={3}
-      >
-        <animate
-          attributeName="fill-opacity" values="0.4;0.9;0.4"
-          dur="3s" repeatCount="indefinite"
-        />
-      </motion.circle>
-      <motion.path
-        d="M 50 95 Q 30 95 30 105 Q 30 115 50 115"
-        stroke={color} strokeWidth="1.5" strokeOpacity="0.5" fill="none"
-        variants={illustrationLineVariant} custom={3}
-      />
-      <motion.path
-        d="M 38 100 Q 18 100 18 110 Q 18 120 38 120"
-        stroke={color} strokeWidth="1.5" strokeOpacity="0.3" fill="none"
-        variants={illustrationLineVariant} custom={4}
-      />
-      <motion.path
-        d="M 150 95 Q 170 95 170 105 Q 170 115 150 115"
-        stroke={color} strokeWidth="1.5" strokeOpacity="0.5" fill="none"
-        variants={illustrationLineVariant} custom={3}
-      />
-      <motion.path
-        d="M 162 100 Q 182 100 182 110 Q 182 120 162 120"
-        stroke={color} strokeWidth="1.5" strokeOpacity="0.3" fill="none"
-        variants={illustrationLineVariant} custom={4}
-      />
-    </svg>
-  );
-}
-
-const ILLUSTRATIONS = [ConnectIllustration, VerifyIllustration, OwnIllustration];
-
 /* ------------------------------------------------------------------ */
-/*  Hook: per-node staggered scroll transform                          */
+/*  Sub-component: Terminal Readout                                     */
 /* ------------------------------------------------------------------ */
 
-function useNodeScrollTransform(
-  scrollProgress: MotionValue<number>,
-  distanceFromCenter: number,
-): MotionValue<number> {
-  const startY = -60 - distanceFromCenter * 60;
-  const settleAt = 0.35 + distanceFromCenter * 0.2;
-  const raw = useTransform(scrollProgress, [0, settleAt], [startY, 0]);
-  return useSpring(raw, SPRING_CONFIG);
-}
-
-/* ------------------------------------------------------------------ */
-/*  Network sub-components                                             */
-/* ------------------------------------------------------------------ */
-
-function ScrollNode({
-  node,
-  scrollProgress,
+function TerminalReadout({
+  phase,
+  opacity,
+  translateX,
+  translateY,
+  className,
 }: {
-  node: NetworkNode;
-  scrollProgress: MotionValue<number>;
+  phase: Phase;
+  opacity: MotionValue<number>;
+  translateX?: MotionValue<number>;
+  translateY?: MotionValue<number>;
+  className?: string;
 }) {
-  const translateY = useNodeScrollTransform(scrollProgress, node.distanceFromCenter);
-  const r = nodeRadius(node.tier);
-  const { base, bright } = COLOR_MAP[node.color];
-
-  return (
-    <motion.div
-      className="absolute pointer-events-none"
-      style={{
-        left: `${node.x}%`,
-        top: `${node.y}%`,
-        x: "-50%",
-        y: translateY,
-        width: `${r * 2 + 24}px`,
-        height: `${r * 2 + 24}px`,
-        marginLeft: `-${(r * 2 + 24) / 2}px`,
-        marginTop: `-${(r * 2 + 24) / 2}px`,
-      }}
-    >
-      <div
-        className="absolute inset-0 rounded-full blur-xl opacity-30"
-        style={{ background: `radial-gradient(circle, ${base}, transparent 70%)` }}
-      />
-      <svg
-        className="absolute inset-0 w-full h-full"
-        viewBox={`0 0 ${r * 2 + 24} ${r * 2 + 24}`}
-        fill="none"
-      >
-        <circle
-          cx={(r * 2 + 24) / 2} cy={(r * 2 + 24) / 2} r={r + 8}
-          stroke={base} strokeWidth="0.5" opacity="0.25"
-        />
-        <circle
-          cx={(r * 2 + 24) / 2} cy={(r * 2 + 24) / 2} r={r}
-          fill="var(--color-bg-primary)" stroke={bright}
-          strokeWidth={node.tier === 1 ? "1.8" : "1"} opacity="0.9"
-        />
-        <circle
-          cx={(r * 2 + 24) / 2} cy={(r * 2 + 24) / 2} r={r * 0.35}
-          fill={bright} opacity="0.85"
-        />
-        {node.tier <= 2 && (
-          <circle
-            cx={(r * 2 + 24) / 2} cy={(r * 2 + 24) / 2}
-            fill="none" stroke={bright}
-            strokeWidth={node.tier === 1 ? "1" : "0.5"}
-          >
-            <animate
-              attributeName="r" values={`${r};${r * 4}`}
-              dur={node.tier === 1 ? "2.5s" : "3.5s"}
-              repeatCount="indefinite" begin={`${node.id * 0.3}s`}
-            />
-            <animate
-              attributeName="opacity" values="0.35;0"
-              dur={node.tier === 1 ? "2.5s" : "3.5s"}
-              repeatCount="indefinite" begin={`${node.id * 0.3}s`}
-            />
-          </circle>
-        )}
-      </svg>
-    </motion.div>
-  );
-}
-
-function ConnectionLines() {
-  return (
-    <svg
-      className="absolute inset-0 w-full h-full pointer-events-none"
-      preserveAspectRatio="none"
-      aria-hidden="true"
-    >
-      {LINKS.map((link, i) => {
-        const a = NODES[link.from];
-        const b = NODES[link.to];
-        const c = COLOR_MAP[a.color];
-        return (
-          <g key={`link-${i}`}>
-            <line
-              x1={`${a.x}%`} y1={`${a.y}%`} x2={`${b.x}%`} y2={`${b.y}%`}
-              stroke={c.base} strokeWidth="0.7" opacity="0.12" strokeLinecap="round"
-            />
-            <line
-              x1={`${a.x}%`} y1={`${a.y}%`} x2={`${b.x}%`} y2={`${b.y}%`}
-              stroke={c.base} strokeWidth="0.35" strokeDasharray="3 9"
-              opacity="0.1" className="chain-flow"
-            />
-          </g>
-        );
-      })}
-      <polygon
-        points={`${NODES[0].x}%,${NODES[0].y}% ${NODES[1].x}%,${NODES[1].y}% ${NODES[2].x}%,${NODES[2].y}%`}
-        fill="rgba(0,255,198,0.02)" stroke="#00FFC6"
-        strokeWidth="0.5" strokeDasharray="6 4" opacity="0.15"
-      />
-    </svg>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Scroll-driven step card                                            */
-/* ------------------------------------------------------------------ */
-
-function ScrollStepCard({
-  step,
-  index,
-  scrollProgress,
-}: {
-  step: Step;
-  index: number;
-  scrollProgress: MotionValue<number>;
-}) {
-  const IllustrationComponent = ILLUSTRATIONS[index];
-
-  /* --- Scroll ranges for each card ---
-   *  Card 0: slide in 0.15-0.35, peak 0.20-0.33, fade out 0.33-0.42
-   *  Card 1: slide in 0.30-0.50, peak 0.37-0.50, fade out 0.50-0.58
-   *  Card 2: slide in 0.45-0.65, peak 0.52-0.72, stays visible
-   */
-  const enterStart = 0.15 + index * 0.15;
-  const enterEnd = enterStart + 0.20;
-  const peakStart = enterStart + 0.05;
-  const peakEnd = enterEnd + 0.03;
-  const exitEnd = peakEnd + 0.09;
-  const isLast = index === STEPS.length - 1;
-
-  // Translate X: odd cards come from right, even from left
-  const fromX = index % 2 === 0 ? -300 : 300;
-  const translateXRaw = useTransform(
-    scrollProgress,
-    [enterStart, enterEnd],
-    [fromX, 0],
-  );
-  const translateX = useSpring(translateXRaw, SPRING_CONFIG);
-
-  // Opacity: fade in during enter, fade out after peak (last card stays at 1)
-  const exitOpacity = isLast ? 1 : 0;
-  const opacityRaw = useTransform(
-    scrollProgress,
-    [enterStart, peakStart, peakEnd, exitEnd],
-    [0, 1, 1, exitOpacity],
-  );
-  const opacity = useSpring(opacityRaw, OPACITY_SPRING);
-
-  // Scale: subtle scale-up on enter
-  const scaleRaw = useTransform(
-    scrollProgress,
-    [enterStart, enterEnd],
-    [0.92, 1],
-  );
-  const scale = useSpring(scaleRaw, SPRING_CONFIG);
-
-  // Vertical translate: slide up slightly on enter
-  const translateYRaw = useTransform(
-    scrollProgress,
-    [enterStart, enterEnd],
-    [40, 0],
-  );
-  const translateY = useSpring(translateYRaw, SPRING_CONFIG);
-
   return (
     <motion.div
       className={cn(
-        "absolute inset-x-0 flex items-center justify-center",
-        "px-5 sm:px-6 lg:px-8",
-        "pointer-events-none",
+        "font-mono max-w-xs md:max-w-sm pointer-events-none select-none",
+        className,
       )}
       style={{
-        top: "50%",
+        opacity,
         x: translateX,
         y: translateY,
-        opacity,
-        scale,
-        marginTop: "-140px", // offset to center the card in viewport
       }}
     >
-      <motion.div
-        className={cn(
-          "glass-card glow-border relative overflow-hidden rounded-2xl",
-          "p-6 sm:p-8 md:p-10",
-          "flex flex-col gap-6",
-          "md:flex-row md:items-center md:gap-10 lg:gap-16",
-          "max-w-3xl w-full",
-          "pointer-events-auto",
-          index % 2 !== 0 && "md:flex-row-reverse",
-        )}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+      {/* Phase header */}
+      <div className="flex items-center gap-2 mb-1">
+        <span
+          className="text-xs tracking-[0.3em] font-semibold"
+          style={{ color: phase.color }}
+        >
+          {"\u25C8"} PHASE {phase.code}
+        </span>
+        <span className="text-fg-faint text-xs">{"\u2500\u2500\u2500"}</span>
+        <span
+          className="text-xs tracking-[0.3em] font-semibold"
+          style={{ color: phase.color }}
+        >
+          {phase.label}
+        </span>
+      </div>
+
+      {/* Separator */}
+      <div
+        className="text-xs mb-3 opacity-30"
+        style={{ color: phase.color }}
       >
-        {/* Illustration area with accent glow */}
-        <div className="relative flex-shrink-0 w-full md:w-[240px] lg:w-[280px]">
-          <div
-            className="absolute inset-0 rounded-2xl opacity-60 blur-2xl pointer-events-none"
-            style={{
-              background: `radial-gradient(circle at center, ${step.glowColor}, transparent 70%)`,
-            }}
-            aria-hidden="true"
-          />
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="relative aspect-square max-w-[180px] mx-auto md:max-w-none"
-          >
-            <IllustrationComponent color={step.accentColor} />
-          </motion.div>
-        </div>
+        {"\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501"}
+      </div>
 
-        {/* Text content */}
-        <div className="flex-1 min-w-0">
-          {/* Step number watermark */}
-          <span
-            className={cn(
-              "absolute -top-4 font-display font-black select-none pointer-events-none",
-              "text-[64px] sm:text-[80px] md:text-[100px] leading-none",
-              "gradient-text-accent opacity-[0.06]",
-              index % 2 !== 0
-                ? "right-4 md:right-6"
-                : "left-4 md:left-6",
-            )}
-            aria-hidden="true"
-          >
-            {step.number}
-          </span>
+      {/* Title */}
+      <h3
+        className="text-2xl md:text-4xl font-bold uppercase tracking-tight mb-4"
+        style={{ color: phase.color }}
+      >
+        {phase.title}
+      </h3>
 
-          <span
-            className="inline-block font-mono text-xs font-semibold uppercase tracking-[0.2em] mb-3"
-            style={{ color: step.accentColor }}
-          >
-            {step.label}
-          </span>
-          <h3 className="font-display font-bold text-xl sm:text-2xl md:text-3xl text-fg mb-3 tracking-tight">
-            {step.title}
-          </h3>
-          <p className="text-fg-secondary text-base sm:text-lg leading-relaxed max-w-xl">
-            {step.description}
-          </p>
-        </div>
-      </motion.div>
+      {/* Description */}
+      <p className="text-sm md:text-base text-fg-tertiary leading-relaxed whitespace-pre-line mb-5">
+        {phase.description}
+      </p>
+
+      {/* Status bar */}
+      <div className="flex items-center gap-2 text-xs">
+        <span className="text-fg-muted tracking-wider">STATUS:</span>
+        <span
+          className="tracking-[0.05em]"
+          style={{ color: phase.color }}
+        >
+          {phase.statusBar}
+        </span>
+        <span
+          className="tracking-[0.2em] font-semibold"
+          style={{ color: phase.color }}
+        >
+          {phase.statusLabel}
+        </span>
+      </div>
     </motion.div>
   );
 }
 
 /* ------------------------------------------------------------------ */
-/*  Flow indicator pills (bottom of viewport)                          */
+/*  Sub-component: Corner HUD elements                                 */
 /* ------------------------------------------------------------------ */
 
-function FlowIndicator({
+function CornerHUD({
   scrollProgress,
 }: {
   scrollProgress: MotionValue<number>;
 }) {
-  const opacityRaw = useTransform(scrollProgress, [0.60, 0.75], [0, 1]);
-  const opacity = useSpring(opacityRaw, OPACITY_SPRING);
-  const yRaw = useTransform(scrollProgress, [0.60, 0.75], [20, 0]);
-  const y = useSpring(yRaw, SPRING_CONFIG);
+  const progressText = useTransform(scrollProgress, (v) => {
+    const pct = Math.round(v * 100);
+    return `PROGRESS: ${pct}%`;
+  });
+
+  const hudOpacityRaw = useTransform(
+    scrollProgress,
+    [0, 0.04, 0.92, 1],
+    [0, 1, 1, 0],
+  );
+  const hudOpacity = useSpring(hudOpacityRaw, OPACITY_SPRING);
+
+  /* Extract from JSX to avoid hook-in-render violations */
+  const coordOpacity = useTransform(
+    scrollProgress,
+    [0, 0.1, 0.3, 0.4, 0.6, 0.7, 0.9, 1],
+    [0, 0.6, 0.6, 0.3, 0.3, 0.6, 0.6, 0],
+  );
 
   return (
     <motion.div
-      className="absolute bottom-[8vh] inset-x-0 z-10 pointer-events-none hidden md:flex items-center justify-center gap-0"
-      style={{ opacity, y }}
+      className="absolute inset-0 pointer-events-none hidden md:block"
+      style={{ opacity: hudOpacity }}
     >
-      {STEPS.map((step, i) => (
-        <span key={step.label} className="contents">
-          <span
-            className="px-5 py-2 glass-card rounded-full font-mono text-xs font-medium tracking-wider"
-            style={{ color: step.accentColor }}
-          >
-            {step.label}
-          </span>
-          {i < STEPS.length - 1 && (
-            <svg
-              width="48" height="2" viewBox="0 0 48 2"
-              className="mx-1" aria-hidden="true"
-            >
-              <defs>
-                <linearGradient
-                  id={`hiw-flowGrad-${i}`}
-                  x1="0" y1="0" x2="48" y2="0"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stopColor={STEPS[i].accentColor} />
-                  <stop offset="1" stopColor={STEPS[i + 1].accentColor} />
-                </linearGradient>
-              </defs>
-              <line
-                x1="0" y1="1" x2="48" y2="1"
-                stroke={`url(#hiw-flowGrad-${i})`}
-                strokeWidth="1.5" strokeDasharray="4 4"
-                className="chain-flow"
-              />
-            </svg>
-          )}
-        </span>
-      ))}
+      {/* Top-left */}
+      <div className="absolute top-6 left-6 font-mono text-[10px] text-fg-faint tracking-wider">
+        SCAN PROTOCOL v0.8.26
+      </div>
+
+      {/* Top-right */}
+      <motion.div
+        className="absolute top-6 right-6 font-mono text-[10px] text-fg-faint tracking-wider text-right"
+        style={{ opacity: coordOpacity }}
+      >
+        LAT 40.7128{"\u00B0"} N{"  "}LON 74.0060{"\u00B0"} W
+      </motion.div>
+
+      {/* Bottom-left */}
+      <div className="absolute bottom-6 left-6 font-mono text-[10px] text-fg-faint tracking-[0.2em]">
+        7AYCHAIN NETWORK
+      </div>
+
+      {/* Bottom-right: scroll percentage */}
+      <div className="absolute bottom-6 right-6 font-mono text-[10px] text-fg-faint tracking-wider">
+        <motion.span>{progressText}</motion.span>
+      </div>
     </motion.div>
   );
 }
 
 /* ------------------------------------------------------------------ */
-/*  Static fallback (prefers-reduced-motion)                           */
+/*  Desktop scroll-driven layout                                       */
+/* ------------------------------------------------------------------ */
+
+function DesktopLayout() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  /* ----- Radar sweep ----- */
+  const sweepAngleRaw = useTransform(scrollYProgress, [0, 1], [0, 360]);
+  const sweepAngle = useSpring(sweepAngleRaw, {
+    stiffness: 60,
+    damping: 30,
+    mass: 1,
+  });
+
+  const phaseColor = usePhaseColor(scrollYProgress);
+
+  /* ----- Blip opacity per phase ----- */
+  const blipOuterRaw = useTransform(
+    scrollYProgress,
+    [0, 0.05, 0.28, 0.32],
+    [0, 1, 1, 0],
+  );
+  const blipOuter = useSpring(blipOuterRaw, OPACITY_SPRING);
+
+  const triangleRaw = useTransform(
+    scrollYProgress,
+    [0.28, 0.35, 0.58, 0.62],
+    [0, 1, 1, 0],
+  );
+  const showTriangle = useSpring(triangleRaw, OPACITY_SPRING);
+
+  const centerGlowRaw = useTransform(
+    scrollYProgress,
+    [0.58, 0.70],
+    [0, 1],
+  );
+  const centerGlow = useSpring(centerGlowRaw, OPACITY_SPRING);
+
+  /* ----- Phase 1 transforms (LEFT side) ----- */
+  const p1OpacityRaw = useTransform(
+    scrollYProgress,
+    [0, 0.08, 0.25, 0.32],
+    [0, 1, 1, 0],
+  );
+  const p1Opacity = useSpring(p1OpacityRaw, OPACITY_SPRING);
+  const p1TranslateXRaw = useTransform(
+    scrollYProgress,
+    [0, 0.05, 0.25, 0.32],
+    [-60, 0, 0, -60],
+  );
+  const p1TranslateX = useSpring(p1TranslateXRaw, SPRING_CFG);
+
+  /* ----- Phase 2 transforms (RIGHT side) ----- */
+  const p2OpacityRaw = useTransform(
+    scrollYProgress,
+    [0.28, 0.35, 0.55, 0.62],
+    [0, 1, 1, 0],
+  );
+  const p2Opacity = useSpring(p2OpacityRaw, OPACITY_SPRING);
+  const p2TranslateXRaw = useTransform(
+    scrollYProgress,
+    [0.28, 0.35, 0.55, 0.62],
+    [60, 0, 0, 60],
+  );
+  const p2TranslateX = useSpring(p2TranslateXRaw, SPRING_CFG);
+
+  /* ----- Phase 3 transforms (BOTTOM center) ----- */
+  const p3OpacityRaw = useTransform(
+    scrollYProgress,
+    [0.58, 0.65, 0.88, 0.95],
+    [0, 1, 1, 0],
+  );
+  const p3Opacity = useSpring(p3OpacityRaw, OPACITY_SPRING);
+  const p3TranslateYRaw = useTransform(
+    scrollYProgress,
+    [0.58, 0.65],
+    [40, 0],
+  );
+  const p3TranslateY = useSpring(p3TranslateYRaw, SPRING_CFG);
+
+  /* ----- Section heading ----- */
+  const headingOpacityRaw = useTransform(
+    scrollYProgress,
+    [0, 0.03, 0.06, 0.90, 0.96],
+    [0, 0, 1, 1, 0],
+  );
+  const headingOpacity = useSpring(headingOpacityRaw, OPACITY_SPRING);
+
+  return (
+    <div className="hidden md:block" id="how-it-works">
+      {/* 300vh scroll container */}
+      <div ref={containerRef} className="relative" style={{ height: "300vh" }}>
+        {/* Sticky viewport */}
+        <div
+          className="sticky top-0 h-screen w-full overflow-hidden"
+          style={{
+            backgroundColor: "var(--color-bg-primary)",
+          }}
+        >
+          {/* Scan-line texture overlay */}
+          <div
+            className="absolute inset-0 pointer-events-none z-[1]"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(0deg, var(--scanline-color) 0px, var(--scanline-color) 1px, transparent 1px, transparent 3px)",
+            }}
+            aria-hidden="true"
+          />
+
+          {/* Corner HUD */}
+          <CornerHUD scrollProgress={scrollYProgress} />
+
+          {/* Section heading (top center) */}
+          <motion.div
+            className="absolute top-[6vh] inset-x-0 text-center z-10 pointer-events-none"
+            style={{ opacity: headingOpacity }}
+          >
+            <h2 className="font-mono text-xs md:text-sm tracking-[0.4em] uppercase text-fg-muted mb-2">
+              How It Works
+            </h2>
+            <p className="font-mono text-[10px] md:text-xs text-fg-faint tracking-wider">
+              From presence to proof in three steps
+            </p>
+          </motion.div>
+
+          {/* Main content area: radar + readouts */}
+          <div className="absolute inset-0 flex items-center justify-center z-[2]">
+            {/* Phase 1 readout (LEFT of radar) */}
+            <div className="absolute left-[4vw] xl:left-[8vw] top-1/2 -translate-y-1/2 z-10">
+              <TerminalReadout
+                phase={PHASES[0]}
+                opacity={p1Opacity}
+                translateX={p1TranslateX}
+              />
+            </div>
+
+            {/* Radar (center) */}
+            <RadarDisplay
+              sweepAngle={sweepAngle}
+              phaseColor={phaseColor}
+              blipPositions={{
+                outer: blipOuter,
+                middle: showTriangle,
+                center: centerGlow,
+              }}
+              showTriangle={showTriangle}
+              centerGlow={centerGlow}
+            />
+
+            {/* Phase 2 readout (RIGHT of radar) */}
+            <div className="absolute right-[4vw] xl:right-[8vw] top-1/2 -translate-y-1/2 z-10">
+              <TerminalReadout
+                phase={PHASES[1]}
+                opacity={p2Opacity}
+                translateX={p2TranslateX}
+              />
+            </div>
+
+            {/* Phase 3 readout (BELOW radar, centered) */}
+            <div className="absolute bottom-[6vh] inset-x-0 flex justify-center z-10">
+              <TerminalReadout
+                phase={PHASES[2]}
+                opacity={p3Opacity}
+                translateY={p3TranslateY}
+                className="text-center"
+              />
+            </div>
+          </div>
+
+          {/* Top edge fade */}
+          <div
+            className="absolute top-0 left-0 right-0 h-16 pointer-events-none z-10"
+            style={{
+              background:
+                "linear-gradient(to bottom, var(--color-bg-primary), transparent)",
+            }}
+            aria-hidden="true"
+          />
+
+          {/* Bottom edge fade */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none z-10"
+            style={{
+              background:
+                "linear-gradient(to top, var(--color-bg-primary), transparent)",
+            }}
+            aria-hidden="true"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Mobile layout                                                      */
+/* ------------------------------------------------------------------ */
+
+function MobileLayout() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  /* ----- Radar sweep (same as desktop, just smaller) ----- */
+  const sweepAngleRaw = useTransform(scrollYProgress, [0, 1], [0, 360]);
+  const sweepAngle = useSpring(sweepAngleRaw, {
+    stiffness: 60,
+    damping: 30,
+    mass: 1,
+  });
+
+  const phaseColor = usePhaseColor(scrollYProgress);
+
+  /* ----- Blips ----- */
+  const blipOuterRaw = useTransform(
+    scrollYProgress,
+    [0, 0.06, 0.30, 0.35],
+    [0, 1, 1, 0],
+  );
+  const blipOuter = useSpring(blipOuterRaw, OPACITY_SPRING);
+
+  const triangleRaw = useTransform(
+    scrollYProgress,
+    [0.30, 0.38, 0.60, 0.66],
+    [0, 1, 1, 0],
+  );
+  const showTriangle = useSpring(triangleRaw, OPACITY_SPRING);
+
+  const centerGlowRaw = useTransform(
+    scrollYProgress,
+    [0.62, 0.74],
+    [0, 1],
+  );
+  const centerGlow = useSpring(centerGlowRaw, OPACITY_SPRING);
+
+  /* ----- Phase transforms (all appear BELOW radar) ----- */
+  const p1OpacityRaw = useTransform(
+    scrollYProgress,
+    [0, 0.08, 0.28, 0.34],
+    [0, 1, 1, 0],
+  );
+  const p1Opacity = useSpring(p1OpacityRaw, OPACITY_SPRING);
+
+  const p2OpacityRaw = useTransform(
+    scrollYProgress,
+    [0.30, 0.38, 0.58, 0.64],
+    [0, 1, 1, 0],
+  );
+  const p2Opacity = useSpring(p2OpacityRaw, OPACITY_SPRING);
+
+  const p3OpacityRaw = useTransform(
+    scrollYProgress,
+    [0.60, 0.68, 0.90, 0.96],
+    [0, 1, 1, 0],
+  );
+  const p3Opacity = useSpring(p3OpacityRaw, OPACITY_SPRING);
+
+  const p1YRaw = useTransform(scrollYProgress, [0, 0.08], [30, 0]);
+  const p1Y = useSpring(p1YRaw, SPRING_CFG);
+  const p2YRaw = useTransform(scrollYProgress, [0.30, 0.38], [30, 0]);
+  const p2Y = useSpring(p2YRaw, SPRING_CFG);
+  const p3YRaw = useTransform(scrollYProgress, [0.60, 0.68], [30, 0]);
+  const p3Y = useSpring(p3YRaw, SPRING_CFG);
+
+  /* Extract useTransform calls out of JSX to avoid hook-in-render violations */
+  const mobileSweepRotate = useTransform(sweepAngle, (v) => `rotate(${v}deg)`);
+  const mobileTrailBg = useTransform(
+    phaseColor,
+    (c) =>
+      `conic-gradient(from 0deg at 50% 50%, ${c}00 0deg, ${c}08 270deg, ${c}30 350deg, ${c}60 358deg, ${c}00 360deg)`,
+  );
+  const mobileSweepLineBg = useTransform(
+    phaseColor,
+    (c) =>
+      `linear-gradient(to top, ${c}00 0%, ${c}99 70%, ${c} 100%)`,
+  );
+
+  return (
+    <div className="md:hidden" id="how-it-works-mobile">
+      {/* 250vh scroll container */}
+      <div ref={containerRef} className="relative" style={{ height: "250vh" }}>
+        {/* Sticky viewport */}
+        <div
+          className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-center"
+          style={{ backgroundColor: "var(--color-bg-primary)" }}
+        >
+          {/* Scan-line texture */}
+          <div
+            className="absolute inset-0 pointer-events-none z-[1]"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(0deg, var(--scanline-color) 0px, var(--scanline-color) 1px, transparent 1px, transparent 3px)",
+            }}
+            aria-hidden="true"
+          />
+
+          {/* Heading */}
+          <div className="relative z-10 pt-16 pb-4 text-center px-5">
+            <h2 className="font-mono text-xs tracking-[0.4em] uppercase text-fg-muted mb-1">
+              How It Works
+            </h2>
+            <p className="font-mono text-[10px] text-fg-faint tracking-wider">
+              From presence to proof in three steps
+            </p>
+          </div>
+
+          {/* Radar (smaller on mobile) */}
+          <div className="relative z-[2] flex-shrink-0 mt-2">
+            <div className="w-[70vw] h-[70vw] max-w-[280px] max-h-[280px] relative">
+              {/* Reuse radar SVG inline for mobile size */}
+              <svg
+                viewBox="0 0 400 400"
+                className="absolute inset-0 w-full h-full"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="200" cy="200" r="66" fill="none"
+                  className="stroke-[var(--radar-ring)]"
+                  strokeWidth="0.6" strokeDasharray="4 6"
+                />
+                <circle
+                  cx="200" cy="200" r="132" fill="none"
+                  className="stroke-[var(--radar-ring)]"
+                  strokeWidth="0.6" strokeDasharray="4 6"
+                />
+                <circle
+                  cx="200" cy="200" r="198" fill="none"
+                  className="stroke-[var(--radar-ring)]"
+                  strokeWidth="0.6" strokeDasharray="4 6"
+                />
+                <line
+                  x1="2" y1="200" x2="398" y2="200"
+                  className="stroke-[var(--radar-ring)]"
+                  strokeWidth="0.4" strokeDasharray="6 10"
+                />
+                <line
+                  x1="200" y1="2" x2="200" y2="398"
+                  className="stroke-[var(--radar-ring)]"
+                  strokeWidth="0.4" strokeDasharray="6 10"
+                />
+                <circle cx="200" cy="200" r="2" className="fill-[var(--radar-ring)]" />
+              </svg>
+
+              {/* Sweep */}
+              <motion.div
+                className="absolute inset-0 rounded-full"
+                style={{ transform: mobileSweepRotate }}
+              >
+                <motion.div
+                  className="absolute inset-0 rounded-full"
+                  style={{ background: mobileTrailBg }}
+                />
+                <motion.div
+                  className="absolute top-0 left-1/2 w-[1px] h-1/2 origin-bottom"
+                  style={{ background: mobileSweepLineBg }}
+                />
+              </motion.div>
+
+              {/* Outer blip */}
+              <motion.div
+                className="absolute top-[1%] left-1/2 -translate-x-1/2"
+                style={{ opacity: blipOuter }}
+              >
+                <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: PHASES[0].color }} />
+              </motion.div>
+
+              {/* Triangle (phase 2) */}
+              <motion.svg
+                viewBox="0 0 400 400"
+                className="absolute inset-0 w-full h-full pointer-events-none"
+                style={{ opacity: showTriangle }}
+              >
+                <circle cx="200" cy="134" r="4" fill={PHASES[1].color} opacity="0.9" />
+                <circle cx="143" cy="234" r="4" fill={PHASES[1].color} opacity="0.9" />
+                <circle cx="257" cy="234" r="4" fill={PHASES[1].color} opacity="0.9" />
+                <polygon
+                  points="200,134 143,234 257,234" fill="none"
+                  stroke={PHASES[1].color} strokeWidth="1" strokeDasharray="6 4" opacity="0.4"
+                />
+              </motion.svg>
+
+              {/* Center glow (phase 3) */}
+              <motion.div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                style={{ opacity: centerGlow }}
+              >
+                <div
+                  className="w-12 h-12 rounded-full blur-lg"
+                  style={{ backgroundColor: PHASES[2].color, opacity: 0.3 }}
+                />
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Readout area (stacks below radar) */}
+          <div className="relative z-10 flex-1 w-full px-5 mt-4 overflow-hidden">
+            {/* Phase 1 */}
+            <motion.div
+              className="absolute inset-x-5 top-0"
+              style={{ opacity: p1Opacity, y: p1Y }}
+            >
+              <MobileReadout phase={PHASES[0]} />
+            </motion.div>
+            {/* Phase 2 */}
+            <motion.div
+              className="absolute inset-x-5 top-0"
+              style={{ opacity: p2Opacity, y: p2Y }}
+            >
+              <MobileReadout phase={PHASES[1]} />
+            </motion.div>
+            {/* Phase 3 */}
+            <motion.div
+              className="absolute inset-x-5 top-0"
+              style={{ opacity: p3Opacity, y: p3Y }}
+            >
+              <MobileReadout phase={PHASES[2]} />
+            </motion.div>
+          </div>
+
+          {/* Bottom fade */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none z-10"
+            style={{
+              background:
+                "linear-gradient(to top, var(--color-bg-primary), transparent)",
+            }}
+            aria-hidden="true"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Mobile readout (simplified terminal block)                         */
+/* ------------------------------------------------------------------ */
+
+function MobileReadout({ phase }: { phase: Phase }) {
+  return (
+    <div className="font-mono">
+      <div className="flex items-center gap-2 mb-1">
+        <span
+          className="text-[10px] tracking-[0.3em] font-semibold"
+          style={{ color: phase.color }}
+        >
+          {"\u25C8"} PHASE {phase.code}
+        </span>
+        <span className="text-fg-faint text-[10px]">{"\u2500\u2500\u2500"}</span>
+        <span
+          className="text-[10px] tracking-[0.3em] font-semibold"
+          style={{ color: phase.color }}
+        >
+          {phase.label}
+        </span>
+      </div>
+      <div
+        className="text-[10px] mb-2 opacity-30"
+        style={{ color: phase.color }}
+      >
+        {"\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501"}
+      </div>
+      <h3
+        className="text-xl font-bold uppercase tracking-tight mb-2"
+        style={{ color: phase.color }}
+      >
+        {phase.title}
+      </h3>
+      <p className="text-xs text-fg-tertiary leading-relaxed whitespace-pre-line mb-3">
+        {phase.description}
+      </p>
+      <div className="flex items-center gap-2 text-[10px]">
+        <span className="text-fg-muted tracking-wider">STATUS:</span>
+        <span style={{ color: phase.color }}>{phase.statusBar}</span>
+        <span
+          className="tracking-[0.2em] font-semibold"
+          style={{ color: phase.color }}
+        >
+          {phase.statusLabel}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reduced motion: static fallback                                    */
 /* ------------------------------------------------------------------ */
 
 function StaticFallback() {
   return (
     <section
       id="how-it-works"
-      className="relative w-full px-5 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-40 overflow-hidden"
+      className="relative w-full py-24 md:py-32 overflow-hidden"
+      style={{ backgroundColor: "var(--color-bg-primary)" }}
       aria-labelledby="how-it-works-heading-static"
     >
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16 md:mb-20">
-          <div className="mb-5">
-            <SectionLabel>How It Works</SectionLabel>
-          </div>
+      {/* Scan-line texture */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(0deg, var(--scanline-color) 0px, var(--scanline-color) 1px, transparent 1px, transparent 3px)",
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="relative max-w-3xl mx-auto px-5 sm:px-6 lg:px-8">
+        {/* Heading */}
+        <div className="text-center mb-16">
           <h2
             id="how-it-works-heading-static"
-            className="heading-lg text-fg mb-4"
+            className="font-mono text-xs md:text-sm tracking-[0.4em] uppercase text-fg-muted mb-2"
           >
-            From presence to proof in three steps
+            How It Works
           </h2>
-          <p className="body-lg max-w-2xl mx-auto">
-            No biometrics. No hardware. Just your connection.
+          <p className="font-mono text-[10px] md:text-xs text-fg-faint tracking-wider">
+            From presence to proof in three steps
           </p>
         </div>
 
-        <div className="flex flex-col gap-8">
-          {STEPS.map((step, index) => {
-            const IllustrationComponent = ILLUSTRATIONS[index];
-            return (
-              <div
-                key={step.number}
-                className={cn(
-                  "glass-card glow-border relative overflow-hidden rounded-2xl",
-                  "p-6 sm:p-8 md:p-10",
-                  "flex flex-col gap-6",
-                  "md:flex-row md:items-center md:gap-10 lg:gap-16",
-                  index % 2 !== 0 && "md:flex-row-reverse",
-                )}
-              >
-                <div className="relative flex-shrink-0 w-full md:w-[240px] lg:w-[280px]">
-                  <div
-                    className="absolute inset-0 rounded-2xl opacity-60 blur-2xl pointer-events-none"
-                    style={{
-                      background: `radial-gradient(circle at center, ${step.glowColor}, transparent 70%)`,
-                    }}
-                    aria-hidden="true"
-                  />
-                  <div className="relative aspect-square max-w-[180px] mx-auto md:max-w-none">
-                    <IllustrationComponent color={step.accentColor} />
-                  </div>
-                </div>
-
-                <div className="flex-1 min-w-0">
-                  <span
-                    className="inline-block font-mono text-xs font-semibold uppercase tracking-[0.2em] mb-3"
-                    style={{ color: step.accentColor }}
-                  >
-                    {step.label}
-                  </span>
-                  <h3 className="font-display font-bold text-xl sm:text-2xl md:text-3xl text-fg mb-3 tracking-tight">
-                    {step.title}
-                  </h3>
-                  <p className="text-fg-secondary text-base sm:text-lg leading-relaxed max-w-xl">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Static flow indicator */}
-        <div className="hidden md:flex items-center justify-center gap-0 mt-16">
-          {STEPS.map((step, i) => (
-            <span key={step.label} className="contents">
-              <span
-                className="px-5 py-2 glass-card rounded-full font-mono text-xs font-medium tracking-wider"
-                style={{ color: step.accentColor }}
-              >
-                {step.label}
-              </span>
-              {i < STEPS.length - 1 && (
-                <svg
-                  width="48" height="2" viewBox="0 0 48 2"
-                  className="mx-1" aria-hidden="true"
+        {/* Stacked readouts */}
+        <div className="flex flex-col gap-16">
+          {PHASES.map((phase) => (
+            <div
+              key={phase.id}
+              className="font-mono"
+              style={{
+                borderLeft: `2px solid ${phase.color}`,
+                paddingLeft: "1.5rem",
+              }}
+            >
+              <div className="flex items-center gap-2 mb-1">
+                <span
+                  className="text-xs tracking-[0.3em] font-semibold"
+                  style={{ color: phase.color }}
                 >
-                  <defs>
-                    <linearGradient
-                      id={`hiw-static-flowGrad-${i}`}
-                      x1="0" y1="0" x2="48" y2="0"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stopColor={STEPS[i].accentColor} />
-                      <stop offset="1" stopColor={STEPS[i + 1].accentColor} />
-                    </linearGradient>
-                  </defs>
-                  <line
-                    x1="0" y1="1" x2="48" y2="1"
-                    stroke={`url(#hiw-static-flowGrad-${i})`}
-                    strokeWidth="1.5" strokeDasharray="4 4"
-                    className="chain-flow"
-                  />
-                </svg>
-              )}
-            </span>
+                  {"\u25C8"} PHASE {phase.code}
+                </span>
+                <span className="text-fg-faint text-xs">
+                  {"\u2500\u2500\u2500"}
+                </span>
+                <span
+                  className="text-xs tracking-[0.3em] font-semibold"
+                  style={{ color: phase.color }}
+                >
+                  {phase.label}
+                </span>
+              </div>
+              <div
+                className="text-xs mb-3 opacity-30"
+                style={{ color: phase.color }}
+              >
+                {"\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501"}
+              </div>
+              <h3
+                className="text-2xl md:text-3xl font-bold uppercase tracking-tight mb-3"
+                style={{ color: phase.color }}
+              >
+                {phase.title}
+              </h3>
+              <p className="text-sm md:text-base text-fg-tertiary leading-relaxed whitespace-pre-line mb-4">
+                {phase.description}
+              </p>
+              <div className="flex items-center gap-2 text-xs">
+                <span className="text-fg-muted tracking-wider">STATUS:</span>
+                <span style={{ color: phase.color }}>{phase.statusBar}</span>
+                <span
+                  className="tracking-[0.2em] font-semibold"
+                  style={{ color: phase.color }}
+                >
+                  {phase.statusLabel}
+                </span>
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -811,263 +1083,26 @@ function StaticFallback() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Mobile layout (no scroll-driven, simple stacked cards)             */
+/*  Inline styles for CSS custom properties                            */
 /* ------------------------------------------------------------------ */
 
-function MobileLayout() {
-  return (
-    <section
-      id="how-it-works"
-      className="relative w-full px-5 sm:px-6 py-24 overflow-hidden md:hidden"
-      aria-labelledby="how-it-works-heading-mobile"
-    >
-      <div className="max-w-lg mx-auto">
-        {/* Section header */}
-        <div className="text-center mb-12">
-          <div className="mb-5">
-            <SectionLabel>How It Works</SectionLabel>
-          </div>
-          <h2
-            id="how-it-works-heading-mobile"
-            className="heading-lg text-fg mb-4"
-          >
-            From presence to proof in three steps
-          </h2>
-          <p className="body-lg">
-            No biometrics. No hardware. Just your connection.
-          </p>
-        </div>
+const SECTION_CSS_VARS = {
+  "--radar-ring": "rgba(255,255,255,0.08)",
+  "--scanline-color": "rgba(255,255,255,0.015)",
+} as React.CSSProperties;
 
-        {/* Stacked cards */}
-        <div className="flex flex-col gap-6">
-          {STEPS.map((step, index) => {
-            const IllustrationComponent = ILLUSTRATIONS[index];
-            return (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                  filter: "blur(0px)",
-                  transition: { duration: 0.5, ease: "easeOut" },
-                }}
-                viewport={{ once: true, margin: "-60px" }}
-                className={cn(
-                  "glass-card glow-border relative overflow-hidden rounded-2xl",
-                  "p-6",
-                  "flex flex-col gap-5",
-                )}
-              >
-                {/* Watermark */}
-                <span
-                  className="absolute -top-3 right-3 font-display font-black select-none pointer-events-none text-[60px] leading-none gradient-text-accent opacity-[0.06]"
-                  aria-hidden="true"
-                >
-                  {step.number}
-                </span>
-
-                <div className="relative w-full">
-                  <div
-                    className="absolute inset-0 rounded-2xl opacity-60 blur-2xl pointer-events-none"
-                    style={{
-                      background: `radial-gradient(circle at center, ${step.glowColor}, transparent 70%)`,
-                    }}
-                    aria-hidden="true"
-                  />
-                  <div className="relative aspect-square max-w-[160px] mx-auto">
-                    <IllustrationComponent color={step.accentColor} />
-                  </div>
-                </div>
-
-                <div>
-                  <span
-                    className="inline-block font-mono text-xs font-semibold uppercase tracking-[0.2em] mb-2"
-                    style={{ color: step.accentColor }}
-                  >
-                    {step.label}
-                  </span>
-                  <h3 className="font-display font-bold text-lg text-fg mb-2 tracking-tight">
-                    {step.title}
-                  </h3>
-                  <p className="text-fg-secondary text-sm leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Desktop scroll-driven layout                                       */
-/* ------------------------------------------------------------------ */
-
-function DesktopScrollLayout() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  /* ----- 3D scene transforms ----- */
-  const rotateXRaw = useTransform(scrollYProgress, [0, 0.35], [45, 0]);
-  const rotateYRaw = useTransform(scrollYProgress, [0, 0.35], [-15, 0]);
-  const scaleRaw = useTransform(scrollYProgress, [0, 0.35], [0.7, 1]);
-  const sceneTranslateYRaw = useTransform(scrollYProgress, [0, 0.35], [80, 0]);
-  const sceneOpacityRaw = useTransform(scrollYProgress, [0, 0.20], [0, 1]);
-
-  const rotateX = useSpring(rotateXRaw, SPRING_CONFIG);
-  const rotateY = useSpring(rotateYRaw, SPRING_CONFIG);
-  const scale = useSpring(scaleRaw, SPRING_CONFIG);
-  const sceneTranslateY = useSpring(sceneTranslateYRaw, SPRING_CONFIG);
-  const sceneOpacity = useSpring(sceneOpacityRaw, OPACITY_SPRING);
-
-  /* ----- Network fade out as cards appear ----- */
-  const networkDimRaw = useTransform(
-    scrollYProgress,
-    [0.10, 0.25, 0.35, 0.50],
-    [1, 1, 0.5, 0.25],
-  );
-  const networkDim = useSpring(networkDimRaw, OPACITY_SPRING);
-
-  /* ----- Title transforms ----- */
-  const titleOpacityRaw = useTransform(scrollYProgress, [0.08, 0.22], [0, 1]);
-  const titleBlurRaw = useTransform(scrollYProgress, [0.08, 0.22], [20, 0]);
-  const titleYRaw = useTransform(scrollYProgress, [0.08, 0.22], [40, 0]);
-
-  const titleOpacity = useSpring(titleOpacityRaw, OPACITY_SPRING);
-  const titleBlur = useSpring(titleBlurRaw, SPRING_CONFIG);
-  const titleY = useSpring(titleYRaw, SPRING_CONFIG);
-  const titleFilter = useTransform(titleBlur, (v) => `blur(${v}px)`);
-
-  /* ----- Background glow ----- */
-  const glowOpacity = useTransform(scrollYProgress, [0, 0.2, 0.5], [0, 0.7, 0.4]);
-
-  return (
-    <section id="how-it-works" aria-labelledby="how-it-works-heading" className="hidden md:block">
-      {/* 250vh scroll container */}
-      <div ref={containerRef} className="relative" style={{ height: "250vh" }}>
-        {/* Sticky viewport */}
-        <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
-
-          {/* -------- Layer 1: Background mesh glows -------- */}
-          <motion.div
-            className="absolute inset-0 pointer-events-none"
-            style={{ opacity: glowOpacity }}
-            aria-hidden="true"
-          >
-            <div
-              className="absolute w-[600px] h-[600px] rounded-full blur-3xl"
-              style={{
-                background: "radial-gradient(circle, rgba(23, 142, 119, 0.12), transparent 70%)",
-                left: "15%",
-                top: "20%",
-              }}
-            />
-            <div
-              className="absolute w-[500px] h-[500px] rounded-full blur-3xl"
-              style={{
-                background: "radial-gradient(circle, rgba(139, 92, 246, 0.08), transparent 70%)",
-                right: "10%",
-                top: "15%",
-              }}
-            />
-            <div
-              className="absolute w-[400px] h-[400px] rounded-full blur-3xl"
-              style={{
-                background: "radial-gradient(circle, rgba(0, 255, 198, 0.06), transparent 70%)",
-                left: "50%",
-                bottom: "15%",
-                transform: "translateX(-50%)",
-              }}
-            />
-          </motion.div>
-
-          {/* -------- Layer 2: 3D Network (background) -------- */}
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center"
-            style={{ perspective: "1200px", opacity: networkDim }}
-          >
-            <motion.div
-              className="relative w-full max-w-4xl aspect-[16/10] mx-auto"
-              style={{
-                transformStyle: "preserve-3d",
-                transformOrigin: "center center",
-                rotateX,
-                rotateY,
-                scale,
-                y: sceneTranslateY,
-                opacity: sceneOpacity,
-              }}
-            >
-              <ConnectionLines />
-              {NODES.map((node) => (
-                <ScrollNode
-                  key={node.id}
-                  node={node}
-                  scrollProgress={scrollYProgress}
-                />
-              ))}
-            </motion.div>
-          </motion.div>
-
-          {/* -------- Layer 3: Section title -------- */}
-          <motion.div
-            className="absolute inset-x-0 top-[8vh] sm:top-[10vh] flex flex-col items-center text-center px-6 z-10 pointer-events-none"
-            style={{
-              opacity: titleOpacity,
-              y: titleY,
-              filter: titleFilter,
-            }}
-          >
-            <div className="mb-5">
-              <SectionLabel>How It Works</SectionLabel>
-            </div>
-            <h2
-              id="how-it-works-heading"
-              className="heading-lg text-fg mb-3"
-            >
-              From presence to proof in three steps
-            </h2>
-            <p className="body-lg max-w-xl mx-auto">
-              No biometrics. No hardware. Just your connection.
-            </p>
-          </motion.div>
-
-          {/* -------- Layer 4: Step cards (one at a time) -------- */}
-          <div className="absolute inset-0 z-10">
-            {STEPS.map((step, index) => (
-              <ScrollStepCard
-                key={step.number}
-                step={step}
-                index={index}
-                scrollProgress={scrollYProgress}
-              />
-            ))}
-          </div>
-
-          {/* -------- Layer 5: Flow indicator pills -------- */}
-          <FlowIndicator scrollProgress={scrollYProgress} />
-
-          {/* Bottom fade gradient */}
-          <div
-            className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
-            style={{
-              background: "linear-gradient(to top, var(--color-bg-primary), transparent)",
-            }}
-            aria-hidden="true"
-          />
-        </div>
-      </div>
-    </section>
-  );
-}
+const SECTION_CSS_VARS_LIGHT = `
+  [data-theme="light"] .scan-protocol-section {
+    --radar-ring: rgba(0,0,0,0.06);
+    --scanline-color: rgba(0,0,0,0.02);
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme]) .scan-protocol-section {
+      --radar-ring: rgba(0,0,0,0.06);
+      --scanline-color: rgba(0,0,0,0.02);
+    }
+  }
+`;
 
 /* ------------------------------------------------------------------ */
 /*  Main export                                                        */
@@ -1077,15 +1112,27 @@ export default function HowItWorks() {
   const shouldReduceMotion = useReducedMotion();
 
   if (shouldReduceMotion) {
-    return <StaticFallback />;
+    return (
+      <>
+        <style dangerouslySetInnerHTML={{ __html: SECTION_CSS_VARS_LIGHT }} />
+        <div className="scan-protocol-section" style={SECTION_CSS_VARS}>
+          <StaticFallback />
+        </div>
+      </>
+    );
   }
 
   return (
     <>
-      {/* Mobile: simple stacked layout with viewport animations */}
-      <MobileLayout />
-      {/* Desktop: full 3D scroll-driven experience */}
-      <DesktopScrollLayout />
+      <style dangerouslySetInnerHTML={{ __html: SECTION_CSS_VARS_LIGHT }} />
+      <div
+        className="scan-protocol-section"
+        style={SECTION_CSS_VARS}
+        aria-label="How it works: Scan protocol experience"
+      >
+        <DesktopLayout />
+        <MobileLayout />
+      </div>
     </>
   );
 }
