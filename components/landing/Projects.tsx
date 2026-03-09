@@ -1,82 +1,149 @@
 "use client";
 
-import PopReveal from "@/components/ui/PopReveal";
+import Image from "next/image";
+import { motion, type Variants } from "framer-motion";
+import { useTheme } from "@/components/providers/ThemeProvider";
+import { slideInLeft, slideInRight } from "@/lib/constants/animations";
 
 /* ------------------------------------------------------------------ */
-/*  Constants                                                          */
+/*  Card data — accurate to the 7aychain protocol                      */
 /* ------------------------------------------------------------------ */
 
 interface ValueCard {
   readonly title: string;
   readonly description: string;
+  readonly accent: string;
+  readonly iconDark: string;
+  readonly iconLight: string;
+  readonly iconAlt: string;
 }
 
 const CARDS: readonly ValueCard[] = [
   {
-    title: "Your presence is your proof",
+    title: "Physics Over Biometrics",
     description:
-      "In a world full of bots and fake accounts, prove something no one can fake: that you were actually there.",
+      "No iris scans. No fingerprints. Validators measure network latency and signal timing to verify you\u2019re physically present\u00A0\u2014\u00A0physics that bots can\u2019t fake.",
+    accent: "#00FFC6",
+    iconDark: "/icons/dark/card-physics.png",
+    iconLight: "/icons/light/card-physics.png",
+    iconAlt: "Signal wave with measurement nodes",
   },
   {
-    title: "Be somewhere. Prove it. Own it.",
+    title: "Commit\u2011Reveal Privacy Architecture",
     description:
-      "Turn the simple act of being at a place into a verifiable digital record you control\u00A0\u2014\u00A0forever.",
+      "Your secret never touches the chain. Commit a hash, reveal later. Nullifiers prevent replay across epochs. ZK proofs let you prove presence without exposing identity.",
+    accent: "#C084FC",
+    iconDark: "/icons/dark/card-privacy.png",
+    iconLight: "/icons/light/card-privacy.png",
+    iconAlt: "Lock with zero-knowledge proof rings",
   },
   {
-    title: "Private by nature, not by promise",
+    title: "Autonomous Sybil Scoring",
     description:
-      "We don\u2019t scan your body. We don\u2019t track your identity. We verify where you are\u00A0\u2014\u00A0that\u2019s all we need.",
+      "The autonomous pallet scores every actor 0\u2013100 on behavioral patterns. No CAPTCHAs, no orbs\u00A0\u2014\u00A0the protocol separates humans from machines automatically.",
+    accent: "#00FFC6",
+    iconDark: "/icons/dark/card-botproof.png",
+    iconLight: "/icons/light/card-botproof.png",
+    iconAlt: "Shield with human verification checkmark",
   },
   {
-    title: "Built for humans, not hardware",
+    title: "Presence\u2011Weighted Governance",
     description:
-      "No special devices. No eye scans. No fingerprint readers. Phone\u00A0+\u00A0internet\u00A0=\u00A0you\u2019re in.",
+      "Capability-based permissions, not token voting. Delegations cascade up to 5 levels deep. Revoke a root capability and every child revokes with it\u00A0\u2014\u00A0all on-chain.",
+    accent: "#22D3EE",
+    iconDark: "/icons/dark/card-governance.png",
+    iconLight: "/icons/light/card-governance.png",
+    iconAlt: "Delegation tree with capability nodes",
   },
 ] as const;
 
-/** Stagger delay multiplier for PopReveal items */
-const DELAY_STEP = 0.06;
+/* ------------------------------------------------------------------ */
+/*  Animation variants                                                 */
+/* ------------------------------------------------------------------ */
+
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const VIEWPORT = { once: true, margin: "200px 0px 0px 0px" } as const;
 
 /* ------------------------------------------------------------------ */
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
 
 export default function WhyChain() {
+  const { theme } = useTheme();
+
   return (
-    <section className="relative w-full mx-auto px-6 py-24 text-fg">
-      <div className="max-w-5xl mx-auto flex flex-col items-center gap-12">
+    <section className="relative w-full py-24 md:py-32">
+      <motion.div
+        className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12"
+        variants={stagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={VIEWPORT}
+      >
         {/* Section heading */}
-        <PopReveal delay={0}>
-          <h2 className="heading-lg text-center">
+        <motion.div variants={fadeUp} className="text-center mb-16 md:mb-20">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight text-fg mb-5">
             Why{" "}
             <span className="gradient-text-accent">7aychain</span>?
           </h2>
-        </PopReveal>
-
-        {/* Section description */}
-        <PopReveal delay={DELAY_STEP}>
-          <p className="text-fg-secondary text-lg leading-relaxed text-center max-w-3xl mt-0">
-            In a world of bots and fake accounts, presence is the one thing
-            that can&rsquo;t be faked.
+          <p className="text-fg-secondary text-lg leading-relaxed max-w-2xl mx-auto">
+            Every other chain trusts cryptography alone. 7aychain anchors identity to physical reality&nbsp;&mdash;
+            the one primitive AI, bots, and Sybil farms cannot forge.
           </p>
-        </PopReveal>
+        </motion.div>
 
-        {/* 2-column value proposition grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
-          {CARDS.map((card, i) => (
-            <PopReveal key={card.title} delay={DELAY_STEP * (2 + i)}>
-              <div className="glass-card glow-border p-6 md:p-8 flex flex-col gap-3 h-full">
-                <h3 className="heading-sm text-fg">
+        {/* 2x2 grid */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-y-14 gap-x-12 md:gap-x-16 max-w-4xl mx-auto"
+          variants={stagger}
+        >
+          {CARDS.map((card, i) => {
+            const iconSrc = theme === "light" ? card.iconLight : card.iconDark;
+            const isLeft = i % 2 === 0;
+            return (
+              <motion.div
+                key={card.title}
+                variants={isLeft ? slideInLeft : slideInRight}
+                className="flex flex-col items-start"
+              >
+                {/* Icon */}
+                <div className="mb-5">
+                  <Image
+                    src={iconSrc}
+                    alt={card.iconAlt}
+                    width={64}
+                    height={64}
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
+
+                {/* Title */}
+                <h3 className="font-display font-semibold text-lg md:text-xl text-fg mb-2 leading-snug">
                   {card.title}
                 </h3>
-                <p className="text-fg-secondary leading-relaxed">
+
+                {/* Description */}
+                <p className="text-sm md:text-base text-fg-secondary leading-relaxed">
                   {card.description}
                 </p>
-              </div>
-            </PopReveal>
-          ))}
-        </div>
-      </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

@@ -2,25 +2,48 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import { Github } from "lucide-react";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { EXTERNAL_LINKS, FOOTER_LINK_GROUPS } from "@/lib/constants/routes";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import { footerReveal, staggerContainer, fadeUpItem } from "@/lib/constants/animations";
+
+const FOOTER_VIEWPORT = { once: true, margin: "-100px" } as const;
 
 export default function Footer() {
   const { theme } = useTheme();
+  const shouldReduceMotion = useReducedMotion();
   const logoSrc =
     theme === "light"
       ? "/7aylabs_blacklogo.png"
       : "/7aylabs_white_logo.svg";
 
+  const MotionFooter = shouldReduceMotion ? "footer" : motion.footer;
+
   return (
-    <footer className="w-full border-t border-[var(--glass-border)] bg-[var(--color-bg-secondary)]/50 backdrop-blur-sm">
+    <MotionFooter
+      className="w-full border-t border-[var(--glass-border)] bg-[var(--color-bg-secondary)]/50 backdrop-blur-sm"
+      {...(!shouldReduceMotion && {
+        initial: "hidden",
+        whileInView: "visible",
+        viewport: FOOTER_VIEWPORT,
+        variants: footerReveal,
+      })}
+    >
       {/* Main footer grid */}
-      <div className="max-w-screen-xl mx-auto px-6 md:px-12 pt-12 pb-8">
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6 lg:gap-12">
+      <div className="max-w-6xl mx-auto px-6 md:px-12 pt-12 pb-8">
+        <motion.div
+          className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6 lg:gap-12"
+          {...(!shouldReduceMotion && {
+            variants: staggerContainer,
+            initial: "hidden",
+            whileInView: "visible",
+            viewport: FOOTER_VIEWPORT,
+          })}
+        >
           {/* Brand column — spans 2 cols on all breakpoints */}
-          <div className="col-span-2">
+          <motion.div className="col-span-2" {...(!shouldReduceMotion && { variants: fadeUpItem })}>
             <Link href="/" aria-label="7ayLabs home">
               <Image
                 src={logoSrc}
@@ -30,11 +53,6 @@ export default function Footer() {
                 className="mb-4"
               />
             </Link>
-            <p className="text-fg-muted text-sm leading-relaxed max-w-xs mb-6">
-              Layer 1 blockchain for Sybil-resistant human verification.
-              Validators triangulate physical presence through network
-              latency&nbsp;&mdash; no GPS, no biometrics, no hardware.
-            </p>
 
             {/* Social icons */}
             <div className="flex items-center gap-4">
@@ -65,11 +83,15 @@ export default function Footer() {
                 <Github size={16} />
               </Link>
             </div>
-          </div>
+          </motion.div>
 
           {/* Link group columns */}
           {FOOTER_LINK_GROUPS.map((group) => (
-            <nav key={group.title} aria-label={`${group.title} links`}>
+            <motion.nav
+              key={group.title}
+              aria-label={`${group.title} links`}
+              {...(!shouldReduceMotion && { variants: fadeUpItem })}
+            >
               <h3 className="text-fg text-xs font-semibold uppercase tracking-widest mb-4 font-display">
                 {group.title}
               </h3>
@@ -99,20 +121,20 @@ export default function Footer() {
                   );
                 })}
               </ul>
-            </nav>
+            </motion.nav>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* Bottom bar */}
       <div className="border-t border-[var(--glass-border)]">
-        <div className="max-w-screen-xl mx-auto px-6 md:px-12 py-5 flex flex-col items-center justify-between gap-3 sm:flex-row">
+        <div className="max-w-6xl mx-auto px-6 md:px-12 py-5 flex flex-col items-center justify-between gap-3 sm:flex-row">
           <p className="text-fg-faint text-xs">
             &copy; {new Date().getFullYear()} 7ayLabs. All rights reserved.
           </p>
           <ThemeToggle />
         </div>
       </div>
-    </footer>
+    </MotionFooter>
   );
 }

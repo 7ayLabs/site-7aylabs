@@ -159,6 +159,37 @@ export const floatIn: Variants = {
   },
 };
 
+/** Navbar entrance — slides down from top */
+export const navbarSlideDown: Variants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+/** Footer reveal — fades up when scrolled into view */
+export const footerReveal: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+/** Scale up with blur — for differentiated section entrances */
+export const scaleUpBlur: Variants = {
+  hidden: { opacity: 0, scale: 0.92, filter: "blur(6px)" },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 export function withDelay(variants: Variants, delay: number): Variants {
   return {
     ...variants,

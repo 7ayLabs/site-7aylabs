@@ -3,10 +3,12 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { ROUTES, NAV_LINKS } from "@/lib/constants/routes";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import { navbarSlideDown } from "@/lib/constants/animations";
 
 /** Minimum scroll distance from top before header can collapse */
 const SCROLL_THRESHOLD = 60;
@@ -21,6 +23,7 @@ interface TopBarProps {
 export default function TopBar({ open, setOpen }: TopBarProps) {
   const [scrolled, setScrolled] = useState(false);
   const { theme } = useTheme();
+  const shouldReduceMotion = useReducedMotion();
 
   const lastYRef = useRef(0);
   const ticking = useRef(false);
@@ -63,21 +66,28 @@ export default function TopBar({ open, setOpen }: TopBarProps) {
     return () => window.removeEventListener("scroll", onScroll);
   }, [updateScrollState]);
 
+  const MotionHeader = shouldReduceMotion ? "header" : motion.header;
+
   return (
-    <header
+    <MotionHeader
       className={`
         sticky top-0 z-50 w-full will-change-transform
         bg-[var(--color-bg-primary)]/80 border-b border-[var(--glass-border)] backdrop-blur-[24px]
         transition-[height,transform] duration-300 ease-out
         ${scrolled ? "h-12 md:h-14" : "h-16"}
       `}
+      {...(!shouldReduceMotion && {
+        initial: "hidden",
+        animate: "visible",
+        variants: navbarSlideDown,
+      })}
     >
       <nav
         className={`
           h-full max-w-screen-2xl mx-auto
           flex items-center justify-between
           transition-[padding,transform] duration-300 ease-out
-          ${scrolled ? "px-6 md:px-8" : "px-8"}
+          ${scrolled ? "px-4 sm:px-6 lg:px-8" : "px-5 sm:px-8 lg:px-12"}
         `}
       >
         {/* Logo */}
@@ -165,6 +175,6 @@ export default function TopBar({ open, setOpen }: TopBarProps) {
           </button>
         </div>
       </nav>
-    </header>
+    </MotionHeader>
   );
 }

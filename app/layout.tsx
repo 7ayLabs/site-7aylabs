@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Syne, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import CustomCursor from "@/components/ui/CustomCursor";
 import "@/styles/globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -26,11 +27,11 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "7ayLabs",
+    default: "7ayLabs | The Presence Layer for Web3",
     template: "%s | 7ayLabs",
   },
   description:
-    "7aychain is a Layer 1 blockchain for Sybil-resistant human verification. Validators triangulate physical presence through network latency — no GPS, no biometrics, no hardware. The presence layer for Web3. Powered by $7AY.",
+    "The first Layer 1 blockchain where physical presence is identity. 7aychain's Proof of Presence protocol triangulates human verification through network latency — no biometrics, no GPS, no hardware. Sybil-resistant by physics. Powered by $7AY.",
   keywords: [
     "7ayLabs",
     "7aychain",
@@ -39,7 +40,6 @@ export const metadata: Metadata = {
     "presence layer",
     "Layer 1 blockchain",
     "Web3 infrastructure",
-    "blockchain verification",
     "$7AY token",
     "on-chain presence",
     "witness circles",
@@ -53,19 +53,41 @@ export const metadata: Metadata = {
     "human verification blockchain",
     "anti-bot blockchain",
     "location verification protocol",
-    "DAO governance token",
     "zero knowledge presence",
     "Polkadot SDK",
     "DePIN protocol",
-    "real world asset verification",
     "validator staking",
     "on-chain dispute resolution",
     "AI resistant blockchain",
+    "presence-based consensus",
+    "Worldcoin alternative",
+    "no iris scan blockchain",
+    "no biometrics blockchain",
+    "sybil resistance without hardware",
+    "proof of personhood",
+    "bot-proof consensus",
+    "physical presence verification",
+    "DAO governed by presence",
+    "signal timing triangulation",
+    "privacy-first identity",
+    "Web3 human verification",
+    "proof of presence blockchain",
+    "human identity layer",
+    "Sybil resistant consensus mechanism",
+    "physical verification protocol",
+    "latency-based triangulation",
+    "presence mining",
+    "decentralized human verification",
+    "anti-Sybil Layer 1",
+    "witness-based consensus",
+    "on-chain presence attestation",
+    "next-gen proof of personhood",
+    "privacy-preserving identity blockchain",
   ],
   metadataBase: new URL("https://7aylabs.com"),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "7ayLabs — 7aychain: Layer 1 Blockchain with Proof of Presence",
+    title: "7ayLabs | Proof of Presence Layer 1 Blockchain",
     description:
       "7aychain: a Layer 1 blockchain where validators triangulate physical presence through network latency. Sybil-resistant human verification — no GPS, no biometrics, no hardware. The presence layer for Web3.",
     url: "https://7aylabs.com",
@@ -85,7 +107,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "7ayLabs — 7aychain: Proof of Presence Layer 1",
     description:
-      "7aychain: Sybil-resistant human verification through physical presence. Validators triangulate via network latency. No GPS, no biometrics. The presence layer for Web3. Powered by $7AY.",
+      "Your presence is your proof. 7aychain verifies humans through physics — not biometrics. The Sybil-resistant Layer 1 for Web3. $7AY",
     images: ["/og/7aylabs-og.png"],
     creator: "@7aylabs",
   },
@@ -149,6 +171,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen antialiased bg-bg text-fg">
         <ThemeProvider>
+          <CustomCursor />
           <a href="#main-content" className="skip-to-content">
             Skip to main content
           </a>

@@ -60,7 +60,7 @@ export default function Section({
   title,
   subtitle,
   centered = false,
-  maxWidth = "5xl",
+  maxWidth = "6xl",
   background = "default",
   divider = false,
 }: Props) {
