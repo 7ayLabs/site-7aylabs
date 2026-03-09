@@ -68,7 +68,6 @@ export default function TopBar({
           "border border-[var(--color-border-secondary)]",
           "shadow-[0_4px_24px_-4px_rgba(0,0,0,0.2),0_0_0_1px_rgba(255,255,255,0.03)]",
           "transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)]",
-          "overflow-hidden",
           scrolled ? "mt-2 max-w-3xl" : "mt-4 max-w-4xl"
         )}
         style={{
@@ -174,15 +173,17 @@ export default function TopBar({
         </nav>
 
         {/* ── Dropdown content — inside the pill ── */}
-        <AnimatePresence mode="wait">
-          {activeCatData && (
-            <CategoryDropdown
-              key={activeCatData.label}
-              category={activeCatData}
-              onClose={closeDropdownImmediate}
-            />
-          )}
-        </AnimatePresence>
+        <div className="overflow-hidden">
+          <AnimatePresence mode="wait">
+            {activeCatData && (
+              <CategoryDropdown
+                key={activeCatData.label}
+                category={activeCatData}
+                onClose={closeDropdownImmediate}
+              />
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </Wrapper>
   );

@@ -7,8 +7,8 @@ import SectionLabel from "@/components/ui/SectionLabel";
 import Badge from "@/components/ui/Badge";
 import {
   staggerContainer,
-  scaleUpBlur,
-  fadeUpItem,
+  slideInLeft,
+  slideInRight,
 } from "@/lib/constants/animations";
 
 interface StepVisual {
@@ -22,21 +22,43 @@ const STEPS_VISUAL: readonly StepVisual[] = [
   { color: "#22D3EE", icon: BadgeCheck },
 ] as const;
 
-const lineReveal = {
-  hidden: { scaleX: 0 },
-  visible: {
-    scaleX: 1,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.3 },
-  },
-};
+/* ── Vertical flow diagram ── */
+function ProtocolFlowIllustration() {
+  return (
+    <div className="flex flex-col items-center gap-0 w-full max-w-[200px] mx-auto">
+      {STEPS_VISUAL.map((step, i) => (
+        <div key={i} className="flex flex-col items-center">
+          {/* Node */}
+          <div
+            className="w-14 h-14 rounded-2xl flex items-center justify-center"
+            style={{
+              backgroundColor: `${step.color}15`,
+              border: `1px solid ${step.color}25`,
+            }}
+          >
+            <step.icon
+              className="w-7 h-7"
+              style={{ color: step.color }}
+              strokeWidth={1.5}
+              aria-hidden="true"
+            />
+          </div>
 
-const lineRevealVertical = {
-  hidden: { scaleY: 0 },
-  visible: {
-    scaleY: 1,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.3 },
-  },
-};
+          {/* Connecting line (except last) */}
+          {i < STEPS_VISUAL.length - 1 && (
+            <div
+              className="w-[2px] h-10 my-2"
+              style={{
+                background: `linear-gradient(180deg, ${step.color}, ${STEPS_VISUAL[i + 1].color})`,
+              }}
+              aria-hidden="true"
+            />
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function PresenceJourney() {
   const reduceMotion = useReducedMotion();
@@ -44,7 +66,7 @@ export default function PresenceJourney() {
 
   return (
     <section
-      className="relative w-full px-6 md:px-12 py-24 md:py-32"
+      className="relative w-full px-6 md:px-12 py-28 md:py-36 lg:py-40"
       aria-labelledby="presence-journey-heading"
     >
       <div className="max-w-6xl mx-auto">
@@ -53,41 +75,42 @@ export default function PresenceJourney() {
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
           variants={reduceMotion ? undefined : staggerContainer}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
         >
+          {/* ── Visual side (left on desktop) ── */}
           <motion.div
-            variants={reduceMotion ? undefined : fadeUpItem}
-            className="flex justify-center mb-4"
+            variants={reduceMotion ? undefined : slideInLeft}
+            className="relative rounded-3xl bg-bg-tertiary p-8 md:p-12 flex items-center justify-center min-h-[400px] lg:min-h-[480px] overflow-hidden order-2 lg:order-1"
           >
-            <SectionLabel>{t("label")}</SectionLabel>
+            <ProtocolFlowIllustration />
           </motion.div>
 
-          <motion.h2
-            id="presence-journey-heading"
-            variants={reduceMotion ? undefined : fadeUpItem}
-            className="font-display font-bold text-3xl md:text-4xl text-fg text-center mb-4"
+          {/* ── Text side (right on desktop) ── */}
+          <motion.div
+            variants={reduceMotion ? undefined : slideInRight}
+            className="order-1 lg:order-2"
           >
-            {t("title")}{" "}
-            <span className="gradient-text-accent">{t("titleAccent")}</span>
-          </motion.h2>
+            <SectionLabel className="mb-5">{t("label")}</SectionLabel>
 
-          <motion.p
-            variants={reduceMotion ? undefined : fadeUpItem}
-            className="text-fg-secondary text-lg leading-relaxed text-center max-w-2xl mx-auto mb-16"
-          >
-            {t("subtitle")}
-          </motion.p>
+            <h2
+              id="presence-journey-heading"
+              className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-fg tracking-tight mb-4"
+            >
+              {t("title")}{" "}
+              <span className="gradient-text-accent">{t("titleAccent")}</span>
+            </h2>
 
-          {/* Desktop: horizontal layout */}
-          <div className="hidden lg:flex items-stretch gap-0">
-            {STEPS_VISUAL.map((step, i) => (
-              <div key={t(`steps.${i}.number`)} className="flex items-stretch flex-1">
-                <motion.div
-                  variants={reduceMotion ? undefined : scaleUpBlur}
-                  className="glass-card glow-border rounded-2xl p-6 xl:p-8 flex-1 group relative"
-                >
+            <p className="text-fg-secondary text-lg leading-relaxed mb-10">
+              {t("subtitle")}
+            </p>
+
+            {/* 3 steps as numbered vertical flow */}
+            <div className="space-y-8">
+              {STEPS_VISUAL.map((step, i) => (
+                <div key={i} className="flex gap-5">
                   {/* Step number */}
                   <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold mb-5"
+                    className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold"
                     style={{
                       backgroundColor: `${step.color}15`,
                       color: step.color,
@@ -97,131 +120,21 @@ export default function PresenceJourney() {
                     {t(`steps.${i}.number`)}
                   </div>
 
-                  {/* Icon */}
-                  <div
-                    className="mb-4 flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-300"
-                    style={{
-                      backgroundColor: `${step.color}12`,
-                    }}
-                  >
-                    <step.icon
-                      className="w-5 h-5 transition-colors duration-300"
-                      style={{ color: step.color }}
-                      strokeWidth={1.75}
-                      aria-hidden="true"
-                    />
+                  <div>
+                    <h3 className="font-display font-semibold text-lg text-fg mb-1 tracking-tight">
+                      {t(`steps.${i}.title`)}
+                    </h3>
+                    <Badge variant="glass" className="mb-2">
+                      {t(`steps.${i}.badge`)}
+                    </Badge>
+                    <p className="text-fg-secondary text-sm leading-relaxed">
+                      {t(`steps.${i}.description`)}
+                    </p>
                   </div>
-
-                  <h3 className="font-display font-semibold text-lg text-fg mb-2 tracking-tight">
-                    {t(`steps.${i}.title`)}
-                  </h3>
-
-                  <Badge variant="glass" className="mb-4">
-                    {t(`steps.${i}.badge`)}
-                  </Badge>
-
-                  <p className="text-fg-secondary text-sm leading-relaxed">
-                    {t(`steps.${i}.description`)}
-                  </p>
-
-                  {/* Hover glow */}
-                  <div
-                    className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                    style={{
-                      background: `radial-gradient(ellipse at 30% 0%, ${step.color}12 0%, transparent 60%)`,
-                    }}
-                    aria-hidden="true"
-                  />
-                </motion.div>
-
-                {/* Connecting line */}
-                {i < STEPS_VISUAL.length - 1 && (
-                  <div className="flex items-center px-2">
-                    <motion.div
-                      variants={reduceMotion ? undefined : lineReveal}
-                      className="w-8 xl:w-12 h-[2px] origin-left"
-                      style={{
-                        background: `linear-gradient(90deg, ${step.color}, ${STEPS_VISUAL[i + 1].color})`,
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Mobile/Tablet: vertical layout */}
-          <div className="lg:hidden flex flex-col relative">
-            {/* Vertical connecting line */}
-            <div className="absolute left-5 top-0 bottom-0 w-[2px]">
-              <motion.div
-                variants={reduceMotion ? undefined : lineRevealVertical}
-                className="w-full h-full origin-top"
-                style={{
-                  background:
-                    "linear-gradient(180deg, #00FFC6, #C084FC, #22D3EE)",
-                }}
-              />
+                </div>
+              ))}
             </div>
-
-            {STEPS_VISUAL.map((step, i) => (
-              <motion.div
-                key={t(`steps.${i}.number`)}
-                variants={reduceMotion ? undefined : scaleUpBlur}
-                className="flex gap-6 mb-8 last:mb-0"
-              >
-                {/* Node dot */}
-                <div className="relative z-10 flex-shrink-0">
-                  <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold"
-                    style={{
-                      backgroundColor: `${step.color}15`,
-                      color: step.color,
-                      border: `1px solid ${step.color}30`,
-                      boxShadow: `0 0 12px ${step.color}25`,
-                    }}
-                  >
-                    {t(`steps.${i}.number`)}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="glass-card glow-border rounded-2xl p-6 flex-1 group relative">
-                  <div
-                    className="mb-4 flex items-center justify-center w-10 h-10 rounded-xl"
-                    style={{ backgroundColor: `${step.color}12` }}
-                  >
-                    <step.icon
-                      className="w-5 h-5"
-                      style={{ color: step.color }}
-                      strokeWidth={1.75}
-                      aria-hidden="true"
-                    />
-                  </div>
-
-                  <h3 className="font-display font-semibold text-lg text-fg mb-2 tracking-tight">
-                    {t(`steps.${i}.title`)}
-                  </h3>
-
-                  <Badge variant="glass" className="mb-4">
-                    {t(`steps.${i}.badge`)}
-                  </Badge>
-
-                  <p className="text-fg-secondary text-sm leading-relaxed">
-                    {t(`steps.${i}.description`)}
-                  </p>
-
-                  <div
-                    className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                    style={{
-                      background: `radial-gradient(ellipse at 30% 0%, ${step.color}12 0%, transparent 60%)`,
-                    }}
-                    aria-hidden="true"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

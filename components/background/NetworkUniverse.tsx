@@ -3,174 +3,137 @@
 import { useEffect, useRef } from "react";
 import { useTheme } from "@/components/providers/ThemeProvider";
 
+/* ── Types ── */
+export type BackgroundVariant =
+  | "default"
+  | "technology"
+  | "presence"
+  | "usecases"
+  | "glossary"
+  | "waitlist"
+  | "newsletter"
+  | "updates"
+  | "devnet"
+  | "validators"
+  | "ecosystem";
+
 type NC = "teal" | "violet" | "cyan";
 interface N { id: number; x: number; y: number; tier: 1 | 2 | 3; color: NC }
-interface L { a: number; b: number }
-interface Cir { path: number[]; dur: number; delay: number; sz: number; block: boolean }
 
+/* ── Variant configs ── */
+interface VariantConfig {
+  nebulaHues: NC[];
+  nebulaAlphaMult: number;
+  starDensityMult: number;
+  shootFreqMult: number;
+}
+
+const VARIANT_CONFIGS: Record<BackgroundVariant, VariantConfig> = {
+  default:    { nebulaHues: ["teal", "violet", "cyan"], nebulaAlphaMult: 1.0,  starDensityMult: 1.0,  shootFreqMult: 1.0 },
+  technology: { nebulaHues: ["teal", "cyan", "teal"],   nebulaAlphaMult: 1.2,  starDensityMult: 1.3,  shootFreqMult: 1.2 },
+  presence:   { nebulaHues: ["teal", "teal", "cyan"],   nebulaAlphaMult: 1.0,  starDensityMult: 0.9,  shootFreqMult: 0.8 },
+  usecases:   { nebulaHues: ["violet", "teal", "violet"], nebulaAlphaMult: 1.1, starDensityMult: 1.0, shootFreqMult: 1.0 },
+  glossary:   { nebulaHues: ["cyan", "teal", "cyan"],   nebulaAlphaMult: 0.7,  starDensityMult: 0.6,  shootFreqMult: 0.5 },
+  waitlist:   { nebulaHues: ["teal", "violet", "teal"], nebulaAlphaMult: 1.3,  starDensityMult: 1.2,  shootFreqMult: 1.5 },
+  newsletter: { nebulaHues: ["cyan", "cyan", "teal"],   nebulaAlphaMult: 0.6,  starDensityMult: 0.7,  shootFreqMult: 0.4 },
+  updates:    { nebulaHues: ["violet", "cyan", "violet"], nebulaAlphaMult: 1.1, starDensityMult: 1.1, shootFreqMult: 1.2 },
+  devnet:     { nebulaHues: ["cyan", "teal", "cyan"],   nebulaAlphaMult: 1.2,  starDensityMult: 1.2,  shootFreqMult: 1.0 },
+  validators: { nebulaHues: ["teal", "teal", "teal"],   nebulaAlphaMult: 1.0,  starDensityMult: 1.0,  shootFreqMult: 0.8 },
+  ecosystem:  { nebulaHues: ["teal", "violet", "cyan"], nebulaAlphaMult: 1.3,  starDensityMult: 1.3,  shootFreqMult: 1.3 },
+};
+
+/* ── Color palettes ── */
 const BRIGHT: Record<NC, [number, number, number]> = {
   teal: [0, 255, 198], violet: [192, 132, 252], cyan: [34, 211, 238],
 };
 const DIM: Record<NC, [number, number, number]> = {
   teal: [23, 142, 119], violet: [139, 92, 246], cyan: [8, 145, 178],
 };
+const LIGHT_BRIGHT: Record<NC, [number, number, number]> = {
+  teal: [15, 110, 90], violet: [110, 70, 200], cyan: [6, 115, 142],
+};
+const LIGHT_DIM: Record<NC, [number, number, number]> = {
+  teal: [100, 80, 40], violet: [90, 60, 50], cyan: [70, 90, 45],
+};
 
+/* ── PRNG ── */
 function prng(s: number) {
   return () => { s = (s * 16807) % 2147483647; return s / 2147483647; };
 }
 
-const HR: [number, number, 1 | 2 | 3, NC][] = [
-  [60, 80, 3, "teal"], [380, 100, 2, "teal"], [560, 60, 3, "cyan"], [740, 90, 2, "teal"],
-  [920, 55, 3, "violet"], [1160, 210, 3, "violet"], [30, 260, 3, "cyan"], [180, 230, 3, "teal"],
-  [1020, 250, 3, "teal"], [320, 320, 1, "teal"], [680, 290, 1, "teal"], [500, 490, 1, "teal"],
-  [20, 430, 3, "violet"], [1180, 470, 3, "cyan"], [1050, 540, 3, "violet"], [900, 580, 2, "cyan"],
-  [80, 660, 2, "teal"], [250, 720, 3, "cyan"], [620, 710, 2, "violet"], [800, 680, 3, "teal"],
-  [1140, 600, 3, "teal"],
-];
+/* ── Pixel scale factor ── */
+const PX = 4;
 
-const HL: [number, number][] = [
-  [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [0, 6], [0, 7], [4, 8], [5, 8],
-  [6, 9], [7, 9], [1, 9], [8, 10], [3, 10], [2, 10], [12, 9], [6, 12],
-  [13, 10], [5, 13], [9, 10], [9, 11], [10, 11], [9, 16], [11, 17], [11, 18],
-  [10, 15], [10, 14], [11, 19], [12, 16], [14, 20], [15, 19], [13, 14],
-  [16, 17], [17, 18], [18, 19], [19, 20], [15, 20],
-];
+/* ── Content exclusion zone (half-width in px at 1200 design width) ── */
+const CONTENT_HALF = 576; // max-w-6xl / 2
 
-const HC: Cir[] = [
-  { path: [9, 10, 11], dur: 2.5, delay: 0, sz: 4, block: false },
-  { path: [11, 10, 9], dur: 3, delay: 1.2, sz: 5, block: false },
-  { path: [0, 7, 9, 11, 17, 16, 12, 6], dur: 7, delay: 0.4, sz: 4, block: true },
-  { path: [4, 8, 10, 15, 19, 20, 14, 13, 5], dur: 8, delay: 0.2, sz: 4, block: false },
-  { path: [0, 1, 2, 3, 4, 8, 10, 9, 7], dur: 6, delay: 1, sz: 4, block: false },
-  { path: [16, 17, 18, 19, 15, 10, 9], dur: 5.5, delay: 0.7, sz: 4, block: true },
-  { path: [0, 1, 2, 3, 4, 5, 13, 14, 20, 19, 18, 17, 16, 12, 6], dur: 13, delay: 0, sz: 3, block: false },
-  { path: [6, 12, 16, 17, 18, 19, 20, 14, 13, 5, 4, 3, 2, 1, 0], dur: 15, delay: 4, sz: 3, block: false },
-  { path: [6, 9, 10, 8, 5], dur: 4.5, delay: 0.6, sz: 4, block: false },
-  { path: [13, 10, 11, 17, 16, 12], dur: 5, delay: 1.8, sz: 4, block: true },
-  { path: [7, 9, 11, 18, 19, 15, 10, 3, 2, 10, 9], dur: 8, delay: 0.3, sz: 4, block: false },
-  { path: [9, 16, 17, 11, 18, 19, 15, 10], dur: 6.5, delay: 1.5, sz: 5, block: false },
-];
-
-function buildNetwork() {
+/* ── Build side-only nodes ── */
+function buildNodes() {
   const r = prng(7);
   const colors: NC[] = ["teal", "violet", "cyan"];
-  const nodes: N[] = HR.map((v, i) => ({ id: i, x: v[0] / 1200, y: v[1] / 800, tier: v[2], color: v[3] }));
-  const links: L[] = HL.map(l => ({ a: l[0], b: l[1] }));
-  let id = nodes.length;
+  const nodes: N[] = [];
+  let id = 0;
 
+  /* Hero-area side nodes (y 0–1 normalized to 800px design) */
+  const heroSide: [number, number, 1 | 2 | 3, NC][] = [
+    /* Left edge */
+    [50, 150, 3, "teal"], [30, 450, 3, "cyan"], [80, 700, 2, "teal"],
+    /* Right edge */
+    [1150, 120, 3, "violet"], [1170, 500, 3, "cyan"], [1130, 680, 2, "teal"],
+  ];
+
+  for (const [px, py, tier, color] of heroSide) {
+    nodes.push({ id: id++, x: px / 1200, y: py / 800, tier, color });
+  }
+
+  /* Procedural side nodes in bands below the hero — sparse */
   for (let band = 0; band < 24; band++) {
     const baseY = 1.0 + band * 0.25;
-    const count = 5 + Math.floor(r() * 4);
+    const count = 1 + Math.floor(r() * 2); // 1–2 per band
     for (let i = 0; i < count; i++) {
+      const side = r() < 0.5;
+      const x = side ? 0.02 + r() * 0.12 : 0.88 + r() * 0.10;
       nodes.push({
-        id: id++,
-        x: 0.04 + r() * 0.92,
-        y: baseY + r() * 0.20,
-        tier: (r() < 0.15 ? 1 : r() < 0.45 ? 2 : 3) as 1 | 2 | 3,
+        id: id++, x, y: baseY + r() * 0.20,
+        tier: (r() < 0.1 ? 1 : r() < 0.35 ? 2 : 3) as 1 | 2 | 3,
         color: colors[Math.floor(r() * 3)],
       });
     }
   }
 
-  for (let i = 21; i < nodes.length; i++) {
-    const dists: { j: number; d: number }[] = [];
-    for (let j = 0; j < nodes.length; j++) {
-      if (i === j) continue;
-      const dx = nodes[i].x - nodes[j].x;
-      const dy = (nodes[i].y - nodes[j].y) * 0.45;
-      const d = Math.sqrt(dx * dx + dy * dy);
-      if (d < 0.28) dists.push({ j, d });
-    }
-    dists.sort((a, b) => a.d - b.d);
-    const maxLinks = r() < 0.3 ? 5 : 4;
-    for (let k = 0; k < Math.min(maxLinks, dists.length); k++) {
-      if (!links.some(l => (l.a === i && l.b === dists[k].j) || (l.a === dists[k].j && l.b === i)))
-        links.push({ a: i, b: dists[k].j });
-    }
-  }
-
-  for (const bh of nodes.filter(n => n.id < 21 && n.y > 0.7)) {
-    const candidates: { id: number; d: number }[] = [];
-    for (const te of nodes.filter(n => n.id >= 21 && n.y < 1.5)) {
-      const d = Math.hypot(bh.x - te.x, bh.y - te.y);
-      if (d < 0.6) candidates.push({ id: te.id, d });
-    }
-    candidates.sort((a, b) => a.d - b.d);
-    for (let k = 0; k < Math.min(2, candidates.length); k++) {
-      if (!links.some(l => (l.a === bh.id && l.b === candidates[k].id) || (l.a === candidates[k].id && l.b === bh.id)))
-        links.push({ a: bh.id, b: candidates[k].id });
-    }
-  }
-
-  const adj = new Map<number, number[]>();
-  for (const n of nodes) adj.set(n.id, []);
-  for (const l of links) { adj.get(l.a)!.push(l.b); adj.get(l.b)!.push(l.a); }
-
-  const circuits: Cir[] = [...HC];
-  const cr = prng(42);
-  for (let c = 0; c < 30; c++) {
-    const start = 21 + Math.floor(cr() * (nodes.length - 21));
-    const path = [start];
-    let cur = start;
-    const visited = new Set([start]);
-    for (let step = 0; step < 5 + Math.floor(cr() * 6); step++) {
-      const nbrs = adj.get(cur) || [];
-      const unv = nbrs.filter(n => !visited.has(n));
-      const next = unv.length > 0 ? unv[Math.floor(cr() * unv.length)]
-        : nbrs.length > 0 ? nbrs[Math.floor(cr() * nbrs.length)] : -1;
-      if (next === -1) break;
-      path.push(next);
-      visited.add(next);
-      cur = next;
-    }
-    if (path.length >= 3) {
-      circuits.push({
-        path, dur: 3 + cr() * 7, delay: cr() * 8,
-        sz: cr() < 0.2 ? 5 : cr() < 0.5 ? 4 : 3,
-        block: cr() < 0.2,
-      });
-    }
-  }
-
-  return { nodes, links, circuits };
+  return nodes;
 }
 
-const NET = buildNetwork();
+const NODES = buildNodes();
 
+/* ── Static star data ── */
 const STARS_DIM = (() => {
   const r = prng(88);
   return Array.from({ length: 400 }, () => ({
-    x: r(), y: r(), s: 0.3 + r() * 0.7, b: 0.08 + r() * 0.2,
-    phase: r() * Math.PI * 2, speed: 0.1 + r() * 0.5,
+    x: r(), y: r(), b: 0.08 + r() * 0.2, phase: r() * Math.PI * 2, speed: 0.1 + r() * 0.5,
   }));
 })();
 
 const STARS_MED = (() => {
   const r = prng(99);
   return Array.from({ length: 250 }, () => ({
-    x: r(), y: r(), s: 0.6 + r() * 1.5, b: 0.3 + r() * 0.5,
-    phase: r() * Math.PI * 2, speed: 0.3 + r() * 1.2,
+    x: r(), y: r(), b: 0.3 + r() * 0.5, phase: r() * Math.PI * 2, speed: 0.3 + r() * 1.2,
   }));
 })();
 
 const STARS_BRIGHT = (() => {
   const r = prng(77);
   return Array.from({ length: 60 }, () => ({
-    x: r(), y: r(), s: 1.2 + r() * 2.5, b: 0.6 + r() * 0.4,
-    phase: r() * Math.PI * 2, speed: 0.5 + r() * 2.0,
+    x: r(), y: r(), b: 0.6 + r() * 0.4, phase: r() * Math.PI * 2, speed: 0.5 + r() * 2.0,
     hasSparkle: r() < 0.4,
   }));
 })();
 
 const NEBULAE = (() => {
   const r = prng(55);
-  const colors: NC[] = ["teal", "violet", "cyan"];
-  return Array.from({ length: 8 }, () => ({
-    x: r(), y: r(),
-    rx: 80 + r() * 200, ry: 60 + r() * 150,
-    color: colors[Math.floor(r() * 3)],
-    alpha: 0.015 + r() * 0.025,
-    phase: r() * Math.PI * 2,
+  return Array.from({ length: 8 }, (_, i) => ({
+    x: r(), y: r(), rx: 20 + r() * 50, ry: 15 + r() * 38, colorIdx: i % 3,
+    alpha: 0.015 + r() * 0.025, phase: r() * Math.PI * 2,
   }));
 })();
 
@@ -179,25 +142,16 @@ interface ShootingStar {
   life: number; maxLife: number; active: boolean; brightness: number;
 }
 
-interface Prt {
-  ci: number; seg: number; t: number;
-  color: [number, number, number]; target: [number, number, number];
-  x: number; y: number; sz: number; block: boolean;
-  trail: { x: number; y: number }[];
-  started: boolean;
-}
-
-const PROXIMITY_PX = 30;
-const TRAIL_LEN = 10;
-const COLOR_LERP = 0.05;
-
-export default function NetworkUniverse() {
+/* ── Component ── */
+export default function NetworkUniverse({ variant = "default" }: { variant?: BackgroundVariant }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const frameRef = useRef(0);
   const themeRef = useRef("dark");
+  const variantRef = useRef(variant);
   const { theme } = useTheme();
 
   useEffect(() => { themeRef.current = theme; }, [theme]);
+  useEffect(() => { variantRef.current = variant; }, [variant]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -206,44 +160,36 @@ export default function NetworkUniverse() {
     if (!ctx) return;
 
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let w = 0, h = 0, mobile = false;
+    let w = 0, h = 0, ow = 0, oh = 0, mobile = false;
+
+    /* Offscreen canvas for pixel art */
+    const offscreen = document.createElement("canvas");
+    const offCtx = offscreen.getContext("2d")!;
+    offCtx.imageSmoothingEnabled = false;
 
     const resize = () => {
       w = window.innerWidth; h = window.innerHeight;
       mobile = w < 768;
-      const dpr = Math.min(window.devicePixelRatio || 1, mobile ? 2 : 3);
-      canvas.width = w * dpr; canvas.height = h * dpr;
+      canvas.width = w; canvas.height = h;
       canvas.style.width = `${w}px`; canvas.style.height = `${h}px`;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ow = Math.ceil(w / PX); oh = Math.ceil(h / PX);
+      offscreen.width = ow; offscreen.height = oh;
+      offCtx.imageSmoothingEnabled = false;
     };
     resize();
     window.addEventListener("resize", resize);
 
+    /* Mobile subset: show only ~1 in 3 nodes */
     const mobileNodeSet = new Set<number>();
-    for (const n of NET.nodes) {
-      if (n.id < 21 || n.tier <= 2) mobileNodeSet.add(n.id);
+    for (const n of NODES) {
+      if (n.tier === 1) mobileNodeSet.add(n.id);
       else if (n.id % 3 === 0) mobileNodeSet.add(n.id);
     }
-    const mobileLinkFilter = NET.links.filter(l => mobileNodeSet.has(l.a) && mobileNodeSet.has(l.b));
     const mobileStarsDim = STARS_DIM.filter((_, i) => i % 3 === 0);
     const mobileStarsMed = STARS_MED.filter((_, i) => i % 2 === 0);
     const mobileStarsBright = STARS_BRIGHT.filter((_, i) => i % 2 === 0);
 
-    const circuitsToUse = mobile
-      ? NET.circuits.filter((_, i) => i < 6 || i % 3 === 0)
-      : NET.circuits;
-    const particles: Prt[] = circuitsToUse.map((c) => {
-      const sn = NET.nodes[c.path[0]];
-      const col = [...BRIGHT[sn.color]] as [number, number, number];
-      return {
-        ci: NET.circuits.indexOf(c), seg: 0, t: 0,
-        color: [...col] as [number, number, number],
-        target: [...col] as [number, number, number],
-        x: sn.x, y: sn.y, sz: c.sz, block: c.block,
-        trail: [], started: false,
-      };
-    });
-
+    /* Shooting stars */
     const shootingStars: ShootingStar[] = Array.from({ length: mobile ? 2 : 4 }, () => ({
       x: 0, y: 0, angle: 0, speed: 0, len: 0,
       life: 0, maxLife: 0, active: false, brightness: 0,
@@ -255,6 +201,10 @@ export default function NetworkUniverse() {
     let lastTime = startTime;
     let running = true;
 
+    /* Center exclusion boundaries in offscreen px */
+    const centerL = () => Math.round((w / 2 - CONTENT_HALF) / PX);
+    const centerR = () => Math.round((w / 2 + CONTENT_HALF) / PX);
+
     const draw = (now: number) => {
       if (!running) return;
       const dt = Math.min((now - lastTime) / 1000, 0.05);
@@ -262,96 +212,98 @@ export default function NetworkUniverse() {
       const elapsed = (now - startTime) / 1000;
       const scrollY = window.scrollY;
       const isDark = themeRef.current === "dark";
-      const A = isDark ? 1 : 0.85;
+      const vc = VARIANT_CONFIGS[variantRef.current];
+      const A = 1;
 
-      ctx.fillStyle = isDark ? "#050508" : "#FDF5E2";
-      ctx.fillRect(0, 0, w, h);
+      const bright = isDark ? BRIGHT : LIGHT_BRIGHT;
+      const dim = isDark ? DIM : LIGHT_DIM;
 
-      /* Nebulae */
-      for (const neb of NEBULAE) {
+      /* Clear offscreen */
+      offCtx.clearRect(0, 0, ow, oh);
+
+      /* ── Nebulae (flat pixel blobs) ── */
+      for (let ni = 0; ni < NEBULAE.length; ni++) {
+        const neb = NEBULAE[ni];
+        const nebColor = vc.nebulaHues[neb.colorIdx % vc.nebulaHues.length];
         const breathe = 1 + 0.15 * Math.sin(elapsed * 0.3 + neb.phase);
-        const [nr, ng, nb] = DIM[neb.color];
-        const alphaScale = isDark ? 1 : 0.6;
-        const grad = ctx.createRadialGradient(
-          neb.x * w, neb.y * h, 0,
-          neb.x * w, neb.y * h, neb.rx * breathe
-        );
-        grad.addColorStop(0, `rgba(${nr},${ng},${nb},${neb.alpha * alphaScale})`);
-        grad.addColorStop(0.5, `rgba(${nr},${ng},${nb},${neb.alpha * 0.4 * alphaScale})`);
-        grad.addColorStop(1, `rgba(${nr},${ng},${nb},0)`);
-        ctx.globalAlpha = 1;
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.ellipse(neb.x * w, neb.y * h, neb.rx * breathe, neb.ry * breathe, 0, 0, Math.PI * 2);
-        ctx.fill();
+        const [nr, ng, nb] = dim[nebColor];
+        const alphaScale = isDark ? 1.0 : 0.8;
+        const baseAlpha = neb.alpha * alphaScale * vc.nebulaAlphaMult;
+
+        const cx = Math.round(neb.x * ow);
+        const cy = Math.round(neb.y * oh);
+        const rx = Math.round(neb.rx * breathe);
+        const ry = Math.round(neb.ry * breathe);
+
+        const blockSize = mobile ? 4 : 3;
+        for (let bx = -rx; bx <= rx; bx += blockSize) {
+          for (let by = -ry; by <= ry; by += blockSize) {
+            const dx = bx / rx, dy = by / ry;
+            const dist = dx * dx + dy * dy;
+            if (dist > 1) continue;
+            const fade = 1 - dist;
+            const a = baseAlpha * fade;
+            if (a < 0.003) continue;
+            offCtx.globalAlpha = a;
+            offCtx.fillStyle = `rgb(${nr},${ng},${nb})`;
+            offCtx.fillRect(cx + bx, cy + by, blockSize, blockSize);
+          }
+        }
       }
 
-      /* Stars */
+      /* ── Stars (pixel squares) ── */
       if (!prefersReduced) {
         const dimStars = mobile ? mobileStarsDim : STARS_DIM;
         const medStars = mobile ? mobileStarsMed : STARS_MED;
         const brtStars = mobile ? mobileStarsBright : STARS_BRIGHT;
+        const densityMult = vc.starDensityMult;
 
-        ctx.fillStyle = isDark ? "#a0a0b0" : "#c8b87a";
-        for (const star of dimStars) {
+        offCtx.fillStyle = isDark ? "#a0a0b0" : "#8a7030";
+        for (let i = 0; i < dimStars.length * densityMult && i < dimStars.length; i++) {
+          const star = dimStars[i];
           const twinkle = 0.6 + 0.4 * Math.sin(elapsed * star.speed + star.phase);
-          ctx.globalAlpha = star.b * twinkle * A;
-          ctx.beginPath();
-          ctx.arc(star.x * w, star.y * h, star.s, 0, Math.PI * 2);
-          ctx.fill();
+          offCtx.globalAlpha = star.b * twinkle * A;
+          offCtx.fillRect(Math.round(star.x * ow), Math.round(star.y * oh), 1, 1);
         }
 
-        ctx.fillStyle = isDark ? "#d4d4e0" : "#b5a060";
-        for (const star of medStars) {
+        offCtx.fillStyle = isDark ? "#d4d4e0" : "#6d5520";
+        for (let i = 0; i < medStars.length * densityMult && i < medStars.length; i++) {
+          const star = medStars[i];
           const twinkle = 0.5 + 0.5 * Math.sin(elapsed * star.speed + star.phase);
-          ctx.globalAlpha = star.b * twinkle * A;
-          ctx.beginPath();
-          ctx.arc(star.x * w, star.y * h, star.s, 0, Math.PI * 2);
-          ctx.fill();
+          offCtx.globalAlpha = star.b * twinkle * A;
+          offCtx.fillRect(Math.round(star.x * ow), Math.round(star.y * oh), 1, 1);
         }
 
-        for (const star of brtStars) {
+        for (let i = 0; i < brtStars.length * densityMult && i < brtStars.length; i++) {
+          const star = brtStars[i];
           const twinkle = 0.4 + 0.6 * Math.sin(elapsed * star.speed + star.phase);
-          const sx = star.x * w, sy = star.y * h;
-          ctx.globalAlpha = star.b * twinkle * A;
-          ctx.fillStyle = isDark ? "#fff" : "#9a8540";
-          ctx.beginPath();
-          ctx.arc(sx, sy, star.s, 0, Math.PI * 2);
-          ctx.fill();
+          const sx = Math.round(star.x * ow), sy = Math.round(star.y * oh);
+          offCtx.globalAlpha = star.b * twinkle * A;
+          offCtx.fillStyle = isDark ? "#ffffff" : "#544010";
+          offCtx.fillRect(sx, sy, 2, 2);
 
-          if (!mobile) {
-            const glow = ctx.createRadialGradient(sx, sy, 0, sx, sy, star.s * 4);
-            glow.addColorStop(0, `rgba(255,255,255,${0.08 * twinkle})`);
-            glow.addColorStop(1, "rgba(255,255,255,0)");
-            ctx.fillStyle = glow;
-            ctx.beginPath();
-            ctx.arc(sx, sy, star.s * 4, 0, Math.PI * 2);
-            ctx.fill();
-
-            if (star.hasSparkle) {
-              const sparkLen = star.s * 3 * twinkle;
-              ctx.globalAlpha = star.b * twinkle * 0.4 * A;
-              ctx.strokeStyle = isDark ? "#fff" : "#9a8540";
-              ctx.lineWidth = 0.5;
-              ctx.beginPath();
-              ctx.moveTo(sx - sparkLen, sy); ctx.lineTo(sx + sparkLen, sy);
-              ctx.moveTo(sx, sy - sparkLen); ctx.lineTo(sx, sy + sparkLen);
-              ctx.stroke();
-            }
+          if (star.hasSparkle && !mobile) {
+            const arm = Math.round(2 * twinkle);
+            offCtx.globalAlpha = star.b * twinkle * 0.5 * A;
+            offCtx.fillRect(sx - arm, sy, 1, 1);
+            offCtx.fillRect(sx + 2 + arm - 1, sy, 1, 1);
+            offCtx.fillRect(sx, sy - arm, 1, 1);
+            offCtx.fillRect(sx, sy + 2 + arm - 1, 1, 1);
           }
         }
 
-        /* Shooting stars */
-        nextShoot -= dt;
+        /* ── Shooting stars ── */
+        const freqMult = vc.shootFreqMult;
+        nextShoot -= dt * freqMult;
         if (nextShoot <= 0) {
           nextShoot = 3 + shootRng() * 6;
           const inactive = shootingStars.find(s => !s.active);
           if (inactive) {
-            inactive.x = shootRng() * w;
-            inactive.y = shootRng() * h * 0.6;
+            inactive.x = shootRng() * ow;
+            inactive.y = shootRng() * oh * 0.6;
             inactive.angle = Math.PI * 0.15 + shootRng() * Math.PI * 0.3;
-            inactive.speed = 300 + shootRng() * 500;
-            inactive.len = 40 + shootRng() * 80;
+            inactive.speed = 80 + shootRng() * 120;
+            inactive.len = 10 + shootRng() * 20;
             inactive.life = 0;
             inactive.maxLife = 0.4 + shootRng() * 0.6;
             inactive.active = true;
@@ -369,201 +321,89 @@ export default function NetworkUniverse() {
 
           const fadeIn = Math.min(ss.life / 0.1, 1);
           const fadeOut = Math.max(1 - (ss.life - ss.maxLife + 0.2) / 0.2, 0);
-          const alpha = fadeIn * fadeOut * ss.brightness;
+          const alpha = fadeIn * fadeOut * ss.brightness * A;
 
-          const tailX = ss.x - Math.cos(ss.angle) * ss.len;
-          const tailY = ss.y - Math.sin(ss.angle) * ss.len;
-
-          const grad = ctx.createLinearGradient(tailX, tailY, ss.x, ss.y);
-          grad.addColorStop(0, `rgba(255,255,255,0)`);
-          grad.addColorStop(1, `rgba(255,255,255,${alpha})`);
-
-          ctx.globalAlpha = A;
-          ctx.strokeStyle = grad;
-          ctx.lineWidth = 1.5;
-          ctx.beginPath();
-          ctx.moveTo(tailX, tailY);
-          ctx.lineTo(ss.x, ss.y);
-          ctx.stroke();
-
-          ctx.globalAlpha = alpha * A;
-          ctx.fillStyle = "#fff";
-          ctx.beginPath();
-          ctx.arc(ss.x, ss.y, 1.5, 0, Math.PI * 2);
-          ctx.fill();
+          const hx = Math.round(ss.x), hy = Math.round(ss.y);
+          const steps = Math.round(ss.len);
+          offCtx.fillStyle = isDark ? "#ffffff" : "#9a8540";
+          for (let s = 0; s < steps; s++) {
+            const t = s / steps;
+            const tx = Math.round(hx - Math.cos(ss.angle) * s);
+            const ty = Math.round(hy - Math.sin(ss.angle) * s);
+            offCtx.globalAlpha = alpha * (1 - t);
+            offCtx.fillRect(tx, ty, 1, 1);
+          }
+          offCtx.globalAlpha = alpha;
+          offCtx.fillRect(hx, hy, 2, 2);
         }
       }
 
-      /* Links */
-      const activeLinks = mobile ? mobileLinkFilter : NET.links;
-      for (const link of activeLinks) {
-        const a = NET.nodes[link.a], b = NET.nodes[link.b];
-        const ay = a.y * h - scrollY, by = b.y * h - scrollY;
-        if ((ay < -200 && by < -200) || (ay > h + 200 && by > h + 200)) continue;
-        const [r, g, bl] = DIM[a.color];
-        ctx.globalAlpha = (isDark ? 0.16 : 0.22) * A;
-        ctx.strokeStyle = `rgb(${r},${g},${bl})`;
-        ctx.lineWidth = isDark ? 0.8 : 1;
-        ctx.beginPath(); ctx.moveTo(a.x * w, ay); ctx.lineTo(b.x * w, by); ctx.stroke();
-      }
+      /* ── Nodes (sides only — skip center content zone) ── */
+      const cL = centerL();
+      const cR = centerR();
 
-      /* Flowing dashes (desktop only) */
-      if (!prefersReduced && !mobile) {
-        ctx.setLineDash([3, 9]);
-        ctx.lineDashOffset = -(elapsed * 15) % 20;
-        for (const link of NET.links) {
-          const a = NET.nodes[link.a], b = NET.nodes[link.b];
-          const ay = a.y * h - scrollY, by = b.y * h - scrollY;
-          if ((ay < -200 && by < -200) || (ay > h + 200 && by > h + 200)) continue;
-          const [r, g, bl] = DIM[a.color];
-          ctx.globalAlpha = (isDark ? 0.07 : 0.1) * A;
-          ctx.strokeStyle = `rgb(${r},${g},${bl})`;
-          ctx.lineWidth = 0.5;
-          ctx.beginPath(); ctx.moveTo(a.x * w, ay); ctx.lineTo(b.x * w, by); ctx.stroke();
-        }
-        ctx.setLineDash([]);
-      }
-
-      /* Triangulation zone (hero nodes 9-10-11) */
-      const n9y = NET.nodes[9].y * h - scrollY;
-      if (n9y > -200 && n9y < h + 200) {
-        const n10y = NET.nodes[10].y * h - scrollY;
-        const n11y = NET.nodes[11].y * h - scrollY;
-        const pulse = 0.08 + 0.15 * (0.5 + 0.5 * Math.sin(elapsed * 2));
-        ctx.globalAlpha = pulse * A;
-        ctx.fillStyle = `rgba(0,255,198,${isDark ? 0.04 : 0.06})`;
-        ctx.strokeStyle = `rgba(0,255,198,${isDark ? 0.35 : 0.4})`;
-        ctx.lineWidth = 1.2;
-        ctx.setLineDash([8, 6]);
-        ctx.beginPath();
-        ctx.moveTo(NET.nodes[9].x * w, n9y);
-        ctx.lineTo(NET.nodes[10].x * w, n10y);
-        ctx.lineTo(NET.nodes[11].x * w, n11y);
-        ctx.closePath(); ctx.fill(); ctx.stroke();
-        ctx.setLineDash([]);
-      }
-
-      /* Nodes */
-      for (const node of NET.nodes) {
+      for (const node of NODES) {
         if (mobile && !mobileNodeSet.has(node.id)) continue;
-        const floatY = node.tier === 1 && !prefersReduced ? Math.sin(elapsed * 0.5 + node.id) * 3 : 0;
-        const py = node.y * h - scrollY + floatY;
-        if (py < -60 || py > h + 60) continue;
-        const px = node.x * w;
-        const nr = node.tier === 1 ? 10 : node.tier === 2 ? 7 : 4;
-        const [r, g, b] = BRIGHT[node.color];
-        const [dr, dg, db] = DIM[node.color];
+        const floatY = node.tier === 1 && !prefersReduced ? Math.sin(elapsed * 0.5 + node.id) * 0.8 : 0;
+        const py = Math.round(node.y * oh - scrollY / PX + floatY);
+        if (py < -15 || py > oh + 15) continue;
+        const px = Math.round(node.x * ow);
 
+        /* Skip nodes in center content zone */
+        if (px > cL && px < cR) continue;
+
+        const [r, g, b] = bright[node.color];
+        const [dr, dg, db] = dim[node.color];
+
+        const sz = node.tier === 1 ? 4 : node.tier === 2 ? 3 : 2;
+
+        /* Glow */
         if (!mobile || node.tier <= 2) {
-          const grad = ctx.createRadialGradient(px, py, 0, px, py, nr * 5);
-          grad.addColorStop(0, `rgba(${r},${g},${b},${isDark ? 0.18 : 0.2})`);
-          grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
-          ctx.globalAlpha = A;
-          ctx.fillStyle = grad;
-          ctx.beginPath(); ctx.arc(px, py, nr * 5, 0, Math.PI * 2); ctx.fill();
+          offCtx.globalAlpha = (isDark ? 0.12 : 0.2) * A;
+          offCtx.fillStyle = `rgb(${r},${g},${b})`;
+          offCtx.fillRect(px - sz - 1, py - sz - 1, sz * 2 + 2, sz * 2 + 2);
         }
 
+        /* Ping pulse */
         if (node.tier <= (mobile ? 1 : 2) && !prefersReduced) {
           const period = node.tier === 1 ? 2 : 3.5;
           const pingP = ((elapsed + node.id * 0.3) % period) / period;
-          ctx.globalAlpha = (1 - pingP) * (node.tier === 1 ? 0.35 : 0.2) * A;
-          ctx.strokeStyle = `rgb(${r},${g},${b})`;
-          ctx.lineWidth = node.tier === 1 ? 1.5 : 0.8;
-          ctx.beginPath(); ctx.arc(px, py, nr + pingP * nr * 4, 0, Math.PI * 2); ctx.stroke();
-          if (node.tier === 1 && !mobile) {
-            const pingP2 = ((elapsed + node.id * 0.3 + 1) % 2) / 2;
-            ctx.globalAlpha = (1 - pingP2) * 0.2 * A;
-            ctx.lineWidth = 1;
-            ctx.beginPath(); ctx.arc(px, py, nr + pingP2 * nr * 4, 0, Math.PI * 2); ctx.stroke();
-          }
+          const pingSize = Math.round(sz + pingP * sz * 3);
+          offCtx.globalAlpha = (1 - pingP) * 0.25 * A;
+          offCtx.fillStyle = `rgb(${r},${g},${b})`;
+          offCtx.fillRect(px - pingSize, py - pingSize, pingSize * 2, 1);
+          offCtx.fillRect(px - pingSize, py + pingSize, pingSize * 2, 1);
+          offCtx.fillRect(px - pingSize, py - pingSize, 1, pingSize * 2);
+          offCtx.fillRect(px + pingSize, py - pingSize, 1, pingSize * 2);
         }
 
-        if (!mobile) {
-          ctx.globalAlpha = 0.3 * A;
-          ctx.strokeStyle = `rgb(${dr},${dg},${db})`;
-          ctx.lineWidth = 0.8;
-          ctx.beginPath(); ctx.arc(px, py, nr + 4, 0, Math.PI * 2); ctx.stroke();
-        }
+        /* Outer border */
+        offCtx.globalAlpha = 0.8 * A;
+        offCtx.fillStyle = `rgb(${dr},${dg},${db})`;
+        offCtx.fillRect(px - sz, py - sz, sz * 2, sz * 2);
 
-        ctx.globalAlpha = 0.9 * A;
-        ctx.fillStyle = isDark ? "#050508" : "#FDF5E2";
-        ctx.strokeStyle = `rgba(${r},${g},${b},0.8)`;
-        ctx.lineWidth = node.tier === 1 ? 2 : 1;
-        ctx.beginPath(); ctx.arc(px, py, nr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        /* Inner fill */
+        offCtx.globalAlpha = 0.9 * A;
+        offCtx.fillStyle = isDark ? "#050508" : "#FDF5E2";
+        offCtx.fillRect(px - sz + 1, py - sz + 1, sz * 2 - 2, sz * 2 - 2);
 
-        ctx.globalAlpha = 0.9 * A;
-        ctx.fillStyle = `rgb(${r},${g},${b})`;
-        ctx.beginPath(); ctx.arc(px, py, nr * 0.45, 0, Math.PI * 2); ctx.fill();
+        /* Center dot */
+        offCtx.globalAlpha = 0.9 * A;
+        offCtx.fillStyle = `rgb(${r},${g},${b})`;
+        const cd = node.tier === 1 ? 2 : 1;
+        offCtx.fillRect(px - Math.floor(cd / 2), py - Math.floor(cd / 2), cd, cd);
       }
 
-      /* Particles */
-      if (!prefersReduced) {
-        for (const p of particles) {
-          const circuit = NET.circuits[p.ci];
+      /* ── Blit offscreen → display canvas (nearest-neighbor upscale) ── */
+      offCtx.globalAlpha = 1;
+      ctx.imageSmoothingEnabled = false;
+      ctx.clearRect(0, 0, w, h);
 
-          if (!p.started) {
-            if (elapsed < circuit.delay) continue;
-            p.started = true;
-          }
+      ctx.fillStyle = isDark ? "#050508" : "#FDF5E2";
+      ctx.fillRect(0, 0, w, h);
 
-          const segDur = circuit.dur / circuit.path.length;
-          p.t += dt / segDur;
-          while (p.t >= 1) { p.t -= 1; p.seg = (p.seg + 1) % circuit.path.length; }
+      ctx.drawImage(offscreen, 0, 0, ow, oh, 0, 0, w, h);
 
-          const fromN = NET.nodes[circuit.path[p.seg]];
-          const toN = NET.nodes[circuit.path[(p.seg + 1) % circuit.path.length]];
-          p.x = fromN.x + (toN.x - fromN.x) * p.t;
-          p.y = fromN.y + (toN.y - fromN.y) * p.t;
-
-          const screenY = p.y * h - scrollY;
-          if (screenY < -80 || screenY > h + 80) continue;
-          const screenX = p.x * w;
-
-          for (const node of NET.nodes) {
-            const ny = node.y * h - scrollY;
-            if (Math.abs(ny - screenY) > PROXIMITY_PX * 2) continue;
-            const dx = screenX - node.x * w, dy = screenY - ny;
-            if (dx * dx + dy * dy < PROXIMITY_PX * PROXIMITY_PX) {
-              p.target = [...BRIGHT[node.color]] as [number, number, number];
-              break;
-            }
-          }
-
-          for (let i = 0; i < 3; i++) p.color[i] += (p.target[i] - p.color[i]) * COLOR_LERP;
-
-          const maxTrail = mobile ? 5 : TRAIL_LEN;
-          p.trail.push({ x: screenX, y: screenY });
-          if (p.trail.length > maxTrail) p.trail.shift();
-
-          const [cr, cg, cb] = p.color;
-
-          for (let i = 0; i < p.trail.length; i++) {
-            ctx.globalAlpha = ((i + 1) / p.trail.length) * 0.4 * A;
-            ctx.fillStyle = `rgb(${cr | 0},${cg | 0},${cb | 0})`;
-            ctx.beginPath();
-            ctx.arc(p.trail[i].x, p.trail[i].y, p.sz * 0.6, 0, Math.PI * 2);
-            ctx.fill();
-          }
-
-          if (!mobile) {
-            ctx.globalAlpha = 0.12 * A;
-            ctx.fillStyle = `rgb(${cr | 0},${cg | 0},${cb | 0})`;
-            ctx.beginPath(); ctx.arc(screenX, screenY, p.sz * 5, 0, Math.PI * 2); ctx.fill();
-          }
-          ctx.globalAlpha = 0.25 * A;
-          ctx.fillStyle = `rgb(${cr | 0},${cg | 0},${cb | 0})`;
-          ctx.beginPath(); ctx.arc(screenX, screenY, p.sz * 3, 0, Math.PI * 2); ctx.fill();
-
-          ctx.globalAlpha = 0.9 * A;
-          if (p.block) {
-            ctx.fillRect(screenX - p.sz, screenY - p.sz, p.sz * 2, p.sz * 2);
-          } else {
-            ctx.beginPath(); ctx.arc(screenX, screenY, p.sz, 0, Math.PI * 2); ctx.fill();
-          }
-        }
-      }
-
-      ctx.globalAlpha = 1;
       frameRef.current = requestAnimationFrame(draw);
     };
 
@@ -580,7 +420,7 @@ export default function NetworkUniverse() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none"
-      style={{ zIndex: -10 }}
+      style={{ zIndex: -10, imageRendering: "pixelated" }}
       aria-hidden="true"
     />
   );

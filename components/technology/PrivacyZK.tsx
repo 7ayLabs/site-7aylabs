@@ -13,27 +13,28 @@ import SectionLabel from "@/components/ui/SectionLabel";
 import Badge from "@/components/ui/Badge";
 import {
   staggerContainer,
-  bentoStagger,
-  bentoItem,
-  fadeUpItem,
+  slideInLeft,
+  slideInRight,
 } from "@/lib/constants/animations";
 
 interface PillarVisual {
   readonly icon: LucideIcon;
+  readonly color: string;
 }
 
 const PILLARS_VISUAL: readonly PillarVisual[] = [
-  { icon: Lock },
-  { icon: EyeOff },
-  { icon: Fingerprint },
+  { icon: Lock, color: "#8B5CF6" },
+  { icon: EyeOff, color: "#C084FC" },
+  { icon: Fingerprint, color: "#A78BFA" },
 ] as const;
 
+/* ── ZK illustration — concentric dashed rings with center pin ── */
 function ZKIllustration() {
   const t = useTranslations("privacyZK");
 
   return (
     <div className="relative flex items-center justify-center w-full aspect-square max-w-[320px] mx-auto">
-      {/* Concentric dashed rings */}
+      {/* Concentric dashed rings (violet-themed) */}
       {[280, 220, 160].map((size, i) => (
         <div
           key={size}
@@ -41,7 +42,7 @@ function ZKIllustration() {
           style={{
             width: size,
             height: size,
-            borderColor: `rgba(23, 142, 119, ${0.15 + i * 0.08})`,
+            borderColor: `rgba(139, 92, 246, ${0.15 + i * 0.08})`,
             animation: `slowSpin ${20 + i * 8}s linear infinite${i % 2 === 1 ? " reverse" : ""}`,
           }}
           aria-hidden="true"
@@ -50,14 +51,17 @@ function ZKIllustration() {
 
       {/* Center pin */}
       <div className="relative z-10 flex flex-col items-center gap-3">
-        <div className="w-14 h-14 rounded-full bg-[var(--color-accent-dim)] border border-[var(--color-border-accent)] flex items-center justify-center shadow-glow">
+        <div
+          className="w-14 h-14 rounded-full bg-[var(--color-accent-violet-dim)] border border-[rgba(139,92,246,0.3)] flex items-center justify-center"
+          style={{ boxShadow: "0 0 20px rgba(139,92,246,0.2)" }}
+        >
           <MapPin
-            className="w-7 h-7 text-[var(--color-accent-primary)]"
+            className="w-7 h-7 text-[var(--color-accent-tertiary)]"
             strokeWidth={1.75}
             aria-hidden="true"
           />
         </div>
-        <Badge variant="accent">{t("verified")}</Badge>
+        <Badge variant="violet">{t("verified")}</Badge>
         <span
           className="font-mono text-xs text-fg-muted tracking-wider select-none"
           aria-label={t("redactedPositionAria")}
@@ -75,7 +79,7 @@ function ZKIllustration() {
       ].map((pos, i) => (
         <div
           key={i}
-          className="absolute w-2 h-2 rounded-full bg-[var(--color-accent-secondary)] opacity-40"
+          className="absolute w-2.5 h-2.5 rounded-full bg-[var(--color-accent-tertiary)] opacity-40"
           style={{
             top: pos.top,
             left: pos.left,
@@ -95,89 +99,69 @@ export default function PrivacyZK() {
 
   return (
     <section
-      className="relative w-full px-6 md:px-12 py-24 md:py-32"
+      className="relative w-full px-6 md:px-12 py-28 md:py-36 lg:py-40"
       aria-labelledby="privacy-zk-heading"
     >
       <div className="max-w-6xl mx-auto">
-        {/* Top: Two-column layout */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
           variants={reduceMotion ? undefined : staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center mb-20"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
         >
-          {/* Text side */}
-          <motion.div variants={reduceMotion ? undefined : fadeUpItem}>
+          {/* ── Text side (left) ── */}
+          <motion.div variants={reduceMotion ? undefined : slideInLeft}>
             <SectionLabel className="mb-5">{t("label")}</SectionLabel>
+
             <h2
               id="privacy-zk-heading"
-              className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-fg tracking-tight mb-5"
+              className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-fg tracking-tight mb-4"
             >
               {t("title")}{" "}
               <span className="gradient-text-accent">{t("titleAccent")}</span>
             </h2>
-            <div className="text-fg-secondary text-base leading-relaxed space-y-4">
+
+            <div className="text-fg-secondary text-base md:text-lg leading-relaxed space-y-4 mb-10">
               <p>{t("description.0")}</p>
               <p>{t("description.1")}</p>
             </div>
+
+            {/* 3 ZK pillars list */}
+            <div className="space-y-5">
+              {PILLARS_VISUAL.map((pillar, i) => (
+                <div key={i} className="flex gap-4">
+                  <div
+                    className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center mt-0.5"
+                    style={{ backgroundColor: `${pillar.color}12` }}
+                  >
+                    <pillar.icon
+                      className="w-5 h-5"
+                      style={{ color: pillar.color }}
+                      strokeWidth={1.75}
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-display font-semibold text-base text-fg mb-1 tracking-tight">
+                      {t(`pillars.${i}.title`)}
+                    </h3>
+                    <p className="text-fg-secondary text-sm leading-relaxed">
+                      {t(`pillars.${i}.description`)}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
-          {/* Illustration side */}
+          {/* ── Visual side (right) ── */}
           <motion.div
-            variants={reduceMotion ? undefined : fadeUpItem}
-            className="flex items-center justify-center rounded-2xl bg-bg-tertiary p-8 md:p-12"
+            variants={reduceMotion ? undefined : slideInRight}
+            className="relative rounded-3xl bg-bg-tertiary p-8 md:p-12 flex items-center justify-center aspect-square max-w-[520px] mx-auto lg:mx-0 w-full overflow-hidden"
           >
             <ZKIllustration />
           </motion.div>
-        </motion.div>
-
-        {/* Bottom: 3-column pillar cards */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={reduceMotion ? undefined : bentoStagger}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
-            {PILLARS_VISUAL.map((pillar, i) => (
-              <motion.article
-                key={t(`pillars.${i}.title`)}
-                variants={reduceMotion ? undefined : bentoItem}
-                whileHover={
-                  reduceMotion
-                    ? undefined
-                    : { scale: 1.015, transition: { duration: 0.25 } }
-                }
-                className="glass-card glow-border p-6 md:p-8 group relative rounded-2xl"
-              >
-                <div className="mb-5 flex items-center justify-center w-10 h-10 rounded-xl bg-[var(--color-accent-violet-dim)] transition-all duration-300 group-hover:bg-[var(--color-accent-tertiary)]/20">
-                  <pillar.icon
-                    className="w-5 h-5 text-[var(--color-accent-tertiary)] transition-colors duration-300"
-                    strokeWidth={1.75}
-                    aria-hidden="true"
-                  />
-                </div>
-
-                <h3 className="font-display font-semibold text-lg text-fg mb-2 tracking-tight">
-                  {t(`pillars.${i}.title`)}
-                </h3>
-
-                <p className="text-fg-secondary text-sm leading-relaxed">
-                  {t(`pillars.${i}.description`)}
-                </p>
-
-                <div
-                  className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                  style={{
-                    background:
-                      "radial-gradient(ellipse at 30% 0%, rgba(139,92,246,0.08) 0%, transparent 60%)",
-                  }}
-                  aria-hidden="true"
-                />
-              </motion.article>
-            ))}
-          </div>
         </motion.div>
       </div>
     </section>
