@@ -1,60 +1,99 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { AnimatePresence } from "framer-motion";
 import TopBar from "./TopBar";
 import MobileAccordion from "./MobileAccordion";
 
+const SCROLL_THRESHOLD = 60;
+const SCROLL_DELTA = 5;
+
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
-  const [hovered, setHovered] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [accordionItem, setAccordionItem] = useState<string | null>(null);
+
+  const lastYRef = useRef(0);
+  const ticking = useRef(false);
+  const closeTimeout = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  /* ── Category hover with 150ms grace ── */
+  const openCategory = useCallback((label: string) => {
+    clearTimeout(closeTimeout.current);
+    setActiveCategory(label);
+  }, []);
+
+  const closeDropdown = useCallback(() => {
+    closeTimeout.current = setTimeout(() => setActiveCategory(null), 150);
+  }, []);
+
+  const closeDropdownImmediate = useCallback(() => {
+    clearTimeout(closeTimeout.current);
+    setActiveCategory(null);
+  }, []);
+
+  /* ── Scroll detection ── */
+  const updateScroll = useCallback(() => {
+    const y = window.scrollY;
+    const delta = y - lastYRef.current;
+    if (y < SCROLL_THRESHOLD) setScrolled(false);
+    else if (Math.abs(delta) >= SCROLL_DELTA) setScrolled(delta > 0);
+    lastYRef.current = y;
+    ticking.current = false;
+  }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
+    lastYRef.current = window.scrollY;
+    const onScroll = () => {
+      if (!ticking.current) {
+        ticking.current = true;
+        requestAnimationFrame(updateScroll);
+      }
     };
-  }, [open]);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [updateScroll]);
+
+  useEffect(() => {
+    if (scrolled) closeDropdownImmediate();
+  }, [scrolled, closeDropdownImmediate]);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMobileOpen(false);
+        closeDropdownImmediate();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [closeDropdownImmediate]);
 
   return (
     <>
-      <TopBar open={open} setOpen={setOpen} />
+      <TopBar
+        scrolled={scrolled}
+        mobileOpen={mobileOpen}
+        setMobileOpen={setMobileOpen}
+        activeCategory={activeCategory}
+        openCategory={openCategory}
+        closeDropdown={closeDropdown}
+        closeDropdownImmediate={closeDropdownImmediate}
+      />
 
       <AnimatePresence>
-        {open && (
-          <>
-            {/* Backdrop overlay */}
-            <motion.div
-              className="fixed inset-0 z-[30] bg-black/40 backdrop-blur-md"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setOpen(false)}
-            />
-
-            {/* Slide-in mobile panel */}
-            <motion.aside
-              className="
-                fixed top-12 md:top-16 right-0 bottom-0 z-[40]
-                w-[53%] sm:w-[420px]
-                bg-[var(--color-bg-primary)]/90
-                border-l border-[var(--glass-border)]
-                backdrop-blur-[24px]
-                flex flex-col
-              "
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "tween", duration: 0.35, ease: "easeOut" }}
-            >
-              <div className="flex-1 overflow-y-auto px-6 py-6 md:hidden">
-                <MobileAccordion
-                  openItem={hovered}
-                  setOpenItem={setHovered}
-                />
-              </div>
-            </motion.aside>
-          </>
+        {mobileOpen && (
+          <MobileAccordion
+            openItem={accordionItem}
+            setOpenItem={setAccordionItem}
+            onClose={() => setMobileOpen(false)}
+          />
         )}
       </AnimatePresence>
     </>
