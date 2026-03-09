@@ -136,9 +136,9 @@
 [data-theme="light"] {
   --color-accent-primary: #126B5A;
 
-  --color-bg-primary: #FAFAF8;
-  --color-bg-secondary: #F5F5F0;
-  --color-bg-tertiary: #EEEEE8;
+  --color-bg-primary: #FDF5E2;
+  --color-bg-secondary: #F8EDD4;
+  --color-bg-tertiary: #F2E5C8;
   --color-bg-elevated: #FAFAF8;
   --color-bg-surface: #F5F5F0;
   --color-bg-card: rgba(0, 0, 0, 0.025);

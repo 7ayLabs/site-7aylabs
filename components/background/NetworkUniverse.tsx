@@ -262,29 +262,28 @@ export default function NetworkUniverse() {
       const elapsed = (now - startTime) / 1000;
       const scrollY = window.scrollY;
       const isDark = themeRef.current === "dark";
-      const A = isDark ? 1 : 0.4;
+      const A = isDark ? 1 : 0.85;
 
-      ctx.fillStyle = isDark ? "#050508" : "#f8f8fa";
+      ctx.fillStyle = isDark ? "#050508" : "#FDF5E2";
       ctx.fillRect(0, 0, w, h);
 
       /* Nebulae */
-      if (isDark) {
-        for (const neb of NEBULAE) {
-          const breathe = 1 + 0.15 * Math.sin(elapsed * 0.3 + neb.phase);
-          const [nr, ng, nb] = DIM[neb.color];
-          const grad = ctx.createRadialGradient(
-            neb.x * w, neb.y * h, 0,
-            neb.x * w, neb.y * h, neb.rx * breathe
-          );
-          grad.addColorStop(0, `rgba(${nr},${ng},${nb},${neb.alpha})`);
-          grad.addColorStop(0.5, `rgba(${nr},${ng},${nb},${neb.alpha * 0.4})`);
-          grad.addColorStop(1, `rgba(${nr},${ng},${nb},0)`);
-          ctx.globalAlpha = 1;
-          ctx.fillStyle = grad;
-          ctx.beginPath();
-          ctx.ellipse(neb.x * w, neb.y * h, neb.rx * breathe, neb.ry * breathe, 0, 0, Math.PI * 2);
-          ctx.fill();
-        }
+      for (const neb of NEBULAE) {
+        const breathe = 1 + 0.15 * Math.sin(elapsed * 0.3 + neb.phase);
+        const [nr, ng, nb] = DIM[neb.color];
+        const alphaScale = isDark ? 1 : 0.6;
+        const grad = ctx.createRadialGradient(
+          neb.x * w, neb.y * h, 0,
+          neb.x * w, neb.y * h, neb.rx * breathe
+        );
+        grad.addColorStop(0, `rgba(${nr},${ng},${nb},${neb.alpha * alphaScale})`);
+        grad.addColorStop(0.5, `rgba(${nr},${ng},${nb},${neb.alpha * 0.4 * alphaScale})`);
+        grad.addColorStop(1, `rgba(${nr},${ng},${nb},0)`);
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.ellipse(neb.x * w, neb.y * h, neb.rx * breathe, neb.ry * breathe, 0, 0, Math.PI * 2);
+        ctx.fill();
       }
 
       /* Stars */
@@ -293,7 +292,7 @@ export default function NetworkUniverse() {
         const medStars = mobile ? mobileStarsMed : STARS_MED;
         const brtStars = mobile ? mobileStarsBright : STARS_BRIGHT;
 
-        ctx.fillStyle = isDark ? "#a0a0b0" : "#bbb";
+        ctx.fillStyle = isDark ? "#a0a0b0" : "#c8b87a";
         for (const star of dimStars) {
           const twinkle = 0.6 + 0.4 * Math.sin(elapsed * star.speed + star.phase);
           ctx.globalAlpha = star.b * twinkle * A;
@@ -302,7 +301,7 @@ export default function NetworkUniverse() {
           ctx.fill();
         }
 
-        ctx.fillStyle = isDark ? "#d4d4e0" : "#aaa";
+        ctx.fillStyle = isDark ? "#d4d4e0" : "#b5a060";
         for (const star of medStars) {
           const twinkle = 0.5 + 0.5 * Math.sin(elapsed * star.speed + star.phase);
           ctx.globalAlpha = star.b * twinkle * A;
@@ -315,7 +314,7 @@ export default function NetworkUniverse() {
           const twinkle = 0.4 + 0.6 * Math.sin(elapsed * star.speed + star.phase);
           const sx = star.x * w, sy = star.y * h;
           ctx.globalAlpha = star.b * twinkle * A;
-          ctx.fillStyle = isDark ? "#fff" : "#888";
+          ctx.fillStyle = isDark ? "#fff" : "#9a8540";
           ctx.beginPath();
           ctx.arc(sx, sy, star.s, 0, Math.PI * 2);
           ctx.fill();
@@ -332,7 +331,7 @@ export default function NetworkUniverse() {
             if (star.hasSparkle) {
               const sparkLen = star.s * 3 * twinkle;
               ctx.globalAlpha = star.b * twinkle * 0.4 * A;
-              ctx.strokeStyle = isDark ? "#fff" : "#aaa";
+              ctx.strokeStyle = isDark ? "#fff" : "#9a8540";
               ctx.lineWidth = 0.5;
               ctx.beginPath();
               ctx.moveTo(sx - sparkLen, sy); ctx.lineTo(sx + sparkLen, sy);
@@ -402,9 +401,9 @@ export default function NetworkUniverse() {
         const ay = a.y * h - scrollY, by = b.y * h - scrollY;
         if ((ay < -200 && by < -200) || (ay > h + 200 && by > h + 200)) continue;
         const [r, g, bl] = DIM[a.color];
-        ctx.globalAlpha = (isDark ? 0.16 : 0.08) * A;
+        ctx.globalAlpha = (isDark ? 0.16 : 0.22) * A;
         ctx.strokeStyle = `rgb(${r},${g},${bl})`;
-        ctx.lineWidth = 0.8;
+        ctx.lineWidth = isDark ? 0.8 : 1;
         ctx.beginPath(); ctx.moveTo(a.x * w, ay); ctx.lineTo(b.x * w, by); ctx.stroke();
       }
 
@@ -417,7 +416,7 @@ export default function NetworkUniverse() {
           const ay = a.y * h - scrollY, by = b.y * h - scrollY;
           if ((ay < -200 && by < -200) || (ay > h + 200 && by > h + 200)) continue;
           const [r, g, bl] = DIM[a.color];
-          ctx.globalAlpha = (isDark ? 0.07 : 0.035) * A;
+          ctx.globalAlpha = (isDark ? 0.07 : 0.1) * A;
           ctx.strokeStyle = `rgb(${r},${g},${bl})`;
           ctx.lineWidth = 0.5;
           ctx.beginPath(); ctx.moveTo(a.x * w, ay); ctx.lineTo(b.x * w, by); ctx.stroke();
@@ -432,8 +431,8 @@ export default function NetworkUniverse() {
         const n11y = NET.nodes[11].y * h - scrollY;
         const pulse = 0.08 + 0.15 * (0.5 + 0.5 * Math.sin(elapsed * 2));
         ctx.globalAlpha = pulse * A;
-        ctx.fillStyle = `rgba(0,255,198,${isDark ? 0.04 : 0.02})`;
-        ctx.strokeStyle = `rgba(0,255,198,${isDark ? 0.35 : 0.18})`;
+        ctx.fillStyle = `rgba(0,255,198,${isDark ? 0.04 : 0.06})`;
+        ctx.strokeStyle = `rgba(0,255,198,${isDark ? 0.35 : 0.4})`;
         ctx.lineWidth = 1.2;
         ctx.setLineDash([8, 6]);
         ctx.beginPath();
@@ -457,7 +456,7 @@ export default function NetworkUniverse() {
 
         if (!mobile || node.tier <= 2) {
           const grad = ctx.createRadialGradient(px, py, 0, px, py, nr * 5);
-          grad.addColorStop(0, `rgba(${r},${g},${b},${isDark ? 0.18 : 0.08})`);
+          grad.addColorStop(0, `rgba(${r},${g},${b},${isDark ? 0.18 : 0.2})`);
           grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
           ctx.globalAlpha = A;
           ctx.fillStyle = grad;
@@ -487,7 +486,7 @@ export default function NetworkUniverse() {
         }
 
         ctx.globalAlpha = 0.9 * A;
-        ctx.fillStyle = isDark ? "#050508" : "#f8f8fa";
+        ctx.fillStyle = isDark ? "#050508" : "#FDF5E2";
         ctx.strokeStyle = `rgba(${r},${g},${b},0.8)`;
         ctx.lineWidth = node.tier === 1 ? 2 : 1;
         ctx.beginPath(); ctx.arc(px, py, nr, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
