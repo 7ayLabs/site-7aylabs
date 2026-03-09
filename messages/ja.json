@@ -1,0 +1,1281 @@
+{
+  "common": {
+    "joinWaitlist": "ウェイトリストに参加",
+    "getEarlyAccess": "早期アクセスを取得",
+    "learnMore": "詳しく見る",
+    "backToHome": "ホームに戻る",
+    "connectToDevnet": "Devnetに接続",
+    "followOnX": "Xでフォロー",
+    "skipToContent": "メインコンテンツへスキップ",
+    "copyright": "© {year} 7ayLabs. All rights reserved.",
+    "loading": "読み込み中...",
+    "tryAgain": "もう一度試す",
+    "signalOnly": "シグナルのみ。ノイズなし。いつでも登録解除できます。",
+    "viewOnGithub": "GitHubで見る",
+    "exploreProtocol": "プロトコルを探索する",
+    "exploreProtocolArrow": "プロトコルを探索する",
+    "exploreTechnology": "テクノロジーを探索する",
+    "viewRepository": "リポジトリを見る",
+    "follow7ayLabs": "@7ayLabsをフォロー",
+    "runAValidator": "バリデーターを運用する",
+    "devnetSetup": "Devnetセットアップ",
+    "joinTheWaitlist": "ウェイトリストに参加する",
+    "getProtocolUpdates": "プロトコルの最新情報を受け取る"
+  },
+  "nav": {
+    "home": "ホーム",
+    "technology": "テクノロジー",
+    "whyPresence": "なぜプレゼンスか",
+    "useCases": "ユースケース",
+    "devnet": "Devnet",
+    "validators": "バリデーター",
+    "ecosystem": "エコシステム",
+    "glossary": "用語集",
+    "updates": "アップデート",
+    "waitlist": "ウェイトリスト",
+    "newsletter": "ニュースレター",
+    "about": "概要",
+    "github": "GitHub",
+    "xTwitter": "X (Twitter)",
+    "categories": {
+      "learn": "学ぶ",
+      "build": "構築する",
+      "network": "ネットワーク",
+      "community": "コミュニティ"
+    },
+    "footer": {
+      "joinWaitlist": "ウェイトリストに参加"
+    },
+    "aria": {
+      "openMenu": "メニューを開く",
+      "closeMenu": "メニューを閉じる",
+      "homeLink": "7ayLabs ホーム",
+      "followOnX": "Xで7ayLabsをフォロー",
+      "githubLink": "GitHubの7ayLabs",
+      "footerLearnLinks": "学習リンク",
+      "footerBuildLinks": "構築リンク",
+      "footerNetworkLinks": "ネットワークリンク",
+      "footerCommunityLinks": "コミュニティリンク"
+    },
+    "logoAlt": "7ayLabs ロゴ",
+    "logoAltFooter": "7ayLabs"
+  },
+  "theme": {
+    "switchToDark": "ダークモードに切り替え",
+    "switchToLight": "ライトモードに切り替え"
+  },
+  "language": {
+    "label": "言語",
+    "en": "English",
+    "es": "Español",
+    "pt": "Português",
+    "fr": "Français",
+    "de": "Deutsch",
+    "zh": "中文",
+    "ja": "日本語"
+  },
+  "hero": {
+    "titleLine1Start": "あなたの",
+    "titleLine1Accent": "存在",
+    "titleLine2Start": "それが",
+    "titleLine2Accent": "証明",
+    "subtitle": "物理法則で人間を検証する初のブロックチェーン。虹彩スキャンなし。GPSなし。オーブなし。ネットワークレイテンシーと光の法則だけで検証します。",
+    "ctaPrimary": "早期アクセスを取得",
+    "ctaSecondary": "プロトコルを探索する",
+    "typewriterPhrases": {
+      "0": "約束ではなく、物理法則によるシビル耐性。",
+      "1": "Web3に欠けていたアイデンティティレイヤー。",
+      "2": "一度の検証で完了。データの痕跡なし。ハードウェア不要。",
+      "3": "ボットが失敗し、人間が通過する場所。"
+    }
+  },
+  "howItWorks": {
+    "label": "仕組み",
+    "title": "シグナルから主権へ",
+    "subtitle": "3つのステップでシビル耐性のある検証を実現。ハードウェア不要。生体認証不要。純粋な物理法則。",
+    "aria": "7aychainがあなたの存在を検証する仕組み",
+    "steps": {
+      "0": {
+        "number": "01",
+        "title": "プレゼンスコミットメントを開始",
+        "description": "お使いのデバイスが暗号学的コミットメント（プレゼンス宣言のハッシュ）を送信します。パスワード不要、生体認証不要、専用ハードウェア不要。ワンタップで検証エポックに参加できます。",
+        "iconAlt": "信号アークでネットワークに接続するスマートフォン"
+      },
+      "1": {
+        "number": "02",
+        "title": "ウィットネスサークルがシグナルを三角測量",
+        "description": "バリデーターがウィットネスサークルを形成し、複数のポイントからネットワークレイテンシーを測定してあなたの位置を三角測量します。GPSなし、オラクルなし、物理法則のみです。",
+        "iconAlt": "位置を三角測量する3つのバリデーター"
+      },
+      "2": {
+        "number": "03",
+        "title": "オンチェーンで証明が確定",
+        "description": "クォーラムに達すると、あなたのプレゼンス証明が封印されます。改ざん不可能で、主権的であり、エポックをまたいで偽造やリプレイが不可能です。",
+        "iconAlt": "チェックマーク付きの六角形シールがブロックにチェーンされている"
+      }
+    }
+  },
+  "whyChain": {
+    "title": "なぜ",
+    "titleAccent": "7aychain",
+    "titleEnd": "？",
+    "subtitle": "他のすべてのチェーンは暗号技術のみに依存しています。7aychainはアイデンティティを物理的現実に紐づけます。AI、ボット、シビルファームが偽造できない唯一のプリミティブです。",
+    "cards": {
+      "0": {
+        "title": "生体認証より物理法則",
+        "description": "虹彩スキャンなし。指紋なし。バリデーターがネットワークレイテンシーと信号タイミングを測定し、あなたが物理的に存在していることを検証します。ボットが偽造できない物理法則です。",
+        "iconAlt": "測定ノード付き信号波"
+      },
+      "1": {
+        "title": "コミットリビール型プライバシーアーキテクチャ",
+        "description": "あなたの秘密はチェーンに触れません。ハッシュをコミットし、後でリビールします。ナリファイアがエポック間のリプレイを防止します。ZK証明により、アイデンティティを公開せずにプレゼンスを証明できます。",
+        "iconAlt": "ゼロ知識証明リング付きの鍵"
+      },
+      "2": {
+        "title": "自律型シビルスコアリング",
+        "description": "自律パレットが行動パターンに基づいてすべてのアクターを0〜100でスコアリングします。CAPTCHAなし、オーブなし。プロトコルが人間と機械を自動的に判別します。",
+        "iconAlt": "人間検証チェックマーク付きシールド"
+      },
+      "3": {
+        "title": "プレゼンス加重ガバナンス",
+        "description": "トークン投票ではなく、ケイパビリティベースのパーミッション。デリゲーションは最大5レベルまでカスケードします。ルートケイパビリティを取り消すと、すべての子も取り消されます。すべてオンチェーンで実行されます。",
+        "iconAlt": "ケイパビリティノード付きデリゲーションツリー"
+      }
+    }
+  },
+  "newsletter": {
+    "title": "プレゼンスエコノミーに参加する",
+    "subtitle": "プロトコルのマイルストーン、バリデーターのオンボーディング情報、ガバナンス提案を、いち早く行動する方にお届けします。",
+    "cta": "プロトコルの最新情報を受け取る",
+    "trustLine": "シグナルのみ。ノイズなし。いつでも登録解除できます。"
+  },
+  "devnetStatus": {
+    "statusIndicator": "Devnet稼働中",
+    "title": "7aychain Devnetが稼働中です",
+    "subtitle": "Proof of Presenceプロトコルの完全版を実行する稼働中のネットワーク。実際のノード、実際の検証、実際の結果。",
+    "ctaHint": "Devnetに接続",
+    "stats": {
+      "version": {
+        "label": "v0.8.26",
+        "description": "Devnetバージョン"
+      },
+      "nodes": {
+        "label": "6",
+        "description": "アクティブノード"
+      },
+      "modules": {
+        "label": "16",
+        "description": "コアモジュール"
+      },
+      "specVersion": {
+        "label": "111",
+        "description": "バージョン"
+      }
+    }
+  },
+  "notFound": {
+    "heading": "404",
+    "message": "ページが見つかりません。",
+    "detail": "お探しのページは存在しないか、移動されました。",
+    "cta": "ホームに戻る"
+  },
+  "globalError": {
+    "heading": "問題が発生しました",
+    "fallbackMessage": "予期しないエラーが発生しました。",
+    "cta": "もう一度試す"
+  },
+  "technologyPage": {
+    "label": "テクノロジー",
+    "title": "Proof of Presence",
+    "accentWord": "Presence",
+    "description": {
+      "0": "7aychainは、実在の人間が実在の場所にいることを検証します。カメラでも、生体認証でも、特殊なハードウェアでもなく、インターネット信号の物理法則を利用しています。",
+      "1": "AIが偽造できない唯一のもの、「そこにいること」のために構築されたブロックチェーンです。"
+    }
+  },
+  "techHowItWorks": {
+    "label": "仕組み",
+    "title": "プロトコルを支える",
+    "titleAccent": "原理",
+    "subtitle": "プレゼンス検証を可能にする4つの基盤。",
+    "principles": {
+      "0": {
+        "title": "物理法則に基づく",
+        "description": "インターネット信号は既知の速度で伝わります。複数のバリデーターからのタイミングを測定することで、ネットワークがあなたの物理的な位置を推定します。GPSなし、オラクルなし、光の法則のみです。"
+      },
+      "1": {
+        "title": "デフォルトでプライバシー保護",
+        "description": "ネットワークはあなたの所在地を知ることなく、あなたが存在していたことを証明します。あなたの位置データはハッシュとしてコミットされ、ZK証明で検証され、プレーンテキストでオンチェーンに保存されることはありません。"
+      },
+      "2": {
+        "title": "経済的に保護",
+        "description": "すべてのバリデーターが実際の価値をステークします。誰かの位置について虚偽を報告すればステークを失います。誠実さが唯一の利益を生む戦略です。"
+      },
+      "3": {
+        "title": "AIによる偽造が不可能",
+        "description": "AIはテキスト、画像、合成アイデンティティを生成できます。しかし、特定の座標に物理的に存在することはできません。プレゼンスこそが、自動化に耐える人間性の証明です。"
+      }
+    }
+  },
+  "presenceJourney": {
+    "label": "プロトコルフロー",
+    "title": "シグナルから",
+    "titleAccent": "封印された証明",
+    "subtitle": "3つのステップ。仲介者なし。あなたのプレゼンスが検証され、永続的に記録されます。",
+    "steps": {
+      "0": {
+        "number": "01",
+        "title": "あなたが現れる",
+        "badge": "宣言 + コミット",
+        "description": "あなたのデバイスが暗号学的コミットメント（「ここにいます」と伝える封印されたハッシュ）を送信します。場所は明かしません。1回のアクション。生体認証なし。ハードウェアなし。"
+      },
+      "1": {
+        "number": "02",
+        "title": "ネットワークがあなたを測定",
+        "badge": "証明 + 三角測量",
+        "description": "バリデーターのサークルが複数のポイントから独立して信号タイミングを測定します。マルチラテレーションにより、あなたが共有しなくても位置を推定します。"
+      },
+      "2": {
+        "number": "03",
+        "title": "証明が封印される",
+        "badge": "確定",
+        "description": "十分なバリデーターが合意すると、あなたのプレゼンスがオンチェーンで確定されます。あなたが物理的に存在していたという改ざん不可能な記録です。あなたが所有し、誰も取り消すことはできません。"
+      }
+    }
+  },
+  "architectureLayers": {
+    "label": "アーキテクチャ",
+    "title": "4つのレイヤー、",
+    "titleAccent": "1つのプロトコル",
+    "subtitle": "各レイヤーはその下のレイヤーの上に構築され、ローレベルのネットワーキングからあなたが操作するアプリケーションまでをカバーします。",
+    "layers": {
+      "0": {
+        "title": "ネットワーク基盤",
+        "description": "ノードが互いを発見し、真実に合意し、ブロックを生成する仕組み。コンセンサスにより、すべてのバリデーターが同じルールに従います。",
+        "items": {
+          "0": "コンセンサス",
+          "1": "ブロック生成",
+          "2": "P2Pネットワーキング",
+          "3": "ファイナリティ"
+        }
+      },
+      "1": {
+        "title": "プレゼンスエンジン",
+        "description": "コアイノベーション：複数のポイントからネットワークレイテンシーを測定し、物理的位置を推定します。ウィットネスサークルが形成され、測定し、三角測量を行います。すべてGPSなしで実行されます。",
+        "items": {
+          "0": "三角測量",
+          "1": "ウィットネスサークル",
+          "2": "位置推定",
+          "3": "エポック管理"
+        }
+      },
+      "2": {
+        "title": "セキュリティとプライバシー",
+        "description": "複数の保護レイヤー：バリデーターは価値をステークし、紛争はオンチェーンで解決され、ZK証明が位置情報のプライバシーを守ります。",
+        "items": {
+          "0": "ステーキングとスラッシング",
+          "1": "紛争解決",
+          "2": "ZK証明",
+          "3": "異常検知"
+        }
+      },
+      "3": {
+        "title": "アプリケーション",
+        "description": "検証されたプレゼンスの上に構築されるもの：参加度で重み付けされたガバナンス、セキュアボールト、トラストネットワーク、コーディネーションツール。",
+        "items": {
+          "0": "ガバナンス",
+          "1": "データボールト",
+          "2": "トラストグラフ",
+          "3": "グループ管理"
+        }
+      }
+    }
+  },
+  "privacyZK": {
+    "label": "ゼロ知識証明",
+    "title": "位置は検証されますが、",
+    "titleAccent": "明かされません",
+    "description": {
+      "0": "ゼロ知識証明により、ネットワークはあなたがある場所にいたことを確認できますが、その場所がどこかは知ることができません。あなたのデータはあなたの手元に残ります。",
+      "1": "プロトコルは暗号学的コミットメントを使用しているため、あなたの信号を測定するバリデーターでさえ、実際の座標を知ることはありません。確認するのは「はい、この人は物理的に存在していました」ということだけです。"
+    },
+    "verified": "検証済み",
+    "redactedPosition": "位置: ████████",
+    "redactedPositionAria": "秘匿された位置データ",
+    "pillars": {
+      "0": {
+        "title": "コミットリビール",
+        "description": "まずプレゼンスの封印されたハッシュを送信します。ロックされた後にのみデータをリビールします。これにより改ざんを防止します。"
+      },
+      "1": {
+        "title": "ゼロ知識証明",
+        "description": "「この人はここにいた」ことを場所を明かさずに検証する数学的証明。ネットワークはあなたの位置を一切知りません。"
+      },
+      "2": {
+        "title": "ナリファイア保護",
+        "description": "各証明は一意のナリファイアを生成し、再利用を防止します。匿名性を維持しながらリプレイ攻撃を阻止します。"
+      }
+    }
+  },
+  "useCasesPage": {
+    "label": "ユースケース",
+    "title": "プレゼンスがすべてを変える場所",
+    "accentWord": "プレゼンス",
+    "description": "公正な投票から検証済みレビューまで、物理的な存在でしか解決できない現実世界の課題。",
+    "sybilProblem": {
+      "title": "シビル問題はどこにでもある",
+      "paragraph1": "同一人物が数分で数千の偽アカウントを作成できます。ボットが報酬をファーミングし、偽ユーザーが投票を奪い、ほとんどのシステムはその違いを見分ける方法がありません。",
+      "paragraph2": "根本原因はシンプルです。ある行動の背後にユニークな人間がいることを信頼性をもって証明する方法がないのです。"
+    },
+    "physicsSolution": {
+      "title": "ソリューションとしての物理法則",
+      "paragraph1": "7aychainは物理法則でこの問題を解決します。無制限にアカウントを作成できますが、同時に2つの場所にいることはできません。複数のポイントからインターネット接続のタイミングを測定することで、あなたが本物の人間であり、存在していることをネットワークが確認します。",
+      "paragraph2": "アイスキャンなし。特別なデバイスなし。"
+    },
+    "applicationsLabel": "アプリケーション",
+    "applicationsTitle": "プレゼンスがゲームを変える場所",
+    "applicationsSubtitle": "物理的な存在でしか解決できない現実世界の課題。",
+    "signalCards": {
+      "0": {
+        "title": "ユニークな人間性",
+        "description": "すべての検証は、あなたの現実世界でのプレゼンスの物理法則に基づいています。"
+      },
+      "1": {
+        "title": "デフォルトでプライバシー保護",
+        "description": "あなたが誰であるか、どこにいるかを知ることなく、存在していることだけを検証します。"
+      },
+      "2": {
+        "title": "永続的に記録",
+        "description": "すべての証明は、誰でも検証できるパブリックレコードに保存されます。"
+      },
+      "3": {
+        "title": "どこでも動作",
+        "description": "インターネット接続があるあらゆるデバイスで利用可能。特別な機器は不要です。"
+      }
+    },
+    "useCases": {
+      "0": {
+        "title": "公正なトークン配布",
+        "description": "報酬は数千のアカウントをファーミングするボットではなく、本物の人間に届きます。すべての受取人が、実際に存在していたユニークな人間として検証されます。",
+        "detail": "すべての受取人が本物の検証済み人間である場合、トークン配布が意味を持つようになります。偽アカウントや自動ファーミングによる予算の流出はもうありません。"
+      },
+      "1": {
+        "title": "公正な投票",
+        "description": "1人1票。物理法則で保証されます。ウォレットファームなし、投票買収なし、偽アカウントによるガバナンス乗っ取りなし。",
+        "detail": "コミュニティは、各参加者が1人のアクターが管理するウォレット群ではなく、本物の人間であることを確認した上で、投票、提案、選挙を実施できます。"
+      },
+      "2": {
+        "title": "安全なトランザクション",
+        "description": "高額な操作に物理的なセキュリティレイヤーを追加します。パスワードが盗まれても、行動するには物理的に存在する必要があります。",
+        "detail": "重要な金融操作に、リモートからはどのハッカーも突破できない保護レイヤーが加わります。正しい場所に物理的にいる必要があるのです。"
+      },
+      "3": {
+        "title": "イベントチケッティング",
+        "description": "カンファレンス、ミートアップ、ワークショップへの参加を証明します。実際にそこにいたことで報酬を獲得できます。単に参加したと主張するだけではありません。",
+        "detail": "イベント主催者は正確な出席データを取得し、参加者は実質的な価値を持つ検証可能なクレデンシャルを獲得します。"
+      },
+      "4": {
+        "title": "検証済みコミュニティ",
+        "description": "実際に参加する人々を中心にコミュニティを構築します。偽メンバーなし、ボットによる水増しなし。",
+        "detail": "メンバーシップとアクセスは、作成されたアカウントや購入されたクレデンシャルではなく、実際の参加を通じて獲得されます。"
+      },
+      "5": {
+        "title": "検証済みレビューと配達",
+        "description": "実際に訪れた人だけがレビューを残せます。配達員は正しい住所に到着したことを証明します。偽のレビューと配達詐欺を終わらせます。",
+        "detail": "物理的な検証により、レビュー、配達、サービス確認が実際にその場にいた人からのものであることが保証されます。"
+      }
+    },
+    "ctaTitle": "Proof of Presenceで構築する",
+    "ctaSubtitle": "Devnetは稼働中です。今すぐ7aychainでアプリケーションの構築を始めましょう。",
+    "ctaPrimary": "Devnetに接続",
+    "ctaSecondary": "ウェイトリストに参加"
+  },
+  "glossaryPage": {
+    "label": "用語集",
+    "title": "7aychain用語集",
+    "accentWord": "用語集",
+    "description": "7aychain Proof of Presenceプロトコルにおける主要な用語、パレット、コンセプトの定義集です。",
+    "letterNavAria": "用語集の文字ナビゲーション",
+    "terms": {
+      "autonomousDetection": {
+        "letter": "A",
+        "term": "Autonomous Detection（自律検知）",
+        "definition": "プレゼンス証明における異常パターンを自動的に検知するオンチェーンモジュール。手動の報告を必要とせず、不審な挙動をフラグ付けしてレビューや紛争に回します。"
+      },
+      "boomerangProof": {
+        "letter": "B",
+        "term": "Boomerang Proof（ブーメラン証明）",
+        "definition": "アクターが以前に証明された場所に戻ったことを検証する暗号学的メカニズム。場所自体を明かすことなく、時間経過に伴う一貫したプレゼンスパターンを証明するために使用されます。"
+      },
+      "circuitRegistry": {
+        "letter": "C",
+        "term": "Circuit Registry（サーキットレジストリ）",
+        "definition": "証明の生成と検証に利用可能なZKサーキットのオンチェーンレジストリ。サーキットのバージョン管理、証明モード間のマイグレーション、検証器の設定を管理します。"
+      },
+      "commitRevealScheme": {
+        "letter": "C",
+        "term": "Commit-Reveal Scheme（コミットリビール方式）",
+        "definition": "アクターがまずプレゼンスデータのハッシュをコミット（隠蔽）し、後のフェーズで実際のデータをリビールする2段階のプロトコル。フロントランニングを防止し、プレゼンス宣言の公正な順序を保証します。"
+      },
+      "deviceScanner": {
+        "letter": "D",
+        "term": "Device Scanner（デバイススキャナー）",
+        "definition": "プレゼンス証明に参加するデバイスの登録とスキャンを行うパレットレベルのモジュール。デバイスのアイデンティティ、証明能力、失効を管理します。"
+      },
+      "disputeResolution": {
+        "letter": "D",
+        "term": "Dispute Resolution（紛争解決）",
+        "definition": "プレゼンス証明に異議を申し立てるオンチェーンプロセス。異議申立者が証拠を提出し、バリデーターが投票し、プロトコルが不正な証明者へのスラッシングを含む結果を執行します。"
+      },
+      "epoch": {
+        "letter": "E",
+        "term": "Epoch（エポック）",
+        "definition": "プレゼンスの宣言、証明、確定が行われる固定された時間ウィンドウ。エポックはプロトコルのライフサイクルを構造化し、バリデーターのローテーションスケジュールを決定します。"
+      },
+      "groth16": {
+        "letter": "G",
+        "term": "Groth16",
+        "definition": "7aychainが簡潔で非対話型のプレゼンス証明に使用するゼロ知識証明システム。一定サイズの証明と高速な検証を提供し、効率的なオンチェーンZK検証を可能にします。"
+      },
+      "laudNetworksCli": {
+        "letter": "L",
+        "term": "Laud Networks CLI",
+        "definition": "7aychainパレットと対話するためのPythonベースのターミナルユーザーインターフェース（TUI）。プレゼンス宣言、バリデーター管理、ZK証明など、全16プロトコルモジュールをサポートしています。"
+      },
+      "lifecycle": {
+        "letter": "L",
+        "term": "Lifecycle（ライフサイクル）",
+        "definition": "プレゼンス宣言の作成から確定までを管理する完全なステートマシン：宣言、コミット、リビール、証明、三角測量、確定。"
+      },
+      "multilateration": {
+        "letter": "M",
+        "term": "Multilateration（マルチラテレーション）",
+        "definition": "複数のバリデーター参照点からのネットワークレイテンシー測定を使用してアクターの物理的位置を推定する測位技術。ウィットネスサークルにおけるコアの三角測量アルゴリズムです。"
+      },
+      "octopusGroups": {
+        "letter": "O",
+        "term": "Octopus Groups（オクトパスグループ）",
+        "definition": "プロトコル内の組織単位で、協調的なプレゼンス操作のためにバリデーターとアクターをグループ化します。共有ガバナンスルールや集合的な証明閾値を設定できます。"
+      },
+      "positionBoundToken": {
+        "letter": "P",
+        "term": "Position Bound Token (PBT)（ポジションバウンドトークン）",
+        "definition": "プレゼンスが確定された際にミントされる暗号学的トークン。PBTは証明の主張を特定のポジションとエポックに紐づけ、正確な場所を明かすことなく、検証可能なプレゼンス証明のクレデンシャルとして機能します。"
+      },
+      "presenceLifecycle": {
+        "letter": "P",
+        "term": "Presence Lifecycle（プレゼンスライフサイクル）",
+        "definition": "6フェーズのプロトコルフロー：宣言（意図の表明）、コミット（プレゼンスハッシュの送信）、リビール（データの開示）、証明（バリデーターの測定）、三角測量（位置の計算）、確定（クォーラムコンセンサス）。"
+      },
+      "proofOfPresence": {
+        "letter": "P",
+        "term": "Proof of Presence (PoP)",
+        "definition": "7aychainのコンセンサスメカニズム。バリデーターがウィットネスサークルを形成し、ネットワークレイテンシー測定を通じて物理的なプレゼンスを三角測量します。GPSなし、生体認証なし、外部ハードウェアなし。"
+      },
+      "quorumConsensus": {
+        "letter": "Q",
+        "term": "Quorum Consensus（クォーラムコンセンサス）",
+        "definition": "プレゼンス証明を確定するために必要なバリデーターの合意閾値。ウィットネスサークルの十分な割合が位置推定に収束した場合にのみ、プレゼンス宣言が確定されます。"
+      },
+      "semanticLinks": {
+        "letter": "S",
+        "term": "Semantic Links（セマンティックリンク）",
+        "definition": "エンティティ（アクター、場所、組織）間のオンチェーン関係で、トラストグラフを形成します。セマンティックリンクにより、プレゼンス履歴に基づくコンテキスト検証とレピュテーションが可能になります。"
+      },
+      "shamirSecretSharing": {
+        "letter": "S",
+        "term": "Shamir Secret Sharing（シャミア秘密分散法）",
+        "definition": "ボールトシステムで機密データを複数の当事者に分割するために使用される暗号学的スキーム。単独の当事者が秘密を再構成するのに十分な情報を持つことはなく、安全な復元と共有を可能にします。"
+      },
+      "snark": {
+        "letter": "S",
+        "term": "SNARK",
+        "definition": "Succinct Non-interactive Argument of Knowledge（簡潔な非対話型知識論証）。7aychainがコンパクトで効率的に検証可能なプレゼンス証明に使用するゼロ知識証明の一種。プロトコルはスタブ検証器から完全なSNARKサーキットへのマイグレーションを行います。"
+      },
+      "storageLayer": {
+        "letter": "S",
+        "term": "Storage Layer（ストレージレイヤー）",
+        "definition": "プレゼンス証明、証明記録、プロトコル状態のオンチェーンおよびオフチェーンデータストレージを提供するパレット。ピンニング、取得、データ可用性保証をサポートします。"
+      },
+      "triangulation": {
+        "letter": "T",
+        "term": "Triangulation（三角測量）",
+        "definition": "複数の参照点からのネットワークレイテンシー測定を使用してバリデーターがアクターの物理的位置を推定するプロセス。マルチラテレーションと重心アルゴリズムを組み合わせて位置を推定します。"
+      },
+      "validator": {
+        "letter": "V",
+        "term": "Validator（バリデーター）",
+        "definition": "$7AYをステークしてコンセンサス、プレゼンス証明、ウィットネスサークルの三角測量に参加するノードオペレーター。誠実な行動に対して報酬を獲得し、不正行為にはスラッシングが適用されます。"
+      },
+      "vault": {
+        "letter": "V",
+        "term": "Vault（ボールト）",
+        "definition": "機密データのためのセキュアなオンチェーンストレージシステム。分散鍵管理のためのシャミア秘密分散法をサポートし、権限を持つ当事者間でのデータ復元と制御された共有を可能にします。"
+      },
+      "witnessCircle": {
+        "letter": "W",
+        "term": "Witness Circle（ウィットネスサークル）",
+        "definition": "プレゼンス宣言を証明するために擬似ランダムに選出されたバリデーターのサブセット。サークルメンバーは独立してレイテンシーを測定し、集合的に宣言アクターの位置を三角測量します。"
+      },
+      "zkCircuit": {
+        "letter": "Z",
+        "term": "ZK Circuit（ZKサーキット）",
+        "definition": "正確な位置データを明かすことなくプレゼンスを検証する証明を生成するゼロ知識計算サーキット。7aychainはGroth16サーキットを使用し、オンチェーンレジストリとスタブから完全なSNARK検証へのマイグレーションパスを備えています。"
+      }
+    }
+  },
+  "waitlistPage": {
+    "badge": "早期アクセス — フェーズ0稼働中",
+    "title": "ネットワークが",
+    "titleAccent": "目覚めつつあります",
+    "titleEnd": "。",
+    "subtitle": "あなたがここにいることを最初に証明する一人になりましょう。プレゼンスがパスワードよりも重要な世界を築く人々に加わってください。",
+    "form": {
+      "emailLabel": "メールアドレス",
+      "emailPlaceholder": "you@email.com",
+      "submitIdle": "早期アクセスを取得",
+      "submitLoading": "参加中...",
+      "submitSuccess": "登録完了！",
+      "successMessage": "ようこそ！アクセスが開放され次第ご連絡いたします。",
+      "errorInvalidEmail": "有効なメールアドレスを入力してください",
+      "errorGeneric": "問題が発生しました。もう一度お試しください。",
+      "privacyNote": "必要なのはメールアドレスだけです。生体認証なし、個人IDなし、位置データなし。"
+    },
+    "benefits": {
+      "0": {
+        "title": "最初に検証",
+        "description": "誰よりも先にネットワークにアクセスし、最初にプレゼンスを証明する一人になりましょう。"
+      },
+      "1": {
+        "title": "ネットワークを形作る",
+        "description": "あなたのフィードバックが、私たちが構築するものとプロトコルの進化に直接影響を与えます。"
+      },
+      "2": {
+        "title": "ファウンディングメンバーの地位",
+        "description": "7aychainネットワークの創設参加者として、永続的なオンチェーンレコードが残ります。"
+      }
+    },
+    "phases": {
+      "0": {
+        "label": "フェーズ0",
+        "title": "早期アクセス",
+        "status": "稼働中"
+      },
+      "1": {
+        "label": "フェーズ1",
+        "title": "拡張パイロット"
+      },
+      "2": {
+        "label": "フェーズ2",
+        "title": "一般公開"
+      }
+    },
+    "socialProof": {
+      "devnetLive": "Devnet稼働中",
+      "activeNodes": "6つのアクティブノード",
+      "coreModules": "16のコアモジュール",
+      "version": "v0.8.26"
+    }
+  },
+  "newsletterPage": {
+    "label": "ニュースレター",
+    "title": "最新情報をキャッチ",
+    "accentWord": "キャッチ",
+    "description": "プロダクトインサイト、プロトコルの進捗、現実世界のプレゼンスインフラストラクチャ。重要な時にお届けします。",
+    "whatYouGet": {
+      "label": "お届けする内容",
+      "title": "シグナルであり、ノイズではありません",
+      "subtitle": "共有する価値のあることがある時にだけ配信します。穴埋め記事なし、毎週の義務なし、マーケティングの誇大表現なし。"
+    },
+    "topics": {
+      "0": {
+        "title": "プロトコルの進捗",
+        "description": "プロトコルのマイルストーン、ZK検証からDevnetのデプロイメントまで、7aychainの開発に関する詳細なアップデート。"
+      },
+      "1": {
+        "title": "プロダクトインサイト",
+        "description": "現実世界のプレゼンスがプロダクト、パイロット、初期デプロイメントにどのように適用されているか。"
+      },
+      "2": {
+        "title": "業界分析",
+        "description": "AI耐性、人間検証、そして進化する信頼インフラストラクチャの展望に関する見解。"
+      }
+    },
+    "followTitle": "進捗をフォロー",
+    "followSubtitle": "ニュースレターは近日配信開始です。それまでの間、Xで7aychainと7ayLabsに関するリアルタイムの最新情報をフォローしてください。",
+    "followCta": "Xでフォロー",
+    "noSpam": "スパムなし。7aychainを構築するチームからのシグナルのみです。"
+  },
+  "whyPresencePage": {
+    "label": "なぜプレゼンスか",
+    "title": "インターネットはヒューマンシグナルを失った",
+    "accentWords": ["ヒューマン", "シグナル"],
+    "description": "ボットがオンラインで人間ができることすべてを行える今、あなたが本物であることを証明する唯一の手段は、物理的に存在していることです。",
+    "presenceInfrastructure": {
+      "sectionTitle": "プレゼンスインフラストラクチャ",
+      "paragraph1": "7aychainの核心にあるのはシンプルなアイデアです。あなたのインターネット接続があなたの所在を証明できるということです。ネットワーク全体のバリデーターが複数のポイントから接続タイミングを測定し、GPS、カメラ、特別なハードウェアなしに、あなたの物理的な位置を確認します。",
+      "paragraph2": "ほとんどのシステムはあなたの行動、アカウント、資格情報を見て本物かどうかを判断しようとします。大規模になると、これらはすべて偽造可能です。7aychainは別のアプローチを取ります。物理法則を利用するのです。"
+    },
+    "physicsArgument": {
+      "label": "物理法則の論拠",
+      "title": "物理的現実によるシビル耐性",
+      "subtitle": "プロフィール、資格情報、生体認証を信頼する代わりに、7aychainは根本的な物理的制約を活用します。あなたは同時に1つの場所にしかいられないのです。"
+    },
+    "pillars": {
+      "0": {
+        "title": "スキャンではなく物理法則",
+        "description": "インターネット信号には速度制限があります — 光速です。7aychainはこの事実を利用してあなたの所在を確認します。虹彩スキャンなし、セルフィーなし、指紋なし。"
+      },
+      "1": {
+        "title": "同時に1つの場所のみ",
+        "description": "100万のアカウントを作成できますが、物理的に存在できるのは1つの場所だけです。これがプレゼンスの偽造をほぼ不可能にする制約です。"
+      },
+      "2": {
+        "title": "永続的な痕跡を残さない",
+        "description": "各検証は一回限りのイベントです。永続的なプロフィールなし、行動追跡なし、あなたに関するデータの保存なし。ここにいたことを証明したら、それで完了です。"
+      }
+    },
+    "coreInsight": {
+      "label": "コアインサイト",
+      "title": "完璧なシミュレーションの世界では、物理的現実が希少な資源となる",
+      "description": "AIは説得力のあるテキスト、行動、インタラクションを大規模に生成できます。しかし、物理的なプレゼンス — 特定の時間に特定の場所にいること、ネットワーク物理学で測定可能なこと — は自然の法則によって制約されたままです。"
+    },
+    "sybilArguments": {
+      "problemLabel": "課題",
+      "responseLabel": "7aychainの対応",
+      "items": {
+        "0": {
+          "problem": "ボットは大規模に行動を偽造できる",
+          "response": "AIはテキスト、トランザクション、ソーシャルアクティビティを偽造できます。しかし、どこかにいることは偽造できません。物理的なプレゼンスは物理法則によって制約されています。"
+        },
+        "1": {
+          "problem": "誰でも無制限にアカウントを作成できる",
+          "response": "新しいウォレットの作成にコストはかかりません。2つの場所に同時にいることは不可能です。7aychainはデジタルの問題を物理的な問題に変換します。"
+        },
+        "2": {
+          "problem": "生体認証システムは監視である",
+          "response": "虹彩スキャンや顔認識は、あなたの身体の永続的なデータベースを作成します。7aychainはインターネットのタイミングを測定するだけで、あなたの顔を見ることも名前を知ることもありません。"
+        },
+        "3": {
+          "problem": "ソーシャルネットワークは偽造できる",
+          "response": "組織的なグループが偽のソーシャルプルーフを作成できます。物理的なプレゼンスはネットワークによって独立に検証されます — 信頼は不要です。"
+        }
+      }
+    },
+    "comparison": {
+      "label": "比較",
+      "title": "7aychainとの比較",
+      "subtitle": "人間検証問題への異なるアプローチ。それぞれがプライバシー、ハードウェア、実際に何を証明するかについて異なるトレードオフを持ちます。",
+      "headers": {
+        "dimension": "項目",
+        "sevenychain": "7aychain",
+        "worldcoin": "Worldcoin",
+        "brightid": "BrightID",
+        "passport": "Gitcoin Passport"
+      },
+      "rows": {
+        "0": {
+          "dimension": "方式",
+          "sevenychain": "インターネット接続のタイミングを測定",
+          "worldcoin": "専用デバイスで虹彩をスキャン",
+          "brightid": "友人がビデオで保証",
+          "passport": "オンラインアカウントを連携してトラストスコアを算出"
+        },
+        "1": {
+          "dimension": "必要なハードウェア",
+          "sevenychain": "なし（インターネット接続のみ）",
+          "worldcoin": "カスタムOrbデバイス",
+          "brightid": "なし",
+          "passport": "なし"
+        },
+        "2": {
+          "dimension": "身体データの収集",
+          "sevenychain": "なし",
+          "worldcoin": "あり（虹彩スキャン）",
+          "brightid": "なし（ただし顔は映る）",
+          "passport": "なし"
+        },
+        "3": {
+          "dimension": "プライバシー",
+          "sevenychain": "高い — 位置のみ、アイデンティティは不要",
+          "worldcoin": "低い — 虹彩の生体データを保存",
+          "brightid": "中程度 — 顔がビデオに映る",
+          "passport": "中程度 — オンラインアカウントを連携"
+        },
+        "4": {
+          "dimension": "証明する内容",
+          "sevenychain": "実在の場所に物理的にいること",
+          "worldcoin": "ユニークな人間であること（生体認証）",
+          "brightid": "人々があなたが本物だと保証すること",
+          "passport": "アクティブなオンラインアカウントを持つこと"
+        },
+        "5": {
+          "dimension": "チェーン",
+          "sevenychain": "7aychain (Substrate L1)",
+          "worldcoin": "Optimism (L2)",
+          "brightid": "IDChain / マルチチェーン",
+          "passport": "マルチチェーン（オフチェーンスコアリング）"
+        },
+        "6": {
+          "dimension": "ステージ",
+          "sevenychain": "Devnet (v0.8.26)",
+          "worldcoin": "メインネット",
+          "brightid": "メインネット",
+          "passport": "メインネット"
+        }
+      }
+    },
+    "cta": {
+      "label": "シグナルをフォロー",
+      "title": "プレゼンスは欠けていたプリミティブ",
+      "subtitle": "私たちはリアルタイムで進捗を共有しています。何がテストされているか、何が壊れているか、プレゼンスが実際に成果を変える場所はどこか。",
+      "primary": "Xでフォロー",
+      "secondary": "テクノロジーを探索する"
+    }
+  },
+  "devnetPage": {
+    "label": "Devnet",
+    "title": "7aychainに接続する",
+    "accentWord": "7aychain",
+    "description": "7aychain Devnetは6ノード、16コアモジュール、完全な検証スタックで稼働中です。リポジトリをクローンし、ビルドして、操作を開始しましょう。",
+    "quickStart": {
+      "label": "クイックスタート",
+      "title": "3ステップでビルドして実行",
+      "steps": {
+        "0": {
+          "badge": "1",
+          "title": "リポジトリをクローン",
+          "code": "git clone https://github.com/7ayLabs/7aychain.git\ncd 7aychain"
+        },
+        "1": {
+          "badge": "2",
+          "title": "ノードをビルド",
+          "code": "cargo build --release"
+        },
+        "2": {
+          "badge": "3",
+          "title": "開発ノードを実行",
+          "code": "./target/release/seveny-node --dev"
+        }
+      }
+    },
+    "networkInfo": {
+      "label": "ネットワーク情報",
+      "title": "Devnet設定",
+      "connection": {
+        "title": "接続",
+        "rpcEndpoint": "RPCエンドポイント",
+        "rpcEndpointValue": "ws://127.0.0.1:9944",
+        "chainSpec": "チェーンスペック",
+        "chainSpecValue": "local_testnet",
+        "specVersion": "スペックバージョン",
+        "specVersionValue": "111",
+        "binary": "バイナリ",
+        "binaryValue": "seveny-node",
+        "sdk": "SDK",
+        "sdkValue": "polkadot-stable2503"
+      },
+      "preFundedAccounts": {
+        "title": "プリファンドアカウント",
+        "description": "すべての開発アカウント（AliceからFerdieまで）は、Devnetでテストトークンがプリファンドされており、即座に使用できます。"
+      }
+    },
+    "validatorNodes": {
+      "0": { "name": "Alice", "port": "9944", "role": "ブートノード" },
+      "1": { "name": "Bob", "port": "9945", "role": "バリデーター" },
+      "2": { "name": "Charlie", "port": "9946", "role": "バリデーター" },
+      "3": { "name": "Dave", "port": "9947", "role": "バリデーター" },
+      "4": { "name": "Eve", "port": "9948", "role": "バリデーター" },
+      "5": { "name": "Ferdie", "port": "9949", "role": "バリデーター" }
+    },
+    "multiNodeSetup": {
+      "label": "マルチノードセットアップ",
+      "title": "6ノードネットワークセットアップ",
+      "description": "完全な6バリデーターDevnetをローカルで実行します。Aliceはネイティブのブートノードとして動作し、残りのバリデーターはハイブリッドモードでDockerを介して実行できます。",
+      "tableHeaders": {
+        "node": "ノード",
+        "rpcPort": "RPCポート",
+        "role": "役割"
+      },
+      "dockerHybrid": {
+        "title": "Dockerハイブリッドモード",
+        "code": "# Start Alice natively\n./target/release/seveny-node \\\n  --chain local \\\n  --alice \\\n  --port 30333 \\\n  --rpc-port 9944 \\\n  --validator\n\n# Start remaining nodes via Docker\ndocker-compose up bob charlie dave eve ferdie"
+      }
+    },
+    "laudCli": {
+      "label": "Laud Networks CLI",
+      "title": "すべてのモジュールと対話する",
+      "description": "Laud Networks CLIは、コマンドラインから7aychainモジュールと直接対話するためのPythonベースのTUIツールです。",
+      "installTitle": "インストール",
+      "installCode": "pip install substrate-interface\npython3 laud-cli.py",
+      "tableHeaders": {
+        "module": "モジュール",
+        "operations": "操作"
+      },
+      "modules": {
+        "0": { "module": "presence", "operations": "declare, commit, reveal, query status" },
+        "1": { "module": "epoch", "operations": "current epoch, history, config" },
+        "2": { "module": "validator", "operations": "register, activate, stake, slash info" },
+        "3": { "module": "pbt", "operations": "mint, bind, verify position-bound tokens" },
+        "4": { "module": "triangulation", "operations": "submit latency, compute position, verify" },
+        "5": { "module": "dispute", "operations": "open, submit evidence, vote, resolve" },
+        "6": { "module": "device", "operations": "register, scan, attest, revoke" },
+        "7": { "module": "lifecycle", "operations": "query state, transition, finalize" },
+        "8": { "module": "vault", "operations": "create, deposit, share, recover" },
+        "9": { "module": "zk", "operations": "generate proof, verify, migrate circuit" },
+        "10": { "module": "governance", "operations": "propose, vote, execute, cancel" },
+        "11": { "module": "semantic", "operations": "link entities, query graph, unlink" },
+        "12": { "module": "boomerang", "operations": "create proof, verify return, query" },
+        "13": { "module": "autonomous", "operations": "detect anomaly, report, query status" },
+        "14": { "module": "octopus", "operations": "create group, join, leave, query" },
+        "15": { "module": "storage", "operations": "store, retrieve, pin, unpin" }
+      }
+    },
+    "hardware": {
+      "label": "ハードウェア",
+      "title": "システム要件",
+      "tableHeaders": {
+        "spec": "スペック",
+        "minimum": "最小",
+        "recommended": "推奨"
+      },
+      "requirements": {
+        "0": { "spec": "CPUコア", "minimum": "4コア", "recommended": "8コア以上" },
+        "1": { "spec": "RAM", "minimum": "8 GB", "recommended": "16 GB" },
+        "2": { "spec": "ストレージ", "minimum": "50 GB SSD", "recommended": "100 GB NVMe" },
+        "3": { "spec": "ネットワーク", "minimum": "10 Mbps", "recommended": "100+ Mbps" }
+      }
+    },
+    "explorer": {
+      "label": "エクスプローラー",
+      "title": "Polkadot.js Appsで接続",
+      "description": "Polkadot.js Appsのインターフェースを使用して、7aychain Devnetでブロックの閲覧、エクストリンシクスの送信、チェーン状態のクエリを行えます。",
+      "steps": {
+        "0": "以下にアクセスします",
+        "0link": "polkadot.js.org/apps",
+        "1": "ネットワークセレクター（左上）をクリック",
+        "2": "「Development」→「Local Node」を選択",
+        "3": "エンドポイントを以下に設定",
+        "3value": "ws://127.0.0.1:9944",
+        "4": "「Switch」をクリックして接続"
+      },
+      "whatYouCanDo": {
+        "title": "できること",
+        "items": {
+          "0": "リアルタイムでブロックとエクストリンシクスを閲覧",
+          "1": "プレゼンス宣言と証明を送信",
+          "2": "モジュールストレージ（presence、epoch、validatorなど）をクエリ",
+          "3": "バリデーターのステーキングとスラッシングイベントを監視",
+          "4": "ZK証明の送信と検証結果を検査"
+        }
+      }
+    },
+    "cta": {
+      "title": "7aychainで構築する準備はできましたか？",
+      "subtitle": "ソースコードを探索し、ローカルノードを実行し、Proof of Presenceプロトコルでの構築を始めましょう。",
+      "primary": "GitHubで見る",
+      "secondary": "バリデーターを運用する"
+    }
+  },
+  "validatorsPage": {
+    "label": "バリデーター",
+    "title": "7aychainバリデーターを運用する",
+    "accentWord": "バリデーター",
+    "description": "バリデーターは7aychainネットワークを支えています。グループを形成し、インターネット接続を測定し、人々の所在を確認し、ネットワークの誠実性を維持します。",
+    "roleOverview": {
+      "label": "役割の概要",
+      "title": "バリデーターの役割",
+      "paragraph1": "7aychainでは、バリデーターはネットワークの維持以上のことを行います。人々が自称する場所に実際にいるかどうかを積極的に検証します。インターネット接続の測定を使用して、各人の位置を独立して確認するグループを形成します。",
+      "paragraph2": "ウィットネスサークル内の各バリデーターは、宣言アクターおよび他のサークルメンバーへの往復レイテンシーを測定します。これらの測定値はコミットフェーズ中に署名付き証明として送信されます。",
+      "paragraph3": "リビールフェーズでは、レイテンシー測定値がマルチラテレーション（複数の参照点からのネットワークタイミングデータに基づいてアクターの物理的位置を推定する三角測量アルゴリズム）に使用されます。",
+      "paragraph4": "十分なバリデーターが誰かの位置に合意すると、そのプレゼンスが確認され、永続的に記録されます。誠実なバリデーターは報酬を獲得し、不正なバリデーターはステークを失います。"
+    },
+    "hardware": {
+      "label": "ハードウェア",
+      "title": "システム要件",
+      "tableHeaders": {
+        "spec": "スペック",
+        "minimum": "最小",
+        "recommended": "推奨"
+      },
+      "requirements": {
+        "0": { "spec": "CPUコア", "minimum": "4コア", "recommended": "8コア以上" },
+        "1": { "spec": "RAM", "minimum": "8 GB", "recommended": "16 GB" },
+        "2": { "spec": "ストレージ", "minimum": "50 GB SSD", "recommended": "100 GB NVMe" },
+        "3": { "spec": "ネットワーク", "minimum": "10 Mbps", "recommended": "100+ Mbps" }
+      }
+    },
+    "prerequisites": {
+      "label": "前提条件",
+      "title": "依存関係のインストール",
+      "description": "7aychainにはRust（stable）、WASMコンパイルターゲット、Clang/LLVM、protobufが必要です。以下からお使いのOSを選択してください。",
+      "systems": {
+        "0": {
+          "os": "macOS",
+          "commands": "brew install cmake pkg-config openssl git llvm protobuf\nrustup default stable\nrustup target add wasm32-unknown-unknown"
+        },
+        "1": {
+          "os": "Ubuntu / Debian",
+          "commands": "sudo apt update && sudo apt install -y \\\n  cmake pkg-config libssl-dev git clang \\\n  libclang-dev protobuf-compiler\nrustup default stable\nrustup target add wasm32-unknown-unknown"
+        },
+        "2": {
+          "os": "Fedora",
+          "commands": "sudo dnf install -y cmake openssl-devel git clang \\\n  clang-devel protobuf-compiler\nrustup default stable\nrustup target add wasm32-unknown-unknown"
+        },
+        "3": {
+          "os": "Windows (WSL2)",
+          "commands": "# Install WSL2 with Ubuntu, then follow Ubuntu steps\nwsl --install -d Ubuntu\n# Inside WSL2:\nsudo apt update && sudo apt install -y \\\n  cmake pkg-config libssl-dev git clang \\\n  libclang-dev protobuf-compiler"
+        }
+      }
+    },
+    "setup": {
+      "label": "セットアップ",
+      "title": "バリデーターのビルドと実行",
+      "steps": {
+        "0": {
+          "badge": "1",
+          "title": "クローンとビルド",
+          "code": "git clone https://github.com/7ayLabs/7aychain.git\ncd 7aychain\ncargo build --release"
+        },
+        "1": {
+          "badge": "2",
+          "title": "セッションキーの生成",
+          "code": "# Start node first, then rotate keys via RPC\ncurl -H \"Content-Type: application/json\" \\\n  -d '{\"id\":1, \"jsonrpc\":\"2.0\", \"method\":\"author_rotateKeys\"}' \\\n  http://localhost:9944"
+        },
+        "2": {
+          "badge": "3",
+          "title": "バリデーターフラグで実行",
+          "code": "./target/release/seveny-node \\\n  --chain local \\\n  --validator \\\n  --name \"my-validator\" \\\n  --base-path /data/7aychain \\\n  --rpc-port 9944 \\\n  --rpc-cors all"
+        }
+      }
+    },
+    "configuration": {
+      "label": "設定",
+      "title": "ノードCLIフラグ",
+      "tableHeaders": {
+        "flag": "フラグ",
+        "description": "説明"
+      },
+      "flags": {
+        "0": { "flag": "--dev", "description": "一時ストレージで開発モードを実行" },
+        "1": { "flag": "--chain <spec>", "description": "チェーンスペックを指定（local、dev、またはJSONファイルのパス）" },
+        "2": { "flag": "--validator", "description": "ブロック生成のためにバリデーターモードを有効化" },
+        "3": { "flag": "--base-path <path>", "description": "ノードのデータディレクトリを設定" },
+        "4": { "flag": "--rpc-port <port>", "description": "JSON-RPCポートを設定（デフォルト: 9944）" },
+        "5": { "flag": "--port <port>", "description": "P2Pネットワーキングポートを設定（デフォルト: 30333）" },
+        "6": { "flag": "--name <name>", "description": "ノードの人間が読める名前" },
+        "7": { "flag": "--telemetry-url <url>", "description": "テレメトリサーバーエンドポイント" },
+        "8": { "flag": "--bootnodes <addr>", "description": "ブートノードのマルチアドレスを指定" },
+        "9": { "flag": "--rpc-cors all", "description": "RPCのすべてのCORSオリジンを許可" }
+      }
+    },
+    "economics": {
+      "label": "エコノミクス",
+      "title": "ステーキングとスラッシングのライフサイクル",
+      "description": "バリデーターは参加するために$7AYをステークする必要があります。誠実な行動は報酬を得、不正な証明はスラッシングを引き起こします。",
+      "steps": {
+        "0": {
+          "step": "登録",
+          "description": "セッションキーとともにバリデーター登録のエクストリンシクスを送信します。登録は次のエポックまでペンディングキューに入ります。"
+        },
+        "1": {
+          "step": "アクティベーション",
+          "description": "ガバナンスによって登録が承認されると、ノードはアクティブバリデーターセットに参加し、コンセンサスへの参加を開始します。"
+        },
+        "2": {
+          "step": "ステーク",
+          "description": "$7AYトークンを担保としてボンドします。ステークが高いほど、ウィットネスサークルに選出され報酬を獲得する確率が上がります。"
+        },
+        "3": {
+          "step": "報酬獲得",
+          "description": "バリデーターは誠実な三角測量、プレゼンス証明、ブロック生成に対して報酬を獲得します。報酬はエポックごとに分配されます。"
+        },
+        "4": {
+          "step": "スラッシング",
+          "description": "不正な行動（虚偽の証明、ダウンタイム、エクイボケーション）はスラッシングを引き起こします。ステークされた$7AYの一部がバーンされます。"
+        }
+      }
+    },
+    "witnessCircles": {
+      "label": "プロトコル",
+      "title": "ウィットネスサークルへの参加",
+      "paragraph1": "アクターがプレゼンスを宣言すると、プロトコルはアクティブバリデーターのサブセットを選出して",
+      "witnessCircleHighlight": "ウィットネスサークル",
+      "paragraph1cont": "を形成します。選出は擬似ランダムで、ステークによって重み付けされ、ネットワークトポロジーによって制約されます。",
+      "paragraph2": "サークル内の各バリデーターは、宣言アクターおよび他のサークルメンバーへの往復レイテンシーを独立して測定します。これらの測定値はコミットフェーズ中に署名付き証明として送信されます。",
+      "paragraph3": "リビールフェーズでは、レイテンシー測定値がマルチラテレーション（複数の参照点からのネットワークタイミングデータに基づいてアクターの物理的位置を推定する三角測量アルゴリズム）に使用されます。",
+      "paragraph4": "クォーラムのバリデーターからの位置推定が許容閾値内に収束すると、プレゼンスが確定されます。外れ値の測定は紛争解決プロセスをトリガーし、虚偽の証明を提供したバリデーターはスラッシングに直面します。"
+    },
+    "cta": {
+      "title": "7aychainでバリデーションを開始する",
+      "subtitle": "Devnetは稼働中でバリデーターを受け付けています。リポジトリをクローンし、ノードをビルドし、ネットワークに参加しましょう。",
+      "primary": "GitHubで見る",
+      "secondary": "Devnetセットアップ"
+    }
+  },
+  "ecosystemPage": {
+    "label": "エコシステム",
+    "title": "プレゼンスレイヤーで構築する",
+    "accentWord": "プレゼンス",
+    "description": "7aychainのProof of Presenceインフラストラクチャでアプリケーションを構築するための開発者ツール、SDK統合、プロトコルモジュール。",
+    "developerTools": {
+      "label": "開発者ツール",
+      "title": "7aychainと対話するためのツール",
+      "tools": {
+        "0": {
+          "name": "Laud Networks CLI",
+          "badge": "CLIツール",
+          "description": "全16の7aychainパレットと対話するためのPythonベースTUI。ターミナルからプレゼンス宣言、バリデーター管理、ZK証明の送信、チェーン状態のクエリを行えます。"
+        },
+        "1": {
+          "name": "Polkadot.js Apps",
+          "badge": "Web UI",
+          "description": "7aychain Devnetでブロックの閲覧、エクストリンシクスの送信、ストレージのクエリを行うフル機能のWebインターフェース。ws://127.0.0.1:9944に接続してください。"
+        },
+        "2": {
+          "name": "JSON-RPC API",
+          "badge": "API",
+          "description": "プログラムからアクセスするための標準Substrate JSON-RPCインターフェース。あらゆるHTTPまたはWebSocketクライアントと互換性があります。すべてのランタイムAPIとカスタムパレットメソッドをサポートしています。"
+        }
+      }
+    },
+    "sdkIntegration": {
+      "label": "SDK統合",
+      "title": "あらゆる言語から接続",
+      "description": "7aychainは標準のSubstrate RPCインターフェースを公開しています。Substrate互換のSDKを使用して、プログラムからチェーンと対話できます。",
+      "examples": {
+        "0": {
+          "language": "Rust (Subxt)",
+          "description": "Rustアプリケーション向けの型安全なSubstrateクライアント"
+        },
+        "1": {
+          "language": "JavaScript (@polkadot/api)",
+          "description": "ブラウザとNode.js向けのフル機能JS/TSクライアント"
+        },
+        "2": {
+          "language": "cURL (JSON-RPC)",
+          "description": "あらゆる言語やツールからの直接HTTPコール"
+        }
+      }
+    },
+    "protocolModules": {
+      "label": "プロトコルモジュール",
+      "title": "構築に使える16のモジュール",
+      "description": "7aychainのランタイムは4つの機能グループに整理された16のカスタムパレットで構成されています。各パレットは開発者が対話できるエクストリンシクス、ストレージ、イベントを公開しています。",
+      "groups": {
+        "0": {
+          "category": "プレゼンスレイヤー",
+          "description": "コアプレゼンス宣言、エポック管理、ステートマシン、デバイス登録。",
+          "pallets": ["presence", "epoch", "lifecycle", "device"]
+        },
+        "1": {
+          "category": "検証",
+          "description": "位置推定、ゼロ知識証明、ポジションバウンドトークンのミント。",
+          "pallets": ["triangulation", "zk", "pbt"]
+        },
+        "2": {
+          "category": "セキュリティ",
+          "description": "バリデーターステーキング、紛争解決、自律型異常検知。",
+          "pallets": ["validator", "dispute", "autonomous"]
+        },
+        "3": {
+          "category": "インフラストラクチャ",
+          "description": "データボールト、オンチェーンストレージ、ガバナンス、トラストグラフ、リターン証明、グループ管理。",
+          "pallets": ["vault", "storage", "governance", "semantic", "boomerang", "octopus"]
+        }
+      }
+    },
+    "community": {
+      "label": "コミュニティ",
+      "title": "7aychainコミュニティに参加する",
+      "github": {
+        "title": "GitHub",
+        "description": "ソースコードを探索し、イシューを報告し、プロトコルに貢献しましょう。",
+        "cta": "リポジトリを見る"
+      },
+      "twitter": {
+        "title": "X (Twitter)",
+        "description": "プロトコルのアップデート、開発の進捗、コミュニティニュースをフォローしましょう。",
+        "cta": "@7ayLabsをフォロー"
+      }
+    },
+    "cta": {
+      "title": "構築する準備はできましたか？",
+      "subtitle": "Devnetは稼働中です。今すぐProof of Presenceプロトコルでの構築を始めましょう。",
+      "primary": "Devnetに接続",
+      "secondary": "バリデーターを運用する"
+    }
+  },
+  "updatesPage": {
+    "label": "アップデート",
+    "title": "プロジェクト",
+    "titleAccent": "ステータス",
+    "lastUpdated": "最終更新 · 2026年2月28日",
+    "intro": "このログは7aychainおよび7ayLabsプロジェクト全体の実際の進捗を追跡しています。プロトコルのマイルストーン、リリースされた機能、インフラストラクチャのアップデート。",
+    "filterAria": "タイプでアップデートをフィルター",
+    "filters": {
+      "all": "すべてのアップデート",
+      "platform": "プラットフォーム",
+      "website": "ウェブサイト",
+      "app": "アプリ"
+    },
+    "latest": "最新",
+    "viewDetails": "詳細を見る",
+    "close": "閉じる",
+    "entries": {
+      "0": {
+        "title": "7aychain v0.8.26リリース",
+        "date": "2026年2月28日",
+        "summary": "完全なプロトコルスタックを含む最新安定版リリース。",
+        "content": "7aychain v0.8.26をリリースしました。Layer 1ブロックチェーンの最新安定バージョンです。このリリースには完全なプロトコルスタックが含まれています：コミットリビール付きプレゼンスライフサイクル、ウィットネスサークル三角測量、ZK証明検証、バリデーターステーキングとスラッシング、ガバナンス、ボールト、セマンティックリンキング、紛争解決、デバイススキャン、自律検知。6バリデーターのマルチノードDevnetが稼働中です。",
+        "type": "platform"
+      },
+      "1": {
+        "title": "ガバナンスとボールトシステム",
+        "date": "2026年2月",
+        "summary": "オンチェーンガバナンスとセキュアなボールトインフラストラクチャをリリース。",
+        "content": "提案、投票、デリゲーション機能を持つオンチェーンガバナンスをリリースしました。作成、共有、復元、ファイル登録、アンロック要求、アンロック承認操作を備えたボールトシステムを実装しました。オンチェーンエンティティ間のトラストグラフのためのセマンティックリンキングを追加しました。",
+        "type": "platform"
+      },
+      "2": {
+        "title": "ZKサーキットと三角測量",
+        "date": "2026年1月",
+        "summary": "ゼロ知識証明とマルチラテレーションアルゴリズムを統合。",
+        "content": "プライバシー保護型プレゼンス証明のためのZK証明生成とオンチェーン検証を統合しました。GPSを使用せずにバリデーターがネットワークレイテンシー測定から位置を特定できるマルチラテレーションと重心三角測量アルゴリズムを実装しました。暗号学的な位置主張のためのポジションバウンドトークン（PBT）を追加しました。",
+        "type": "platform"
+      },
+      "3": {
+        "title": "バリデーターシステムと紛争解決",
+        "date": "2026年1月",
+        "summary": "ステーキング、スラッシング、紛争を含む完全なバリデーターライフサイクル。",
+        "content": "完全なバリデーターシステムを実装しました：登録、アクティベーション、非アクティブ化、引き出し、ステーキング、スラッシング。証拠提出、投票、オンチェーン解決を伴う紛争解決を追加しました。バリデーターはウィットネスサークルを形成し、クォーラムベースのプレゼンス確定に参加します。",
+        "type": "platform"
+      },
+      "4": {
+        "title": "マルチノードDevnetとCLI",
+        "date": "2026年1月",
+        "summary": "プロトコル対話のためのLaud Networks CLIを備えたハイブリッドDevnet。",
+        "content": "Aliceをネイティブで実行し、残りのバリデーター（Bob、Charlie、Dave、Eve、Ferdie）をDockerで実行するマルチノードハイブリッドDevnetを立ち上げました。すべてのプロトコルモジュール（presence、epoch、validator、triangulation、zk、governance、vault、semanticなど）の対話コマンドを備えたLaud Networks CLIをリリースしました。",
+        "type": "platform"
+      },
+      "5": {
+        "title": "プレゼンスとエポックのコア",
+        "date": "2025年12月",
+        "summary": "基盤となるプレゼンスライフサイクルとエポック管理をリリース。",
+        "content": "エポックバウンドのライフサイクルを持つコアプレゼンスステートマシン（Declared、Attested、Triangulated、Finalized）を構築しました。ブロックタイムスタンプからの動的状態導出を伴う5状態エポックモデルを実装しました。アクター/エポックの分離とオーソリティ制御のミューテーションを確立しました。",
+        "type": "platform"
+      },
+      "6": {
+        "title": "課題の検証",
+        "date": "2025年12月1日〜5日",
+        "summary": "初期チームとコア課題を検証。",
+        "content": "初期チームとコア課題を検証しました。イベント主催者、コミュニティビルダー、物流オペレーターを対象に構造化インタビューとリサーチを実施しました。プレゼンス検証が高い課題意識と低いソリューション供給の問題領域であることを確認しました。",
+        "type": "platform"
+      }
+    }
+  },
+  "aboutPage": {
+    "label": "私たちについて",
+    "title": "私たちのストーリー",
+    "accentWord": "ストーリー",
+    "description": {
+      "0": "私たちは7ayLabsをシンプルな問いから始めました：自分が誰であるかを明かさずに、どこかにいたことを証明できたらどうだろう？",
+      "1": "その問いが7aychainになりました — インターネット自体の物理法則を使ってプレゼンスを検証するネットワークです。"
+    },
+    "mission": {
+      "label": "構築しているもの",
+      "title": "ミッション",
+      "paragraph1": "7ayLabsは新しい種類のブロックチェーンである7aychainを構築しています。虹彩をスキャンしたりIDを求めたりする代わりに、私たちのネットワークはあなたが物理的にある場所に存在していることを検証します。使うのはインターネット接続だけです。",
+      "paragraph2": "ネットワーク全体のバリデーターが接続タイミングを測定してあなたの所在を確認します。GPSなし。カメラなし。特別なハードウェアなし。",
+      "paragraph3": "本物の人間とボットの区別がつかない世界では、プレゼンスが最も価値あるシグナルになります。私たちはそのシグナルを誰もが利用できるようにするインフラストラクチャを構築しています。",
+      "paragraph4": "ビジネスにとっては、不正が減り、コンプライアンスがシンプルになり、「この人は本当にここにいたのか？」に依存するあらゆるプロセスがようやく信頼できる答えを得ることを意味します。",
+      "paragraph5": "人々にとっては、アイデンティティを明け渡すことなく、どこかにいたことを証明できることを意味します。監視なし。データ収集なし。証明だけです。"
+    },
+    "vision": {
+      "label": "長期的な展望",
+      "title": "ビジョン",
+      "paragraph1": "私たちは「そこにいること」がデジタルの一等市民のシグナルになる未来を見ています。AIが他のすべてを偽造することに長けるにつれ、物理的なプレゼンスはシミュレートできない唯一のものになります。",
+      "paragraph2": "7ayLabsはその未来のためのインフラストラクチャを構築しています。ゆっくりと、慎重に、現実世界のシステムが求める厳密さをもって。"
+    },
+    "principles": {
+      "label": "私たちの考え方",
+      "title": "仕事を導く原則",
+      "items": {
+        "0": {
+          "title": "スケールより現実",
+          "description": "私たちはボリュームではなく真実を最適化します。現実世界の条件に耐えられないシステムは、プロダクションに属しません。"
+        },
+        "1": {
+          "title": "複雑さより明快さ",
+          "description": "私たちが構築するすべてのシステムは、シンプルな問いに明確に答えるよう設計されています：これは実際に起きたのか？"
+        },
+        "2": {
+          "title": "長期的な信頼",
+          "description": "私たちはゆっくりと意図的に構築し、前に進む前に各レイヤーを検証します。ビジネスが信頼できるインフラストラクチャ。"
+        }
+      }
+    }
+  },
+  "servicesPage": {
+    "redirect": "/ecosystem"
+  },
+  "techPage": {
+    "redirect": "/technology"
+  },
+  "metadata": {
+    "home": {
+      "title": "7ayLabs | Web3のプレゼンスレイヤー",
+      "titleTemplate": "%s | 7ayLabs",
+      "description": "物理的存在がアイデンティティとなる初のLayer 1ブロックチェーン。7aychainのProof of Presenceプロトコルは、ネットワークレイテンシーで人間検証を三角測量します。生体認証なし、GPSなし、ハードウェアなし。物理法則によるシビル耐性。$7AYで稼働。",
+      "ogTitle": "7ayLabs | Proof of Presence Layer 1ブロックチェーン",
+      "ogDescription": "7aychain：バリデーターがネットワークレイテンシーで物理的プレゼンスを三角測量するLayer 1ブロックチェーン。シビル耐性の人間検証 — GPSなし、生体認証なし、ハードウェアなし。Web3のプレゼンスレイヤー。",
+      "ogImageAlt": "7ayLabs — 7aychain Proof of Presence Layer 1ブロックチェーン",
+      "twitterTitle": "7ayLabs — 7aychain: Proof of Presence Layer 1",
+      "twitterDescription": "あなたの存在が証明です。7aychainは生体認証ではなく物理法則で人間を検証します。Web3のためのシビル耐性Layer 1。$7AY"
+    },
+    "technology": {
+      "title": "テクノロジー",
+      "description": "7aychainが物理法則で人間のプレゼンスを検証する方法。Proof of Presenceプロトコルを探索：ネットワークレイテンシー三角測量、ゼロ知識プライバシー、4層アーキテクチャ。"
+    },
+    "useCases": {
+      "title": "ユースケース",
+      "description": "Proof of Presenceが可能にする公正なトークン配布、検証済み投票、安全なトランザクション、イベントチケッティング、検証済みコミュニティ、正直なレビューをご覧ください。"
+    },
+    "whyPresence": {
+      "title": "なぜプレゼンスか",
+      "description": "ボットがオンラインで人間ができることすべてを行える今、本物であることを証明する唯一の手段は物理的に存在していることです。7aychainが生体認証の代わりに物理法則を使う理由をご覧ください。"
+    },
+    "glossary": {
+      "title": "用語集",
+      "description": "7aychainとProof of Presenceの主要用語の定義：ウィットネスサークル、三角測量、ポジションバウンドトークン、ZKサーキット、エポックライフサイクルなど。"
+    },
+    "waitlist": {
+      "title": "ウェイトリスト",
+      "description": "Proof of Presenceネットワークへの早期アクセスのために7aychainウェイトリストに参加しましょう。"
+    },
+    "newsletter": {
+      "title": "ニュースレター",
+      "description": "7ayLabsの最新情報 — プロダクトインサイト、プロトコルの進捗、現実世界のプレゼンスインフラストラクチャのアップデート。"
+    },
+    "devnet": {
+      "title": "Devnet",
+      "description": "7aychain Devnetに接続。クローン、ビルド、6バリデーター、16モジュール、完全なプロトコルスタックを備えたSubstrateベースのProof of Presenceノードを実行。"
+    },
+    "validators": {
+      "title": "バリデーター",
+      "description": "7aychainバリデーターノードを運用。ハードウェアのセットアップ、ソースからのビルド、ステーキングの設定、ウィットネスサークル三角測量への参加方法をご覧ください。"
+    },
+    "ecosystem": {
+      "title": "エコシステム",
+      "description": "7aychainプレゼンスレイヤーで構築。Proof of Presenceエコシステムのための開発者ツール、SDK統合、プロトコルモジュール、コミュニティリソース。"
+    },
+    "updates": {
+      "title": "アップデート",
+      "description": "7aychainと7ayLabs全体の実際の進捗を追跡 — プロトコルのマイルストーン、リリースされた機能、インフラストラクチャのアップデート。"
+    },
+    "about": {
+      "title": "概要",
+      "description": "7ayLabsについて — バリデーターがネットワークレイテンシーで物理的プレゼンスを三角測量する、オンチェーンProof of Presenceを備えたLayer 1ブロックチェーン7aychainを構築するチーム。"
+    }
+  }
+}

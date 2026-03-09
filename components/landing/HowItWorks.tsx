@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { scaleUpBlur } from "@/lib/constants/animations";
 
@@ -9,46 +10,27 @@ import { scaleUpBlur } from "@/lib/constants/animations";
 /*  Step data — accurate to the 7aychain protocol                      */
 /* ------------------------------------------------------------------ */
 
-interface Step {
-  readonly number: string;
-  readonly title: string;
-  readonly description: string;
+interface StepVisual {
   readonly accent: string;
   readonly iconDark: string;
   readonly iconLight: string;
-  readonly iconAlt: string;
 }
 
-const STEPS: readonly Step[] = [
+const STEPS_VISUAL: readonly StepVisual[] = [
   {
-    number: "01",
-    title: "Initiate Your Presence Commitment",
-    description:
-      "Your device submits a cryptographic commitment\u00A0\u2014\u00A0a hash of your presence claim. No passwords, no biometrics, no dedicated hardware. One tap to enter the verification epoch.",
     accent: "#00FFC6",
     iconDark: "/icons/dark/step-connect.png",
     iconLight: "/icons/light/step-connect.png",
-    iconAlt: "Phone connecting to the network with signal arcs",
   },
   {
-    number: "02",
-    title: "Witness Circles Triangulate Your Signal",
-    description:
-      "Validators form witness circles, measuring network latency from multiple points to triangulate your position\u00A0\u2014\u00A0no GPS, no oracles, just physics.",
     accent: "#C084FC",
     iconDark: "/icons/dark/step-witness.png",
     iconLight: "/icons/light/step-witness.png",
-    iconAlt: "Three validators triangulating a position",
   },
   {
-    number: "03",
-    title: "Proof Finalized On\u2011Chain",
-    description:
-      "Once quorum is reached, your presence proof is sealed\u00A0\u2014\u00A0immutable, sovereign, and impossible to forge or replay across epochs.",
     accent: "#22D3EE",
     iconDark: "/icons/dark/step-seal.png",
     iconLight: "/icons/light/step-seal.png",
-    iconAlt: "Hexagonal seal with checkmark chained to blocks",
   },
 ] as const;
 
@@ -77,6 +59,8 @@ const VIEWPORT = { once: true, margin: "200px 0px 0px 0px" } as const;
 /* ------------------------------------------------------------------ */
 
 function StaticFallback({ theme }: { theme: string }) {
+  const t = useTranslations("howItWorks");
+
   return (
     <section
       id="how-it-works"
@@ -86,43 +70,43 @@ function StaticFallback({ theme }: { theme: string }) {
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="text-center mb-16 md:mb-20">
           <span className="block text-xs tracking-[0.2em] uppercase text-fg-muted mb-4">
-            How It Works
+            {t("label")}
           </span>
           <h2
             id="how-it-works-heading-static"
             className="font-display font-bold text-3xl md:text-5xl tracking-tight text-fg mb-5"
           >
-            From Signal to Sovereignty
+            {t("title")}
           </h2>
           <p className="text-fg-secondary text-lg max-w-2xl mx-auto leading-relaxed">
-            Three steps to Sybil-resistant verification. No hardware. No biometrics. Pure physics.
+            {t("subtitle")}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-          {STEPS.map((step) => {
+          {STEPS_VISUAL.map((step, i) => {
             const iconSrc = theme === "light" ? step.iconLight : step.iconDark;
             return (
-              <div key={step.number} className="flex flex-col items-center text-center">
+              <div key={t(`steps.${i}.number`)} className="flex flex-col items-center text-center">
                 <div
                   className="w-12 h-12 rounded-full flex items-center justify-center mb-5 font-mono text-sm font-bold"
                   style={{ backgroundColor: `${step.accent}14`, color: step.accent }}
                 >
-                  {step.number}
+                  {t(`steps.${i}.number`)}
                 </div>
                 <div className="mb-5">
                   <Image
                     src={iconSrc}
-                    alt={step.iconAlt}
+                    alt={t(`steps.${i}.iconAlt`)}
                     width={72}
                     height={72}
                     className="w-[72px] h-[72px] object-contain"
                   />
                 </div>
                 <h3 className="font-display font-semibold text-lg md:text-xl text-fg mb-3 leading-snug">
-                  {step.title}
+                  {t(`steps.${i}.title`)}
                 </h3>
                 <p className="text-sm md:text-base text-fg-secondary leading-relaxed max-w-xs">
-                  {step.description}
+                  {t(`steps.${i}.description`)}
                 </p>
               </div>
             );
@@ -140,6 +124,7 @@ function StaticFallback({ theme }: { theme: string }) {
 export default function HowItWorks() {
   const shouldReduceMotion = useReducedMotion();
   const { theme } = useTheme();
+  const t = useTranslations("howItWorks");
 
   if (shouldReduceMotion) {
     return <StaticFallback theme={theme} />;
@@ -148,7 +133,7 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      aria-label="How 7aychain verifies your presence"
+      aria-label={t("aria")}
       className="relative w-full py-24 md:py-32"
     >
       <motion.div
@@ -161,13 +146,13 @@ export default function HowItWorks() {
         {/* Section heading */}
         <motion.div variants={fadeUp} className="text-center mb-16 md:mb-20">
           <span className="block text-xs tracking-[0.2em] uppercase text-fg-muted mb-4">
-            How It Works
+            {t("label")}
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight text-fg mb-5">
-            From Signal to Sovereignty
+            {t("title")}
           </h2>
           <p className="text-fg-secondary text-lg max-w-2xl mx-auto leading-relaxed">
-            Three steps to Sybil-resistant verification. No hardware. No biometrics. Pure physics.
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -176,11 +161,11 @@ export default function HowItWorks() {
           className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10"
           variants={stagger}
         >
-          {STEPS.map((step) => {
+          {STEPS_VISUAL.map((step, i) => {
             const iconSrc = theme === "light" ? step.iconLight : step.iconDark;
             return (
               <motion.div
-                key={step.number}
+                key={t(`steps.${i}.number`)}
                 variants={scaleUpBlur}
                 className="flex flex-col items-center text-center"
               >
@@ -189,14 +174,14 @@ export default function HowItWorks() {
                   className="w-12 h-12 rounded-full flex items-center justify-center mb-5 font-mono text-sm font-bold"
                   style={{ backgroundColor: `${step.accent}14`, color: step.accent }}
                 >
-                  {step.number}
+                  {t(`steps.${i}.number`)}
                 </div>
 
                 {/* Icon */}
                 <div className="mb-5">
                   <Image
                     src={iconSrc}
-                    alt={step.iconAlt}
+                    alt={t(`steps.${i}.iconAlt`)}
                     width={72}
                     height={72}
                     className="w-[72px] h-[72px] object-contain"
@@ -205,12 +190,12 @@ export default function HowItWorks() {
 
                 {/* Title */}
                 <h3 className="font-display font-semibold text-lg md:text-xl text-fg mb-3 leading-snug">
-                  {step.title}
+                  {t(`steps.${i}.title`)}
                 </h3>
 
                 {/* Description */}
                 <p className="text-sm md:text-base text-fg-secondary leading-relaxed max-w-xs">
-                  {step.description}
+                  {t(`steps.${i}.description`)}
                 </p>
               </motion.div>
             );

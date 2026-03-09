@@ -2,19 +2,13 @@
 
 import { memo, useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Button from "@/components/ui/Button";
 import { heroStagger, kineticReveal } from "@/lib/constants/animations";
 
 /* ------------------------------------------------------------------ */
 /*  Constants                                                          */
 /* ------------------------------------------------------------------ */
-
-const PHRASES = [
-  "Sybil-resistant by physics, not promises.",
-  "The identity layer Web3 has been missing.",
-  "Verify once. No data trail. No hardware.",
-  "Where bots fail and humans pass.",
-] as const;
 
 const TYPE_SPEED = 45;
 const DELETE_SPEED = 25;
@@ -65,7 +59,9 @@ function useTypewriter(phrases: readonly string[]) {
 /* ------------------------------------------------------------------ */
 
 function HeroComponent() {
-  const typed = useTypewriter(PHRASES);
+  const t = useTranslations("hero");
+  const phrases = Object.values(t.raw("typewriterPhrases")) as string[];
+  const typed = useTypewriter(phrases);
 
   return (
     <section className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden">
@@ -79,19 +75,18 @@ function HeroComponent() {
           variants={kineticReveal}
           className="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95]"
         >
-          <span className="text-fg">Your </span>
-          <span className="gradient-text-accent">presence</span>
+          <span className="text-fg">{t("titleLine1Start")}</span>
+          <span className="gradient-text-accent">{t("titleLine1Accent")}</span>
           <br />
-          <span className="text-fg">is your </span>
-          <span className="gradient-text-accent">proof</span>
+          <span className="text-fg">{t("titleLine2Start")}</span>
+          <span className="gradient-text-accent">{t("titleLine2Accent")}</span>
         </motion.h1>
 
         <motion.p
           variants={kineticReveal}
           className="mt-6 text-fg-secondary text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
         >
-          The first blockchain that verifies humans through physics. No iris
-          scans. No GPS. No orbs. Just network latency and the laws of light.
+          {t("subtitle")}
         </motion.p>
 
         <motion.div
@@ -99,10 +94,10 @@ function HeroComponent() {
           className="flex flex-wrap gap-4 justify-center mt-8"
         >
           <Button href="/waitlist" variant="primary" size="lg">
-            Get Early Access
+            {t("ctaPrimary")}
           </Button>
           <Button href="#how-it-works" variant="secondary" size="lg" withArrow>
-            Explore the Protocol
+            {t("ctaSecondary")}
           </Button>
         </motion.div>
 

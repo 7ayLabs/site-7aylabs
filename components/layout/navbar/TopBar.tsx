@@ -1,14 +1,25 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { ROUTES, NAV_LINKS } from "@/lib/constants/routes";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import { navbarSlideDown } from "@/lib/constants/animations";
+
+/** Maps hardcoded English link labels to nav translation keys */
+const LABEL_TO_KEY: Record<string, string> = {
+  Technology: "technology",
+  "Why Presence": "whyPresence",
+  "Use Cases": "useCases",
+  Devnet: "devnet",
+  Validators: "validators",
+};
 
 /** Minimum scroll distance from top before header can collapse */
 const SCROLL_THRESHOLD = 60;
@@ -24,6 +35,8 @@ export default function TopBar({ open, setOpen }: TopBarProps) {
   const [scrolled, setScrolled] = useState(false);
   const { theme } = useTheme();
   const shouldReduceMotion = useReducedMotion();
+  const t = useTranslations("nav");
+  const tc = useTranslations("common");
 
   const lastYRef = useRef(0);
   const ticking = useRef(false);
@@ -101,7 +114,7 @@ export default function TopBar({ open, setOpen }: TopBarProps) {
         >
           <Image
             src={theme === "dark" ? "/7aylabs_white_logo.svg" : "/7aylabs_blacklogo.png"}
-            alt="7ayLabs Logo"
+            alt={t("logoAlt")}
             width={84}
             height={20}
             className="select-none"
@@ -127,7 +140,7 @@ export default function TopBar({ open, setOpen }: TopBarProps) {
               href={link.href}
               className="hover:text-[var(--color-accent-primary)] transition-colors duration-200"
             >
-              {link.label}
+              {t(LABEL_TO_KEY[link.label] || link.label)}
             </Link>
           ))}
         </div>
@@ -140,6 +153,7 @@ export default function TopBar({ open, setOpen }: TopBarProps) {
             ${scrolled ? "gap-3 md:gap-4" : "gap-4 md:gap-6"}
           `}
         >
+          <LanguageSwitcher />
           <ThemeToggle />
 
           <div className="relative group">
@@ -153,7 +167,7 @@ export default function TopBar({ open, setOpen }: TopBarProps) {
                 ${scrolled ? "px-3 py-1" : "px-4 py-1.5"}
               `}
             >
-              Join Waitlist
+              {tc("joinWaitlist")}
             </Link>
           </div>
 
@@ -164,7 +178,7 @@ export default function TopBar({ open, setOpen }: TopBarProps) {
               text-fg-secondary hover:text-fg
               transition-transform duration-300 ease-out
             "
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? t("aria.closeMenu") : t("aria.openMenu")}
           >
             <ChevronDown
               size={16}

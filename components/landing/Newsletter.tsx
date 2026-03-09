@@ -2,6 +2,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import { Mail } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Button from "@/components/ui/Button";
 import { kineticReveal } from "@/lib/constants/animations";
 
@@ -30,6 +31,8 @@ const VIEWPORT = { once: true, margin: "200px 0px 0px 0px" } as const;
 /* ------------------------------------------------------------------ */
 
 export default function Newsletter() {
+  const t = useTranslations("newsletter");
+
   return (
     <section
       aria-labelledby="newsletter-title"
@@ -55,7 +58,7 @@ export default function Newsletter() {
           variants={kineticReveal}
           className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-fg tracking-tight leading-tight mb-5"
         >
-          Join the Presence Economy
+          {t("title")}
         </motion.h2>
 
         {/* Description */}
@@ -63,15 +66,14 @@ export default function Newsletter() {
           variants={fadeUp}
           className="text-fg-secondary text-lg md:text-xl max-w-md leading-relaxed mb-8"
         >
-          Protocol milestones, validator onboarding updates, and governance
-          proposals&nbsp;&mdash; delivered to those who show up first.
+          {t("subtitle")}
         </motion.p>
 
         {/* CTA button */}
         <motion.div variants={fadeUp}>
           <Button href="/newsletter" size="lg" variant="primary">
             <Mail size={16} />
-            Get Protocol Updates
+            {t("cta")}
           </Button>
         </motion.div>
 
@@ -80,7 +82,7 @@ export default function Newsletter() {
           variants={fadeUp}
           className="text-xs text-fg-faint mt-6 font-mono"
         >
-          Signal only. No noise. Unsubscribe anytime.
+          {t("trustLine")}
         </motion.p>
       </motion.div>
     </section>

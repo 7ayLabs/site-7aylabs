@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { motion, useInView, type Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 /* ------------------------------------------------------------------ */
 /*  Animated counter hook                                              */
@@ -44,16 +45,15 @@ function useCountUp(target: number, duration = 1500, active = false) {
 /* ------------------------------------------------------------------ */
 
 interface Stat {
-  readonly label: string;
+  readonly key: string;
   readonly numericValue?: number;
-  readonly description: string;
 }
 
 const STATS: readonly Stat[] = [
-  { label: "v0.8.26", description: "Devnet version" },
-  { label: "6", numericValue: 6, description: "Active Nodes" },
-  { label: "16", numericValue: 16, description: "Core Modules" },
-  { label: "111", numericValue: 111, description: "Version" },
+  { key: "version" },
+  { key: "nodes", numericValue: 6 },
+  { key: "modules", numericValue: 16 },
+  { key: "specVersion", numericValue: 111 },
 ] as const;
 
 const containerVariants: Variants = {
@@ -81,8 +81,9 @@ const itemVariants: Variants = {
 /* ------------------------------------------------------------------ */
 
 function StatCell({ stat, inView }: { stat: Stat; inView: boolean }) {
+  const t = useTranslations("devnetStatus");
   const animated = useCountUp(stat.numericValue ?? 0, 1500, inView);
-  const display = stat.numericValue != null ? animated : stat.label;
+  const display = stat.numericValue != null ? animated : t(`stats.${stat.key}.label`);
 
   return (
     <motion.div
@@ -93,7 +94,7 @@ function StatCell({ stat, inView }: { stat: Stat; inView: boolean }) {
         {display}
       </span>
       <span className="text-xs text-fg-muted uppercase tracking-wider font-mono">
-        {stat.description}
+        {t(`stats.${stat.key}.description`)}
       </span>
     </motion.div>
   );
@@ -106,6 +107,7 @@ function StatCell({ stat, inView }: { stat: Stat; inView: boolean }) {
 export default function DevnetStatus() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-60px" });
+  const t = useTranslations("devnetStatus");
 
   return (
     <section className="relative w-full px-6 md:px-12 py-16 md:py-24">
@@ -128,29 +130,28 @@ export default function DevnetStatus() {
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400" />
                 </span>
                 <span className="text-sm font-medium text-emerald-400 font-mono">
-                  Devnet Running
+                  {t("statusIndicator")}
                 </span>
               </div>
 
               <h2 className="font-display font-bold text-2xl md:text-3xl text-fg mb-4">
-                7aychain Devnet is Live
+                {t("title")}
               </h2>
 
               <p className="text-fg-secondary text-base leading-relaxed max-w-xl mb-8">
-                A working network running the full Proof of Presence protocol.
-                Real nodes, real verification, real results.
+                {t("subtitle")}
               </p>
 
               {/* Stats grid -- glass panels with count-up */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full max-w-lg">
                 {STATS.map((stat) => (
-                  <StatCell key={stat.description} stat={stat} inView={inView} />
+                  <StatCell key={stat.key} stat={stat} inView={inView} />
                 ))}
               </div>
 
               {/* CTA hint */}
               <span className="mt-8 inline-flex items-center gap-2 text-sm text-fg-muted group-hover:text-fg transition-colors">
-                Connect to devnet
+                {t("ctaHint")}
                 <svg
                   width="14"
                   height="14"

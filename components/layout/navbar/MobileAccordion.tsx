@@ -1,9 +1,18 @@
 "use client";
 
-import Link from "next/link";
+import { Link, usePathname } from "@/i18n/navigation";
 import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { NAV_LINKS } from "@/lib/constants/routes";
+
+/** Maps hardcoded English link labels to nav translation keys */
+const LABEL_TO_KEY: Record<string, string> = {
+  Technology: "technology",
+  "Why Presence": "whyPresence",
+  "Use Cases": "useCases",
+  Devnet: "devnet",
+  Validators: "validators",
+};
 
 interface MobileAccordionProps {
   openItem: string | null;
@@ -14,6 +23,7 @@ export default function MobileAccordion({
   setOpenItem,
 }: MobileAccordionProps) {
   const pathname = usePathname();
+  const t = useTranslations("nav");
 
   return (
     <motion.nav
@@ -65,7 +75,7 @@ export default function MobileAccordion({
               ${pathname === item.href ? "after:w-full" : "after:w-0 hover:after:w-full"}
             `}
           >
-            {item.label}
+            {t(LABEL_TO_KEY[item.label] || item.label)}
           </Link>
         </motion.div>
       ))}
