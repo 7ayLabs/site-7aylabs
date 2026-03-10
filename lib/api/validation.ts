@@ -1,5 +1,13 @@
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+const MAX_LENGTHS = {
+  email: 254,
+  name: 200,
+  subject: 300,
+  message: 5000,
+  interest: 500,
+} as const;
+
 const DISPOSABLE_DOMAINS = [
   "tempmail.com",
   "throwaway.email",
@@ -8,6 +16,13 @@ const DISPOSABLE_DOMAINS = [
   "yopmail.com",
   "sharklasers.com",
   "trashmail.com",
+  "10minutemail.com",
+  "guerrillamailblock.com",
+  "dispostable.com",
+  "maildrop.cc",
+  "temp-mail.org",
+  "fakeinbox.com",
+  "getnada.com",
 ];
 
 export function isValidEmail(email: string): boolean {
@@ -50,8 +65,31 @@ export function checkRateLimit(ip: string): boolean {
 
 export function getClientIp(request: Request): string {
   return (
+    request.headers.get("cf-connecting-ip") ||
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     request.headers.get("x-real-ip") ||
     "unknown"
   );
 }
+
+export function validateFieldLength(
+  value: string | undefined,
+  field: keyof typeof MAX_LENGTHS,
+): boolean {
+  if (value === undefined) return true;
+  return value.length <= MAX_LENGTHS[field];
+}
+
+const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || "")
+  .split(",")
+  .map((o) => o.trim())
+  .filter(Boolean);
+
+export function isAllowedOrigin(request: Request): boolean {
+  if (ALLOWED_ORIGINS.length === 0) return true;
+  const origin = request.headers.get("origin");
+  if (!origin) return true;
+  return ALLOWED_ORIGINS.includes(origin);
+}
+
+export { MAX_LENGTHS };

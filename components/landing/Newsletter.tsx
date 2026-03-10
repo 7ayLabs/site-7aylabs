@@ -36,7 +36,7 @@ export default function Newsletter() {
   return (
     <section
       aria-labelledby="newsletter-title"
-      className="relative w-full py-24 md:py-32"
+      className="relative w-full py-16 sm:py-24 md:py-32"
     >
       {/* Subtle top separator */}
       <div

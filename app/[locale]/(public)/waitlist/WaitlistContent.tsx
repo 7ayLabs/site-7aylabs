@@ -61,7 +61,7 @@ function WaitlistContentComponent() {
   );
 
   return (
-    <section className="relative min-h-[80svh] flex items-center justify-center px-6 py-24 md:py-32">
+    <section className="relative min-h-[80svh] flex items-center justify-center px-6 pt-28 pb-16 sm:pt-32 sm:pb-20 md:pt-36 md:pb-32">
       {/* Ambient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div
