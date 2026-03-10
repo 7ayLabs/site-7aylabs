@@ -63,7 +63,7 @@ pipeline {
         stage('Health Check') {
             steps {
                 retry(3) {
-                    sh "sleep 5 && docker exec ${APP_NAME} curl -sf http://localhost:8082/ || exit 1"
+                    sh "sleep 5 && docker exec ${APP_NAME} wget -q -O /dev/null http://localhost:8082/ || exit 1"
                 }
             }
         }
