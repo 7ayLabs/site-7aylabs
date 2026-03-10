@@ -34,4 +34,4 @@ services:
 networks:
   jenkins_net:
     external: true
-    name: jenkins_jenkins_net
+    name: 7aylabspipeline_testing_site_net

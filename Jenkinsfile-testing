@@ -6,7 +6,7 @@ pipeline {
         IMAGE_TAG  = 'staging'
         APP_NAME   = 'site-7aylabs-test'
         PROXY_NAME = 'nginx-proxy-test'
-        NETWORK    = 'jenkins_jenkins_net'
+        NETWORK    = '7aylabspipeline_testing_site_net'
     }
 
     stages {
