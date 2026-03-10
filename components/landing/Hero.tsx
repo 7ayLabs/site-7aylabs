@@ -64,7 +64,7 @@ function HeroComponent() {
   const typed = useTypewriter(phrases);
 
   return (
-    <section className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden pt-20 sm:pt-16 md:pt-0">
+    <section className="relative min-h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden pt-24 pb-8 md:pt-20 md:pb-0">
       <motion.div
         className="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto"
         initial="hidden"

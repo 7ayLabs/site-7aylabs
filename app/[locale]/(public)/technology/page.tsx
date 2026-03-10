@@ -26,7 +26,7 @@ export default async function TechnologyPage({ params }: { params: Promise<{ loc
   return (
     <>
       {/* ══════════ BIG HERO ══════════ */}
-      <section className="relative min-h-[85svh] w-full flex items-center justify-center overflow-hidden pt-20 sm:pt-16 md:pt-0">
+      <section className="relative min-h-[85svh] w-full flex flex-col items-center justify-center overflow-hidden pt-24 pb-8 md:pt-20 md:pb-0">
         {/* Decorative gradient blob */}
         <div
           className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full opacity-30 blur-[120px] pointer-events-none"
