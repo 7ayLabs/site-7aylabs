@@ -1,6 +1,6 @@
 "use client";
 
-import { memo } from "react";
+import { memo, useMemo } from "react";
 import { motion } from "framer-motion";
 import {
   staggerContainer,
@@ -10,70 +10,92 @@ import {
 import { cn } from "@/lib/utils/cn";
 
 interface PageHeroProps {
+  /** Small label above the title (e.g., "WHO WE ARE") */
   label: string;
+  /** Main page title */
   title: string;
+  /** Words in the title that should get gradient-text-accent treatment */
+  accentWords?: string[];
+  /** Description paragraph(s) */
   description: string | string[];
+  /** Optional illustration element below description */
+  illustration?: React.ReactNode;
+  /** Additional className for the section */
   className?: string;
+}
+
+function renderTitleWithAccent(title: string, accentWords?: string[]) {
+  if (!accentWords || accentWords.length === 0) return title;
+
+  const pattern = new RegExp(`(${accentWords.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join("|")})`, "gi");
+  const parts = title.split(pattern);
+
+  return parts.map((part, i) => {
+    const isAccent = accentWords.some(w => w.toLowerCase() === part.toLowerCase());
+    return isAccent ? (
+      <span key={i} className="gradient-text-accent">
+        {part}
+      </span>
+    ) : (
+      <span key={i}>{part}</span>
+    );
+  });
 }
 
 function PageHeroComponent({
   label,
   title,
+  accentWords,
   description,
+  illustration,
   className,
 }: PageHeroProps) {
-  const paragraphs = Array.isArray(description) ? description : [description];
+  const descriptions = Array.isArray(description) ? description : [description];
+  const renderedTitle = useMemo(() => renderTitleWithAccent(title, accentWords), [title, accentWords]);
 
   return (
     <section
       aria-label={title}
       className={cn(
-        "relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-28 md:pt-36 pb-16 md:pb-20",
+        "max-w-6xl mx-auto px-6 md:px-12 pt-20 md:pt-28 pb-20 md:pb-24 text-center",
         className
       )}
     >
-      {/* Decorative gradient blob */}
-      <div
-        aria-hidden="true"
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(20,184,166,0.06),transparent_70%)]"
-      />
-
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={defaultViewport}
-        className="relative max-w-3xl"
       >
         <motion.span
           variants={fadeUpItem}
-          className="label-sm inline-block mb-6"
+          className="block text-sm uppercase tracking-widest text-fg-muted mb-6"
         >
           {label}
         </motion.span>
 
         <motion.h1
           variants={fadeUpItem}
-          className="heading-xl text-white"
+          className="font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tight text-fg"
         >
-          {title}
+          {renderedTitle}
         </motion.h1>
 
-        <motion.div
-          variants={fadeUpItem}
-          className="mt-6 h-1 w-16 rounded-full bg-gradient-to-r from-accent to-accent-secondary"
-          aria-hidden="true"
-        />
-
-        {paragraphs.map((text, i) => (
+        {descriptions.map((desc, index) => (
           <motion.p
-            key={i}
+            key={index}
             variants={fadeUpItem}
-            className="mt-6 max-w-2xl body-lg"
+            className="mt-6 mx-auto max-w-2xl text-fg-secondary text-base sm:text-lg leading-relaxed"
           >
-            {text}
+            {desc}
           </motion.p>
         ))}
+
+        {illustration && (
+          <motion.div variants={fadeUpItem} className="mt-10">
+            {illustration}
+          </motion.div>
+        )}
       </motion.div>
     </section>
   );

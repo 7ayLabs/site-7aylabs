@@ -1,196 +1,128 @@
 "use client";
 
-import { memo, useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-import { ROUTES } from "@/lib/constants/routes";
-import Badge from "@/components/ui/Badge";
+import { memo, useEffect, useState, useCallback } from "react";
+import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
+import Button from "@/components/ui/Button";
+import { heroStagger, kineticReveal } from "@/lib/constants/animations";
 
-const PHRASES = [
-  "Proof of Presence",
-  "Human Verified",
-  "Presence Matters",
-] as const;
+/* ------------------------------------------------------------------ */
+/*  Constants                                                          */
+/* ------------------------------------------------------------------ */
 
-const INTERVAL_MS = 4800;
+const TYPE_SPEED = 45;
+const DELETE_SPEED = 25;
+const PAUSE_AFTER_TYPE = 2800;
+const PAUSE_AFTER_DELETE = 400;
 
-function HeroComponent() {
-  const [index, setIndex] = useState(0);
+/* ------------------------------------------------------------------ */
+/*  Typewriter Hook                                                    */
+/* ------------------------------------------------------------------ */
+
+function useTypewriter(phrases: readonly string[]) {
+  const [display, setDisplay] = useState("");
+  const [phraseIdx, setPhraseIdx] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const tick = useCallback(() => {
+    const current = phrases[phraseIdx];
+    if (!isDeleting) {
+      if (display.length < current.length) {
+        return { next: current.slice(0, display.length + 1), delay: TYPE_SPEED };
+      }
+      return { next: display, delay: PAUSE_AFTER_TYPE, startDelete: true };
+    }
+    if (display.length > 0) {
+      return { next: display.slice(0, -1), delay: DELETE_SPEED };
+    }
+    return { next: "", delay: PAUSE_AFTER_DELETE, nextPhrase: true };
+  }, [display, phraseIdx, isDeleting, phrases]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % PHRASES.length);
-    }, INTERVAL_MS);
-    return () => clearInterval(interval);
-  }, []);
+    const result = tick();
+    const timeout = setTimeout(() => {
+      setDisplay(result.next);
+      if (result.startDelete) setIsDeleting(true);
+      if (result.nextPhrase) {
+        setIsDeleting(false);
+        setPhraseIdx((prev) => (prev + 1) % phrases.length);
+      }
+    }, result.delay);
+    return () => clearTimeout(timeout);
+  }, [tick, phrases.length]);
+
+  return display;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Hero Component                                                     */
+/* ------------------------------------------------------------------ */
+
+function HeroComponent() {
+  const t = useTranslations("hero");
+  const phrases = Object.values(t.raw("typewriterPhrases")) as string[];
+  const typed = useTypewriter(phrases);
 
   return (
-    <section
-      aria-label="Hero"
-      className="relative w-full min-h-[90svh] flex items-center overflow-hidden"
-    >
-      {/* Background decorative elements */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
+    <section className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden">
+      <motion.div
+        className="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto"
+        initial="hidden"
+        animate="visible"
+        variants={heroStagger}
       >
-        <div className="absolute top-0 left-1/4 w-[800px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(20,184,166,0.08),transparent_60%)]" />
-        <div className="absolute bottom-0 right-1/4 w-[600px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(0,255,198,0.04),transparent_60%)]" />
-      </div>
+        <motion.h1
+          variants={kineticReveal}
+          className="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95]"
+        >
+          <span className="text-fg">{t("titleLine1Start")}</span>
+          <span className="gradient-text-accent">{t("titleLine1Accent")}</span>
+          <br />
+          <span className="text-fg">{t("titleLine2Start")}</span>
+          <span className="gradient-text-accent">{t("titleLine2Accent")}</span>
+        </motion.h1>
 
-      <div className="relative z-10 w-full section-container py-20 md:py-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Text column */}
-          <div className="flex flex-col items-start text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            >
-              <Badge variant="accent" className="mb-8">
-                Proof of Presence Protocol
-              </Badge>
-            </motion.div>
+        <motion.p
+          variants={kineticReveal}
+          className="mt-6 text-fg-secondary text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+        >
+          {t("subtitle")}
+        </motion.p>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-              className="heading-xl text-white"
-            >
-              The blockchain
-              <br />
-              that knows{" "}
-              <span className="gradient-text">
-                you&apos;re here
-              </span>
-            </motion.h1>
+        <motion.div
+          variants={kineticReveal}
+          className="flex flex-wrap gap-4 justify-center mt-8"
+        >
+          <Button href="/waitlist" variant="primary" size="lg">
+            {t("ctaPrimary")}
+          </Button>
+          <Button href="#how-it-works" variant="secondary" size="lg" withArrow>
+            {t("ctaSecondary")}
+          </Button>
+        </motion.div>
 
-            {/* Rotating tagline */}
-            <div
-              className="mt-6 h-8 flex items-center relative overflow-hidden"
-              aria-live="polite"
-              aria-atomic="true"
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.span
-                  key={PHRASES[index]}
-                  className="absolute text-base md:text-lg text-accent/80 font-medium tracking-wide"
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -14 }}
-                  transition={{ duration: 0.35, ease: "easeInOut" }}
-                >
-                  {PHRASES[index]}
-                </motion.span>
-              </AnimatePresence>
-            </div>
+        <motion.div
+          variants={kineticReveal}
+          className="mt-10 h-7 flex items-center justify-center"
+        >
+          <span className="font-mono text-sm sm:text-base text-fg-muted tracking-wide">
+            {typed}
+          </span>
+          <span
+            className="inline-block w-[2px] h-[1.1em] ml-0.5 bg-[var(--color-accent-primary)]"
+            style={{ animation: "cursorBlink 1s step-end infinite" }}
+          />
+        </motion.div>
+      </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.25, ease: "easeOut" }}
-              className="mt-6 body-lg max-w-lg"
-            >
-              7aychain is a Layer 1 where validators triangulate physical
-              presence through network latency. No GPS, no oracles, no
-              special hardware. Just reality, verified on-chain.
-            </motion.p>
-
-            {/* CTA buttons */}
-            <motion.div
-              className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
-            >
-              <Link
-                href={ROUTES.waitlist}
-                className="inline-flex items-center justify-center rounded-full px-8 py-3.5 bg-accent text-black font-semibold text-sm hover:bg-accent-secondary transition-colors duration-normal"
-              >
-                Join the Waitlist
-              </Link>
-              <Link
-                href={ROUTES.tech}
-                className="inline-flex items-center justify-center rounded-full px-8 py-3.5 border border-white/15 text-white/70 font-medium text-sm hover:border-white/30 hover:text-white transition-all duration-normal group"
-              >
-                Explore the Tech
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="ml-2 transition-transform duration-normal group-hover:translate-x-0.5"
-                  aria-hidden="true"
-                >
-                  <path d="M1 7h12M8 2l5 5-5 5" />
-                </svg>
-              </Link>
-            </motion.div>
-
-            {/* Stats row */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
-              className="mt-16 flex items-center gap-8 md:gap-12"
-            >
-              <div>
-                <div className="text-2xl font-bold text-white">v0.8</div>
-                <div className="text-xs text-white/40 mt-1">Protocol version</div>
-              </div>
-              <div className="w-px h-10 bg-white/10" aria-hidden="true" />
-              <div>
-                <div className="text-2xl font-bold text-white">6</div>
-                <div className="text-xs text-white/40 mt-1">Devnet validators</div>
-              </div>
-              <div className="w-px h-10 bg-white/10" aria-hidden="true" />
-              <div>
-                <div className="text-2xl font-bold text-white">ZK</div>
-                <div className="text-xs text-white/40 mt-1">Proof verified</div>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Illustration column */}
-          <motion.div
-            className="hidden lg:flex items-center justify-center"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-          >
-            <div className="relative">
-              {/* Glow behind illustration */}
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 scale-125 bg-[radial-gradient(ellipse_at_center,rgba(20,184,166,0.12),transparent_60%)] blur-3xl"
-              />
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                <Image
-                  src="/7ay_app.svg"
-                  alt="7aychain application illustration"
-                  width={440}
-                  height={440}
-                  priority
-                  className="relative select-none drop-shadow-2xl"
-                />
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
+      <div
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
+        style={{
+          background:
+            "linear-gradient(to top, var(--color-bg-primary), transparent)",
+        }}
+        aria-hidden="true"
+      />
     </section>
   );
 }

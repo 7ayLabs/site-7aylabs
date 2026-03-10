@@ -1,81 +1,90 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  staggerContainer,
-  fadeUpItem,
-  defaultViewport,
-} from "@/lib/constants/animations";
+import { motion, type Variants } from "framer-motion";
+import { Mail } from "lucide-react";
+import { useTranslations } from "next-intl";
+import Button from "@/components/ui/Button";
+import { kineticReveal } from "@/lib/constants/animations";
+
+/* ------------------------------------------------------------------ */
+/*  Animation variants                                                 */
+/* ------------------------------------------------------------------ */
+
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } },
+};
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const VIEWPORT = { once: true, margin: "200px 0px 0px 0px" } as const;
+
+/* ------------------------------------------------------------------ */
+/*  Component                                                          */
+/* ------------------------------------------------------------------ */
 
 export default function Newsletter() {
+  const t = useTranslations("newsletter");
+
   return (
     <section
       aria-labelledby="newsletter-title"
-      className="relative w-full section-padding overflow-hidden"
+      className="relative w-full py-24 md:py-32"
     >
-      {/* Accent gradient background */}
+      {/* Subtle top separator */}
       <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-xs h-px"
+        style={{ background: "linear-gradient(90deg, transparent, var(--color-border-subtle), transparent)" }}
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(ellipse_800px_400px_at_50%_50%,rgba(20,184,166,0.05),transparent_70%)]"
       />
 
-      <div className="section-container">
-        <div className="relative z-10 max-w-3xl mx-auto">
-          <motion.div
-            className="flex flex-col items-center text-center"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={defaultViewport}
-          >
-            <motion.span
-              variants={fadeUpItem}
-              className="label-sm block mb-4"
-            >
-              Stay connected
-            </motion.span>
+      <motion.div
+        className="max-w-2xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center text-center"
+        variants={stagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={VIEWPORT}
+      >
+        {/* Heading */}
+        <motion.h2
+          id="newsletter-title"
+          variants={kineticReveal}
+          className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-fg tracking-tight leading-tight mb-5"
+        >
+          {t("title")}
+        </motion.h2>
 
-            <motion.h2
-              id="newsletter-title"
-              variants={fadeUpItem}
-              className="heading-lg text-white mb-4"
-            >
-              Stay Updated
-            </motion.h2>
+        {/* Description */}
+        <motion.p
+          variants={fadeUp}
+          className="text-fg-secondary text-lg md:text-xl max-w-md leading-relaxed mb-8"
+        >
+          {t("subtitle")}
+        </motion.p>
 
-            <motion.p
-              variants={fadeUpItem}
-              className="body-lg max-w-xl mb-10"
-            >
-              Product insights, protocol progress, and real-world presence
-              infrastructure updates. Signal, not noise.
-            </motion.p>
+        {/* CTA button */}
+        <motion.div variants={fadeUp}>
+          <Button href="/newsletter" size="lg" variant="primary">
+            <Mail size={16} />
+            {t("cta")}
+          </Button>
+        </motion.div>
 
-            <motion.a
-              variants={fadeUpItem}
-              href="/newsletter"
-              aria-label="Read the 7ayLabs newsletter"
-              className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-accent text-black font-semibold text-sm transition-colors duration-normal hover:bg-accent-secondary"
-            >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-                <path d="M22 4L12 13 2 4" />
-              </svg>
-              Read the Newsletter
-            </motion.a>
-          </motion.div>
-        </div>
-      </div>
+        {/* Trust line */}
+        <motion.p
+          variants={fadeUp}
+          className="text-xs text-fg-faint mt-6 font-mono"
+        >
+          {t("trustLine")}
+        </motion.p>
+      </motion.div>
     </section>
   );
 }

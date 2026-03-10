@@ -18,20 +18,27 @@ export interface NavItem {
   label: string;
   href: string;
   icon?: ReactNode;
+  external?: boolean;
 }
 
 export interface NavCategory {
   label: string;
-  description: string;
   items: NavItem[];
 }
 
-export type PhaseStatus = "completed" | "in-progress" | "planned";
+export type Theme = "light" | "dark";
 
-export interface RoadmapPhase {
-  version: string;
+export interface LinkCardItem {
+  icon: ReactNode;
+  title: string;
+  href: string;
+  description?: string;
+}
+
+export interface FeatureCardItem {
   title: string;
   description: string;
-  status: PhaseStatus;
-  items: string[];
+  illustration?: ReactNode;
+  illustrationBg?: string;
+  cta?: { label: string; href: string };
 }

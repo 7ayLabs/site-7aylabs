@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { isValidEmail, sanitizeInput, checkRateLimit, getClientIp } from "@/lib/api/validation";
 import { successResponse, errorResponse } from "@/lib/api/response";
+import { prisma } from "@/lib/db/prisma";
 import type { ContactRequest } from "@/types/api";
 
 export async function POST(request: NextRequest) {
@@ -27,11 +28,13 @@ export async function POST(request: NextRequest) {
       return errorResponse("Validation failed.", 400, errors);
     }
 
-    console.log("[contact] New message:", {
-      email,
-      name: sanitizeInput(name),
-      subject: subject ? sanitizeInput(subject) : undefined,
-      message: sanitizeInput(message),
+    await prisma.contactMessage.create({
+      data: {
+        email: email.trim().toLowerCase(),
+        name: sanitizeInput(name),
+        subject: subject ? sanitizeInput(subject) : undefined,
+        message: sanitizeInput(message),
+      },
     });
 
     return successResponse("Your message has been received.");

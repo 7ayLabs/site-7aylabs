@@ -1,7 +1,15 @@
 import { forwardRef } from "react";
 import { cn } from "@/lib/utils/cn";
 
-type CardVariant = "default" | "elevated" | "outline" | "interactive" | "glass";
+type CardVariant =
+  | "default"
+  | "elevated"
+  | "outline"
+  | "interactive"
+  | "glass"
+  | "link"
+  | "feature"
+  | "bento";
 type CardPadding = "none" | "sm" | "md" | "lg" | "xl";
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -10,23 +18,25 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const variantStyles: Record<CardVariant, string> = {
-  default:
-    "bg-white/[0.02] border border-white/[0.08] rounded-2xl",
-  elevated:
-    "bg-white/[0.03] border border-white/[0.08] rounded-2xl shadow-lg",
+  default: "glass-card",
+  elevated: "glass-card shadow-lg",
   outline:
-    "bg-transparent border border-white/[0.12] rounded-2xl",
+    "bg-transparent border border-[var(--glass-border-hover)] rounded-2xl",
   interactive:
-    "bg-white/[0.02] border border-white/[0.08] rounded-2xl hover:bg-white/[0.05] hover:border-white/[0.14] transition-all duration-normal cursor-pointer group",
-  glass:
-    "glass rounded-2xl",
+    "glass-card hover:shadow-glow-sm cursor-pointer group transition-all duration-300",
+  glass: "glass-card",
+  link: "glass-card hover:shadow-glow-sm group transition-all duration-300",
+  feature:
+    "glass-card overflow-hidden hover:shadow-glow-sm transition-all duration-300",
+  bento:
+    "glass-card overflow-hidden hover:shadow-glow-sm transition-all duration-300",
 } as const;
 
 const paddingStyles: Record<CardPadding, string> = {
   none: "",
   sm: "p-4",
-  md: "p-6",
-  lg: "p-8",
+  md: "p-6 md:p-8",
+  lg: "px-8 py-10",
   xl: "p-10",
 } as const;
 

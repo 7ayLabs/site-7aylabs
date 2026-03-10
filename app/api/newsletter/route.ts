@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { isValidEmail, checkRateLimit, getClientIp } from "@/lib/api/validation";
 import { successResponse, errorResponse } from "@/lib/api/response";
+import { prisma } from "@/lib/db/prisma";
 import type { NewsletterRequest } from "@/types/api";
 
 export async function POST(request: NextRequest) {
@@ -22,7 +23,13 @@ export async function POST(request: NextRequest) {
       return errorResponse("Invalid or disposable email address.");
     }
 
-    console.log("[newsletter] New signup:", email);
+    const normalizedEmail = email.trim().toLowerCase();
+
+    await prisma.newsletterSubscriber.upsert({
+      where: { email: normalizedEmail },
+      create: { email: normalizedEmail, active: true },
+      update: { active: true },
+    });
 
     return successResponse("Successfully subscribed to the newsletter.");
   } catch {

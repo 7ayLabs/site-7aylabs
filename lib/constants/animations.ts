@@ -80,6 +80,116 @@ export const STAGGER_DELAY = {
   slow: 0.12,
 } as const;
 
+/** Glass card reveal: scales up with blur-to-sharp */
+export const glassReveal: Variants = {
+  hidden: { opacity: 0, scale: 0.92, filter: "blur(10px)" },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+/** Bento stagger container */
+export const bentoStagger: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+/** Bento item: fade up with scale */
+export const bentoItem: Variants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+/** Glow pulse animation variant */
+export const glowPulseVariant: Variants = {
+  idle: { boxShadow: "0 0 0px rgba(23, 142, 119, 0)" },
+  glow: {
+    boxShadow: [
+      "0 0 12px rgba(23, 142, 119, 0.18)",
+      "0 0 24px rgba(23, 142, 119, 0.3)",
+      "0 0 12px rgba(23, 142, 119, 0.18)",
+    ],
+    transition: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+  },
+};
+
+/** Kinetic text reveal */
+export const kineticReveal: Variants = {
+  hidden: { opacity: 0, y: 40, filter: "blur(12px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+/** Hero stagger (longer delays) */
+export const heroStagger: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+/** Float-in from side for floating glass panels */
+export const floatIn: Variants = {
+  hidden: { opacity: 0, x: 30, y: 10 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    transition: { duration: 0.7, delay: 1, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+/** Navbar entrance — slides down from top */
+export const navbarSlideDown: Variants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+/** Footer reveal — fades up when scrolled into view */
+export const footerReveal: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+/** Scale up with blur — for differentiated section entrances */
+export const scaleUpBlur: Variants = {
+  hidden: { opacity: 0, scale: 0.92, filter: "blur(6px)" },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 export function withDelay(variants: Variants, delay: number): Variants {
   return {
     ...variants,

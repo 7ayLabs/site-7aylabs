@@ -1,14 +1,18 @@
 export const ROUTES = {
   home: "/",
   about: "/about",
+  technology: "/technology",
   tech: "/tech",
   useCases: "/use-cases",
   whyPresence: "/why-presence",
+  devnet: "/devnet",
+  validators: "/validators",
+  ecosystem: "/ecosystem",
+  glossary: "/glossary",
   updates: "/updates",
   waitlist: "/waitlist",
   newsletter: "/newsletter",
   services: "/services",
-  roadmap: "/#roadmap",
 } as const;
 
 export const EXTERNAL_LINKS = {
@@ -21,38 +25,79 @@ export type Route = (typeof ROUTES)[keyof typeof ROUTES];
 export type ExternalLink = (typeof EXTERNAL_LINKS)[keyof typeof EXTERNAL_LINKS];
 
 export const NAV_LINKS = [
-  { href: ROUTES.about, label: "About" },
-  { href: ROUTES.tech, label: "Tech" },
-  { href: ROUTES.useCases, label: "Use Cases" },
+  { href: ROUTES.technology, label: "Technology" },
   { href: ROUTES.whyPresence, label: "Why Presence" },
-  { href: ROUTES.updates, label: "Updates" },
+  { href: ROUTES.useCases, label: "Use Cases" },
+  { href: ROUTES.devnet, label: "Devnet" },
+  { href: ROUTES.validators, label: "Validators" },
+] as const;
+
+export const NAV_CATEGORIES = [
+  {
+    label: "Learn",
+    items: [
+      { href: ROUTES.technology, label: "Technology" },
+      { href: ROUTES.whyPresence, label: "Why Presence" },
+      { href: ROUTES.glossary, label: "Glossary" },
+    ],
+  },
+  {
+    label: "Build",
+    items: [
+      { href: ROUTES.devnet, label: "Devnet" },
+      { href: ROUTES.validators, label: "Validators" },
+      { href: ROUTES.ecosystem, label: "Ecosystem" },
+      { href: EXTERNAL_LINKS.githubRepo, label: "GitHub", external: true },
+    ],
+  },
+  {
+    label: "Network",
+    items: [
+      { href: ROUTES.updates, label: "Updates" },
+      { href: ROUTES.useCases, label: "Use Cases" },
+    ],
+  },
+  {
+    label: "Community",
+    items: [
+      { href: ROUTES.waitlist, label: "Waitlist" },
+      { href: ROUTES.newsletter, label: "Newsletter" },
+      { href: EXTERNAL_LINKS.twitter, label: "X (Twitter)", external: true },
+    ],
+  },
 ] as const;
 
 export const FOOTER_LINK_GROUPS = [
   {
-    title: "Protocol",
+    title: "Learn",
     links: [
-      { href: ROUTES.tech, label: "Technology" },
+      { href: ROUTES.technology, label: "Technology" },
       { href: ROUTES.whyPresence, label: "Why Presence" },
-      { href: ROUTES.useCases, label: "Use Cases" },
-      { href: ROUTES.roadmap, label: "Roadmap" },
+      { href: ROUTES.glossary, label: "Glossary" },
     ],
   },
   {
-    title: "Company",
+    title: "Build",
     links: [
-      { href: ROUTES.about, label: "About" },
-      { href: ROUTES.services, label: "Services" },
+      { href: ROUTES.devnet, label: "Devnet" },
+      { href: ROUTES.validators, label: "Validators" },
+      { href: ROUTES.ecosystem, label: "Ecosystem" },
+      { href: EXTERNAL_LINKS.githubRepo, label: "GitHub", external: true },
+    ],
+  },
+  {
+    title: "Network",
+    links: [
       { href: ROUTES.updates, label: "Updates" },
-      { href: ROUTES.newsletter, label: "Newsletter" },
+      { href: ROUTES.useCases, label: "Use Cases" },
     ],
   },
   {
     title: "Community",
     links: [
-      { href: EXTERNAL_LINKS.twitter, label: "X (Twitter)", external: true },
-      { href: EXTERNAL_LINKS.github, label: "GitHub", external: true },
       { href: ROUTES.waitlist, label: "Join Waitlist" },
+      { href: ROUTES.newsletter, label: "Newsletter" },
+      { href: EXTERNAL_LINKS.twitter, label: "X (Twitter)", external: true },
     ],
   },
 ] as const;
