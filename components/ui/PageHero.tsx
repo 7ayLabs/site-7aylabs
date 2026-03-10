@@ -57,7 +57,7 @@ function PageHeroComponent({
     <section
       aria-label={title}
       className={cn(
-        "max-w-6xl mx-auto px-6 md:px-12 pt-28 sm:pt-32 md:pt-36 pb-16 sm:pb-20 md:pb-24 text-center",
+        "max-w-6xl mx-auto px-6 md:px-12 pt-32 sm:pt-36 md:pt-40 pb-16 sm:pb-20 md:pb-24 text-center",
         className
       )}
     >

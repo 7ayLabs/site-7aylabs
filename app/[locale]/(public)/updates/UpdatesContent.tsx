@@ -35,7 +35,7 @@ export default function UpdatesContent() {
   return (
     <>
       {/* Hero */}
-      <section className="max-w-5xl mx-auto px-6 md:px-12 pt-24 md:pt-32 pb-8">
+      <section className="max-w-5xl mx-auto px-6 md:px-12 pt-32 sm:pt-36 md:pt-40 pb-8">
         <motion.div
           className="max-w-3xl"
           initial={{ opacity: 0, y: 16 }}
