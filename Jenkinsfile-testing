@@ -2,11 +2,12 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'imzzaidd/site-7aylabs'
-        IMAGE_TAG  = 'staging'
-        APP_NAME   = 'site-7aylabs-test'
-        PROXY_NAME = 'nginx-proxy-test'
-        NETWORK    = '7aylabspipeline_testing_site_net'
+        IMAGE_NAME   = 'imzzaidd/site-7aylabs'
+        IMAGE_TAG    = 'staging'
+        APP_NAME     = 'site-7aylabs-test'
+        PROXY_NAME   = 'nginx-proxy-test'
+        NETWORK      = '7aylabspipeline_testing_site_net'
+        DATABASE_URL = credentials('database-url-testing')
     }
 
     stages {
@@ -36,6 +37,7 @@ pipeline {
                         -e HOSTNAME=0.0.0.0 \
                         -e PORT=8082 \
                         -e ALLOWED_ORIGINS=https://test.7aylabs.com \
+                        -e DATABASE_URL=${DATABASE_URL} \
                         ${IMAGE_NAME}:${IMAGE_TAG}
                 """
             }
@@ -63,7 +65,7 @@ pipeline {
         stage('Health Check') {
             steps {
                 retry(3) {
-                    sh "sleep 5 && docker exec ${APP_NAME} curl -sf http://localhost:8082/ || exit 1"
+                    sh "sleep 5 && docker exec ${APP_NAME} wget -q -O /dev/null http://localhost:8082/ || exit 1"
                 }
             }
         }

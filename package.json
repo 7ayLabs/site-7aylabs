@@ -22,8 +22,6 @@
     "db:migrate": "prisma migrate dev"
   },
   "dependencies": {
-    "@mantine/core": "^8.3.10",
-    "@mantine/hooks": "^8.3.10",
     "@prisma/client": "^6.19.2",
     "autoprefixer": "^10.4.21",
     "class-variance-authority": "^0.7.1",

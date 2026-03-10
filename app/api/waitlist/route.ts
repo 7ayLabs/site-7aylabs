@@ -55,6 +55,8 @@ export async function POST(request: NextRequest) {
         },
       });
     } catch (error: unknown) {
+      // Return success on duplicate email (P2002) to prevent email enumeration.
+      // Attackers cannot determine which emails are already registered.
       if (
         error instanceof Error &&
         "code" in error &&

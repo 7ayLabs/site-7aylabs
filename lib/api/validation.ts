@@ -1,4 +1,4 @@
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const MAX_LENGTHS = {
   email: 254,
@@ -36,20 +36,32 @@ export function isValidEmail(email: string): boolean {
 
 export function sanitizeInput(input: string): string {
   if (typeof input !== "string") return "";
-  return input
-    .replace(/<[^>]*>/g, "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .trim();
+  // Strip HTML tags only — React auto-escapes on render, Prisma stores raw strings
+  return input.replace(/<[^>]*>/g, "").trim();
 }
 
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 const WINDOW_MS = 60_000;
 const MAX_REQUESTS = 10;
+const MAX_MAP_SIZE = 10_000;
+const CLEANUP_INTERVAL_MS = 5 * 60_000;
+
+// Periodic cleanup to prevent unbounded memory growth
+let lastCleanup = Date.now();
+
+function cleanupExpiredEntries() {
+  const now = Date.now();
+  if (now - lastCleanup < CLEANUP_INTERVAL_MS && rateLimitMap.size < MAX_MAP_SIZE) return;
+  lastCleanup = now;
+  for (const [ip, entry] of rateLimitMap) {
+    if (now > entry.resetAt) rateLimitMap.delete(ip);
+  }
+}
 
 export function checkRateLimit(ip: string): boolean {
   const now = Date.now();
+  cleanupExpiredEntries();
+
   const entry = rateLimitMap.get(ip);
 
   if (!entry || now > entry.resetAt) {
@@ -85,6 +97,9 @@ const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || "")
   .map((o) => o.trim())
   .filter(Boolean);
 
+// CORS is a browser-only protection. Non-browser clients (curl, scripts) never
+// send an Origin header, so we allow missing Origin by design. The rate limiter
+// and Nginx limit_req are the protection layers against automated abuse.
 export function isAllowedOrigin(request: Request): boolean {
   if (ALLOWED_ORIGINS.length === 0) return true;
   const origin = request.headers.get("origin");

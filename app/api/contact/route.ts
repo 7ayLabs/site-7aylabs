@@ -28,12 +28,12 @@ export async function POST(request: NextRequest) {
     if (!name || typeof name !== "string" || !name.trim()) errors.push("Name is required.");
     if (!message || typeof message !== "string" || !message.trim()) errors.push("Message is required.");
 
-    if (!validateFieldLength(email, "email") || !validateFieldLength(name, "name") || !validateFieldLength(subject, "subject") || !validateFieldLength(message, "message")) {
-      return errorResponse("Input exceeds maximum allowed length.");
-    }
-
     if (errors.length > 0) {
       return errorResponse("Validation failed.", 400, errors);
+    }
+
+    if (!validateFieldLength(email, "email") || !validateFieldLength(name, "name") || !validateFieldLength(subject, "subject") || !validateFieldLength(message, "message")) {
+      return errorResponse("Input exceeds maximum allowed length.");
     }
 
     await prisma.contactMessage.create({
