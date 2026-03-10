@@ -7,7 +7,7 @@ version: "3.8"
 
 services:
   app:
-    image: 7aylabs/site-7aylabs:staging
+    image: imzzaidd/site-7aylabs:staging
     container_name: site-7aylabs-test
     restart: unless-stopped
     environment:
