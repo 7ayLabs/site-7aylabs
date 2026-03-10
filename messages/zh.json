@@ -1,0 +1,1281 @@
+{
+  "common": {
+    "joinWaitlist": "加入候补名单",
+    "getEarlyAccess": "获取抢先体验",
+    "learnMore": "了解更多",
+    "backToHome": "返回首页",
+    "connectToDevnet": "连接到开发网络",
+    "followOnX": "在 X 上关注我们",
+    "skipToContent": "跳至主要内容",
+    "copyright": "© {year} 7ayLabs. 保留所有权利。",
+    "loading": "加载中…",
+    "tryAgain": "重试",
+    "signalOnly": "只有干货，没有噪音。随时可退订。",
+    "viewOnGithub": "在 GitHub 上查看",
+    "exploreProtocol": "探索协议",
+    "exploreProtocolArrow": "探索协议",
+    "exploreTechnology": "探索技术",
+    "viewRepository": "查看代码仓库",
+    "follow7ayLabs": "关注 @7ayLabs",
+    "runAValidator": "运行验证节点",
+    "devnetSetup": "开发网络部署",
+    "joinTheWaitlist": "加入候补名单",
+    "getProtocolUpdates": "获取协议动态"
+  },
+  "nav": {
+    "home": "首页",
+    "technology": "技术",
+    "whyPresence": "为何选择在场证明",
+    "useCases": "应用场景",
+    "devnet": "开发网络",
+    "validators": "验证者",
+    "ecosystem": "生态系统",
+    "glossary": "术语表",
+    "updates": "动态",
+    "waitlist": "候补名单",
+    "newsletter": "通讯",
+    "about": "关于",
+    "github": "GitHub",
+    "xTwitter": "X (Twitter)",
+    "categories": {
+      "learn": "学习",
+      "build": "构建",
+      "network": "网络",
+      "community": "社区"
+    },
+    "footer": {
+      "joinWaitlist": "加入候补名单"
+    },
+    "aria": {
+      "openMenu": "打开菜单",
+      "closeMenu": "关闭菜单",
+      "homeLink": "7ayLabs 首页",
+      "followOnX": "在 X 上关注 7ayLabs",
+      "githubLink": "7ayLabs 的 GitHub",
+      "footerLearnLinks": "学习链接",
+      "footerBuildLinks": "构建链接",
+      "footerNetworkLinks": "网络链接",
+      "footerCommunityLinks": "社区链接"
+    },
+    "logoAlt": "7ayLabs 标志",
+    "logoAltFooter": "7ayLabs"
+  },
+  "theme": {
+    "switchToDark": "切换到深色模式",
+    "switchToLight": "切换到浅色模式"
+  },
+  "language": {
+    "label": "语言",
+    "en": "English",
+    "es": "Español",
+    "pt": "Português",
+    "fr": "Français",
+    "de": "Deutsch",
+    "zh": "中文",
+    "ja": "日本語"
+  },
+  "hero": {
+    "titleLine1Start": "你的",
+    "titleLine1Accent": "在场",
+    "titleLine2Start": "就是你的",
+    "titleLine2Accent": "证明",
+    "subtitle": "第一条通过物理法则验证人类身份的区块链。无需虹膜扫描，无需 GPS，无需球形设备。仅凭网络延迟和光速法则。",
+    "ctaPrimary": "获取抢先体验",
+    "ctaSecondary": "探索协议",
+    "typewriterPhrases": {
+      "0": "基于物理法则实现女巫攻击抵御，而非承诺。",
+      "1": "Web3 一直缺失的身份验证层。",
+      "2": "验证一次。无数据痕迹。无需硬件。",
+      "3": "机器人失败之处，人类通过之地。"
+    }
+  },
+  "howItWorks": {
+    "label": "运作方式",
+    "title": "从信号到主权",
+    "subtitle": "三步实现女巫攻击抵御验证。无需硬件。无需生物识别。纯粹物理。",
+    "aria": "7aychain 如何验证你的在场",
+    "steps": {
+      "0": {
+        "number": "01",
+        "title": "发起你的在场承诺",
+        "description": "你的设备提交一个加密承诺\u00a0\u2014\u00a0一个在场声明的哈希值。无需密码，无需生物识别，无需专用硬件。轻触一下即可进入验证纪元。",
+        "iconAlt": "手机通过信号弧连接到网络"
+      },
+      "1": {
+        "number": "02",
+        "title": "见证圈三角定位你的信号",
+        "description": "验证者组成见证圈，从多个节点测量网络延迟以三角定位你的位置\u00a0\u2014\u00a0无需 GPS，无需预言机，仅凭物理法则。",
+        "iconAlt": "三个验证者对一个位置进行三角定位"
+      },
+      "2": {
+        "number": "03",
+        "title": "证明在链上完成确认",
+        "description": "一旦达成法定人数，你的在场证明即被封存\u00a0\u2014\u00a0不可篡改、自主掌控，且无法伪造或跨纪元重放。",
+        "iconAlt": "带有对勾的六边形封印连接到区块"
+      }
+    }
+  },
+  "whyChain": {
+    "title": "为什么选择",
+    "titleAccent": "7aychain",
+    "titleEnd": "？",
+    "subtitle": "其他所有链仅依赖密码学。7aychain 将身份锚定到物理现实\u00a0\u2014 那个 AI、机器人和女巫农场无法伪造的唯一原语。",
+    "cards": {
+      "0": {
+        "title": "物理法则优先于生物识别",
+        "description": "无需虹膜扫描。无需指纹。验证者通过测量网络延迟和信号时序来验证你的物理在场\u00a0\u2014\u00a0机器人无法伪造的物理法则。",
+        "iconAlt": "带有测量节点的信号波"
+      },
+      "1": {
+        "title": "承诺\u2011揭示隐私架构",
+        "description": "你的秘密永远不会接触链上数据。先提交哈希，之后揭示。无效化器防止跨纪元重放。ZK 证明让你无需暴露身份即可证明在场。",
+        "iconAlt": "带有零知识证明环的锁"
+      },
+      "2": {
+        "title": "自主女巫评分",
+        "description": "自主模块基于行为模式对每个参与者进行 0\u2013100 评分。无需验证码，无需球形设备\u00a0\u2014\u00a0协议自动区分人类与机器。",
+        "iconAlt": "带有人类验证对勾的盾牌"
+      },
+      "3": {
+        "title": "在场加权治理",
+        "description": "基于能力的权限，而非代币投票。委托可级联至 5 层深度。撤销根能力，所有子能力随之撤销\u00a0\u2014\u00a0一切在链上完成。",
+        "iconAlt": "带有能力节点的委托树"
+      }
+    }
+  },
+  "newsletter": {
+    "title": "加入在场经济",
+    "subtitle": "协议里程碑、验证者入驻动态和治理提案\u00a0\u2014\u00a0优先送达先到者。",
+    "cta": "获取协议动态",
+    "trustLine": "只有干货，没有噪音。随时可退订。"
+  },
+  "devnetStatus": {
+    "statusIndicator": "开发网络运行中",
+    "title": "7aychain 开发网络已上线",
+    "subtitle": "一个运行完整 Proof of Presence 协议的工作网络。真实节点，真实验证，真实结果。",
+    "ctaHint": "连接到开发网络",
+    "stats": {
+      "version": {
+        "label": "v0.8.26",
+        "description": "开发网络版本"
+      },
+      "nodes": {
+        "label": "6",
+        "description": "活跃节点"
+      },
+      "modules": {
+        "label": "16",
+        "description": "核心模块"
+      },
+      "specVersion": {
+        "label": "111",
+        "description": "版本"
+      }
+    }
+  },
+  "notFound": {
+    "heading": "404",
+    "message": "未找到此页面。",
+    "detail": "您寻找的页面不存在或已被移动。",
+    "cta": "返回首页"
+  },
+  "globalError": {
+    "heading": "出了点问题",
+    "fallbackMessage": "发生了意外错误。",
+    "cta": "重试"
+  },
+  "technologyPage": {
+    "label": "技术",
+    "title": "Proof of Presence",
+    "accentWord": "Presence",
+    "description": {
+      "0": "7aychain 通过互联网信号的物理法则验证真实的人在真实的地方——不依赖摄像头、生物识别或专用硬件。",
+      "1": "一条为 AI 无法伪造的唯一事物而构建的区块链：身处某地。"
+    }
+  },
+  "techHowItWorks": {
+    "label": "运作方式",
+    "title": "协议背后的",
+    "titleAccent": "原理",
+    "subtitle": "使在场验证成为可能的四大基础。",
+    "principles": {
+      "0": {
+        "title": "植根于物理法则",
+        "description": "互联网信号以已知速度传播。通过从多个验证者测量时序，网络估算你的物理位置——无需 GPS，无需预言机，仅凭光速法则。"
+      },
+      "1": {
+        "title": "默认隐私",
+        "description": "网络证明你曾在场，但永远不知道你在哪里。你的位置数据以哈希形式提交，通过 ZK 证明验证，从不以明文存储在链上。"
+      },
+      "2": {
+        "title": "经济安全保障",
+        "description": "每个验证者都抵押真实价值。对某人的位置撒谎就会失去抵押。诚实是唯一有利可图的策略。"
+      },
+      "3": {
+        "title": "AI 无法伪造",
+        "description": "AI 可以生成文本、图像和合成身份。但它无法物理存在于某个坐标。在场是抵御自动化的人类证明。"
+      }
+    }
+  },
+  "presenceJourney": {
+    "label": "协议流程",
+    "title": "从信号到",
+    "titleAccent": "封存证明",
+    "subtitle": "三个步骤。没有中间人。你的在场，经验证且永久留存。",
+    "steps": {
+      "0": {
+        "number": "01",
+        "title": "你到场了",
+        "badge": "声明 + 承诺",
+        "description": "你的设备提交一个加密承诺——一个封存的哈希表示\u201c我在这里\u201d，但不透露你在何处。一次操作。无需生物识别。无需硬件。"
+      },
+      "1": {
+        "number": "02",
+        "title": "网络测量你",
+        "badge": "证实 + 三角定位",
+        "description": "一圈验证者独立从多个节点测量信号时序。通过多点定位估算你的位置——无需你分享任何信息。"
+      },
+      "2": {
+        "number": "03",
+        "title": "你的证明被封存",
+        "badge": "最终确认",
+        "description": "当足够多的验证者达成共识，你的在场即在链上完成最终确认——一条不可篡改的记录，证明你曾物理在场。它属于你。没有人能撤销它。"
+      }
+    }
+  },
+  "architectureLayers": {
+    "label": "架构",
+    "title": "四个层级，",
+    "titleAccent": "一套协议",
+    "subtitle": "每一层构建在其下一层之上，从底层网络到你交互的应用。",
+    "layers": {
+      "0": {
+        "title": "网络基础",
+        "description": "节点如何发现彼此、达成共识并产出区块。共识机制确保每个验证者遵循相同的规则。",
+        "items": {
+          "0": "共识",
+          "1": "区块生产",
+          "2": "P2P 网络",
+          "3": "最终性"
+        }
+      },
+      "1": {
+        "title": "在场引擎",
+        "description": "核心创新：从多个节点测量网络延迟以估算物理位置。见证圈组建、测量和三角定位——全程无需 GPS。",
+        "items": {
+          "0": "三角定位",
+          "1": "见证圈",
+          "2": "位置估算",
+          "3": "纪元管理"
+        }
+      },
+      "2": {
+        "title": "安全与隐私",
+        "description": "多层保护：验证者抵押价值，争议在链上解决，ZK 证明保护你的位置隐私。",
+        "items": {
+          "0": "抵押与罚没",
+          "1": "争议解决",
+          "2": "ZK 证明",
+          "3": "异常检测"
+        }
+      },
+      "3": {
+        "title": "应用层",
+        "description": "基于经验证的在场构建的应用：按参与度加权的治理、安全保险库、信任网络和协调工具。",
+        "items": {
+          "0": "治理",
+          "1": "数据保险库",
+          "2": "信任图谱",
+          "3": "群组管理"
+        }
+      }
+    }
+  },
+  "privacyZK": {
+    "label": "零知识证明",
+    "title": "你的位置经过验证，",
+    "titleAccent": "但从不泄露",
+    "description": {
+      "0": "零知识证明让网络确认你曾在某个位置，而不知道该位置在哪里。你的数据始终归你所有。",
+      "1": "协议使用加密承诺，因此即便是测量你信号的验证者也永远看不到你的实际坐标。他们只确认：\u201c是的，此人曾物理在场。\u201d"
+    },
+    "verified": "已验证",
+    "redactedPosition": "位置：████████",
+    "redactedPositionAria": "已隐去的位置数据",
+    "pillars": {
+      "0": {
+        "title": "承诺-揭示",
+        "description": "首先提交在场数据的封存哈希。只有在锁定后才揭示数据——防止篡改。"
+      },
+      "1": {
+        "title": "零知识证明",
+        "description": "数学证明验证\u201c此人曾在这里\u201d但不透露具体位置。网络永远看不到你的位置。"
+      },
+      "2": {
+        "title": "无效化器保护",
+        "description": "每个证明生成一个唯一的无效化器以防止重复使用——在保护匿名性的同时阻止重放攻击。"
+      }
+    }
+  },
+  "useCasesPage": {
+    "label": "应用场景",
+    "title": "在场改变一切",
+    "accentWord": "在场",
+    "description": "从公平投票到经验证的评论——只有物理在场才能解决的现实问题。",
+    "sybilProblem": {
+      "title": "女巫问题无处不在",
+      "paragraph1": "同一个人可以在几分钟内创建上千个假账户。机器人刷取奖励。虚假用户夺取投票权。而大多数系统无法区分真伪。",
+      "paragraph2": "根本原因很简单：没有可靠的方法证明一个独特的人类在某个操作背后。"
+    },
+    "physicsSolution": {
+      "title": "物理法则是解决方案",
+      "paragraph1": "7aychain 用物理法则解决这个问题。你可以创建无限多的账户——但你同一时间只能身处一个地方。通过从多个节点测量互联网连接时序，网络确认你是真实存在且在场的。",
+      "paragraph2": "无需眼睛扫描。无需特殊设备。"
+    },
+    "applicationsLabel": "应用",
+    "applicationsTitle": "在场改变游戏规则",
+    "applicationsSubtitle": "只有物理在场才能解决的现实问题。",
+    "signalCards": {
+      "0": {
+        "title": "独一无二的人类",
+        "description": "每次验证都根植于你在现实世界中的物理在场。"
+      },
+      "1": {
+        "title": "默认隐私",
+        "description": "验证你的在场，无需知道你是谁或追踪你。"
+      },
+      "2": {
+        "title": "永久记录",
+        "description": "每一份证明都存储在任何人都可以验证的公共记录上。"
+      },
+      "3": {
+        "title": "随处可用",
+        "description": "任何有互联网的设备。不需要特殊设备。"
+      }
+    },
+    "useCases": {
+      "0": {
+        "title": "公平代币空投",
+        "description": "奖励发放给真实的人，而非刷取数千账户的机器人。每位接收者都被验证为真正在场的独特人类。",
+        "detail": "当每位接收者都是经过验证的真人时，代币分发才真正有意义。不再因虚假账户和自动化刷取而浪费预算。"
+      },
+      "1": {
+        "title": "公平投票",
+        "description": "一人一票——由物理法则保证。没有钱包农场，没有买票行为，没有虚假账户对治理的操控。",
+        "detail": "社区可以进行投票、提案和选举，确保每位参与者都是真人——而非一个人控制的一堆钱包。"
+      },
+      "2": {
+        "title": "安全交易",
+        "description": "为高价值操作添加物理安全层。即使有人盗取了你的密码，他们也需要物理在场才能操作。",
+        "detail": "关键金融操作获得一层任何黑客都无法远程突破的保护——他们需要亲自到达正确的地点。"
+      },
+      "3": {
+        "title": "活动票务",
+        "description": "证明你参加了一场会议、聚会或研讨会。因为真正在场而获得奖励——而非仅仅声称你在。",
+        "detail": "活动组织者获得准确的出勤数据，参与者则获得具有真正价值的可验证凭证。"
+      },
+      "4": {
+        "title": "经验证的社区",
+        "description": "围绕真正到场的人建立社区。没有假成员，没有机器人充数。",
+        "detail": "会员身份和访问权限通过真正的参与获得，而非通过制造的账户或购买的凭证。"
+      },
+      "5": {
+        "title": "经验证的评论与交付",
+        "description": "只有真正到访过的人才能留下评论。快递员证明他们到达了正确的地址。终结虚假评论和交付欺诈。",
+        "detail": "物理验证确保评论、交付和服务确认来自真正在场的人。"
+      }
+    },
+    "ctaTitle": "使用 Proof of Presence 构建",
+    "ctaSubtitle": "开发网络已上线。立即开始在 7aychain 上构建应用。",
+    "ctaPrimary": "连接到开发网络",
+    "ctaSecondary": "加入候补名单"
+  },
+  "glossaryPage": {
+    "label": "术语表",
+    "title": "7aychain 术语",
+    "accentWord": "术语",
+    "description": "7aychain Proof of Presence 协议中关键术语、模块和概念的定义。",
+    "letterNavAria": "术语表字母导航",
+    "terms": {
+      "autonomousDetection": {
+        "letter": "A",
+        "term": "Autonomous Detection",
+        "definition": "一个链上模块，自动检测在场证实中的异常模式，标记可疑行为以供审查或争议处理，无需手动报告。"
+      },
+      "boomerangProof": {
+        "letter": "B",
+        "term": "Boomerang Proof",
+        "definition": "一种加密机制，验证参与者返回了先前已证实的位置。用于在不透露位置本身的情况下证明随时间推移的一致在场模式。"
+      },
+      "circuitRegistry": {
+        "letter": "C",
+        "term": "Circuit Registry",
+        "definition": "可用于证明生成和验证的 ZK 电路的链上注册表。管理电路版本、证明模式之间的迁移和验证器配置。"
+      },
+      "commitRevealScheme": {
+        "letter": "C",
+        "term": "Commit-Reveal Scheme",
+        "definition": "一种两阶段协议，参与者首先提交在场数据的哈希（隐藏数据），然后在后续阶段揭示实际数据。防止抢跑并确保在场声明的公平排序。"
+      },
+      "deviceScanner": {
+        "letter": "D",
+        "term": "Device Scanner",
+        "definition": "一个模块级组件，用于注册和扫描参与在场证实的设备。处理设备身份、证实能力和撤销。"
+      },
+      "disputeResolution": {
+        "letter": "D",
+        "term": "Dispute Resolution",
+        "definition": "一个链上流程，用于质疑在场证实。争议方提交证据，验证者投票，协议执行结果，包括对不诚实证实者的罚没。"
+      },
+      "epoch": {
+        "letter": "E",
+        "term": "Epoch",
+        "definition": "一个固定的时间窗口，在此期间进行在场声明、证实和最终确认。纪元构建协议生命周期并决定验证者轮换时间表。"
+      },
+      "groth16": {
+        "letter": "G",
+        "term": "Groth16",
+        "definition": "7aychain 使用的零知识证明系统，用于简洁的非交互式在场证明。提供恒定大小的证明和快速验证，实现高效的链上 ZK 验证。"
+      },
+      "laudNetworksCli": {
+        "letter": "L",
+        "term": "Laud Networks CLI",
+        "definition": "一个基于 Python 的终端用户界面 (TUI)，用于与 7aychain 模块交互。支持所有 16 个协议模块，包括在场声明、验证者管理、ZK 证明等。"
+      },
+      "lifecycle": {
+        "letter": "L",
+        "term": "Lifecycle",
+        "definition": "管理在场声明从创建到最终确认的完整状态机：声明、承诺、揭示、证实、三角定位和最终确认。"
+      },
+      "multilateration": {
+        "letter": "M",
+        "term": "Multilateration",
+        "definition": "一种定位技术，使用来自多个验证者参考点的网络延迟测量来估算参与者的物理位置。见证圈中的核心三角定位算法。"
+      },
+      "octopusGroups": {
+        "letter": "O",
+        "term": "Octopus Groups",
+        "definition": "协议中的组织单元，将验证者和参与者分组以进行协调的在场操作。群组可以有共享的治理规则和集体证实阈值。"
+      },
+      "positionBoundToken": {
+        "letter": "P",
+        "term": "Position Bound Token (PBT)",
+        "definition": "在场最终确认时铸造的加密代币。PBT 将证实声明与特定位置和纪元绑定，作为可验证的在场证明凭证，同时不透露精确位置。"
+      },
+      "presenceLifecycle": {
+        "letter": "P",
+        "term": "Presence Lifecycle",
+        "definition": "六阶段协议流程：声明（宣布意图）、承诺（提交在场哈希）、揭示（公开数据）、证实（验证者测量）、三角定位（计算位置）、最终确认（法定共识）。"
+      },
+      "proofOfPresence": {
+        "letter": "P",
+        "term": "Proof of Presence (PoP)",
+        "definition": "7aychain 的共识机制。验证者组成见证圈，通过网络延迟测量三角定位物理在场——无需 GPS，无需生物识别，无需外部硬件。"
+      },
+      "quorumConsensus": {
+        "letter": "Q",
+        "term": "Quorum Consensus",
+        "definition": "最终确认在场证实所需的验证者同意阈值。只有当见证圈中足够比例的验证者对位置估算达成一致时，在场声明才会被最终确认。"
+      },
+      "semanticLinks": {
+        "letter": "S",
+        "term": "Semantic Links",
+        "definition": "实体（参与者、位置、组织）之间的链上关系，形成信任图谱。语义链接实现基于在场历史的上下文验证和声誉系统。"
+      },
+      "shamirSecretSharing": {
+        "letter": "S",
+        "term": "Shamir Secret Sharing",
+        "definition": "保险库系统中使用的加密方案，将敏感数据分割到多方。没有单一方持有足够的信息来重建秘密，实现安全恢复和共享。"
+      },
+      "snark": {
+        "letter": "S",
+        "term": "SNARK",
+        "definition": "简洁非交互式知识论证。7aychain 用于紧凑、高效可验证的在场证明的零知识证明类型。协议从存根验证器迁移到完整的 SNARK 电路。"
+      },
+      "storageLayer": {
+        "letter": "S",
+        "term": "Storage Layer",
+        "definition": "提供在场证明、证实记录和协议状态的链上和链下数据存储的模块。支持固定、检索和数据可用性保证。"
+      },
+      "triangulation": {
+        "letter": "T",
+        "term": "Triangulation",
+        "definition": "验证者使用来自多个参考点的网络延迟测量来估算参与者物理位置的过程。结合多点定位和质心算法进行位置估算。"
+      },
+      "validator": {
+        "letter": "V",
+        "term": "Validator",
+        "definition": "抵押 $7AY 以参与共识、在场证实和见证圈三角定位的节点运营者。验证者因诚实行为获得奖励，因不诚实行为面临罚没。"
+      },
+      "vault": {
+        "letter": "V",
+        "term": "Vault",
+        "definition": "用于存储敏感数据的安全链上存储系统。支持用于分布式密钥管理的 Shamir 秘密共享，实现数据恢复和授权方之间的可控共享。"
+      },
+      "witnessCircle": {
+        "letter": "W",
+        "term": "Witness Circle",
+        "definition": "被伪随机选出的验证者子集，负责证实一个在场声明。圈内成员独立测量延迟，并集体三角定位声明参与者的位置。"
+      },
+      "zkCircuit": {
+        "letter": "Z",
+        "term": "ZK Circuit",
+        "definition": "生成证明以验证在场而不透露精确位置数据的零知识计算电路。7aychain 使用 Groth16 电路，配备链上注册表和从存根到完整 SNARK 验证的迁移路径。"
+      }
+    }
+  },
+  "waitlistPage": {
+    "badge": "抢先体验 — 第 0 阶段已上线",
+    "title": "网络正在",
+    "titleAccent": "苏醒",
+    "titleEnd": "。",
+    "subtitle": "成为最早证明\u201c你在这里\u201d的人之一——加入那些正在构建一个在场比密码更重要的世界的人们。",
+    "form": {
+      "emailLabel": "电子邮箱地址",
+      "emailPlaceholder": "you@email.com",
+      "submitIdle": "获取抢先体验",
+      "submitLoading": "加入中…",
+      "submitSuccess": "你已加入！",
+      "successMessage": "欢迎加入！当访问权限开放时我们会联系你。",
+      "errorInvalidEmail": "请输入有效的电子邮箱地址",
+      "errorGeneric": "出了点问题，请重试。",
+      "privacyNote": "我们只需要你的电子邮箱。无需生物识别，无需个人身份证明，无需位置数据。"
+    },
+    "benefits": {
+      "0": {
+        "title": "率先验证",
+        "description": "在其他人之前访问网络，成为最早证明你在场的人之一。"
+      },
+      "1": {
+        "title": "塑造网络",
+        "description": "你的反馈直接影响我们的构建方向和协议的演进方式。"
+      },
+      "2": {
+        "title": "创始成员身份",
+        "description": "作为 7aychain 网络的创始参与者，永久记录在链上。"
+      }
+    },
+    "phases": {
+      "0": {
+        "label": "第 0 阶段",
+        "title": "抢先体验",
+        "status": "已上线"
+      },
+      "1": {
+        "label": "第 1 阶段",
+        "title": "扩展试点"
+      },
+      "2": {
+        "label": "第 2 阶段",
+        "title": "更广泛开放"
+      }
+    },
+    "socialProof": {
+      "devnetLive": "开发网络已上线",
+      "activeNodes": "6 个活跃节点",
+      "coreModules": "16 个核心模块",
+      "version": "v0.8.26"
+    }
+  },
+  "newsletterPage": {
+    "label": "通讯",
+    "title": "保持同步",
+    "accentWord": "同步",
+    "description": "产品洞察、协议进展和真实的在场基础设施——在重要时刻送达。",
+    "whatYouGet": {
+      "label": "你将获得的内容",
+      "title": "干货，非噪音",
+      "subtitle": "我们只在有值得分享的内容时才写——没有填充内容，没有每周义务，没有营销废话。"
+    },
+    "topics": {
+      "0": {
+        "title": "协议进展",
+        "description": "关于 7aychain 开发的详细更新，涵盖协议里程碑、ZK 验证到开发网络部署。"
+      },
+      "1": {
+        "title": "产品洞察",
+        "description": "现实世界中的在场如何应用于产品、试点和早期阶段部署。"
+      },
+      "2": {
+        "title": "行业分析",
+        "description": "关于 AI 抗性、人类验证以及信任基础设施不断演变格局的视角。"
+      }
+    },
+    "followTitle": "关注我们的进展",
+    "followSubtitle": "通讯即将推出。在此期间，在 X 上关注我们以获取 7aychain 和 7ayLabs 的实时动态。",
+    "followCta": "在 X 上关注",
+    "noSpam": "没有垃圾邮件。只有来自 7aychain 构建团队的干货。"
+  },
+  "whyPresencePage": {
+    "label": "为何选择在场证明",
+    "title": "互联网丢失了人类信号",
+    "accentWords": ["人类", "信号"],
+    "description": "当机器人能做到人类在网上能做的一切时，唯一能证明你是真人的就是物理在场。",
+    "presenceInfrastructure": {
+      "sectionTitle": "在场基础设施",
+      "paragraph1": "7aychain 的核心是一个简单的理念：你的互联网连接可以证明你在哪里。网络中的验证者从多个节点测量连接时序，在不使用 GPS、摄像头或特殊硬件的情况下确认你的物理位置。",
+      "paragraph2": "大多数系统试图通过观察你的行为、账户或凭证来判断你是否是真人。大规模情况下，所有这些都可以被伪造。7aychain 采取了不同的方法：它利用物理法则。"
+    },
+    "physicsArgument": {
+      "label": "物理法则论证",
+      "title": "通过物理现实实现女巫攻击抵御",
+      "subtitle": "不依赖个人档案、凭证或生物识别，7aychain 利用一个基本的物理约束：你同一时间只能在一个地方。"
+    },
+    "pillars": {
+      "0": {
+        "title": "物理法则，而非扫描",
+        "description": "互联网信号有速度上限——光速。7aychain 利用这一事实确认你在哪里。无需虹膜扫描，无需自拍，无需指纹。"
+      },
+      "1": {
+        "title": "同一时间只能在一处",
+        "description": "你可以创建一百万个账户，但你只能物理存在于一个地点。这个约束使得伪造在场几乎不可能。"
+      },
+      "2": {
+        "title": "不留持久痕迹",
+        "description": "每次验证都是一次性事件。没有持久档案，没有行为追踪，没有关于你的存储数据。证明你在这里，然后就完成了。"
+      }
+    },
+    "coreInsight": {
+      "label": "核心洞察",
+      "title": "在一个完美模拟的世界中，物理现实成为稀缺资源",
+      "description": "AI 可以大规模生成令人信服的文本、行为和交互。但复制物理在场——在特定时间出现在特定位置，并可通过网络物理测量——仍然受到自然法则的约束。"
+    },
+    "sybilArguments": {
+      "problemLabel": "问题",
+      "responseLabel": "7aychain 的回应",
+      "items": {
+        "0": {
+          "problem": "机器人可以大规模伪造行为",
+          "response": "AI 可以伪造文本、交易和社交活动。但它无法伪造身处某地——物理在场受物理法则约束。"
+        },
+        "1": {
+          "problem": "任何人都可以创建无限账户",
+          "response": "创建新钱包零成本。但同时出现在两个地方是不可能的。7aychain 把数字问题转化为物理问题。"
+        },
+        "2": {
+          "problem": "生物识别系统就是监控",
+          "response": "虹膜扫描和面部识别创建了你身体的永久数据库。7aychain 测量互联网时序——它从不看到你的脸或知道你的名字。"
+        },
+        "3": {
+          "problem": "社交网络可以被伪造",
+          "response": "协调的群体可以制造虚假的社交证明。物理在场由网络独立验证——不需要信任。"
+        }
+      }
+    },
+    "comparison": {
+      "label": "对比",
+      "title": "7aychain 的比较优势",
+      "subtitle": "人类验证问题的不同解决方案。每种方案在隐私、硬件和实际证明内容上有不同的权衡。",
+      "headers": {
+        "dimension": "维度",
+        "sevenychain": "7aychain",
+        "worldcoin": "Worldcoin",
+        "brightid": "BrightID",
+        "passport": "Gitcoin Passport"
+      },
+      "rows": {
+        "0": {
+          "dimension": "方法",
+          "sevenychain": "测量互联网连接时序",
+          "worldcoin": "用专用设备扫描你的虹膜",
+          "brightid": "朋友通过视频为你担保",
+          "passport": "关联你的在线账户以获得信任评分"
+        },
+        "1": {
+          "dimension": "所需硬件",
+          "sevenychain": "无（任何互联网连接）",
+          "worldcoin": "定制的 Orb 设备",
+          "brightid": "无",
+          "passport": "无"
+        },
+        "2": {
+          "dimension": "是否采集身体数据？",
+          "sevenychain": "否",
+          "worldcoin": "是（虹膜扫描）",
+          "brightid": "否（但面部可见）",
+          "passport": "否"
+        },
+        "3": {
+          "dimension": "隐私性",
+          "sevenychain": "高——仅限位置，从不涉及身份",
+          "worldcoin": "低——存储虹膜生物识别数据",
+          "brightid": "中——你的面部在视频中可见",
+          "passport": "中——关联你的在线账户"
+        },
+        "4": {
+          "dimension": "证明的内容",
+          "sevenychain": "你物理在某个真实位置",
+          "worldcoin": "你是独特的人类（生物识别）",
+          "brightid": "有人担保你是真人",
+          "passport": "你有活跃的在线账户"
+        },
+        "5": {
+          "dimension": "链",
+          "sevenychain": "7aychain (Substrate L1)",
+          "worldcoin": "Optimism (L2)",
+          "brightid": "IDChain / 多链",
+          "passport": "多链（链下评分）"
+        },
+        "6": {
+          "dimension": "阶段",
+          "sevenychain": "Devnet (v0.8.26)",
+          "worldcoin": "主网",
+          "brightid": "主网",
+          "passport": "主网"
+        }
+      }
+    },
+    "cta": {
+      "label": "跟随信号",
+      "title": "在场是缺失的原语",
+      "subtitle": "我们实时分享进展——正在测试什么、什么出了问题，以及在场在哪些方面真正改变了结果。",
+      "primary": "在 X 上关注",
+      "secondary": "探索技术"
+    }
+  },
+  "devnetPage": {
+    "label": "开发网络",
+    "title": "连接到 7aychain",
+    "accentWord": "7aychain",
+    "description": "7aychain 开发网络已上线，拥有 6 个节点、16 个核心模块和完整的验证栈。克隆仓库、构建并开始交互。",
+    "quickStart": {
+      "label": "快速入门",
+      "title": "三步构建并运行",
+      "steps": {
+        "0": {
+          "badge": "1",
+          "title": "克隆代码仓库",
+          "code": "git clone https://github.com/7ayLabs/7aychain.git\ncd 7aychain"
+        },
+        "1": {
+          "badge": "2",
+          "title": "构建节点",
+          "code": "cargo build --release"
+        },
+        "2": {
+          "badge": "3",
+          "title": "运行开发节点",
+          "code": "./target/release/seveny-node --dev"
+        }
+      }
+    },
+    "networkInfo": {
+      "label": "网络信息",
+      "title": "开发网络配置",
+      "connection": {
+        "title": "连接信息",
+        "rpcEndpoint": "RPC 端点",
+        "rpcEndpointValue": "ws://127.0.0.1:9944",
+        "chainSpec": "链规范",
+        "chainSpecValue": "local_testnet",
+        "specVersion": "规范版本",
+        "specVersionValue": "111",
+        "binary": "二进制文件",
+        "binaryValue": "seveny-node",
+        "sdk": "SDK",
+        "sdkValue": "polkadot-stable2503"
+      },
+      "preFundedAccounts": {
+        "title": "预充值账户",
+        "description": "所有开发账户（Alice 到 Ferdie）在开发网络上均已预充值测试代币，可立即使用。"
+      }
+    },
+    "validatorNodes": {
+      "0": { "name": "Alice", "port": "9944", "role": "引导节点" },
+      "1": { "name": "Bob", "port": "9945", "role": "验证者" },
+      "2": { "name": "Charlie", "port": "9946", "role": "验证者" },
+      "3": { "name": "Dave", "port": "9947", "role": "验证者" },
+      "4": { "name": "Eve", "port": "9948", "role": "验证者" },
+      "5": { "name": "Ferdie", "port": "9949", "role": "验证者" }
+    },
+    "multiNodeSetup": {
+      "label": "多节点部署",
+      "title": "6 节点网络部署",
+      "description": "在本地运行完整的 6 验证者开发网络。Alice 作为原生引导节点运行，其余验证者可以通过 Docker 以混合模式运行。",
+      "tableHeaders": {
+        "node": "节点",
+        "rpcPort": "RPC 端口",
+        "role": "角色"
+      },
+      "dockerHybrid": {
+        "title": "Docker 混合模式",
+        "code": "# Start Alice natively\n./target/release/seveny-node \\\n  --chain local \\\n  --alice \\\n  --port 30333 \\\n  --rpc-port 9944 \\\n  --validator\n\n# Start remaining nodes via Docker\ndocker-compose up bob charlie dave eve ferdie"
+      }
+    },
+    "laudCli": {
+      "label": "Laud Networks CLI",
+      "title": "与每个模块交互",
+      "description": "Laud Networks CLI 是一个基于 Python 的 TUI 工具，用于直接从命令行与 7aychain 模块交互。",
+      "installTitle": "安装",
+      "installCode": "pip install substrate-interface\npython3 laud-cli.py",
+      "tableHeaders": {
+        "module": "模块",
+        "operations": "操作"
+      },
+      "modules": {
+        "0": { "module": "presence", "operations": "declare, commit, reveal, query status" },
+        "1": { "module": "epoch", "operations": "current epoch, history, config" },
+        "2": { "module": "validator", "operations": "register, activate, stake, slash info" },
+        "3": { "module": "pbt", "operations": "mint, bind, verify position-bound tokens" },
+        "4": { "module": "triangulation", "operations": "submit latency, compute position, verify" },
+        "5": { "module": "dispute", "operations": "open, submit evidence, vote, resolve" },
+        "6": { "module": "device", "operations": "register, scan, attest, revoke" },
+        "7": { "module": "lifecycle", "operations": "query state, transition, finalize" },
+        "8": { "module": "vault", "operations": "create, deposit, share, recover" },
+        "9": { "module": "zk", "operations": "generate proof, verify, migrate circuit" },
+        "10": { "module": "governance", "operations": "propose, vote, execute, cancel" },
+        "11": { "module": "semantic", "operations": "link entities, query graph, unlink" },
+        "12": { "module": "boomerang", "operations": "create proof, verify return, query" },
+        "13": { "module": "autonomous", "operations": "detect anomaly, report, query status" },
+        "14": { "module": "octopus", "operations": "create group, join, leave, query" },
+        "15": { "module": "storage", "operations": "store, retrieve, pin, unpin" }
+      }
+    },
+    "hardware": {
+      "label": "硬件",
+      "title": "系统要求",
+      "tableHeaders": {
+        "spec": "规格",
+        "minimum": "最低配置",
+        "recommended": "推荐配置"
+      },
+      "requirements": {
+        "0": { "spec": "CPU 核心数", "minimum": "4 核", "recommended": "8+ 核" },
+        "1": { "spec": "内存", "minimum": "8 GB", "recommended": "16 GB" },
+        "2": { "spec": "存储", "minimum": "50 GB SSD", "recommended": "100 GB NVMe" },
+        "3": { "spec": "网络", "minimum": "10 Mbps", "recommended": "100+ Mbps" }
+      }
+    },
+    "explorer": {
+      "label": "浏览器",
+      "title": "使用 Polkadot.js Apps 连接",
+      "description": "使用 Polkadot.js Apps 界面浏览区块、提交外部交易，并在 7aychain 开发网络上查询链状态。",
+      "steps": {
+        "0": "导航到",
+        "0link": "polkadot.js.org/apps",
+        "1": "点击网络选择器（左上角）",
+        "2": "选择 \"Development\" → \"Local Node\"",
+        "3": "将端点设置为",
+        "3value": "ws://127.0.0.1:9944",
+        "4": "点击 \"Switch\" 进行连接"
+      },
+      "whatYouCanDo": {
+        "title": "你可以做的事",
+        "items": {
+          "0": "实时浏览区块和外部交易",
+          "1": "提交在场声明和证实",
+          "2": "查询模块存储（presence、epoch、validator 等）",
+          "3": "监控验证者抵押和罚没事件",
+          "4": "检查 ZK 证明提交和验证结果"
+        }
+      }
+    },
+    "cta": {
+      "title": "准备好在 7aychain 上构建了吗？",
+      "subtitle": "探索源代码，运行本地节点，开始在 Proof of Presence 协议上构建。",
+      "primary": "在 GitHub 上查看",
+      "secondary": "运行验证节点"
+    }
+  },
+  "validatorsPage": {
+    "label": "验证者",
+    "title": "运行 7aychain 验证节点",
+    "accentWord": "验证节点",
+    "description": "验证者驱动 7aychain 网络。他们组建群组、测量互联网连接、确认人们的位置，并保持网络的诚实。",
+    "roleOverview": {
+      "label": "角色概览",
+      "title": "验证者的职责",
+      "paragraph1": "在 7aychain 上，验证者的职责不仅仅是维持网络运行。他们积极验证人们是否在其声称的位置——组成群组，通过互联网连接测量独立确认每个人的位置。",
+      "paragraph2": "见证圈中的每个验证者测量到声明参与者和其他验证者的网络延迟。这些测量被输入多点定位算法以三角定位物理位置——无需 GPS 或外部硬件。",
+      "paragraph3": "当足够多的验证者对某人的位置达成一致时，其在场得到确认并永久记录。诚实的验证者获得奖励。不诚实的验证者失去其抵押。",
+      "paragraph4": "验证者集合按纪元轮换，确保没有单一的验证者群组能够在一段时间内串通伪造在场证实。"
+    },
+    "hardware": {
+      "label": "硬件",
+      "title": "系统要求",
+      "tableHeaders": {
+        "spec": "规格",
+        "minimum": "最低配置",
+        "recommended": "推荐配置"
+      },
+      "requirements": {
+        "0": { "spec": "CPU 核心数", "minimum": "4 核", "recommended": "8+ 核" },
+        "1": { "spec": "内存", "minimum": "8 GB", "recommended": "16 GB" },
+        "2": { "spec": "存储", "minimum": "50 GB SSD", "recommended": "100 GB NVMe" },
+        "3": { "spec": "网络", "minimum": "10 Mbps", "recommended": "100+ Mbps" }
+      }
+    },
+    "prerequisites": {
+      "label": "前置条件",
+      "title": "安装依赖",
+      "description": "7aychain 需要 Rust（稳定版）、WASM 编译目标、Clang/LLVM 和 protobuf。请选择你的操作系统。",
+      "systems": {
+        "0": {
+          "os": "macOS",
+          "commands": "brew install cmake pkg-config openssl git llvm protobuf\nrustup default stable\nrustup target add wasm32-unknown-unknown"
+        },
+        "1": {
+          "os": "Ubuntu / Debian",
+          "commands": "sudo apt update && sudo apt install -y \\\n  cmake pkg-config libssl-dev git clang \\\n  libclang-dev protobuf-compiler\nrustup default stable\nrustup target add wasm32-unknown-unknown"
+        },
+        "2": {
+          "os": "Fedora",
+          "commands": "sudo dnf install -y cmake openssl-devel git clang \\\n  clang-devel protobuf-compiler\nrustup default stable\nrustup target add wasm32-unknown-unknown"
+        },
+        "3": {
+          "os": "Windows (WSL2)",
+          "commands": "# Install WSL2 with Ubuntu, then follow Ubuntu steps\nwsl --install -d Ubuntu\n# Inside WSL2:\nsudo apt update && sudo apt install -y \\\n  cmake pkg-config libssl-dev git clang \\\n  libclang-dev protobuf-compiler"
+        }
+      }
+    },
+    "setup": {
+      "label": "部署",
+      "title": "构建并运行你的验证节点",
+      "steps": {
+        "0": {
+          "badge": "1",
+          "title": "克隆并构建",
+          "code": "git clone https://github.com/7ayLabs/7aychain.git\ncd 7aychain\ncargo build --release"
+        },
+        "1": {
+          "badge": "2",
+          "title": "生成会话密钥",
+          "code": "# Start node first, then rotate keys via RPC\ncurl -H \"Content-Type: application/json\" \\\n  -d '{\"id\":1, \"jsonrpc\":\"2.0\", \"method\":\"author_rotateKeys\"}' \\\n  http://localhost:9944"
+        },
+        "2": {
+          "badge": "3",
+          "title": "使用验证者标志运行",
+          "code": "./target/release/seveny-node \\\n  --chain local \\\n  --validator \\\n  --name \"my-validator\" \\\n  --base-path /data/7aychain \\\n  --rpc-port 9944 \\\n  --rpc-cors all"
+        }
+      }
+    },
+    "configuration": {
+      "label": "配置",
+      "title": "节点 CLI 参数",
+      "tableHeaders": {
+        "flag": "参数",
+        "description": "描述"
+      },
+      "flags": {
+        "0": { "flag": "--dev", "description": "以开发模式运行，使用临时存储" },
+        "1": { "flag": "--chain <spec>", "description": "指定链规范（local、dev 或 JSON 文件路径）" },
+        "2": { "flag": "--validator", "description": "启用验证者模式以进行区块生产" },
+        "3": { "flag": "--base-path <path>", "description": "设置节点的数据目录" },
+        "4": { "flag": "--rpc-port <port>", "description": "设置 JSON-RPC 端口（默认：9944）" },
+        "5": { "flag": "--port <port>", "description": "设置 P2P 网络端口（默认：30333）" },
+        "6": { "flag": "--name <name>", "description": "节点的可读名称" },
+        "7": { "flag": "--telemetry-url <url>", "description": "遥测服务器端点" },
+        "8": { "flag": "--bootnodes <addr>", "description": "指定引导节点多地址" },
+        "9": { "flag": "--rpc-cors all", "description": "允许所有 CORS 来源的 RPC 请求" }
+      }
+    },
+    "economics": {
+      "label": "经济模型",
+      "title": "抵押与罚没生命周期",
+      "description": "验证者必须抵押 $7AY 才能参与。诚实行为获得奖励，不诚实的证实会触发罚没。",
+      "steps": {
+        "0": {
+          "step": "注册",
+          "description": "使用你的会话密钥提交验证者注册外部交易。注册将进入待处理队列，直到下一个纪元。"
+        },
+        "1": {
+          "step": "激活",
+          "description": "当你的注册被治理接受后，你的节点进入活跃验证者集合，开始参与共识。"
+        },
+        "2": {
+          "step": "抵押",
+          "description": "绑定 $7AY 代币作为抵押品。更高的抵押增加你被选入见证圈和获得奖励的机会。"
+        },
+        "3": {
+          "step": "赚取",
+          "description": "验证者通过诚实的三角定位、在场证实和区块生产获得奖励。奖励按纪元分发。"
+        },
+        "4": {
+          "step": "罚没",
+          "description": "不诚实行为（虚假证实、离线、模棱两可行为）会触发罚没。你抵押的 $7AY 的一部分将被销毁。"
+        }
+      }
+    },
+    "witnessCircles": {
+      "label": "协议",
+      "title": "见证圈参与",
+      "paragraph1": "当参与者声明在场时，协议选择一部分活跃验证者组成",
+      "witnessCircleHighlight": "见证圈",
+      "paragraph1cont": "。选择是伪随机的，按抵押量加权，并受网络拓扑约束。",
+      "paragraph2": "见证圈中的每个验证者独立测量到声明参与者和其他圈内成员的往返延迟。这些测量作为签名证实在承诺阶段提交。",
+      "paragraph3": "在揭示阶段，延迟测量被用于多点定位——一种基于来自多个参考点的网络时序数据估算参与者物理位置的三角定位算法。",
+      "paragraph4": "如果法定数量的验证者的位置估算在可接受的阈值内收敛，则在场得到最终确认。异常测量会触发争议解决流程，提供虚假证实的验证者面临罚没。"
+    },
+    "cta": {
+      "title": "开始在 7aychain 上验证",
+      "subtitle": "开发网络已上线并正在接受验证者。克隆仓库、构建节点并加入网络。",
+      "primary": "在 GitHub 上查看",
+      "secondary": "开发网络部署"
+    }
+  },
+  "ecosystemPage": {
+    "label": "生态系统",
+    "title": "在在场层上构建",
+    "accentWord": "在场",
+    "description": "开发者工具、SDK 集成和协议模块，用于在 7aychain 的 Proof of Presence 基础设施上构建应用。",
+    "developerTools": {
+      "label": "开发者工具",
+      "title": "与 7aychain 交互的工具",
+      "tools": {
+        "0": {
+          "name": "Laud Networks CLI",
+          "badge": "CLI 工具",
+          "description": "基于 Python 的 TUI，用于与所有 16 个 7aychain 模块交互。从终端声明在场、管理验证者、提交 ZK 证明并查询链状态。"
+        },
+        "1": {
+          "name": "Polkadot.js Apps",
+          "badge": "Web UI",
+          "description": "功能全面的 Web 界面，用于浏览区块、提交外部交易并查询 7aychain 开发网络上的存储。连接至 ws://127.0.0.1:9944。"
+        },
+        "2": {
+          "name": "JSON-RPC API",
+          "badge": "API",
+          "description": "标准的 Substrate JSON-RPC 接口，用于编程访问。兼容任何 HTTP 或 WebSocket 客户端。支持所有运行时 API 和自定义模块方法。"
+        }
+      }
+    },
+    "sdkIntegration": {
+      "label": "SDK 集成",
+      "title": "从任何语言连接",
+      "description": "7aychain 公开了标准的 Substrate RPC 接口。使用任何兼容 Substrate 的 SDK 以编程方式与链交互。",
+      "examples": {
+        "0": {
+          "language": "Rust (Subxt)",
+          "description": "用于 Rust 应用的类型安全 Substrate 客户端"
+        },
+        "1": {
+          "language": "JavaScript (@polkadot/api)",
+          "description": "功能全面的 JS/TS 客户端，适用于浏览器和 Node.js"
+        },
+        "2": {
+          "language": "cURL (JSON-RPC)",
+          "description": "适用于任何语言或工具的直接 HTTP 调用"
+        }
+      }
+    },
+    "protocolModules": {
+      "label": "协议模块",
+      "title": "16 个可用于构建的模块",
+      "description": "7aychain 的运行时由 16 个自定义模块组成，分为四个功能组。每个模块公开外部交易、存储和事件，供开发者交互。",
+      "groups": {
+        "0": {
+          "category": "在场层",
+          "description": "核心在场声明、纪元管理、状态机和设备注册。",
+          "pallets": ["presence", "epoch", "lifecycle", "device"]
+        },
+        "1": {
+          "category": "验证",
+          "description": "位置估算、零知识证明和位置绑定代币铸造。",
+          "pallets": ["triangulation", "zk", "pbt"]
+        },
+        "2": {
+          "category": "安全",
+          "description": "验证者抵押、争议解决和自主异常检测。",
+          "pallets": ["validator", "dispute", "autonomous"]
+        },
+        "3": {
+          "category": "基础设施",
+          "description": "数据保险库、链上存储、治理、信任图谱、回返证明和群组管理。",
+          "pallets": ["vault", "storage", "governance", "semantic", "boomerang", "octopus"]
+        }
+      }
+    },
+    "community": {
+      "label": "社区",
+      "title": "加入 7aychain 社区",
+      "github": {
+        "title": "GitHub",
+        "description": "探索源代码、提交问题并为协议做贡献。",
+        "cta": "查看代码仓库"
+      },
+      "twitter": {
+        "title": "X (Twitter)",
+        "description": "关注我们获取协议更新、开发进展和社区动态。",
+        "cta": "关注 @7ayLabs"
+      }
+    },
+    "cta": {
+      "title": "准备好构建了吗？",
+      "subtitle": "开发网络已上线。立即开始在 Proof of Presence 协议上构建。",
+      "primary": "连接到开发网络",
+      "secondary": "运行验证节点"
+    }
+  },
+  "updatesPage": {
+    "label": "动态",
+    "title": "项目",
+    "titleAccent": "状态",
+    "lastUpdated": "最后更新 · 2026 年 2 月 28 日",
+    "intro": "本日志追踪 7aychain 和 7ayLabs 项目的真实进展——协议里程碑、已交付的功能和基础设施更新。",
+    "filterAria": "按类型筛选动态",
+    "filters": {
+      "all": "所有动态",
+      "platform": "platform",
+      "website": "website",
+      "app": "app"
+    },
+    "latest": "最新",
+    "viewDetails": "查看详情",
+    "close": "关闭",
+    "entries": {
+      "0": {
+        "title": "7aychain v0.8.26 发布",
+        "date": "2026 年 2 月 28 日",
+        "summary": "包含完整协议栈的最新稳定版本。",
+        "content": "发布了 7aychain v0.8.26，即 Layer 1 区块链的最新稳定版本。此版本包含完整的协议栈：带有承诺-揭示的在场生命周期、见证圈三角定位、ZK 证明验证、验证者抵押与罚没、治理、保险库、语义链接、争议解决、设备扫描和自主检测。6 个验证者的多节点开发网络正在运行中。",
+        "type": "platform"
+      },
+      "1": {
+        "title": "治理和保险库系统",
+        "date": "2026 年 2 月",
+        "summary": "链上治理和安全保险库基础设施已交付。",
+        "content": "交付了链上治理功能，包括提案、投票和委托。实现了保险库系统，支持创建、共享、恢复、注册文件、请求解锁和授权解锁操作。添加了用于链上实体间信任图谱的语义链接。",
+        "type": "platform"
+      },
+      "2": {
+        "title": "ZK 电路和三角定位",
+        "date": "2026 年 1 月",
+        "summary": "零知识证明和多点定位算法已集成。",
+        "content": "集成了用于隐私保护在场证实的 ZK 证明生成和链上验证。实现了多点定位和质心三角定位算法，允许验证者在无 GPS 的情况下通过网络延迟测量确定位置。添加了用于加密位置声明的位置绑定代币 (PBT)。",
+        "type": "platform"
+      },
+      "3": {
+        "title": "验证者系统和争议解决",
+        "date": "2026 年 1 月",
+        "summary": "完整的验证者生命周期，包含抵押、罚没和争议。",
+        "content": "实现了完整的验证者系统：注册、激活、停用、提取、抵押和罚没。添加了争议解决功能，包括证据提交、投票和链上解决。验证者组成见证圈，参与基于法定人数的在场最终确认。",
+        "type": "platform"
+      },
+      "4": {
+        "title": "多节点开发网络和 CLI",
+        "date": "2026 年 1 月",
+        "summary": "混合开发网络和用于协议交互的 Laud Networks CLI。",
+        "content": "启动了多节点混合开发网络，Alice 以原生方式运行，其余验证者（Bob、Charlie、Dave、Eve、Ferdie）在 Docker 中运行。发布了 Laud Networks CLI，支持所有协议模块的交互命令：presence、epoch、validator、triangulation、ZK、governance、vault、semantic 等。",
+        "type": "platform"
+      },
+      "5": {
+        "title": "在场和纪元核心",
+        "date": "2025 年 12 月",
+        "summary": "基础在场生命周期和纪元管理已交付。",
+        "content": "构建了核心在场状态机（已声明、已证实、已三角定位、已最终确认），具有纪元绑定的生命周期。实现了 5 状态纪元模型，支持基于区块时间戳的动态状态推导。建立了参与者/纪元隔离和权限控制的变更操作。",
+        "type": "platform"
+      },
+      "6": {
+        "title": "问题验证",
+        "date": "2025 年 12 月 1 日 - 12 月 5 日",
+        "summary": "与早期团队验证了核心问题。",
+        "content": "与早期团队验证了核心问题。对活动组织者、社区建设者和物流运营商进行了结构化访谈和研究。确认在场验证是一个高痛点、低解决方案的问题领域。",
+        "type": "platform"
+      }
+    }
+  },
+  "aboutPage": {
+    "label": "关于我们",
+    "title": "我们的故事",
+    "accentWord": "故事",
+    "description": {
+      "0": "我们创立 7ayLabs 始于一个简单的问题：如果你能证明自己曾在某处，而不暴露自己是谁呢？",
+      "1": "这个问题变成了 7aychain——一个利用互联网本身的物理法则验证在场的网络。"
+    },
+    "mission": {
+      "label": "我们在构建什么",
+      "title": "我们的使命",
+      "paragraph1": "7ayLabs 构建 7aychain，一种新型区块链。我们的网络不扫描你的眼睛或索要身份证，而是验证你物理在场于某个位置——仅使用你的互联网连接。",
+      "paragraph2": "网络中的验证者测量连接时序以确认你的位置。无需 GPS。无需摄像头。无需特殊硬件。",
+      "paragraph3": "当世界无法区分真人与机器人时，在场成为最有价值的信号。我们正在构建让这一信号对所有人可用的基础设施。",
+      "paragraph4": "对于企业，这意味着欺诈减少、合规变得更简单，每一个依赖\u201c这个人是否真的在这里？\u201d的流程终于有了可靠的答案。",
+      "paragraph5": "对于个人，这意味着证明你曾在某处，而无需交出你的身份。没有监控。没有数据收割。只有证明。"
+    },
+    "vision": {
+      "label": "我们的长远愿景",
+      "title": "我们的愿景",
+      "paragraph1": "我们展望一个\u201c在场\u201d成为一等数字信号的未来——而非事后补充。当 AI 越来越擅长伪造其他一切时，物理在场成为唯一无法模拟的事物。",
+      "paragraph2": "7ayLabs 正在为这个未来构建基础设施。缓慢地、谨慎地，以真实系统所需的严谨态度。"
+    },
+    "principles": {
+      "label": "我们的思考方式",
+      "title": "指导我们工作的原则",
+      "items": {
+        "0": {
+          "title": "现实优先于规模",
+          "description": "我们为真实性优化，而非数量。如果一个系统无法在真实世界条件下成立，它就不应进入生产环境。"
+        },
+        "1": {
+          "title": "清晰优先于复杂",
+          "description": "我们构建的每个系统都旨在清晰回答一个简单的问题：这件事真的发生了吗？"
+        },
+        "2": {
+          "title": "长期信任",
+          "description": "我们缓慢而深思熟虑地构建，在推进之前验证每一层。企业可以依赖的基础设施。"
+        }
+      }
+    }
+  },
+  "servicesPage": {
+    "redirect": "/ecosystem"
+  },
+  "techPage": {
+    "redirect": "/technology"
+  },
+  "metadata": {
+    "home": {
+      "title": "7ayLabs | Web3 的在场层",
+      "titleTemplate": "%s | 7ayLabs",
+      "description": "第一条以物理在场作为身份的 Layer 1 区块链。7aychain 的 Proof of Presence 协议通过网络延迟三角定位人类验证——无需生物识别，无需 GPS，无需硬件。基于物理法则的女巫攻击抵御。由 $7AY 驱动。",
+      "ogTitle": "7ayLabs | Proof of Presence Layer 1 区块链",
+      "ogDescription": "7aychain：一条 Layer 1 区块链，验证者通过网络延迟三角定位物理在场。抗女巫攻击的人类验证——无需 GPS，无需生物识别，无需硬件。Web3 的在场层。",
+      "ogImageAlt": "7ayLabs — 7aychain Proof of Presence Layer 1 区块链",
+      "twitterTitle": "7ayLabs — 7aychain：Proof of Presence Layer 1",
+      "twitterDescription": "你的在场就是你的证明。7aychain 通过物理法则验证人类——而非生物识别。面向 Web3 的抗女巫攻击 Layer 1。$7AY"
+    },
+    "technology": {
+      "title": "技术",
+      "description": "7aychain 如何通过物理法则验证人类在场。探索 Proof of Presence 协议：网络延迟三角定位、零知识隐私和四层架构。"
+    },
+    "useCases": {
+      "title": "应用场景",
+      "description": "了解 Proof of Presence 如何实现公平代币空投、经验证的投票、安全交易、活动票务、经验证的社区和真实评论。"
+    },
+    "whyPresence": {
+      "title": "为何选择在场证明",
+      "description": "当机器人能做到人类在网上能做的一切时，唯一能证明你是真人的就是物理在场。了解 7aychain 如何用物理法则替代生物识别。"
+    },
+    "glossary": {
+      "title": "术语表",
+      "description": "7aychain 和 Proof of Presence 关键术语的定义：见证圈、三角定位、位置绑定代币、ZK 电路、纪元生命周期等。"
+    },
+    "waitlist": {
+      "title": "候补名单",
+      "description": "加入 7aychain 候补名单，抢先体验 Proof of Presence 网络。"
+    },
+    "newsletter": {
+      "title": "通讯",
+      "description": "与 7ayLabs 保持同步——产品洞察、协议进展和真实的在场基础设施更新。"
+    },
+    "devnet": {
+      "title": "开发网络",
+      "description": "连接到 7aychain 开发网络。克隆、构建并运行基于 Substrate 的 Proof of Presence 节点，拥有 6 个验证者、16 个模块和完整的协议栈。"
+    },
+    "validators": {
+      "title": "验证者",
+      "description": "运行 7aychain 验证节点。了解如何配置硬件、从源码构建、设置抵押，以及参与见证圈三角定位。"
+    },
+    "ecosystem": {
+      "title": "生态系统",
+      "description": "在 7aychain 在场层上构建。开发者工具、SDK 集成、协议模块和 Proof of Presence 生态系统的社区资源。"
+    },
+    "updates": {
+      "title": "动态",
+      "description": "追踪 7aychain 和 7ayLabs 的真实进展——协议里程碑、已交付的功能和基础设施更新。"
+    },
+    "about": {
+      "title": "关于",
+      "description": "了解 7ayLabs，构建 7aychain 的团队——一条拥有链上 Proof of Presence 的 Layer 1 区块链，验证者通过网络延迟三角定位物理在场。"
+    }
+  }
+}

@@ -1,0 +1,85 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME   = 'imzzaidd/site-7aylabs'
+        IMAGE_TAG    = 'staging'
+        APP_NAME     = 'site-7aylabs-test'
+        PROXY_NAME   = 'nginx-proxy-test'
+        NETWORK      = '7aylabspipeline_testing_site_net'
+        DATABASE_URL = credentials('database-url-testing')
+    }
+
+    stages {
+        stage('Pull Latest Image') {
+            steps {
+                sh "docker pull ${IMAGE_NAME}:${IMAGE_TAG}"
+            }
+        }
+
+        stage('Stop Old Container') {
+            steps {
+                sh """
+                    docker stop ${APP_NAME} || true
+                    docker rm ${APP_NAME} || true
+                """
+            }
+        }
+
+        stage('Deploy App') {
+            steps {
+                sh """
+                    docker run -d \
+                        --name ${APP_NAME} \
+                        --network ${NETWORK} \
+                        --restart unless-stopped \
+                        -e NODE_ENV=production \
+                        -e HOSTNAME=0.0.0.0 \
+                        -e PORT=8082 \
+                        -e ALLOWED_ORIGINS=https://test.7aylabs.com \
+                        -e DATABASE_URL=${DATABASE_URL} \
+                        ${IMAGE_NAME}:${IMAGE_TAG}
+                """
+            }
+        }
+
+        stage('Ensure Proxy Running') {
+            steps {
+                sh """
+                    if ! docker ps --format '{{.Names}}' | grep -q '^${PROXY_NAME}\$'; then
+                        docker rm ${PROXY_NAME} || true
+                        docker run -d \
+                            --name ${PROXY_NAME} \
+                            --network ${NETWORK} \
+                            --restart unless-stopped \
+                            -p 8082:80 \
+                            -v /opt/7aylabs-test/nginx/conf.d:/etc/nginx/conf.d:ro \
+                            nginx:1.27-alpine
+                    else
+                        docker exec ${PROXY_NAME} nginx -s reload || true
+                    fi
+                """
+            }
+        }
+
+        stage('Health Check') {
+            steps {
+                retry(3) {
+                    sh "sleep 5 && docker exec ${APP_NAME} wget -q -O /dev/null http://localhost:8082/ || exit 1"
+                }
+            }
+        }
+
+        stage('Cleanup') {
+            steps {
+                sh "docker image prune -f"
+            }
+        }
+    }
+
+    post {
+        failure {
+            echo 'Deployment failed! Check logs with: docker logs site-7aylabs-test'
+        }
+    }
+}

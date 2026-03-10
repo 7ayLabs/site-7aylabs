@@ -1,0 +1,36 @@
+# Optional: docker-compose alternative for manual deployment
+# The Jenkins pipeline uses individual docker run commands instead.
+# Use this for local testing or manual VPS deployment:
+#   docker compose -f docker-compose.test.yml up -d
+
+services:
+  app:
+    image: imzzaidd/site-7aylabs:staging
+    container_name: site-7aylabs-test
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "8082"
+      HOSTNAME: "0.0.0.0"
+      ALLOWED_ORIGINS: "https://test.7aylabs.com"
+      DATABASE_URL: "${DATABASE_URL}"
+    networks:
+      - jenkins_net
+
+  nginx-proxy:
+    image: nginx:1.27-alpine
+    container_name: nginx-proxy-test
+    restart: unless-stopped
+    depends_on:
+      - app
+    ports:
+      - "8082:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    networks:
+      - jenkins_net
+
+networks:
+  jenkins_net:
+    external: true
+    name: 7aylabspipeline_testing_site_net
