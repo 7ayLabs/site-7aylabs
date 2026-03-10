@@ -42,16 +42,3 @@ jobs:
           tags: ${{ steps.meta.outputs.tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-  notify-jenkins:
-    name: Trigger Jenkins Deploy
-    needs: build-and-push
-    if: github.ref == 'refs/heads/testing'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger Jenkins deploy
-        run: |
-          curl -sf -X POST \
-            "http://159.198.70.125:8080/github-webhook/" \
-            -H "Content-Type: application/json" \
-            -d '{"ref": "${{ github.ref }}", "after": "${{ github.sha }}"}'
