@@ -52,7 +52,7 @@ pipeline {
                             --restart unless-stopped \
                             -p 8082:80 \
                             -v /opt/7aylabs-test/nginx/conf.d:/etc/nginx/conf.d:ro \
-                            nginx:latest
+                            nginx:1.27-alpine
                     else
                         docker exec ${PROXY_NAME} nginx -s reload || true
                     fi

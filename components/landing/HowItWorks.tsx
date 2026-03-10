@@ -64,7 +64,7 @@ function StaticFallback({ theme }: { theme: string }) {
   return (
     <section
       id="how-it-works"
-      className="relative w-full py-24 md:py-32"
+      className="relative w-full py-16 sm:py-24 md:py-32"
       aria-labelledby="how-it-works-heading-static"
     >
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -134,7 +134,7 @@ export default function HowItWorks() {
     <section
       id="how-it-works"
       aria-label={t("aria")}
-      className="relative w-full py-24 md:py-32"
+      className="relative w-full py-16 sm:py-24 md:py-32"
     >
       <motion.div
         className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12"

@@ -84,7 +84,7 @@ export default function KeyFeatures() {
 
   return (
     <section
-      className="relative w-full px-6 md:px-12 py-24 md:py-32"
+      className="relative w-full px-6 md:px-12 py-16 sm:py-24 md:py-32"
       aria-labelledby="key-features-heading"
     >
       <div className="max-w-6xl mx-auto">

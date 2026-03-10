@@ -1,11 +1,15 @@
 import { NextRequest } from "next/server";
-import { isValidEmail, checkRateLimit, getClientIp } from "@/lib/api/validation";
+import { isValidEmail, checkRateLimit, getClientIp, isAllowedOrigin } from "@/lib/api/validation";
 import { successResponse, errorResponse } from "@/lib/api/response";
 import { prisma } from "@/lib/db/prisma";
 import type { NewsletterRequest } from "@/types/api";
 
 export async function POST(request: NextRequest) {
   try {
+    if (!isAllowedOrigin(request)) {
+      return errorResponse("Forbidden.", 403);
+    }
+
     const ip = getClientIp(request);
     if (!checkRateLimit(ip)) {
       return errorResponse("Too many requests. Try again later.", 429);

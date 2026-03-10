@@ -68,7 +68,7 @@ export default function WhyChain() {
   const t = useTranslations("whyChain");
 
   return (
-    <section className="relative w-full py-24 md:py-32">
+    <section className="relative w-full py-16 sm:py-24 md:py-32">
       <motion.div
         className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12"
         variants={stagger}

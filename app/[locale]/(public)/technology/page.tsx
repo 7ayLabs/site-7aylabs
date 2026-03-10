@@ -26,7 +26,7 @@ export default async function TechnologyPage({ params }: { params: Promise<{ loc
   return (
     <>
       {/* ══════════ BIG HERO ══════════ */}
-      <section className="relative min-h-[85svh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[85svh] w-full flex items-center justify-center overflow-hidden pt-20 sm:pt-16 md:pt-0">
         {/* Decorative gradient blob */}
         <div
           className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full opacity-30 blur-[120px] pointer-events-none"
@@ -44,7 +44,7 @@ export default async function TechnologyPage({ params }: { params: Promise<{ loc
           </span>
 
           {/* Big heading */}
-          <h1 className="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl tracking-tight leading-[0.95] text-fg">
+          <h1 className="font-display font-extrabold text-[2.5rem] sm:text-5xl md:text-7xl tracking-tight leading-[0.95] text-fg">
             {titleBefore}{" "}
             <span className="gradient-text-accent">{accent}</span>
           </h1>

@@ -190,7 +190,7 @@ body {
   }
 
   .section-padding {
-    @apply py-20 md:py-28 lg:py-32;
+    @apply py-16 sm:py-20 md:py-28 lg:py-32;
   }
 
   /* ===== Typography ===== */

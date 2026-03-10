@@ -64,7 +64,7 @@ function HeroComponent() {
   const typed = useTypewriter(phrases);
 
   return (
-    <section className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden pt-20 sm:pt-16 md:pt-0">
       <motion.div
         className="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto"
         initial="hidden"
@@ -73,7 +73,7 @@ function HeroComponent() {
       >
         <motion.h1
           variants={kineticReveal}
-          className="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95]"
+          className="font-display font-extrabold text-[2.5rem] sm:text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95]"
         >
           <span className="text-fg">{t("titleLine1Start")}</span>
           <span className="gradient-text-accent">{t("titleLine1Accent")}</span>

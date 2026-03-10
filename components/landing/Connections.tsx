@@ -367,7 +367,7 @@ function FeatureCard({
 function StaticFallback() {
   return (
     <section
-      className="relative w-full px-5 sm:px-6 lg:px-8 py-24 md:py-32"
+      className="relative w-full px-5 sm:px-6 lg:px-8 py-16 sm:py-24 md:py-32"
       aria-labelledby="connections-heading-static"
     >
       <div className="max-w-6xl mx-auto">

@@ -110,7 +110,7 @@ export default function DevnetStatus() {
   const t = useTranslations("devnetStatus");
 
   return (
-    <section className="relative w-full px-6 md:px-12 py-16 md:py-24">
+    <section className="relative w-full px-6 md:px-12 py-12 sm:py-16 md:py-24">
       <div className="max-w-4xl mx-auto" ref={sectionRef}>
         <motion.div
           initial="hidden"
