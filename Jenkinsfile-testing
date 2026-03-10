@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = '7aylabs/site-7aylabs'
+        IMAGE_NAME = 'imzzaidd/site-7aylabs'
         IMAGE_TAG  = 'staging'
         APP_NAME   = 'site-7aylabs-test'
         PROXY_NAME = 'nginx-proxy-test'

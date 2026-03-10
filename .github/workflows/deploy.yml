@@ -20,9 +20,9 @@ jobs:
         id: meta
         run: |
           if [ "${{ github.ref_name }}" = "main" ]; then
-            echo "tag=7aylabs/site-7aylabs:latest" >> "$GITHUB_OUTPUT"
+            echo "tag=imzzaidd/site-7aylabs:latest" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.ref_name }}" = "testing" ]; then
-            echo "tag=7aylabs/site-7aylabs:staging" >> "$GITHUB_OUTPUT"
+            echo "tag=imzzaidd/site-7aylabs:staging" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Set up Docker Buildx
