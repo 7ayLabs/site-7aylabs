@@ -146,7 +146,7 @@ export default function MobileAccordion({
 
       {/* ── Floating panel below the pill navbar ── */}
       <motion.div
-        className="fixed top-16 left-0 right-0 z-50 flex justify-center px-4 md:hidden"
+        className="fixed top-[72px] left-0 right-0 z-50 flex justify-center px-4 md:hidden"
         variants={panelVariants}
         initial="hidden"
         animate="visible"
@@ -155,14 +155,12 @@ export default function MobileAccordion({
         <div
           className={cn(
             "w-full max-w-md",
-            /* Matching pill aesthetic */
             "rounded-2xl",
             "backdrop-blur-2xl backdrop-saturate-150",
             "border border-[var(--color-border-secondary)]",
             "shadow-[0_8px_40px_-8px_rgba(0,0,0,0.3)]",
-            /* Layout */
             "flex flex-col",
-            "max-h-[calc(100vh-6rem)]"
+            "max-h-[calc(100svh-5rem)]"
           )}
           style={{
             backgroundColor:
@@ -172,8 +170,8 @@ export default function MobileAccordion({
           }}
         >
           {/* Scrollable nav */}
-          <div className="flex-1 overflow-y-auto p-4">
-            <nav className="flex flex-col gap-1">
+          <div className="flex-1 overflow-y-auto p-3">
+            <nav className="flex flex-col gap-0.5">
               {NAV_CATEGORIES.map((cat) => {
                 const isOpen = openItem === cat.label;
 
@@ -184,15 +182,15 @@ export default function MobileAccordion({
                       onClick={() => toggleCategory(cat.label)}
                       className={cn(
                         "w-full flex items-center justify-between",
-                        "px-3 py-3",
-                        "rounded-xl",
+                        "px-3 py-2.5",
+                        "rounded-lg",
                         "transition-all duration-200 ease-out",
                         isOpen
                           ? "text-fg bg-[var(--color-bg-card)]"
                           : "text-fg-secondary hover:text-fg hover:bg-[var(--color-bg-card)]"
                       )}
                     >
-                      <span className="text-[11px] font-bold uppercase tracking-[0.14em]">
+                      <span className="text-xs font-bold uppercase tracking-[0.12em]">
                         {t(`categories.${CAT_KEY[cat.label]}`)}
                       </span>
                       <ChevronDown
@@ -241,9 +239,9 @@ export default function MobileAccordion({
                               const isActive = pathname === item.href;
 
                               const cls = cn(
-                                "group flex items-center gap-3",
-                                "px-2.5 py-2.5",
-                                "rounded-xl",
+                                "group flex items-center gap-2.5",
+                                "px-2.5 py-2",
+                                "rounded-lg",
                                 "hover:bg-[var(--color-bg-card-hover)]",
                                 "text-[13px] font-medium",
                                 isActive ? "text-fg" : "text-fg-secondary",
@@ -252,7 +250,7 @@ export default function MobileAccordion({
 
                               const iconBox = cn(
                                 "flex items-center justify-center",
-                                "w-8 h-8 rounded-lg shrink-0",
+                                "w-7 h-7 rounded-md shrink-0",
                                 isActive
                                   ? "bg-[var(--color-accent-primary)]/15"
                                   : "bg-[var(--color-accent-dim)]",
@@ -331,7 +329,7 @@ export default function MobileAccordion({
           </div>
 
           {/* Bottom CTA */}
-          <div className="shrink-0 px-4 pb-4 pt-2 border-t border-[var(--color-border-primary)]">
+          <div className="shrink-0 px-3 pb-3 pt-2 border-t border-[var(--color-border-primary)]">
             <Link
               href={ROUTES.waitlist}
               onClick={onClose}

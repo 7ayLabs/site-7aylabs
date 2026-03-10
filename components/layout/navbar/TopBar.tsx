@@ -86,8 +86,8 @@ export default function TopBar({
             scrolled ? "px-4 py-2" : "px-5 py-2.5"
           )}
         >
-          {/* Left: Logo — fixed width for symmetry */}
-          <div className="flex items-center w-[100px] shrink-0">
+          {/* Left: Logo */}
+          <div className="flex items-center shrink-0">
             <Link
               href={ROUTES.home}
               className={cn(
@@ -144,8 +144,8 @@ export default function TopBar({
             })}
           </div>
 
-          {/* Right: Utils — fixed width matching logo for symmetry */}
-          <div className="flex items-center justify-end w-[100px] shrink-0 gap-1">
+          {/* Right: Utils */}
+          <div className="flex items-center justify-end shrink-0 gap-1">
             <LanguageSwitcher />
             <ThemeToggle />
 
