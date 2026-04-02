@@ -65,6 +65,7 @@ jobs:
           script_stop: true
           script: |
             cd /home/deploy/site-7aylabs-com
+            git pull origin testing
             docker pull ${{ env.IMAGE_NAME }}:staging
             docker compose -f docker-compose.test.yml down --remove-orphans 2>/dev/null || true
             docker rm -f postgres-test site-7aylabs-test nginx-proxy-test 2>/dev/null || true
@@ -99,6 +100,7 @@ jobs:
           script_stop: true
           script: |
             cd /home/deploy/site-7aylabs-com
+            git pull origin main
             docker pull ${{ env.IMAGE_NAME }}:latest
             docker compose down --remove-orphans 2>/dev/null || true
             docker rm -f postgres-prod site-7aylabs nginx-proxy 2>/dev/null || true
