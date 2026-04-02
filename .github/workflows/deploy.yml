@@ -67,6 +67,7 @@ jobs:
             cd /home/deploy/site-7aylabs-com
             docker pull ${{ env.IMAGE_NAME }}:staging
             docker compose -f docker-compose.test.yml down --remove-orphans 2>/dev/null || true
+            docker rm -f postgres-test site-7aylabs-test nginx-proxy-test 2>/dev/null || true
             docker compose -f docker-compose.test.yml up -d
             echo "Waiting for health check..."
             for i in $(seq 1 30); do
@@ -100,6 +101,7 @@ jobs:
             cd /home/deploy/site-7aylabs-com
             docker pull ${{ env.IMAGE_NAME }}:latest
             docker compose down --remove-orphans 2>/dev/null || true
+            docker rm -f postgres-prod site-7aylabs nginx-proxy 2>/dev/null || true
             docker compose up -d
             echo "Waiting for health check..."
             for i in $(seq 1 30); do
