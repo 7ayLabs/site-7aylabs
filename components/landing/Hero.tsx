@@ -55,18 +55,6 @@ function useTypewriter(phrases: readonly string[]) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Nebula Background                                                  */
-/* ------------------------------------------------------------------ */
-
-function NebulaBackground() {
-  return (
-    <div className="nebula-bg" aria-hidden="true">
-      <div className="nebula-layer-3" />
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
 /*  Hero Component                                                     */
 /* ------------------------------------------------------------------ */
 
@@ -77,7 +65,6 @@ function HeroComponent() {
 
   return (
     <section className="relative min-h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden pt-24 pb-8 md:pt-20 md:pb-0">
-      <NebulaBackground />
       <motion.div
         className="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto"
         initial="hidden"
@@ -86,7 +73,7 @@ function HeroComponent() {
       >
         <motion.h1
           variants={kineticReveal}
-          className="font-display font-black text-[3rem] sm:text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] tracking-tighter leading-[0.9] uppercase"
+          className="font-display font-black text-[2.5rem] sm:text-5xl md:text-7xl lg:text-8xl xl:text-[8.5rem] tracking-tighter leading-[0.9] uppercase"
         >
           <span className="text-fg">{t("titleLine1Start")}</span>
           <span className="gradient-text-hero">{t("titleLine1Accent")}</span>
@@ -116,9 +103,9 @@ function HeroComponent() {
 
         <motion.div
           variants={kineticReveal}
-          className="mt-12 h-8 flex items-center justify-center"
+          className="mt-6 md:mt-8 h-8 flex items-center justify-center"
         >
-          <span className="font-mono text-sm sm:text-base md:text-lg text-fg-muted tracking-wider">
+          <span className="font-mono text-base sm:text-lg md:text-xl text-fg tracking-wider">
             {typed}
           </span>
           <span
@@ -127,15 +114,6 @@ function HeroComponent() {
           />
         </motion.div>
       </motion.div>
-
-      <div
-        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
-        style={{
-          background:
-            "linear-gradient(to top, var(--color-bg-primary), transparent)",
-        }}
-        aria-hidden="true"
-      />
     </section>
   );
 }
