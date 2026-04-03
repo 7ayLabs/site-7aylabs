@@ -1,5 +1,7 @@
 import Navbar from "@/components/layout/navbar/Navbar";
 import Footer from "@/components/layout/Footer";
+import NebulaBackground from "@/components/background/NebulaBackground";
+import PageTransition from "@/components/providers/PageTransition";
 
 export default function PublicLayout({
   children,
@@ -8,9 +10,12 @@ export default function PublicLayout({
 }) {
   return (
     <>
+      <NebulaBackground />
       <Navbar />
       <main id="main-content" className="relative z-10">
-        {children}
+        <PageTransition>
+          {children}
+        </PageTransition>
       </main>
       <Footer />
     </>
