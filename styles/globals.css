@@ -91,6 +91,15 @@ body {
     color: transparent;
   }
 
+  .gradient-text-hero {
+    background: linear-gradient(135deg, #00FFC6 0%, #178E77 30%, #8B5CF6 60%, #00FFC6 100%);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shineGold 6s linear infinite;
+  }
+
   .gradient-text-tri {
     background: var(--gradient-accent);
     background-size: 300% auto;
@@ -195,20 +204,20 @@ body {
 
   /* ===== Typography ===== */
   .heading-xl {
-    @apply font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight;
-    line-height: 1.08;
+    @apply font-display font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter uppercase;
+    line-height: 0.95;
   }
 
   .heading-lg {
-    @apply font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight leading-tight;
+    @apply font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-none;
   }
 
   .heading-md {
-    @apply font-display font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight;
+    @apply font-display font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight;
   }
 
   .heading-sm {
-    @apply font-display font-semibold text-xl md:text-2xl tracking-tight;
+    @apply font-display font-semibold text-xl md:text-2xl lg:text-3xl tracking-tight;
   }
 
   .body-lg {
@@ -391,4 +400,75 @@ body {
 
 .click-ripple {
   animation: clickRipple 0.8s ease-out forwards;
+}
+
+/* ===== Nebula Background ===== */
+.nebula-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.nebula-bg::before {
+  content: '';
+  position: absolute;
+  inset: -30%;
+  width: 160%;
+  height: 160%;
+  background:
+    radial-gradient(800px 800px at 15% 25%, var(--nebula-color-1), transparent 65%),
+    radial-gradient(700px 700px at 80% 15%, var(--nebula-color-2), transparent 60%),
+    radial-gradient(650px 650px at 45% 75%, var(--nebula-color-3), transparent 65%);
+  animation: nebulaDrift1 20s ease-in-out infinite alternate;
+  filter: blur(60px);
+  will-change: transform, opacity;
+}
+
+.nebula-bg::after {
+  content: '';
+  position: absolute;
+  inset: -15%;
+  width: 130%;
+  height: 130%;
+  background:
+    radial-gradient(600px 600px at 70% 50%, var(--nebula-color-4), transparent 60%),
+    radial-gradient(500px 500px at 25% 80%, var(--nebula-color-5), transparent 55%),
+    radial-gradient(400px 400px at 50% 30%, var(--nebula-color-6), transparent 65%);
+  animation: nebulaDrift2 25s ease-in-out infinite alternate;
+  filter: blur(50px);
+  will-change: transform, opacity;
+}
+
+.nebula-layer-3 {
+  position: absolute;
+  inset: 5%;
+  width: 90%;
+  height: 90%;
+  background:
+    radial-gradient(500px 500px at 50% 50%, var(--nebula-color-6), transparent 65%),
+    radial-gradient(400px 400px at 30% 35%, var(--nebula-color-4), transparent 55%),
+    radial-gradient(350px 350px at 70% 65%, var(--nebula-color-5), transparent 60%);
+  filter: blur(70px);
+  opacity: 0.7;
+  animation: nebulaPulse 18s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes nebulaDrift1 {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+  50% { transform: translate(30px, -20px) scale(1.05); opacity: 1; }
+  100% { transform: translate(-15px, 10px) scale(0.98); opacity: 0.85; }
+}
+
+@keyframes nebulaDrift2 {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+  50% { transform: translate(-25px, 15px) scale(1.03); opacity: 0.9; }
+  100% { transform: translate(20px, -10px) scale(0.97); opacity: 0.75; }
+}
+
+@keyframes nebulaPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.08); }
 }

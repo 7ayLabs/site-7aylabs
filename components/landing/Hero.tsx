@@ -55,6 +55,18 @@ function useTypewriter(phrases: readonly string[]) {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Nebula Background                                                  */
+/* ------------------------------------------------------------------ */
+
+function NebulaBackground() {
+  return (
+    <div className="nebula-bg" aria-hidden="true">
+      <div className="nebula-layer-3" />
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /*  Hero Component                                                     */
 /* ------------------------------------------------------------------ */
 
@@ -65,6 +77,7 @@ function HeroComponent() {
 
   return (
     <section className="relative min-h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden pt-24 pb-8 md:pt-20 md:pb-0">
+      <NebulaBackground />
       <motion.div
         className="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto"
         initial="hidden"
@@ -73,25 +86,25 @@ function HeroComponent() {
       >
         <motion.h1
           variants={kineticReveal}
-          className="font-display font-extrabold text-[2.5rem] sm:text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95]"
+          className="font-display font-black text-[3rem] sm:text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] tracking-tighter leading-[0.9] uppercase"
         >
           <span className="text-fg">{t("titleLine1Start")}</span>
-          <span className="gradient-text-accent">{t("titleLine1Accent")}</span>
+          <span className="gradient-text-hero">{t("titleLine1Accent")}</span>
           <br />
           <span className="text-fg">{t("titleLine2Start")}</span>
-          <span className="gradient-text-accent">{t("titleLine2Accent")}</span>
+          <span className="gradient-text-hero">{t("titleLine2Accent")}</span>
         </motion.h1>
 
         <motion.p
           variants={kineticReveal}
-          className="mt-6 text-fg-secondary text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+          className="mt-8 md:mt-10 text-fg-secondary text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed font-light"
         >
           {t("subtitle")}
         </motion.p>
 
         <motion.div
           variants={kineticReveal}
-          className="flex flex-wrap gap-4 justify-center mt-8"
+          className="flex flex-wrap gap-5 justify-center mt-10 md:mt-12"
         >
           <Button href="/waitlist" variant="primary" size="lg">
             {t("ctaPrimary")}
@@ -103,13 +116,13 @@ function HeroComponent() {
 
         <motion.div
           variants={kineticReveal}
-          className="mt-10 h-7 flex items-center justify-center"
+          className="mt-12 h-8 flex items-center justify-center"
         >
-          <span className="font-mono text-sm sm:text-base text-fg-muted tracking-wide">
+          <span className="font-mono text-sm sm:text-base md:text-lg text-fg-muted tracking-wider">
             {typed}
           </span>
           <span
-            className="inline-block w-[2px] h-[1.1em] ml-0.5 bg-[var(--color-accent-primary)]"
+            className="inline-block w-[2px] h-[1.2em] ml-1 bg-[var(--color-accent-secondary)]"
             style={{ animation: "cursorBlink 1s step-end infinite" }}
           />
         </motion.div>

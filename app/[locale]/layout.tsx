@@ -1,31 +1,30 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Syne, JetBrains_Mono } from "next/font/google";
+import { Outfit, Unbounded, JetBrains_Mono } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import CustomCursor from "@/components/ui/CustomCursor";
 
-const plusJakarta = Plus_Jakarta_Sans({
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-plus-jakarta",
+  variable: "--font-outfit",
   display: "swap",
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const syne = Syne({
+const unbounded = Unbounded({
   subsets: ["latin"],
-  variable: "--font-syne",
+  variable: "--font-unbounded",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const LOCALE_OG_MAP: Record<string, string> = {
@@ -127,7 +126,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`scroll-smooth ${plusJakarta.variable} ${syne.variable} ${jetbrainsMono.variable}`}
+      className={`scroll-smooth ${outfit.variable} ${unbounded.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -157,6 +156,17 @@ export default async function LocaleLayout({
                   name: "7ayLabs",
                   url: "https://7aylabs.com",
                 },
+                {
+                  "@type": "BreadcrumbList",
+                  itemListElement: [
+                    {
+                      "@type": "ListItem",
+                      position: 1,
+                      name: "Home",
+                      item: "https://7aylabs.com",
+                    },
+                  ],
+                },
               ],
             }),
           }}
@@ -165,7 +175,6 @@ export default async function LocaleLayout({
       <body className="min-h-screen antialiased bg-bg text-fg">
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
-            <CustomCursor />
             <a href="#main-content" className="skip-to-content">
               {/* Not translated — screen reader utility, always English */}
               Skip to main content
