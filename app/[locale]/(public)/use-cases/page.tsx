@@ -1,11 +1,17 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero, Section, Card, Button } from "@/components/ui";
 import { ROUTES } from "@/lib/constants/routes";
+import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata.useCases" });
-  return { title: t("title"), description: t("description") };
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: buildPageAlternates("/use-cases"),
+    openGraph: buildOpenGraph(t("title"), t("description"), "/use-cases"),
+  };
 }
 
 const SIGNAL_CARD_KEYS = [0, 1, 2, 3] as const;

@@ -1,11 +1,17 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero, Section, Card, Button } from "@/components/ui";
 import { EXTERNAL_LINKS } from "@/lib/constants/routes";
+import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata.newsletter" });
-  return { title: t("title"), description: t("description") };
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: buildPageAlternates("/newsletter"),
+    openGraph: buildOpenGraph(t("title"), t("description"), "/newsletter"),
+  };
 }
 
 const TOPIC_KEYS = [0, 1, 2] as const;

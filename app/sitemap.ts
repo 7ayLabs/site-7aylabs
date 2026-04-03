@@ -4,18 +4,18 @@ import { routing } from "@/i18n/routing";
 const BASE_URL = "https://7aylabs.com";
 
 const pages = [
-  { path: "/", priority: 1.0, changeFrequency: "weekly" as const },
-  { path: "/about", priority: 0.8, changeFrequency: "monthly" as const },
-  { path: "/technology", priority: 0.9, changeFrequency: "monthly" as const },
-  { path: "/why-presence", priority: 0.8, changeFrequency: "monthly" as const },
-  { path: "/use-cases", priority: 0.8, changeFrequency: "monthly" as const },
-  { path: "/devnet", priority: 0.9, changeFrequency: "weekly" as const },
-  { path: "/validators", priority: 0.9, changeFrequency: "monthly" as const },
-  { path: "/ecosystem", priority: 0.8, changeFrequency: "monthly" as const },
-  { path: "/glossary", priority: 0.7, changeFrequency: "monthly" as const },
-  { path: "/updates", priority: 0.6, changeFrequency: "weekly" as const },
-  { path: "/waitlist", priority: 0.7, changeFrequency: "monthly" as const },
-  { path: "/newsletter", priority: 0.6, changeFrequency: "monthly" as const },
+  { path: "/", priority: 1.0, changeFrequency: "weekly" as const, lastModified: "2026-03-12" },
+  { path: "/about", priority: 0.8, changeFrequency: "monthly" as const, lastModified: "2026-02-15" },
+  { path: "/technology", priority: 0.9, changeFrequency: "monthly" as const, lastModified: "2026-03-10" },
+  { path: "/why-presence", priority: 0.8, changeFrequency: "monthly" as const, lastModified: "2026-02-20" },
+  { path: "/use-cases", priority: 0.8, changeFrequency: "monthly" as const, lastModified: "2026-02-20" },
+  { path: "/devnet", priority: 0.9, changeFrequency: "weekly" as const, lastModified: "2026-03-12" },
+  { path: "/validators", priority: 0.9, changeFrequency: "monthly" as const, lastModified: "2026-03-01" },
+  { path: "/ecosystem", priority: 0.8, changeFrequency: "monthly" as const, lastModified: "2026-02-28" },
+  { path: "/glossary", priority: 0.7, changeFrequency: "monthly" as const, lastModified: "2026-02-10" },
+  { path: "/updates", priority: 0.6, changeFrequency: "weekly" as const, lastModified: "2026-03-12" },
+  { path: "/waitlist", priority: 0.7, changeFrequency: "monthly" as const, lastModified: "2026-03-05" },
+  { path: "/newsletter", priority: 0.6, changeFrequency: "monthly" as const, lastModified: "2026-02-15" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -35,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
       entries.push({
         url: url || BASE_URL,
-        lastModified: new Date(),
+        lastModified: new Date(page.lastModified),
         changeFrequency: page.changeFrequency,
         priority: page.priority,
         alternates: { languages },

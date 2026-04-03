@@ -5,11 +5,17 @@ import PresenceJourney from "@/components/technology/PresenceJourney";
 import ArchitectureLayers from "@/components/technology/ArchitectureLayers";
 import PrivacyZK from "@/components/technology/PrivacyZK";
 import Newsletter from "@/components/landing/Newsletter";
+import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata.technology" });
-  return { title: t("title"), description: t("description") };
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: buildPageAlternates("/technology"),
+    openGraph: buildOpenGraph(t("title"), t("description"), "/technology"),
+  };
 }
 
 export default async function TechnologyPage({ params }: { params: Promise<{ locale: string }> }) {

@@ -2,11 +2,17 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero, Section, Card, Badge, Button } from "@/components/ui";
 import { ROUTES, EXTERNAL_LINKS } from "@/lib/constants/routes";
 import Newsletter from "@/components/landing/Newsletter";
+import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata.validators" });
-  return { title: t("title"), description: t("description") };
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: buildPageAlternates("/validators"),
+    openGraph: buildOpenGraph(t("title"), t("description"), "/validators"),
+  };
 }
 
 const HARDWARE_REQUIREMENTS = [

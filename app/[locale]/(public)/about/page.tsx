@@ -1,10 +1,16 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero, Section, Card } from "@/components/ui";
+import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata.about" });
-  return { title: t("title"), description: t("description") };
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: buildPageAlternates("/about"),
+    openGraph: buildOpenGraph(t("title"), t("description"), "/about"),
+  };
 }
 
 const PRINCIPLES_KEYS = [0, 1, 2] as const;

@@ -1,11 +1,17 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero, Section, Card } from "@/components/ui";
 import Newsletter from "@/components/landing/Newsletter";
+import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata.glossary" });
-  return { title: t("title"), description: t("description") };
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: buildPageAlternates("/glossary"),
+    openGraph: buildOpenGraph(t("title"), t("description"), "/glossary"),
+  };
 }
 
 interface GlossaryTerm {
