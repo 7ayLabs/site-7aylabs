@@ -7,10 +7,15 @@ on:
 permissions:
   contents: read
 
+env:
+  IMAGE_NAME: imzzaidd/site-7aylabs
+
 jobs:
   build-and-push:
     name: Build & Push Docker Image
     runs-on: ubuntu-latest
+    outputs:
+      image_tag: ${{ steps.meta.outputs.tag }}
 
     steps:
       - name: Checkout Repository
@@ -20,9 +25,9 @@ jobs:
         id: meta
         run: |
           if [ "${{ github.ref_name }}" = "main" ]; then
-            echo "tag=imzzaidd/site-7aylabs:latest" >> "$GITHUB_OUTPUT"
+            echo "tag=${{ env.IMAGE_NAME }}:latest" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.ref_name }}" = "testing" ]; then
-            echo "tag=imzzaidd/site-7aylabs:staging" >> "$GITHUB_OUTPUT"
+            echo "tag=${{ env.IMAGE_NAME }}:staging" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Set up Docker Buildx
@@ -43,17 +48,72 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-  trigger-jenkins:
-    name: Trigger Jenkins Deploy
+  deploy-testing:
+    name: Deploy to Testing
     needs: build-and-push
     if: github.ref_name == 'testing'
     runs-on: ubuntu-latest
+
     steps:
-      - name: Trigger Jenkins pipeline
-        run: |
-          CRUMB=$(curl -sf -u "${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_TOKEN }}" \
-            "${{ secrets.JENKINS_URL }}/crumbIssuer/api/json" | jq -r '.crumb')
-          curl -sf -X POST \
-            -u "${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_TOKEN }}" \
-            -H "Jenkins-Crumb: $CRUMB" \
-            "${{ secrets.JENKINS_URL }}/job/7ayLabsPipeline/job/testing/build"
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          port: ${{ secrets.VPS_PORT }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script_stop: true
+          script: |
+            cd /home/deploy/site-7aylabs-com
+            git pull origin testing
+            docker pull ${{ env.IMAGE_NAME }}:staging
+            docker compose -f docker-compose.test.yml down --remove-orphans 2>/dev/null || true
+            docker rm -f postgres-test site-7aylabs-test nginx-proxy-test 2>/dev/null || true
+            docker compose -f docker-compose.test.yml up -d
+            echo "Waiting for health check..."
+            for i in $(seq 1 30); do
+              STATUS=$(docker inspect --format='{{.State.Health.Status}}' site-7aylabs-test 2>/dev/null || echo "starting")
+              if [ "$STATUS" = "healthy" ]; then
+                echo "Site is healthy!"
+                exit 0
+              fi
+              sleep 2
+            done
+            echo "Health check did not pass within 60s"
+            docker logs site-7aylabs-test --tail 20
+            exit 1
+
+  deploy-production:
+    name: Deploy to Production
+    needs: build-and-push
+    if: github.ref_name == 'main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          port: ${{ secrets.VPS_PORT }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script_stop: true
+          script: |
+            cd /home/deploy/site-7aylabs-com
+            git pull origin main
+            docker pull ${{ env.IMAGE_NAME }}:latest
+            docker compose down --remove-orphans 2>/dev/null || true
+            docker rm -f postgres-prod site-7aylabs nginx-proxy 2>/dev/null || true
+            docker compose up -d
+            echo "Waiting for health check..."
+            for i in $(seq 1 30); do
+              STATUS=$(docker inspect --format='{{.State.Health.Status}}' site-7aylabs 2>/dev/null || echo "starting")
+              if [ "$STATUS" = "healthy" ]; then
+                echo "Site is healthy!"
+                exit 0
+              fi
+              sleep 2
+            done
+            echo "Health check did not pass within 60s"
+            docker logs site-7aylabs --tail 20
+            exit 1
