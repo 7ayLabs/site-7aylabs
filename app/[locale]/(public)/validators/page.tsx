@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { PageHero, Section, Card, Badge, Button } from "@/components/ui";
+import { PageHero, Section, Card, Badge, Button, AnimatedDiv } from "@/components/ui";
 import { ROUTES, EXTERNAL_LINKS } from "@/lib/constants/routes";
 import Newsletter from "@/components/landing/Newsletter";
 import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
@@ -47,7 +47,7 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
         title={t("roleOverview.title")}
         className="py-16 md:py-20"
       >
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start mt-4">
+        <AnimatedDiv className="grid md:grid-cols-2 gap-12 md:gap-16 items-start mt-4">
           <div className="space-y-5 text-fg-tertiary leading-relaxed">
             <p>{t("roleOverview.paragraph1")}</p>
             <p>{t("roleOverview.paragraph2")}</p>
@@ -56,7 +56,7 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
             <p>{t("roleOverview.paragraph3")}</p>
             <p>{t("roleOverview.paragraph4")}</p>
           </div>
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* Hardware Requirements */}
@@ -65,7 +65,7 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
         title={t("hardware.title")}
         className="py-16 md:py-20"
       >
-        <div className="overflow-x-auto mt-4">
+        <AnimatedDiv className="overflow-x-auto mt-4">
           <table className="w-full text-sm border-collapse">
             <thead>
               <tr className="border-b border-[var(--color-border-primary)]">
@@ -84,7 +84,7 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
               ))}
             </tbody>
           </table>
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* Prerequisites */}
@@ -96,7 +96,7 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
         <p className="text-fg-tertiary leading-relaxed mb-6 max-w-3xl">
           {t("prerequisites.description")}
         </p>
-        <div className="grid md:grid-cols-2 gap-4 mt-4">
+        <AnimatedDiv className="grid md:grid-cols-2 gap-4 mt-4">
           {PREREQUISITES_KEYS.map((i) => (
             <Card key={i} variant="default" padding="md">
               <div className="flex items-center gap-2 mb-3">
@@ -107,7 +107,7 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
               </pre>
             </Card>
           ))}
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* Setup Guide */}
@@ -116,7 +116,7 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
         title={t("setup.title")}
         className="py-16 md:py-20"
       >
-        <div className="space-y-4 mt-4 max-w-3xl">
+        <AnimatedDiv className="space-y-4 mt-4 max-w-3xl">
           {SETUP_KEYS.map((i) => (
             <Card key={i} variant="default" padding="md">
               <div className="flex items-baseline gap-3 mb-2">
@@ -128,7 +128,7 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
               </pre>
             </Card>
           ))}
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* CLI Configuration */}
@@ -137,7 +137,7 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
         title={t("configuration.title")}
         className="py-16 md:py-20"
       >
-        <div className="overflow-x-auto mt-4">
+        <AnimatedDiv className="overflow-x-auto mt-4">
           <table className="w-full text-sm border-collapse">
             <thead>
               <tr className="border-b border-[var(--color-border-primary)]">
@@ -154,7 +154,7 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
               ))}
             </tbody>
           </table>
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* Staking & Slashing */}
@@ -166,7 +166,7 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
         <p className="text-fg-tertiary leading-relaxed mb-8 max-w-3xl">
           {t("economics.description")}
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <AnimatedDiv className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {STAKING_KEYS.map((i) => (
             <Card key={i} variant="interactive" padding="md">
               <div className="flex items-center gap-2 mb-3">
@@ -180,7 +180,7 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
               </p>
             </Card>
           ))}
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* Witness Circles */}
@@ -189,7 +189,7 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
         title={t("witnessCircles.title")}
         className="py-16 md:py-20"
       >
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start mt-4">
+        <AnimatedDiv className="grid md:grid-cols-2 gap-12 md:gap-16 items-start mt-4">
           <div className="space-y-5 text-fg-tertiary leading-relaxed">
             <p>
               {t("witnessCircles.paragraph1")}{" "}
@@ -202,7 +202,7 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
             <p>{t("witnessCircles.paragraph3")}</p>
             <p>{t("witnessCircles.paragraph4")}</p>
           </div>
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* CTA */}

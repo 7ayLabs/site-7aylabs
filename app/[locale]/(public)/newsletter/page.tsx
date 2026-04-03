@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { PageHero, Section, Card, Button } from "@/components/ui";
+import { PageHero, Section, Card, Button, AnimatedDiv } from "@/components/ui";
 import { EXTERNAL_LINKS } from "@/lib/constants/routes";
 import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
 
@@ -36,7 +36,7 @@ export default async function NewsletterPage({ params }: { params: Promise<{ loc
         subtitle={t("whatYouGet.subtitle")}
         className="py-16 md:py-20"
       >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+        <AnimatedDiv className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
           {TOPIC_KEYS.map((i) => (
             <Card key={i} variant="interactive" padding="lg">
               <h3 className="font-sans font-semibold text-lg text-fg mb-3">
@@ -47,7 +47,7 @@ export default async function NewsletterPage({ params }: { params: Promise<{ loc
               </p>
             </Card>
           ))}
-        </div>
+        </AnimatedDiv>
       </Section>
 
       <Section centered className="py-20 md:py-28">

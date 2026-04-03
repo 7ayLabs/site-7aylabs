@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { PageHero, Section, Card, Badge, Button } from "@/components/ui";
+import { PageHero, Section, Card, Badge, Button, AnimatedDiv } from "@/components/ui";
 import { ROUTES, EXTERNAL_LINKS } from "@/lib/constants/routes";
 import Newsletter from "@/components/landing/Newsletter";
 import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
@@ -83,7 +83,7 @@ export default async function EcosystemPage({ params }: { params: Promise<{ loca
         title={t("developerTools.title")}
         className="py-20 md:py-28"
       >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+        <AnimatedDiv className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
           {DEVELOPER_TOOLS_KEYS.map((i) => (
             <Card key={i} variant="interactive" padding="lg">
               <Badge variant="accent" className="mb-4">{t(`developerTools.tools.${i}.badge`)}</Badge>
@@ -93,7 +93,7 @@ export default async function EcosystemPage({ params }: { params: Promise<{ loca
               </p>
             </Card>
           ))}
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* SDK Integration */}
@@ -105,7 +105,7 @@ export default async function EcosystemPage({ params }: { params: Promise<{ loca
         <p className="text-fg-tertiary leading-relaxed mb-8 max-w-3xl">
           {t("sdkIntegration.description")}
         </p>
-        <div className="space-y-6">
+        <AnimatedDiv className="space-y-6">
           {SDK_KEYS.map((i) => (
             <Card key={i} variant="glass" padding="md" className="glow-border">
               <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-3">
@@ -117,7 +117,7 @@ export default async function EcosystemPage({ params }: { params: Promise<{ loca
               </pre>
             </Card>
           ))}
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* Protocol Modules */}
@@ -129,7 +129,7 @@ export default async function EcosystemPage({ params }: { params: Promise<{ loca
         <p className="text-fg-tertiary leading-relaxed mb-8 max-w-3xl">
           {t("protocolModules.description")}
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <AnimatedDiv className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {PALLET_GROUPS_KEYS.map((i) => (
             <Card key={i} variant="elevated" padding="lg">
               <h3 className="font-semibold text-fg text-lg mb-2">
@@ -147,7 +147,7 @@ export default async function EcosystemPage({ params }: { params: Promise<{ loca
               </div>
             </Card>
           ))}
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* Community */}
@@ -156,7 +156,7 @@ export default async function EcosystemPage({ params }: { params: Promise<{ loca
         title={t("community.title")}
         className="py-20 md:py-28"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4 max-w-2xl">
+        <AnimatedDiv className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4 max-w-2xl">
           <Card variant="interactive" padding="lg">
             <h3 className="font-semibold text-fg text-lg mb-2">{t("community.github.title")}</h3>
             <p className="text-fg-tertiary text-sm leading-relaxed mb-4">
@@ -176,7 +176,7 @@ export default async function EcosystemPage({ params }: { params: Promise<{ loca
               {t("community.twitter.cta")}
             </Button>
           </Card>
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* CTA */}

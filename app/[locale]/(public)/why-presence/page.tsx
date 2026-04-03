@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { PageHero, Section, Card, Button } from "@/components/ui";
+import { PageHero, Section, Card, Button, AnimatedDiv } from "@/components/ui";
 import { EXTERNAL_LINKS, ROUTES } from "@/lib/constants/routes";
 import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
 
@@ -33,10 +33,10 @@ export default async function WhyPresencePage({ params }: { params: Promise<{ lo
       />
 
       <Section title={t("presenceInfrastructure.sectionTitle")} className="py-16 md:py-20">
-        <div className="space-y-5 max-w-3xl text-fg-tertiary text-base sm:text-lg leading-relaxed">
+        <AnimatedDiv className="space-y-5 max-w-3xl text-fg-tertiary text-base sm:text-lg leading-relaxed">
           <p>{t("presenceInfrastructure.paragraph1")}</p>
           <p>{t("presenceInfrastructure.paragraph2")}</p>
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* Core Pillars */}
@@ -53,7 +53,7 @@ export default async function WhyPresencePage({ params }: { params: Promise<{ lo
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <AnimatedDiv className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {PILLAR_KEYS.map((i) => (
             <Card key={i} variant="interactive" padding="md">
               <h3 className="font-sans font-semibold text-lg text-fg mb-3">
@@ -64,7 +64,7 @@ export default async function WhyPresencePage({ params }: { params: Promise<{ lo
               </p>
             </Card>
           ))}
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* Sybil Resistance Arguments */}
@@ -81,7 +81,7 @@ export default async function WhyPresencePage({ params }: { params: Promise<{ lo
           </p>
         </Card>
 
-        <div className="space-y-6 max-w-4xl">
+        <AnimatedDiv className="space-y-6 max-w-4xl">
           {SYBIL_KEYS.map((i) => (
             <div key={i} className="grid md:grid-cols-2 gap-4 md:gap-8">
               <div>
@@ -102,7 +102,7 @@ export default async function WhyPresencePage({ params }: { params: Promise<{ lo
               </div>
             </div>
           ))}
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* Comparison Table */}
@@ -119,7 +119,7 @@ export default async function WhyPresencePage({ params }: { params: Promise<{ lo
           </p>
         </div>
 
-        <div className="overflow-x-auto">
+        <AnimatedDiv className="overflow-x-auto">
           <table className="w-full text-sm border-collapse min-w-[640px]">
             <thead>
               <tr className="border-b border-[var(--color-border-primary)]">
@@ -162,7 +162,7 @@ export default async function WhyPresencePage({ params }: { params: Promise<{ lo
               ))}
             </tbody>
           </table>
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* CTA */}
@@ -176,14 +176,14 @@ export default async function WhyPresencePage({ params }: { params: Promise<{ lo
         <p className="mx-auto max-w-xl text-fg-tertiary text-lg leading-relaxed mb-8">
           {t("cta.subtitle")}
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <AnimatedDiv className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button href={EXTERNAL_LINKS.twitter} external size="lg">
             {t("cta.primary")}
           </Button>
           <Button href={ROUTES.technology} variant="secondary" size="lg">
             {t("cta.secondary")}
           </Button>
-        </div>
+        </AnimatedDiv>
       </Section>
     </>
   );

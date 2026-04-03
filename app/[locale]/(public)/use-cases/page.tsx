@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { PageHero, Section, Card, Button } from "@/components/ui";
+import { PageHero, Section, Card, Button, AnimatedDiv } from "@/components/ui";
 import { ROUTES } from "@/lib/constants/routes";
 import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
 
@@ -32,7 +32,7 @@ export default async function UseCasesPage({ params }: { params: Promise<{ local
       />
 
       <Section className="py-16 md:py-20">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16">
+        <AnimatedDiv className="grid md:grid-cols-2 gap-12 md:gap-16">
           <div>
             <h2 className="heading-sm text-fg mb-4">
               {t("sybilProblem.title")}
@@ -51,7 +51,7 @@ export default async function UseCasesPage({ params }: { params: Promise<{ local
               <p>{t("physicsSolution.paragraph2")}</p>
             </div>
           </div>
-        </div>
+        </AnimatedDiv>
       </Section>
 
       <Section className="py-16 md:py-24">
@@ -67,7 +67,7 @@ export default async function UseCasesPage({ params }: { params: Promise<{ local
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-20 max-w-4xl mx-auto">
+        <AnimatedDiv className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-20 max-w-4xl mx-auto">
           {SIGNAL_CARD_KEYS.map((i) => (
             <Card key={i} variant="interactive" padding="md">
               <h3 className="font-sans font-semibold text-base text-fg mb-1.5">
@@ -78,9 +78,9 @@ export default async function UseCasesPage({ params }: { params: Promise<{ local
               </p>
             </Card>
           ))}
-        </div>
+        </AnimatedDiv>
 
-        <div className="space-y-8 max-w-4xl mx-auto">
+        <AnimatedDiv className="space-y-8 max-w-4xl mx-auto">
           {USE_CASE_KEYS.map((i) => (
             <Card key={i} variant="default" padding="lg">
               <div className="flex items-center gap-3 mb-4">
@@ -99,7 +99,7 @@ export default async function UseCasesPage({ params }: { params: Promise<{ local
               </p>
             </Card>
           ))}
-        </div>
+        </AnimatedDiv>
       </Section>
 
       <Section centered className="py-20 md:py-28">
@@ -109,14 +109,14 @@ export default async function UseCasesPage({ params }: { params: Promise<{ local
         <p className="body-lg max-w-2xl mx-auto mb-10">
           {t("ctaSubtitle")}
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <AnimatedDiv className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button href={ROUTES.devnet} size="lg">
             {t("ctaPrimary")}
           </Button>
           <Button href={ROUTES.waitlist} variant="secondary" size="lg">
             {t("ctaSecondary")}
           </Button>
-        </div>
+        </AnimatedDiv>
       </Section>
     </>
   );

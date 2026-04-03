@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { PageHero, Section, Card } from "@/components/ui";
+import { PageHero, Section, Card, AnimatedDiv } from "@/components/ui";
 import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -34,7 +34,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         title={t("mission.title")}
         className="py-20 md:py-28"
       >
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start mt-6">
+        <AnimatedDiv className="grid md:grid-cols-2 gap-12 md:gap-16 items-start mt-6">
           <div className="space-y-5 text-fg-tertiary leading-relaxed">
             <p>{t("mission.paragraph1")}</p>
             <p>{t("mission.paragraph2")}</p>
@@ -44,7 +44,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             <p>{t("mission.paragraph4")}</p>
             <p>{t("mission.paragraph5")}</p>
           </div>
-        </div>
+        </AnimatedDiv>
       </Section>
 
       <Section
@@ -52,10 +52,10 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         title={t("vision.title")}
         className="py-20 md:py-28"
       >
-        <div className="space-y-5 max-w-3xl text-fg-tertiary leading-relaxed mt-2">
+        <AnimatedDiv className="space-y-5 max-w-3xl text-fg-tertiary leading-relaxed mt-2">
           <p>{t("vision.paragraph1")}</p>
           <p>{t("vision.paragraph2")}</p>
-        </div>
+        </AnimatedDiv>
       </Section>
 
       <Section
@@ -63,7 +63,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         title={t("principles.title")}
         className="py-20 md:py-28"
       >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+        <AnimatedDiv className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
           {PRINCIPLES_KEYS.map((i) => (
             <Card key={i} variant="interactive" padding="lg">
               <h3 className="font-sans font-semibold text-lg text-fg mb-3">
@@ -74,7 +74,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               </p>
             </Card>
           ))}
-        </div>
+        </AnimatedDiv>
       </Section>
     </>
   );

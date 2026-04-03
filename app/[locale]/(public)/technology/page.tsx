@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Button from "@/components/ui/Button";
+import AnimatedDiv from "@/components/ui/AnimatedDiv";
 import TechHowItWorks from "@/components/technology/TechHowItWorks";
 import PresenceJourney from "@/components/technology/PresenceJourney";
 import ArchitectureLayers from "@/components/technology/ArchitectureLayers";
@@ -43,7 +44,7 @@ export default async function TechnologyPage({ params }: { params: Promise<{ loc
           aria-hidden="true"
         />
 
-        <div className="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 lg:px-12 max-w-5xl mx-auto">
+        <AnimatedDiv className="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 lg:px-12 max-w-5xl mx-auto">
           {/* Label */}
           <span className="block text-sm uppercase tracking-widest text-fg-muted mb-6">
             {t("label")}
@@ -72,7 +73,7 @@ export default async function TechnologyPage({ params }: { params: Promise<{ loc
               {tc("learnMore")}
             </Button>
           </div>
-        </div>
+        </AnimatedDiv>
 
         {/* Bottom fade */}
         <div

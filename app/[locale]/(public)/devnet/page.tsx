@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { PageHero, Section, Card, Badge, Button } from "@/components/ui";
+import { PageHero, Section, Card, Badge, Button, AnimatedDiv } from "@/components/ui";
 import { ROUTES, EXTERNAL_LINKS } from "@/lib/constants/routes";
 import Newsletter from "@/components/landing/Newsletter";
 import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
@@ -73,7 +73,7 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
         title={t("quickStart.title")}
         className="py-16 md:py-20"
       >
-        <div className="mt-4 space-y-4 max-w-3xl">
+        <AnimatedDiv className="mt-4 space-y-4 max-w-3xl">
           {QUICK_START_KEYS.map((i) => (
             <Card key={i} variant="default" padding="md">
               <div className="flex items-baseline gap-3 mb-2">
@@ -85,7 +85,7 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
               </pre>
             </Card>
           ))}
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* Network Info */}
@@ -94,7 +94,7 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
         title={t("networkInfo.title")}
         className="py-16 md:py-20"
       >
-        <div className="grid md:grid-cols-2 gap-6 mt-4">
+        <AnimatedDiv className="grid md:grid-cols-2 gap-6 mt-4">
           <Card variant="elevated" padding="lg">
             <h3 className="text-fg font-semibold text-lg mb-4">{t("networkInfo.connection.title")}</h3>
             <dl className="space-y-3 text-sm">
@@ -134,7 +134,7 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
               ))}
             </div>
           </Card>
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* Multi-Node Setup */}
@@ -143,37 +143,39 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
         title={t("multiNodeSetup.title")}
         className="py-16 md:py-20"
       >
-        <p className="text-fg-tertiary leading-relaxed mb-6 max-w-3xl">
-          {t("multiNodeSetup.description")}
-        </p>
+        <AnimatedDiv>
+          <p className="text-fg-tertiary leading-relaxed mb-6 max-w-3xl">
+            {t("multiNodeSetup.description")}
+          </p>
 
-        <div className="overflow-x-auto mt-4">
-          <table className="w-full text-sm border-collapse">
-            <thead>
-              <tr className="border-b border-[var(--color-border-primary)]">
-                <th className="text-left py-3 px-4 text-fg-muted font-medium uppercase tracking-wider text-xs">{t("multiNodeSetup.tableHeaders.node")}</th>
-                <th className="text-left py-3 px-4 text-fg-muted font-medium uppercase tracking-wider text-xs">{t("multiNodeSetup.tableHeaders.rpcPort")}</th>
-                <th className="text-left py-3 px-4 text-fg-muted font-medium uppercase tracking-wider text-xs">{t("multiNodeSetup.tableHeaders.role")}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {VALIDATOR_NODES.map((node) => (
-                <tr key={node.name} className="border-b border-[var(--color-border-primary)]">
-                  <td className="py-3 px-4 font-medium text-fg">{node.name}</td>
-                  <td className="py-3 px-4 font-mono text-accent">{node.port}</td>
-                  <td className="py-3 px-4 text-fg-secondary">{node.role}</td>
+          <div className="overflow-x-auto mt-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-[var(--color-border-primary)]">
+                  <th className="text-left py-3 px-4 text-fg-muted font-medium uppercase tracking-wider text-xs">{t("multiNodeSetup.tableHeaders.node")}</th>
+                  <th className="text-left py-3 px-4 text-fg-muted font-medium uppercase tracking-wider text-xs">{t("multiNodeSetup.tableHeaders.rpcPort")}</th>
+                  <th className="text-left py-3 px-4 text-fg-muted font-medium uppercase tracking-wider text-xs">{t("multiNodeSetup.tableHeaders.role")}</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {VALIDATOR_NODES.map((node) => (
+                  <tr key={node.name} className="border-b border-[var(--color-border-primary)]">
+                    <td className="py-3 px-4 font-medium text-fg">{node.name}</td>
+                    <td className="py-3 px-4 font-mono text-accent">{node.port}</td>
+                    <td className="py-3 px-4 text-fg-secondary">{node.role}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-        <Card variant="default" padding="md" className="mt-8 max-w-3xl">
-          <h4 className="text-fg font-semibold mb-2">{t("multiNodeSetup.dockerHybrid.title")}</h4>
-          <pre className="overflow-x-auto rounded-xl bg-[var(--color-bg-card-hover)] p-4 text-sm font-mono text-fg-secondary">
-            <code>{t("multiNodeSetup.dockerHybrid.code")}</code>
-          </pre>
-        </Card>
+          <Card variant="default" padding="md" className="mt-8 max-w-3xl">
+            <h4 className="text-fg font-semibold mb-2">{t("multiNodeSetup.dockerHybrid.title")}</h4>
+            <pre className="overflow-x-auto rounded-xl bg-[var(--color-bg-card-hover)] p-4 text-sm font-mono text-fg-secondary">
+              <code>{t("multiNodeSetup.dockerHybrid.code")}</code>
+            </pre>
+          </Card>
+        </AnimatedDiv>
       </Section>
 
       {/* Laud CLI */}
@@ -182,35 +184,37 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
         title={t("laudCli.title")}
         className="py-16 md:py-20"
       >
-        <p className="text-fg-tertiary leading-relaxed mb-4 max-w-3xl">
-          {t("laudCli.description")}
-        </p>
+        <AnimatedDiv>
+          <p className="text-fg-tertiary leading-relaxed mb-4 max-w-3xl">
+            {t("laudCli.description")}
+          </p>
 
-        <Card variant="default" padding="md" className="mb-8 max-w-3xl">
-          <h4 className="text-fg font-semibold mb-2">{t("laudCli.installTitle")}</h4>
-          <pre className="overflow-x-auto rounded-xl bg-[var(--color-bg-card-hover)] p-4 text-sm font-mono text-fg-secondary">
-            <code>{t("laudCli.installCode")}</code>
-          </pre>
-        </Card>
+          <Card variant="default" padding="md" className="mb-8 max-w-3xl">
+            <h4 className="text-fg font-semibold mb-2">{t("laudCli.installTitle")}</h4>
+            <pre className="overflow-x-auto rounded-xl bg-[var(--color-bg-card-hover)] p-4 text-sm font-mono text-fg-secondary">
+              <code>{t("laudCli.installCode")}</code>
+            </pre>
+          </Card>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm border-collapse">
-            <thead>
-              <tr className="border-b border-[var(--color-border-primary)]">
-                <th className="text-left py-3 px-4 text-fg-muted font-medium uppercase tracking-wider text-xs">{t("laudCli.tableHeaders.module")}</th>
-                <th className="text-left py-3 px-4 text-fg-muted font-medium uppercase tracking-wider text-xs">{t("laudCli.tableHeaders.operations")}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {LAUD_MODULES.map((mod) => (
-                <tr key={mod.module} className="border-b border-[var(--color-border-primary)]">
-                  <td className="py-3 px-4 font-mono font-medium text-accent">{mod.module}</td>
-                  <td className="py-3 px-4 text-fg-secondary">{mod.operations}</td>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-[var(--color-border-primary)]">
+                  <th className="text-left py-3 px-4 text-fg-muted font-medium uppercase tracking-wider text-xs">{t("laudCli.tableHeaders.module")}</th>
+                  <th className="text-left py-3 px-4 text-fg-muted font-medium uppercase tracking-wider text-xs">{t("laudCli.tableHeaders.operations")}</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {LAUD_MODULES.map((mod) => (
+                  <tr key={mod.module} className="border-b border-[var(--color-border-primary)]">
+                    <td className="py-3 px-4 font-mono font-medium text-accent">{mod.module}</td>
+                    <td className="py-3 px-4 text-fg-secondary">{mod.operations}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </AnimatedDiv>
       </Section>
 
       {/* Hardware Requirements */}
@@ -219,7 +223,7 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
         title={t("hardware.title")}
         className="py-16 md:py-20"
       >
-        <div className="overflow-x-auto mt-4">
+        <AnimatedDiv className="overflow-x-auto mt-4">
           <table className="w-full text-sm border-collapse">
             <thead>
               <tr className="border-b border-[var(--color-border-primary)]">
@@ -238,7 +242,7 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
               ))}
             </tbody>
           </table>
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* Polkadot.js Apps */}
@@ -247,7 +251,7 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
         title={t("explorer.title")}
         className="py-16 md:py-20"
       >
-        <div className="grid md:grid-cols-2 gap-8 mt-4 items-start">
+        <AnimatedDiv className="grid md:grid-cols-2 gap-8 mt-4 items-start">
           <div className="space-y-4 text-fg-tertiary leading-relaxed">
             <p>
               {t("explorer.description")}
@@ -285,7 +289,7 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
               ))}
             </ul>
           </Card>
-        </div>
+        </AnimatedDiv>
       </Section>
 
       {/* CTA */}
@@ -296,14 +300,14 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
         <p className="body-lg max-w-2xl mx-auto mb-10">
           {t("cta.subtitle")}
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <AnimatedDiv className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button href={EXTERNAL_LINKS.githubRepo} external size="lg">
             {t("cta.primary")}
           </Button>
           <Button href={ROUTES.validators} variant="secondary" size="lg">
             {t("cta.secondary")}
           </Button>
-        </div>
+        </AnimatedDiv>
       </Section>
 
       <Newsletter />

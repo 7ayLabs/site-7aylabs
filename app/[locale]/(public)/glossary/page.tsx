@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { PageHero, Section, Card } from "@/components/ui";
+import { PageHero, Section, Card, AnimatedDiv } from "@/components/ui";
 import Newsletter from "@/components/landing/Newsletter";
 import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
 
@@ -62,7 +62,7 @@ export default async function GlossaryPage({ params }: { params: Promise<{ local
 
       {/* Terms grouped by letter */}
       <Section className="py-8 md:py-16">
-        <div className="space-y-12">
+        <AnimatedDiv className="space-y-12">
           {letters.map((letter) => {
             const termsForLetter = glossaryTerms.filter((term) => term.letter === letter);
             return (
@@ -85,7 +85,7 @@ export default async function GlossaryPage({ params }: { params: Promise<{ local
               </div>
             );
           })}
-        </div>
+        </AnimatedDiv>
       </Section>
 
       <Newsletter />
