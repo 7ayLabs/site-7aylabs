@@ -1,58 +1,10 @@
 "use client";
 
-import { memo, useEffect, useState, useCallback } from "react";
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Button from "@/components/ui/Button";
 import { heroStagger, kineticReveal } from "@/lib/constants/animations";
-
-/* ------------------------------------------------------------------ */
-/*  Constants                                                          */
-/* ------------------------------------------------------------------ */
-
-const TYPE_SPEED = 45;
-const DELETE_SPEED = 25;
-const PAUSE_AFTER_TYPE = 2800;
-const PAUSE_AFTER_DELETE = 400;
-
-/* ------------------------------------------------------------------ */
-/*  Typewriter Hook                                                    */
-/* ------------------------------------------------------------------ */
-
-function useTypewriter(phrases: readonly string[]) {
-  const [display, setDisplay] = useState("");
-  const [phraseIdx, setPhraseIdx] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  const tick = useCallback(() => {
-    const current = phrases[phraseIdx];
-    if (!isDeleting) {
-      if (display.length < current.length) {
-        return { next: current.slice(0, display.length + 1), delay: TYPE_SPEED };
-      }
-      return { next: display, delay: PAUSE_AFTER_TYPE, startDelete: true };
-    }
-    if (display.length > 0) {
-      return { next: display.slice(0, -1), delay: DELETE_SPEED };
-    }
-    return { next: "", delay: PAUSE_AFTER_DELETE, nextPhrase: true };
-  }, [display, phraseIdx, isDeleting, phrases]);
-
-  useEffect(() => {
-    const result = tick();
-    const timeout = setTimeout(() => {
-      setDisplay(result.next);
-      if (result.startDelete) setIsDeleting(true);
-      if (result.nextPhrase) {
-        setIsDeleting(false);
-        setPhraseIdx((prev) => (prev + 1) % phrases.length);
-      }
-    }, result.delay);
-    return () => clearTimeout(timeout);
-  }, [tick, phrases.length]);
-
-  return display;
-}
 
 /* ------------------------------------------------------------------ */
 /*  Hero Component                                                     */
@@ -60,8 +12,7 @@ function useTypewriter(phrases: readonly string[]) {
 
 function HeroComponent() {
   const t = useTranslations("hero");
-  const phrases = Object.values(t.raw("typewriterPhrases")) as string[];
-  const typed = useTypewriter(phrases);
+  const trustItems = Object.values(t.raw("trustBar")) as string[];
 
   return (
     <section className="relative min-h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden pt-24 pb-8 md:pt-20 md:pb-0">
@@ -71,17 +22,19 @@ function HeroComponent() {
         animate="visible"
         variants={heroStagger}
       >
+        {/* Heading — title case, single gradient on "proof" only */}
         <motion.h1
           variants={kineticReveal}
-          className="font-display font-black text-[2.5rem] sm:text-5xl md:text-7xl lg:text-8xl xl:text-[8.5rem] tracking-tighter leading-[0.9] uppercase"
+          className="font-display font-black text-[2.5rem] sm:text-5xl md:text-7xl lg:text-8xl xl:text-[8.5rem] tracking-tighter leading-[0.9]"
         >
           <span className="text-fg">{t("titleLine1Start")}</span>
-          <span className="gradient-text-hero">{t("titleLine1Accent")}</span>
+          <span className="text-fg">{t("titleLine1Accent")}</span>
           <br />
           <span className="text-fg">{t("titleLine2Start")}</span>
           <span className="gradient-text-hero">{t("titleLine2Accent")}</span>
         </motion.h1>
 
+        {/* Subtitle */}
         <motion.p
           variants={kineticReveal}
           className="mt-8 md:mt-10 text-fg-secondary text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed font-light"
@@ -89,6 +42,7 @@ function HeroComponent() {
           {t("subtitle")}
         </motion.p>
 
+        {/* CTA Buttons */}
         <motion.div
           variants={kineticReveal}
           className="flex flex-wrap gap-5 justify-center mt-10 md:mt-12"
@@ -101,17 +55,34 @@ function HeroComponent() {
           </Button>
         </motion.div>
 
+        {/* Static tagline — monospaced, replaces typewriter */}
         <motion.div
           variants={kineticReveal}
-          className="mt-6 md:mt-8 h-8 flex items-center justify-center"
+          className="mt-6 md:mt-8 flex items-center justify-center"
         >
-          <span className="font-mono text-base sm:text-lg md:text-xl text-fg tracking-wider">
-            {typed}
+          <span className="font-mono text-sm sm:text-base text-fg-muted tracking-wide">
+            &gt; {t("tagline")}
           </span>
-          <span
-            className="inline-block w-[2px] h-[1.2em] ml-1 bg-[var(--color-accent-secondary)]"
-            style={{ animation: "cursorBlink 1s step-end infinite" }}
-          />
+        </motion.div>
+
+        {/* Trust / metrics bar */}
+        <motion.div
+          variants={kineticReveal}
+          className="mt-8 md:mt-10 flex flex-wrap items-center justify-center gap-x-2 gap-y-1"
+        >
+          {trustItems.map((item, i) => (
+            <span key={i} className="flex items-center">
+              {i > 0 && (
+                <span
+                  className="mx-2 inline-block h-1 w-1 rounded-full bg-fg-faint shrink-0"
+                  aria-hidden="true"
+                />
+              )}
+              <span className="text-xs sm:text-sm text-fg-muted tracking-wide whitespace-nowrap">
+                {item}
+              </span>
+            </span>
+          ))}
         </motion.div>
       </motion.div>
     </section>

@@ -1,7 +1,7 @@
 {
   "common": {
-    "joinWaitlist": "Unirse a la lista de espera",
-    "getEarlyAccess": "Obtener acceso anticipado",
+    "joinWaitlist": "Acceso anticipado",
+    "getEarlyAccess": "Acceso anticipado",
     "learnMore": "Más información",
     "backToHome": "Volver al inicio",
     "connectToDevnet": "Conectar a la Devnet",
@@ -19,7 +19,7 @@
     "follow7ayLabs": "Seguir a @7ayLabs",
     "runAValidator": "Ejecutar un Validador",
     "devnetSetup": "Configuración de la Devnet",
-    "joinTheWaitlist": "Unirse a la lista de espera",
+    "joinTheWaitlist": "Acceso anticipado",
     "getProtocolUpdates": "Recibir actualizaciones del protocolo"
   },
   "nav": {
@@ -44,7 +44,7 @@
       "community": "Comunidad"
     },
     "footer": {
-      "joinWaitlist": "Unirse a la lista de espera"
+      "joinWaitlist": "Acceso anticipado"
     },
     "aria": {
       "openMenu": "Abrir menú",
@@ -75,42 +75,43 @@
     "ja": "日本語"
   },
   "hero": {
-    "titleLine1Start": "Tu ",
+    "titleLine1Start": "La capa de ",
     "titleLine1Accent": "presencia",
-    "titleLine2Start": "es tu ",
-    "titleLine2Accent": "prueba",
-    "subtitle": "La primera blockchain que verifica humanos a través de la física. Sin escaneos de iris. Sin GPS. Sin orbes. Solo latencia de red y las leyes de la luz.",
-    "ctaPrimary": "Obtener acceso anticipado",
-    "ctaSecondary": "Explorar el Protocolo",
-    "typewriterPhrases": {
-      "0": "Resistente a Sybil por física, no por promesas.",
-      "1": "La capa de identidad que Web3 necesitaba.",
-      "2": "Verifica una vez. Sin rastro de datos. Sin hardware.",
-      "3": "Donde los bots fallan y los humanos pasan."
+    "titleLine2Start": "",
+    "titleLine2Accent": "",
+    "subtitle": "La única chain que demuestra que eres humano — sin escanear tu cuerpo. Sin orbes. Sin selfies. Solo preséntate.",
+    "ctaPrimary": "Acceso anticipado",
+    "ctaSecondary": "Cómo funciona",
+    "tagline": "Demuestra que eres real. Mantén tu privacidad.",
+    "trustBar": {
+      "0": "Proof of Presence",
+      "1": "Finalidad instantánea",
+      "2": "Sin escaneo ocular",
+      "3": "Código abierto"
     }
   },
   "howItWorks": {
     "label": "Cómo funciona",
     "title": "De señal a soberanía",
-    "subtitle": "Tres pasos para verificación resistente a Sybil. Sin hardware. Sin biometría. Física pura.",
+    "subtitle": "Tres pasos. Sin hardware. Sin biometría. Solo física.",
     "aria": "Cómo 7aychain verifica tu presencia",
     "steps": {
       "0": {
         "number": "01",
-        "title": "Inicia tu compromiso de presencia",
-        "description": "Tu dispositivo envía un compromiso criptográfico\u00a0\u2014\u00a0un hash de tu declaración de presencia. Sin contraseñas, sin biometría, sin hardware dedicado. Un toque para entrar a la época de verificación.",
+        "title": "Preséntate",
+        "description": "Abre la app y toca una vez. Tu dispositivo envía una prueba sellada que dice \"estoy aquí\" — sin contraseñas, sin selfies, sin hardware especial.",
         "iconAlt": "Teléfono conectándose a la red con arcos de señal"
       },
       "1": {
         "number": "02",
-        "title": "Los círculos de testigos triangulan tu señal",
-        "description": "Los validadores forman círculos de testigos, midiendo la latencia de red desde múltiples puntos para triangular tu posición\u00a0\u2014\u00a0sin GPS, sin oráculos, solo física.",
+        "title": "Verificación",
+        "description": "Los validadores en la red miden la temporización de tu conexión para confirmar que realmente estás ahí. Sin GPS, sin oráculos — solo la velocidad de la luz.",
         "iconAlt": "Tres validadores triangulando una posición"
       },
       "2": {
         "number": "03",
-        "title": "Prueba finalizada on\u2011chain",
-        "description": "Una vez alcanzado el quórum, tu prueba de presencia queda sellada\u00a0\u2014\u00a0inmutable, soberana e imposible de falsificar o repetir entre épocas.",
+        "title": "Tu prueba es tuya",
+        "description": "Tu presencia queda sellada on-chain — permanente, soberana e imposible de falsificar. Es tuya. Nadie puede quitártela.",
         "iconAlt": "Sello hexagonal con marca de verificación encadenado a bloques"
       }
     }
@@ -119,40 +120,40 @@
     "title": "¿Por qué",
     "titleAccent": "7aychain",
     "titleEnd": "?",
-    "subtitle": "Todas las demás cadenas confían solo en la criptografía. 7aychain ancla la identidad a la realidad física\u00a0\u2014 la única primitiva que la IA, los bots y las granjas de Sybil no pueden falsificar.",
+    "subtitle": "Todas las cadenas confían en la criptografía. 7aychain ancla la identidad a la realidad física — lo único que la IA, los bots y las cuentas falsas nunca podrán falsificar.",
     "cards": {
       "0": {
-        "title": "Física sobre biometría",
-        "description": "Sin escaneos de iris. Sin huellas dactilares. Los validadores miden la latencia de red y la sincronización de señales para verificar que estás físicamente presente\u00a0\u2014\u00a0física que los bots no pueden falsificar.",
+        "title": "Anti-bots por defecto",
+        "description": "Sin escaneos de iris. Sin huellas dactilares. La red mide la temporización de tu conexión para verificar que estás físicamente presente — algo que los bots simplemente no pueden falsificar.",
         "iconAlt": "Onda de señal con nodos de medición"
       },
       "1": {
-        "title": "Arquitectura de privacidad Commit\u2011Reveal",
-        "description": "Tu secreto nunca toca la cadena. Compromete un hash, revélalo después. Los anuladores previenen la repetición entre épocas. Las pruebas ZK te permiten demostrar presencia sin exponer tu identidad.",
+        "title": "Privado desde el día uno",
+        "description": "Tu identidad sigue siendo tuya. La red demuestra que estuviste en algún lugar sin saber quién eres. Cero datos personales on-chain.",
         "iconAlt": "Candado con anillos de prueba de conocimiento cero"
       },
       "2": {
-        "title": "Puntuación autónoma de Sybil",
-        "description": "El pallet autónomo califica a cada actor de 0 a 100 según patrones de comportamiento. Sin CAPTCHAs, sin orbes\u00a0\u2014\u00a0el protocolo separa humanos de máquinas automáticamente.",
+        "title": "Solo humanos, automáticamente",
+        "description": "El protocolo califica a cada participante según comportamiento real — separando humanos de máquinas sin CAPTCHAs, orbes ni revisión manual.",
         "iconAlt": "Escudo con marca de verificación humana"
       },
       "3": {
-        "title": "Gobernanza ponderada por presencia",
-        "description": "Permisos basados en capacidades, no votación por tokens. Las delegaciones se extienden hasta 5 niveles de profundidad. Revoca una capacidad raíz y cada capacidad derivada se revoca con ella\u00a0\u2014\u00a0todo on-chain.",
+        "title": "Gobernanza realmente justa",
+        "description": "El poder de voto está vinculado a participación real, no a bolsas de tokens. Tu voz escala con tu presencia verificada en la red — no con el tamaño de tu wallet.",
         "iconAlt": "Árbol de delegación con nodos de capacidad"
       }
     }
   },
   "newsletter": {
     "title": "Únete a la economía de la presencia",
-    "subtitle": "Hitos del protocolo, actualizaciones de incorporación de validadores y propuestas de gobernanza\u00a0\u2014\u00a0entregadas a quienes llegan primero.",
+    "subtitle": "Hitos del protocolo, actualizaciones de validadores y acceso anticipado — entregado a quienes llegan primero.",
     "cta": "Recibir actualizaciones del protocolo",
     "trustLine": "Solo señal. Sin ruido. Cancela cuando quieras."
   },
   "devnetStatus": {
     "statusIndicator": "Devnet activa",
     "title": "La Devnet de 7aychain está en línea",
-    "subtitle": "Una red funcional ejecutando el protocolo completo de Proof of Presence. Nodos reales, verificación real, resultados reales.",
+    "subtitle": "Una red funcional ejecutando el stack completo de Proof of Presence. Nodos reales. Verificación real. Resultados en tiempo real.",
     "ctaHint": "Conectar a la devnet",
     "stats": {
       "version": {
@@ -169,14 +170,14 @@
       },
       "specVersion": {
         "label": "111",
-        "description": "Versión"
+        "description": "Versión de spec"
       }
     }
   },
   "notFound": {
     "heading": "404",
-    "message": "No se pudo encontrar esta página.",
-    "detail": "La página que buscas no existe o ha sido movida.",
+    "message": "Página no encontrada.",
+    "detail": "Esta página no existe o ha sido movida.",
     "cta": "Volver al inicio"
   },
   "globalError": {
@@ -189,23 +190,23 @@
     "title": "Proof of Presence",
     "accentWord": "Presence",
     "description": {
-      "0": "7aychain verifica que personas reales están en lugares reales — usando la física de las señales de internet, no cámaras, no biometría, no hardware especial.",
-      "1": "Una blockchain construida para lo único que la IA no puede falsificar: estar en algún lugar."
+      "0": "7aychain verifica humanos reales en lugares reales usando la física de las señales de internet. Sin cámaras. Sin biometría. Sin hardware especial.",
+      "1": "Una L1 construida para lo único que la IA nunca podrá falsificar: estar en algún lugar."
     }
   },
   "techHowItWorks": {
     "label": "Cómo funciona",
     "title": "Los principios detrás del",
     "titleAccent": "Protocolo",
-    "subtitle": "Cuatro fundamentos que hacen posible la verificación de presencia.",
+    "subtitle": "Cuatro fundamentos que hacen posible la verificación basada en física.",
     "principles": {
       "0": {
         "title": "Basado en la física",
-        "description": "Las señales de internet viajan a velocidades conocidas. Al medir la temporización desde múltiples validadores, la red estima tu ubicación física — sin GPS, sin oráculos, solo las leyes de la luz."
+        "description": "Las señales de internet viajan a la velocidad de la luz. Al medir la temporización desde múltiples validadores, la red determina tu ubicación física — sin GPS."
       },
       "1": {
         "title": "Privado por defecto",
-        "description": "La red demuestra que estuviste presente sin ver dónde. Tus datos de ubicación se comprometen como un hash, se verifican mediante pruebas ZK y nunca se almacenan en texto plano on-chain."
+        "description": "La red demuestra que estuviste presente sin saber dónde. Tu ubicación se compromete como hash, se verifica mediante pruebas ZK y nunca se almacena en texto plano."
       },
       "2": {
         "title": "Asegurado económicamente",
@@ -213,7 +214,7 @@
       },
       "3": {
         "title": "Infalsificable por IA",
-        "description": "La IA puede generar texto, imágenes e identidades sintéticas. Pero no puede existir físicamente en una coordenada. La presencia es la prueba de humanidad que resiste la automatización."
+        "description": "La IA genera texto, imágenes e identidades sintéticas. No puede existir físicamente en una coordenada. La presencia es la prueba de humanidad que resiste la automatización."
       }
     }
   },
@@ -221,25 +222,25 @@
     "label": "Flujo del protocolo",
     "title": "De señal a",
     "titleAccent": "prueba sellada",
-    "subtitle": "Tres pasos. Sin intermediarios. Tu presencia, verificada y permanente.",
+    "subtitle": "Tres pasos. Sin intermediarios. Tu presencia — verificada y permanente.",
     "steps": {
       "0": {
         "number": "01",
         "title": "Te presentas",
         "badge": "Declarar + Comprometer",
-        "description": "Tu dispositivo envía un compromiso criptográfico — un hash sellado que dice \"estoy aquí\" sin revelar dónde. Una acción. Sin biometría. Sin hardware."
+        "description": "Tu dispositivo envía un compromiso sellado — un hash criptográfico que dice \"estoy aquí\" sin revelar dónde. Un toque. Sin biometría. Sin hardware."
       },
       "1": {
         "number": "02",
         "title": "La red te mide",
         "badge": "Atestiguar + Triangular",
-        "description": "Un círculo de validadores mide independientemente la temporización de señales desde múltiples puntos. Mediante multilateración estiman tu posición — sin que la compartas."
+        "description": "Un círculo de validadores mide independientemente la temporización de tu señal desde múltiples puntos. Estiman tu posición — sin que la compartas."
       },
       "2": {
         "number": "03",
         "title": "Tu prueba queda sellada",
         "badge": "Finalizar",
-        "description": "Cuando suficientes validadores concuerdan, tu presencia se finaliza on-chain — un registro inmutable de que estuviste físicamente presente. Es tuya. Nadie puede revocarla."
+        "description": "Cuando suficientes validadores concuerdan, tu presencia queda sellada on-chain — un registro inmutable de que estuviste físicamente ahí. Es tuya para siempre."
       }
     }
   },
@@ -247,11 +248,11 @@
     "label": "Arquitectura",
     "title": "Cuatro capas,",
     "titleAccent": "un protocolo",
-    "subtitle": "Cada capa se construye sobre la anterior, desde la red básica hasta las aplicaciones con las que interactúas.",
+    "subtitle": "Cada capa se construye sobre la anterior — desde la red básica hasta las aplicaciones con las que interactúas.",
     "layers": {
       "0": {
         "title": "Fundación de la red",
-        "description": "Cómo los nodos se encuentran entre sí, acuerdan la verdad y producen bloques. El consenso asegura que cada validador juegue bajo las mismas reglas.",
+        "description": "Cómo los nodos descubren pares, alcanzan consenso y producen bloques. Cada validador juega bajo las mismas reglas, aplicadas por el protocolo.",
         "items": {
           "0": "Consenso",
           "1": "Producción de bloques",
@@ -261,17 +262,17 @@
       },
       "1": {
         "title": "Motor de presencia",
-        "description": "La innovación central: medir la latencia de red desde múltiples puntos para estimar la posición física. Los círculos de testigos se forman, miden y triangulan — todo sin GPS.",
+        "description": "La innovación central: medir la temporización de red desde múltiples puntos para determinar tu posición física. Los validadores forman círculos, miden y verifican — todo sin GPS.",
         "items": {
           "0": "Triangulación",
           "1": "Círculos de testigos",
           "2": "Estimación de posición",
-          "3": "Gestión de épocas"
+          "3": "Rondas de verificación"
         }
       },
       "2": {
         "title": "Seguridad y privacidad",
-        "description": "Múltiples capas de protección: los validadores apuestan valor, las disputas se resuelven on-chain, las pruebas ZK mantienen tu ubicación privada.",
+        "description": "Defensa en profundidad: los validadores apuestan valor real, las disputas se resuelven on-chain y las pruebas ZK mantienen tu ubicación exacta privada.",
         "items": {
           "0": "Staking y slashing",
           "1": "Resolución de disputas",
@@ -281,7 +282,7 @@
       },
       "3": {
         "title": "Aplicaciones",
-        "description": "Lo que se construye sobre la presencia verificada: gobernanza ponderada por participación, bóvedas seguras, redes de confianza y herramientas de coordinación.",
+        "description": "Lo que se construye sobre la presencia verificada: gobernanza justa, bóvedas seguras, redes de confianza y herramientas de coordinación.",
         "items": {
           "0": "Gobernanza",
           "1": "Bóvedas de datos",
@@ -296,8 +297,8 @@
     "title": "Tu ubicación se verifica,",
     "titleAccent": "nunca se revela",
     "description": {
-      "0": "Las pruebas de conocimiento cero permiten a la red confirmar que estuviste en una ubicación sin saber cuál es. Tus datos se quedan contigo.",
-      "1": "El protocolo usa compromisos criptográficos para que incluso los validadores que miden tu señal nunca vean tus coordenadas reales. Solo confirman: \"sí, esta persona estuvo físicamente presente.\""
+      "0": "Las pruebas de conocimiento cero permiten a la red confirmar que estuviste en algún lugar sin saber dónde. Tus datos nunca salen de tu control.",
+      "1": "Incluso los validadores que miden tu señal nunca ven tus coordenadas. Solo confirman una cosa: \"sí, esta persona estuvo físicamente presente.\""
     },
     "verified": "Verificado",
     "redactedPosition": "Posición: ████████",
@@ -305,15 +306,15 @@
     "pillars": {
       "0": {
         "title": "Commit-Reveal",
-        "description": "Envía primero un hash sellado de tu presencia. Solo después de que se bloquea revelas los datos — previniendo manipulación."
+        "description": "Envía primero un hash sellado de tu presencia. Solo después de que se bloquea revelas los datos — previniendo manipulación y front-running."
       },
       "1": {
         "title": "Pruebas de conocimiento cero",
         "description": "Pruebas matemáticas que verifican \"esta persona estuvo aquí\" sin revelar dónde. La red nunca ve tu ubicación."
       },
       "2": {
-        "title": "Protección por anuladores",
-        "description": "Cada prueba genera un anulador único que previene la reutilización — deteniendo ataques de repetición mientras preserva el anonimato."
+        "title": "Protección contra replay",
+        "description": "Cada prueba genera un identificador único que previene la reutilización — bloqueando ataques de replay mientras te mantiene completamente anónimo."
       }
     }
   },
@@ -321,16 +322,16 @@
     "label": "Casos de uso",
     "title": "Donde la presencia lo cambia todo",
     "accentWord": "presencia",
-    "description": "Desde votaciones justas hasta reseñas verificadas — problemas del mundo real que solo la presencia física puede resolver.",
+    "description": "Desde airdrops anti-bots hasta una-persona-un-voto — problemas reales que solo la identidad basada en física puede resolver.",
     "sybilProblem": {
-      "title": "El problema Sybil está en todas partes",
-      "paragraph1": "La misma persona puede crear miles de cuentas falsas en minutos. Los bots acumulan recompensas. Los usuarios falsos capturan votos. Y la mayoría de los sistemas no tienen forma de distinguirlos.",
-      "paragraph2": "La causa raíz es simple: no hay forma confiable de probar que un humano único está detrás de una acción."
+      "title": "Los bots están ganando",
+      "paragraph1": "Una persona crea mil wallets en minutos. Los bots farmean tus airdrops. Las cuentas falsas capturan votos de gobernanza. La mayoría de protocolos no pueden notar la diferencia.",
+      "paragraph2": "La causa raíz: no hay forma confiable de probar que un humano único está detrás de cada wallet."
     },
     "physicsSolution": {
-      "title": "La física como solución",
-      "paragraph1": "7aychain resuelve esto con física. Puedes crear cuentas ilimitadas — pero solo puedes estar en un lugar a la vez. Al medir la temporización de la conexión a internet desde múltiples puntos, la red confirma que eres real y estás presente.",
-      "paragraph2": "Sin escaneos oculares. Sin dispositivos especiales."
+      "title": "La física lo resuelve",
+      "paragraph1": "7aychain ancla la identidad a la realidad física. Crea todas las wallets que quieras — pero solo puedes estar en un lugar a la vez. La red mide la temporización de tu conexión para confirmar que eres real y estás presente.",
+      "paragraph2": "Sin escaneos oculares. Sin dispositivos especiales. Solo las leyes de la física."
     },
     "applicationsLabel": "Aplicaciones",
     "applicationsTitle": "Donde la presencia cambia las reglas",
@@ -338,189 +339,189 @@
     "signalCards": {
       "0": {
         "title": "Únicamente humano",
-        "description": "Cada verificación se basa en la física de tu presencia real."
+        "description": "Cada verificación se basa en la física del mundo real — infalsificable por IA o bots."
       },
       "1": {
         "title": "Privado por defecto",
-        "description": "Verifica que estás presente sin saber quién eres ni rastrearte."
+        "description": "Demuestra que estás presente sin saber quién eres ni rastrear a dónde vas."
       },
       "2": {
-        "title": "Registrado permanentemente",
-        "description": "Cada prueba se almacena en un registro público que cualquiera puede verificar."
+        "title": "On-chain para siempre",
+        "description": "Cada prueba queda almacenada permanentemente on-chain — verificable por cualquiera, en cualquier momento."
       },
       "3": {
-        "title": "Funciona en todas partes",
-        "description": "Cualquier dispositivo con internet. Sin equipo especial requerido."
+        "title": "Cualquier dispositivo, donde sea",
+        "description": "Funciona en cualquier dispositivo con conexión a internet. Sin hardware especial."
       }
     },
     "useCases": {
       "0": {
-        "title": "Distribuciones justas de tokens",
-        "description": "Las recompensas van a personas reales, no a bots con miles de cuentas. Cada receptor se verifica como un humano único que realmente estuvo presente.",
-        "detail": "Las distribuciones de tokens adquieren significado cuando cada receptor es una persona real y verificada. Se acabaron los presupuestos agotados por cuentas falsas y farming automatizado."
+        "title": "Airdrops anti-bots",
+        "description": "Las recompensas van a humanos reales, no a granjas de bots. Cada receptor se verifica como una persona única que estuvo físicamente presente durante la ventana de claim.",
+        "detail": "Distribuciones de tokens que realmente llegan a tu comunidad. Se acabaron los presupuestos drenados por cuentas falsas y farming automatizado."
       },
       "1": {
-        "title": "Votación justa",
-        "description": "Una persona, un voto — garantizado por la física. Sin granjas de wallets, sin compra de votos, sin captura de gobernanza por cuentas falsas.",
-        "detail": "Las comunidades pueden realizar votaciones, propuestas y elecciones sabiendo que cada participante es una persona real — no una colección de wallets controladas por un solo actor."
+        "title": "Una persona, un voto",
+        "description": "Gobernanza verdaderamente democrática respaldada por física. Sin granjas de wallets, sin compra de votos, sin ataques de gobernanza por cuentas falsas.",
+        "detail": "Las DAOs y comunidades pueden ejecutar propuestas sabiendo que cada voto viene de un humano real y único — no de mil wallets controladas por una ballena."
       },
       "2": {
-        "title": "Transacciones seguras",
-        "description": "Agrega una capa de seguridad física a operaciones de alto valor. Incluso si alguien roba tu contraseña, necesitaría estar físicamente presente para actuar.",
-        "detail": "Las operaciones financieras críticas ganan una capa de protección que ningún hacker puede eludir de forma remota — necesitarían estar físicamente en el lugar correcto."
+        "title": "DeFi protegido por presencia",
+        "description": "Agrega una capa de física a operaciones de alto valor. Incluso con claves robadas, un atacante debe estar físicamente presente para ejecutar.",
+        "detail": "Las operaciones financieras críticas ganan una protección que ningún hacker remoto puede eludir — la presencia física en el lugar correcto es innegociable."
       },
       "3": {
-        "title": "Ticketing de eventos",
-        "description": "Demuestra que asististe a una conferencia, meetup o taller. Gana recompensas por haber estado realmente ahí — no solo por decir que estuviste.",
-        "detail": "Los organizadores de eventos obtienen datos de asistencia precisos mientras los asistentes ganan credenciales verificables con peso real."
+        "title": "Prueba de asistencia",
+        "description": "Demuestra que estuviste en una conferencia, hackathon o meetup — on-chain. Gana recompensas y credenciales por haber asistido de verdad.",
+        "detail": "Los organizadores obtienen datos de asistencia a prueba de manipulación. Los asistentes ganan credenciales verificables on-chain con peso real en el ecosistema."
       },
       "4": {
-        "title": "Comunidades verificadas",
-        "description": "Construye comunidades en torno a personas que realmente se presentan. Sin miembros falsos, sin bots inflando los números.",
-        "detail": "La membresía y el acceso se ganan a través de participación real, no cuentas fabricadas o credenciales compradas."
+        "title": "Acceso protegido por presencia",
+        "description": "Construye comunidades alrededor de personas que realmente se presentan. Restringe canales, contenido o recursos por presencia física verificada.",
+        "detail": "Membresía ganada a través de participación real — no credenciales compradas ni cuentas fabricadas. La presencia es la llave."
       },
       "5": {
         "title": "Reseñas y entregas verificadas",
-        "description": "Solo las personas que realmente visitaron pueden dejar reseñas. Los repartidores demuestran que llegaron a la dirección correcta. Fin a las reseñas falsas y al fraude en entregas.",
-        "detail": "La verificación física asegura que las reseñas, entregas y confirmaciones de servicio provienen de personas que realmente estuvieron ahí."
+        "description": "Solo las personas que visitaron físicamente pueden dejar reseñas. Los repartidores demuestran que llegaron. Fin a las reseñas falsas y al fraude en entregas.",
+        "detail": "La verificación física asegura que las reseñas y confirmaciones vienen de personas que realmente estuvieron ahí — no de bots ni actores maliciosos."
       }
     },
     "ctaTitle": "Construye con Proof of Presence",
-    "ctaSubtitle": "La devnet está activa. Comienza a construir aplicaciones en 7aychain hoy.",
+    "ctaSubtitle": "La devnet está activa. Comienza a construir aplicaciones anti-bots en 7aychain hoy.",
     "ctaPrimary": "Conectar a la Devnet",
-    "ctaSecondary": "Unirse a la lista de espera"
+    "ctaSecondary": "Acceso anticipado"
   },
   "glossaryPage": {
     "label": "Glosario",
     "title": "Terminología de 7aychain",
     "accentWord": "Terminología",
-    "description": "Definiciones de términos clave, pallets y conceptos del protocolo Proof of Presence de 7aychain.",
+    "description": "Términos clave, módulos y conceptos del protocolo Proof of Presence de 7aychain — desde círculos de testigos hasta circuitos ZK.",
     "letterNavAria": "Navegación por letras del glosario",
     "terms": {
       "autonomousDetection": {
         "letter": "A",
         "term": "Detección autónoma",
-        "definition": "Un módulo on-chain que detecta automáticamente patrones anómalos en las atestaciones de presencia, marcando comportamientos sospechosos para revisión o disputa sin requerir reportes manuales."
+        "definition": "Un módulo on-chain que automáticamente marca patrones sospechosos en las verificaciones de presencia. Detecta comportamiento coordinado de bots, temporización falsa y valores atípicos estadísticos sin reportes manuales."
       },
       "boomerangProof": {
         "letter": "B",
         "term": "Prueba Boomerang",
-        "definition": "Un mecanismo criptográfico que verifica que un actor regresó a una ubicación previamente atestada. Se usa para demostrar patrones de presencia consistentes a lo largo del tiempo sin revelar la ubicación en sí."
+        "definition": "Una prueba criptográfica de que alguien regresó a una ubicación previamente verificada. Demuestra patrones de presencia consistentes a lo largo del tiempo sin revelar la ubicación — habilitando reputación sin vigilancia."
       },
       "circuitRegistry": {
         "letter": "C",
         "term": "Registro de circuitos",
-        "definition": "El registro on-chain de circuitos ZK disponibles para generación y verificación de pruebas. Gestiona versiones de circuitos, migración entre modos de prueba y configuraciones de verificadores."
+        "definition": "El registro on-chain de circuitos ZK disponibles para generación y verificación de pruebas. Gestiona versiones de circuitos, migración de modos de prueba y configuraciones de verificadores."
       },
       "commitRevealScheme": {
         "letter": "C",
         "term": "Esquema Commit-Reveal",
-        "definition": "Un protocolo de dos fases donde los actores primero comprometen un hash de sus datos de presencia (ocultándolos), y luego revelan los datos reales en una fase posterior. Previene el front-running y asegura un orden justo de las declaraciones de presencia."
+        "definition": "Un protocolo anti-manipulación de dos fases: primero comprometes un hash de tus datos de presencia (ocultándolos), luego revelas los datos reales en una fase posterior. Previene front-running y asegura un ordenamiento justo."
       },
       "deviceScanner": {
         "letter": "D",
         "term": "Escáner de dispositivos",
-        "definition": "Un módulo a nivel de pallet para registrar y escanear dispositivos que participan en la atestación de presencia. Gestiona la identidad de dispositivos, la capacidad de atestación y la revocación."
+        "definition": "Un módulo para registrar dispositivos que participan en la verificación de presencia. Gestiona identidad de dispositivos, capacidad de verificación y revocación — asegurando que solo hardware autorizado contribuya."
       },
       "disputeResolution": {
         "letter": "D",
         "term": "Resolución de disputas",
-        "definition": "Un proceso on-chain para impugnar atestaciones de presencia. Los disputantes envían evidencia, los validadores votan y el protocolo aplica los resultados, incluyendo slashing para atestadores deshonestos."
+        "definition": "El proceso on-chain para impugnar verificaciones de presencia. Los disputantes envían evidencia criptográfica, los validadores votan y el protocolo aplica los resultados — incluyendo slashing para verificadores deshonestos."
       },
       "epoch": {
         "letter": "E",
         "term": "Época",
-        "definition": "Una ventana de tiempo fija durante la cual ocurren las declaraciones, atestaciones y finalizaciones de presencia. Las épocas estructuran el ciclo de vida del protocolo y determinan los cronogramas de rotación de validadores."
+        "definition": "Una ventana de tiempo fija durante la cual ocurren las declaraciones y verificaciones de presencia. Las épocas estructuran el ciclo de vida del protocolo, determinan la rotación de validadores y aíslan las rondas de verificación."
       },
       "groth16": {
         "letter": "G",
         "term": "Groth16",
-        "definition": "Un sistema de pruebas de conocimiento cero utilizado por 7aychain para pruebas de presencia sucintas y no interactivas. Proporciona pruebas de tamaño constante con verificación rápida, habilitando la verificación ZK eficiente on-chain."
+        "definition": "Un sistema de pruebas de conocimiento cero usado por 7aychain para pruebas de presencia compactas y no interactivas. Ofrece pruebas de tamaño constante con verificación rápida on-chain — crítico para privacidad escalable."
       },
       "laudNetworksCli": {
         "letter": "L",
         "term": "Laud Networks CLI",
-        "definition": "Una interfaz de usuario de terminal (TUI) basada en Python para interactuar con los pallets de 7aychain. Soporta los 16 módulos del protocolo para declaración de presencia, gestión de validadores, pruebas ZK y más."
+        "definition": "Una interfaz de terminal basada en Python para interactuar con los 16 módulos de 7aychain. Soporta declaración de presencia, gestión de validadores, pruebas ZK, gobernanza, bóvedas y más."
       },
       "lifecycle": {
         "letter": "L",
         "term": "Ciclo de vida",
-        "definition": "La máquina de estados completa que gobierna una declaración de presencia desde su creación hasta su finalización: Declarar, Comprometer, Revelar, Atestiguar, Triangular y Finalizar."
+        "definition": "La máquina de seis estados que gobierna una declaración de presencia: Declarar, Comprometer, Revelar, Atestiguar, Triangular y Finalizar. Cada transición es aplicada por el protocolo."
       },
       "multilateration": {
         "letter": "M",
         "term": "Multilateración",
-        "definition": "Una técnica de posicionamiento que estima la ubicación física de un actor usando mediciones de latencia de red desde múltiples puntos de referencia de validadores. El algoritmo de triangulación central en los círculos de testigos."
+        "definition": "Una técnica de posicionamiento que estima la ubicación física a partir de mediciones de temporización de red tomadas en múltiples puntos de validadores. El algoritmo de triangulación central que impulsa los círculos de testigos."
       },
       "octopusGroups": {
         "letter": "O",
         "term": "Grupos Octopus",
-        "definition": "Unidades organizacionales dentro del protocolo que agrupan validadores y actores para operaciones de presencia coordinadas. Los grupos pueden tener reglas de gobernanza compartidas y umbrales de atestación colectivos."
+        "definition": "Unidades organizacionales que agrupan validadores y participantes para operaciones de presencia coordinadas. Los grupos pueden definir reglas de gobernanza compartidas y umbrales de verificación colectivos."
       },
       "positionBoundToken": {
         "letter": "P",
         "term": "Token vinculado a posición (PBT)",
-        "definition": "Un token criptográfico acuñado cuando la presencia se finaliza. Los PBTs vinculan las declaraciones de atestación a posiciones y épocas específicas, sirviendo como credenciales verificables de prueba de presencia sin revelar ubicaciones exactas."
+        "definition": "Un token acuñado cuando la presencia es verificada. Los PBTs vinculan las declaraciones de verificación a posiciones y ventanas de tiempo específicas, sirviendo como credenciales de prueba de presencia — sin revelar ubicaciones exactas."
       },
       "presenceLifecycle": {
         "letter": "P",
         "term": "Ciclo de vida de presencia",
-        "definition": "El flujo del protocolo en seis fases: Declarar (anunciar intención), Comprometer (enviar hash de presencia), Revelar (divulgar datos), Atestiguar (validadores miden), Triangular (calcular posición), Finalizar (consenso de quórum)."
+        "definition": "El flujo del protocolo en seis fases: Declarar (anunciar intención), Comprometer (enviar hash), Revelar (divulgar datos), Atestiguar (validadores miden), Triangular (calcular posición), Finalizar (sellado por quórum)."
       },
       "proofOfPresence": {
         "letter": "P",
         "term": "Proof of Presence (PoP)",
-        "definition": "El mecanismo de consenso de 7aychain. Los validadores forman círculos de testigos y triangulan la presencia física mediante la medición de latencia de red -- sin GPS, sin biometría, sin hardware externo."
+        "definition": "El mecanismo de consenso de 7aychain. Los validadores forman círculos de testigos y verifican la presencia física mediante mediciones de temporización de red — sin GPS, sin biometría, sin hardware externo. Anti-bots por diseño."
       },
       "quorumConsensus": {
         "letter": "Q",
         "term": "Consenso de quórum",
-        "definition": "El umbral de acuerdo entre validadores requerido para finalizar una atestación de presencia. Una declaración de presencia solo se finaliza cuando un porcentaje suficiente del círculo de testigos converge en una estimación de posición."
+        "definition": "El umbral de acuerdo entre validadores requerido para finalizar una verificación de presencia. Una declaración solo se finaliza cuando suficientes validadores en el círculo de testigos convergen en una estimación de posición."
       },
       "semanticLinks": {
         "letter": "S",
         "term": "Enlaces semánticos",
-        "definition": "Relaciones on-chain entre entidades (actores, ubicaciones, organizaciones) que forman un grafo de confianza. Los enlaces semánticos habilitan la verificación contextual y la reputación basada en el historial de presencia."
+        "definition": "Relaciones on-chain entre entidades (personas, ubicaciones, organizaciones) que forman un grafo de confianza. Habilitan verificación contextual y puntuación de reputación basada en historial de presencia verificada."
       },
       "shamirSecretSharing": {
         "letter": "S",
         "term": "Compartición de secretos de Shamir",
-        "definition": "Un esquema criptográfico utilizado en el sistema de bóvedas para dividir datos sensibles entre múltiples partes. Ninguna parte individual posee suficiente información para reconstruir el secreto, habilitando la recuperación segura y el intercambio controlado."
+        "definition": "Un esquema criptográfico usado en el sistema de bóvedas de 7aychain para dividir datos sensibles entre múltiples partes. Ninguna parte individual posee suficiente para reconstruir el secreto — habilitando recuperación segura sin custodia centralizada."
       },
       "snark": {
         "letter": "S",
         "term": "SNARK",
-        "definition": "Argumento de Conocimiento Sucinto No Interactivo. Un tipo de prueba de conocimiento cero utilizado por 7aychain para pruebas de presencia compactas y verificables de forma eficiente. El protocolo migra de verificadores stub a circuitos SNARK completos."
+        "definition": "Argumento de Conocimiento Sucinto No Interactivo. Un tipo de prueba de conocimiento cero usado por 7aychain para pruebas de presencia compactas y verificables eficientemente."
       },
       "storageLayer": {
         "letter": "S",
         "term": "Capa de almacenamiento",
-        "definition": "Un pallet que proporciona almacenamiento de datos on-chain y off-chain para pruebas de presencia, registros de atestación y estado del protocolo. Soporta anclaje, recuperación y garantías de disponibilidad de datos."
+        "definition": "Un módulo que proporciona almacenamiento de datos on-chain y off-chain para pruebas de presencia, registros de verificación y estado del protocolo. Soporta anclaje, recuperación y garantías de disponibilidad de datos."
       },
       "triangulation": {
         "letter": "T",
         "term": "Triangulación",
-        "definition": "El proceso por el cual los validadores estiman la posición física de un actor usando mediciones de latencia de red desde múltiples puntos de referencia. Combina multilateración con algoritmos de centroide para la estimación de posición."
+        "definition": "El proceso por el cual los validadores estiman la posición física usando mediciones de temporización de red desde múltiples puntos de referencia. Combina multilateración con algoritmos de posición para verificación de alta confianza."
       },
       "validator": {
         "letter": "V",
         "term": "Validador",
-        "definition": "Un operador de nodo que apuesta $7AY para participar en el consenso, la atestación de presencia y la triangulación de círculos de testigos. Los validadores ganan recompensas por comportamiento honesto y enfrentan slashing por deshonestidad."
+        "definition": "Un operador de nodo que apuesta $7AY para participar en consenso, verificación de presencia y triangulación de círculos de testigos. Gana recompensas por comportamiento honesto; enfrenta slashing por deshonestidad."
       },
       "vault": {
         "letter": "V",
         "term": "Bóveda",
-        "definition": "Un sistema de almacenamiento seguro on-chain para datos sensibles. Soporta compartición de secretos de Shamir para gestión distribuida de claves, habilitando la recuperación de datos y el intercambio controlado entre partes autorizadas."
+        "definition": "Un sistema de almacenamiento seguro on-chain que usa compartición de secretos de Shamir para gestión distribuida de claves. Habilita recuperación de datos e intercambio controlado — sin custodia centralizada."
       },
       "witnessCircle": {
         "letter": "W",
         "term": "Círculo de testigos",
-        "definition": "Un subconjunto seleccionado pseudoaleatoriamente de validadores asignados para atestiguar una declaración de presencia. Los miembros del círculo miden la latencia de forma independiente y triangulan colectivamente la posición del actor declarante."
+        "definition": "Un grupo seleccionado aleatoriamente de validadores asignados para verificar una declaración de presencia. Los miembros del círculo miden la temporización de forma independiente y colectivamente confirman la posición física de la persona."
       },
       "zkCircuit": {
         "letter": "Z",
         "term": "Circuito ZK",
-        "definition": "Un circuito de cómputo de conocimiento cero que genera pruebas que verifican la presencia sin revelar datos exactos de ubicación. 7aychain usa circuitos Groth16 con un registro on-chain y una ruta de migración de verificación stub a verificación SNARK completa."
+        "definition": "Un circuito de cómputo de conocimiento cero que genera pruebas que verifican la presencia sin revelar datos exactos de ubicación. 7aychain usa circuitos Groth16 con un registro on-chain."
       }
     }
   },
@@ -529,26 +530,26 @@
     "title": "La red está",
     "titleAccent": "despertando",
     "titleEnd": ".",
-    "subtitle": "Sé de los primeros en demostrar que estás aquí — únete a las personas que construyen un mundo donde la presencia importa más que las contraseñas.",
+    "subtitle": "Sé de los primeros en demostrar que estás aquí. Únete a los builders que están dando forma a un mundo donde la presencia importa más que las contraseñas.",
     "form": {
       "emailLabel": "Correo electrónico",
       "emailPlaceholder": "tu@email.com",
-      "submitIdle": "Obtener acceso anticipado",
+      "submitIdle": "Acceso anticipado",
       "submitLoading": "Uniéndose...",
       "submitSuccess": "¡Estás dentro!",
-      "successMessage": "¡Bienvenido a bordo! Te contactaremos cuando el acceso se abra.",
-      "errorInvalidEmail": "Por favor ingresa un correo electrónico válido",
-      "errorGeneric": "Algo salió mal. Por favor intenta de nuevo.",
+      "successMessage": "Bienvenido a bordo. Te contactaremos cuando tu acceso se abra.",
+      "errorInvalidEmail": "Ingresa un correo electrónico válido",
+      "errorGeneric": "Algo salió mal. Intenta de nuevo.",
       "privacyNote": "Solo necesitamos tu correo. Sin biometría, sin identificación personal, sin datos de ubicación."
     },
     "benefits": {
       "0": {
         "title": "Primero en verificar",
-        "description": "Accede a la red antes que nadie y sé de los primeros en demostrar tu presencia."
+        "description": "Accede a la red antes que el público y sé de los primeros en generar un Proof of Presence."
       },
       "1": {
-        "title": "Forma la red",
-        "description": "Tu retroalimentación influye directamente en lo que construimos y cómo evoluciona el protocolo."
+        "title": "Da forma al protocolo",
+        "description": "Tu feedback influye directamente en lo que se construye y cómo evoluciona el protocolo."
       },
       "2": {
         "title": "Estatus de miembro fundador",
@@ -567,7 +568,7 @@
       },
       "2": {
         "label": "Fase 2",
-        "title": "Disponibilidad ampliada"
+        "title": "Disponibilidad abierta"
       }
     },
     "socialProof": {
@@ -579,9 +580,9 @@
   },
   "newsletterPage": {
     "label": "Newsletter",
-    "title": "Mantente al día",
-    "accentWord": "día",
-    "description": "Perspectivas de producto, avances del protocolo e infraestructura de presencia del mundo real — entregadas cuando importa.",
+    "title": "Directo de los",
+    "accentWord": "Builders",
+    "description": "Avances del protocolo, actualizaciones de producto y acceso anticipado — entregado cuando importa.",
     "whatYouGet": {
       "label": "Qué recibirás",
       "title": "Señal, no ruido",
@@ -589,83 +590,86 @@
     },
     "topics": {
       "0": {
-        "title": "Avances del protocolo",
-        "description": "Actualizaciones detalladas sobre el desarrollo de 7aychain, desde hitos del protocolo y verificación ZK hasta despliegues de la devnet."
+        "title": "Actualizaciones del protocolo",
+        "description": "Análisis profundos del desarrollo de 7aychain: hitos del protocolo, progreso de verificación ZK y releases de la devnet."
       },
       "1": {
-        "title": "Perspectivas de producto",
-        "description": "Cómo la presencia del mundo real se aplica en productos, pilotos y despliegues en etapa temprana."
+        "title": "Aplicaciones en el mundo real",
+        "description": "Cómo la verificación de presencia se aplica en productos reales, pilotos y despliegues tempranos."
       },
       "2": {
-        "title": "Análisis de la industria",
-        "description": "Perspectivas sobre resiliencia ante IA, verificación humana y el panorama en evolución de la infraestructura de confianza."
+        "title": "Perspectivas de la industria",
+        "description": "Análisis sobre identidad resistente a IA, verificación humana y el panorama en evolución de la confianza en Web3."
       }
     },
     "followTitle": "Sigue nuestro progreso",
-    "followSubtitle": "La newsletter llegará pronto. Mientras tanto, síguenos en X para actualizaciones en tiempo real sobre 7aychain y 7ayLabs.",
+    "followSubtitle": "La newsletter llega pronto. Síguenos en X para actualizaciones en tiempo real sobre el desarrollo de 7aychain.",
     "followCta": "Seguir en X",
     "noSpam": "Sin spam. Solo señal del equipo que construye 7aychain."
   },
   "whyPresencePage": {
     "label": "Por qué Presencia",
     "title": "Internet perdió la señal humana",
-    "accentWords": ["humana", "señal"],
-    "description": "Cuando los bots pueden hacer todo lo que los humanos hacen en línea, lo único que queda para demostrar que eres real es estar físicamente presente.",
+    "accentWords": [
+      "humana",
+      "señal"
+    ],
+    "description": "Cuando los bots pueden replicar todo lo que los humanos hacen en línea, la única prueba infalsificable es la presencia física.",
     "presenceInfrastructure": {
       "sectionTitle": "Infraestructura de presencia",
-      "paragraph1": "En el corazón de 7aychain hay una idea simple: tu conexión a internet puede demostrar dónde estás. Los validadores en la red miden la temporización de conexión desde múltiples puntos, confirmando tu ubicación física sin GPS, cámaras ni hardware especial.",
-      "paragraph2": "La mayoría de los sistemas intentan descifrar si eres real observando tu comportamiento, tus cuentas o tus credenciales. A escala, todo eso se puede falsificar. 7aychain toma un enfoque diferente: usa las leyes de la física."
+      "paragraph1": "En el corazón de 7aychain hay una idea simple: tu conexión a internet puede probar dónde estás. Los validadores en la red miden la temporización de conexión desde múltiples puntos, confirmando tu ubicación física sin GPS, cámaras ni hardware especial.",
+      "paragraph2": "La mayoría de los sistemas de identidad se basan en comportamiento, cuentas o credenciales. A escala, todo se puede falsificar. 7aychain toma un enfoque fundamentalmente diferente: usa las leyes de la física."
     },
     "physicsArgument": {
       "label": "El argumento de la física",
-      "title": "Resistencia Sybil a través de la realidad física",
-      "subtitle": "En lugar de confiar en perfiles, credenciales o biometría, 7aychain aprovecha una restricción física fundamental: solo puedes estar en un lugar a la vez."
+      "title": "Resistencia a bots a través de la realidad física",
+      "subtitle": "En lugar de confiar en perfiles, credenciales o biometría, 7aychain explota una restricción fundamental: solo puedes estar en un lugar a la vez."
     },
     "pillars": {
       "0": {
         "title": "Física, no escaneos",
-        "description": "Las señales de internet tienen un límite de velocidad — la velocidad de la luz. 7aychain usa este hecho para confirmar dónde estás. Sin escaneos de iris, sin selfies, sin huellas dactilares."
+        "description": "Las señales de internet obedecen la velocidad de la luz. 7aychain usa esto para confirmar dónde estás. Sin escaneos de iris. Sin selfies. Sin huellas dactilares."
       },
       "1": {
         "title": "Un lugar a la vez",
-        "description": "Puedes crear un millón de cuentas, pero solo puedes estar físicamente en un lugar. Esa es la restricción que hace que falsificar la presencia sea casi imposible."
+        "description": "Crea un millón de wallets — igual solo puedes estar en una ubicación física. Esa restricción hace que los ataques de bots sean casi imposibles."
       },
       "2": {
         "title": "Sin huella duradera",
-        "description": "Cada verificación es un evento único. Sin perfil persistente, sin seguimiento de comportamiento, sin datos almacenados sobre ti. Demuestra que estuviste aquí y listo."
+        "description": "Cada verificación es efímera. Sin perfil persistente, sin seguimiento de comportamiento, sin datos almacenados. Demuestra que estuviste aquí y listo."
       }
     },
     "coreInsight": {
       "label": "Perspectiva central",
-      "title": "En un mundo de simulación perfecta, la realidad física se convierte en el recurso escaso",
-      "description": "La IA puede generar texto, comportamiento e interacción convincentes a escala. Pero replicar la presencia física — estar en una ubicación específica en un momento específico, medible a través de la física de red — sigue restringido por las leyes de la naturaleza."
+      "title": "En un mundo de simulación perfecta, la realidad física es el recurso escaso",
+      "description": "La IA genera texto, comportamiento e interacción convincentes a escala. Pero la presencia física — estar en un lugar específico en un momento específico, medible a través de la física de red — sigue restringida por la ley natural."
     },
     "sybilArguments": {
       "problemLabel": "Problema",
       "responseLabel": "Respuesta de 7aychain",
       "items": {
         "0": {
-          "problem": "Los bots pueden falsificar comportamiento a escala",
-          "response": "La IA puede falsificar texto, transacciones y actividad social. Pero no puede falsificar estar en algún lugar — la presencia física está restringida por las leyes de la física."
+          "problem": "Los bots falsifican comportamiento a escala",
+          "response": "La IA falsifica texto, transacciones y actividad social. No puede falsificar estar en algún lugar. La presencia física está limitada por las leyes de la física."
         },
         "1": {
-          "problem": "Cualquiera puede crear cuentas ilimitadas",
-          "response": "Crear una nueva wallet no cuesta nada. Estar en dos lugares a la vez es imposible. 7aychain convierte un problema digital en uno físico."
+          "problem": "Cualquiera crea wallets ilimitadas",
+          "response": "Crear wallets no cuesta nada. Estar en dos lugares a la vez es imposible. 7aychain convierte un problema digital en una restricción física."
         },
         "2": {
           "problem": "Los sistemas biométricos son vigilancia",
-          "response": "Los escaneos de iris y el reconocimiento facial crean bases de datos permanentes de tu cuerpo. 7aychain mide la temporización de internet — nunca ve tu cara ni conoce tu nombre."
+          "response": "Los escaneos de iris y el reconocimiento facial crean bases de datos permanentes de tu cuerpo. 7aychain mide temporización de conexión — nunca ve tu cara ni conoce tu nombre."
         },
         "3": {
-          "problem": "Las redes sociales se pueden falsificar",
-          "response": "Grupos coordinados pueden crear prueba social falsa. La presencia física se verifica de forma independiente por la red — sin necesidad de confianza."
+          "problem": "Los grafos sociales se pueden fabricar",
+          "response": "Los grupos coordinados fabrican prueba social. La presencia física es verificada independientemente por la red — sin supuestos de confianza."
         }
       }
     },
     "comparison": {
       "label": "Comparación",
       "title": "Cómo se compara 7aychain",
-      "subtitle": "Diferentes enfoques al problema de verificación humana. Cada uno hace distintas concesiones en privacidad, hardware y lo que realmente demuestran.",
+      "subtitle": "Diferentes enfoques a la identidad resistente a bots. Cada uno hace concesiones en privacidad, hardware y lo que realmente demuestran.",
       "headers": {
         "dimension": "Dimensión",
         "sevenychain": "7aychain",
@@ -676,31 +680,31 @@
       "rows": {
         "0": {
           "dimension": "Método",
-          "sevenychain": "Mide la temporización de conexión a internet",
-          "worldcoin": "Escanea tu iris con un dispositivo especial",
-          "brightid": "Amigos te avalan por video",
-          "passport": "Vincula tus cuentas en línea para un puntaje de confianza"
+          "sevenychain": "Triangulación por temporización de red",
+          "worldcoin": "Escaneo biométrico de iris con Orb",
+          "brightid": "Grafo social por videollamadas",
+          "passport": "Puntuación agregada de cuentas"
         },
         "1": {
           "dimension": "Hardware requerido",
-          "sevenychain": "Ninguno (cualquier conexión a internet)",
+          "sevenychain": "Ninguno — cualquier conexión a internet",
           "worldcoin": "Dispositivo Orb personalizado",
           "brightid": "Ninguno",
           "passport": "Ninguno"
         },
         "2": {
           "dimension": "¿Recopila datos corporales?",
-          "sevenychain": "No",
+          "sevenychain": "No — cero datos biométricos",
           "worldcoin": "Sí (escaneo de iris)",
-          "brightid": "No (pero el rostro es visible)",
+          "brightid": "No (rostro visible en video)",
           "passport": "No"
         },
         "3": {
           "dimension": "Privacidad",
-          "sevenychain": "Alta — solo ubicación, nunca identidad",
+          "sevenychain": "Alta — ubicación verificada, identidad nunca revelada",
           "worldcoin": "Baja — almacena datos biométricos del iris",
-          "brightid": "Media — tu rostro se ve en video",
-          "passport": "Media — vincula tus cuentas en línea"
+          "brightid": "Media — rostro expuesto durante verificación",
+          "passport": "Media — vincula cuentas existentes"
         },
         "4": {
           "dimension": "Qué demuestra",
@@ -728,7 +732,7 @@
     "cta": {
       "label": "Sigue la señal",
       "title": "La presencia es la primitiva que faltaba",
-      "subtitle": "Compartimos el progreso en tiempo real — lo que se está probando, lo que se rompe y dónde la presencia realmente cambia los resultados.",
+      "subtitle": "Compartimos progreso en tiempo real — lo que se construye, lo que se rompe y dónde la presencia cambia las reglas del juego.",
       "primary": "Seguir en X",
       "secondary": "Explorar Tecnología"
     }
@@ -737,10 +741,10 @@
     "label": "Devnet",
     "title": "Conéctate a 7aychain",
     "accentWord": "7aychain",
-    "description": "La devnet de 7aychain está activa con 6 nodos, 16 módulos principales y el stack de verificación completo. Clona el repositorio, compila y comienza a interactuar.",
+    "description": "La devnet de 7aychain está activa con 6 nodos, 16 módulos principales y el stack completo de Proof of Presence. Clona, compila y empieza a construir.",
     "quickStart": {
       "label": "Inicio rápido",
-      "title": "Compila y ejecuta en tres pasos",
+      "title": "Funcionando en tres pasos",
       "steps": {
         "0": {
           "badge": "1",
@@ -754,7 +758,7 @@
         },
         "2": {
           "badge": "3",
-          "title": "Ejecuta un nodo de desarrollo",
+          "title": "Ejecuta un nodo dev",
           "code": "./target/release/seveny-node --dev"
         }
       }
@@ -777,21 +781,45 @@
       },
       "preFundedAccounts": {
         "title": "Cuentas pre-financiadas",
-        "description": "Todas las cuentas de desarrollo (de Alice a Ferdie) están pre-financiadas en la devnet con tokens de prueba para uso inmediato."
+        "description": "Todas las cuentas de desarrollo (de Alice a Ferdie) vienen pre-financiadas con tokens de prueba para uso inmediato."
       }
     },
     "validatorNodes": {
-      "0": { "name": "Alice", "port": "9944", "role": "Nodo de arranque" },
-      "1": { "name": "Bob", "port": "9945", "role": "Validador" },
-      "2": { "name": "Charlie", "port": "9946", "role": "Validador" },
-      "3": { "name": "Dave", "port": "9947", "role": "Validador" },
-      "4": { "name": "Eve", "port": "9948", "role": "Validador" },
-      "5": { "name": "Ferdie", "port": "9949", "role": "Validador" }
+      "0": {
+        "name": "Alice",
+        "port": "9944",
+        "role": "Nodo de arranque"
+      },
+      "1": {
+        "name": "Bob",
+        "port": "9945",
+        "role": "Validador"
+      },
+      "2": {
+        "name": "Charlie",
+        "port": "9946",
+        "role": "Validador"
+      },
+      "3": {
+        "name": "Dave",
+        "port": "9947",
+        "role": "Validador"
+      },
+      "4": {
+        "name": "Eve",
+        "port": "9948",
+        "role": "Validador"
+      },
+      "5": {
+        "name": "Ferdie",
+        "port": "9949",
+        "role": "Validador"
+      }
     },
     "multiNodeSetup": {
       "label": "Configuración multi-nodo",
       "title": "Configuración de red de 6 nodos",
-      "description": "Ejecuta una devnet completa de 6 validadores localmente. Alice se ejecuta como el nodo de arranque nativo mientras que los validadores restantes pueden ejecutarse mediante Docker en modo híbrido.",
+      "description": "Ejecuta una devnet completa de 6 validadores localmente. Alice se ejecuta como nodo de arranque nativo; los validadores restantes corren via Docker en modo híbrido.",
       "tableHeaders": {
         "node": "Nodo",
         "rpcPort": "Puerto RPC",
@@ -805,7 +833,7 @@
     "laudCli": {
       "label": "Laud Networks CLI",
       "title": "Interactúa con cada módulo",
-      "description": "El Laud Networks CLI es una herramienta TUI basada en Python para interactuar con los módulos de 7aychain directamente desde la línea de comandos.",
+      "description": "El Laud Networks CLI es una interfaz basada en Python para interactuar con los 16 módulos de 7aychain directamente desde la línea de comandos.",
       "installTitle": "Instalación",
       "installCode": "pip install substrate-interface\npython3 laud-cli.py",
       "tableHeaders": {
@@ -813,22 +841,70 @@
         "operations": "Operaciones"
       },
       "modules": {
-        "0": { "module": "presence", "operations": "declarar, comprometer, revelar, consultar estado" },
-        "1": { "module": "epoch", "operations": "época actual, historial, configuración" },
-        "2": { "module": "validator", "operations": "registrar, activar, apostar, info de slashing" },
-        "3": { "module": "pbt", "operations": "acuñar, vincular, verificar tokens de posición" },
-        "4": { "module": "triangulation", "operations": "enviar latencia, calcular posición, verificar" },
-        "5": { "module": "dispute", "operations": "abrir, enviar evidencia, votar, resolver" },
-        "6": { "module": "device", "operations": "registrar, escanear, atestiguar, revocar" },
-        "7": { "module": "lifecycle", "operations": "consultar estado, transicionar, finalizar" },
-        "8": { "module": "vault", "operations": "crear, depositar, compartir, recuperar" },
-        "9": { "module": "zk", "operations": "generar prueba, verificar, migrar circuito" },
-        "10": { "module": "governance", "operations": "proponer, votar, ejecutar, cancelar" },
-        "11": { "module": "semantic", "operations": "vincular entidades, consultar grafo, desvincular" },
-        "12": { "module": "boomerang", "operations": "crear prueba, verificar retorno, consultar" },
-        "13": { "module": "autonomous", "operations": "detectar anomalía, reportar, consultar estado" },
-        "14": { "module": "octopus", "operations": "crear grupo, unirse, salir, consultar" },
-        "15": { "module": "storage", "operations": "almacenar, recuperar, anclar, desanclar" }
+        "0": {
+          "module": "presence",
+          "operations": "declare, commit, reveal, query status"
+        },
+        "1": {
+          "module": "epoch",
+          "operations": "current epoch, history, config"
+        },
+        "2": {
+          "module": "validator",
+          "operations": "register, activate, stake, slash info"
+        },
+        "3": {
+          "module": "pbt",
+          "operations": "mint, bind, verify position-bound tokens"
+        },
+        "4": {
+          "module": "triangulation",
+          "operations": "submit latency, compute position, verify"
+        },
+        "5": {
+          "module": "dispute",
+          "operations": "open, submit evidence, vote, resolve"
+        },
+        "6": {
+          "module": "device",
+          "operations": "register, scan, attest, revoke"
+        },
+        "7": {
+          "module": "lifecycle",
+          "operations": "query state, transition, finalize"
+        },
+        "8": {
+          "module": "vault",
+          "operations": "create, deposit, share, recover"
+        },
+        "9": {
+          "module": "zk",
+          "operations": "generate proof, verify, migrate circuit"
+        },
+        "10": {
+          "module": "governance",
+          "operations": "propose, vote, execute, cancel"
+        },
+        "11": {
+          "module": "semantic",
+          "operations": "link entities, query graph, unlink"
+        },
+        "12": {
+          "module": "boomerang",
+          "operations": "create proof, verify return, query"
+        },
+        "13": {
+          "module": "autonomous",
+          "operations": "detect anomaly, report, query status"
+        },
+        "14": {
+          "module": "octopus",
+          "operations": "create group, join, leave, query"
+        },
+        "15": {
+          "module": "storage",
+          "operations": "store, retrieve, pin, unpin"
+        }
       }
     },
     "hardware": {
@@ -840,10 +916,26 @@
         "recommended": "Recomendado"
       },
       "requirements": {
-        "0": { "spec": "Núcleos de CPU", "minimum": "4 núcleos", "recommended": "8+ núcleos" },
-        "1": { "spec": "RAM", "minimum": "8 GB", "recommended": "16 GB" },
-        "2": { "spec": "Almacenamiento", "minimum": "50 GB SSD", "recommended": "100 GB NVMe" },
-        "3": { "spec": "Red", "minimum": "10 Mbps", "recommended": "100+ Mbps" }
+        "0": {
+          "spec": "Núcleos de CPU",
+          "minimum": "4 núcleos",
+          "recommended": "8+ núcleos"
+        },
+        "1": {
+          "spec": "RAM",
+          "minimum": "8 GB",
+          "recommended": "16 GB"
+        },
+        "2": {
+          "spec": "Almacenamiento",
+          "minimum": "50 GB SSD",
+          "recommended": "100 GB NVMe"
+        },
+        "3": {
+          "spec": "Red",
+          "minimum": "10 Mbps",
+          "recommended": "100+ Mbps"
+        }
       }
     },
     "explorer": {
@@ -863,8 +955,8 @@
         "title": "Qué puedes hacer",
         "items": {
           "0": "Explorar bloques y extrinsics en tiempo real",
-          "1": "Enviar declaraciones y atestaciones de presencia",
-          "2": "Consultar el almacenamiento de módulos (presence, epoch, validator, etc.)",
+          "1": "Enviar declaraciones y verificaciones de presencia",
+          "2": "Consultar el almacenamiento de módulos (presence, validator, etc.)",
           "3": "Monitorear eventos de staking y slashing de validadores",
           "4": "Inspeccionar envíos de pruebas ZK y resultados de verificación"
         }
@@ -872,7 +964,7 @@
     },
     "cta": {
       "title": "¿Listo para construir en 7aychain?",
-      "subtitle": "Explora el código fuente, ejecuta un nodo local y comienza a construir sobre el protocolo Proof of Presence.",
+      "subtitle": "Explora el código fuente, ejecuta un nodo local y comienza a construir sobre Proof of Presence.",
       "primary": "Ver en GitHub",
       "secondary": "Ejecutar un Validador"
     }
@@ -881,14 +973,14 @@
     "label": "Validadores",
     "title": "Ejecuta un validador de 7aychain",
     "accentWord": "Validador",
-    "description": "Los validadores impulsan la red 7aychain. Forman grupos, miden conexiones a internet, confirman las ubicaciones de las personas y mantienen la honestidad de la red.",
+    "description": "Gana recompensas en $7AY asegurando la red. Los validadores forman círculos de testigos, verifican presencia física y mantienen la honestidad del protocolo.",
     "roleOverview": {
       "label": "Descripción del rol",
       "title": "Qué hacen los validadores",
-      "paragraph1": "En 7aychain, los validadores hacen más que mantener la red en funcionamiento. Verifican activamente que las personas están donde dicen estar — formando grupos que confirman independientemente la ubicación de cada persona usando mediciones de conexión a internet.",
-      "paragraph2": "Cada validador en un círculo de testigos mide la latencia de red hacia el actor declarante y hacia otros validadores. Estas mediciones alimentan algoritmos de multilateración que triangulan la posición física — sin GPS ni hardware externo.",
-      "paragraph3": "Cuando suficientes validadores concuerdan sobre la ubicación de alguien, su presencia se confirma y queda registrada permanentemente. Los validadores honestos ganan recompensas. Los deshonestos pierden su stake.",
-      "paragraph4": "El conjunto de validadores rota por época, asegurando que ningún grupo individual de validadores pueda coludirse para falsificar atestaciones de presencia a lo largo del tiempo."
+      "paragraph1": "En 7aychain, los validadores hacen más que producir bloques. Verifican activamente que las personas están donde dicen estar — formando círculos de testigos que confirman la ubicación de cada persona mediante mediciones de temporización de red.",
+      "paragraph2": "Cada validador en un círculo de testigos mide la temporización de ida y vuelta hacia el participante declarante y hacia otros validadores. Estas mediciones alimentan algoritmos de posición que determinan la ubicación física — sin GPS ni hardware externo.",
+      "paragraph3": "Cuando suficientes validadores concuerdan en una posición, la presencia se confirma y queda sellada permanentemente on-chain. Los validadores honestos ganan recompensas en $7AY. Los deshonestos son penalizados.",
+      "paragraph4": "El conjunto de validadores rota cada ronda, previniendo que cualquier grupo individual pueda coludirse para falsificar verificaciones de presencia."
     },
     "hardware": {
       "label": "Hardware",
@@ -899,10 +991,26 @@
         "recommended": "Recomendado"
       },
       "requirements": {
-        "0": { "spec": "Núcleos de CPU", "minimum": "4 núcleos", "recommended": "8+ núcleos" },
-        "1": { "spec": "RAM", "minimum": "8 GB", "recommended": "16 GB" },
-        "2": { "spec": "Almacenamiento", "minimum": "50 GB SSD", "recommended": "100 GB NVMe" },
-        "3": { "spec": "Red", "minimum": "10 Mbps", "recommended": "100+ Mbps" }
+        "0": {
+          "spec": "Núcleos de CPU",
+          "minimum": "4 núcleos",
+          "recommended": "8+ núcleos"
+        },
+        "1": {
+          "spec": "RAM",
+          "minimum": "8 GB",
+          "recommended": "16 GB"
+        },
+        "2": {
+          "spec": "Almacenamiento",
+          "minimum": "50 GB SSD",
+          "recommended": "100 GB NVMe"
+        },
+        "3": {
+          "spec": "Red",
+          "minimum": "10 Mbps",
+          "recommended": "100+ Mbps"
+        }
       }
     },
     "prerequisites": {
@@ -957,30 +1065,60 @@
         "description": "Descripción"
       },
       "flags": {
-        "0": { "flag": "--dev", "description": "Ejecutar en modo desarrollo con almacenamiento temporal" },
-        "1": { "flag": "--chain <spec>", "description": "Especificar chain spec (local, dev o ruta a JSON)" },
-        "2": { "flag": "--validator", "description": "Habilitar modo validador para producción de bloques" },
-        "3": { "flag": "--base-path <path>", "description": "Establecer el directorio de datos del nodo" },
-        "4": { "flag": "--rpc-port <port>", "description": "Establecer el puerto JSON-RPC (por defecto: 9944)" },
-        "5": { "flag": "--port <port>", "description": "Establecer el puerto de red p2p (por defecto: 30333)" },
-        "6": { "flag": "--name <name>", "description": "Nombre legible para el nodo" },
-        "7": { "flag": "--telemetry-url <url>", "description": "Endpoint del servidor de telemetría" },
-        "8": { "flag": "--bootnodes <addr>", "description": "Especificar dirección(es) multiaddress del nodo de arranque" },
-        "9": { "flag": "--rpc-cors all", "description": "Permitir todos los orígenes CORS para RPC" }
+        "0": {
+          "flag": "--dev",
+          "description": "Ejecutar en modo desarrollo con almacenamiento temporal"
+        },
+        "1": {
+          "flag": "--chain <spec>",
+          "description": "Especificar chain spec (local, dev o ruta a JSON)"
+        },
+        "2": {
+          "flag": "--validator",
+          "description": "Habilitar modo validador para producción de bloques"
+        },
+        "3": {
+          "flag": "--base-path <path>",
+          "description": "Establecer el directorio de datos del nodo"
+        },
+        "4": {
+          "flag": "--rpc-port <port>",
+          "description": "Establecer el puerto JSON-RPC (por defecto: 9944)"
+        },
+        "5": {
+          "flag": "--port <port>",
+          "description": "Establecer el puerto de red p2p (por defecto: 30333)"
+        },
+        "6": {
+          "flag": "--name <name>",
+          "description": "Nombre legible para el nodo"
+        },
+        "7": {
+          "flag": "--telemetry-url <url>",
+          "description": "Endpoint del servidor de telemetría"
+        },
+        "8": {
+          "flag": "--bootnodes <addr>",
+          "description": "Especificar dirección(es) multiaddress del nodo de arranque"
+        },
+        "9": {
+          "flag": "--rpc-cors all",
+          "description": "Permitir todos los orígenes CORS para RPC"
+        }
       }
     },
     "economics": {
       "label": "Economía",
-      "title": "Ciclo de vida de staking y slashing",
-      "description": "Los validadores deben apostar $7AY para participar. El comportamiento honesto genera recompensas mientras que las atestaciones deshonestas activan el slashing.",
+      "title": "Staking y recompensas",
+      "description": "Los validadores apuestan $7AY para participar. La verificación honesta genera recompensas. El comportamiento deshonesto activa slashing.",
       "steps": {
         "0": {
           "step": "Registrar",
-          "description": "Envía un extrinsic de registro de validador con tus claves de sesión. El registro entra en una cola de espera hasta la siguiente época."
+          "description": "Envía un registro de validador con tus claves de sesión. El registro entra en una cola de espera hasta la siguiente ronda."
         },
         "1": {
           "step": "Activar",
-          "description": "Una vez que tu registro es aceptado por la gobernanza, tu nodo entra al conjunto activo de validadores y comienza a participar en el consenso."
+          "description": "Una vez aceptado, tu nodo entra al conjunto activo de validadores y comienza a participar en consenso y verificación de presencia."
         },
         "2": {
           "step": "Apostar",
@@ -988,27 +1126,27 @@
         },
         "3": {
           "step": "Ganar",
-          "description": "Los validadores ganan recompensas por triangulación honesta, atestación de presencia y producción de bloques. Las recompensas se distribuyen por época."
+          "description": "Gana recompensas en $7AY por verificación honesta, confirmación de presencia y producción de bloques. Las recompensas se distribuyen cada ronda."
         },
         "4": {
           "step": "Slashing",
-          "description": "El comportamiento deshonesto (atestaciones falsas, inactividad, equivocación) activa el slashing. Una porción de tus $7AY apostados se quema."
+          "description": "Verificaciones falsas, inactividad prolongada o firma doble activan slashing. Una porción de tus $7AY apostados se quema."
         }
       }
     },
     "witnessCircles": {
       "label": "Protocolo",
       "title": "Participación en círculos de testigos",
-      "paragraph1": "Cuando un actor declara presencia, el protocolo selecciona un subconjunto de validadores activos para formar un",
+      "paragraph1": "Cuando alguien declara presencia, el protocolo selecciona un grupo de validadores activos para formar un",
       "witnessCircleHighlight": "círculo de testigos",
-      "paragraph1cont": ". La selección es pseudoaleatoria, ponderada por stake y restringida por la topología de red.",
-      "paragraph2": "Cada validador en el círculo mide independientemente la latencia de ida y vuelta hacia el actor declarante y hacia otros miembros del círculo. Estas mediciones se envían como atestaciones firmadas durante la fase de compromiso.",
-      "paragraph3": "Durante la fase de revelación, las mediciones de latencia se usan para multilateración — un algoritmo de triangulación que estima la posición física del actor basándose en datos de temporización de red desde múltiples puntos de referencia.",
-      "paragraph4": "Si la estimación de posición de un quórum de validadores converge dentro de un umbral aceptable, la presencia se finaliza. Las mediciones atípicas activan el proceso de resolución de disputas, y los validadores que proporcionan atestaciones falsas enfrentan slashing."
+      "paragraph1cont": ". La selección es aleatoria, ponderada por stake y determinada por la topología de red.",
+      "paragraph2": "Cada validador en el círculo mide independientemente la temporización de ida y vuelta hacia el participante declarante y hacia otros miembros del círculo. Estas mediciones se envían como verificaciones firmadas.",
+      "paragraph3": "Las mediciones de temporización alimentan algoritmos de posición que estiman la ubicación física a partir de datos de red de múltiples puntos de referencia.",
+      "paragraph4": "Si la estimación de posición de suficientes validadores converge dentro del umbral, la presencia se finaliza. Las mediciones atípicas activan resolución de disputas, y los validadores que proporcionan verificaciones falsas enfrentan slashing."
     },
     "cta": {
       "title": "Comienza a validar en 7aychain",
-      "subtitle": "La devnet está activa y aceptando validadores. Clona el repositorio, compila el nodo y únete a la red.",
+      "subtitle": "La devnet está activa y aceptando validadores. Clona el repo, compila el nodo y únete a la red.",
       "primary": "Ver en GitHub",
       "secondary": "Configuración de la Devnet"
     }
@@ -1017,15 +1155,15 @@
     "label": "Ecosistema",
     "title": "Construye sobre la capa de presencia",
     "accentWord": "presencia",
-    "description": "Herramientas para desarrolladores, integraciones de SDK y módulos de protocolo para construir aplicaciones sobre la infraestructura Proof of Presence de 7aychain.",
+    "description": "Herramientas para desarrolladores, SDKs y 16 módulos de protocolo para construir aplicaciones anti-bots sobre la infraestructura Proof of Presence de 7aychain.",
     "developerTools": {
       "label": "Herramientas para desarrolladores",
-      "title": "Herramientas para interactuar con 7aychain",
+      "title": "Herramientas para construir sobre 7aychain",
       "tools": {
         "0": {
           "name": "Laud Networks CLI",
           "badge": "Herramienta CLI",
-          "description": "TUI basado en Python para interactuar con los 16 pallets de 7aychain. Declara presencia, gestiona validadores, envía pruebas ZK y consulta el estado de la cadena desde la terminal."
+          "description": "Interfaz basada en Python para interactuar con los 16 módulos de 7aychain. Declara presencia, gestiona validadores, envía pruebas ZK y consulta el estado de la cadena desde la terminal."
         },
         "1": {
           "name": "Polkadot.js Apps",
@@ -1035,14 +1173,14 @@
         "2": {
           "name": "JSON-RPC API",
           "badge": "API",
-          "description": "Interfaz JSON-RPC estándar de Substrate para acceso programático. Compatible con cualquier cliente HTTP o WebSocket. Soporta todas las APIs de runtime y métodos de pallets personalizados."
+          "description": "Interfaz JSON-RPC estándar de Substrate para acceso programático. Compatible con cualquier cliente HTTP o WebSocket. Soporta todos los métodos de runtime y módulos personalizados."
         }
       }
     },
     "sdkIntegration": {
       "label": "Integración de SDK",
       "title": "Conéctate desde cualquier lenguaje",
-      "description": "7aychain expone una interfaz RPC estándar de Substrate. Usa cualquier SDK compatible con Substrate para interactuar con la cadena programáticamente.",
+      "description": "7aychain expone una interfaz RPC estándar de Substrate. Usa cualquier SDK compatible con Substrate para interactuar con la cadena.",
       "examples": {
         "0": {
           "language": "Rust (Subxt)",
@@ -1061,27 +1199,47 @@
     "protocolModules": {
       "label": "Módulos del protocolo",
       "title": "16 módulos para construir",
-      "description": "El runtime de 7aychain está compuesto por 16 pallets personalizados organizados en cuatro grupos funcionales. Cada pallet expone extrinsics, almacenamiento y eventos con los que los desarrolladores pueden interactuar.",
+      "description": "El runtime de 7aychain incluye 16 módulos personalizados organizados en cuatro grupos funcionales. Cada uno expone extrinsics, almacenamiento y eventos para desarrolladores.",
       "groups": {
         "0": {
           "category": "Capa de presencia",
-          "description": "Declaración de presencia central, gestión de épocas, máquina de estados y registro de dispositivos.",
-          "pallets": ["presence", "epoch", "lifecycle", "device"]
+          "description": "Declaración de presencia, gestión de ventanas de tiempo, máquina de estados del ciclo de vida y registro de dispositivos.",
+          "pallets": [
+            "presence",
+            "epoch",
+            "lifecycle",
+            "device"
+          ]
         },
         "1": {
           "category": "Verificación",
-          "description": "Estimación de posición, pruebas de conocimiento cero y acuñación de tokens de posición.",
-          "pallets": ["triangulation", "zk", "pbt"]
+          "description": "Estimación de posición por temporización de red, pruebas de conocimiento cero y acuñación de tokens de posición.",
+          "pallets": [
+            "triangulation",
+            "zk",
+            "pbt"
+          ]
         },
         "2": {
           "category": "Seguridad",
-          "description": "Staking de validadores, resolución de disputas y detección autónoma de anomalías.",
-          "pallets": ["validator", "dispute", "autonomous"]
+          "description": "Staking y slashing de validadores, resolución de disputas on-chain y detección autónoma de anomalías.",
+          "pallets": [
+            "validator",
+            "dispute",
+            "autonomous"
+          ]
         },
         "3": {
           "category": "Infraestructura",
-          "description": "Bóvedas de datos, almacenamiento on-chain, gobernanza, grafos de confianza, pruebas de retorno y gestión de grupos.",
-          "pallets": ["vault", "storage", "governance", "semantic", "boomerang", "octopus"]
+          "description": "Bóvedas seguras, almacenamiento on-chain, gobernanza, grafos de confianza, pruebas de retorno y gestión de grupos.",
+          "pallets": [
+            "vault",
+            "storage",
+            "governance",
+            "semantic",
+            "boomerang",
+            "octopus"
+          ]
         }
       }
     },
@@ -1090,18 +1248,18 @@
       "title": "Únete a la comunidad de 7aychain",
       "github": {
         "title": "GitHub",
-        "description": "Explora el código fuente, reporta problemas y contribuye al protocolo.",
+        "description": "Explora el código fuente, abre issues y contribuye al protocolo.",
         "cta": "Ver Repositorio"
       },
       "twitter": {
         "title": "X (Twitter)",
-        "description": "Sigue las actualizaciones del protocolo, el progreso de desarrollo y noticias de la comunidad.",
+        "description": "Actualizaciones del protocolo en tiempo real, progreso de desarrollo y anuncios de la comunidad.",
         "cta": "Seguir a @7ayLabs"
       }
     },
     "cta": {
       "title": "¿Listo para construir?",
-      "subtitle": "La devnet está activa. Comienza a construir sobre el protocolo Proof of Presence hoy.",
+      "subtitle": "La devnet está activa. Comienza a construir aplicaciones anti-bots sobre Proof of Presence hoy.",
       "primary": "Conectar a la Devnet",
       "secondary": "Ejecutar un Validador"
     }
@@ -1110,8 +1268,8 @@
     "label": "Actualizaciones",
     "title": "Estado del",
     "titleAccent": "proyecto",
-    "lastUpdated": "Última actualización · 28 de feb, 2026",
-    "intro": "Este registro documenta el progreso real de 7aychain y el proyecto 7ayLabs — hitos del protocolo, funcionalidades implementadas y actualizaciones de infraestructura.",
+    "lastUpdated": "Última actualización · 4 de abr, 2026",
+    "intro": "Progreso real. Código desplegado. Sin vaporware. Sigue a 7aychain y 7ayLabs mientras construimos la capa de presencia.",
     "filterAria": "Filtrar actualizaciones por tipo",
     "filters": {
       "all": "Todas las actualizaciones",
@@ -1124,52 +1282,66 @@
     "close": "Cerrar",
     "entries": {
       "0": {
-        "title": "7aychain v0.8.26 publicada",
-        "date": "28 de feb, 2026",
-        "summary": "Última versión estable con el stack completo del protocolo.",
-        "content": "Se publicó 7aychain v0.8.26, la última versión estable de la blockchain Layer 1. Esta versión incluye el stack completo del protocolo: ciclo de vida de presencia con commit-reveal, triangulación por círculos de testigos, verificación de pruebas ZK, staking y slashing de validadores, gobernanza, bóvedas, enlaces semánticos, resolución de disputas, escaneo de dispositivos y detección autónoma. Devnet multi-nodo ejecutándose con 6 validadores.",
-        "type": "platform"
+        "title": "Website v1.1 — Rediseño inspirado en DePIN",
+        "date": "4 de abr, 2026",
+        "summary": "Rediseño frontend completo con hero inspirado en DePIN, sistema de glow ambiental y copy crypto-nativo.",
+        "content": "Se rediseñó el sitio web con inspiración de proyectos DePIN líderes (Helium, Render, Filecoin). Nuevo hero con acento de gradiente único, sistema de fondo con glow radial ambiental, se eliminó el efecto typewriter, se agregó barra de confianza con métricas clave. Se reescribió todo el copy para ser más crypto-nativo y accesible. Soporte dual de temas con design tokens.",
+        "type": "website"
       },
       "1": {
-        "title": "Sistema de gobernanza y bóvedas",
-        "date": "Feb 2026",
-        "summary": "Gobernanza on-chain e infraestructura segura de bóvedas implementada.",
-        "content": "Se implementó gobernanza on-chain con propuestas, votación y delegación. Se implementó el sistema de bóvedas con operaciones de crear, compartir, recuperar, registrar archivo, solicitar desbloqueo y autorizar desbloqueo. Se agregaron enlaces semánticos para grafos de confianza entre entidades on-chain.",
+        "title": "CI/CD migrado de Jenkins a GitHub Actions",
+        "date": "3 de abr, 2026",
+        "summary": "Se reemplazó Jenkins con pipeline de deploy SSH via GitHub Actions. Se liberaron 423MB de RAM en el VPS.",
+        "content": "Se migró todo el pipeline de CI/CD de Jenkins a GitHub Actions con deploy SSH via appleboy/ssh-action. Se eliminó el contenedor de Jenkins, liberando 423MB de RAM. Nuevo pipeline: build de imagen Docker, push a registro, SSH al VPS, pull y deploy con health checks. Tres deploys exitosos verificados antes de la eliminación de Jenkins.",
         "type": "platform"
       },
       "2": {
-        "title": "Circuitos ZK y triangulación",
-        "date": "Ene 2026",
-        "summary": "Pruebas de conocimiento cero y algoritmos de multilateración integrados.",
-        "content": "Se integraron la generación de pruebas ZK y la verificación on-chain para atestación de presencia que preserva la privacidad. Se implementaron algoritmos de multilateración y triangulación por centroide que permiten a los validadores determinar la posición a partir de mediciones de latencia de red sin GPS. Se agregaron tokens de posición (PBTs) para declaraciones criptográficas de posición.",
+        "title": "7aychain v0.8.26 publicada",
+        "date": "28 de feb, 2026",
+        "summary": "Última versión estable con el stack completo del protocolo Proof of Presence.",
+        "content": "Se publicó 7aychain v0.8.26 — la última versión estable de la blockchain Layer 1. Incluye el stack completo del protocolo: ciclo de vida de presencia con commit-reveal, triangulación por círculos de testigos, verificación de pruebas ZK, staking/slashing de validadores, gobernanza, bóvedas, enlaces semánticos, resolución de disputas, escaneo de dispositivos y detección autónoma. Devnet multi-nodo ejecutándose con 6 validadores.",
         "type": "platform"
       },
       "3": {
-        "title": "Sistema de validadores y resolución de disputas",
-        "date": "Ene 2026",
-        "summary": "Ciclo de vida completo de validadores con staking, slashing y disputas.",
-        "content": "Se implementó el sistema completo de validadores: registro, activación, desactivación, retiro, staking y slashing. Se agregó resolución de disputas con envío de evidencia, votación y resolución on-chain. Los validadores forman círculos de testigos y participan en la finalización de presencia basada en quórum.",
+        "title": "Sistema de gobernanza y bóvedas",
+        "date": "Feb 2026",
+        "summary": "Gobernanza on-chain con propuestas y votación, más infraestructura segura de bóvedas.",
+        "content": "Se implementó gobernanza on-chain con propuestas, votación y delegación. Se implementó el sistema de bóvedas con operaciones de crear, compartir, recuperar, registrar archivo, solicitar desbloqueo y autorizar desbloqueo. Se agregaron enlaces semánticos para grafos de confianza entre entidades on-chain.",
         "type": "platform"
       },
       "4": {
-        "title": "Devnet multi-nodo y CLI",
+        "title": "Circuitos ZK y triangulación integrados",
         "date": "Ene 2026",
-        "summary": "Devnet híbrida con Laud Networks CLI para interacción con el protocolo.",
-        "content": "Se lanzó la devnet multi-nodo híbrida con Alice ejecutándose nativamente y los validadores restantes (Bob, Charlie, Dave, Eve, Ferdie) en Docker. Se publicó el Laud Networks CLI con comandos interactivos para todos los módulos del protocolo: presence, epoch, validator, triangulation, zk, governance, vault, semantic y más.",
+        "summary": "Pruebas de conocimiento cero y algoritmos de posición ahora activos en la devnet.",
+        "content": "Se integró generación de pruebas ZK y verificación on-chain para verificación de presencia que preserva la privacidad. Se implementaron algoritmos de posición que determinan ubicación a partir de mediciones de temporización de red sin GPS. Se agregaron tokens de posición (PBTs) para declaraciones criptográficas de posición.",
         "type": "platform"
       },
       "5": {
-        "title": "Presencia y núcleo de épocas",
-        "date": "Dic 2025",
-        "summary": "Ciclo de vida fundacional de presencia y gestión de épocas implementado.",
-        "content": "Se construyó la máquina de estados central de presencia (Declared, Attested, Triangulated, Finalized) con ciclo de vida vinculado a épocas. Se implementó el modelo de 5 estados de épocas con derivación dinámica de estado a partir de timestamps de bloques. Se estableció aislamiento por actor/época y mutaciones controladas por autoridad.",
+        "title": "Sistema de validadores y resolución de disputas",
+        "date": "Ene 2026",
+        "summary": "Ciclo de vida completo de validadores: registro, staking, slashing y disputas.",
+        "content": "Se implementó el sistema completo de validadores: registro, activación, desactivación, retiro, staking y slashing. Se agregó resolución de disputas con envío de evidencia, votación y aplicación on-chain. Los validadores forman círculos de testigos y participan en la finalización de presencia basada en quórum.",
         "type": "platform"
       },
       "6": {
-        "title": "Validación del problema",
+        "title": "Devnet multi-nodo y CLI lanzados",
+        "date": "Ene 2026",
+        "summary": "Devnet híbrida con 6 validadores y Laud Networks CLI para interacción completa con el protocolo.",
+        "content": "Se lanzó la devnet multi-nodo híbrida con Alice ejecutándose nativamente y los validadores restantes (Bob, Charlie, Dave, Eve, Ferdie) en Docker. Se publicó el Laud Networks CLI con comandos interactivos para todos los módulos del protocolo.",
+        "type": "platform"
+      },
+      "7": {
+        "title": "Core de presencia y épocas",
+        "date": "Dic 2025",
+        "summary": "Ciclo de vida fundacional de presencia y gestión de ventanas de tiempo — la columna vertebral del protocolo.",
+        "content": "Se construyó la máquina de estados central de presencia (Declared, Attested, Triangulated, Finalized) con ciclo de vida vinculado a tiempo. Se implementó derivación dinámica de estado a partir de timestamps de bloques. Se estableció aislamiento de participantes y transiciones de estado controladas por autoridad.",
+        "type": "platform"
+      },
+      "8": {
+        "title": "Validación del problema completada",
         "date": "01 de dic - 05 de dic, 2025",
-        "summary": "Se validó el problema central con equipos tempranos.",
-        "content": "Se validó el problema central con equipos tempranos. Se realizaron entrevistas estructuradas e investigación con organizadores de eventos, constructores de comunidades y operadores logísticos. Se confirmó que la verificación de presencia es un espacio de problemas de alto dolor y pocas soluciones.",
+        "summary": "Se validó el problema central con equipos tempranos en eventos, comunidades y logística.",
+        "content": "Se validó el problema central con equipos tempranos. Se realizaron entrevistas estructuradas e investigación con organizadores de eventos, constructores de comunidades y operadores logísticos. Se confirmó que la verificación de presencia es un espacio de alto dolor y pocas soluciones.",
         "type": "platform"
       }
     }
@@ -1179,39 +1351,39 @@
     "title": "Nuestra historia",
     "accentWord": "historia",
     "description": {
-      "0": "Fundamos 7ayLabs con una pregunta simple: ¿qué pasaría si pudieras demostrar que estuviste en algún lugar sin revelar quién eres?",
-      "1": "Esa pregunta se convirtió en 7aychain — una red que verifica la presencia usando la física de internet."
+      "0": "Empezamos 7ayLabs con una pregunta: ¿qué pasaría si pudieras demostrar que estuviste en algún lugar sin revelar quién eres?",
+      "1": "Esa pregunta se convirtió en 7aychain — una L1 que verifica presencia usando la física de internet."
     },
     "mission": {
       "label": "Lo que construimos",
       "title": "Nuestra misión",
-      "paragraph1": "7ayLabs construye 7aychain, un nuevo tipo de blockchain. En lugar de escanear tus ojos o pedir identificación, nuestra red verifica que estás físicamente presente en una ubicación — usando nada más que tu conexión a internet.",
-      "paragraph2": "Los validadores en la red miden la temporización de conexión para confirmar tu ubicación. Sin GPS. Sin cámaras. Sin hardware especial.",
-      "paragraph3": "Cuando el mundo no puede distinguir personas reales de bots, la presencia se convierte en la señal más valiosa. Estamos construyendo la infraestructura para hacer esa señal accesible a todos.",
-      "paragraph4": "Para las empresas, esto significa que el fraude se reduce, el cumplimiento se simplifica y cada proceso que depende de \"¿esta persona realmente estuvo aquí?\" finalmente obtiene una respuesta confiable.",
-      "paragraph5": "Para las personas, significa demostrar que estuviste en algún lugar sin entregar tu identidad. Sin vigilancia. Sin recolección de datos. Solo prueba."
+      "paragraph1": "7ayLabs construye 7aychain — un nuevo tipo de Layer 1. En lugar de escanear tus ojos o exigir identificación, la red verifica que estás físicamente presente usando nada más que tu conexión a internet.",
+      "paragraph2": "Los validadores miden la temporización de conexión desde múltiples puntos para confirmar tu ubicación. Sin GPS. Sin cámaras. Sin hardware especial.",
+      "paragraph3": "En un mundo donde los bots son indistinguibles de los humanos online, la presencia se convierte en la señal más valiosa. Estamos construyendo la infraestructura para que esa señal esté disponible para todos.",
+      "paragraph4": "Para protocolos y DAOs: gobernanza anti-bots, airdrops justos y una respuesta confiable a \"¿era esta una persona real?\"",
+      "paragraph5": "Para las personas: demuestra que estuviste en algún lugar sin entregar tu identidad. Sin vigilancia. Sin recolección de datos. Solo prueba."
     },
     "vision": {
       "label": "Nuestra visión a largo plazo",
       "title": "Nuestra visión",
-      "paragraph1": "Vemos un futuro donde \"estar ahí\" es una señal digital de primera clase — no una ocurrencia tardía. A medida que la IA mejora falsificando todo lo demás, la presencia física se convierte en lo único que no se puede simular.",
-      "paragraph2": "7ayLabs está construyendo la infraestructura para ese futuro. Lentamente, cuidadosamente y con el rigor que los sistemas del mundo real demandan."
+      "paragraph1": "Vemos un futuro donde \"estar ahí\" es una primitiva digital de primera clase. A medida que la IA perfecciona la simulación, la presencia física se convierte en lo único que no se puede falsificar.",
+      "paragraph2": "7ayLabs está construyendo la infraestructura para ese futuro. Deliberadamente, con rigor y con los estándares que los sistemas del mundo real demandan."
     },
     "principles": {
       "label": "Cómo pensamos",
       "title": "Principios que guían nuestro trabajo",
       "items": {
         "0": {
-          "title": "Realidad sobre escala",
-          "description": "Optimizamos para la verdad, no para el volumen. Si un sistema no resiste condiciones del mundo real, no pertenece en producción."
+          "title": "Código real",
+          "description": "Optimizamos para software que funciona, no para whitepapers. Si no corre en una red real, no cuenta."
         },
         "1": {
           "title": "Claridad sobre complejidad",
-          "description": "Cada sistema que construimos está diseñado para responder una pregunta simple con claridad: ¿esto realmente sucedió?"
+          "description": "Cada sistema responde una pregunta simple con claridad: ¿esto realmente sucedió?"
         },
         "2": {
           "title": "Confianza a largo plazo",
-          "description": "Construimos lenta y deliberadamente, validando cada capa antes de avanzar. Infraestructura en la que las empresas pueden confiar."
+          "description": "Construimos deliberadamente, validando cada capa antes de avanzar. Infraestructura en la que protocolos e instituciones pueden confiar."
         }
       }
     }
@@ -1224,58 +1396,58 @@
   },
   "metadata": {
     "home": {
-      "title": "7ayLabs | La capa de presencia para Web3",
+      "title": "7ayLabs | Blockchain Layer 1 con Proof of Presence",
       "titleTemplate": "%s | 7ayLabs",
-      "description": "La primera blockchain Layer 1 donde la presencia física es identidad. El protocolo Proof of Presence de 7aychain triangula la verificación humana mediante latencia de red — sin biometría, sin GPS, sin hardware. Resistente a Sybil por física. Impulsado por $7AY.",
+      "description": "7aychain: la primera L1 donde la identidad es física. Proof of Presence verifica humanos por temporización de red — sin biometría, sin GPS, sin hardware. $7AY",
       "ogTitle": "7ayLabs | Blockchain Layer 1 con Proof of Presence",
-      "ogDescription": "7aychain: una blockchain Layer 1 donde los validadores triangulan la presencia física mediante latencia de red. Verificación humana resistente a Sybil — sin GPS, sin biometría, sin hardware. La capa de presencia para Web3.",
+      "ogDescription": "La Layer 1 donde los validadores verifican presencia física por temporización de red. Verificación humana anti-bots sin GPS, biometría ni hardware. Impulsado por $7AY.",
       "ogImageAlt": "7ayLabs — 7aychain Blockchain Layer 1 con Proof of Presence",
-      "twitterTitle": "7ayLabs — 7aychain: Proof of Presence Layer 1",
-      "twitterDescription": "Tu presencia es tu prueba. 7aychain verifica humanos a través de la física — no biometría. La Layer 1 resistente a Sybil para Web3. $7AY"
+      "twitterTitle": "7ayLabs — Proof of Presence L1",
+      "twitterDescription": "Tu presencia es tu prueba. 7aychain verifica humanos a través de la física — no biometría. Anti-bots por diseño. $7AY"
     },
     "technology": {
-      "title": "Tecnología",
-      "description": "Cómo 7aychain verifica la presencia humana a través de la física. Explora el protocolo Proof of Presence: triangulación por latencia de red, privacidad con conocimiento cero y una arquitectura de cuatro capas."
+      "title": "Cómo funciona Proof of Presence | Tecnología de 7aychain",
+      "description": "Cómo 7aychain verifica humanos a través de la física: triangulación por temporización de red, privacidad de conocimiento cero y arquitectura de cuatro capas. Sin biometría. Sin GPS."
     },
     "useCases": {
-      "title": "Casos de uso",
-      "description": "Descubre cómo Proof of Presence habilita distribuciones justas de tokens, votación verificada, transacciones seguras, ticketing de eventos, comunidades verificadas y reseñas honestas."
+      "title": "Casos de uso | Airdrops anti-bots, gobernanza e identidad",
+      "description": "Descubre cómo Proof of Presence habilita airdrops anti-bots, gobernanza una-persona-un-voto, DeFi protegido por presencia, prueba de asistencia y reseñas verificadas."
     },
     "whyPresence": {
-      "title": "Por qué Presencia",
-      "description": "Cuando los bots pueden hacer todo lo que los humanos hacen en línea, lo único que queda para demostrar que eres real es estar físicamente presente. Descubre cómo 7aychain usa física en lugar de biometría."
+      "title": "Por qué la presencia física es el futuro de la identidad | 7aychain",
+      "description": "Cuando los bots replican todo lo que los humanos hacen online, la única prueba infalsificable es la presencia física. Descubre cómo 7aychain usa la física para resistencia a bots."
     },
     "glossary": {
-      "title": "Glosario",
-      "description": "Definiciones de términos clave de 7aychain y Proof of Presence: círculos de testigos, triangulación, tokens de posición, circuitos ZK, ciclo de vida de épocas y más."
+      "title": "Glosario de Proof of Presence | Términos de 7aychain",
+      "description": "Términos clave de 7aychain: círculos de testigos, triangulación, tokens de posición, circuitos ZK, validadores, esquemas commit-reveal y más."
     },
     "waitlist": {
-      "title": "Lista de espera",
-      "description": "Únete a la lista de espera de 7aychain para acceso anticipado a la red Proof of Presence."
+      "title": "Acceso anticipado | Lista de espera de 7aychain",
+      "description": "Únete a la lista de espera de 7aychain para acceso anticipado a la red Proof of Presence. Sé de los primeros en verificar tu presencia en una L1 basada en física."
     },
     "newsletter": {
-      "title": "Newsletter",
-      "description": "Mantente al día con 7ayLabs — perspectivas de producto, avances del protocolo y actualizaciones de infraestructura de presencia del mundo real."
+      "title": "Actualizaciones del protocolo e insights | Newsletter de 7ayLabs",
+      "description": "Avances del protocolo, actualizaciones de producto e infraestructura de presencia del equipo que construye 7aychain. Solo señal, sin ruido."
     },
     "devnet": {
-      "title": "Devnet",
-      "description": "Conéctate a la devnet de 7aychain. Clona, compila y ejecuta un nodo Proof of Presence basado en Substrate con 6 validadores, 16 módulos y el stack completo del protocolo."
+      "title": "Conéctate a la Devnet de 7aychain | Construye sobre Proof of Presence",
+      "description": "Clona, compila y ejecuta un nodo de 7aychain. Devnet activa con 6 validadores, 16 módulos y el stack completo de Proof of Presence."
     },
     "validators": {
-      "title": "Validadores",
-      "description": "Ejecuta un nodo validador de 7aychain. Aprende a configurar el hardware, compilar desde el código fuente, configurar el staking y participar en la triangulación de círculos de testigos."
+      "title": "Ejecuta un validador de 7aychain | Apuesta $7AY, verifica, gana",
+      "description": "Configura un validador de 7aychain: requisitos de hardware, instrucciones de compilación, economía de staking y participación en círculos de testigos. Gana recompensas en $7AY."
     },
     "ecosystem": {
-      "title": "Ecosistema",
-      "description": "Construye sobre la capa de presencia de 7aychain. Herramientas para desarrolladores, integraciones de SDK, módulos de protocolo y recursos de la comunidad para el ecosistema Proof of Presence."
+      "title": "Ecosistema de desarrolladores | Construye sobre 7aychain",
+      "description": "Herramientas para desarrolladores, SDKs y 16 módulos de protocolo para construir aplicaciones anti-bots sobre la L1 Proof of Presence de 7aychain."
     },
     "updates": {
-      "title": "Actualizaciones",
-      "description": "Sigue el progreso real de 7aychain y 7ayLabs — hitos del protocolo, funcionalidades implementadas y actualizaciones de infraestructura."
+      "title": "Estado del proyecto y milestones | Actualizaciones de 7aychain",
+      "description": "Sigue el progreso real de 7aychain: milestones del protocolo, features desplegadas, actualizaciones de la devnet y releases de infraestructura. Sin vaporware — solo código desplegado."
     },
     "about": {
-      "title": "Nosotros",
-      "description": "Conoce a 7ayLabs, el equipo que construye 7aychain — una blockchain Layer 1 con Proof of Presence on-chain donde los validadores triangulan la presencia física mediante latencia de red."
+      "title": "Sobre 7ayLabs | Construyendo la capa de presencia",
+      "description": "Conoce a 7ayLabs, el equipo que construye 7aychain — una Layer 1 que verifica humanos a través de Proof of Presence basado en física. Sin biometría. Sin vigilancia."
     }
   }
 }
