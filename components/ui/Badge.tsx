@@ -15,6 +15,8 @@ interface BadgeProps {
   children: React.ReactNode;
   className?: string;
   variant?: BadgeVariant;
+  /** Add a subtle glow pulse — useful for "live" or status indicators */
+  pulse?: boolean;
 }
 
 const variantStyles: Record<BadgeVariant, string> = {
@@ -39,12 +41,14 @@ export default function Badge({
   children,
   className,
   variant = "default",
+  pulse = false,
 }: BadgeProps) {
   return (
     <span
       className={cn(
         "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium tracking-wide select-none",
         variantStyles[variant],
+        pulse && "badge-glow-pulse",
         className
       )}
     >

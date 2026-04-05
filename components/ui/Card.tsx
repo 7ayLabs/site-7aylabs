@@ -23,11 +23,12 @@ const variantStyles: Record<CardVariant, string> = {
   outline:
     "bg-transparent border border-[var(--glass-border-hover)] rounded-2xl",
   interactive:
-    "glass-card hover:shadow-glow-sm cursor-pointer group transition-all duration-300",
-  glass: "glass-card",
-  link: "glass-card hover:shadow-glow-sm group transition-all duration-300",
+    "glass-card cursor-pointer group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--glow-cyan-sm)] hover:border-[var(--color-border-accent)]",
+  glass:
+    "glass-card transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--glow-cyan-sm)]",
+  link: "glass-card group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--glow-cyan-sm)]",
   feature:
-    "glass-card overflow-hidden hover:shadow-glow-sm transition-all duration-300",
+    "glass-card overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--glow-cyan-sm)] hover:border-[var(--color-border-accent)]",
   bento:
     "glass-card overflow-hidden hover:shadow-glow-sm transition-all duration-300",
 } as const;

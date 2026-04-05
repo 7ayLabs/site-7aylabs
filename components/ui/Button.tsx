@@ -1,4 +1,7 @@
+"use client";
+
 import { forwardRef } from "react";
+import { motion } from "framer-motion";
 import { Link } from "@/i18n/navigation";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils/cn";
@@ -63,6 +66,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const classes = cn(
       buttonVariants({ variant, size }),
       withArrow && "group",
+      /* CSS-only hover scale for links; Framer Motion only on <button> */
+      href && "hover:scale-[1.03] active:scale-[0.97]",
       className
     );
 
@@ -82,10 +87,17 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     }
 
     return (
-      <button ref={ref} className={classes} {...props}>
+      <motion.button
+        ref={ref}
+        className={classes}
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
+        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+        {...(props as React.ComponentPropsWithoutRef<typeof motion.button>)}
+      >
         {children}
         {withArrow && <ArrowIcon />}
-      </button>
+      </motion.button>
     );
   }
 );

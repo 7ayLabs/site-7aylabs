@@ -12,6 +12,7 @@ import type { AnimatedComponentProps } from "@/types/components";
 interface MotionWrapperProps extends AnimatedComponentProps {
   variants?: Variants;
   as?: "div" | "span" | "article" | "section";
+  id?: string;
 }
 
 export default function MotionWrapper({
@@ -20,6 +21,7 @@ export default function MotionWrapper({
   variants: variantsProp = fadeUpItem,
   delay,
   as = "div",
+  id,
 }: MotionWrapperProps) {
   const resolvedVariants = delay
     ? withDelay(variantsProp, delay)
@@ -29,6 +31,7 @@ export default function MotionWrapper({
 
   return (
     <Component
+      id={id}
       variants={resolvedVariants}
       initial="hidden"
       whileInView="visible"

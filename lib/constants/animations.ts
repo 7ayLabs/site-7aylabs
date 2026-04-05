@@ -4,28 +4,28 @@ export const staggerContainer: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.02,
+      staggerChildren: 0.12,
+      delayChildren: 0.05,
     },
   },
 };
 
 export const fadeUpItem: Variants = {
-  hidden: { opacity: 0, y: 18 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: "easeOut" },
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
 export const fadeUpBlur: Variants = {
-  hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
+  hidden: { opacity: 0, y: 35, filter: "blur(10px)" },
   visible: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.5, ease: "easeOut" },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -58,7 +58,7 @@ export const slideInRight: Variants = {
 
 export const defaultViewport = {
   once: true,
-  margin: "-80px",
+  margin: "-50px",
 };
 
 export const EASING = {
@@ -96,7 +96,7 @@ export const bentoStagger: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.12,
       delayChildren: 0.1,
     },
   },
@@ -104,12 +104,12 @@ export const bentoStagger: Variants = {
 
 /** Bento item: fade up with scale */
 export const bentoItem: Variants = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  hidden: { opacity: 0, y: 40, scale: 0.93 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -187,6 +187,105 @@ export const scaleUpBlur: Variants = {
     scale: 1,
     filter: "blur(0px)",
     transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+// ─────────────────────────────────────────────────────
+// Web3-inspired animation variants
+// ─────────────────────────────────────────────────────
+
+/** Text reveal — slides up from clipped position with blur dissolve. For headings. */
+export const textReveal: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+    filter: "blur(4px)",
+    clipPath: "inset(100% 0% 0% 0%)",
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    clipPath: "inset(0% 0% 0% 0%)",
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+/** Counter up — for stat/number animations. Scales from small with opacity. */
+export const counterUp: Variants = {
+  hidden: { opacity: 0, scale: 0.8, y: 10 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+/** Card hover — use with whileHover on motion elements */
+export const cardHover = {
+  y: -3,
+  transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] },
+};
+
+/** List stagger — faster stagger for list items */
+export const listStagger: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.05,
+      delayChildren: 0.02,
+    },
+  },
+};
+
+/** Scroll fade in — very subtle entrance for supporting content */
+export const scrollFadeIn: Variants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.35, ease: "easeOut" },
+  },
+};
+
+/** Glow pulse — CSS-driven glow for live/active indicators (use with animate prop) */
+export const glowPulse: Variants = {
+  idle: {
+    boxShadow: "0 0 0px rgba(23, 142, 119, 0)",
+  },
+  pulse: {
+    boxShadow: [
+      "0 0 4px rgba(23, 142, 119, 0.15)",
+      "0 0 12px rgba(23, 142, 119, 0.3)",
+      "0 0 4px rgba(23, 142, 119, 0.15)",
+    ],
+    transition: {
+      duration: 2.5,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  },
+};
+
+/** Table row — subtle fade in from left for table rows */
+export const tableRowFade: Variants = {
+  hidden: { opacity: 0, x: -8 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.3, ease: "easeOut" },
+  },
+};
+
+/** Code block reveal — scale up with soft blur for code/pre blocks */
+export const codeBlockReveal: Variants = {
+  hidden: { opacity: 0, scale: 0.97, filter: "blur(3px)" },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
