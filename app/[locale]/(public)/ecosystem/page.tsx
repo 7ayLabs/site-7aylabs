@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { PageHero, Section, Card, Badge, Button, AnimatedDiv } from "@/components/ui";
+import { PageHero, Section, Card, Badge, Button, AnimatedDiv, MotionWrapper } from "@/components/ui";
 import { ROUTES, EXTERNAL_LINKS } from "@/lib/constants/routes";
+import { staggerContainer, fadeUpItem, fadeUpBlur, listStagger, codeBlockReveal } from "@/lib/constants/animations";
 import Newsletter from "@/components/landing/Newsletter";
 import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
 
@@ -83,17 +84,19 @@ export default async function EcosystemPage({ params }: { params: Promise<{ loca
         title={t("developerTools.title")}
         className="py-20 md:py-28"
       >
-        <AnimatedDiv className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+        <MotionWrapper variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
           {DEVELOPER_TOOLS_KEYS.map((i) => (
-            <Card key={i} variant="interactive" padding="lg">
-              <Badge variant="accent" className="mb-4">{t(`developerTools.tools.${i}.badge`)}</Badge>
-              <h3 className="font-semibold text-fg text-lg mb-3">{t(`developerTools.tools.${i}.name`)}</h3>
-              <p className="text-fg-tertiary text-sm leading-relaxed">
-                {t(`developerTools.tools.${i}.description`)}
-              </p>
-            </Card>
+            <AnimatedDiv key={i} variants={fadeUpItem}>
+              <Card variant="interactive" padding="lg">
+                <Badge variant="accent" className="mb-4">{t(`developerTools.tools.${i}.badge`)}</Badge>
+                <h3 className="font-semibold text-fg text-lg mb-3">{t(`developerTools.tools.${i}.name`)}</h3>
+                <p className="text-fg-tertiary text-sm leading-relaxed">
+                  {t(`developerTools.tools.${i}.description`)}
+                </p>
+              </Card>
+            </AnimatedDiv>
           ))}
-        </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       {/* SDK Integration */}
@@ -102,22 +105,26 @@ export default async function EcosystemPage({ params }: { params: Promise<{ loca
         title={t("sdkIntegration.title")}
         className="py-20 md:py-28"
       >
-        <p className="text-fg-tertiary leading-relaxed mb-8 max-w-3xl">
-          {t("sdkIntegration.description")}
-        </p>
-        <AnimatedDiv className="space-y-6">
-          {SDK_KEYS.map((i) => (
-            <Card key={i} variant="glass" padding="md" className="glow-border">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-3">
-                <h3 className="font-semibold text-fg">{t(`sdkIntegration.examples.${i}.language`)}</h3>
-                <span className="text-fg-muted text-sm">&mdash; {t(`sdkIntegration.examples.${i}.description`)}</span>
-              </div>
-              <pre className="overflow-x-auto rounded-xl bg-[var(--color-bg-card-hover)] p-4 text-sm font-mono text-fg-secondary leading-relaxed">
-                <code>{SDK_EXAMPLES[i].code}</code>
-              </pre>
-            </Card>
-          ))}
+        <AnimatedDiv variants={fadeUpItem}>
+          <p className="text-fg-tertiary leading-relaxed mb-8 max-w-3xl">
+            {t("sdkIntegration.description")}
+          </p>
         </AnimatedDiv>
+        <MotionWrapper variants={listStagger} className="space-y-6">
+          {SDK_KEYS.map((i) => (
+            <AnimatedDiv key={i} variants={codeBlockReveal}>
+              <Card variant="glass" padding="md" className="glow-border">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-3">
+                  <h3 className="font-semibold text-fg">{t(`sdkIntegration.examples.${i}.language`)}</h3>
+                  <span className="text-fg-muted text-sm">&mdash; {t(`sdkIntegration.examples.${i}.description`)}</span>
+                </div>
+                <pre className="overflow-x-auto rounded-xl bg-[var(--color-bg-card-hover)] p-4 text-sm font-mono text-fg-secondary leading-relaxed">
+                  <code>{SDK_EXAMPLES[i].code}</code>
+                </pre>
+              </Card>
+            </AnimatedDiv>
+          ))}
+        </MotionWrapper>
       </Section>
 
       {/* Protocol Modules */}
@@ -126,28 +133,32 @@ export default async function EcosystemPage({ params }: { params: Promise<{ loca
         title={t("protocolModules.title")}
         className="py-20 md:py-28"
       >
-        <p className="text-fg-tertiary leading-relaxed mb-8 max-w-3xl">
-          {t("protocolModules.description")}
-        </p>
-        <AnimatedDiv className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {PALLET_GROUPS_KEYS.map((i) => (
-            <Card key={i} variant="elevated" padding="lg">
-              <h3 className="font-semibold text-fg text-lg mb-2">
-                {t(`protocolModules.groups.${i}.category`)}
-              </h3>
-              <p className="text-fg-tertiary text-sm leading-relaxed mb-4">
-                {t(`protocolModules.groups.${i}.description`)}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {PALLET_DATA[i].map((pallet) => (
-                  <Badge key={pallet} variant="outline">
-                    <code className="text-xs">{pallet}</code>
-                  </Badge>
-                ))}
-              </div>
-            </Card>
-          ))}
+        <AnimatedDiv variants={fadeUpItem}>
+          <p className="text-fg-tertiary leading-relaxed mb-8 max-w-3xl">
+            {t("protocolModules.description")}
+          </p>
         </AnimatedDiv>
+        <MotionWrapper variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {PALLET_GROUPS_KEYS.map((i) => (
+            <AnimatedDiv key={i} variants={fadeUpBlur}>
+              <Card variant="elevated" padding="lg">
+                <h3 className="font-semibold text-fg text-lg mb-2">
+                  {t(`protocolModules.groups.${i}.category`)}
+                </h3>
+                <p className="text-fg-tertiary text-sm leading-relaxed mb-4">
+                  {t(`protocolModules.groups.${i}.description`)}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {PALLET_DATA[i].map((pallet) => (
+                    <Badge key={pallet} variant="outline">
+                      <code className="text-xs">{pallet}</code>
+                    </Badge>
+                  ))}
+                </div>
+              </Card>
+            </AnimatedDiv>
+          ))}
+        </MotionWrapper>
       </Section>
 
       {/* Community */}
@@ -156,45 +167,57 @@ export default async function EcosystemPage({ params }: { params: Promise<{ loca
         title={t("community.title")}
         className="py-20 md:py-28"
       >
-        <AnimatedDiv className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4 max-w-2xl">
-          <Card variant="interactive" padding="lg">
-            <h3 className="font-semibold text-fg text-lg mb-2">{t("community.github.title")}</h3>
-            <p className="text-fg-tertiary text-sm leading-relaxed mb-4">
-              {t("community.github.description")}
-            </p>
-            <Button href={EXTERNAL_LINKS.githubRepo} external size="sm" variant="secondary">
-              {t("community.github.cta")}
-            </Button>
-          </Card>
+        <MotionWrapper variants={staggerContainer} className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4 max-w-2xl">
+          <AnimatedDiv variants={fadeUpItem}>
+            <Card variant="interactive" padding="lg">
+              <h3 className="font-semibold text-fg text-lg mb-2">{t("community.github.title")}</h3>
+              <p className="text-fg-tertiary text-sm leading-relaxed mb-4">
+                {t("community.github.description")}
+              </p>
+              <Button href={EXTERNAL_LINKS.githubRepo} external size="sm" variant="secondary">
+                {t("community.github.cta")}
+              </Button>
+            </Card>
+          </AnimatedDiv>
 
-          <Card variant="interactive" padding="lg">
-            <h3 className="font-semibold text-fg text-lg mb-2">{t("community.twitter.title")}</h3>
-            <p className="text-fg-tertiary text-sm leading-relaxed mb-4">
-              {t("community.twitter.description")}
-            </p>
-            <Button href={EXTERNAL_LINKS.twitter} external size="sm" variant="secondary">
-              {t("community.twitter.cta")}
-            </Button>
-          </Card>
-        </AnimatedDiv>
+          <AnimatedDiv variants={fadeUpItem}>
+            <Card variant="interactive" padding="lg">
+              <h3 className="font-semibold text-fg text-lg mb-2">{t("community.twitter.title")}</h3>
+              <p className="text-fg-tertiary text-sm leading-relaxed mb-4">
+                {t("community.twitter.description")}
+              </p>
+              <Button href={EXTERNAL_LINKS.twitter} external size="sm" variant="secondary">
+                {t("community.twitter.cta")}
+              </Button>
+            </Card>
+          </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       {/* CTA */}
       <Section centered className="py-20 md:py-28">
-        <h2 className="heading-md text-fg mb-6">
-          {t("cta.title")}
-        </h2>
-        <p className="body-lg max-w-2xl mx-auto mb-10">
-          {t("cta.subtitle")}
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href={ROUTES.devnet} size="lg">
-            {t("cta.primary")}
-          </Button>
-          <Button href={ROUTES.validators} variant="secondary" size="lg">
-            {t("cta.secondary")}
-          </Button>
-        </div>
+        <AnimatedDiv variants={fadeUpBlur}>
+          <h2 className="heading-md text-fg mb-6">
+            {t("cta.title")}
+          </h2>
+        </AnimatedDiv>
+        <AnimatedDiv variants={fadeUpItem}>
+          <p className="body-lg max-w-2xl mx-auto mb-10">
+            {t("cta.subtitle")}
+          </p>
+        </AnimatedDiv>
+        <MotionWrapper variants={staggerContainer} className="flex flex-col sm:flex-row gap-4 justify-center">
+          <AnimatedDiv variants={fadeUpItem}>
+            <Button href={ROUTES.devnet} size="lg">
+              {t("cta.primary")}
+            </Button>
+          </AnimatedDiv>
+          <AnimatedDiv variants={fadeUpItem}>
+            <Button href={ROUTES.validators} variant="secondary" size="lg">
+              {t("cta.secondary")}
+            </Button>
+          </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       <Newsletter />

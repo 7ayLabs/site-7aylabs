@@ -7,6 +7,9 @@ import { Sparkles, MessageSquare, Award, Loader2 } from "lucide-react";
 import {
   staggerContainer,
   fadeUpItem,
+  fadeUpBlur,
+  listStagger,
+  scaleIn,
 } from "@/lib/constants/animations";
 import { Badge } from "@/components/ui";
 
@@ -82,13 +85,13 @@ function WaitlistContentComponent() {
           className="flex flex-col items-center text-center"
         >
           {/* Badge */}
-          <motion.div variants={fadeUpItem}>
-            <Badge variant="accent">{t("badge")}</Badge>
+          <motion.div variants={scaleIn}>
+            <Badge variant="accent" pulse>{t("badge")}</Badge>
           </motion.div>
 
           {/* Headline */}
           <motion.h1
-            variants={fadeUpItem}
+            variants={fadeUpBlur}
             className="mt-8 font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tight text-fg"
           >
             {t("title")}{" "}
@@ -157,17 +160,18 @@ function WaitlistContentComponent() {
             </p>
           </motion.div>
 
-          {/* Benefit cards */}
+          {/* Benefit cards — individually staggered */}
           <motion.div
-            variants={fadeUpItem}
+            variants={listStagger}
             className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full"
           >
             {BENEFIT_KEYS.map((i) => {
               const Icon = BENEFIT_ICONS[i];
               return (
-                <div
+                <motion.div
                   key={i}
-                  className="glass-card p-5 text-center flex flex-col items-center gap-3"
+                  variants={fadeUpItem}
+                  className="glass-card p-5 text-center flex flex-col items-center gap-3 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[var(--glow-cyan-sm)]"
                 >
                   <div className="w-10 h-10 rounded-xl bg-[var(--color-accent-dim)] flex items-center justify-center">
                     <Icon
@@ -181,7 +185,7 @@ function WaitlistContentComponent() {
                   <p className="text-fg-tertiary text-xs leading-relaxed">
                     {t(`benefits.${i}.description`)}
                   </p>
-                </div>
+                </motion.div>
               );
             })}
           </motion.div>
@@ -207,7 +211,7 @@ function WaitlistContentComponent() {
                       {t(`phases.${i}.label`)}
                     </span>
                     {hasStatus && (
-                      <Badge variant="success" className="text-[10px] px-2 py-0.5">
+                      <Badge variant="success" pulse className="text-[10px] px-2 py-0.5">
                         {t(`phases.${i}.status`)}
                       </Badge>
                     )}

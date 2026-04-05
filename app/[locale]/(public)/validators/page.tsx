@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { PageHero, Section, Card, Badge, Button, AnimatedDiv } from "@/components/ui";
+import { PageHero, Section, Card, Badge, Button, AnimatedDiv, MotionWrapper } from "@/components/ui";
 import { ROUTES, EXTERNAL_LINKS } from "@/lib/constants/routes";
+import { staggerContainer, fadeUpItem, fadeUpBlur, listStagger, scrollFadeIn, codeBlockReveal } from "@/lib/constants/animations";
 import Newsletter from "@/components/landing/Newsletter";
 import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
 
@@ -47,16 +48,16 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
         title={t("roleOverview.title")}
         className="py-16 md:py-20"
       >
-        <AnimatedDiv className="grid md:grid-cols-2 gap-12 md:gap-16 items-start mt-4">
-          <div className="space-y-5 text-fg-tertiary leading-relaxed">
+        <MotionWrapper variants={staggerContainer} className="grid md:grid-cols-2 gap-12 md:gap-16 items-start mt-4">
+          <AnimatedDiv variants={fadeUpBlur} className="space-y-5 text-fg-tertiary leading-relaxed">
             <p>{t("roleOverview.paragraph1")}</p>
             <p>{t("roleOverview.paragraph2")}</p>
-          </div>
-          <div className="space-y-5 text-fg-tertiary leading-relaxed">
+          </AnimatedDiv>
+          <AnimatedDiv variants={fadeUpBlur} className="space-y-5 text-fg-tertiary leading-relaxed">
             <p>{t("roleOverview.paragraph3")}</p>
             <p>{t("roleOverview.paragraph4")}</p>
-          </div>
-        </AnimatedDiv>
+          </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       {/* Hardware Requirements */}
@@ -65,7 +66,7 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
         title={t("hardware.title")}
         className="py-16 md:py-20"
       >
-        <AnimatedDiv className="overflow-x-auto mt-4">
+        <MotionWrapper variants={scrollFadeIn} className="overflow-x-auto mt-4">
           <table className="w-full text-sm border-collapse">
             <thead>
               <tr className="border-b border-[var(--color-border-primary)]">
@@ -84,7 +85,7 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
               ))}
             </tbody>
           </table>
-        </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       {/* Prerequisites */}
@@ -93,21 +94,25 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
         title={t("prerequisites.title")}
         className="py-16 md:py-20"
       >
-        <p className="text-fg-tertiary leading-relaxed mb-6 max-w-3xl">
-          {t("prerequisites.description")}
-        </p>
-        <AnimatedDiv className="grid md:grid-cols-2 gap-4 mt-4">
-          {PREREQUISITES_KEYS.map((i) => (
-            <Card key={i} variant="default" padding="md">
-              <div className="flex items-center gap-2 mb-3">
-                <Badge variant="accent">{t(`prerequisites.systems.${i}.os`)}</Badge>
-              </div>
-              <pre className="overflow-x-auto rounded-xl bg-[var(--color-bg-card-hover)] p-4 text-xs font-mono text-fg-secondary leading-relaxed">
-                <code>{t(`prerequisites.systems.${i}.commands`)}</code>
-              </pre>
-            </Card>
-          ))}
+        <AnimatedDiv variants={fadeUpItem}>
+          <p className="text-fg-tertiary leading-relaxed mb-6 max-w-3xl">
+            {t("prerequisites.description")}
+          </p>
         </AnimatedDiv>
+        <MotionWrapper variants={staggerContainer} className="grid md:grid-cols-2 gap-4 mt-4">
+          {PREREQUISITES_KEYS.map((i) => (
+            <AnimatedDiv key={i} variants={codeBlockReveal}>
+              <Card variant="default" padding="md">
+                <div className="flex items-center gap-2 mb-3">
+                  <Badge variant="accent">{t(`prerequisites.systems.${i}.os`)}</Badge>
+                </div>
+                <pre className="overflow-x-auto rounded-xl bg-[var(--color-bg-card-hover)] p-4 text-xs font-mono text-fg-secondary leading-relaxed">
+                  <code>{t(`prerequisites.systems.${i}.commands`)}</code>
+                </pre>
+              </Card>
+            </AnimatedDiv>
+          ))}
+        </MotionWrapper>
       </Section>
 
       {/* Setup Guide */}
@@ -116,19 +121,21 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
         title={t("setup.title")}
         className="py-16 md:py-20"
       >
-        <AnimatedDiv className="space-y-4 mt-4 max-w-3xl">
+        <MotionWrapper variants={listStagger} className="space-y-4 mt-4 max-w-3xl">
           {SETUP_KEYS.map((i) => (
-            <Card key={i} variant="default" padding="md">
-              <div className="flex items-baseline gap-3 mb-2">
-                <Badge variant="accent">{t(`setup.steps.${i}.badge`)}</Badge>
-                <span className="text-fg font-semibold">{t(`setup.steps.${i}.title`)}</span>
-              </div>
-              <pre className="overflow-x-auto rounded-xl bg-[var(--color-bg-card-hover)] p-4 text-sm font-mono text-fg-secondary">
-                <code>{t(`setup.steps.${i}.code`)}</code>
-              </pre>
-            </Card>
+            <AnimatedDiv key={i} variants={fadeUpItem}>
+              <Card variant="default" padding="md">
+                <div className="flex items-baseline gap-3 mb-2">
+                  <Badge variant="accent">{t(`setup.steps.${i}.badge`)}</Badge>
+                  <span className="text-fg font-semibold">{t(`setup.steps.${i}.title`)}</span>
+                </div>
+                <pre className="overflow-x-auto rounded-xl bg-[var(--color-bg-card-hover)] p-4 text-sm font-mono text-fg-secondary">
+                  <code>{t(`setup.steps.${i}.code`)}</code>
+                </pre>
+              </Card>
+            </AnimatedDiv>
           ))}
-        </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       {/* CLI Configuration */}
@@ -137,7 +144,7 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
         title={t("configuration.title")}
         className="py-16 md:py-20"
       >
-        <AnimatedDiv className="overflow-x-auto mt-4">
+        <MotionWrapper variants={scrollFadeIn} className="overflow-x-auto mt-4">
           <table className="w-full text-sm border-collapse">
             <thead>
               <tr className="border-b border-[var(--color-border-primary)]">
@@ -154,7 +161,7 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
               ))}
             </tbody>
           </table>
-        </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       {/* Staking & Slashing */}
@@ -163,24 +170,28 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
         title={t("economics.title")}
         className="py-16 md:py-24"
       >
-        <p className="text-fg-tertiary leading-relaxed mb-8 max-w-3xl">
-          {t("economics.description")}
-        </p>
-        <AnimatedDiv className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {STAKING_KEYS.map((i) => (
-            <Card key={i} variant="interactive" padding="md">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="w-7 h-7 rounded-full bg-[var(--color-accent-dim)] text-accent text-xs font-bold flex items-center justify-center">
-                  {i + 1}
-                </span>
-                <h3 className="font-semibold text-fg">{t(`economics.steps.${i}.step`)}</h3>
-              </div>
-              <p className="text-fg-tertiary text-sm leading-relaxed">
-                {t(`economics.steps.${i}.description`)}
-              </p>
-            </Card>
-          ))}
+        <AnimatedDiv variants={fadeUpItem}>
+          <p className="text-fg-tertiary leading-relaxed mb-8 max-w-3xl">
+            {t("economics.description")}
+          </p>
         </AnimatedDiv>
+        <MotionWrapper variants={staggerContainer} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          {STAKING_KEYS.map((i) => (
+            <AnimatedDiv key={i} variants={fadeUpItem}>
+              <Card variant="interactive" padding="md">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="w-7 h-7 rounded-full bg-[var(--color-accent-dim)] text-accent text-xs font-bold flex items-center justify-center">
+                    {i + 1}
+                  </span>
+                  <h3 className="font-semibold text-fg">{t(`economics.steps.${i}.step`)}</h3>
+                </div>
+                <p className="text-fg-tertiary text-sm leading-relaxed">
+                  {t(`economics.steps.${i}.description`)}
+                </p>
+              </Card>
+            </AnimatedDiv>
+          ))}
+        </MotionWrapper>
       </Section>
 
       {/* Witness Circles */}
@@ -189,38 +200,46 @@ export default async function ValidatorsPage({ params }: { params: Promise<{ loc
         title={t("witnessCircles.title")}
         className="py-16 md:py-20"
       >
-        <AnimatedDiv className="grid md:grid-cols-2 gap-12 md:gap-16 items-start mt-4">
-          <div className="space-y-5 text-fg-tertiary leading-relaxed">
+        <MotionWrapper variants={staggerContainer} className="grid md:grid-cols-2 gap-12 md:gap-16 items-start mt-4">
+          <AnimatedDiv variants={fadeUpBlur} className="space-y-5 text-fg-tertiary leading-relaxed">
             <p>
               {t("witnessCircles.paragraph1")}{" "}
               <strong className="text-fg-secondary">{t("witnessCircles.witnessCircleHighlight")}</strong>
               {t("witnessCircles.paragraph1cont")}
             </p>
             <p>{t("witnessCircles.paragraph2")}</p>
-          </div>
-          <div className="space-y-5 text-fg-tertiary leading-relaxed">
+          </AnimatedDiv>
+          <AnimatedDiv variants={fadeUpBlur} className="space-y-5 text-fg-tertiary leading-relaxed">
             <p>{t("witnessCircles.paragraph3")}</p>
             <p>{t("witnessCircles.paragraph4")}</p>
-          </div>
-        </AnimatedDiv>
+          </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       {/* CTA */}
       <Section centered className="py-20 md:py-28">
-        <h2 className="heading-md text-fg mb-6">
-          {t("cta.title")}
-        </h2>
-        <p className="body-lg max-w-2xl mx-auto mb-10">
-          {t("cta.subtitle")}
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href={EXTERNAL_LINKS.githubRepo} external size="lg">
-            {t("cta.primary")}
-          </Button>
-          <Button href={ROUTES.devnet} variant="secondary" size="lg">
-            {t("cta.secondary")}
-          </Button>
-        </div>
+        <AnimatedDiv variants={fadeUpBlur}>
+          <h2 className="heading-md text-fg mb-6">
+            {t("cta.title")}
+          </h2>
+        </AnimatedDiv>
+        <AnimatedDiv variants={fadeUpItem}>
+          <p className="body-lg max-w-2xl mx-auto mb-10">
+            {t("cta.subtitle")}
+          </p>
+        </AnimatedDiv>
+        <MotionWrapper variants={staggerContainer} className="flex flex-col sm:flex-row gap-4 justify-center">
+          <AnimatedDiv variants={fadeUpItem}>
+            <Button href={EXTERNAL_LINKS.githubRepo} external size="lg">
+              {t("cta.primary")}
+            </Button>
+          </AnimatedDiv>
+          <AnimatedDiv variants={fadeUpItem}>
+            <Button href={ROUTES.devnet} variant="secondary" size="lg">
+              {t("cta.secondary")}
+            </Button>
+          </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       <Newsletter />

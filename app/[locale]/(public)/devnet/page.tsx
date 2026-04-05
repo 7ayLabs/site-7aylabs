@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { PageHero, Section, Card, Badge, Button, AnimatedDiv } from "@/components/ui";
+import { PageHero, Section, Card, Badge, Button, AnimatedDiv, MotionWrapper } from "@/components/ui";
 import { ROUTES, EXTERNAL_LINKS } from "@/lib/constants/routes";
+import { staggerContainer, fadeUpItem, fadeUpBlur, listStagger, scrollFadeIn, codeBlockReveal } from "@/lib/constants/animations";
 import Newsletter from "@/components/landing/Newsletter";
 import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
 
@@ -73,19 +74,21 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
         title={t("quickStart.title")}
         className="py-16 md:py-20"
       >
-        <AnimatedDiv className="mt-4 space-y-4 max-w-3xl">
+        <MotionWrapper variants={listStagger} className="mt-4 space-y-4 max-w-3xl">
           {QUICK_START_KEYS.map((i) => (
-            <Card key={i} variant="default" padding="md">
-              <div className="flex items-baseline gap-3 mb-2">
-                <Badge variant="accent">{t(`quickStart.steps.${i}.badge`)}</Badge>
-                <span className="text-fg font-semibold">{t(`quickStart.steps.${i}.title`)}</span>
-              </div>
-              <pre className="overflow-x-auto rounded-xl bg-[var(--color-bg-card-hover)] p-4 text-sm font-mono text-fg-secondary">
-                <code>{t(`quickStart.steps.${i}.code`)}</code>
-              </pre>
-            </Card>
+            <AnimatedDiv key={i} variants={fadeUpItem}>
+              <Card variant="default" padding="md">
+                <div className="flex items-baseline gap-3 mb-2">
+                  <Badge variant="accent">{t(`quickStart.steps.${i}.badge`)}</Badge>
+                  <span className="text-fg font-semibold">{t(`quickStart.steps.${i}.title`)}</span>
+                </div>
+                <pre className="overflow-x-auto rounded-xl bg-[var(--color-bg-card-hover)] p-4 text-sm font-mono text-fg-secondary">
+                  <code>{t(`quickStart.steps.${i}.code`)}</code>
+                </pre>
+              </Card>
+            </AnimatedDiv>
           ))}
-        </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       {/* Network Info */}
@@ -94,47 +97,51 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
         title={t("networkInfo.title")}
         className="py-16 md:py-20"
       >
-        <AnimatedDiv className="grid md:grid-cols-2 gap-6 mt-4">
-          <Card variant="elevated" padding="lg">
-            <h3 className="text-fg font-semibold text-lg mb-4">{t("networkInfo.connection.title")}</h3>
-            <dl className="space-y-3 text-sm">
-              <div className="flex justify-between">
-                <dt className="text-fg-muted">{t("networkInfo.connection.rpcEndpoint")}</dt>
-                <dd className="font-mono text-accent">{t("networkInfo.connection.rpcEndpointValue")}</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt className="text-fg-muted">{t("networkInfo.connection.chainSpec")}</dt>
-                <dd className="font-mono text-fg-secondary">{t("networkInfo.connection.chainSpecValue")}</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt className="text-fg-muted">{t("networkInfo.connection.specVersion")}</dt>
-                <dd className="font-mono text-fg-secondary">{t("networkInfo.connection.specVersionValue")}</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt className="text-fg-muted">{t("networkInfo.connection.binary")}</dt>
-                <dd className="font-mono text-fg-secondary">{t("networkInfo.connection.binaryValue")}</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt className="text-fg-muted">{t("networkInfo.connection.sdk")}</dt>
-                <dd className="font-mono text-fg-secondary">{t("networkInfo.connection.sdkValue")}</dd>
-              </div>
-            </dl>
-          </Card>
+        <MotionWrapper variants={staggerContainer} className="grid md:grid-cols-2 gap-6 mt-4">
+          <AnimatedDiv variants={fadeUpBlur}>
+            <Card variant="elevated" padding="lg">
+              <h3 className="text-fg font-semibold text-lg mb-4">{t("networkInfo.connection.title")}</h3>
+              <dl className="space-y-3 text-sm">
+                <div className="flex justify-between">
+                  <dt className="text-fg-muted">{t("networkInfo.connection.rpcEndpoint")}</dt>
+                  <dd className="font-mono text-accent">{t("networkInfo.connection.rpcEndpointValue")}</dd>
+                </div>
+                <div className="flex justify-between">
+                  <dt className="text-fg-muted">{t("networkInfo.connection.chainSpec")}</dt>
+                  <dd className="font-mono text-fg-secondary">{t("networkInfo.connection.chainSpecValue")}</dd>
+                </div>
+                <div className="flex justify-between">
+                  <dt className="text-fg-muted">{t("networkInfo.connection.specVersion")}</dt>
+                  <dd className="font-mono text-fg-secondary">{t("networkInfo.connection.specVersionValue")}</dd>
+                </div>
+                <div className="flex justify-between">
+                  <dt className="text-fg-muted">{t("networkInfo.connection.binary")}</dt>
+                  <dd className="font-mono text-fg-secondary">{t("networkInfo.connection.binaryValue")}</dd>
+                </div>
+                <div className="flex justify-between">
+                  <dt className="text-fg-muted">{t("networkInfo.connection.sdk")}</dt>
+                  <dd className="font-mono text-fg-secondary">{t("networkInfo.connection.sdkValue")}</dd>
+                </div>
+              </dl>
+            </Card>
+          </AnimatedDiv>
 
-          <Card variant="elevated" padding="lg">
-            <h3 className="text-fg font-semibold text-lg mb-4">{t("networkInfo.preFundedAccounts.title")}</h3>
-            <p className="text-fg-tertiary text-sm mb-4">
-              {t("networkInfo.preFundedAccounts.description")}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {VALIDATOR_NODES.map((node) => (
-                <Badge key={node.name} variant="outline">
-                  {node.name}
-                </Badge>
-              ))}
-            </div>
-          </Card>
-        </AnimatedDiv>
+          <AnimatedDiv variants={fadeUpBlur}>
+            <Card variant="elevated" padding="lg">
+              <h3 className="text-fg font-semibold text-lg mb-4">{t("networkInfo.preFundedAccounts.title")}</h3>
+              <p className="text-fg-tertiary text-sm mb-4">
+                {t("networkInfo.preFundedAccounts.description")}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {VALIDATOR_NODES.map((node) => (
+                  <Badge key={node.name} variant="outline">
+                    {node.name}
+                  </Badge>
+                ))}
+              </div>
+            </Card>
+          </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       {/* Multi-Node Setup */}
@@ -143,12 +150,14 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
         title={t("multiNodeSetup.title")}
         className="py-16 md:py-20"
       >
-        <AnimatedDiv>
-          <p className="text-fg-tertiary leading-relaxed mb-6 max-w-3xl">
-            {t("multiNodeSetup.description")}
-          </p>
+        <MotionWrapper variants={staggerContainer}>
+          <AnimatedDiv variants={fadeUpItem}>
+            <p className="text-fg-tertiary leading-relaxed mb-6 max-w-3xl">
+              {t("multiNodeSetup.description")}
+            </p>
+          </AnimatedDiv>
 
-          <div className="overflow-x-auto mt-4">
+          <AnimatedDiv variants={scrollFadeIn} className="overflow-x-auto mt-4">
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="border-b border-[var(--color-border-primary)]">
@@ -167,15 +176,17 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
                 ))}
               </tbody>
             </table>
-          </div>
+          </AnimatedDiv>
 
-          <Card variant="default" padding="md" className="mt-8 max-w-3xl">
-            <h4 className="text-fg font-semibold mb-2">{t("multiNodeSetup.dockerHybrid.title")}</h4>
-            <pre className="overflow-x-auto rounded-xl bg-[var(--color-bg-card-hover)] p-4 text-sm font-mono text-fg-secondary">
-              <code>{t("multiNodeSetup.dockerHybrid.code")}</code>
-            </pre>
-          </Card>
-        </AnimatedDiv>
+          <AnimatedDiv variants={codeBlockReveal}>
+            <Card variant="default" padding="md" className="mt-8 max-w-3xl">
+              <h4 className="text-fg font-semibold mb-2">{t("multiNodeSetup.dockerHybrid.title")}</h4>
+              <pre className="overflow-x-auto rounded-xl bg-[var(--color-bg-card-hover)] p-4 text-sm font-mono text-fg-secondary">
+                <code>{t("multiNodeSetup.dockerHybrid.code")}</code>
+              </pre>
+            </Card>
+          </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       {/* Laud CLI */}
@@ -184,19 +195,23 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
         title={t("laudCli.title")}
         className="py-16 md:py-20"
       >
-        <AnimatedDiv>
-          <p className="text-fg-tertiary leading-relaxed mb-4 max-w-3xl">
-            {t("laudCli.description")}
-          </p>
+        <MotionWrapper variants={staggerContainer}>
+          <AnimatedDiv variants={fadeUpItem}>
+            <p className="text-fg-tertiary leading-relaxed mb-4 max-w-3xl">
+              {t("laudCli.description")}
+            </p>
+          </AnimatedDiv>
 
-          <Card variant="default" padding="md" className="mb-8 max-w-3xl">
-            <h4 className="text-fg font-semibold mb-2">{t("laudCli.installTitle")}</h4>
-            <pre className="overflow-x-auto rounded-xl bg-[var(--color-bg-card-hover)] p-4 text-sm font-mono text-fg-secondary">
-              <code>{t("laudCli.installCode")}</code>
-            </pre>
-          </Card>
+          <AnimatedDiv variants={codeBlockReveal}>
+            <Card variant="default" padding="md" className="mb-8 max-w-3xl">
+              <h4 className="text-fg font-semibold mb-2">{t("laudCli.installTitle")}</h4>
+              <pre className="overflow-x-auto rounded-xl bg-[var(--color-bg-card-hover)] p-4 text-sm font-mono text-fg-secondary">
+                <code>{t("laudCli.installCode")}</code>
+              </pre>
+            </Card>
+          </AnimatedDiv>
 
-          <div className="overflow-x-auto">
+          <AnimatedDiv variants={scrollFadeIn} className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="border-b border-[var(--color-border-primary)]">
@@ -213,8 +228,8 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
                 ))}
               </tbody>
             </table>
-          </div>
-        </AnimatedDiv>
+          </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       {/* Hardware Requirements */}
@@ -223,7 +238,7 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
         title={t("hardware.title")}
         className="py-16 md:py-20"
       >
-        <AnimatedDiv className="overflow-x-auto mt-4">
+        <MotionWrapper variants={scrollFadeIn} className="overflow-x-auto mt-4">
           <table className="w-full text-sm border-collapse">
             <thead>
               <tr className="border-b border-[var(--color-border-primary)]">
@@ -242,7 +257,7 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
               ))}
             </tbody>
           </table>
-        </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       {/* Polkadot.js Apps */}
@@ -251,8 +266,8 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
         title={t("explorer.title")}
         className="py-16 md:py-20"
       >
-        <AnimatedDiv className="grid md:grid-cols-2 gap-8 mt-4 items-start">
-          <div className="space-y-4 text-fg-tertiary leading-relaxed">
+        <MotionWrapper variants={staggerContainer} className="grid md:grid-cols-2 gap-8 mt-4 items-start">
+          <AnimatedDiv variants={fadeUpBlur} className="space-y-4 text-fg-tertiary leading-relaxed">
             <p>
               {t("explorer.description")}
             </p>
@@ -276,38 +291,48 @@ export default async function DevnetPage({ params }: { params: Promise<{ locale:
               </li>
               <li>{t("explorer.steps.4")}</li>
             </ol>
-          </div>
+          </AnimatedDiv>
 
-          <Card variant="default" padding="lg">
-            <h4 className="text-fg font-semibold mb-3">{t("explorer.whatYouCanDo.title")}</h4>
-            <ul className="space-y-2 text-fg-tertiary text-sm">
-              {EXPLORER_ITEM_KEYS.map((i) => (
-                <li key={i} className="flex items-start gap-2">
-                  <span className="text-accent mt-1 shrink-0">&bull;</span>
-                  {t(`explorer.whatYouCanDo.items.${i}`)}
-                </li>
-              ))}
-            </ul>
-          </Card>
-        </AnimatedDiv>
+          <AnimatedDiv variants={fadeUpBlur}>
+            <Card variant="default" padding="lg">
+              <h4 className="text-fg font-semibold mb-3">{t("explorer.whatYouCanDo.title")}</h4>
+              <ul className="space-y-2 text-fg-tertiary text-sm">
+                {EXPLORER_ITEM_KEYS.map((i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="text-accent mt-1 shrink-0">&bull;</span>
+                    {t(`explorer.whatYouCanDo.items.${i}`)}
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       {/* CTA */}
       <Section centered className="py-20 md:py-28">
-        <h2 className="heading-md text-fg mb-6">
-          {t("cta.title")}
-        </h2>
-        <p className="body-lg max-w-2xl mx-auto mb-10">
-          {t("cta.subtitle")}
-        </p>
-        <AnimatedDiv className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href={EXTERNAL_LINKS.githubRepo} external size="lg">
-            {t("cta.primary")}
-          </Button>
-          <Button href={ROUTES.validators} variant="secondary" size="lg">
-            {t("cta.secondary")}
-          </Button>
+        <AnimatedDiv variants={fadeUpBlur}>
+          <h2 className="heading-md text-fg mb-6">
+            {t("cta.title")}
+          </h2>
         </AnimatedDiv>
+        <AnimatedDiv variants={fadeUpItem}>
+          <p className="body-lg max-w-2xl mx-auto mb-10">
+            {t("cta.subtitle")}
+          </p>
+        </AnimatedDiv>
+        <MotionWrapper variants={staggerContainer} className="flex flex-col sm:flex-row gap-4 justify-center">
+          <AnimatedDiv variants={fadeUpItem}>
+            <Button href={EXTERNAL_LINKS.githubRepo} external size="lg">
+              {t("cta.primary")}
+            </Button>
+          </AnimatedDiv>
+          <AnimatedDiv variants={fadeUpItem}>
+            <Button href={ROUTES.validators} variant="secondary" size="lg">
+              {t("cta.secondary")}
+            </Button>
+          </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       <Newsletter />

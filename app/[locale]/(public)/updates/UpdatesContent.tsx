@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   staggerContainer,
   fadeUpItem,
+  fadeUpBlur,
+  listStagger,
   defaultViewport,
 } from "@/lib/constants/animations";
 import { Badge, Card } from "@/components/ui";
@@ -38,19 +40,28 @@ export default function UpdatesContent() {
       <section className="max-w-5xl mx-auto px-6 md:px-12 pt-32 sm:pt-36 md:pt-40 pb-8">
         <motion.div
           className="max-w-3xl"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
         >
-          <span className="block mb-4 text-sm uppercase tracking-widest text-accent">
+          <motion.span
+            variants={fadeUpItem}
+            className="block mb-4 text-sm uppercase tracking-widest text-accent"
+          >
             {t("label")}
-          </span>
-          <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tight leading-tight mb-3">
+          </motion.span>
+          <motion.h1
+            variants={fadeUpBlur}
+            className="font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-tight leading-tight mb-3"
+          >
             {t("title")} <span className="gradient-text-accent">{t("titleAccent")}</span>
-          </h1>
-          <p className="text-base md:text-lg text-fg-muted max-w-2xl">
+          </motion.h1>
+          <motion.p
+            variants={fadeUpItem}
+            className="text-base md:text-lg text-fg-muted max-w-2xl"
+          >
             {t("lastUpdated")}
-          </p>
+          </motion.p>
         </motion.div>
       </section>
 
@@ -70,16 +81,22 @@ export default function UpdatesContent() {
         </motion.div>
 
         {/* Filters */}
-        <div
+        <motion.div
           className="mb-8 flex flex-wrap gap-2"
           role="group"
           aria-label={t("filterAria")}
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
         >
           {FILTER_KEYS.map((key) => (
-            <button
+            <motion.button
               key={key}
+              variants={fadeUpItem}
               onClick={() => setFilter(key)}
               aria-pressed={filter === key}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               className={`rounded-full px-4 py-1.5 min-h-[36px] text-xs uppercase tracking-wide transition-all duration-300 ${
                 filter === key
                   ? "glass-card border-[var(--color-border-accent)] text-accent font-semibold"
@@ -87,12 +104,17 @@ export default function UpdatesContent() {
               }`}
             >
               {t(`filters.${key}`)}
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Log entries */}
-        <div className="space-y-1">
+        <motion.div
+          className="space-y-1"
+          variants={listStagger}
+          initial="hidden"
+          animate="visible"
+        >
           {filtered.map((item, idx) => {
             const isOpen = openIndex === idx;
             const isLatest = idx === 0;
@@ -117,7 +139,7 @@ export default function UpdatesContent() {
                       <h3 className="font-sans text-lg md:text-xl font-semibold tracking-tight text-fg leading-snug">
                         {item.title}
                       </h3>
-                      {isLatest && <Badge variant="accent">{t("latest")}</Badge>}
+                      {isLatest && <Badge variant="accent" pulse>{t("latest")}</Badge>}
                     </div>
                     <span className="text-sm text-fg-faint whitespace-nowrap shrink-0 mt-1">
                       {item.date}
@@ -168,7 +190,7 @@ export default function UpdatesContent() {
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </section>
     </>
   );

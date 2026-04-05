@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { PageHero, Section, Card, Button, AnimatedDiv } from "@/components/ui";
+import { PageHero, Section, Card, Button, AnimatedDiv, MotionWrapper } from "@/components/ui";
 import { EXTERNAL_LINKS } from "@/lib/constants/routes";
+import { staggerContainer, fadeUpItem, fadeUpBlur } from "@/lib/constants/animations";
 import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -36,29 +37,35 @@ export default async function NewsletterPage({ params }: { params: Promise<{ loc
         subtitle={t("whatYouGet.subtitle")}
         className="py-16 md:py-20"
       >
-        <AnimatedDiv className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+        <MotionWrapper variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
           {TOPIC_KEYS.map((i) => (
-            <Card key={i} variant="interactive" padding="lg">
-              <h3 className="font-sans font-semibold text-lg text-fg mb-3">
-                {t(`topics.${i}.title`)}
-              </h3>
-              <p className="text-fg-tertiary text-sm leading-relaxed">
-                {t(`topics.${i}.description`)}
-              </p>
-            </Card>
+            <AnimatedDiv key={i} variants={fadeUpItem}>
+              <Card variant="interactive" padding="lg">
+                <h3 className="font-sans font-semibold text-lg text-fg mb-3">
+                  {t(`topics.${i}.title`)}
+                </h3>
+                <p className="text-fg-tertiary text-sm leading-relaxed">
+                  {t(`topics.${i}.description`)}
+                </p>
+              </Card>
+            </AnimatedDiv>
           ))}
-        </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       <Section centered className="py-20 md:py-28">
-        <h2 className="font-display font-bold text-3xl md:text-4xl text-fg mb-6">
-          {t("followTitle")}
-        </h2>
-        <p className="text-fg-tertiary text-lg leading-relaxed max-w-2xl mx-auto mb-10">
-          {t("followSubtitle")}
-        </p>
+        <AnimatedDiv variants={fadeUpBlur}>
+          <h2 className="font-display font-bold text-3xl md:text-4xl text-fg mb-6">
+            {t("followTitle")}
+          </h2>
+        </AnimatedDiv>
+        <AnimatedDiv variants={fadeUpItem}>
+          <p className="text-fg-tertiary text-lg leading-relaxed max-w-2xl mx-auto mb-10">
+            {t("followSubtitle")}
+          </p>
+        </AnimatedDiv>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <AnimatedDiv variants={fadeUpItem} className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button href={EXTERNAL_LINKS.twitter} external size="lg">
             <svg
               width="16"
@@ -71,11 +78,13 @@ export default async function NewsletterPage({ params }: { params: Promise<{ loc
             </svg>
             {t("followCta")}
           </Button>
-        </div>
+        </AnimatedDiv>
 
-        <p className="mt-6 text-fg-faint text-sm">
-          {t("noSpam")}
-        </p>
+        <AnimatedDiv variants={fadeUpItem}>
+          <p className="mt-6 text-fg-faint text-sm">
+            {t("noSpam")}
+          </p>
+        </AnimatedDiv>
       </Section>
     </>
   );

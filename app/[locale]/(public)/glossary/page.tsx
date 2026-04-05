@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { PageHero, Section, Card, AnimatedDiv } from "@/components/ui";
+import { PageHero, Section, Card, AnimatedDiv, MotionWrapper } from "@/components/ui";
+import { staggerContainer, fadeUpItem, fadeUpBlur } from "@/lib/constants/animations";
 import Newsletter from "@/components/landing/Newsletter";
 import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
 
@@ -47,45 +48,50 @@ export default async function GlossaryPage({ params }: { params: Promise<{ local
 
       {/* Letter Navigation */}
       <Section className="py-8 md:py-10">
-        <nav aria-label={t("letterNavAria")} className="flex flex-wrap gap-2 justify-center">
+        <MotionWrapper variants={staggerContainer} as="div" className="flex flex-wrap gap-2 justify-center">
           {letters.map((letter) => (
-            <a
-              key={letter}
-              href={`#letter-${letter}`}
-              className="w-9 h-9 rounded-full glass-card text-fg-secondary text-sm font-medium flex items-center justify-center hover:text-fg hover:shadow-[var(--glow-cyan-sm)] transition-all duration-300"
-            >
-              {letter}
-            </a>
+            <AnimatedDiv key={letter} variants={fadeUpItem}>
+              <a
+                href={`#letter-${letter}`}
+                className="w-9 h-9 rounded-full glass-card text-fg-secondary text-sm font-medium flex items-center justify-center hover:text-fg hover:shadow-[var(--glow-cyan-sm)] transition-all duration-300"
+              >
+                {letter}
+              </a>
+            </AnimatedDiv>
           ))}
-        </nav>
+        </MotionWrapper>
       </Section>
 
       {/* Terms grouped by letter */}
       <Section className="py-8 md:py-16">
-        <AnimatedDiv className="space-y-12">
+        <div className="space-y-12">
           {letters.map((letter) => {
             const termsForLetter = glossaryTerms.filter((term) => term.letter === letter);
             return (
-              <div key={letter} id={`letter-${letter}`}>
-                <h2 className="font-display font-bold text-3xl text-fg mb-6 border-b border-[var(--color-border-primary)] pb-3">
-                  {letter}
-                </h2>
+              <MotionWrapper key={letter} variants={staggerContainer} as="div" className="scroll-mt-24" id={`letter-${letter}`}>
+                <AnimatedDiv variants={fadeUpBlur}>
+                  <h2 className="font-display font-bold text-3xl text-fg mb-6 border-b border-[var(--color-border-primary)] pb-3">
+                    {letter}
+                  </h2>
+                </AnimatedDiv>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {termsForLetter.map((item) => (
-                    <Card key={item.term} variant="glass" padding="md" className="glow-border">
-                      <h3 className="font-semibold text-fg text-lg mb-2">
-                        {item.term}
-                      </h3>
-                      <p className="text-fg-tertiary text-sm leading-relaxed">
-                        {item.definition}
-                      </p>
-                    </Card>
+                    <AnimatedDiv key={item.term} variants={fadeUpItem}>
+                      <Card variant="glass" padding="md" className="glow-border">
+                        <h3 className="font-semibold text-fg text-lg mb-2">
+                          {item.term}
+                        </h3>
+                        <p className="text-fg-tertiary text-sm leading-relaxed">
+                          {item.definition}
+                        </p>
+                      </Card>
+                    </AnimatedDiv>
                   ))}
                 </div>
-              </div>
+              </MotionWrapper>
             );
           })}
-        </AnimatedDiv>
+        </div>
       </Section>
 
       <Newsletter />

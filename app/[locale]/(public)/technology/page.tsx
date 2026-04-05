@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Button from "@/components/ui/Button";
-import AnimatedDiv from "@/components/ui/AnimatedDiv";
+import { MotionWrapper, AnimatedDiv } from "@/components/ui";
+import { staggerContainer, fadeUpItem, fadeUpBlur, textReveal } from "@/lib/constants/animations";
 import TechHowItWorks from "@/components/technology/TechHowItWorks";
 import PresenceJourney from "@/components/technology/PresenceJourney";
 import ArchitectureLayers from "@/components/technology/ArchitectureLayers";
@@ -25,14 +26,14 @@ export default async function TechnologyPage({ params }: { params: Promise<{ loc
   const t = await getTranslations("technologyPage");
   const tc = await getTranslations("common");
 
-  /* Split title around accent word: "Proof of Presence" → "Proof of " + "Presence" */
+  /* Split title around accent word: "Proof of Presence" -> "Proof of " + "Presence" */
   const fullTitle = t("title");
   const accent = t("accentWord");
   const titleBefore = fullTitle.replace(accent, "").trimEnd();
 
   return (
     <>
-      {/* ══════════ BIG HERO ══════════ */}
+      {/* Big Hero */}
       <section className="relative min-h-[85svh] w-full flex flex-col items-center justify-center overflow-hidden pt-24 pb-8 md:pt-20 md:pb-0">
         {/* Decorative gradient blob */}
         <div
@@ -44,36 +45,44 @@ export default async function TechnologyPage({ params }: { params: Promise<{ loc
           aria-hidden="true"
         />
 
-        <AnimatedDiv className="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 lg:px-12 max-w-5xl mx-auto">
+        <MotionWrapper variants={staggerContainer} className="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 lg:px-12 max-w-5xl mx-auto">
           {/* Label */}
-          <span className="block text-sm uppercase tracking-widest text-fg-muted mb-6">
-            {t("label")}
-          </span>
+          <AnimatedDiv variants={fadeUpItem}>
+            <span className="block text-sm uppercase tracking-widest text-fg-muted mb-6">
+              {t("label")}
+            </span>
+          </AnimatedDiv>
 
           {/* Big heading */}
-          <h1 className="font-display font-extrabold text-[2.5rem] sm:text-5xl md:text-7xl tracking-tight leading-[0.95] text-fg">
-            {titleBefore}{" "}
-            <span className="gradient-text-accent">{accent}</span>
-          </h1>
+          <AnimatedDiv variants={textReveal}>
+            <h1 className="font-display font-extrabold text-[2.5rem] sm:text-5xl md:text-7xl tracking-tight leading-[0.95] text-fg">
+              {titleBefore}{" "}
+              <span className="gradient-text-accent">{accent}</span>
+            </h1>
+          </AnimatedDiv>
 
           {/* Description */}
-          <p className="mt-6 mx-auto max-w-2xl text-fg-secondary text-lg md:text-xl leading-relaxed">
-            {t("description.0")}
-          </p>
-          <p className="mt-4 mx-auto max-w-2xl text-fg-tertiary text-base md:text-lg leading-relaxed">
-            {t("description.1")}
-          </p>
+          <AnimatedDiv variants={fadeUpBlur}>
+            <p className="mt-6 mx-auto max-w-2xl text-fg-secondary text-lg md:text-xl leading-relaxed">
+              {t("description.0")}
+            </p>
+          </AnimatedDiv>
+          <AnimatedDiv variants={fadeUpBlur}>
+            <p className="mt-4 mx-auto max-w-2xl text-fg-tertiary text-base md:text-lg leading-relaxed">
+              {t("description.1")}
+            </p>
+          </AnimatedDiv>
 
           {/* CTA buttons */}
-          <div className="flex flex-wrap gap-4 justify-center mt-10">
+          <AnimatedDiv variants={fadeUpItem} className="flex flex-wrap gap-4 justify-center mt-10">
             <Button href="/waitlist" variant="primary" size="lg">
               {tc("joinWaitlist")}
             </Button>
             <Button href="#how-it-works" variant="secondary" size="lg" withArrow>
               {tc("learnMore")}
             </Button>
-          </div>
-        </AnimatedDiv>
+          </AnimatedDiv>
+        </MotionWrapper>
 
         {/* Bottom fade */}
         <div

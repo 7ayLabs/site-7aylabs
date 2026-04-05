@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { PageHero, Section, Card, AnimatedDiv } from "@/components/ui";
+import { PageHero, Section, Card, AnimatedDiv, MotionWrapper } from "@/components/ui";
+import { staggerContainer, fadeUpItem, fadeUpBlur } from "@/lib/constants/animations";
 import { buildPageAlternates, buildOpenGraph } from "@/lib/utils/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -34,17 +35,17 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         title={t("mission.title")}
         className="py-20 md:py-28"
       >
-        <AnimatedDiv className="grid md:grid-cols-2 gap-12 md:gap-16 items-start mt-6">
-          <div className="space-y-5 text-fg-tertiary leading-relaxed">
+        <MotionWrapper variants={staggerContainer} className="grid md:grid-cols-2 gap-12 md:gap-16 items-start mt-6">
+          <AnimatedDiv variants={fadeUpBlur} className="space-y-5 text-fg-tertiary leading-relaxed">
             <p>{t("mission.paragraph1")}</p>
             <p>{t("mission.paragraph2")}</p>
             <p>{t("mission.paragraph3")}</p>
-          </div>
-          <div className="space-y-5 text-fg-tertiary leading-relaxed">
+          </AnimatedDiv>
+          <AnimatedDiv variants={fadeUpBlur} className="space-y-5 text-fg-tertiary leading-relaxed">
             <p>{t("mission.paragraph4")}</p>
             <p>{t("mission.paragraph5")}</p>
-          </div>
-        </AnimatedDiv>
+          </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       <Section
@@ -52,10 +53,14 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         title={t("vision.title")}
         className="py-20 md:py-28"
       >
-        <AnimatedDiv className="space-y-5 max-w-3xl text-fg-tertiary leading-relaxed mt-2">
-          <p>{t("vision.paragraph1")}</p>
-          <p>{t("vision.paragraph2")}</p>
-        </AnimatedDiv>
+        <MotionWrapper variants={staggerContainer} className="space-y-5 max-w-3xl mt-2">
+          <AnimatedDiv variants={fadeUpBlur} className="text-fg-tertiary leading-relaxed">
+            <p>{t("vision.paragraph1")}</p>
+          </AnimatedDiv>
+          <AnimatedDiv variants={fadeUpItem} className="text-fg-tertiary leading-relaxed">
+            <p>{t("vision.paragraph2")}</p>
+          </AnimatedDiv>
+        </MotionWrapper>
       </Section>
 
       <Section
@@ -63,18 +68,20 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         title={t("principles.title")}
         className="py-20 md:py-28"
       >
-        <AnimatedDiv className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+        <MotionWrapper variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
           {PRINCIPLES_KEYS.map((i) => (
-            <Card key={i} variant="interactive" padding="lg">
-              <h3 className="font-sans font-semibold text-lg text-fg mb-3">
-                {t(`principles.items.${i}.title`)}
-              </h3>
-              <p className="body-base">
-                {t(`principles.items.${i}.description`)}
-              </p>
-            </Card>
+            <AnimatedDiv key={i} variants={fadeUpItem}>
+              <Card variant="interactive" padding="lg">
+                <h3 className="font-sans font-semibold text-lg text-fg mb-3">
+                  {t(`principles.items.${i}.title`)}
+                </h3>
+                <p className="body-base">
+                  {t(`principles.items.${i}.description`)}
+                </p>
+              </Card>
+            </AnimatedDiv>
           ))}
-        </AnimatedDiv>
+        </MotionWrapper>
       </Section>
     </>
   );
