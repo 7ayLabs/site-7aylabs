@@ -3,29 +3,26 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { Shield, Eye, Smartphone } from "lucide-react";
 import Button from "@/components/ui/Button";
-import { heroStagger, kineticReveal } from "@/lib/constants/animations";
+import { heroStagger, kineticReveal, fadeUpBlur } from "@/lib/constants/animations";
 
-/* ------------------------------------------------------------------ */
-/*  Hero Component                                                     */
-/* ------------------------------------------------------------------ */
+const FEATURE_ICONS = [Shield, Eye, Smartphone] as const;
 
 function HeroComponent() {
   const t = useTranslations("hero");
-  const trustItems = Object.values(t.raw("trustBar")) as string[];
 
   return (
-    <section className="relative min-h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden pt-24 pb-8 md:pt-20 md:pb-0">
+    <section className="relative min-h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden px-6 lg:px-8">
       <motion.div
-        className="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto"
+        className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto"
         initial="hidden"
         animate="visible"
         variants={heroStagger}
       >
-        {/* Heading — title case, single gradient on "proof" only */}
         <motion.h1
           variants={kineticReveal}
-          className="font-display font-black text-[2.5rem] sm:text-5xl md:text-7xl lg:text-8xl xl:text-[8.5rem] tracking-tighter leading-[0.9]"
+          className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.9]"
         >
           <span className="text-fg">{t("titleLine1Start")}</span>
           <span className="text-fg">{t("titleLine1Accent")}</span>
@@ -34,54 +31,46 @@ function HeroComponent() {
           <span className="gradient-text-hero">{t("titleLine2Accent")}</span>
         </motion.h1>
 
-        {/* Subtitle */}
         <motion.p
           variants={kineticReveal}
-          className="mt-8 md:mt-10 text-fg-secondary text-lg md:text-2xl max-w-3xl mx-auto leading-relaxed font-light"
+          className="mt-6 md:mt-8 text-fg-tertiary text-base md:text-lg max-w-2xl leading-relaxed"
         >
           {t("subtitle")}
         </motion.p>
 
-        {/* CTA Buttons */}
         <motion.div
           variants={kineticReveal}
-          className="flex flex-wrap gap-5 justify-center mt-10 md:mt-12"
+          className="flex flex-wrap gap-4 justify-center mt-8 md:mt-10"
         >
-          <Button href="/waitlist" variant="primary" size="lg">
+          <Button href="/waitlist" variant="primary" size="md">
             {t("ctaPrimary")}
           </Button>
-          <Button href="#how-it-works" variant="secondary" size="lg" withArrow>
+          <Button href="#about" variant="secondary" size="md" withArrow>
             {t("ctaSecondary")}
           </Button>
         </motion.div>
 
-        {/* Static tagline — monospaced, replaces typewriter */}
         <motion.div
-          variants={kineticReveal}
-          className="mt-6 md:mt-8 flex items-center justify-center"
+          variants={fadeUpBlur}
+          className="mt-12 grid grid-cols-3 gap-3 w-full max-w-lg"
         >
-          <span className="font-mono text-sm sm:text-base text-fg-muted tracking-wide">
-            &gt; {t("tagline")}
-          </span>
-        </motion.div>
-
-        {/* Trust / metrics bar */}
-        <motion.div
-          variants={kineticReveal}
-          className="mt-8 md:mt-10 flex flex-wrap items-center justify-center gap-x-2 gap-y-1"
-        >
-          {trustItems.map((item, i) => (
-            <span key={i} className="flex items-center">
-              {i > 0 && (
-                <span
-                  className="mx-2 inline-block h-1 w-1 rounded-full bg-fg-faint shrink-0"
-                  aria-hidden="true"
-                />
-              )}
-              <span className="text-xs sm:text-sm text-fg-muted tracking-wide whitespace-nowrap">
-                {item}
-              </span>
-            </span>
+          {FEATURE_ICONS.map((Icon, i) => (
+            <div
+              key={i}
+              className="border border-[var(--color-border-primary)] rounded-xl p-4 flex flex-col items-center text-center gap-2"
+            >
+              <Icon
+                className="h-4 w-4 text-fg-muted"
+                strokeWidth={1.5}
+                aria-hidden="true"
+              />
+              <p className="font-medium text-xs text-fg">
+                {t(`features.${i}.label`)}
+              </p>
+              <p className="text-[11px] text-fg-muted leading-tight hidden sm:block">
+                {t(`features.${i}.description`)}
+              </p>
+            </div>
           ))}
         </motion.div>
       </motion.div>

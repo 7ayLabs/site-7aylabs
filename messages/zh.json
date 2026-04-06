@@ -81,13 +81,53 @@
     "titleLine2Accent": "层",
     "subtitle": "唯一能证明你是真人的链——无需扫描你的身体。没有球形设备。没有自拍。只需到场。",
     "ctaPrimary": "获取抢先体验",
-    "ctaSecondary": "运作方式",
-    "tagline": "证明你是真人。保护你的隐私。",
-    "trustBar": {
-      "0": "Proof of Presence",
-      "1": "即时确认",
-      "2": "无眼球扫描",
-      "3": "开源"
+    "ctaSecondary": "了解更多",
+    "features": {
+      "0": {
+        "label": "防机器人",
+        "description": "由物理原理验证，而非生物识别"
+      },
+      "1": {
+        "label": "隐私优先",
+        "description": "链上零个人数据"
+      },
+      "2": {
+        "label": "无需硬件",
+        "description": "任何设备均可使用"
+      }
+    }
+  },
+  "about": {
+    "label": "功能介绍",
+    "title": "",
+    "titleAccent": "7aychain",
+    "titleEnd": " 做什么",
+    "subtitle": "一条将数字身份锚定到物理现实的 Layer 1 区块链——那是 AI 永远无法伪造的东西。",
+    "cards": {
+      "0": {
+        "title": "Proof of Presence",
+        "description": "利用互联网信号的速度验证你的物理在场。无摄像头，无生物识别，无球形设备。"
+      },
+      "1": {
+        "title": "零知识隐私",
+        "description": "证明你曾在某处，却无人知晓你是谁。位置以哈希形式提交，并通过零知识证明验证。"
+      },
+      "2": {
+        "title": "物理防机器人",
+        "description": "机器人无法伪造身处某地。网络测量连接时序——这是脚本无法欺骗的。"
+      },
+      "3": {
+        "title": "无需专用硬件",
+        "description": "无球形设备。无特殊装置。只需一部有网络连接的手机，即可完成验证。"
+      },
+      "4": {
+        "title": "开发者优先 SDK",
+        "description": "一个 API 调用即可验证在场。数分钟内即可构建空投、投票、评价和签到系统。"
+      },
+      "5": {
+        "title": "链上主权",
+        "description": "你的在场证明存储在你所掌控的公共账本上。没有公司持有密钥。不可篡改，永久留存。"
+      }
     }
   },
   "howItWorks": {
@@ -141,6 +181,241 @@
         "title": "真正公平的治理",
         "description": "投票权与真实参与挂钩，而非代币数量。你的话语权随你在网络中经验证的在场而增长——而非你的钱包大小。",
         "iconAlt": "带有能力节点的委托树"
+      }
+    }
+  },
+  "network": {
+    "label": "网络",
+    "title": "这个",
+    "titleAccent": "网络",
+    "subtitle": "一个运行完整 Proof of Presence 协议栈的工作开发网络。真实节点。真实验证。实时结果。",
+    "stats": {
+      "validators": {
+        "value": "6",
+        "label": "活跃验证者"
+      },
+      "finality": {
+        "value": "<2s",
+        "label": "区块最终确认"
+      },
+      "modules": {
+        "value": "16",
+        "label": "核心模块"
+      },
+      "privacy": {
+        "value": "100%",
+        "label": "零知识"
+      }
+    },
+    "protocols": {
+      "pop": {
+        "tag": "CONSENSUS",
+        "title": "Proof of Presence",
+        "description": "验证者通过测量连接时序来验证物理在场"
+      },
+      "multilateration": {
+        "tag": "VERIFICATION",
+        "title": "Multilateration",
+        "description": "多个节点以密码学方式对你的位置进行三角定位"
+      },
+      "zkp": {
+        "tag": "PRIVACY",
+        "title": "Zero-Knowledge Proofs",
+        "description": "证明你在哪里，而无需透露你是谁"
+      },
+      "onchain": {
+        "tag": "STORAGE",
+        "title": "Immutable On-Chain",
+        "description": "在场证明永久封存于区块链上"
+      }
+    },
+    "cta": "连接到开发网络"
+  },
+  "ecosystem": {
+    "label": "生态系统",
+    "title": "构建于",
+    "titleAccent": "在场证明",
+    "subtitle": "由 Proof of Presence 驱动的真实世界应用",
+    "apps": {
+      "0": {
+        "slug": "fair-drops",
+        "name": "Fair Drops",
+        "description": "代币分发真正触达真实用户——而非机器人农场"
+      },
+      "1": {
+        "slug": "event-proof",
+        "name": "Event Proof",
+        "description": "经验证的出席记录封存上链，无需扫描二维码"
+      },
+      "2": {
+        "slug": "local-rewards",
+        "name": "Local Rewards",
+        "description": "步入门店即可赚取积分——无需打开任何应用"
+      },
+      "3": {
+        "slug": "fair-voting",
+        "name": "Fair Voting",
+        "description": "一人一票——以在场证明为准，而非钱包数量"
+      },
+      "4": {
+        "slug": "verified-reviews",
+        "name": "Verified Reviews",
+        "description": "只有真正到场的人才能留下评价"
+      },
+      "5": {
+        "slug": "emergency-checkin",
+        "name": "Emergency Check-in",
+        "description": "在避难所证明你平安——无需出示任何证件"
+      },
+      "6": {
+        "slug": "presence-defi",
+        "name": "Presence DeFi",
+        "description": "为高价值金融操作提供物理层 2FA 验证"
+      },
+      "7": {
+        "slug": "delivery-proof",
+        "name": "Delivery Proof",
+        "description": "配送员可证明亲自送达——杜绝虚假配送"
+      }
+    },
+    "cta": "探索应用场景"
+  },
+  "useCaseDetails": {
+    "common": {
+      "label": "应用场景",
+      "backLink": "返回应用场景",
+      "problemLabel": "问题所在",
+      "solutionLabel": "解决方案",
+      "featuresLabel": "核心特性",
+      "ctaTitle": "基于 Proof of Presence 构建",
+      "ctaSubtitle": "开发网络已上线，立即开始构建抗机器人的应用。",
+      "ctaPrimary": "连接到开发网络",
+      "ctaSecondary": "申请抢先体验"
+    },
+    "items": {
+      "fair-drops": {
+        "title": "抗机器人的空投",
+        "subtitle": "真正触达真实用户的代币分发，而非机器人农场。",
+        "problem": "传统空投有 60%-90% 的预算流失于女巫攻击。一个人就能凭空生成数千个钱包，掏空奖励池，真正的社区成员最终只能分到残羹。没有可靠的方法来区分人类与自动化脚本。",
+        "solution": "7aychain 将每一位领取者都验证为在领取窗口期内物理在场的独特人类。机器人无法身处某地——更无法伪造证明物理在场所需的网络时序。你的空投将真正送达真实的人。",
+        "features": {
+          "0": "每一次领取均由物理在场验证",
+          "1": "凭物理定律抵御女巫攻击",
+          "2": "无需 KYC 表单，无需生物识别扫描",
+          "3": "一次 API 调用即可集成"
+        }
+      },
+      "event-proof": {
+        "title": "出席证明",
+        "subtitle": "经验证的出席记录永久封存于链上。",
+        "problem": "会议徽章、二维码和手动签到表都极易伪造。参会者可互相借用凭证，主办方无从信任数据，已获得的声誉也很容易造假。",
+        "solution": "7aychain 将每位参会者的物理在场封存上链，成为不可伪造的凭证。主办方获得防篡改的出席数据；参会者赢得在声誉体系中真正有分量的可验证证明。",
+        "features": {
+          "0": "不可伪造的链上出席证明",
+          "1": "适用于任何活动、任何场地",
+          "2": "可与 POAP 和声誉图谱集成",
+          "3": "隐私保护——不泄露任何身份信息"
+        }
+      },
+      "local-rewards": {
+        "title": "到店忠诚计划",
+        "subtitle": "只需到场即可赚取奖励——无需应用，无需打卡。",
+        "problem": "忠诚计划往往依赖应用、会员卡或扫码等谁都不愿折腾的流程。基于位置的奖励深受虚假签到之苦。小商家很难推出既无摩擦又可信的奖励机制。",
+        "solution": "借助 7aychain，当用户的设备确认其在参与门店的物理在场时，即可自动获得奖励。无需打开应用，无需扫描二维码。只要到场，网络会处理其余的一切。",
+        "features": {
+          "0": "为顾客提供零摩擦的忠诚体验",
+          "1": "以物理验证抵御欺诈",
+          "2": "可在商户网络中通用",
+          "3": "可编程的链上奖励逻辑"
+        }
+      },
+      "fair-voting": {
+        "title": "一人一票",
+        "subtitle": "由物理定律支撑的真正民主治理。",
+        "problem": "DAO 治理被钱包农场玩坏了。一头巨鲸可以操控数千个投票钱包，链上投票沦为机器人的人气赛。真正的社区在自动化攻击中失去了话语权。",
+        "solution": "7aychain 将投票权绑定到经验证的人类在场。你可以创建任意多的钱包——但你一次只能出现在一个地方。DAO 在知道每一票都来自独特真实人类的前提下推进提案。",
+        "features": {
+          "0": "真正可行的二次方投票",
+          "1": "抗女巫攻击的 DAO 治理",
+          "2": "按在场权重计算的投票权",
+          "3": "兼容现有 DAO 工具链"
+        }
+      },
+      "verified-reviews": {
+        "title": "位置锁定的评价",
+        "subtitle": "只有真正到访过的人才能发表评价。",
+        "problem": "虚假评价是一项价值数十亿美元的欺诈产业。商家购买五星好评，竞争对手用虚假差评打击对手，消费者无从辨别真伪。平台与评价农场之间的打地鼠游戏永无止境。",
+        "solution": "7aychain 将评价的提交门槛锁定在有效时间窗口内于场地的物理在场证明之后。评价者保持匿名——但每一条评价都由链上可验证的到场证据背书。",
+        "features": {
+          "0": "发布评价须具备物理在场证明",
+          "1": "匿名但可验证",
+          "2": "免疫评价农场与机器人",
+          "3": "为任意评价平台提供即插即用的 SDK"
+        }
+      },
+      "emergency-checkin": {
+        "title": "紧急签到",
+        "subtitle": "证明你平安——无需透露你身在何处。",
+        "problem": "在灾难发生时，人们需要在不向恶意方暴露精确位置的前提下发出平安信号。传统签到应用会泄露敏感数据。家属只能焦虑地等待，无从确认亲人的安全。",
+        "solution": "7aychain 让任何人都可以通过零知识证明来证明自己身处安全区域（避难所、集合点、医院）。亲属看到的是一个已验证的“安全”信号。不泄露身份，不泄露坐标——只是一条关于安全的密码学确认。",
+        "features": {
+          "0": "零知识的平安信号",
+          "1": "适用于任意指定的安全区域",
+          "2": "绝不暴露任何个人数据",
+          "3": "可由 NGO 与急救人员快速部署"
+        }
+      },
+      "presence-defi": {
+        "title": "在场门禁式 DeFi",
+        "subtitle": "为高价值金融操作提供物理层 2FA。",
+        "problem": "即使密钥管理再完善，一旦助记词被盗或签名者被攻破，攻击者便可从世界任何角落掏空金库。当前的 DeFi 缺乏任何依赖物理现实的防御手段。",
+        "solution": "7aychain 为关键操作增加在场要求。即便密钥被盗，攻击者也必须亲自到达指定地点才能执行交易。对于受在场门禁保护的操作，远程攻击变得不可能。",
+        "features": {
+          "0": "以物理在场作为第二因子",
+          "1": "免疫远程攻击",
+          "2": "可配置的位置绑定策略",
+          "3": "兼容 Safe、多签与常见钱包"
+        }
+      },
+      "delivery-proof": {
+        "title": "配送验证",
+        "subtitle": "配送员可证明亲自送达——杜绝虚假配送。",
+        "problem": "配送欺诈每年给物流行业造成数十亿美元的损失。配送员未到达即标记“已送达”；顾客对真实配送提出争议；平台缺乏对实际情况的事实依据。",
+        "solution": "7aychain 在配送被标记为完成之前，先验证配送员在送货地址的物理在场。顾客获得防篡改的送达确认，平台则可凭密码学证据终结争议循环。",
+        "features": {
+          "0": "链上验证配送员已到达",
+          "1": "可无缝接入现有物流体系",
+          "2": "彻底消除配送争议",
+          "3": "对配送员提供隐私保护"
+        }
+      }
+    }
+  },
+  "techStack": {
+    "label": "技术栈",
+    "title": "基于",
+    "titleAccent": "成熟技术",
+    "subtitle": "开源基础设施。零专有锁定。",
+    "categories": {
+      "consensus": {
+        "label": "共识",
+        "items": ["Proof of Presence", "Witness Circles", "Multilateration", "Quorum Finality"]
+      },
+      "privacy": {
+        "label": "隐私",
+        "items": ["Groth16 SNARKs", "Commit-Reveal", "ZK Circuits", "Replay Protection"]
+      },
+      "runtime": {
+        "label": "运行时",
+        "items": ["Substrate", "Rust", "WASM", "Polkadot SDK"]
+      },
+      "infra": {
+        "label": "基础设施",
+        "items": ["libp2p", "Docker", "Prometheus", "Grafana"]
+      },
+      "developer": {
+        "label": "开发者工具",
+        "items": ["TypeScript SDK", "REST API", "CLI Tools", "Python Client"]
       }
     }
   },
@@ -944,12 +1219,12 @@
       "description": "使用 Polkadot.js Apps 界面浏览区块、提交外部交易，并在 7aychain 开发网络上查询链状态。",
       "steps": {
         "0": "导航到",
-        "0link": "polkadot.js.org/apps",
         "1": "点击网络选择器（左上角）",
         "2": "选择 \"Development\" → \"Local Node\"",
         "3": "将端点设置为",
-        "3value": "ws://127.0.0.1:9944",
-        "4": "点击 \"Switch\" 进行连接"
+        "4": "点击 \"Switch\" 进行连接",
+        "0link": "polkadot.js.org/apps",
+        "3value": "ws://127.0.0.1:9944"
       },
       "whatYouCanDo": {
         "title": "你可以做的事",

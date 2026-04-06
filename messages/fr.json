@@ -81,13 +81,53 @@
     "titleLine2Accent": "",
     "subtitle": "La seule chain qui prouve que tu es humain — sans scanner ton corps. Pas d’orbes. Pas de selfies. Montre-toi, c’est tout.",
     "ctaPrimary": "Accès anticipé",
-    "ctaSecondary": "Comment ça marche",
-    "tagline": "Prouve que tu es réel. Garde ta vie privée.",
-    "trustBar": {
-      "0": "Proof of Presence",
-      "1": "Finalité instantanée",
-      "2": "Aucun scan oculaire",
-      "3": "Open source"
+    "ctaSecondary": "En savoir plus",
+    "features": {
+      "0": {
+        "label": "Anti-Bot",
+        "description": "Vérifié par la physique, pas la biométrie"
+      },
+      "1": {
+        "label": "Privé",
+        "description": "Zéro donnée personnelle on-chain"
+      },
+      "2": {
+        "label": "Sans matériel",
+        "description": "Fonctionne sur n’importe quel appareil"
+      }
+    }
+  },
+  "about": {
+    "label": "Ce que ça fait",
+    "title": "Ce que",
+    "titleAccent": "7aychain",
+    "titleEnd": " fait",
+    "subtitle": "Un Layer 1 qui ancre l'identité numérique dans la réalité physique — la seule chose que l'IA ne pourra jamais falsifier.",
+    "cards": {
+      "0": {
+        "title": "Proof of Presence",
+        "description": "Vérifie ta présence physique en utilisant la vitesse des signaux Internet. Pas de caméras, pas de biométrie, pas d'orbes."
+      },
+      "1": {
+        "title": "Confidentialité Zero-Knowledge",
+        "description": "Prouve que tu étais quelque part sans révéler qui tu es. La localisation est soumise sous forme de hash, vérifiée par des preuves ZK."
+      },
+      "2": {
+        "title": "Anti-bots par la physique",
+        "description": "Les bots ne peuvent pas simuler une présence. Le réseau mesure le timing de connexion — quelque chose qu'aucun script ne peut usurper."
+      },
+      "3": {
+        "title": "Aucun matériel requis",
+        "description": "Pas d'orbes. Pas d'appareils spéciaux. Un téléphone avec une connexion Internet suffit pour être vérifié."
+      },
+      "4": {
+        "title": "SDK pensé pour les développeurs",
+        "description": "Un seul appel API pour vérifier la présence. Construis des airdrops, du vote, des avis et des systèmes de présence en quelques minutes."
+      },
+      "5": {
+        "title": "Souveraineté on-chain",
+        "description": "Ta preuve de présence vit sur un registre public que tu contrôles. Aucune entreprise ne détient les clés. Immuable et permanent."
+      }
     }
   },
   "howItWorks": {
@@ -141,6 +181,241 @@
         "title": "Une gouvernance vraiment équitable",
         "description": "Le pouvoir de vote est lié à la participation réelle, pas aux bags de tokens. Ta voix augmente avec ta présence vérifiée sur le réseau — pas avec la taille de ton wallet.",
         "iconAlt": "Arbre de délégation avec nœuds de capacité"
+      }
+    }
+  },
+  "network": {
+    "label": "Network",
+    "title": "Le",
+    "titleAccent": "Network",
+    "subtitle": "Un devnet en ligne faisant tourner la pile Proof of Presence complète. De vrais nœuds. De la vraie vérification. Des résultats en temps réel.",
+    "stats": {
+      "validators": {
+        "value": "6",
+        "label": "Validateurs actifs"
+      },
+      "finality": {
+        "value": "<2s",
+        "label": "Finalité des blocs"
+      },
+      "modules": {
+        "value": "16",
+        "label": "Modules principaux"
+      },
+      "privacy": {
+        "value": "100%",
+        "label": "Zero-Knowledge"
+      }
+    },
+    "protocols": {
+      "pop": {
+        "tag": "CONSENSUS",
+        "title": "Proof of Presence",
+        "description": "Les validateurs mesurent le timing des connexions pour vérifier la présence physique"
+      },
+      "multilateration": {
+        "tag": "VERIFICATION",
+        "title": "Multilateration",
+        "description": "Plusieurs nœuds triangulent ta position de façon cryptographique"
+      },
+      "zkp": {
+        "tag": "PRIVACY",
+        "title": "Zero-Knowledge Proofs",
+        "description": "Prouve où tu es sans révéler qui tu es"
+      },
+      "onchain": {
+        "tag": "STORAGE",
+        "title": "Immutable On-Chain",
+        "description": "Les preuves de présence scellées de façon permanente sur la blockchain"
+      }
+    },
+    "cta": "Se connecter au Devnet"
+  },
+  "ecosystem": {
+    "label": "Écosystème",
+    "title": "Construit sur la",
+    "titleAccent": "présence",
+    "subtitle": "Applications réelles propulsées par le Proof of Presence",
+    "apps": {
+      "0": {
+        "slug": "fair-drops",
+        "name": "Fair Drops",
+        "description": "Distributions de tokens qui atteignent de vrais humains — pas des fermes de bots"
+      },
+      "1": {
+        "slug": "event-proof",
+        "name": "Event Proof",
+        "description": "Présence vérifiée scellée on-chain, sans QR codes"
+      },
+      "2": {
+        "slug": "local-rewards",
+        "name": "Local Rewards",
+        "description": "Gagne des points de fidélité en entrant — sans app à ouvrir"
+      },
+      "3": {
+        "slug": "fair-voting",
+        "name": "Fair Voting",
+        "description": "Une personne, un vote — vérifié par la présence, pas les wallets"
+      },
+      "4": {
+        "slug": "verified-reviews",
+        "name": "Verified Reviews",
+        "description": "Seules les personnes qui étaient là peuvent laisser un avis"
+      },
+      "5": {
+        "slug": "emergency-checkin",
+        "name": "Emergency Check-in",
+        "description": "Prouve que tu es en sécurité dans un abri — sans pièce d'identité"
+      },
+      "6": {
+        "slug": "presence-defi",
+        "name": "Presence DeFi",
+        "description": "2FA physique pour les opérations financières à forte valeur"
+      },
+      "7": {
+        "slug": "delivery-proof",
+        "name": "Delivery Proof",
+        "description": "Les livreurs prouvent qu'ils sont arrivés — fini les fausses livraisons"
+      }
+    },
+    "cta": "Explorer les cas d'usage"
+  },
+  "useCaseDetails": {
+    "common": {
+      "label": "Cas d'usage",
+      "backLink": "Retour aux cas d'usage",
+      "problemLabel": "Le problème",
+      "solutionLabel": "La solution",
+      "featuresLabel": "Fonctionnalités clés",
+      "ctaTitle": "Construis sur Proof of Presence",
+      "ctaSubtitle": "Le devnet est en ligne. Commence à déployer des applications anti-bots dès aujourd'hui.",
+      "ctaPrimary": "Se connecter au Devnet",
+      "ctaSecondary": "Obtenir un accès anticipé"
+    },
+    "items": {
+      "fair-drops": {
+        "title": "Airdrops anti-bots",
+        "subtitle": "Des distributions de tokens qui atteignent vraiment de vrais humains, pas des fermes de bots.",
+        "problem": "Les airdrops traditionnels perdent 60 à 90 % de leur budget à cause des attaques Sybil. Une seule personne déploie des milliers de wallets, vide la réserve de récompenses, et les vrais membres de la communauté se retrouvent avec des miettes. Il n'existe aucun moyen fiable de distinguer les humains des scripts automatisés.",
+        "solution": "7aychain vérifie chaque réclamant comme un humain unique physiquement présent pendant la fenêtre de claim. Les bots ne peuvent pas être quelque part — et ne peuvent pas falsifier le timing réseau qui prouve la présence physique. Ton airdrop atteint de vraies personnes.",
+        "features": {
+          "0": "Chaque claim vérifié par la présence physique",
+          "1": "Résistant au Sybil par les lois de la physique",
+          "2": "Aucun formulaire KYC, aucun scan biométrique",
+          "3": "Un seul appel API pour intégrer"
+        }
+      },
+      "event-proof": {
+        "title": "Preuve de présence événementielle",
+        "subtitle": "Des registres de présence vérifiés et scellés de façon permanente on-chain.",
+        "problem": "Les badges de conférence, QR codes et feuilles d'émargement manuelles se falsifient trivialement. Les participants peuvent partager leurs accréditations, les organisateurs ne peuvent pas se fier aux chiffres, et la réputation gagnée est facile à truquer.",
+        "solution": "7aychain scelle la présence physique de chaque participant on-chain comme une accréditation infalsifiable. Les organisateurs obtiennent des données de présence inviolables. Les participants gagnent des preuves vérifiables qui ont un vrai poids dans les systèmes de réputation.",
+        "features": {
+          "0": "Preuves de présence on-chain infalsifiables",
+          "1": "Fonctionne avec tout événement, tout lieu",
+          "2": "S'intègre aux POAPs et graphes de réputation",
+          "3": "Préserve la confidentialité — aucune fuite d'identité"
+        }
+      },
+      "local-rewards": {
+        "title": "Fidélité sans friction",
+        "subtitle": "Gagne des récompenses simplement en te présentant — sans apps, sans cartes à tamponner.",
+        "problem": "Les programmes de fidélité exigent des apps, cartes ou scans dont personne ne veut s'occuper. Les faux check-ins gangrènent les récompenses basées sur la localisation. Les petits commerces peinent à lancer des programmes à la fois fluides et honnêtes.",
+        "solution": "Avec 7aychain, les clients gagnent des récompenses automatiquement lorsque leur appareil confirme leur présence physique dans un établissement partenaire. Aucune app à ouvrir. Aucun QR code à scanner. Il suffit de se présenter — le réseau s'occupe du reste.",
+        "features": {
+          "0": "Fidélité sans friction pour les clients",
+          "1": "Anti-fraude par vérification physique",
+          "2": "Fonctionne à travers un réseau de marchands",
+          "3": "Logique de récompense programmable on-chain"
+        }
+      },
+      "fair-voting": {
+        "title": "Une personne, un vote",
+        "subtitle": "Une vraie gouvernance démocratique adossée à la physique.",
+        "problem": "La gouvernance DAO est brisée par les fermes de wallets. Une seule baleine peut contrôler des milliers de wallets de vote, et les scrutins on-chain deviennent des concours de popularité pour bots. Les vraies communautés perdent leur voix face aux attaques automatisées.",
+        "solution": "7aychain lie le pouvoir de vote à la présence humaine vérifiée. Crée autant de wallets que tu veux — mais tu ne peux être qu'à un seul endroit à la fois. Les DAOs lancent leurs propositions en sachant que chaque vote vient d'un humain unique et réel.",
+        "features": {
+          "0": "Vote quadratique qui fonctionne vraiment",
+          "1": "Gouvernance DAO résistante au Sybil",
+          "2": "Pouvoir de vote pondéré par la présence",
+          "3": "Compatible avec les outils DAO existants"
+        }
+      },
+      "verified-reviews": {
+        "title": "Avis ancrés dans le lieu",
+        "subtitle": "Seules les personnes physiquement venues peuvent laisser un avis.",
+        "problem": "Les faux avis sont une industrie de fraude de plusieurs milliards de dollars. Les entreprises achètent des notes 5 étoiles, les concurrents sabotent leurs rivaux avec des 1 étoile bidons, et les consommateurs ne peuvent pas faire confiance à ce qu'ils lisent. Les plateformes jouent sans fin au chat et à la souris avec les fermes d'avis.",
+        "solution": "7aychain conditionne la soumission d'avis à une preuve de présence physique sur le lieu pendant une fenêtre temporelle valide. Les auteurs restent anonymes — mais chaque avis est adossé à une preuve on-chain vérifiée que la personne était bien là.",
+        "features": {
+          "0": "Présence physique obligatoire pour publier",
+          "1": "Anonyme mais vérifiable",
+          "2": "Immunisé contre les fermes d'avis et les bots",
+          "3": "SDK prêt à l'emploi pour toute plateforme d'avis"
+        }
+      },
+      "emergency-checkin": {
+        "title": "Check-in d'urgence",
+        "subtitle": "Prouve que tu es en sécurité — sans révéler où tu es.",
+        "problem": "En situation de catastrophe, les gens ont besoin de signaler qu'ils sont en sécurité sans exposer leur localisation exacte à des acteurs malveillants. Les applications de check-in traditionnelles laissent fuiter des données sensibles. Les familles attendent anxieusement sans moyen de vérifier qu'un proche est en sécurité.",
+        "solution": "7aychain permet à chacun de prouver qu'il se trouve dans une zone de sécurité (abri, point de rassemblement, hôpital) grâce aux zero-knowledge proofs. Les proches reçoivent un signal « en sécurité » vérifié. Aucune pièce d'identité, aucune coordonnée divulguée — juste une confirmation cryptographique de sécurité.",
+        "features": {
+          "0": "Signaux de sécurité en zero-knowledge",
+          "1": "Fonctionne dans toute zone de sécurité désignée",
+          "2": "Aucune donnée personnelle jamais exposée",
+          "3": "Déployable par les ONG et les premiers intervenants"
+        }
+      },
+      "presence-defi": {
+        "title": "DeFi verrouillée par la présence",
+        "subtitle": "2FA physique pour les opérations financières à forte valeur.",
+        "problem": "Même avec une gestion de clés parfaite, une seed phrase volée ou un signer compromis permet aux attaquants de vider des coffres depuis n'importe où dans le monde. La DeFi actuelle n'a aucune défense qui exige la réalité physique.",
+        "solution": "7aychain ajoute une exigence de présence aux opérations critiques. Même avec des clés volées, un attaquant doit être physiquement présent au bon endroit pour exécuter. Les exploits à distance deviennent impossibles pour les actions verrouillées par la présence.",
+        "features": {
+          "0": "La présence physique comme second facteur",
+          "1": "Immunité contre les exploits à distance",
+          "2": "Politiques configurables liées à la localisation",
+          "3": "Fonctionne avec Safe, les multisigs et les wallets"
+        }
+      },
+      "delivery-proof": {
+        "title": "Vérification des livraisons",
+        "subtitle": "Les livreurs prouvent qu'ils sont arrivés — fini les fausses livraisons.",
+        "problem": "La fraude à la livraison coûte des milliards chaque année à l'industrie logistique. Les livreurs marquent des colis comme livrés sans être arrivés. Les clients contestent des livraisons légitimes. Les plateformes manquent de vérité terrain sur ce qui s'est réellement passé.",
+        "solution": "7aychain vérifie la présence physique du livreur à l'adresse de livraison avant qu'une livraison puisse être marquée comme terminée. Les clients obtiennent une confirmation inviolable. Les plateformes mettent fin aux cycles de litige grâce à une preuve cryptographique.",
+        "features": {
+          "0": "Arrivée du livreur vérifiée on-chain",
+          "1": "Prêt à l'emploi pour les stacks logistiques existantes",
+          "2": "Élimine les litiges de livraison",
+          "3": "Préserve la confidentialité des livreurs"
+        }
+      }
+    }
+  },
+  "techStack": {
+    "label": "Stack",
+    "title": "Construit avec une",
+    "titleAccent": "technologie éprouvée",
+    "subtitle": "Fondations open-source. Zéro verrouillage propriétaire.",
+    "categories": {
+      "consensus": {
+        "label": "Consensus",
+        "items": ["Proof of Presence", "Witness Circles", "Multilateration", "Quorum Finality"]
+      },
+      "privacy": {
+        "label": "Confidentialité",
+        "items": ["Groth16 SNARKs", "Commit-Reveal", "ZK Circuits", "Replay Protection"]
+      },
+      "runtime": {
+        "label": "Runtime",
+        "items": ["Substrate", "Rust", "WASM", "Polkadot SDK"]
+      },
+      "infra": {
+        "label": "Infrastructure",
+        "items": ["libp2p", "Docker", "Prometheus", "Grafana"]
+      },
+      "developer": {
+        "label": "Développeur",
+        "items": ["TypeScript SDK", "REST API", "CLI Tools", "Python Client"]
       }
     }
   },
@@ -944,12 +1219,12 @@
       "description": "Utilise l'interface Polkadot.js Apps pour explorer les blocs, soumettre des extrinsics et consulter l'état de la chaîne sur le devnet 7aychain.",
       "steps": {
         "0": "Accède à",
-        "0link": "polkadot.js.org/apps",
         "1": "Clique sur le sélecteur de réseau (en haut à gauche)",
         "2": "Choisis « Development » → « Local Node »",
         "3": "Définis le point d'accès sur",
-        "3value": "ws://127.0.0.1:9944",
-        "4": "Clique sur « Switch » pour te connecter"
+        "4": "Clique sur « Switch » pour te connecter",
+        "0link": "polkadot.js.org/apps",
+        "3value": "ws://127.0.0.1:9944"
       },
       "whatYouCanDo": {
         "title": "Ce que tu peux faire",

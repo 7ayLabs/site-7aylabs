@@ -407,6 +407,28 @@ body {
   50% { box-shadow: 0 0 8px rgba(23, 142, 119, 0.25); }
 }
 
+/* ===== Hide scrollbar (for horizontal scroll containers) ===== */
+/* ===== Marquee track (GPU-accelerated, pause on hover) ===== */
+.marquee-track {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused !important;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* ===== Ambient Glow (single radial, barely perceptible) ===== */
 .ambient-glow {
   position: fixed;

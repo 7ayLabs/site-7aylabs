@@ -79,15 +79,55 @@
     "titleLine1Accent": "presence",
     "titleLine2Start": "",
     "titleLine2Accent": "layer",
-    "subtitle": "The only chain that proves you're human \u2014 without scanning your body. No orbs. No selfies. Just show up.",
+    "subtitle": "The only chain that proves you're human — without scanning your body. No orbs. No selfies. Just show up.",
     "ctaPrimary": "Get Early Access",
-    "ctaSecondary": "How It Works",
-    "tagline": "Prove you're real. Keep your privacy.",
-    "trustBar": {
-      "0": "Proof of Presence",
-      "1": "Instant finality",
-      "2": "No eye scans",
-      "3": "Open source"
+    "ctaSecondary": "Learn More",
+    "features": {
+      "0": {
+        "label": "Bot-Proof",
+        "description": "Verified by physics, not biometrics"
+      },
+      "1": {
+        "label": "Private",
+        "description": "Zero personal data on-chain"
+      },
+      "2": {
+        "label": "No Hardware",
+        "description": "Works on any device"
+      }
+    }
+  },
+  "about": {
+    "label": "What It Does",
+    "title": "What",
+    "titleAccent": "7aychain",
+    "titleEnd": " does",
+    "subtitle": "A Layer 1 that anchors digital identity to physical reality — the one thing AI can never fake.",
+    "cards": {
+      "0": {
+        "title": "Proof of Presence",
+        "description": "Verifies you're physically present using the speed of internet signals. No cameras, no biometrics, no orbs."
+      },
+      "1": {
+        "title": "Zero-Knowledge Privacy",
+        "description": "Proves you were somewhere without learning who you are. Location committed as a hash, verified through ZK proofs."
+      },
+      "2": {
+        "title": "Bot-Proof by Physics",
+        "description": "Bots can't fake being somewhere. The network measures connection timing — something no script can spoof."
+      },
+      "3": {
+        "title": "No Hardware Required",
+        "description": "No orbs. No special devices. Any phone with an internet connection is all you need to get verified."
+      },
+      "4": {
+        "title": "Developer-First SDK",
+        "description": "One API call to verify presence. Build airdrops, voting, reviews, and attendance systems in minutes."
+      },
+      "5": {
+        "title": "On-Chain Sovereignty",
+        "description": "Your presence proof lives on a public ledger you control. No company holds the keys. Immutable and permanent."
+      }
     }
   },
   "howItWorks": {
@@ -144,9 +184,200 @@
       }
     }
   },
+  "network": {
+    "label": "Network",
+    "title": "The",
+    "titleAccent": "Network",
+    "subtitle": "A live devnet running the full Proof of Presence stack. Real nodes. Real verification. Real-time results.",
+    "stats": {
+      "validators": { "value": "6", "label": "Active Validators" },
+      "finality": { "value": "<2s", "label": "Block Finality" },
+      "modules": { "value": "16", "label": "Core Modules" },
+      "privacy": { "value": "100%", "label": "Zero-Knowledge" }
+    },
+    "protocols": {
+      "pop": {
+        "tag": "CONSENSUS",
+        "title": "Proof of Presence",
+        "description": "Validators measure connection timing to verify physical presence"
+      },
+      "multilateration": {
+        "tag": "VERIFICATION",
+        "title": "Multilateration",
+        "description": "Multiple nodes triangulate your position cryptographically"
+      },
+      "zkp": {
+        "tag": "PRIVACY",
+        "title": "Zero-Knowledge Proofs",
+        "description": "Prove where you are without revealing who you are"
+      },
+      "onchain": {
+        "tag": "STORAGE",
+        "title": "Immutable On-Chain",
+        "description": "Presence proofs sealed permanently on the blockchain"
+      }
+    },
+    "cta": "Connect to Devnet"
+  },
+  "ecosystem": {
+    "label": "Ecosystem",
+    "title": "Built on",
+    "titleAccent": "Presence",
+    "subtitle": "Real-world applications powered by Proof of Presence",
+    "apps": {
+      "0": { "slug": "fair-drops", "name": "Fair Drops", "description": "Token distributions that reach real humans — not bot farms" },
+      "1": { "slug": "event-proof", "name": "Event Proof", "description": "Verified attendance sealed on-chain, no QR codes needed" },
+      "2": { "slug": "local-rewards", "name": "Local Rewards", "description": "Earn loyalty points by walking in — no apps to open" },
+      "3": { "slug": "fair-voting", "name": "Fair Voting", "description": "One person, one vote — verified by presence, not wallets" },
+      "4": { "slug": "verified-reviews", "name": "Verified Reviews", "description": "Only people who were there can leave a review" },
+      "5": { "slug": "emergency-checkin", "name": "Emergency Check-in", "description": "Prove you're safe at a shelter — no ID required" },
+      "6": { "slug": "presence-defi", "name": "Presence DeFi", "description": "Physical 2FA for high-value financial operations" },
+      "7": { "slug": "delivery-proof", "name": "Delivery Proof", "description": "Drivers prove they arrived — no more fake deliveries" }
+    },
+    "cta": "Explore Use Cases"
+  },
+  "useCaseDetails": {
+    "common": {
+      "label": "Use Case",
+      "backLink": "Back to Use Cases",
+      "problemLabel": "The Problem",
+      "solutionLabel": "The Solution",
+      "featuresLabel": "Key Features",
+      "ctaTitle": "Build on Proof of Presence",
+      "ctaSubtitle": "The devnet is live. Start shipping bot-proof applications today.",
+      "ctaPrimary": "Connect to Devnet",
+      "ctaSecondary": "Get Early Access"
+    },
+    "items": {
+      "fair-drops": {
+        "title": "Bot-Proof Airdrops",
+        "subtitle": "Token distributions that actually reach real humans, not bot farms.",
+        "problem": "Traditional airdrops lose 60-90% of their budget to sybil attacks. One person spins up thousands of wallets, drains the rewards pool, and genuine community members end up with scraps. There is no reliable way to tell humans from automated scripts.",
+        "solution": "7aychain verifies every claimant as a unique human physically present during the claim window. Bots cannot be somewhere — and cannot fake the network timing that proves physical presence. Your airdrop reaches real people.",
+        "features": {
+          "0": "Every claim verified by physical presence",
+          "1": "Sybil-resistant by the laws of physics",
+          "2": "No KYC forms, no biometric scans",
+          "3": "One API call to integrate"
+        }
+      },
+      "event-proof": {
+        "title": "Proof of Attendance",
+        "subtitle": "Verified attendance records sealed permanently on-chain.",
+        "problem": "Conference badges, QR codes, and manual sign-in sheets are trivially forged. Attendees can share credentials, organizers cannot trust the numbers, and earned reputation is easy to fake.",
+        "solution": "7aychain seals each attendee's physical presence on-chain as an unforgeable credential. Organizers get tamper-proof attendance data. Attendees earn verifiable proofs that carry real weight in reputation systems.",
+        "features": {
+          "0": "Unforgeable on-chain attendance proofs",
+          "1": "Works with any event, any venue",
+          "2": "Integrates with POAPs and reputation graphs",
+          "3": "Privacy-preserving — no identity leaks"
+        }
+      },
+      "local-rewards": {
+        "title": "Walk-In Loyalty",
+        "subtitle": "Earn rewards simply by showing up — no apps, no punch cards.",
+        "problem": "Loyalty programs require apps, cards, or scans that nobody wants to deal with. Fake check-ins plague location-based rewards. Small businesses struggle to run programs that are both frictionless and honest.",
+        "solution": "With 7aychain, customers earn rewards automatically when their device confirms physical presence at a participating venue. No app to open. No QR code to scan. Just show up — the network handles the rest.",
+        "features": {
+          "0": "Zero-friction loyalty for customers",
+          "1": "Fraud-proof by physical verification",
+          "2": "Works across a merchant network",
+          "3": "Programmable reward logic on-chain"
+        }
+      },
+      "fair-voting": {
+        "title": "One Person, One Vote",
+        "subtitle": "True democratic governance backed by physics.",
+        "problem": "DAO governance is broken by wallet farms. A single whale can control thousands of voting wallets, and on-chain polls become popularity contests for bots. Real communities lose their voice to automated attacks.",
+        "solution": "7aychain ties voting power to verified human presence. Create all the wallets you want — but you can only be in one place at a time. DAOs run proposals knowing each vote comes from a unique, real human.",
+        "features": {
+          "0": "Quadratic voting that actually works",
+          "1": "Sybil-proof DAO governance",
+          "2": "Presence-weighted voting power",
+          "3": "Compatible with existing DAO tooling"
+        }
+      },
+      "verified-reviews": {
+        "title": "Location-Locked Reviews",
+        "subtitle": "Only people who physically visited can leave a review.",
+        "problem": "Fake reviews are a multi-billion dollar fraud industry. Businesses buy 5-star ratings, competitors sabotage rivals with fake 1-stars, and consumers cannot trust what they read. Platforms play endless whack-a-mole with review farms.",
+        "solution": "7aychain gates review submission behind a proof of physical presence at the venue during a valid time window. Reviewers stay anonymous — but each review is backed by verified on-chain proof that the person was actually there.",
+        "features": {
+          "0": "Physical presence required to post",
+          "1": "Anonymous but verifiable",
+          "2": "Immune to review farms and bots",
+          "3": "Drop-in SDK for any review platform"
+        }
+      },
+      "emergency-checkin": {
+        "title": "Emergency Check-In",
+        "subtitle": "Prove you're safe — without revealing where you are.",
+        "problem": "In disasters, people need to signal safety without exposing their exact location to bad actors. Traditional check-in apps leak sensitive data. Families wait anxiously without a way to verify a loved one is safe.",
+        "solution": "7aychain lets anyone prove they are at a safe zone (shelter, rally point, hospital) with zero-knowledge proofs. Loved ones see a verified 'safe' signal. No ID, no coordinates leaked — just a cryptographic confirmation of safety.",
+        "features": {
+          "0": "Zero-knowledge safety signals",
+          "1": "Works at any designated safe zone",
+          "2": "No personal data ever exposed",
+          "3": "Deployable by NGOs and first responders"
+        }
+      },
+      "presence-defi": {
+        "title": "Presence-Gated DeFi",
+        "subtitle": "Physical 2FA for high-value financial operations.",
+        "problem": "Even with perfect key management, a stolen seed phrase or compromised signer lets attackers drain vaults from anywhere in the world. Current DeFi has no defense that requires physical reality.",
+        "solution": "7aychain adds a presence requirement to critical operations. Even with stolen keys, an attacker must be physically present at the right place to execute. Remote exploits become impossible for presence-gated actions.",
+        "features": {
+          "0": "Physical presence as a second factor",
+          "1": "Remote exploit immunity",
+          "2": "Configurable location-bound policies",
+          "3": "Works with Safe, multisigs, and wallets"
+        }
+      },
+      "delivery-proof": {
+        "title": "Delivery Verification",
+        "subtitle": "Drivers prove they arrived — no more fake deliveries.",
+        "problem": "Delivery fraud costs the logistics industry billions annually. Drivers mark packages as delivered without arriving. Customers dispute legitimate deliveries. Platforms lack ground truth for what actually happened.",
+        "solution": "7aychain verifies the driver's physical presence at the delivery address before a delivery can be marked complete. Customers get tamper-proof confirmation. Platforms end dispute cycles with cryptographic evidence.",
+        "features": {
+          "0": "Verified driver arrival on-chain",
+          "1": "Drop-in for existing logistics stacks",
+          "2": "Eliminates delivery disputes",
+          "3": "Privacy-preserving for drivers"
+        }
+      }
+    }
+  },
+  "techStack": {
+    "label": "Stack",
+    "title": "Built with",
+    "titleAccent": "proven technology",
+    "subtitle": "Open-source foundations. Zero proprietary lock-in.",
+    "categories": {
+      "consensus": {
+        "label": "Consensus",
+        "items": ["Proof of Presence", "Witness Circles", "Multilateration", "Quorum Finality"]
+      },
+      "privacy": {
+        "label": "Privacy",
+        "items": ["Groth16 SNARKs", "Commit-Reveal", "ZK Circuits", "Replay Protection"]
+      },
+      "runtime": {
+        "label": "Runtime",
+        "items": ["Substrate", "Rust", "WASM", "Polkadot SDK"]
+      },
+      "infra": {
+        "label": "Infrastructure",
+        "items": ["libp2p", "Docker", "Prometheus", "Grafana"]
+      },
+      "developer": {
+        "label": "Developer",
+        "items": ["TypeScript SDK", "REST API", "CLI Tools", "Python Client"]
+      }
+    }
+  },
   "newsletter": {
     "title": "Join the Presence Economy",
-    "subtitle": "Protocol milestones, validator updates, and early access drops \u2014 delivered to those who show up first.",
+    "subtitle": "Protocol milestones, validator updates, and early access drops — delivered to those who show up first.",
     "cta": "Get Protocol Updates",
     "trustLine": "Signal only. No noise. Unsubscribe anytime."
   },

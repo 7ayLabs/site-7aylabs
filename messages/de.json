@@ -81,13 +81,53 @@
     "titleLine2Accent": "Schicht",
     "subtitle": "Die einzige Chain, die beweist, dass du ein Mensch bist — ohne deinen Körper zu scannen. Keine Orbs. Keine Selfies. Zeig dich einfach.",
     "ctaPrimary": "Frühzugang sichern",
-    "ctaSecondary": "Wie es funktioniert",
-    "tagline": "Beweise, dass du echt bist. Behalte deine Privatsphäre.",
-    "trustBar": {
-      "0": "Proof of Presence",
-      "1": "Sofortige Finalität",
-      "2": "Kein Augenscan",
-      "3": "Open Source"
+    "ctaSecondary": "Mehr erfahren",
+    "features": {
+      "0": {
+        "label": "Bot-sicher",
+        "description": "Verifiziert durch Physik, nicht Biometrie"
+      },
+      "1": {
+        "label": "Privat",
+        "description": "Null persönliche Daten On-Chain"
+      },
+      "2": {
+        "label": "Keine Hardware",
+        "description": "Funktioniert auf jedem Gerät"
+      }
+    }
+  },
+  "about": {
+    "label": "Was es tut",
+    "title": "Was",
+    "titleAccent": "7aychain",
+    "titleEnd": " tut",
+    "subtitle": "Eine Layer-1-Blockchain, die digitale Identität in der physischen Realität verankert — das Einzige, das KI niemals fälschen kann.",
+    "cards": {
+      "0": {
+        "title": "Proof of Presence",
+        "description": "Verifiziert deine physische Anwesenheit anhand der Geschwindigkeit von Internetsignalen. Keine Kameras, keine Biometrie, keine Orbs."
+      },
+      "1": {
+        "title": "Zero-Knowledge-Privatsphäre",
+        "description": "Beweist, dass du irgendwo warst, ohne zu erfahren, wer du bist. Standort wird als Hash committed und durch ZK-Beweise verifiziert."
+      },
+      "2": {
+        "title": "Bot-sicher durch Physik",
+        "description": "Bots können keinen Standort vortäuschen. Das Netzwerk misst Verbindungstiming — etwas, das kein Skript fälschen kann."
+      },
+      "3": {
+        "title": "Keine Hardware erforderlich",
+        "description": "Keine Orbs. Keine Spezialgeräte. Ein Telefon mit Internetverbindung genügt zur Verifizierung."
+      },
+      "4": {
+        "title": "Developer-First SDK",
+        "description": "Ein API-Call zur Präsenzverifikation. Baue Airdrops, Abstimmungen, Bewertungen und Anwesenheitssysteme in Minuten."
+      },
+      "5": {
+        "title": "On-Chain-Souveränität",
+        "description": "Dein Präsenzbeweis liegt auf einem öffentlichen Ledger, das du kontrollierst. Kein Unternehmen hält die Schlüssel. Unveränderlich und permanent."
+      }
     }
   },
   "howItWorks": {
@@ -141,6 +181,241 @@
         "title": "Governance, die wirklich fair ist",
         "description": "Stimmrecht gebunden an echte Teilnahme, nicht an Token-Bestände. Deine Stimme skaliert mit deiner verifizierten Präsenz im Netzwerk — nicht mit deiner Wallet-Größe.",
         "iconAlt": "Delegationsbaum mit Fähigkeitsknoten"
+      }
+    }
+  },
+  "network": {
+    "label": "Network",
+    "title": "Das",
+    "titleAccent": "Netzwerk",
+    "subtitle": "Ein live laufendes Devnet mit dem vollständigen Proof of Presence-Stack. Echte Nodes. Echte Verifikation. Echtzeit-Ergebnisse.",
+    "stats": {
+      "validators": {
+        "value": "6",
+        "label": "Aktive Validatoren"
+      },
+      "finality": {
+        "value": "<2s",
+        "label": "Block-Finalität"
+      },
+      "modules": {
+        "value": "16",
+        "label": "Kernmodule"
+      },
+      "privacy": {
+        "value": "100%",
+        "label": "Zero-Knowledge"
+      }
+    },
+    "protocols": {
+      "pop": {
+        "tag": "CONSENSUS",
+        "title": "Proof of Presence",
+        "description": "Validatoren messen Verbindungstiming, um physische Präsenz zu verifizieren"
+      },
+      "multilateration": {
+        "tag": "VERIFICATION",
+        "title": "Multilateration",
+        "description": "Mehrere Nodes triangulieren deine Position kryptografisch"
+      },
+      "zkp": {
+        "tag": "PRIVACY",
+        "title": "Zero-Knowledge Proofs",
+        "description": "Beweise, wo du bist, ohne zu enthüllen, wer du bist"
+      },
+      "onchain": {
+        "tag": "STORAGE",
+        "title": "Immutable On-Chain",
+        "description": "Präsenzbeweise dauerhaft auf der Blockchain versiegelt"
+      }
+    },
+    "cta": "Mit dem Devnet verbinden"
+  },
+  "ecosystem": {
+    "label": "Ökosystem",
+    "title": "Gebaut auf",
+    "titleAccent": "Presence",
+    "subtitle": "Reale Anwendungen, angetrieben durch Proof of Presence",
+    "apps": {
+      "0": {
+        "slug": "fair-drops",
+        "name": "Fair Drops",
+        "description": "Token-Verteilungen, die echte Menschen erreichen — keine Bot-Farmen"
+      },
+      "1": {
+        "slug": "event-proof",
+        "name": "Event Proof",
+        "description": "Verifizierte Teilnahme On-Chain versiegelt, keine QR-Codes nötig"
+      },
+      "2": {
+        "slug": "local-rewards",
+        "name": "Local Rewards",
+        "description": "Treuepunkte sammeln, einfach indem man reinkommt — keine App öffnen"
+      },
+      "3": {
+        "slug": "fair-voting",
+        "name": "Fair Voting",
+        "description": "Eine Person, eine Stimme — verifiziert durch Präsenz, nicht durch Wallets"
+      },
+      "4": {
+        "slug": "verified-reviews",
+        "name": "Verified Reviews",
+        "description": "Nur Personen, die wirklich dort waren, können eine Bewertung abgeben"
+      },
+      "5": {
+        "slug": "emergency-checkin",
+        "name": "Emergency Check-in",
+        "description": "Beweise, dass du in einer Notunterkunft sicher bist — kein Ausweis erforderlich"
+      },
+      "6": {
+        "slug": "presence-defi",
+        "name": "Presence DeFi",
+        "description": "Physische 2FA für Finanzoperationen mit hohem Wert"
+      },
+      "7": {
+        "slug": "delivery-proof",
+        "name": "Delivery Proof",
+        "description": "Fahrer beweisen, dass sie angekommen sind — keine Fake-Lieferungen mehr"
+      }
+    },
+    "cta": "Anwendungsfälle erkunden"
+  },
+  "useCaseDetails": {
+    "common": {
+      "label": "Use Case",
+      "backLink": "Zurück zu den Anwendungsfällen",
+      "problemLabel": "Das Problem",
+      "solutionLabel": "Die Lösung",
+      "featuresLabel": "Hauptmerkmale",
+      "ctaTitle": "Auf Proof of Presence bauen",
+      "ctaSubtitle": "Das Devnet ist live. Starte noch heute mit dem Ausliefern bot-sicherer Anwendungen.",
+      "ctaPrimary": "Mit dem Devnet verbinden",
+      "ctaSecondary": "Frühzugang sichern"
+    },
+    "items": {
+      "fair-drops": {
+        "title": "Bot-sichere Airdrops",
+        "subtitle": "Token-Verteilungen, die wirklich echte Menschen erreichen — keine Bot-Farmen.",
+        "problem": "Traditionelle Airdrops verlieren 60–90 % ihres Budgets durch Sybil-Angriffe. Eine einzige Person erstellt Tausende von Wallets, leert den Belohnungstopf, und echte Community-Mitglieder gehen leer aus. Es gibt keine zuverlässige Möglichkeit, Menschen von automatisierten Skripten zu unterscheiden.",
+        "solution": "7aychain verifiziert jeden Anspruchsberechtigten als einzigartigen Menschen, der während des Claim-Fensters physisch anwesend ist. Bots können nicht irgendwo sein — und können das Netzwerk-Timing nicht fälschen, das physische Präsenz beweist. Dein Airdrop erreicht echte Menschen.",
+        "features": {
+          "0": "Jeder Claim durch physische Präsenz verifiziert",
+          "1": "Sybil-resistent durch die Gesetze der Physik",
+          "2": "Keine KYC-Formulare, keine biometrischen Scans",
+          "3": "Integration mit einem einzigen API-Aufruf"
+        }
+      },
+      "event-proof": {
+        "title": "Proof of Attendance",
+        "subtitle": "Verifizierte Teilnahme-Nachweise dauerhaft On-Chain versiegelt.",
+        "problem": "Konferenz-Badges, QR-Codes und manuelle Anwesenheitslisten sind trivial zu fälschen. Teilnehmer können Zugangsdaten teilen, Organisatoren können den Zahlen nicht trauen, und verdientes Ansehen lässt sich leicht vortäuschen.",
+        "solution": "7aychain versiegelt die physische Anwesenheit jedes Teilnehmers On-Chain als fälschungssicheres Credential. Organisatoren erhalten manipulationssichere Anwesenheitsdaten. Teilnehmer erwerben verifizierbare Nachweise, die in Reputationssystemen echtes Gewicht haben.",
+        "features": {
+          "0": "Fälschungssichere On-Chain Anwesenheitsnachweise",
+          "1": "Funktioniert bei jedem Event, an jedem Veranstaltungsort",
+          "2": "Integration mit POAPs und Reputationsgraphen",
+          "3": "Privatsphärewahrend — keine Identitätslecks"
+        }
+      },
+      "local-rewards": {
+        "title": "Walk-In Loyalität",
+        "subtitle": "Belohnungen verdienen, einfach indem man auftaucht — keine Apps, keine Stempelkarten.",
+        "problem": "Treueprogramme erfordern Apps, Karten oder Scans, mit denen sich niemand befassen möchte. Gefälschte Check-ins plagen standortbasierte Belohnungen. Kleine Unternehmen kämpfen damit, Programme zu betreiben, die sowohl reibungslos als auch ehrlich sind.",
+        "solution": "Mit 7aychain erhalten Kunden automatisch Belohnungen, wenn ihr Gerät die physische Präsenz an einem teilnehmenden Standort bestätigt. Keine App zu öffnen. Kein QR-Code zu scannen. Einfach auftauchen — das Netzwerk erledigt den Rest.",
+        "features": {
+          "0": "Reibungslose Loyalität für Kunden",
+          "1": "Betrugssicher durch physische Verifizierung",
+          "2": "Funktioniert über ein Händlernetzwerk hinweg",
+          "3": "Programmierbare Belohnungslogik On-Chain"
+        }
+      },
+      "fair-voting": {
+        "title": "Eine Person, eine Stimme",
+        "subtitle": "Echte demokratische Governance, gestützt auf die Physik.",
+        "problem": "DAO-Governance ist durch Wallet-Farmen zerbrochen. Ein einzelner Wal kann Tausende von Wallet-Stimmen kontrollieren, und On-Chain-Abstimmungen werden zu Beliebtheitswettbewerben für Bots. Echte Communities verlieren ihre Stimme an automatisierte Angriffe.",
+        "solution": "7aychain koppelt Stimmrecht an verifizierte menschliche Präsenz. Erstelle so viele Wallets, wie du willst — aber du kannst nur an einem Ort gleichzeitig sein. DAOs führen Abstimmungen in dem Wissen durch, dass jede Stimme von einem einzigartigen, echten Menschen kommt.",
+        "features": {
+          "0": "Quadratisches Abstimmen, das wirklich funktioniert",
+          "1": "Sybil-sichere DAO-Governance",
+          "2": "Präsenzgewichtetes Stimmrecht",
+          "3": "Kompatibel mit bestehendem DAO-Tooling"
+        }
+      },
+      "verified-reviews": {
+        "title": "Standortgebundene Bewertungen",
+        "subtitle": "Nur Personen, die physisch anwesend waren, können eine Bewertung hinterlassen.",
+        "problem": "Gefälschte Bewertungen sind eine Betrugsindustrie im Milliardenbereich. Unternehmen kaufen 5-Sterne-Bewertungen, Konkurrenten sabotieren Rivalen mit falschen 1-Sternen, und Verbraucher können dem, was sie lesen, nicht trauen. Plattformen spielen endloses Katz-und-Maus-Spiel mit Bewertungs-Farmen.",
+        "solution": "7aychain schützt die Abgabe von Bewertungen durch einen Proof of Presence am Veranstaltungsort während eines gültigen Zeitfensters. Rezensenten bleiben anonym — aber jede Bewertung ist durch einen verifizierten On-Chain-Beweis abgesichert, dass die Person tatsächlich dort war.",
+        "features": {
+          "0": "Physische Präsenz zum Veröffentlichen erforderlich",
+          "1": "Anonym, aber verifizierbar",
+          "2": "Immun gegen Bewertungs-Farmen und Bots",
+          "3": "Drop-in SDK für jede Bewertungsplattform"
+        }
+      },
+      "emergency-checkin": {
+        "title": "Notfall Check-In",
+        "subtitle": "Beweise, dass du in Sicherheit bist — ohne preiszugeben, wo du bist.",
+        "problem": "In Katastrophen müssen Menschen ihre Sicherheit signalisieren, ohne ihren genauen Standort gegenüber böswilligen Akteuren offenzulegen. Traditionelle Check-in-Apps lassen sensible Daten abfließen. Familien warten ängstlich, ohne einen Weg, die Sicherheit eines geliebten Menschen zu verifizieren.",
+        "solution": "7aychain ermöglicht es jedem, mit zero-knowledge Proofs zu beweisen, dass er sich in einer Sicherheitszone (Notunterkunft, Sammelpunkt, Krankenhaus) befindet. Angehörige sehen ein verifiziertes 'sicher'-Signal. Keine ID, keine Koordinaten preisgegeben — nur eine kryptografische Bestätigung der Sicherheit.",
+        "features": {
+          "0": "Zero-knowledge Sicherheitssignale",
+          "1": "Funktioniert in jeder ausgewiesenen Sicherheitszone",
+          "2": "Keine persönlichen Daten werden jemals offengelegt",
+          "3": "Einsetzbar durch NGOs und Ersthelfer"
+        }
+      },
+      "presence-defi": {
+        "title": "Präsenzgeschütztes DeFi",
+        "subtitle": "Physische 2FA für Finanzoperationen mit hohem Wert.",
+        "problem": "Selbst mit perfektem Schlüsselmanagement ermöglicht eine gestohlene Seed-Phrase oder ein kompromittierter Signer Angreifern, Vaults von überall auf der Welt zu leeren. Das aktuelle DeFi hat keine Verteidigung, die physische Realität erfordert.",
+        "solution": "7aychain fügt kritischen Operationen eine Präsenz-Anforderung hinzu. Selbst mit gestohlenen Schlüsseln muss ein Angreifer physisch am richtigen Ort anwesend sein, um auszuführen. Remote-Exploits werden für präsenzgeschützte Aktionen unmöglich.",
+        "features": {
+          "0": "Physische Präsenz als zweiter Faktor",
+          "1": "Immunität gegen Remote-Exploits",
+          "2": "Konfigurierbare standortgebundene Richtlinien",
+          "3": "Funktioniert mit Safe, Multisigs und Wallets"
+        }
+      },
+      "delivery-proof": {
+        "title": "Lieferverifizierung",
+        "subtitle": "Fahrer beweisen, dass sie angekommen sind — keine Fake-Lieferungen mehr.",
+        "problem": "Lieferbetrug kostet die Logistikbranche jährlich Milliarden. Fahrer markieren Pakete als zugestellt, ohne anzukommen. Kunden bestreiten legitime Lieferungen. Plattformen fehlt die Grundwahrheit darüber, was tatsächlich passiert ist.",
+        "solution": "7aychain verifiziert die physische Präsenz des Fahrers an der Lieferadresse, bevor eine Lieferung als abgeschlossen markiert werden kann. Kunden erhalten manipulationssichere Bestätigungen. Plattformen beenden Streitzyklen mit kryptografischen Beweisen.",
+        "features": {
+          "0": "Verifizierte Fahrer-Ankunft On-Chain",
+          "1": "Drop-in für bestehende Logistik-Stacks",
+          "2": "Beseitigt Lieferstreitigkeiten",
+          "3": "Privatsphärewahrend für Fahrer"
+        }
+      }
+    }
+  },
+  "techStack": {
+    "label": "Stack",
+    "title": "Gebaut mit",
+    "titleAccent": "bewährter Technologie",
+    "subtitle": "Open-Source-Grundlagen. Kein proprietärer Lock-in.",
+    "categories": {
+      "consensus": {
+        "label": "Konsens",
+        "items": ["Proof of Presence", "Witness Circles", "Multilateration", "Quorum Finality"]
+      },
+      "privacy": {
+        "label": "Privatsphäre",
+        "items": ["Groth16 SNARKs", "Commit-Reveal", "ZK Circuits", "Replay Protection"]
+      },
+      "runtime": {
+        "label": "Laufzeitumgebung",
+        "items": ["Substrate", "Rust", "WASM", "Polkadot SDK"]
+      },
+      "infra": {
+        "label": "Infrastruktur",
+        "items": ["libp2p", "Docker", "Prometheus", "Grafana"]
+      },
+      "developer": {
+        "label": "Entwickler",
+        "items": ["TypeScript SDK", "REST API", "CLI Tools", "Python Client"]
       }
     }
   },
@@ -944,12 +1219,12 @@
       "description": "Verwende die Polkadot.js Apps-Oberfläche, um Blöcke zu erkunden, Extrinsics einzureichen und den Chain-State im 7aychain-Devnet abzufragen.",
       "steps": {
         "0": "Navigiere zu",
-        "0link": "polkadot.js.org/apps",
         "1": "Klicke auf den Netzwerk-Selektor (oben links)",
         "2": "Wähle “Development” → “Local Node”",
         "3": "Setze den Endpunkt auf",
-        "3value": "ws://127.0.0.1:9944",
-        "4": "Klicke auf “Switch”, um dich zu verbinden"
+        "4": "Klicke auf “Switch”, um dich zu verbinden",
+        "0link": "polkadot.js.org/apps",
+        "3value": "ws://127.0.0.1:9944"
       },
       "whatYouCanDo": {
         "title": "Was du tun kannst",
