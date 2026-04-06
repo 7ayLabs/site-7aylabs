@@ -10,6 +10,7 @@ import { useTheme } from "@/components/providers/ThemeProvider";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import CategoryDropdown from "./CategoryDropdown";
+import MobileAccordion from "./MobileAccordion";
 import { cn } from "@/lib/utils/cn";
 
 const CAT_KEY: Record<string, string> = {
@@ -27,6 +28,8 @@ interface TopBarProps {
   openCategory: (label: string) => void;
   closeDropdown: () => void;
   closeDropdownImmediate: () => void;
+  accordionItem: string | null;
+  setAccordionItem: (v: string | null) => void;
 }
 
 export default function TopBar({
@@ -37,6 +40,8 @@ export default function TopBar({
   openCategory,
   closeDropdown,
   closeDropdownImmediate,
+  accordionItem,
+  setAccordionItem,
 }: TopBarProps) {
   const { theme } = useTheme();
   const shouldReduceMotion = useReducedMotion();
@@ -58,12 +63,12 @@ export default function TopBar({
         transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
       })}
     >
-      {/* ── Floating pill — contains both nav row AND dropdown ── */}
+      {/* ── Floating pill — contains nav row, desktop dropdown, and mobile menu ── */}
       <div
         className={cn(
           "pointer-events-auto",
           "mx-4 w-full",
-          "rounded-2xl",
+          "rounded-[14px]",
           "backdrop-blur-2xl backdrop-saturate-150",
           "border border-[var(--color-border-secondary)]",
           "shadow-[0_4px_24px_-4px_rgba(0,0,0,0.2),0_0_0_1px_rgba(255,255,255,0.03)]",
@@ -173,13 +178,27 @@ export default function TopBar({
         </nav>
 
         {/* ── Dropdown content — inside the pill ── */}
-        <div className="overflow-hidden">
+        {/* Desktop hover dropdown */}
+        <div className="hidden md:block overflow-hidden">
           <AnimatePresence mode="wait">
             {activeCatData && (
               <CategoryDropdown
                 key={activeCatData.label}
                 category={activeCatData}
                 onClose={closeDropdownImmediate}
+              />
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* Mobile expanding menu — same pill, no separate card */}
+        <div className="md:hidden overflow-hidden">
+          <AnimatePresence>
+            {mobileOpen && (
+              <MobileAccordion
+                openItem={accordionItem}
+                setOpenItem={setAccordionItem}
+                onClose={() => setMobileOpen(false)}
               />
             )}
           </AnimatePresence>

@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import TopBar from "./TopBar";
-import MobileAccordion from "./MobileAccordion";
 
 const SCROLL_THRESHOLD = 60;
 const SCROLL_DELTA = 5;
@@ -61,7 +60,9 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
   useEffect(() => {
@@ -77,6 +78,20 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Backdrop — dims page behind the expanded mobile pill */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setMobileOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+
       <TopBar
         scrolled={scrolled}
         mobileOpen={mobileOpen}
@@ -85,17 +100,9 @@ export default function Navbar() {
         openCategory={openCategory}
         closeDropdown={closeDropdown}
         closeDropdownImmediate={closeDropdownImmediate}
+        accordionItem={accordionItem}
+        setAccordionItem={setAccordionItem}
       />
-
-      <AnimatePresence>
-        {mobileOpen && (
-          <MobileAccordion
-            openItem={accordionItem}
-            setOpenItem={setAccordionItem}
-            onClose={() => setMobileOpen(false)}
-          />
-        )}
-      </AnimatePresence>
     </>
   );
 }

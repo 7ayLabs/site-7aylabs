@@ -1,9 +1,9 @@
 "use client";
 
 import { Link } from "@/i18n/navigation";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import {
   IconTechnology,
   IconPresence,
@@ -58,17 +58,17 @@ const LABEL_TO_NAV_KEY: Record<string, string> = {
   "X (Twitter)": "xTwitter",
 };
 
-/* ── Animation ── */
-const containerVariants = {
+/* ── Animations ── */
+const containerVariants: Variants = {
   hidden: { height: 0, opacity: 0 },
   visible: {
     height: "auto",
     opacity: 1,
     transition: {
-      height: { duration: 0.25, ease: [0.22, 1, 0.36, 1] },
-      opacity: { duration: 0.2, delay: 0.05 },
-      staggerChildren: 0.03,
-      delayChildren: 0.08,
+      height: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
+      opacity: { duration: 0.18, delay: 0.04 },
+      staggerChildren: 0.035,
+      delayChildren: 0.06,
     },
   },
   exit: {
@@ -76,19 +76,24 @@ const containerVariants = {
     opacity: 0,
     transition: {
       height: { duration: 0.2, ease: [0.22, 1, 0.36, 1] },
-      opacity: { duration: 0.12 },
+      opacity: { duration: 0.1 },
     },
   },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, x: -8 },
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: -6, filter: "blur(2px)" },
   visible: {
     opacity: 1,
-    x: 0,
-    transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] },
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.28, ease: [0.22, 1, 0.36, 1] },
   },
-  exit: { opacity: 0, transition: { duration: 0.1 } },
+  exit: {
+    opacity: 0,
+    y: -4,
+    transition: { duration: 0.1 },
+  },
 };
 
 interface CategoryDropdownProps {
@@ -117,11 +122,14 @@ export default function CategoryDropdown({
       animate="visible"
       exit="exit"
     >
-      {/* Separator */}
-      <div className="mx-5 border-t border-[var(--color-border-primary)]" />
+      {/* Hairline separator with accent gradient pinpoint */}
+      <div className="relative mx-5">
+        <div className="h-px bg-[var(--color-border-primary)]" />
+        <div className="absolute left-0 top-0 h-px w-12 bg-gradient-to-r from-[var(--color-accent-primary)]/60 to-transparent" />
+      </div>
 
       {/* Item list */}
-      <div className="px-5 py-3 flex flex-col gap-0.5">
+      <div className="px-3 py-2.5 flex flex-col">
         {category.items.map((item) => {
           const isExternal = "external" in item && item.external;
           const Icon =
@@ -131,13 +139,52 @@ export default function CategoryDropdown({
           const navKey = LABEL_TO_NAV_KEY[item.label] ?? item.label;
 
           const cls = cn(
-            "group flex items-center gap-4",
-            "px-2 py-3",
-            "rounded-xl",
-            "hover:bg-[var(--color-fg-primary)]/[0.04]",
-            "text-fg-secondary hover:text-fg",
-            "transition-all duration-150 ease-out",
-            "cursor-pointer"
+            "group relative flex items-center gap-3",
+            "pl-4 pr-3 py-2.5",
+            "text-fg-secondary hover:text-[var(--color-accent-primary)]",
+            "transition-colors duration-200 ease-out",
+            "cursor-pointer outline-none",
+            "focus-visible:text-[var(--color-accent-primary)]"
+          );
+
+          const innerContent = (
+            <>
+              {/* Left scanline — draws on hover */}
+              <span
+                aria-hidden="true"
+                className={cn(
+                  "absolute left-0 top-1/2 -translate-y-1/2",
+                  "h-5 w-[2px] origin-center",
+                  "bg-[var(--color-accent-primary)]",
+                  "scale-y-0 group-hover:scale-y-100 group-focus-visible:scale-y-100",
+                  "transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                  "shadow-[0_0_8px_rgba(23,142,119,0.5)]"
+                )}
+              />
+              <Icon
+                size={17}
+                strokeWidth={1.5}
+                className={cn(
+                  "text-fg-muted shrink-0",
+                  "group-hover:text-[var(--color-accent-primary)] group-focus-visible:text-[var(--color-accent-primary)]",
+                  "transition-colors duration-200"
+                )}
+              />
+              <span className="flex-1 text-[14px] font-medium tracking-[-0.005em]">
+                {t(navKey)}
+              </span>
+              <ArrowUpRight
+                size={14}
+                strokeWidth={1.75}
+                className={cn(
+                  "shrink-0 text-[var(--color-accent-primary)]",
+                  "opacity-0 -translate-x-1",
+                  "group-hover:opacity-100 group-hover:translate-x-0",
+                  "group-focus-visible:opacity-100 group-focus-visible:translate-x-0",
+                  "transition-all duration-250 ease-out"
+                )}
+              />
+            </>
           );
 
           if (isExternal) {
@@ -151,19 +198,7 @@ export default function CategoryDropdown({
                 className={cls}
                 variants={itemVariants}
               >
-                <Icon
-                  size={18}
-                  strokeWidth={1.5}
-                  className="text-fg-tertiary group-hover:text-fg-secondary transition-colors shrink-0"
-                />
-                <span className="flex-1 text-[15px] font-medium">
-                  {t(navKey)}
-                </span>
-                <ArrowRight
-                  size={16}
-                  strokeWidth={1.5}
-                  className="text-fg-muted shrink-0 opacity-0 group-hover:opacity-60 transition-opacity"
-                />
+                {innerContent}
               </motion.a>
             );
           }
@@ -171,14 +206,7 @@ export default function CategoryDropdown({
           return (
             <motion.div key={item.href} variants={itemVariants}>
               <Link href={item.href} onClick={onClose} className={cls}>
-                <Icon
-                  size={18}
-                  strokeWidth={1.5}
-                  className="text-fg-tertiary group-hover:text-fg-secondary transition-colors shrink-0"
-                />
-                <span className="flex-1 text-[15px] font-medium">
-                  {t(navKey)}
-                </span>
+                {innerContent}
               </Link>
             </motion.div>
           );
