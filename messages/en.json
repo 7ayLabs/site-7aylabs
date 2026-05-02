@@ -77,81 +77,42 @@
   "hero": {
     "titleLine1Start": "The ",
     "titleLine1Accent": "presence",
-    "titleLine2Start": "",
-    "titleLine2Accent": "layer",
-    "subtitle": "The only chain that proves you're human — without scanning your body. No orbs. No selfies. Just show up.",
+    "titleLine2Start": "is your ",
+    "titleLine2Accent": "proof",
+    "subtitle": "The Web3 identity layer where being there is being verified. No biometrics. No KYC. No data trail — just sovereign humanity, on-chain.",
     "ctaPrimary": "Get Early Access",
-    "ctaSecondary": "Learn More",
-    "features": {
-      "0": {
-        "label": "Bot-Proof",
-        "description": "Verified by physics, not biometrics"
-      },
-      "1": {
-        "label": "Private",
-        "description": "Zero personal data on-chain"
-      },
-      "2": {
-        "label": "No Hardware",
-        "description": "Works on any device"
-      }
-    }
-  },
-  "about": {
-    "label": "What It Does",
-    "title": "What",
-    "titleAccent": "7aychain",
-    "titleEnd": " does",
-    "subtitle": "A Layer 1 that anchors digital identity to physical reality — the one thing AI can never fake.",
-    "cards": {
-      "0": {
-        "title": "Proof of Presence",
-        "description": "Verifies you're physically present using the speed of internet signals. No cameras, no biometrics, no orbs."
-      },
-      "1": {
-        "title": "Zero-Knowledge Privacy",
-        "description": "Proves you were somewhere without learning who you are. Location committed as a hash, verified through ZK proofs."
-      },
-      "2": {
-        "title": "Bot-Proof by Physics",
-        "description": "Bots can't fake being somewhere. The network measures connection timing — something no script can spoof."
-      },
-      "3": {
-        "title": "No Hardware Required",
-        "description": "No orbs. No special devices. Any phone with an internet connection is all you need to get verified."
-      },
-      "4": {
-        "title": "Developer-First SDK",
-        "description": "One API call to verify presence. Build airdrops, voting, reviews, and attendance systems in minutes."
-      },
-      "5": {
-        "title": "On-Chain Sovereignty",
-        "description": "Your presence proof lives on a public ledger you control. No company holds the keys. Immutable and permanent."
-      }
-    }
+    "ctaSecondary": "Explore the Protocol",
+    "typewriterPhrases": {
+      "0": "Sybil-resistant by physics, not promises.",
+      "1": "The identity layer Web3 has been missing.",
+      "2": "Verify once. No data trail. No hardware.",
+      "3": "Where bots fail and humans pass."
+    },
+    "labelEyebrow": "Proof of Presence · L1",
+    "title": "Your presence is your proof"
   },
   "howItWorks": {
     "label": "How It Works",
     "title": "From Signal to Sovereignty",
-    "subtitle": "Three steps. No hardware. No biometrics. Just physics.",
+    "subtitle": "Three steps to Sybil-resistant verification. No hardware. No biometrics. Pure Proof of Presence.",
     "aria": "How 7aychain verifies your presence",
     "steps": {
       "0": {
         "number": "01",
-        "title": "Show Up",
-        "description": "Open the app and tap once. Your device sends a sealed proof that says \u201cI'm here\u201d \u2014 no passwords, no selfies, no special hardware.",
+        "title": "Initiate Your Presence Commitment",
+        "description": "Your device submits a cryptographic commitment — a hash of your presence claim. No passwords, no biometrics, no dedicated hardware. One tap to enter the verification epoch.",
         "iconAlt": "Phone connecting to the network with signal arcs"
       },
       "1": {
         "number": "02",
-        "title": "Get Verified",
-        "description": "Validators across the network measure your connection timing to confirm you're really there. No GPS, no oracles \u2014 just the speed of light.",
+        "title": "Witness Circles Triangulate Your Signal",
+        "description": "Validators form witness circles, measuring network latency from multiple points to triangulate your position — no GPS, no oracles, just physics.",
         "iconAlt": "Three validators triangulating a position"
       },
       "2": {
         "number": "03",
-        "title": "Own Your Proof",
-        "description": "Your presence is sealed on-chain \u2014 permanent, sovereign, and impossible to forge. You own it. Nobody can take it away.",
+        "title": "Proof Finalized On‑Chain",
+        "description": "Once quorum is reached, your presence proof is sealed — immutable, sovereign, and impossible to forge or replay across epochs.",
         "iconAlt": "Hexagonal seal with checkmark chained to blocks"
       }
     }
@@ -160,29 +121,30 @@
     "title": "Why",
     "titleAccent": "7aychain",
     "titleEnd": "?",
-    "subtitle": "Every chain trusts cryptography. 7aychain anchors identity to physical reality \u2014 the one thing AI, bots, and fake accounts can never forge.",
+    "subtitle": "Every other chain trusts cryptography alone. 7aychain anchors identity to physical reality — the one primitive AI, bots, and Sybil farms cannot forge.",
     "cards": {
       "0": {
-        "title": "Bot-Proof by Default",
-        "description": "No iris scans. No fingerprints. The network measures your connection timing to verify you're physically present \u2014 something bots simply can't fake.",
+        "title": "Physics Over Biometrics",
+        "description": "No iris scans. No fingerprints. Validators measure network latency and signal timing to verify you’re physically present — physics that bots can’t fake.",
         "iconAlt": "Signal wave with measurement nodes"
       },
       "1": {
-        "title": "Private From Day One",
-        "description": "Your identity stays yours. The network proves you were somewhere without ever learning who you are. Zero personal data on-chain.",
+        "title": "Commit‑Reveal Privacy Architecture",
+        "description": "Your secret never touches the chain. Commit a hash, reveal later. Nullifiers prevent replay across epochs. ZK proofs let you prove presence without exposing identity.",
         "iconAlt": "Lock with zero-knowledge proof rings"
       },
       "2": {
-        "title": "Humans Only, Automatically",
-        "description": "The protocol scores every participant based on real behavior \u2014 separating humans from machines without CAPTCHAs, orbs, or manual review.",
+        "title": "Autonomous Sybil Scoring",
+        "description": "The autonomous pallet scores every actor 0–100 on behavioral patterns. No CAPTCHAs, no orbs — the protocol separates humans from machines automatically.",
         "iconAlt": "Shield with human verification checkmark"
       },
       "3": {
-        "title": "Governance That's Actually Fair",
-        "description": "Voting power tied to real participation, not token bags. Your voice scales with your verified presence in the network \u2014 not your wallet size.",
+        "title": "Presence‑Weighted Governance",
+        "description": "Capability-based permissions, not token voting. Delegations cascade up to 5 levels deep. Revoke a root capability and every child revokes with it — all on-chain.",
         "iconAlt": "Delegation tree with capability nodes"
       }
-    }
+    },
+    "labelEyebrow": "Why 7aychain"
   },
   "network": {
     "label": "Network",
@@ -377,9 +339,13 @@
   },
   "newsletter": {
     "title": "Join the Presence Economy",
-    "subtitle": "Protocol milestones, validator updates, and early access drops — delivered to those who show up first.",
-    "cta": "Get Protocol Updates",
-    "trustLine": "Signal only. No noise. Unsubscribe anytime."
+    "subtitle": "Protocol milestones, validator drops, and governance proposals. No hype, just signal.",
+    "cta": "Subscribe",
+    "trustLine": "Unsubscribe anytime. Email is used only for protocol updates.",
+    "emailPlaceholder": "you@domain.com",
+    "errorMessage": "Something went wrong. Try again in a moment.",
+    "labelEyebrow": "Stay in Sync",
+    "successMessage": "You're in. Watch your inbox."
   },
   "devnetStatus": {
     "statusIndicator": "Devnet Live",
@@ -441,7 +407,7 @@
       },
       "2": {
         "title": "Economically Secured",
-        "description": "Every validator has skin in the game. Lie about someone's location and you lose your stake. Honesty is the only profitable strategy."
+        "description": "Every validator stakes real value. Lie about someone’s location and you lose your stake. Honesty is the only profitable strategy."
       },
       "3": {
         "title": "Unforgeable by AI",
@@ -459,7 +425,7 @@
         "number": "01",
         "title": "You Show Up",
         "badge": "Declare + Commit",
-        "description": "Your device submits a sealed commitment \u2014 a cryptographic hash that says \u201cI am here\u201d without revealing where. One tap. No biometrics. No hardware."
+        "description": "Your device submits a cryptographic commitment — a sealed hash that says “I am here” without revealing where. One action. No biometrics. No hardware."
       },
       "1": {
         "number": "02",
@@ -528,8 +494,8 @@
     "title": "Your Location Is Verified,",
     "titleAccent": "Never Revealed",
     "description": {
-      "0": "Zero-knowledge proofs let the network confirm you were somewhere without learning where. Your data never leaves your control.",
-      "1": "Even the validators who measure your signal never see your coordinates. They confirm one thing: \u201cyes, this person was physically present.\u201d"
+      "0": "Zero-knowledge proofs let the network confirm you were at a location without learning where that location is. Your data stays with you.",
+      "1": "The protocol uses cryptographic commitments so that even the validators who measure your signal never see your actual coordinates. They only confirm: “yes, this person was physically present.”"
     },
     "verified": "Verified",
     "redactedPosition": "Position: \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588",
@@ -537,11 +503,11 @@
     "pillars": {
       "0": {
         "title": "Commit-Reveal",
-        "description": "Submit a sealed hash of your presence first. Only after it's locked do you reveal the data \u2014 preventing tampering and front-running."
+        "description": "Submit a sealed hash of your presence first. Only after it’s locked do you reveal the data — preventing tampering."
       },
       "1": {
         "title": "Zero-Knowledge Proofs",
-        "description": "Mathematical proofs that verify \u201cthis person was here\u201d without revealing where. The network never sees your location."
+        "description": "Mathematical proofs that verify “this person was here” without revealing where. The network never sees your location."
       },
       "2": {
         "title": "Replay Protection",
@@ -841,8 +807,11 @@
   "whyPresencePage": {
     "label": "Why Presence",
     "title": "The Internet Lost the Human Signal",
-    "accentWords": ["Human", "Signal"],
-    "description": "When bots can replicate everything humans do online, the only unforgeable proof left is physical presence.",
+    "accentWords": [
+      "Human",
+      "Signal"
+    ],
+    "description": "When bots can do everything humans can do online, the only thing left that proves you're real is being physically present.",
     "presenceInfrastructure": {
       "sectionTitle": "Presence Infrastructure",
       "paragraph1": "At the heart of 7aychain is a simple idea: your internet connection can prove where you are. Validators across the network measure connection timing from multiple points, confirming physical location without GPS, cameras, or special hardware.",
@@ -1013,12 +982,36 @@
       }
     },
     "validatorNodes": {
-      "0": { "name": "Alice", "port": "9944", "role": "Boot node" },
-      "1": { "name": "Bob", "port": "9945", "role": "Validator" },
-      "2": { "name": "Charlie", "port": "9946", "role": "Validator" },
-      "3": { "name": "Dave", "port": "9947", "role": "Validator" },
-      "4": { "name": "Eve", "port": "9948", "role": "Validator" },
-      "5": { "name": "Ferdie", "port": "9949", "role": "Validator" }
+      "0": {
+        "name": "Alice",
+        "port": "9944",
+        "role": "Boot node"
+      },
+      "1": {
+        "name": "Bob",
+        "port": "9945",
+        "role": "Validator"
+      },
+      "2": {
+        "name": "Charlie",
+        "port": "9946",
+        "role": "Validator"
+      },
+      "3": {
+        "name": "Dave",
+        "port": "9947",
+        "role": "Validator"
+      },
+      "4": {
+        "name": "Eve",
+        "port": "9948",
+        "role": "Validator"
+      },
+      "5": {
+        "name": "Ferdie",
+        "port": "9949",
+        "role": "Validator"
+      }
     },
     "multiNodeSetup": {
       "label": "Multi-Node Setup",
@@ -1045,22 +1038,70 @@
         "operations": "Operations"
       },
       "modules": {
-        "0": { "module": "presence", "operations": "declare, commit, reveal, query status" },
-        "1": { "module": "epoch", "operations": "current epoch, history, config" },
-        "2": { "module": "validator", "operations": "register, activate, stake, slash info" },
-        "3": { "module": "pbt", "operations": "mint, bind, verify position-bound tokens" },
-        "4": { "module": "triangulation", "operations": "submit latency, compute position, verify" },
-        "5": { "module": "dispute", "operations": "open, submit evidence, vote, resolve" },
-        "6": { "module": "device", "operations": "register, scan, attest, revoke" },
-        "7": { "module": "lifecycle", "operations": "query state, transition, finalize" },
-        "8": { "module": "vault", "operations": "create, deposit, share, recover" },
-        "9": { "module": "zk", "operations": "generate proof, verify, migrate circuit" },
-        "10": { "module": "governance", "operations": "propose, vote, execute, cancel" },
-        "11": { "module": "semantic", "operations": "link entities, query graph, unlink" },
-        "12": { "module": "boomerang", "operations": "create proof, verify return, query" },
-        "13": { "module": "autonomous", "operations": "detect anomaly, report, query status" },
-        "14": { "module": "octopus", "operations": "create group, join, leave, query" },
-        "15": { "module": "storage", "operations": "store, retrieve, pin, unpin" }
+        "0": {
+          "module": "presence",
+          "operations": "declare, commit, reveal, query status"
+        },
+        "1": {
+          "module": "epoch",
+          "operations": "current epoch, history, config"
+        },
+        "2": {
+          "module": "validator",
+          "operations": "register, activate, stake, slash info"
+        },
+        "3": {
+          "module": "pbt",
+          "operations": "mint, bind, verify position-bound tokens"
+        },
+        "4": {
+          "module": "triangulation",
+          "operations": "submit latency, compute position, verify"
+        },
+        "5": {
+          "module": "dispute",
+          "operations": "open, submit evidence, vote, resolve"
+        },
+        "6": {
+          "module": "device",
+          "operations": "register, scan, attest, revoke"
+        },
+        "7": {
+          "module": "lifecycle",
+          "operations": "query state, transition, finalize"
+        },
+        "8": {
+          "module": "vault",
+          "operations": "create, deposit, share, recover"
+        },
+        "9": {
+          "module": "zk",
+          "operations": "generate proof, verify, migrate circuit"
+        },
+        "10": {
+          "module": "governance",
+          "operations": "propose, vote, execute, cancel"
+        },
+        "11": {
+          "module": "semantic",
+          "operations": "link entities, query graph, unlink"
+        },
+        "12": {
+          "module": "boomerang",
+          "operations": "create proof, verify return, query"
+        },
+        "13": {
+          "module": "autonomous",
+          "operations": "detect anomaly, report, query status"
+        },
+        "14": {
+          "module": "octopus",
+          "operations": "create group, join, leave, query"
+        },
+        "15": {
+          "module": "storage",
+          "operations": "store, retrieve, pin, unpin"
+        }
       }
     },
     "hardware": {
@@ -1072,10 +1113,26 @@
         "recommended": "Recommended"
       },
       "requirements": {
-        "0": { "spec": "CPU Cores", "minimum": "4 cores", "recommended": "8+ cores" },
-        "1": { "spec": "RAM", "minimum": "8 GB", "recommended": "16 GB" },
-        "2": { "spec": "Storage", "minimum": "50 GB SSD", "recommended": "100 GB NVMe" },
-        "3": { "spec": "Network", "minimum": "10 Mbps", "recommended": "100+ Mbps" }
+        "0": {
+          "spec": "CPU Cores",
+          "minimum": "4 cores",
+          "recommended": "8+ cores"
+        },
+        "1": {
+          "spec": "RAM",
+          "minimum": "8 GB",
+          "recommended": "16 GB"
+        },
+        "2": {
+          "spec": "Storage",
+          "minimum": "50 GB SSD",
+          "recommended": "100 GB NVMe"
+        },
+        "3": {
+          "spec": "Network",
+          "minimum": "10 Mbps",
+          "recommended": "100+ Mbps"
+        }
       }
     },
     "explorer": {
@@ -1131,10 +1188,26 @@
         "recommended": "Recommended"
       },
       "requirements": {
-        "0": { "spec": "CPU Cores", "minimum": "4 cores", "recommended": "8+ cores" },
-        "1": { "spec": "RAM", "minimum": "8 GB", "recommended": "16 GB" },
-        "2": { "spec": "Storage", "minimum": "50 GB SSD", "recommended": "100 GB NVMe" },
-        "3": { "spec": "Network", "minimum": "10 Mbps", "recommended": "100+ Mbps" }
+        "0": {
+          "spec": "CPU Cores",
+          "minimum": "4 cores",
+          "recommended": "8+ cores"
+        },
+        "1": {
+          "spec": "RAM",
+          "minimum": "8 GB",
+          "recommended": "16 GB"
+        },
+        "2": {
+          "spec": "Storage",
+          "minimum": "50 GB SSD",
+          "recommended": "100 GB NVMe"
+        },
+        "3": {
+          "spec": "Network",
+          "minimum": "10 Mbps",
+          "recommended": "100+ Mbps"
+        }
       }
     },
     "prerequisites": {
@@ -1189,16 +1262,46 @@
         "description": "Description"
       },
       "flags": {
-        "0": { "flag": "--dev", "description": "Run in development mode with temporary storage" },
-        "1": { "flag": "--chain <spec>", "description": "Specify chain spec (local, dev, or path to JSON)" },
-        "2": { "flag": "--validator", "description": "Enable validator mode for block production" },
-        "3": { "flag": "--base-path <path>", "description": "Set the data directory for the node" },
-        "4": { "flag": "--rpc-port <port>", "description": "Set the JSON-RPC port (default: 9944)" },
-        "5": { "flag": "--port <port>", "description": "Set the p2p networking port (default: 30333)" },
-        "6": { "flag": "--name <name>", "description": "Human-readable name for the node" },
-        "7": { "flag": "--telemetry-url <url>", "description": "Telemetry server endpoint" },
-        "8": { "flag": "--bootnodes <addr>", "description": "Specify boot node multiaddress(es)" },
-        "9": { "flag": "--rpc-cors all", "description": "Allow all CORS origins for RPC" }
+        "0": {
+          "flag": "--dev",
+          "description": "Run in development mode with temporary storage"
+        },
+        "1": {
+          "flag": "--chain <spec>",
+          "description": "Specify chain spec (local, dev, or path to JSON)"
+        },
+        "2": {
+          "flag": "--validator",
+          "description": "Enable validator mode for block production"
+        },
+        "3": {
+          "flag": "--base-path <path>",
+          "description": "Set the data directory for the node"
+        },
+        "4": {
+          "flag": "--rpc-port <port>",
+          "description": "Set the JSON-RPC port (default: 9944)"
+        },
+        "5": {
+          "flag": "--port <port>",
+          "description": "Set the p2p networking port (default: 30333)"
+        },
+        "6": {
+          "flag": "--name <name>",
+          "description": "Human-readable name for the node"
+        },
+        "7": {
+          "flag": "--telemetry-url <url>",
+          "description": "Telemetry server endpoint"
+        },
+        "8": {
+          "flag": "--bootnodes <addr>",
+          "description": "Specify boot node multiaddress(es)"
+        },
+        "9": {
+          "flag": "--rpc-cors all",
+          "description": "Allow all CORS origins for RPC"
+        }
       }
     },
     "economics": {
@@ -1297,23 +1400,43 @@
       "groups": {
         "0": {
           "category": "Presence Layer",
-          "description": "Core presence declaration, time-window management, lifecycle state machine, and device registration.",
-          "pallets": ["presence", "epoch", "lifecycle", "device"]
+          "description": "Core presence declaration, epoch management, state machine, and device registration.",
+          "pallets": [
+            "presence",
+            "epoch",
+            "lifecycle",
+            "device"
+          ]
         },
         "1": {
           "category": "Verification",
-          "description": "Position estimation via network timing, zero-knowledge proofs, and position-bound token minting.",
-          "pallets": ["triangulation", "zk", "pbt"]
+          "description": "Position estimation, zero-knowledge proofs, and position-bound token minting.",
+          "pallets": [
+            "triangulation",
+            "zk",
+            "pbt"
+          ]
         },
         "2": {
           "category": "Security",
-          "description": "Validator staking and slashing, on-chain dispute resolution, and autonomous anomaly detection.",
-          "pallets": ["validator", "dispute", "autonomous"]
+          "description": "Validator staking, dispute resolution, and autonomous anomaly detection.",
+          "pallets": [
+            "validator",
+            "dispute",
+            "autonomous"
+          ]
         },
         "3": {
           "category": "Infrastructure",
-          "description": "Secure vaults, on-chain storage, governance, trust graphs, return proofs, and group management.",
-          "pallets": ["vault", "storage", "governance", "semantic", "boomerang", "octopus"]
+          "description": "Data vaults, on-chain storage, governance, trust graphs, return proofs, and group management.",
+          "pallets": [
+            "vault",
+            "storage",
+            "governance",
+            "semantic",
+            "boomerang",
+            "octopus"
+          ]
         }
       }
     },
@@ -1522,6 +1645,58 @@
     "about": {
       "title": "About 7ayLabs | Building the Presence Layer",
       "description": "Meet 7ayLabs, the team building 7aychain \u2014 a Layer 1 that verifies humans through physics-based Proof of Presence. No biometrics. No surveillance."
+    }
+  },
+  "heroPromise": {
+    "eyebrow": "The Promise",
+    "prose": "Identity earned through presence. Sovereign by design, verifiable by witness.",
+    "line1": "No biometrics.",
+    "line2": "No KYC.",
+    "line3": "No surveillance.",
+    "line4": "Just presence."
+  },
+  "statsBand": {
+    "ctaPrimary": "Read the docs",
+    "labelEyebrow": "By the Numbers",
+    "subtitle": "Real participants. Real verification. Real-time on-chain proof.",
+    "title": "The presence economy, in motion",
+    "stats": {
+      "0": {
+        "value": "100k+",
+        "label": "Verified Presences"
+      },
+      "1": {
+        "value": "12s",
+        "label": "Block Time"
+      },
+      "2": {
+        "value": "$0.001",
+        "label": "Avg Tx Cost"
+      },
+      "3": {
+        "value": "99.97%",
+        "label": "Sybil Resistance"
+      }
+    }
+  },
+  "useCasesPreview": {
+    "ctaSeeAll": "See all use cases",
+    "labelEyebrow": "Use Cases",
+    "subtitle": "From sovereign identity to participation-based governance — every primitive anchored in Proof of Presence.",
+    "title": "Where presence becomes power",
+    "cards": {
+      "0": {
+        "title": "Sovereign Identity",
+        "description": "Own a portable, verifiable identity. No third parties. No data trail."
+      },
+      "1": {
+        "title": "Presence Governance",
+        "description": "Votes that prove you were there. Reputation built on real participation, not capital."
+      },
+      "2": {
+        "title": "Sybil-Resistant dApps",
+        "description": "Build apps where every account is a verified human. No bot farms, no fake stakeholders."
+      }
     }
   }
 }
