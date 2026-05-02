@@ -60,15 +60,15 @@
     "logoAlt": "7ayLabs Logo",
     "logoAltFooter": "7ayLabs",
     "descriptions": {
-      "technologyDesc": "How Proof of Presence verifies humans without biometrics or hardware.",
-      "whyPresenceDesc": "Why presence is the missing primitive for sovereign Web3 identity.",
-      "useCasesDesc": "Where presence becomes power — identity, governance, Sybil resistance.",
-      "devnetDesc": "Build and test on the live developer network. Live status, faucets, docs.",
-      "validatorsDesc": "Run a validator and earn stake-based rewards for honest verification.",
-      "ecosystemDesc": "Projects, partners, and protocols building on the presence layer.",
-      "glossaryDesc": "Plain-English definitions of every PoP, witness, and presence concept.",
-      "updatesDesc": "Protocol milestones, validator drops, and governance proposals.",
-      "waitlistDesc": "Get early access to the testnet and validator onboarding.",
+      "technologyDesc": "How Proof of Presence authorizes mobile service without a telco.",
+      "whyPresenceDesc": "Why presence is the missing primitive for a sovereign mobile carrier.",
+      "useCasesDesc": "From sovereign eSIM to borderless roaming — what a presence-based carrier unlocks.",
+      "devnetDesc": "Build against the live carrier devnet. Mock SM-DP+, IMS bridge, signal plane.",
+      "validatorsDesc": "Stake 7AY, witness presence, and earn from authorizing real subscriber service.",
+      "ecosystemDesc": "Wallets, dApps, and carrier integrations building on the presence layer.",
+      "glossaryDesc": "Plain-English definitions for subscriber, witness, attach lease, and every PoP term.",
+      "updatesDesc": "Protocol releases, carrier milestones, and governance proposals.",
+      "waitlistDesc": "Get early access to the carrier devnet and validator onboarding.",
       "newsletterDesc": "Signal-only updates from the protocol. No hype, no noise.",
       "githubDesc": "Source code, contribution guides, and open issues on GitHub.",
       "xTwitterDesc": "Live updates and protocol commentary on X."
@@ -89,76 +89,76 @@
     "ja": "日本語"
   },
   "hero": {
-    "titleLine1Start": "The ",
-    "titleLine1Accent": "presence",
-    "titleLine2Start": "is your ",
-    "titleLine2Accent": "proof",
-    "subtitle": "The Web3 identity layer where being there is being verified. No biometrics. No KYC. No data trail — just sovereign humanity, on-chain.",
+    "titleLine1Start": "Your number, ",
+    "titleLine1Accent": "your carrier",
+    "titleLine2Start": "your ",
+    "titleLine2Accent": "sovereignty",
+    "subtitle": "The first decentralized mobile carrier. Activate eSIM, claim a number, and attach to the network — all authorized by Proof of Presence on-chain. No telco lock-in. No KYC. No surveillance.",
     "ctaPrimary": "Get Early Access",
     "ctaSecondary": "Explore the Protocol",
     "typewriterPhrases": {
-      "0": "Sybil-resistant by physics, not promises.",
-      "1": "The identity layer Web3 has been missing.",
-      "2": "Verify once. No data trail. No hardware.",
-      "3": "Where bots fail and humans pass."
+      "0": "A carrier without a corporation.",
+      "1": "Your number, witnessed not billed.",
+      "2": "eSIM activation by consensus.",
+      "3": "Sovereign mobile, by default."
     },
-    "labelEyebrow": "Proof of Presence · L1",
-    "title": "Your presence is your proof"
+    "labelEyebrow": "Decentralized Mobile Carrier · L1",
+    "title": "Your number. Your presence. Your sovereignty."
   },
   "howItWorks": {
     "label": "How It Works",
-    "title": "From Signal to Sovereignty",
-    "subtitle": "Three steps to Sybil-resistant verification. No hardware. No biometrics. Pure Proof of Presence.",
-    "aria": "How 7aychain verifies your presence",
+    "title": "Subscriber to sovereign in three steps",
+    "subtitle": "From number reservation to live attach — every transition is authorized by witness consensus, not a billing system.",
+    "aria": "How 7aychain authorizes mobile service",
     "steps": {
       "0": {
         "number": "01",
-        "title": "Initiate Your Presence Commitment",
-        "description": "Your device submits a cryptographic commitment — a hash of your presence claim. No passwords, no biometrics, no dedicated hardware. One tap to enter the verification epoch.",
-        "iconAlt": "Phone connecting to the network with signal arcs"
+        "title": "Reserve & bind your number",
+        "description": "Claim a number on-chain. Bind it to your actor identity and your device. The chain holds the binding — not a telco's database.",
+        "iconAlt": "A phone number being sealed on-chain"
       },
       "1": {
         "number": "02",
-        "title": "Witness Circles Triangulate Your Signal",
-        "description": "Validators form witness circles, measuring network latency from multiple points to triangulate your position — no GPS, no oracles, just physics.",
-        "iconAlt": "Three validators triangulating a position"
+        "title": "Witnesses attest your presence",
+        "description": "Local witness circles confirm you're physically in your service region. Quorum forms. Your eSIM commitment is sealed in an epoch.",
+        "iconAlt": "Three witnesses attesting to a subscriber's presence"
       },
       "2": {
         "number": "03",
-        "title": "Proof Finalized On‑Chain",
-        "description": "Once quorum is reached, your presence proof is sealed — immutable, sovereign, and impossible to forge or replay across epochs.",
-        "iconAlt": "Hexagonal seal with checkmark chained to blocks"
+        "title": "Attach lease — your handset connects",
+        "description": "Consensus issues a time-bounded attach lease. Your phone connects to native 7AY service, backed by stake and slashing — not paperwork.",
+        "iconAlt": "A handset attaching to the carrier with a sealed authorization"
       }
     }
   },
   "whyChain": {
-    "title": "Why",
+    "title": "Why ",
     "titleAccent": "7aychain",
-    "titleEnd": "?",
-    "subtitle": "Every other chain trusts cryptography alone. 7aychain anchors identity to physical reality — the one primitive AI, bots, and Sybil farms cannot forge.",
+    "titleEnd": " runs the carrier",
+    "subtitle": "Centralized telcos own your number, your identity, and your data. 7aychain flips it — your service rights live on-chain, your phone obeys consensus.",
     "cards": {
       "0": {
-        "title": "Physics Over Biometrics",
-        "description": "No iris scans. No fingerprints. Validators measure network latency and signal timing to verify you’re physically present — physics that bots can’t fake.",
+        "title": "Subscriber Sovereignty",
+        "description": "Your number, eSIM entitlement, and service rights are bound to YOU on-chain — not to a billing record some company can cancel.",
         "iconAlt": "Signal wave with measurement nodes"
       },
       "1": {
-        "title": "Commit‑Reveal Privacy Architecture",
-        "description": "Your secret never touches the chain. Commit a hash, reveal later. Nullifiers prevent replay across epochs. ZK proofs let you prove presence without exposing identity.",
+        "title": "Witness-Based Activation",
+        "description": "Service activation requires a quorum of local witnesses. No single party can grant or revoke your line. The chain is the only authority.",
         "iconAlt": "Lock with zero-knowledge proof rings"
       },
       "2": {
-        "title": "Autonomous Sybil Scoring",
-        "description": "The autonomous pallet scores every actor 0–100 on behavioral patterns. No CAPTCHAs, no orbs — the protocol separates humans from machines automatically.",
+        "title": "Staked Security",
+        "description": "Every validator stakes 7AY. Act dishonestly, get slashed. Honest validation is the only profitable game in town.",
         "iconAlt": "Shield with human verification checkmark"
       },
       "3": {
-        "title": "Presence‑Weighted Governance",
-        "description": "Capability-based permissions, not token voting. Delegations cascade up to 5 levels deep. Revoke a root capability and every child revokes with it — all on-chain.",
+        "title": "Bot-Proof by Presence",
+        "description": "Bots can spin up a million wallets. They can't physically show up. Presence is the Sybil resistance layer Web3 has been missing.",
         "iconAlt": "Delegation tree with capability nodes"
       }
     },
-    "labelEyebrow": "Why 7aychain"
+    "labelEyebrow": "Why a chain runs the carrier"
   },
   "network": {
     "label": "Network",
@@ -421,20 +421,20 @@
     }
   },
   "newsletter": {
-    "title": "Join the Presence Economy",
-    "subtitle": "Protocol milestones, validator drops, and governance proposals. No hype, just signal.",
+    "title": "Tune into the presence carrier",
+    "subtitle": "Protocol releases, carrier devnet milestones, validator drops, and governance proposals. Signal only — no hype.",
     "cta": "Subscribe",
-    "trustLine": "Unsubscribe anytime. Email is used only for protocol updates.",
+    "trustLine": "Unsubscribe anytime. Email used only for protocol updates.",
     "emailPlaceholder": "you@domain.com",
     "errorMessage": "Something went wrong. Try again in a moment.",
-    "labelEyebrow": "Stay in Sync",
+    "labelEyebrow": "Stay in sync",
     "successMessage": "You're in. Watch your inbox."
   },
   "devnetStatus": {
-    "statusIndicator": "Devnet Live",
-    "title": "7aychain Devnet is Live",
-    "subtitle": "A working network running the full Proof of Presence stack. Real nodes. Real verification. Real-time results.",
-    "ctaHint": "Connect to devnet",
+    "statusIndicator": "DEVNET LIVE",
+    "title": "Carrier devnet is live",
+    "subtitle": "End-to-end flow: subscriber binding, presence attestation, mock SM-DP+, IMS bridge, signal plane.",
+    "ctaHint": "Connect a node and watch live attestations.",
     "stats": {
       "version": {
         "label": "v0.8.26",
@@ -451,7 +451,11 @@
       "specVersion": {
         "label": "111",
         "description": "Spec Version"
-      }
+      },
+      "validators": "Witness nodes",
+      "blocks": "Block height",
+      "attestations": "Presence attestations",
+      "epoch": "Active epoch"
     }
   },
   "notFound": {
@@ -467,72 +471,69 @@
   },
   "technologyPage": {
     "label": "Technology",
-    "title": "Proof of Presence",
-    "accentWord": "Presence",
-    "description": {
-      "0": "7aychain verifies real humans in real places using the physics of internet signals. No cameras. No biometrics. No specialized hardware.",
-      "1": "A Layer 1 built for the one thing AI can never fake: being somewhere."
-    }
+    "title": "The carrier ",
+    "accentWord": "control plane",
+    "description": "7aychain is a Substrate-based Layer 1 that decides the trust-critical telecom facts: who is a valid subscriber, which device is authorized, which region they can activate in, and whether a handset can attach. Every attach lease is authorized by Proof of Presence consensus."
   },
   "techHowItWorks": {
-    "label": "How It Works",
-    "title": "The Principles Behind the",
-    "titleAccent": "Protocol",
-    "subtitle": "Four foundations that make physics-based verification possible.",
+    "label": "Architecture",
+    "title": "Four principles. ",
+    "titleAccent": "One sovereign carrier.",
+    "subtitle": "Witness-based, region-aware, stake-secured, privacy-preserving.",
     "principles": {
       "0": {
-        "title": "Rooted in Physics",
-        "description": "Internet signals travel at the speed of light. By measuring timing from multiple validators, the network pins your real-world location — no GPS needed."
+        "title": "Trustless Verification",
+        "description": "Validators confirm you're present from multiple independent nodes. No centralized authority. No permission needed."
       },
       "1": {
         "title": "Private by Default",
-        "description": "The network proves you were present without learning where. Your location is committed as a hash, verified through ZK proofs, and never stored in plain text."
+        "description": "Your presence is verified without exposing your identity or location. The chain knows you showed up. Nobody knows where."
       },
       "2": {
-        "title": "Economically Secured",
-        "description": "Every validator stakes real value. Lie about someone’s location and you lose your stake. Honesty is the only profitable strategy."
+        "title": "Staked Security",
+        "description": "Every validator stakes 7AY. Act dishonestly, get slashed. Honest validation is the only profitable game in town."
       },
       "3": {
-        "title": "Unforgeable by AI",
-        "description": "AI generates text, images, and synthetic identities. It cannot physically exist at a coordinate. Presence is the proof of humanity that resists automation."
+        "title": "Bot-Proof by Design",
+        "description": "Bots can spin up a million wallets. They can't physically show up. Presence is the Sybil resistance layer Web3 has been missing."
       }
     }
   },
   "presenceJourney": {
     "label": "Protocol Flow",
-    "title": "From Signal to",
-    "titleAccent": "Sealed Proof",
-    "subtitle": "Three steps. No middlemen. Your presence — verified and permanent.",
+    "title": "From tap to ",
+    "titleAccent": "attach lease",
+    "subtitle": "Three on-chain steps. Zero middlemen. One verifiable proof you're a real subscriber.",
     "steps": {
       "0": {
         "number": "01",
-        "title": "You Show Up",
-        "badge": "Declare + Commit",
-        "description": "Your device submits a cryptographic commitment — a sealed hash that says “I am here” without revealing where. One action. No biometrics. No hardware."
+        "title": "You Tap. The Chain Listens.",
+        "badge": "Commit",
+        "description": "One tap sends your sealed claim to the network — a signed commitment that you're present, right now. No personal data exposed. No identity required."
       },
       "1": {
         "number": "02",
-        "title": "The Network Measures You",
-        "badge": "Attest + Triangulate",
-        "description": "A circle of validators independently measures your signal timing from multiple points. They estimate your position — without you ever sharing it."
+        "title": "Witnesses Verify",
+        "badge": "Attest",
+        "description": "A randomized circle of local witnesses independently confirms your presence. They reach consensus on one fact: you were physically there."
       },
       "2": {
         "number": "03",
-        "title": "Your Proof Is Sealed",
+        "title": "Attach Lease Sealed",
         "badge": "Finalize",
-        "description": "When enough validators agree, your presence is locked on-chain — an immutable record that you were physically there. You own it forever."
+        "description": "When witnesses reach quorum, an attach lease is finalized on-chain — a time-bounded receipt that authorizes your handset to connect to native 7AY service."
       }
     }
   },
   "architectureLayers": {
     "label": "Architecture",
-    "title": "Four Layers,",
-    "titleAccent": "One Protocol",
-    "subtitle": "Each layer builds on the one below — from raw networking to the apps you interact with.",
+    "title": "Four layers, ",
+    "titleAccent": "one sovereign chain",
+    "subtitle": "Presence, identity, carrier, dispute. Every primitive anchored in stake and consensus.",
     "layers": {
       "0": {
-        "title": "Network Foundation",
-        "description": "How nodes discover peers, reach consensus, and produce blocks. Every validator plays by the same rules, enforced by the protocol.",
+        "title": "Presence Layer",
+        "description": "Witness circles, latency attestation, epoch-bound proofs. The cryptographic foundation under every authorization.",
         "items": {
           "0": "Consensus",
           "1": "Block production",
@@ -541,8 +542,8 @@
         }
       },
       "1": {
-        "title": "Presence Engine",
-        "description": "The core innovation: measuring network timing from multiple points to pin your real-world position. Validators form circles, measure, and verify — all without GPS.",
+        "title": "Identity Layer",
+        "description": "Actor and device bindings. Commit-reveal and zero-knowledge proofs keep identity portable, sovereign, and unforgeable.",
         "items": {
           "0": "Triangulation",
           "1": "Witness circles",
@@ -551,8 +552,8 @@
         }
       },
       "2": {
-        "title": "Security & Privacy",
-        "description": "Defense in depth: validators stake real value, disputes resolve on-chain, and ZK proofs keep your exact location private.",
+        "title": "Carrier Layer",
+        "description": "Number reservation, eSIM commitments, attach leases, regional service nodes. Telecom rights as on-chain state.",
         "items": {
           "0": "Staking & slashing",
           "1": "Dispute resolution",
@@ -561,8 +562,8 @@
         }
       },
       "3": {
-        "title": "Applications",
-        "description": "What gets built on verified presence: fair governance, secure data vaults, trust networks, and coordination tools.",
+        "title": "Dispute Layer",
+        "description": "On-chain evidence, slashing, and recovery flows. Bad witnesses lose stake; subscribers can recover compromised lines.",
         "items": {
           "0": "Governance",
           "1": "Data vaults",
@@ -573,36 +574,33 @@
     }
   },
   "privacyZK": {
-    "label": "Zero-Knowledge",
-    "title": "Your Location Is Verified,",
-    "titleAccent": "Never Revealed",
-    "description": {
-      "0": "Zero-knowledge proofs let the network confirm you were at a location without learning where that location is. Your data stays with you.",
-      "1": "The protocol uses cryptographic commitments so that even the validators who measure your signal never see your actual coordinates. They only confirm: “yes, this person was physically present.”"
-    },
-    "verified": "Verified",
-    "redactedPosition": "Position: ████████",
-    "redactedPositionAria": "Redacted position data",
+    "label": "Privacy",
+    "title": "Verified ",
+    "titleAccent": "without exposed",
+    "description": "Zero-knowledge proofs let the chain verify subscriber rights without learning where, when, or who. Proof without exposure.",
+    "verified": "VERIFIED",
+    "redactedPosition": "[REDACTED]",
+    "redactedPositionAria": "Subscriber position redacted",
     "pillars": {
       "0": {
-        "title": "Commit-Reveal",
-        "description": "Submit a sealed hash of your presence first. Only after it’s locked do you reveal the data — preventing tampering."
+        "title": "Commit → Reveal",
+        "description": "Your claim is sealed before anyone can see it — locked in before validators even process it. Front-run-proof from the start."
       },
       "1": {
-        "title": "Zero-Knowledge Proofs",
-        "description": "Mathematical proofs that verify “this person was here” without revealing where. The network never sees your location."
+        "title": "ZK Proofs",
+        "description": "Proofs that verify “I was here” without revealing the “here.” The chain confirms. Nobody learns your data."
       },
       "2": {
-        "title": "Replay Protection",
-        "description": "Each proof generates a unique identifier that prevents reuse — blocking replay attacks while keeping you fully anonymous."
+        "title": "Nullifier Sets",
+        "description": "Each presence claim emits a one-time nullifier. Replay impossible. Linkability impossible. Per-epoch privacy by construction."
       }
     }
   },
   "useCasesPage": {
     "label": "Use Cases",
-    "title": "Where Presence Changes Everything",
-    "accentWord": "Presence",
-    "description": "From bot-proof airdrops to one-person-one-vote — real problems that only physics-based identity can solve.",
+    "title": "What a sovereign carrier ",
+    "accentWord": "unlocks",
+    "description": "Beyond identity: a full set of mobile primitives — number ownership, eSIM provisioning, regional service, dispute resolution — all authorized by on-chain Proof of Presence.",
     "sybilProblem": {
       "title": "Bots are winning",
       "paragraph1": "One person spins up a thousand wallets in minutes. Bots farm your airdrops. Fake accounts capture governance votes. Most protocols can't tell the difference.",
@@ -806,11 +804,11 @@
     }
   },
   "waitlistPage": {
-    "badge": "Early Access — Phase 0 Live",
-    "title": "The network is",
-    "titleAccent": "waking up",
+    "badge": "Early Access",
+    "title": "Be among the first ",
+    "titleAccent": "subscribers",
     "titleEnd": ".",
-    "subtitle": "Be among the first to prove you're here. Join the builders shaping a world where presence matters more than passwords.",
+    "subtitle": "Early access to the 7aychain carrier devnet. Test the eSIM flow. Run a witness node. Help shape governance.",
     "form": {
       "emailLabel": "Email address",
       "emailPlaceholder": "you@email.com",
@@ -860,9 +858,9 @@
   },
   "newsletterPage": {
     "label": "Newsletter",
-    "title": "Direct from the",
-    "accentWord": "Builders",
-    "description": "Protocol breakthroughs, product updates, and early access drops — delivered when it matters.",
+    "title": "Tune into the ",
+    "accentWord": "presence carrier",
+    "description": "Protocol releases, carrier devnet milestones, validator drops, and governance proposals. Signal only — no noise.",
     "whatYouGet": {
       "label": "What You'll Get",
       "title": "Signal, not noise",
@@ -889,12 +887,9 @@
   },
   "whyPresencePage": {
     "label": "Why Presence",
-    "title": "The Internet Lost the Human Signal",
-    "accentWords": [
-      "Human",
-      "Signal"
-    ],
-    "description": "When bots can do everything humans can do online, the only thing left that proves you're real is being physically present.",
+    "title": "Why presence beats biometrics, SIMs, and ",
+    "accentWords": "telcos",
+    "description": "Identity tied to a SIM is fragile. Tied to biometrics, dangerous. Tied to a billing system, captive. Tied to your physical presence — verified by witness consensus — sovereign.",
     "presenceInfrastructure": {
       "sectionTitle": "Presence Infrastructure",
       "paragraph1": "At the heart of 7aychain is a simple idea: your internet connection can prove where you are. Validators across the network measure connection timing from multiple points, confirming physical location without GPS, cameras, or special hardware.",
@@ -1019,9 +1014,9 @@
   },
   "devnetPage": {
     "label": "Devnet",
-    "title": "Connect to 7aychain",
-    "accentWord": "7aychain",
-    "description": "The 7aychain devnet is live with 6 nodes, 16 core modules, and the full Proof of Presence stack. Clone, build, and start building.",
+    "title": "The carrier ",
+    "accentWord": "devnet",
+    "description": "Live blockchain. Mock SM-DP+ provisioning. IMS bridge. Radio signal plane. Connect a handset, attach via on-chain authorization, watch consensus seal your service.",
     "quickStart": {
       "label": "Quick Start",
       "title": "Up and running in three steps",
@@ -1251,9 +1246,9 @@
   },
   "validatorsPage": {
     "label": "Validators",
-    "title": "Run a 7aychain Validator",
-    "accentWord": "Validator",
-    "description": "Earn $7AY rewards by securing the network. Validators form witness circles, verify physical presence, and keep the protocol honest.",
+    "title": "Run a witness node. Authorize the ",
+    "accentWord": "carrier",
+    "description": "Stake 7AY. Attest presence. Earn for authorizing real subscriber service. Be slashed for false witness. The carrier runs because you do.",
     "roleOverview": {
       "label": "Role Overview",
       "title": "What validators do",
@@ -1433,9 +1428,9 @@
   },
   "ecosystemPage": {
     "label": "Ecosystem",
-    "title": "Build on the Presence Layer",
-    "accentWord": "Presence",
-    "description": "Developer tools, SDKs, and 16 protocol modules for building bot-proof applications on 7aychain's Proof of Presence infrastructure.",
+    "title": "Wallets, dApps, and ",
+    "accentWord": "carrier integrations",
+    "description": "The presence layer is composable. Wallets, dashboards, eSIM marketplaces, dispute portals — all building on the same on-chain primitives.",
     "developerTools": {
       "label": "Developer Tools",
       "title": "Tools for building on 7aychain",
@@ -1627,13 +1622,10 @@
     }
   },
   "aboutPage": {
-    "label": "Who We Are",
-    "title": "Our Story",
-    "accentWord": "Story",
-    "description": {
-      "0": "We started 7ayLabs with one question: what if you could prove you were somewhere without revealing who you are?",
-      "1": "That question became 7aychain — an L1 that verifies presence using the physics of the internet itself."
-    },
+    "label": "About",
+    "title": "About ",
+    "accentWord": "7ayLabs",
+    "description": "We're building a mobile carrier that doesn't require a corporation. Replace telco trust with witness consensus. Make subscriber rights sovereign by default.",
     "mission": {
       "label": "What We're Building",
       "title": "Our Mission",
@@ -1676,14 +1668,14 @@
   },
   "metadata": {
     "home": {
-      "title": "7ayLabs | Proof of Presence Layer 1 Blockchain",
+      "title": "7ayLabs | The Decentralized Mobile Carrier",
       "titleTemplate": "%s | 7ayLabs",
-      "description": "7aychain: the first L1 where identity is physics. Proof of Presence verifies humans via network timing — no biometrics, no GPS, no hardware. $7AY",
-      "ogTitle": "7ayLabs | Proof of Presence Layer 1 Blockchain",
-      "ogDescription": "The Layer 1 where validators verify physical presence through network timing. Bot-proof human verification without GPS, biometrics, or hardware. Powered by $7AY.",
-      "ogImageAlt": "7ayLabs — 7aychain Proof of Presence Layer 1 Blockchain",
-      "twitterTitle": "7ayLabs — Proof of Presence L1",
-      "twitterDescription": "Your presence is your proof. 7aychain verifies humans through physics — not biometrics. Bot-proof by design. $7AY"
+      "description": "7aychain is the first decentralized mobile carrier — a Layer 1 blockchain that authorizes eSIM activation, number binding, and subscriber service through on-chain Proof of Presence. No telcos. No KYC. No surveillance.",
+      "ogTitle": "7aychain — The Decentralized Mobile Carrier",
+      "ogDescription": "Activate eSIM, claim your number, and attach to the network — all authorized by Proof of Presence consensus.",
+      "ogImageAlt": "7ayLabs — The Decentralized Mobile Carrier",
+      "twitterTitle": "7aychain — The Decentralized Mobile Carrier",
+      "twitterDescription": "Sovereign mobile service. Your number on-chain. Your service rights bound to your presence."
     },
     "technology": {
       "title": "How Proof of Presence Works | 7aychain Technology",
@@ -1732,29 +1724,29 @@
   },
   "heroPromise": {
     "eyebrow": "The Promise",
-    "prose": "Identity earned through presence. Sovereign by design, verifiable by witness.",
-    "line1": "No biometrics.",
+    "prose": "A carrier without a corporation. Service authorized by witnesses, not towers. Your number is yours forever.",
+    "line1": "No telco.",
     "line2": "No KYC.",
     "line3": "No surveillance.",
     "line4": "Just presence."
   },
   "statsBand": {
-    "ctaPrimary": "Read the docs",
-    "labelEyebrow": "By the Numbers",
-    "subtitle": "Real participants. Real verification. Real-time on-chain proof.",
-    "title": "The presence economy, in motion",
+    "ctaPrimary": "Read the protocol docs",
+    "labelEyebrow": "By the numbers",
+    "subtitle": "Real subscribers. Real witness attestations. Real-time on-chain authorization for every attach.",
+    "title": "The carrier in motion",
     "stats": {
       "0": {
         "value": "100k+",
-        "label": "Verified Presences"
+        "label": "Active Subscribers"
       },
       "1": {
         "value": "12s",
-        "label": "Block Time"
+        "label": "Avg Attach Time"
       },
       "2": {
         "value": "$0.001",
-        "label": "Avg Tx Cost"
+        "label": "Avg Attach Cost"
       },
       "3": {
         "value": "99.97%",
@@ -1765,20 +1757,20 @@
   "useCasesPreview": {
     "ctaSeeAll": "See all use cases",
     "labelEyebrow": "Use Cases",
-    "subtitle": "From sovereign identity to participation-based governance — every primitive anchored in Proof of Presence.",
-    "title": "Where presence becomes power",
+    "subtitle": "Mobile primitives without a middleman — eSIM activation, regional roaming, number portability — all authorized by on-chain consensus.",
+    "title": "What a sovereign carrier unlocks",
     "cards": {
       "0": {
-        "title": "Sovereign Identity",
-        "description": "Own a portable, verifiable identity. No third parties. No data trail."
+        "title": "Sovereign eSIM",
+        "description": "Activate an eSIM profile via on-chain Proof of Presence. No telco approval. No billing relationship. Witness consensus is enough."
       },
       "1": {
-        "title": "Presence Governance",
-        "description": "Votes that prove you were there. Reputation built on real participation, not capital."
+        "title": "Borderless Roaming",
+        "description": "Travel anywhere. Local witnesses attest your presence; the chain issues a regional service lease in seconds. Same number, every region."
       },
       "2": {
-        "title": "Sybil-Resistant dApps",
-        "description": "Build apps where every account is a verified human. No bot farms, no fake stakeholders."
+        "title": "Number Portability On-Chain",
+        "description": "Move your number between devices without a support call. Consensus-gated, anti-SIM-swap, instant."
       }
     }
   }
