@@ -1,25 +1,16 @@
 import dynamic from "next/dynamic";
 import { setRequestLocale } from "next-intl/server";
 import Hero from "@/components/landing/Hero";
+import StatsBand from "@/components/landing/StatsBand";
+import HowItWorks from "@/components/landing/HowItWorks";
 
-/* Lazy-load below-the-fold sections to reduce initial hydration burst */
-const About = dynamic(() => import("@/components/landing/About"));
-const Features = dynamic(() => import("@/components/landing/Projects"));
-const Network = dynamic(() => import("@/components/landing/Network"));
-const Ecosystem = dynamic(() => import("@/components/landing/Ecosystem"));
-const TechStack = dynamic(() => import("@/components/landing/TechStack"));
+/* Below-the-fold sections — dynamic-imported to keep initial JS lean. */
+const WhyChain = dynamic(() => import("@/components/landing/Projects"));
+const UseCasesPreview = dynamic(
+  () => import("@/components/landing/UseCasesPreview")
+);
 const Newsletter = dynamic(() => import("@/components/landing/Newsletter"));
 
-/*
- * Landing page — openclaw.ai inspired section order:
- * 1. Hero       — headline + subtitle + CTAs + feature cards
- * 2. About      — 3x2 grid (what 7aychain does)
- * 3. Features   — 4-col bordered grid (why 7aychain)
- * 4. Network    — stats + protocol grid
- * 5. Ecosystem  — infinite marquee use case cards
- * 6. TechStack  — pill badges (built with)
- * 7. Newsletter — final CTA
- */
 export default async function Home({
   params,
 }: {
@@ -31,11 +22,10 @@ export default async function Home({
   return (
     <>
       <Hero />
-      <About />
-      <Features />
-      <Network />
-      <Ecosystem />
-      <TechStack />
+      <StatsBand />
+      <HowItWorks />
+      <WhyChain />
+      <UseCasesPreview />
       <Newsletter />
     </>
   );
