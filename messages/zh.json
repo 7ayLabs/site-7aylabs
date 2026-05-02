@@ -58,7 +58,21 @@
       "footerCommunityLinks": "社区链接"
     },
     "logoAlt": "7ayLabs 标志",
-    "logoAltFooter": "7ayLabs"
+    "logoAltFooter": "7ayLabs",
+    "descriptions": {
+      "technologyDesc": "how Proof of Presence authorizes mobile service without a telco.",
+      "whyPresenceDesc": "why presence is the missing primitive for a sovereign carrier.",
+      "useCasesDesc": "from sovereign eSIM to borderless roaming — what the carrier unlocks.",
+      "devnetDesc": "build against the live carrier devnet. mock SM-DP+, IMS, signal plane.",
+      "validatorsDesc": "stake 7AY. witness presence. earn from authorizing real service.",
+      "ecosystemDesc": "wallets, dApps, and integrations building on the presence layer.",
+      "glossaryDesc": "plain-English defs for subscriber, witness, attach lease, every PoP term.",
+      "updatesDesc": "protocol releases. carrier milestones. governance proposals.",
+      "waitlistDesc": "early access to the carrier devnet and validator onboarding.",
+      "newsletterDesc": "signal-only updates. no hype, no noise.",
+      "githubDesc": "source code. contribution guides. open issues. it's all on GitHub.",
+      "xTwitterDesc": "live updates and protocol commentary on X."
+    }
   },
   "theme": {
     "switchToDark": "切换到深色模式",
@@ -95,7 +109,15 @@
         "label": "无需硬件",
         "description": "任何设备均可使用"
       }
-    }
+    },
+    "typewriterPhrases": {
+      "0": "a carrier without a corporation.",
+      "1": "your number, witnessed not billed.",
+      "2": "eSIM by consensus, not contract.",
+      "3": "phones don't need permission anymore."
+    },
+    "labelEyebrow": "decentralized mobile carrier · L1",
+    "title": "Your number. Your phone. Your call."
   },
   "about": {
     "label": "功能介绍",
@@ -182,7 +204,8 @@
         "description": "投票权与真实参与挂钩，而非代币数量。你的话语权随你在网络中经验证的在场而增长——而非你的钱包大小。",
         "iconAlt": "带有能力节点的委托树"
       }
-    }
+    },
+    "labelEyebrow": "why this works"
   },
   "network": {
     "label": "网络",
@@ -399,23 +422,48 @@
     "categories": {
       "consensus": {
         "label": "共识",
-        "items": ["Proof of Presence", "Witness Circles", "Multilateration", "Quorum Finality"]
+        "items": [
+          "Proof of Presence",
+          "Witness Circles",
+          "Multilateration",
+          "Quorum Finality"
+        ]
       },
       "privacy": {
         "label": "隐私",
-        "items": ["Groth16 SNARKs", "Commit-Reveal", "ZK Circuits", "Replay Protection"]
+        "items": [
+          "Groth16 SNARKs",
+          "Commit-Reveal",
+          "ZK Circuits",
+          "Replay Protection"
+        ]
       },
       "runtime": {
         "label": "运行时",
-        "items": ["Substrate", "Rust", "WASM", "Polkadot SDK"]
+        "items": [
+          "Substrate",
+          "Rust",
+          "WASM",
+          "Polkadot SDK"
+        ]
       },
       "infra": {
         "label": "基础设施",
-        "items": ["libp2p", "Docker", "Prometheus", "Grafana"]
+        "items": [
+          "libp2p",
+          "Docker",
+          "Prometheus",
+          "Grafana"
+        ]
       },
       "developer": {
         "label": "开发者工具",
-        "items": ["TypeScript SDK", "REST API", "CLI Tools", "Python Client"]
+        "items": [
+          "TypeScript SDK",
+          "REST API",
+          "CLI Tools",
+          "Python Client"
+        ]
       }
     }
   },
@@ -423,7 +471,11 @@
     "title": "加入在场经济",
     "subtitle": "协议里程碑、验证者动态和抢先体验——优先送达率先到场的人。",
     "cta": "获取协议动态",
-    "trustLine": "只有干货，没有噪音。随时可退订。"
+    "trustLine": "只有干货，没有噪音。随时可退订。",
+    "emailPlaceholder": "you@domain.com",
+    "errorMessage": "that didn't work. try again in a sec.",
+    "labelEyebrow": "stay in sync",
+    "successMessage": "you're in. inbox incoming."
   },
   "devnetStatus": {
     "statusIndicator": "开发网络运行中",
@@ -446,7 +498,11 @@
       "specVersion": {
         "label": "111",
         "description": "规范版本"
-      }
+      },
+      "validators": "witness nodes",
+      "blocks": "block height",
+      "attestations": "presence attestations",
+      "epoch": "active epoch"
     }
   },
   "notFound": {
@@ -1723,6 +1779,58 @@
     "about": {
       "title": "关于 7ayLabs | 构建在场层",
       "description": "认识 7ayLabs，构建 7aychain 的团队——一条通过基于物理的 Proof of Presence 验证人类的 Layer 1。无需生物识别。无需监控。"
+    }
+  },
+  "heroPromise": {
+    "eyebrow": "the promise",
+    "prose": "no corporation in the middle. service authorized by witnesses, not towers. your number — yours, forever.",
+    "line1": "no telco.",
+    "line2": "no KYC.",
+    "line3": "no surveillance.",
+    "line4": "just presence."
+  },
+  "statsBand": {
+    "ctaPrimary": "read the docs",
+    "labelEyebrow": "by the numbers",
+    "subtitle": "real subscribers. real attestations. on-chain authorization for every attach — happening right now.",
+    "title": "the carrier, in motion",
+    "stats": {
+      "0": {
+        "value": "100k+",
+        "label": "active subscribers"
+      },
+      "1": {
+        "value": "12s",
+        "label": "avg attach time"
+      },
+      "2": {
+        "value": "$0.001",
+        "label": "avg attach cost"
+      },
+      "3": {
+        "value": "99.97%",
+        "label": "sybil resistance"
+      }
+    }
+  },
+  "useCasesPreview": {
+    "ctaSeeAll": "see all use cases",
+    "labelEyebrow": "what it unlocks",
+    "subtitle": "mobile primitives without a middleman. eSIM in seconds. roam anywhere. port your number with a tap. all consensus-gated.",
+    "title": "phones, but the rules are different",
+    "cards": {
+      "0": {
+        "title": "sovereign eSIM",
+        "description": "activate an eSIM with a Proof of Presence. no telco approval. no billing relationship. consensus is enough."
+      },
+      "1": {
+        "title": "borderless roaming",
+        "description": "fly anywhere. local witnesses attest you're there. the chain issues a regional service lease in seconds. same number, every region."
+      },
+      "2": {
+        "title": "number portability, on-chain",
+        "description": "move your number between devices without a support call. consensus-gated. anti-SIM-swap. instant."
+      }
     }
   }
 }

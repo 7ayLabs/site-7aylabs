@@ -58,7 +58,21 @@
       "footerCommunityLinks": "コミュニティリンク"
     },
     "logoAlt": "7ayLabs ロゴ",
-    "logoAltFooter": "7ayLabs"
+    "logoAltFooter": "7ayLabs",
+    "descriptions": {
+      "technologyDesc": "how Proof of Presence authorizes mobile service without a telco.",
+      "whyPresenceDesc": "why presence is the missing primitive for a sovereign carrier.",
+      "useCasesDesc": "from sovereign eSIM to borderless roaming — what the carrier unlocks.",
+      "devnetDesc": "build against the live carrier devnet. mock SM-DP+, IMS, signal plane.",
+      "validatorsDesc": "stake 7AY. witness presence. earn from authorizing real service.",
+      "ecosystemDesc": "wallets, dApps, and integrations building on the presence layer.",
+      "glossaryDesc": "plain-English defs for subscriber, witness, attach lease, every PoP term.",
+      "updatesDesc": "protocol releases. carrier milestones. governance proposals.",
+      "waitlistDesc": "early access to the carrier devnet and validator onboarding.",
+      "newsletterDesc": "signal-only updates. no hype, no noise.",
+      "githubDesc": "source code. contribution guides. open issues. it's all on GitHub.",
+      "xTwitterDesc": "live updates and protocol commentary on X."
+    }
   },
   "theme": {
     "switchToDark": "ダークモードに切り替え",
@@ -95,7 +109,15 @@
         "label": "ハードウェア不要",
         "description": "あらゆるデバイスで動作"
       }
-    }
+    },
+    "typewriterPhrases": {
+      "0": "a carrier without a corporation.",
+      "1": "your number, witnessed not billed.",
+      "2": "eSIM by consensus, not contract.",
+      "3": "phones don't need permission anymore."
+    },
+    "labelEyebrow": "decentralized mobile carrier · L1",
+    "title": "Your number. Your phone. Your call."
   },
   "about": {
     "label": "機能紹介",
@@ -182,7 +204,8 @@
         "description": "投票権はトークンの保有量ではなく、実際の参加に紐づきます。あなたの声はウォレットの規模ではなく、ネットワーク上の検証済みプレゼンスに応じて拡大します。",
         "iconAlt": "ケイパビリティノード付きデリゲーションツリー"
       }
-    }
+    },
+    "labelEyebrow": "why this works"
   },
   "network": {
     "label": "Network",
@@ -399,23 +422,48 @@
     "categories": {
       "consensus": {
         "label": "コンセンサス",
-        "items": ["Proof of Presence", "Witness Circles", "Multilateration", "Quorum Finality"]
+        "items": [
+          "Proof of Presence",
+          "Witness Circles",
+          "Multilateration",
+          "Quorum Finality"
+        ]
       },
       "privacy": {
         "label": "プライバシー",
-        "items": ["Groth16 SNARKs", "Commit-Reveal", "ZK Circuits", "Replay Protection"]
+        "items": [
+          "Groth16 SNARKs",
+          "Commit-Reveal",
+          "ZK Circuits",
+          "Replay Protection"
+        ]
       },
       "runtime": {
         "label": "ランタイム",
-        "items": ["Substrate", "Rust", "WASM", "Polkadot SDK"]
+        "items": [
+          "Substrate",
+          "Rust",
+          "WASM",
+          "Polkadot SDK"
+        ]
       },
       "infra": {
         "label": "インフラストラクチャ",
-        "items": ["libp2p", "Docker", "Prometheus", "Grafana"]
+        "items": [
+          "libp2p",
+          "Docker",
+          "Prometheus",
+          "Grafana"
+        ]
       },
       "developer": {
         "label": "開発者",
-        "items": ["TypeScript SDK", "REST API", "CLI Tools", "Python Client"]
+        "items": [
+          "TypeScript SDK",
+          "REST API",
+          "CLI Tools",
+          "Python Client"
+        ]
       }
     }
   },
@@ -423,7 +471,11 @@
     "title": "プレゼンスエコノミーに参加する",
     "subtitle": "プロトコルのマイルストーン、バリデーターのアップデート、早期アクセス情報を、いち早く行動する方にお届けします。",
     "cta": "プロトコルの最新情報を受け取る",
-    "trustLine": "シグナルのみ。ノイズなし。いつでも登録解除できます。"
+    "trustLine": "シグナルのみ。ノイズなし。いつでも登録解除できます。",
+    "emailPlaceholder": "you@domain.com",
+    "errorMessage": "that didn't work. try again in a sec.",
+    "labelEyebrow": "stay in sync",
+    "successMessage": "you're in. inbox incoming."
   },
   "devnetStatus": {
     "statusIndicator": "Devnet稼働中",
@@ -446,7 +498,11 @@
       "specVersion": {
         "label": "111",
         "description": "スペックバージョン"
-      }
+      },
+      "validators": "witness nodes",
+      "blocks": "block height",
+      "attestations": "presence attestations",
+      "epoch": "active epoch"
     }
   },
   "notFound": {
@@ -1723,6 +1779,58 @@
     "about": {
       "title": "7ayLabsについて | プレゼンスレイヤーを構築",
       "description": "7ayLabsに会いましょう — 物理法則ベースのProof of Presenceで人間を検証するLayer 1、7aychainを構築するチーム。生体認証なし。監視なし。"
+    }
+  },
+  "heroPromise": {
+    "eyebrow": "the promise",
+    "prose": "no corporation in the middle. service authorized by witnesses, not towers. your number — yours, forever.",
+    "line1": "no telco.",
+    "line2": "no KYC.",
+    "line3": "no surveillance.",
+    "line4": "just presence."
+  },
+  "statsBand": {
+    "ctaPrimary": "read the docs",
+    "labelEyebrow": "by the numbers",
+    "subtitle": "real subscribers. real attestations. on-chain authorization for every attach — happening right now.",
+    "title": "the carrier, in motion",
+    "stats": {
+      "0": {
+        "value": "100k+",
+        "label": "active subscribers"
+      },
+      "1": {
+        "value": "12s",
+        "label": "avg attach time"
+      },
+      "2": {
+        "value": "$0.001",
+        "label": "avg attach cost"
+      },
+      "3": {
+        "value": "99.97%",
+        "label": "sybil resistance"
+      }
+    }
+  },
+  "useCasesPreview": {
+    "ctaSeeAll": "see all use cases",
+    "labelEyebrow": "what it unlocks",
+    "subtitle": "mobile primitives without a middleman. eSIM in seconds. roam anywhere. port your number with a tap. all consensus-gated.",
+    "title": "phones, but the rules are different",
+    "cards": {
+      "0": {
+        "title": "sovereign eSIM",
+        "description": "activate an eSIM with a Proof of Presence. no telco approval. no billing relationship. consensus is enough."
+      },
+      "1": {
+        "title": "borderless roaming",
+        "description": "fly anywhere. local witnesses attest you're there. the chain issues a regional service lease in seconds. same number, every region."
+      },
+      "2": {
+        "title": "number portability, on-chain",
+        "description": "move your number between devices without a support call. consensus-gated. anti-SIM-swap. instant."
+      }
     }
   }
 }

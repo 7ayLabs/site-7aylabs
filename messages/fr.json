@@ -58,7 +58,21 @@
       "footerCommunityLinks": "Liens Communauté"
     },
     "logoAlt": "Logo 7ayLabs",
-    "logoAltFooter": "7ayLabs"
+    "logoAltFooter": "7ayLabs",
+    "descriptions": {
+      "technologyDesc": "how Proof of Presence authorizes mobile service without a telco.",
+      "whyPresenceDesc": "why presence is the missing primitive for a sovereign carrier.",
+      "useCasesDesc": "from sovereign eSIM to borderless roaming — what the carrier unlocks.",
+      "devnetDesc": "build against the live carrier devnet. mock SM-DP+, IMS, signal plane.",
+      "validatorsDesc": "stake 7AY. witness presence. earn from authorizing real service.",
+      "ecosystemDesc": "wallets, dApps, and integrations building on the presence layer.",
+      "glossaryDesc": "plain-English defs for subscriber, witness, attach lease, every PoP term.",
+      "updatesDesc": "protocol releases. carrier milestones. governance proposals.",
+      "waitlistDesc": "early access to the carrier devnet and validator onboarding.",
+      "newsletterDesc": "signal-only updates. no hype, no noise.",
+      "githubDesc": "source code. contribution guides. open issues. it's all on GitHub.",
+      "xTwitterDesc": "live updates and protocol commentary on X."
+    }
   },
   "theme": {
     "switchToDark": "Passer en mode sombre",
@@ -95,7 +109,15 @@
         "label": "Sans matériel",
         "description": "Fonctionne sur n’importe quel appareil"
       }
-    }
+    },
+    "typewriterPhrases": {
+      "0": "a carrier without a corporation.",
+      "1": "your number, witnessed not billed.",
+      "2": "eSIM by consensus, not contract.",
+      "3": "phones don't need permission anymore."
+    },
+    "labelEyebrow": "decentralized mobile carrier · L1",
+    "title": "Your number. Your phone. Your call."
   },
   "about": {
     "label": "Ce que ça fait",
@@ -182,7 +204,8 @@
         "description": "Le pouvoir de vote est lié à la participation réelle, pas aux bags de tokens. Ta voix augmente avec ta présence vérifiée sur le réseau — pas avec la taille de ton wallet.",
         "iconAlt": "Arbre de délégation avec nœuds de capacité"
       }
-    }
+    },
+    "labelEyebrow": "why this works"
   },
   "network": {
     "label": "Network",
@@ -399,23 +422,48 @@
     "categories": {
       "consensus": {
         "label": "Consensus",
-        "items": ["Proof of Presence", "Witness Circles", "Multilateration", "Quorum Finality"]
+        "items": [
+          "Proof of Presence",
+          "Witness Circles",
+          "Multilateration",
+          "Quorum Finality"
+        ]
       },
       "privacy": {
         "label": "Confidentialité",
-        "items": ["Groth16 SNARKs", "Commit-Reveal", "ZK Circuits", "Replay Protection"]
+        "items": [
+          "Groth16 SNARKs",
+          "Commit-Reveal",
+          "ZK Circuits",
+          "Replay Protection"
+        ]
       },
       "runtime": {
         "label": "Runtime",
-        "items": ["Substrate", "Rust", "WASM", "Polkadot SDK"]
+        "items": [
+          "Substrate",
+          "Rust",
+          "WASM",
+          "Polkadot SDK"
+        ]
       },
       "infra": {
         "label": "Infrastructure",
-        "items": ["libp2p", "Docker", "Prometheus", "Grafana"]
+        "items": [
+          "libp2p",
+          "Docker",
+          "Prometheus",
+          "Grafana"
+        ]
       },
       "developer": {
         "label": "Développeur",
-        "items": ["TypeScript SDK", "REST API", "CLI Tools", "Python Client"]
+        "items": [
+          "TypeScript SDK",
+          "REST API",
+          "CLI Tools",
+          "Python Client"
+        ]
       }
     }
   },
@@ -423,7 +471,11 @@
     "title": "Rejoins l'économie de la présence",
     "subtitle": "Jalons du protocole, mises à jour des validateurs et drops d'accès anticipé — livrés à ceux qui se manifestent en premier.",
     "cta": "Recevoir les mises à jour du protocole",
-    "trustLine": "Du signal, pas du bruit. Désabonnement à tout moment."
+    "trustLine": "Du signal, pas du bruit. Désabonnement à tout moment.",
+    "emailPlaceholder": "you@domain.com",
+    "errorMessage": "that didn't work. try again in a sec.",
+    "labelEyebrow": "stay in sync",
+    "successMessage": "you're in. inbox incoming."
   },
   "devnetStatus": {
     "statusIndicator": "Devnet en ligne",
@@ -446,7 +498,11 @@
       "specVersion": {
         "label": "111",
         "description": "Version de spec"
-      }
+      },
+      "validators": "witness nodes",
+      "blocks": "block height",
+      "attestations": "presence attestations",
+      "epoch": "active epoch"
     }
   },
   "notFound": {
@@ -1723,6 +1779,58 @@
     "about": {
       "title": "À propos de 7ayLabs | Construire la couche de présence",
       "description": "Découvre 7ayLabs, l'équipe qui construit 7aychain — un Layer 1 qui vérifie les humains via Proof of Presence basé sur la physique. Pas de biométrie. Pas de surveillance."
+    }
+  },
+  "heroPromise": {
+    "eyebrow": "the promise",
+    "prose": "no corporation in the middle. service authorized by witnesses, not towers. your number — yours, forever.",
+    "line1": "no telco.",
+    "line2": "no KYC.",
+    "line3": "no surveillance.",
+    "line4": "just presence."
+  },
+  "statsBand": {
+    "ctaPrimary": "read the docs",
+    "labelEyebrow": "by the numbers",
+    "subtitle": "real subscribers. real attestations. on-chain authorization for every attach — happening right now.",
+    "title": "the carrier, in motion",
+    "stats": {
+      "0": {
+        "value": "100k+",
+        "label": "active subscribers"
+      },
+      "1": {
+        "value": "12s",
+        "label": "avg attach time"
+      },
+      "2": {
+        "value": "$0.001",
+        "label": "avg attach cost"
+      },
+      "3": {
+        "value": "99.97%",
+        "label": "sybil resistance"
+      }
+    }
+  },
+  "useCasesPreview": {
+    "ctaSeeAll": "see all use cases",
+    "labelEyebrow": "what it unlocks",
+    "subtitle": "mobile primitives without a middleman. eSIM in seconds. roam anywhere. port your number with a tap. all consensus-gated.",
+    "title": "phones, but the rules are different",
+    "cards": {
+      "0": {
+        "title": "sovereign eSIM",
+        "description": "activate an eSIM with a Proof of Presence. no telco approval. no billing relationship. consensus is enough."
+      },
+      "1": {
+        "title": "borderless roaming",
+        "description": "fly anywhere. local witnesses attest you're there. the chain issues a regional service lease in seconds. same number, every region."
+      },
+      "2": {
+        "title": "number portability, on-chain",
+        "description": "move your number between devices without a support call. consensus-gated. anti-SIM-swap. instant."
+      }
     }
   }
 }
