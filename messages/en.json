@@ -7,7 +7,7 @@
     "connectToDevnet": "Connect to Devnet",
     "followOnX": "Follow on X",
     "skipToContent": "Skip to main content",
-    "copyright": "\u00a9 {year} 7ayLabs. All rights reserved.",
+    "copyright": "© {year} 7ayLabs. All rights reserved.",
     "loading": "Loading...",
     "tryAgain": "Try again",
     "signalOnly": "Signal only. No noise. Unsubscribe anytime.",
@@ -58,7 +58,21 @@
       "footerCommunityLinks": "Community links"
     },
     "logoAlt": "7ayLabs Logo",
-    "logoAltFooter": "7ayLabs"
+    "logoAltFooter": "7ayLabs",
+    "descriptions": {
+      "technologyDesc": "How Proof of Presence verifies humans without biometrics or hardware.",
+      "whyPresenceDesc": "Why presence is the missing primitive for sovereign Web3 identity.",
+      "useCasesDesc": "Where presence becomes power — identity, governance, Sybil resistance.",
+      "devnetDesc": "Build and test on the live developer network. Live status, faucets, docs.",
+      "validatorsDesc": "Run a validator and earn stake-based rewards for honest verification.",
+      "ecosystemDesc": "Projects, partners, and protocols building on the presence layer.",
+      "glossaryDesc": "Plain-English definitions of every PoP, witness, and presence concept.",
+      "updatesDesc": "Protocol milestones, validator drops, and governance proposals.",
+      "waitlistDesc": "Get early access to the testnet and validator onboarding.",
+      "newsletterDesc": "Signal-only updates from the protocol. No hype, no noise.",
+      "githubDesc": "Source code, contribution guides, and open issues on GitHub.",
+      "xTwitterDesc": "Live updates and protocol commentary on X."
+    }
   },
   "theme": {
     "switchToDark": "Switch to dark mode",
@@ -67,12 +81,12 @@
   "language": {
     "label": "Language",
     "en": "English",
-    "es": "Espa\u00f1ol",
-    "pt": "Portugu\u00eas",
-    "fr": "Fran\u00e7ais",
+    "es": "Español",
+    "pt": "Português",
+    "fr": "Français",
     "de": "Deutsch",
-    "zh": "\u4e2d\u6587",
-    "ja": "\u65e5\u672c\u8a9e"
+    "zh": "中文",
+    "ja": "日本語"
   },
   "hero": {
     "titleLine1Start": "The ",
@@ -152,10 +166,22 @@
     "titleAccent": "Network",
     "subtitle": "A live devnet running the full Proof of Presence stack. Real nodes. Real verification. Real-time results.",
     "stats": {
-      "validators": { "value": "6", "label": "Active Validators" },
-      "finality": { "value": "<2s", "label": "Block Finality" },
-      "modules": { "value": "16", "label": "Core Modules" },
-      "privacy": { "value": "100%", "label": "Zero-Knowledge" }
+      "validators": {
+        "value": "6",
+        "label": "Active Validators"
+      },
+      "finality": {
+        "value": "<2s",
+        "label": "Block Finality"
+      },
+      "modules": {
+        "value": "16",
+        "label": "Core Modules"
+      },
+      "privacy": {
+        "value": "100%",
+        "label": "Zero-Knowledge"
+      }
     },
     "protocols": {
       "pop": {
@@ -187,14 +213,46 @@
     "titleAccent": "Presence",
     "subtitle": "Real-world applications powered by Proof of Presence",
     "apps": {
-      "0": { "slug": "fair-drops", "name": "Fair Drops", "description": "Token distributions that reach real humans — not bot farms" },
-      "1": { "slug": "event-proof", "name": "Event Proof", "description": "Verified attendance sealed on-chain, no QR codes needed" },
-      "2": { "slug": "local-rewards", "name": "Local Rewards", "description": "Earn loyalty points by walking in — no apps to open" },
-      "3": { "slug": "fair-voting", "name": "Fair Voting", "description": "One person, one vote — verified by presence, not wallets" },
-      "4": { "slug": "verified-reviews", "name": "Verified Reviews", "description": "Only people who were there can leave a review" },
-      "5": { "slug": "emergency-checkin", "name": "Emergency Check-in", "description": "Prove you're safe at a shelter — no ID required" },
-      "6": { "slug": "presence-defi", "name": "Presence DeFi", "description": "Physical 2FA for high-value financial operations" },
-      "7": { "slug": "delivery-proof", "name": "Delivery Proof", "description": "Drivers prove they arrived — no more fake deliveries" }
+      "0": {
+        "slug": "fair-drops",
+        "name": "Fair Drops",
+        "description": "Token distributions that reach real humans — not bot farms"
+      },
+      "1": {
+        "slug": "event-proof",
+        "name": "Event Proof",
+        "description": "Verified attendance sealed on-chain, no QR codes needed"
+      },
+      "2": {
+        "slug": "local-rewards",
+        "name": "Local Rewards",
+        "description": "Earn loyalty points by walking in — no apps to open"
+      },
+      "3": {
+        "slug": "fair-voting",
+        "name": "Fair Voting",
+        "description": "One person, one vote — verified by presence, not wallets"
+      },
+      "4": {
+        "slug": "verified-reviews",
+        "name": "Verified Reviews",
+        "description": "Only people who were there can leave a review"
+      },
+      "5": {
+        "slug": "emergency-checkin",
+        "name": "Emergency Check-in",
+        "description": "Prove you're safe at a shelter — no ID required"
+      },
+      "6": {
+        "slug": "presence-defi",
+        "name": "Presence DeFi",
+        "description": "Physical 2FA for high-value financial operations"
+      },
+      "7": {
+        "slug": "delivery-proof",
+        "name": "Delivery Proof",
+        "description": "Drivers prove they arrived — no more fake deliveries"
+      }
     },
     "cta": "Explore Use Cases"
   },
@@ -317,23 +375,48 @@
     "categories": {
       "consensus": {
         "label": "Consensus",
-        "items": ["Proof of Presence", "Witness Circles", "Multilateration", "Quorum Finality"]
+        "items": [
+          "Proof of Presence",
+          "Witness Circles",
+          "Multilateration",
+          "Quorum Finality"
+        ]
       },
       "privacy": {
         "label": "Privacy",
-        "items": ["Groth16 SNARKs", "Commit-Reveal", "ZK Circuits", "Replay Protection"]
+        "items": [
+          "Groth16 SNARKs",
+          "Commit-Reveal",
+          "ZK Circuits",
+          "Replay Protection"
+        ]
       },
       "runtime": {
         "label": "Runtime",
-        "items": ["Substrate", "Rust", "WASM", "Polkadot SDK"]
+        "items": [
+          "Substrate",
+          "Rust",
+          "WASM",
+          "Polkadot SDK"
+        ]
       },
       "infra": {
         "label": "Infrastructure",
-        "items": ["libp2p", "Docker", "Prometheus", "Grafana"]
+        "items": [
+          "libp2p",
+          "Docker",
+          "Prometheus",
+          "Grafana"
+        ]
       },
       "developer": {
         "label": "Developer",
-        "items": ["TypeScript SDK", "REST API", "CLI Tools", "Python Client"]
+        "items": [
+          "TypeScript SDK",
+          "REST API",
+          "CLI Tools",
+          "Python Client"
+        ]
       }
     }
   },
@@ -399,7 +482,7 @@
     "principles": {
       "0": {
         "title": "Rooted in Physics",
-        "description": "Internet signals travel at the speed of light. By measuring timing from multiple validators, the network pins your real-world location \u2014 no GPS needed."
+        "description": "Internet signals travel at the speed of light. By measuring timing from multiple validators, the network pins your real-world location — no GPS needed."
       },
       "1": {
         "title": "Private by Default",
@@ -419,7 +502,7 @@
     "label": "Protocol Flow",
     "title": "From Signal to",
     "titleAccent": "Sealed Proof",
-    "subtitle": "Three steps. No middlemen. Your presence \u2014 verified and permanent.",
+    "subtitle": "Three steps. No middlemen. Your presence — verified and permanent.",
     "steps": {
       "0": {
         "number": "01",
@@ -431,13 +514,13 @@
         "number": "02",
         "title": "The Network Measures You",
         "badge": "Attest + Triangulate",
-        "description": "A circle of validators independently measures your signal timing from multiple points. They estimate your position \u2014 without you ever sharing it."
+        "description": "A circle of validators independently measures your signal timing from multiple points. They estimate your position — without you ever sharing it."
       },
       "2": {
         "number": "03",
         "title": "Your Proof Is Sealed",
         "badge": "Finalize",
-        "description": "When enough validators agree, your presence is locked on-chain \u2014 an immutable record that you were physically there. You own it forever."
+        "description": "When enough validators agree, your presence is locked on-chain — an immutable record that you were physically there. You own it forever."
       }
     }
   },
@@ -445,7 +528,7 @@
     "label": "Architecture",
     "title": "Four Layers,",
     "titleAccent": "One Protocol",
-    "subtitle": "Each layer builds on the one below \u2014 from raw networking to the apps you interact with.",
+    "subtitle": "Each layer builds on the one below — from raw networking to the apps you interact with.",
     "layers": {
       "0": {
         "title": "Network Foundation",
@@ -459,7 +542,7 @@
       },
       "1": {
         "title": "Presence Engine",
-        "description": "The core innovation: measuring network timing from multiple points to pin your real-world position. Validators form circles, measure, and verify \u2014 all without GPS.",
+        "description": "The core innovation: measuring network timing from multiple points to pin your real-world position. Validators form circles, measure, and verify — all without GPS.",
         "items": {
           "0": "Triangulation",
           "1": "Witness circles",
@@ -498,7 +581,7 @@
       "1": "The protocol uses cryptographic commitments so that even the validators who measure your signal never see your actual coordinates. They only confirm: “yes, this person was physically present.”"
     },
     "verified": "Verified",
-    "redactedPosition": "Position: \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588",
+    "redactedPosition": "Position: ████████",
     "redactedPositionAria": "Redacted position data",
     "pillars": {
       "0": {
@@ -511,7 +594,7 @@
       },
       "2": {
         "title": "Replay Protection",
-        "description": "Each proof generates a unique identifier that prevents reuse \u2014 blocking replay attacks while keeping you fully anonymous."
+        "description": "Each proof generates a unique identifier that prevents reuse — blocking replay attacks while keeping you fully anonymous."
       }
     }
   },
@@ -519,7 +602,7 @@
     "label": "Use Cases",
     "title": "Where Presence Changes Everything",
     "accentWord": "Presence",
-    "description": "From bot-proof airdrops to one-person-one-vote \u2014 real problems that only physics-based identity can solve.",
+    "description": "From bot-proof airdrops to one-person-one-vote — real problems that only physics-based identity can solve.",
     "sybilProblem": {
       "title": "Bots are winning",
       "paragraph1": "One person spins up a thousand wallets in minutes. Bots farm your airdrops. Fake accounts capture governance votes. Most protocols can't tell the difference.",
@@ -527,7 +610,7 @@
     },
     "physicsSolution": {
       "title": "Physics fixes this",
-      "paragraph1": "7aychain anchors identity to physical reality. Create all the wallets you want \u2014 but you can only be in one place at a time. The network measures your connection timing to confirm you're real and present.",
+      "paragraph1": "7aychain anchors identity to physical reality. Create all the wallets you want — but you can only be in one place at a time. The network measures your connection timing to confirm you're real and present.",
       "paragraph2": "No eye scans. No special devices. Just the laws of physics."
     },
     "applicationsLabel": "Applications",
@@ -536,7 +619,7 @@
     "signalCards": {
       "0": {
         "title": "Uniquely Human",
-        "description": "Every verification is grounded in real-world physics \u2014 unforgeable by AI or bots."
+        "description": "Every verification is grounded in real-world physics — unforgeable by AI or bots."
       },
       "1": {
         "title": "Private by Default",
@@ -544,7 +627,7 @@
       },
       "2": {
         "title": "On-Chain Forever",
-        "description": "Every proof is permanently stored on-chain \u2014 verifiable by anyone, anytime."
+        "description": "Every proof is permanently stored on-chain — verifiable by anyone, anytime."
       },
       "3": {
         "title": "Any Device, Anywhere",
@@ -560,27 +643,27 @@
       "1": {
         "title": "One Person, One Vote",
         "description": "True democratic governance backed by physics. No wallet farms, no vote buying, no governance attacks from fake accounts.",
-        "detail": "DAOs and communities can run proposals knowing each vote comes from a real, unique human \u2014 not a thousand wallets controlled by one whale."
+        "detail": "DAOs and communities can run proposals knowing each vote comes from a real, unique human — not a thousand wallets controlled by one whale."
       },
       "2": {
         "title": "Presence-Gated DeFi",
         "description": "Add a physics layer to high-value operations. Even with stolen keys, an attacker must be physically present to execute.",
-        "detail": "Critical financial operations gain protection that no remote hacker can bypass \u2014 physical presence at the right place is non-negotiable."
+        "detail": "Critical financial operations gain protection that no remote hacker can bypass — physical presence at the right place is non-negotiable."
       },
       "3": {
         "title": "Proof of Attendance",
-        "description": "Prove you were at a conference, hackathon, or meetup \u2014 on-chain. Earn rewards and credentials for actually showing up.",
+        "description": "Prove you were at a conference, hackathon, or meetup — on-chain. Earn rewards and credentials for actually showing up.",
         "detail": "Organizers get tamper-proof attendance data. Attendees earn verifiable on-chain credentials that carry real weight in the ecosystem."
       },
       "4": {
         "title": "Presence-Gated Access",
         "description": "Build communities around people who actually show up. Gate channels, content, or resources by verified physical presence.",
-        "detail": "Membership earned through real participation \u2014 not purchased credentials or manufactured accounts. Presence is the key."
+        "detail": "Membership earned through real participation — not purchased credentials or manufactured accounts. Presence is the key."
       },
       "5": {
         "title": "Verified Reviews & Delivery",
         "description": "Only people who physically visited can leave reviews. Drivers prove they arrived. End fake reviews and delivery fraud for good.",
-        "detail": "Physical verification ensures reviews and confirmations come from people who were actually there \u2014 not bots or bad actors."
+        "detail": "Physical verification ensures reviews and confirmations come from people who were actually there — not bots or bad actors."
       }
     },
     "ctaTitle": "Build on Proof of Presence",
@@ -592,7 +675,7 @@
     "label": "Glossary",
     "title": "7aychain Terminology",
     "accentWord": "Terminology",
-    "description": "Key terms, modules, and concepts in the 7aychain Proof of Presence protocol \u2014 from witness circles to ZK circuits.",
+    "description": "Key terms, modules, and concepts in the 7aychain Proof of Presence protocol — from witness circles to ZK circuits.",
     "letterNavAria": "Glossary letter navigation",
     "terms": {
       "autonomousDetection": {
@@ -603,7 +686,7 @@
       "boomerangProof": {
         "letter": "B",
         "term": "Boomerang Proof",
-        "definition": "A cryptographic proof that someone returned to a previously verified location. Proves consistent presence patterns over time without revealing the location \u2014 enabling reputation without surveillance."
+        "definition": "A cryptographic proof that someone returned to a previously verified location. Proves consistent presence patterns over time without revealing the location — enabling reputation without surveillance."
       },
       "circuitRegistry": {
         "letter": "C",
@@ -618,12 +701,12 @@
       "deviceScanner": {
         "letter": "D",
         "term": "Device Scanner",
-        "definition": "A module for registering devices that participate in presence verification. Manages device identity, verification capability, and revocation \u2014 ensuring only authorized hardware contributes."
+        "definition": "A module for registering devices that participate in presence verification. Manages device identity, verification capability, and revocation — ensuring only authorized hardware contributes."
       },
       "disputeResolution": {
         "letter": "D",
         "term": "Dispute Resolution",
-        "definition": "The on-chain process for challenging presence verifications. Disputants submit cryptographic evidence, validators vote, and the protocol enforces outcomes \u2014 including slashing for dishonest verifiers."
+        "definition": "The on-chain process for challenging presence verifications. Disputants submit cryptographic evidence, validators vote, and the protocol enforces outcomes — including slashing for dishonest verifiers."
       },
       "epoch": {
         "letter": "E",
@@ -633,7 +716,7 @@
       "groth16": {
         "letter": "G",
         "term": "Groth16",
-        "definition": "A zero-knowledge proof system used by 7aychain for compact, non-interactive presence proofs. Delivers constant-size proofs with fast on-chain verification \u2014 critical for scalable privacy."
+        "definition": "A zero-knowledge proof system used by 7aychain for compact, non-interactive presence proofs. Delivers constant-size proofs with fast on-chain verification — critical for scalable privacy."
       },
       "laudNetworksCli": {
         "letter": "L",
@@ -658,7 +741,7 @@
       "positionBoundToken": {
         "letter": "P",
         "term": "Position Bound Token (PBT)",
-        "definition": "A token minted when presence is verified. PBTs bind verification claims to specific positions and time windows, serving as proof-of-presence credentials \u2014 without revealing exact locations."
+        "definition": "A token minted when presence is verified. PBTs bind verification claims to specific positions and time windows, serving as proof-of-presence credentials — without revealing exact locations."
       },
       "presenceLifecycle": {
         "letter": "P",
@@ -668,7 +751,7 @@
       "proofOfPresence": {
         "letter": "P",
         "term": "Proof of Presence (PoP)",
-        "definition": "7aychain's consensus mechanism. Validators form witness circles and verify physical presence through network timing measurement \u2014 no GPS, no biometrics, no external hardware. Bot-proof by design."
+        "definition": "7aychain's consensus mechanism. Validators form witness circles and verify physical presence through network timing measurement — no GPS, no biometrics, no external hardware. Bot-proof by design."
       },
       "quorumConsensus": {
         "letter": "Q",
@@ -683,7 +766,7 @@
       "shamirSecretSharing": {
         "letter": "S",
         "term": "Shamir Secret Sharing",
-        "definition": "A cryptographic scheme used in 7aychain's vault system to split sensitive data across multiple parties. No single party holds enough to reconstruct the secret \u2014 enabling secure recovery without central custody."
+        "definition": "A cryptographic scheme used in 7aychain's vault system to split sensitive data across multiple parties. No single party holds enough to reconstruct the secret — enabling secure recovery without central custody."
       },
       "snark": {
         "letter": "S",
@@ -708,7 +791,7 @@
       "vault": {
         "letter": "V",
         "term": "Vault",
-        "definition": "A secure on-chain storage system using Shamir secret sharing for distributed key management. Enables data recovery and controlled sharing \u2014 without central custody."
+        "definition": "A secure on-chain storage system using Shamir secret sharing for distributed key management. Enables data recovery and controlled sharing — without central custody."
       },
       "witnessCircle": {
         "letter": "W",
@@ -723,7 +806,7 @@
     }
   },
   "waitlistPage": {
-    "badge": "Early Access \u2014 Phase 0 Live",
+    "badge": "Early Access — Phase 0 Live",
     "title": "The network is",
     "titleAccent": "waking up",
     "titleEnd": ".",
@@ -779,11 +862,11 @@
     "label": "Newsletter",
     "title": "Direct from the",
     "accentWord": "Builders",
-    "description": "Protocol breakthroughs, product updates, and early access drops \u2014 delivered when it matters.",
+    "description": "Protocol breakthroughs, product updates, and early access drops — delivered when it matters.",
     "whatYouGet": {
       "label": "What You'll Get",
       "title": "Signal, not noise",
-      "subtitle": "We write when there's something worth sharing \u2014 no filler, no weekly obligations, no marketing fluff."
+      "subtitle": "We write when there's something worth sharing — no filler, no weekly obligations, no marketing fluff."
     },
     "topics": {
       "0": {
@@ -829,7 +912,7 @@
       },
       "1": {
         "title": "One Place at a Time",
-        "description": "Create a million wallets \u2014 you can still only be in one physical location. That constraint makes bot attacks nearly impossible."
+        "description": "Create a million wallets — you can still only be in one physical location. That constraint makes bot attacks nearly impossible."
       },
       "2": {
         "title": "No Lasting Footprint",
@@ -839,7 +922,7 @@
     "coreInsight": {
       "label": "Core Insight",
       "title": "In a world of perfect simulation, physical reality is the scarce resource",
-      "description": "AI generates convincing text, behavior, and interaction at scale. But physical presence \u2014 being at a specific place at a specific time, measurable through network physics \u2014 remains constrained by natural law."
+      "description": "AI generates convincing text, behavior, and interaction at scale. But physical presence — being at a specific place at a specific time, measurable through network physics — remains constrained by natural law."
     },
     "sybilArguments": {
       "problemLabel": "Problem",
@@ -855,11 +938,11 @@
         },
         "2": {
           "problem": "Biometric systems are surveillance",
-          "response": "Iris scans and facial recognition create permanent databases of your body. 7aychain measures connection timing \u2014 it never sees your face or knows your name."
+          "response": "Iris scans and facial recognition create permanent databases of your body. 7aychain measures connection timing — it never sees your face or knows your name."
         },
         "3": {
           "problem": "Social graphs can be manufactured",
-          "response": "Coordinated groups fabricate social proof. Physical presence is independently verified by the network \u2014 no trust assumptions needed."
+          "response": "Coordinated groups fabricate social proof. Physical presence is independently verified by the network — no trust assumptions needed."
         }
       }
     },
@@ -884,24 +967,24 @@
         },
         "1": {
           "dimension": "Hardware Required",
-          "sevenychain": "None \u2014 any internet connection",
+          "sevenychain": "None — any internet connection",
           "worldcoin": "Custom Orb device",
           "brightid": "None",
           "passport": "None"
         },
         "2": {
           "dimension": "Collects Body Data?",
-          "sevenychain": "No \u2014 zero biometric data",
+          "sevenychain": "No — zero biometric data",
           "worldcoin": "Yes (iris scan)",
           "brightid": "No (face visible on video)",
           "passport": "No"
         },
         "3": {
           "dimension": "Privacy",
-          "sevenychain": "High \u2014 location verified, identity never revealed",
-          "worldcoin": "Low \u2014 stores iris biometric data",
-          "brightid": "Medium \u2014 face exposed during verification",
-          "passport": "Medium \u2014 links existing accounts"
+          "sevenychain": "High — location verified, identity never revealed",
+          "worldcoin": "Low — stores iris biometric data",
+          "brightid": "Medium — face exposed during verification",
+          "passport": "Medium — links existing accounts"
         },
         "4": {
           "dimension": "What It Proves",
@@ -929,7 +1012,7 @@
     "cta": {
       "label": "Follow the Signal",
       "title": "Presence is the missing primitive",
-      "subtitle": "We share progress in real time \u2014 what's being built, what's breaking, and where presence changes the game.",
+      "subtitle": "We share progress in real time — what's being built, what's breaking, and where presence changes the game.",
       "primary": "Follow on X",
       "secondary": "Explore Technology"
     }
@@ -1143,7 +1226,7 @@
         "0": "Navigate to",
         "0link": "polkadot.js.org/apps",
         "1": "Click the network selector (top-left)",
-        "2": "Choose \"Development\" \u2192 \"Local Node\"",
+        "2": "Choose \"Development\" → \"Local Node\"",
         "3": "Set the endpoint to",
         "3value": "ws://127.0.0.1:9944",
         "4": "Click \"Switch\" to connect"
@@ -1174,8 +1257,8 @@
     "roleOverview": {
       "label": "Role Overview",
       "title": "What validators do",
-      "paragraph1": "On 7aychain, validators do more than produce blocks. They actively verify that people are where they claim to be \u2014 forming witness circles that confirm each person's location through network timing measurement.",
-      "paragraph2": "Each validator in a witness circle measures round-trip timing to the declaring participant and to other validators. These measurements feed into position algorithms that determine physical location \u2014 without GPS or external hardware.",
+      "paragraph1": "On 7aychain, validators do more than produce blocks. They actively verify that people are where they claim to be — forming witness circles that confirm each person's location through network timing measurement.",
+      "paragraph2": "Each validator in a witness circle measures round-trip timing to the declaring participant and to other validators. These measurements feed into position algorithms that determine physical location — without GPS or external hardware.",
       "paragraph3": "When enough validators agree on a position, the presence is confirmed and permanently sealed on-chain. Honest validators earn $7AY rewards. Dishonest ones get slashed.",
       "paragraph4": "The validator set rotates each round, preventing any single group from colluding to falsify presence verifications."
     },
@@ -1465,7 +1548,7 @@
     "label": "Updates",
     "title": "Project",
     "titleAccent": "Status",
-    "lastUpdated": "Last updated \u00b7 Apr 4, 2026",
+    "lastUpdated": "Last updated · Apr 4, 2026",
     "intro": "Real progress. Shipped code. No vaporware. Follow 7aychain and 7ayLabs as we build the presence layer.",
     "filterAria": "Filter updates by type",
     "filters": {
@@ -1479,7 +1562,7 @@
     "close": "Close",
     "entries": {
       "0": {
-        "title": "Website v1.1 \u2014 DePIN-inspired redesign",
+        "title": "Website v1.1 — DePIN-inspired redesign",
         "date": "Apr 4, 2026",
         "summary": "Complete frontend overhaul with DePIN-inspired hero, ambient glow system, and crypto-native copy.",
         "content": "Redesigned the website with inspiration from top DePIN projects (Helium, Render, Filecoin). New hero with single gradient accent, ambient radial glow background system, removed typewriter effect, added trust bar with key metrics. Rewrote all copy to be more crypto-native and accessible. Dual theme support with design tokens.",
@@ -1496,7 +1579,7 @@
         "title": "7aychain v0.8.26 released",
         "date": "Feb 28, 2026",
         "summary": "Latest stable release with the complete Proof of Presence protocol stack.",
-        "content": "Released 7aychain v0.8.26 \u2014 the latest stable version of the Layer 1 blockchain. Includes the complete protocol stack: presence lifecycle with commit-reveal, witness-circle triangulation, ZK proof verification, validator staking/slashing, governance, vaults, semantic linking, dispute resolution, device scanning, and autonomous detection. Multi-node devnet running with 6 validators.",
+        "content": "Released 7aychain v0.8.26 — the latest stable version of the Layer 1 blockchain. Includes the complete protocol stack: presence lifecycle with commit-reveal, witness-circle triangulation, ZK proof verification, validator staking/slashing, governance, vaults, semantic linking, dispute resolution, device scanning, and autonomous detection. Multi-node devnet running with 6 validators.",
         "type": "platform"
       },
       "3": {
@@ -1530,7 +1613,7 @@
       "7": {
         "title": "Presence and epoch core shipped",
         "date": "Dec 2025",
-        "summary": "Foundational presence lifecycle and time-window management \u2014 the protocol backbone.",
+        "summary": "Foundational presence lifecycle and time-window management — the protocol backbone.",
         "content": "Built the core presence state machine (Declared, Attested, Triangulated, Finalized) with time-bound lifecycle. Implemented dynamic state derivation from block timestamps. Established participant isolation and authority-controlled state transitions.",
         "type": "platform"
       },
@@ -1549,21 +1632,21 @@
     "accentWord": "Story",
     "description": {
       "0": "We started 7ayLabs with one question: what if you could prove you were somewhere without revealing who you are?",
-      "1": "That question became 7aychain \u2014 an L1 that verifies presence using the physics of the internet itself."
+      "1": "That question became 7aychain — an L1 that verifies presence using the physics of the internet itself."
     },
     "mission": {
       "label": "What We're Building",
       "title": "Our Mission",
-      "paragraph1": "7ayLabs builds 7aychain \u2014 a new kind of Layer 1. Instead of scanning your eyes or demanding ID, the network verifies you're physically present using nothing more than your internet connection.",
+      "paragraph1": "7ayLabs builds 7aychain — a new kind of Layer 1. Instead of scanning your eyes or demanding ID, the network verifies you're physically present using nothing more than your internet connection.",
       "paragraph2": "Validators measure connection timing from multiple points to confirm your location. No GPS. No cameras. No special hardware.",
       "paragraph3": "In a world where bots are indistinguishable from humans online, presence becomes the most valuable signal. We're building the infrastructure to make that signal available to everyone.",
-      "paragraph4": "For protocols and DAOs: bot-proof governance, fair airdrops, and a reliable answer to \u201cwas this a real person?\u201d",
+      "paragraph4": "For protocols and DAOs: bot-proof governance, fair airdrops, and a reliable answer to “was this a real person?”",
       "paragraph5": "For people: prove you were somewhere without giving up your identity. No surveillance. No data harvesting. Just proof."
     },
     "vision": {
       "label": "Our Long-Term View",
       "title": "Our Vision",
-      "paragraph1": "We see a future where \u201cbeing there\u201d is a first-class digital primitive. As AI perfects simulation, physical presence becomes the one thing that can't be faked.",
+      "paragraph1": "We see a future where “being there” is a first-class digital primitive. As AI perfects simulation, physical presence becomes the one thing that can't be faked.",
       "paragraph2": "7ayLabs is building the infrastructure for that future. Deliberately, rigorously, and with the standards that real-world systems demand."
     },
     "principles": {
@@ -1595,12 +1678,12 @@
     "home": {
       "title": "7ayLabs | Proof of Presence Layer 1 Blockchain",
       "titleTemplate": "%s | 7ayLabs",
-      "description": "7aychain: the first L1 where identity is physics. Proof of Presence verifies humans via network timing \u2014 no biometrics, no GPS, no hardware. $7AY",
+      "description": "7aychain: the first L1 where identity is physics. Proof of Presence verifies humans via network timing — no biometrics, no GPS, no hardware. $7AY",
       "ogTitle": "7ayLabs | Proof of Presence Layer 1 Blockchain",
       "ogDescription": "The Layer 1 where validators verify physical presence through network timing. Bot-proof human verification without GPS, biometrics, or hardware. Powered by $7AY.",
-      "ogImageAlt": "7ayLabs \u2014 7aychain Proof of Presence Layer 1 Blockchain",
-      "twitterTitle": "7ayLabs \u2014 Proof of Presence L1",
-      "twitterDescription": "Your presence is your proof. 7aychain verifies humans through physics \u2014 not biometrics. Bot-proof by design. $7AY"
+      "ogImageAlt": "7ayLabs — 7aychain Proof of Presence Layer 1 Blockchain",
+      "twitterTitle": "7ayLabs — Proof of Presence L1",
+      "twitterDescription": "Your presence is your proof. 7aychain verifies humans through physics — not biometrics. Bot-proof by design. $7AY"
     },
     "technology": {
       "title": "How Proof of Presence Works | 7aychain Technology",
@@ -1640,11 +1723,11 @@
     },
     "updates": {
       "title": "Project Status & Milestones | 7aychain Updates",
-      "description": "Track real progress on 7aychain: protocol milestones, shipped features, devnet updates, and infrastructure releases. No vaporware \u2014 shipped code only."
+      "description": "Track real progress on 7aychain: protocol milestones, shipped features, devnet updates, and infrastructure releases. No vaporware — shipped code only."
     },
     "about": {
       "title": "About 7ayLabs | Building the Presence Layer",
-      "description": "Meet 7ayLabs, the team building 7aychain \u2014 a Layer 1 that verifies humans through physics-based Proof of Presence. No biometrics. No surveillance."
+      "description": "Meet 7ayLabs, the team building 7aychain — a Layer 1 that verifies humans through physics-based Proof of Presence. No biometrics. No surveillance."
     }
   },
   "heroPromise": {
