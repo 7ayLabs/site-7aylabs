@@ -7,23 +7,27 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils/cn";
 
 const buttonVariants = cva(
-  "relative overflow-hidden inline-flex items-center justify-center font-semibold transition-all duration-300 rounded-full select-none",
+  "relative inline-flex items-center justify-center font-semibold tracking-tight transition-colors duration-200 select-none",
   {
     variants: {
       variant: {
+        // Primary — solid black (or white in dark theme), text-on-bg inversion
         primary:
-          "bg-[var(--color-accent-primary)] text-white hover:shadow-glow-sm hover:brightness-110 active:scale-[0.97]",
+          "bg-[var(--color-fg-primary)] text-[var(--color-bg-primary)] hover:bg-[var(--color-accent-primary)] hover:text-white",
+        // Secondary — outline only, fills with ink on hover
         secondary:
-          "border border-[var(--glass-border-hover)] text-fg-secondary hover:border-[var(--color-accent-primary)] hover:text-[var(--color-accent-primary)] hover:shadow-glow-sm",
+          "border border-[var(--color-border-secondary)] text-fg hover:bg-[var(--color-fg-primary)] hover:text-[var(--color-bg-primary)] hover:border-[var(--color-fg-primary)]",
+        // Ghost — no chrome at rest, subtle hover
         ghost:
-          "text-fg-secondary hover:text-fg hover:bg-[var(--glass-bg-hover)]",
+          "text-fg-secondary hover:text-fg hover:bg-[var(--color-bg-card-hover)]",
+        // Glass kept for back-compat — rendered as ghost
         glass:
-          "glass-card text-fg-secondary hover:text-fg hover:shadow-glow-sm",
+          "text-fg-secondary hover:text-fg hover:bg-[var(--color-bg-card-hover)]",
       },
       size: {
-        sm: "text-sm px-5 py-2 gap-2",
-        md: "text-sm px-7 py-3 gap-2.5",
-        lg: "text-base px-8 py-3.5 gap-3",
+        sm: "text-sm px-5 h-9 gap-2 rounded-[2px]",
+        md: "text-sm px-6 h-11 gap-2.5 rounded-[2px]",
+        lg: "text-[15px] px-7 h-12 gap-3 rounded-[2px]",
       },
     },
     defaultVariants: {
