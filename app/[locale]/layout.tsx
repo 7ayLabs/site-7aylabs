@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
-/* Inter — the Notion / Linear / Vercel / Stripe house font. One family,
-   differentiated by weight. Maps to BOTH `font-sans` and `font-display`
-   so the entire site reads as a unified system, the way modern SaaS
-   marketing sites (Notion, Evernote, Linear) do. */
-const inter = Inter({
+/* Space Grotesk — the de-facto Web3 / crypto / Gen-Z house font.
+   Geometric, sharp, distinctive, with a slight techno character that
+   reads as "this is on-chain" without screaming it. Maps to BOTH
+   `font-sans` and `font-display` so the entire site shares one DNA,
+   weight-differentiated. */
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-space-grotesk",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 /* Mono — JetBrains Mono: kept for code, hashes, monospace tickers. */
@@ -125,7 +125,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`scroll-smooth ${inter.variable} ${jetbrainsMono.variable}`}
+      className={`scroll-smooth ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>

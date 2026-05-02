@@ -120,8 +120,8 @@ module.exports = {
       },
       fontFamily: {
         sans: [
-          "var(--font-inter)",
-          "Inter",
+          "var(--font-space-grotesk)",
+          "Space Grotesk",
           "ui-sans-serif",
           "system-ui",
           "-apple-system",
@@ -130,8 +130,8 @@ module.exports = {
           "sans-serif",
         ],
         display: [
-          "var(--font-inter)",
-          "Inter",
+          "var(--font-space-grotesk)",
+          "Space Grotesk",
           "ui-sans-serif",
           "system-ui",
           "sans-serif",
