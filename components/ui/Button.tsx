@@ -11,16 +11,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // Primary — solid black (or white in dark theme), text-on-bg inversion
+        // Primary — solid ink, inverts to bg surface on hover (pure B&W).
         primary:
-          "bg-[var(--color-fg-primary)] text-[var(--color-bg-primary)] hover:bg-[var(--color-accent-primary)] hover:text-white",
-        // Secondary — outline only, fills with ink on hover
+          "bg-[var(--color-fg-primary)] text-[var(--color-bg-primary)] hover:bg-[var(--color-bg-primary)] hover:text-[var(--color-fg-primary)] hover:shadow-[inset_0_0_0_1px_var(--color-fg-primary)]",
+        // Secondary — outline only, fills with ink on hover (B&W invert).
         secondary:
           "border border-[var(--color-border-secondary)] text-fg hover:bg-[var(--color-fg-primary)] hover:text-[var(--color-bg-primary)] hover:border-[var(--color-fg-primary)]",
-        // Ghost — no chrome at rest, subtle hover
+        // Ghost — no chrome at rest, subtle hover.
         ghost:
           "text-fg-secondary hover:text-fg hover:bg-[var(--color-bg-card-hover)]",
-        // Glass kept for back-compat — rendered as ghost
+        // Glass kept for back-compat — rendered as ghost.
         glass:
           "text-fg-secondary hover:text-fg hover:bg-[var(--color-bg-card-hover)]",
       },

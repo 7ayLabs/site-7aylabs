@@ -33,18 +33,19 @@ export default function CtaPill({
     <Link
       href={href}
       className={cn(
-        "hidden md:inline-flex items-center gap-1.5",
+        "group hidden md:inline-flex items-center gap-1.5",
         "px-4 h-9 ml-1",
         "text-[13px] font-semibold tracking-tight",
         "bg-[var(--color-fg-primary)] text-[var(--color-bg-primary)]",
-        "hover:bg-[var(--color-accent-primary)] hover:text-white",
-        "transition-colors duration-200",
+        "border border-[var(--color-fg-primary)]",
+        "hover:bg-[var(--color-bg-primary)] hover:text-[var(--color-fg-primary)]",
+        "transition-colors duration-200 hover-pop",
         className
       )}
       style={{ borderRadius: 2 }}
     >
       <span>{t(labelKey)}</span>
-      <ArrowUpRight size={13} strokeWidth={2.25} aria-hidden="true" />
+      <ArrowUpRight size={13} strokeWidth={2.25} aria-hidden="true" className="hover-arrow" />
     </Link>
   );
 }

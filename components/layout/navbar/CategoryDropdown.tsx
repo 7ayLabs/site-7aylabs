@@ -79,8 +79,7 @@ export default function CategoryDropdown({
           const itemClasses = cn(
             "group relative flex items-start justify-between gap-6",
             "py-4 px-2 -mx-2 rounded-lg",
-            "transition-colors duration-150",
-            "hover:bg-[var(--color-bg-card-hover)]"
+            "hover:bg-[var(--color-bg-card-hover)] hover-lift"
           );
 
           const inner = (
