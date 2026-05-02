@@ -98,8 +98,11 @@ export default function WhyChain() {
               <motion.article
                 key={i}
                 variants={cardReveal}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
                 className={[
-                  "relative flex flex-col gap-7 px-6 md:px-10 py-12 md:py-14",
+                  "group relative flex flex-col gap-7 px-6 md:px-10 py-12 md:py-14",
+                  "cursor-default hover:bg-[var(--color-bg-card-hover)] transition-colors duration-300",
                   // vertical hairline between left/right on desktop
                   !isRightCol ? "md:border-r md:border-r-[var(--color-border-primary)]" : "",
                   // horizontal hairline between top/bottom rows

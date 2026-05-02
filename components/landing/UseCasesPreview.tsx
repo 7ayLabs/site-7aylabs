@@ -104,8 +104,11 @@ export default function UseCasesPreview() {
             <motion.article
               key={i}
               variants={cardReveal}
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
               className={
-                "relative flex flex-col gap-6 px-6 md:px-10 py-12 md:py-14 " +
+                "group relative flex flex-col gap-6 px-6 md:px-10 py-12 md:py-14 " +
+                "cursor-default hover:bg-[var(--color-bg-card-hover)] transition-colors duration-300 " +
                 (i < 2
                   ? "border-b border-[var(--color-border-primary)] md:border-b-0 md:border-r md:border-r-[var(--color-border-primary)]"
                   : "")
@@ -114,7 +117,8 @@ export default function UseCasesPreview() {
               <Illustration
                 color="var(--color-fg-primary)"
                 size={44}
-                strokeWidth={1.25}
+                strokeWidth={1}
+                className="transition-transform duration-300 group-hover:rotate-[-3deg] group-hover:scale-105"
               />
               <h3 className="font-display font-medium text-2xl tracking-[-0.01em] leading-[1.15] text-fg max-w-[20ch]">
                 {t(`cards.${i}.title`)}
