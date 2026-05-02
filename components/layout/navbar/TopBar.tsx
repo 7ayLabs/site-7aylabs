@@ -99,10 +99,10 @@ export default function TopBar({
           )}
           aria-label="Primary"
         >
-          {/* Left: Logo */}
+          {/* Left: Logo — clickable, returns to home with a soft pop on hover. */}
           <Link
             href={ROUTES.home}
-            className="flex items-center shrink-0"
+            className="flex items-center shrink-0 cursor-pointer hover-pop focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fg/40 rounded-sm"
             aria-label={t("aria.homeLink")}
           >
             <Image
