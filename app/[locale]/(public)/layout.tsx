@@ -1,5 +1,6 @@
 import Navbar from "@/components/layout/navbar/Navbar";
 import Footer from "@/components/layout/Footer";
+import PageTransition from "@/components/providers/PageTransition";
 
 /**
  * Public-pages layout.
