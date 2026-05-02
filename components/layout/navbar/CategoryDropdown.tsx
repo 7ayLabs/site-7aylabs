@@ -1,47 +1,9 @@
 "use client";
 
 import { Link } from "@/i18n/navigation";
-import { motion, type Variants } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { ArrowUpRight } from "lucide-react";
-import {
-  IconTechnology,
-  IconPresence,
-  IconGlossary,
-  IconDevnet,
-  IconValidators,
-  IconEcosystem,
-  IconUpdates,
-  IconUseCases,
-  IconWaitlist,
-  IconNewsletter,
-  IconGithub,
-} from "./NavIcons";
 import { cn } from "@/lib/utils/cn";
-
-/* ── Route → custom icon component ── */
-type IconComponent = React.ComponentType<{
-  size?: number;
-  strokeWidth?: number;
-  className?: string;
-}>;
-
-const ICON_MAP: Record<string, IconComponent> = {
-  "/technology": IconTechnology,
-  "/why-presence": IconPresence,
-  "/glossary": IconGlossary,
-  "/devnet": IconDevnet,
-  "/validators": IconValidators,
-  "/ecosystem": IconEcosystem,
-  "/updates": IconUpdates,
-  "/use-cases": IconUseCases,
-  "/waitlist": IconWaitlist,
-  "/newsletter": IconNewsletter,
-};
-
-const EXTERNAL_ICON_MAP: Record<string, IconComponent> = {
-  GitHub: IconGithub,
-};
 
 const LABEL_TO_NAV_KEY: Record<string, string> = {
   Technology: "technology",
@@ -58,42 +20,19 @@ const LABEL_TO_NAV_KEY: Record<string, string> = {
   "X (Twitter)": "xTwitter",
 };
 
-/* ── Animations ── */
-const containerVariants: Variants = {
-  hidden: { height: 0, opacity: 0 },
-  visible: {
-    height: "auto",
-    opacity: 1,
-    transition: {
-      height: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
-      opacity: { duration: 0.18, delay: 0.04 },
-      staggerChildren: 0.035,
-      delayChildren: 0.06,
-    },
-  },
-  exit: {
-    height: 0,
-    opacity: 0,
-    transition: {
-      height: { duration: 0.2, ease: [0.22, 1, 0.36, 1] },
-      opacity: { duration: 0.1 },
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: -6, filter: "blur(2px)" },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.28, ease: [0.22, 1, 0.36, 1] },
-  },
-  exit: {
-    opacity: 0,
-    y: -4,
-    transition: { duration: 0.1 },
-  },
+const LABEL_TO_DESC_KEY: Record<string, string> = {
+  Technology: "technologyDesc",
+  "Why Presence": "whyPresenceDesc",
+  "Use Cases": "useCasesDesc",
+  Devnet: "devnetDesc",
+  Validators: "validatorsDesc",
+  Ecosystem: "ecosystemDesc",
+  Glossary: "glossaryDesc",
+  Updates: "updatesDesc",
+  Waitlist: "waitlistDesc",
+  Newsletter: "newsletterDesc",
+  GitHub: "githubDesc",
+  "X (Twitter)": "xTwitterDesc",
 };
 
 interface CategoryDropdownProps {
@@ -108,6 +47,13 @@ interface CategoryDropdownProps {
   onClose: () => void;
 }
 
+/**
+ * Minimal category dropdown — anchored to the nav row, full-width surface
+ * with content constrained to the same `max-w-7xl` as the nav itself.
+ *
+ * Items are laid out as a 2-column grid on desktop with a small description
+ * paragraph next to each link. No icons, no fills — type and a hairline.
+ */
 export default function CategoryDropdown({
   category,
   onClose,
@@ -115,103 +61,83 @@ export default function CategoryDropdown({
   const t = useTranslations("nav");
 
   return (
-    <motion.div
-      className="overflow-hidden"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
-      {/* Hairline separator with accent gradient pinpoint */}
-      <div className="relative mx-5">
-        <div className="h-px bg-[var(--color-border-primary)]" />
-        <div className="absolute left-0 top-0 h-px w-12 bg-gradient-to-r from-[var(--color-accent-primary)]/60 to-transparent" />
-      </div>
-
-      {/* Item list */}
-      <div className="px-3 py-2.5 flex flex-col">
+    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-1">
         {category.items.map((item) => {
           const isExternal = "external" in item && item.external;
-          const Icon =
-            ICON_MAP[item.href] ??
-            EXTERNAL_ICON_MAP[item.label] ??
-            IconEcosystem;
           const navKey = LABEL_TO_NAV_KEY[item.label] ?? item.label;
+          const descKey = LABEL_TO_DESC_KEY[item.label];
 
-          const cls = cn(
-            "group relative flex items-center gap-3",
-            "pl-4 pr-3 py-2.5",
-            "text-fg-secondary hover:text-[var(--color-accent-primary)]",
-            "transition-colors duration-200 ease-out",
-            "cursor-pointer outline-none",
-            "focus-visible:text-[var(--color-accent-primary)]"
+          // Try the description key; fall back gracefully if it doesn't exist.
+          let description = "";
+          try {
+            description = descKey ? t(`descriptions.${descKey}`) : "";
+          } catch {
+            description = "";
+          }
+
+          const itemClasses = cn(
+            "group relative flex items-start justify-between gap-6",
+            "py-4 px-2 -mx-2 rounded-lg",
+            "transition-colors duration-150",
+            "hover:bg-[var(--color-bg-card-hover)]"
           );
 
-          const innerContent = (
+          const inner = (
             <>
-              {/* Left scanline — draws on hover */}
-              <span
-                aria-hidden="true"
-                className={cn(
-                  "absolute left-0 top-1/2 -translate-y-1/2",
-                  "h-5 w-[2px] origin-center",
-                  "bg-[var(--color-accent-primary)]",
-                  "scale-y-0 group-hover:scale-y-100 group-focus-visible:scale-y-100",
-                  "transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
-                  "shadow-[0_0_8px_rgba(23,142,119,0.5)]"
+              <div className="flex flex-col gap-1 min-w-0">
+                <span className="font-display text-[15px] font-semibold text-fg leading-tight tracking-tight">
+                  {t(navKey)}
+                </span>
+                {description && (
+                  <span className="text-[12.5px] leading-snug text-fg-tertiary line-clamp-2">
+                    {description}
+                  </span>
                 )}
-              />
-              <Icon
-                size={17}
-                strokeWidth={1.5}
-                className={cn(
-                  "text-fg-muted shrink-0",
-                  "group-hover:text-[var(--color-accent-primary)] group-focus-visible:text-[var(--color-accent-primary)]",
-                  "transition-colors duration-200"
-                )}
-              />
-              <span className="flex-1 text-[14px] font-medium tracking-[-0.005em]">
-                {t(navKey)}
-              </span>
+              </div>
               <ArrowUpRight
                 size={14}
-                strokeWidth={1.75}
+                strokeWidth={2}
                 className={cn(
-                  "shrink-0 text-[var(--color-accent-primary)]",
-                  "opacity-0 -translate-x-1",
+                  "shrink-0 mt-1",
+                  "text-fg-muted opacity-0 -translate-x-1",
                   "group-hover:opacity-100 group-hover:translate-x-0",
-                  "group-focus-visible:opacity-100 group-focus-visible:translate-x-0",
-                  "transition-all duration-250 ease-out"
+                  "transition-all duration-200"
                 )}
+                aria-hidden="true"
               />
             </>
           );
 
           if (isExternal) {
             return (
-              <motion.a
+              <a
                 key={item.href}
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={onClose}
-                className={cls}
-                variants={itemVariants}
+                className={itemClasses}
+                role="menuitem"
               >
-                {innerContent}
-              </motion.a>
+                {inner}
+              </a>
             );
           }
 
           return (
-            <motion.div key={item.href} variants={itemVariants}>
-              <Link href={item.href} onClick={onClose} className={cls}>
-                {innerContent}
-              </Link>
-            </motion.div>
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={onClose}
+              className={itemClasses}
+              role="menuitem"
+            >
+              {inner}
+            </Link>
           );
         })}
       </div>
-    </motion.div>
+    </div>
   );
 }
