@@ -3,76 +3,89 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { Shield, Eye, Smartphone } from "lucide-react";
-import Button from "@/components/ui/Button";
-import { heroStagger, kineticReveal, fadeUpBlur } from "@/lib/constants/animations";
 
-const FEATURE_ICONS = [Shield, Eye, Smartphone] as const;
+import Button from "@/components/ui/Button";
+import SectionEyebrow from "@/components/ui/SectionEyebrow";
+import WordStagger from "@/components/ui/WordStagger";
+import HeroPromiseCard from "@/components/landing/hero/HeroPromiseCard";
+import { heroStagger, kineticReveal } from "@/lib/constants/animations";
+import MeshBackdrop from "@/components/landing/hero/MeshBackdrop";
+
+/* ------------------------------------------------------------------ */
+/*  Hero — simplified Gen-Z editorial composition                      */
+/*    - Single mono eyebrow (no live dot, no extra label line)         */
+/*    - Four-word serif title with word-by-word reveal                 */
+/*    - One-sentence subtitle                                          */
+/*    - Two CTAs                                                       │
+/*    - Right column hosts the Promise Card manifesto                 │
+/* ------------------------------------------------------------------ */
 
 function HeroComponent() {
   const t = useTranslations("hero");
 
   return (
-    <section className="relative min-h-[100svh] w-full flex flex-col items-center justify-center overflow-hidden px-6 lg:px-8">
+    <section
+      className="relative w-full overflow-hidden pt-32 pb-24 md:pt-36 md:pb-32"
+      aria-labelledby="hero-title"
+    >
+      <MeshBackdrop />
+
       <motion.div
-        className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto"
+        className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-14"
         initial="hidden"
         animate="visible"
         variants={heroStagger}
       >
-        <motion.h1
-          variants={kineticReveal}
-          className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.9]"
-        >
-          <span className="text-fg">{t("titleLine1Start")}</span>
-          <span className="text-fg">{t("titleLine1Accent")}</span>
-          <br />
-          <span className="text-fg">{t("titleLine2Start")}</span>
-          <span className="gradient-text-hero">{t("titleLine2Accent")}</span>
-        </motion.h1>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-16 lg:gap-x-16 items-start">
+          {/* ───── LEFT: editorial column ───── */}
+          <div className="lg:col-span-7 flex flex-col items-start text-left">
+            <motion.div variants={kineticReveal} className="mb-10">
+              <SectionEyebrow>{t("labelEyebrow")}</SectionEyebrow>
+            </motion.div>
 
-        <motion.p
-          variants={kineticReveal}
-          className="mt-6 md:mt-8 text-fg-tertiary text-base md:text-lg max-w-2xl leading-relaxed"
-        >
-          {t("subtitle")}
-        </motion.p>
-
-        <motion.div
-          variants={kineticReveal}
-          className="flex flex-wrap gap-4 justify-center mt-8 md:mt-10"
-        >
-          <Button href="/waitlist" variant="primary" size="md">
-            {t("ctaPrimary")}
-          </Button>
-          <Button href="#about" variant="secondary" size="md" withArrow>
-            {t("ctaSecondary")}
-          </Button>
-        </motion.div>
-
-        <motion.div
-          variants={fadeUpBlur}
-          className="mt-12 grid grid-cols-3 gap-3 w-full max-w-lg"
-        >
-          {FEATURE_ICONS.map((Icon, i) => (
-            <div
-              key={i}
-              className="border border-[var(--color-border-primary)] rounded-xl p-4 flex flex-col items-center text-center gap-2"
+            {/* Word-stagger reveal — Gen-Z native cadence */}
+            <WordStagger
+              as="h1"
+              className="font-display font-medium text-fg leading-[1.02] tracking-[-0.02em] text-[2.75rem] sm:text-[3.5rem] md:text-[4rem] lg:text-[4.75rem] xl:text-[5.25rem] max-w-[16ch]"
+              delay={0.15}
+              stagger={0.085}
             >
-              <Icon
-                className="h-4 w-4 text-fg-muted"
-                strokeWidth={1.5}
-                aria-hidden="true"
-              />
-              <p className="font-medium text-xs text-fg">
-                {t(`features.${i}.label`)}
-              </p>
-              <p className="text-[11px] text-fg-muted leading-tight hidden sm:block">
-                {t(`features.${i}.description`)}
-              </p>
-            </div>
-          ))}
-        </motion.div>
+              {t("title")}
+            </WordStagger>
+
+            <motion.p
+              variants={kineticReveal}
+              className="mt-8 text-fg-secondary text-base sm:text-lg leading-relaxed max-w-xl"
+            >
+              {t("subtitle")}
+            </motion.p>
+
+            <motion.div
+              variants={kineticReveal}
+              className="flex flex-wrap gap-3 mt-12"
+            >
+              <Button href="/waitlist" variant="primary" size="lg">
+                {t("ctaPrimary")}
+              </Button>
+              <Button
+                href="#how-it-works"
+                variant="secondary"
+                size="lg"
+                withArrow
+              >
+                {t("ctaSecondary")}
+              </Button>
+            </motion.div>
+          </div>
+
+          {/* ───── RIGHT: friendly promise manifesto ───── */}
+          <motion.div
+            variants={kineticReveal}
+            className="lg:col-span-5 flex lg:justify-end"
+          >
+            <HeroPromiseCard />
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   );
