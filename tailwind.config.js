@@ -120,8 +120,8 @@ module.exports = {
       },
       fontFamily: {
         sans: [
-          "var(--font-outfit)",
-          "Outfit",
+          "var(--font-dm-sans)",
+          "DM Sans",
           "ui-sans-serif",
           "system-ui",
           "-apple-system",
@@ -130,9 +130,9 @@ module.exports = {
           "sans-serif",
         ],
         display: [
-          "var(--font-unbounded)",
-          "Unbounded",
-          "Outfit",
+          "var(--font-bricolage)",
+          "Bricolage Grotesque",
+          "DM Sans",
           "ui-sans-serif",
           "system-ui",
           "sans-serif",

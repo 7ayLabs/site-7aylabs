@@ -1,25 +1,28 @@
 import type { Metadata } from "next";
-import { Outfit, Unbounded, JetBrains_Mono } from "next/font/google";
+import { DM_Sans, Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
-const outfit = Outfit({
+/* Body — DM Sans: clean, geometric, very 2025. */
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-outfit",
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800"],
-});
-
-const unbounded = Unbounded({
-  subsets: ["latin"],
-  variable: "--font-unbounded",
+  variable: "--font-dm-sans",
   display: "swap",
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
+/* Display — Bricolage Grotesque: variable, expressive, made for big headlines. */
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-bricolage",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+/* Mono — JetBrains Mono: kept for code, hashes, monospace tickers. */
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
@@ -126,7 +129,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`scroll-smooth ${outfit.variable} ${unbounded.variable} ${jetbrainsMono.variable}`}
+      className={`scroll-smooth ${dmSans.variable} ${bricolage.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>
