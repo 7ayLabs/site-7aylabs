@@ -1,42 +1,27 @@
-import { NextRequest } from "next/server";
-import { isValidEmail, checkRateLimit, getClientIp, isAllowedOrigin } from "@/lib/api/validation";
-import { successResponse, errorResponse } from "@/lib/api/response";
-import { prisma } from "@/lib/db/prisma";
-import type { NewsletterRequest } from "@/types/api";
+import { upsertSubscriber } from '@/lib/db';
+import { clientIp, json, normalizeEmail, originAllowed, pickLocale, rateLimited, readJson } from '@/lib/api/validation';
 
-export async function POST(request: NextRequest) {
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
+export async function POST(req: Request): Promise<Response> {
+  if (!originAllowed(req)) return json({ ok: false, error: 'forbidden' }, 403);
+  if (rateLimited(`newsletter:${clientIp(req)}`, 10)) return json({ ok: false, error: 'rate_limited' }, 429);
+
+  const body = await readJson(req, 2048);
+  if (!body) return json({ ok: false, error: 'invalid' }, 400);
+  if (typeof body.company === 'string' && body.company.trim() !== '') return json({ ok: true });
+
+  const email = normalizeEmail(body.email);
+  if (!email) return json({ ok: false, error: 'invalid' }, 400);
+
   try {
-    if (!isAllowedOrigin(request)) {
-      return errorResponse("Forbidden.", 403);
-    }
-
-    const ip = getClientIp(request);
-    if (!checkRateLimit(ip)) {
-      return errorResponse("Too many requests. Try again later.", 429);
-    }
-
-    const body: unknown = await request.json();
-
-    if (!body || typeof body !== "object" || !("email" in body)) {
-      return errorResponse("Request body must include an email field.");
-    }
-
-    const { email } = body as NewsletterRequest;
-
-    if (!isValidEmail(email)) {
-      return errorResponse("Invalid or disposable email address.");
-    }
-
-    const normalizedEmail = email.trim().toLowerCase();
-
-    await prisma.newsletterSubscriber.upsert({
-      where: { email: normalizedEmail },
-      create: { email: normalizedEmail, active: true },
-      update: { active: true },
-    });
-
-    return successResponse("Successfully subscribed to the newsletter.");
-  } catch {
-    return errorResponse("Internal server error.", 500);
+    // An address that is already subscribed gets the same answer as a new
+    // one, so the endpoint cannot be used to test who is on the list.
+    upsertSubscriber(email, pickLocale(body.locale));
+    return json({ ok: true });
+  } catch (err) {
+    console.error('[newsletter] store failed:', err instanceof Error ? err.message : 'unknown error');
+    return json({ ok: false, error: 'server' }, 500);
   }
 }

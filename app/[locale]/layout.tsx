@@ -1,184 +1,100 @@
-import type { Metadata } from "next";
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
-import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
-import { notFound } from "next/navigation";
-import { routing } from "@/i18n/routing";
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
-
-/* Space Grotesk — the de-facto Web3 / crypto / Gen-Z house font.
-   Geometric, sharp, distinctive, with a slight techno character that
-   reads as "this is on-chain" without screaming it. Maps to BOTH
-   `font-sans` and `font-display` so the entire site shares one DNA,
-   weight-differentiated. */
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-/* Mono — JetBrains Mono: kept for code, hashes, monospace tickers. */
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const LOCALE_OG_MAP: Record<string, string> = {
-  en: "en_US", es: "es_ES", pt: "pt_BR", fr: "fr_FR",
-  de: "de_DE", zh: "zh_CN", ja: "ja_JP",
-};
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "metadata.home" });
-
-  // Build hreflang alternates
-  const languages: Record<string, string> = {};
-  for (const l of routing.locales) {
-    languages[l] = l === routing.defaultLocale
-      ? "https://7aylabs.com"
-      : `https://7aylabs.com/${l}`;
-  }
-
-  return {
-    title: {
-      default: t("title"),
-      template: t("titleTemplate"),
-    },
-    description: t("description"),
-    keywords: [
-      "7ayLabs", "7aychain", "Proof of Presence", "PoP protocol",
-      "presence layer", "Layer 1 blockchain", "Web3 infrastructure",
-      "$7AY token", "witness circles", "network latency triangulation",
-      "Substrate", "Sybil resistance", "human verification blockchain",
-      "zero knowledge presence", "Polkadot SDK", "DePIN protocol",
-      "presence-based consensus", "proof of personhood",
-    ],
-    metadataBase: new URL("https://7aylabs.com"),
-    alternates: { canonical: "/", languages },
-    openGraph: {
-      title: t("ogTitle"),
-      description: t("ogDescription"),
-      url: "https://7aylabs.com",
-      siteName: "7ayLabs",
-      images: [
-        {
-          url: "/og/7aylabs-og.png",
-          width: 1200,
-          height: 630,
-          alt: t("ogImageAlt"),
-        },
-      ],
-      type: "website",
-      locale: LOCALE_OG_MAP[locale] || "en_US",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: t("twitterTitle"),
-      description: t("twitterDescription"),
-      images: ["/og/7aylabs-og.png"],
-      creator: "@7aylabs",
-    },
-    icons: {
-      icon: [
-        { url: "/favicon.ico", sizes: "any" },
-        { url: "/favicon.svg", type: "image/svg+xml" },
-        { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-      ],
-      apple: "/apple-touch-icon.png",
-    },
-    manifest: "/site.webmanifest",
-    category: "technology",
-    applicationName: "7ayLabs",
-    creator: "7ayLabs",
-    publisher: "7ayLabs",
-  };
-}
+import type { Metadata, Viewport } from 'next';
+import type { ReactNode } from 'react';
+import { notFound } from 'next/navigation';
+import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
+import { routing, type Locale } from '@/i18n/routing';
+import { display, mono, sans } from '../fonts';
+import { ThemeProvider, themeBootScript } from '@/components/layout/theme-provider';
+import { SiteNav } from '@/components/layout/site-nav';
+import { SiteFooter } from '@/components/layout/site-footer';
+import { PageField } from '@/components/landing/v4/page-field';
+import { LandFx } from '@/components/landing/v4/land-fx';
+import { organizationJsonLd } from '@/lib/seo';
+import { SITE, isProduction } from '@/lib/site';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f5f5f7' },
+    { media: '(prefers-color-scheme: dark)', color: '#070708' },
+  ],
+};
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'meta' });
+  return {
+    metadataBase: new URL(SITE.url),
+    title: { default: t('title'), template: `%s · ${SITE.name}` },
+    description: t('description'),
+    applicationName: SITE.name,
+    authors: [{ name: SITE.name, url: SITE.url }],
+    creator: SITE.name,
+    publisher: SITE.name,
+    // Staging and previews must never be indexed.
+    robots: isProduction ? { index: true, follow: true } : { index: false, follow: false },
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: 'any' },
+        { url: '/favicon.svg', type: 'image/svg+xml' },
+        { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      ],
+      apple: '/apple-touch-icon.png',
+    },
+    manifest: '/site.webmanifest',
+    formatDetection: { telephone: false },
+  };
 }
 
 export default async function LocaleLayout({
   children,
   params,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-
-  if (!hasLocale(routing.locales, locale)) {
-    notFound();
-  }
-
+  if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
+
   const messages = await getMessages();
+  const t = await getTranslations({ locale, namespace: 'chrome' });
+  const meta = await getTranslations({ locale, namespace: 'meta' });
 
   return (
     <html
-      lang={locale}
-      className={`scroll-smooth ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+      lang={locale as Locale}
+      className={`${sans.variable} ${mono.variable} ${display.variable}`}
       suppressHydrationWarning
     >
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{document.documentElement.setAttribute('data-theme',window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark')}catch(e){document.documentElement.setAttribute('data-theme','dark')}})()`,
-          }}
-        />
+        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": "Organization",
-                  name: "7ayLabs",
-                  url: "https://7aylabs.com",
-                  logo: "https://7aylabs.com/7aylabs_white_logo.svg",
-                  sameAs: [
-                    "https://x.com/7ayLabs",
-                    "https://github.com/7ayLabs",
-                  ],
-                },
-                {
-                  "@type": "WebSite",
-                  name: "7ayLabs",
-                  url: "https://7aylabs.com",
-                },
-                {
-                  "@type": "BreadcrumbList",
-                  itemListElement: [
-                    {
-                      "@type": "ListItem",
-                      position: 1,
-                      name: "Home",
-                      item: "https://7aylabs.com",
-                    },
-                  ],
-                },
-              ],
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd(meta('description'))) }}
         />
       </head>
-      <body className="min-h-screen antialiased bg-bg text-fg">
+      <body>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
-            <a href="#main-content" className="skip-to-content">
-              {/* Not translated — screen reader utility, always English */}
-              Skip to main content
+            <a href="#main" className="skip-link">
+              {t('skip')}
             </a>
-            {children}
+            <div className="relative isolate flex min-h-dvh flex-col">
+              <PageField />
+              <LandFx />
+              <SiteNav />
+              <main id="main" className="flex-1">
+                {children}
+              </main>
+              <SiteFooter />
+            </div>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

@@ -1,60 +1,20 @@
-import createMiddleware from "next-intl/middleware";
-import { NextRequest } from "next/server";
-import { routing } from "./i18n/routing";
+import type { NextRequest } from 'next/server';
+import createMiddleware from 'next-intl/middleware';
+import { routing } from './i18n/routing';
+import { SECURITY_HEADERS } from './lib/security-headers';
 
-const COUNTRY_LOCALE_MAP: Record<string, string> = {
-  // Spanish-speaking
-  ES: "es", MX: "es", AR: "es", CO: "es", CL: "es", PE: "es", VE: "es",
-  EC: "es", GT: "es", CU: "es", BO: "es", DO: "es", HN: "es", PY: "es",
-  SV: "es", NI: "es", CR: "es", PA: "es", UY: "es",
-  // Portuguese-speaking
-  BR: "pt", PT: "pt", AO: "pt", MZ: "pt",
-  // French-speaking
-  FR: "fr", BE: "fr", CH: "fr", CA: "fr", SN: "fr", CI: "fr",
-  // German-speaking
-  DE: "de", AT: "de",
-  // Chinese-speaking
-  CN: "zh", TW: "zh", HK: "zh", SG: "zh",
-  // Japanese
-  JP: "ja",
-};
+const intl = createMiddleware(routing);
 
-function getGeoLocale(request: NextRequest): string | undefined {
-  const country =
-    request.headers.get("x-vercel-ip-country") ||
-    request.headers.get("cf-ipcountry");
+export default function middleware(req: NextRequest) {
+  const res = intl(req);
 
-  if (country) {
-    return COUNTRY_LOCALE_MAP[country.toUpperCase()];
-  }
-  return undefined;
-}
-
-const intlMiddleware = createMiddleware(routing);
-
-export default function middleware(request: NextRequest) {
-  const geoLocale = getGeoLocale(request);
-
-  if (geoLocale && !request.cookies.get("NEXT_LOCALE")) {
-    const acceptLang = request.headers.get("accept-language") || "";
-    if (!acceptLang.includes(geoLocale)) {
-      const headers = new Headers(request.headers);
-      headers.set("accept-language", `${geoLocale};q=0.9, ${acceptLang}`);
-      const modifiedRequest = new NextRequest(request.url, {
-        headers,
-        method: request.method,
-      });
-      return intlMiddleware(modifiedRequest);
-    }
-  }
-
-  return intlMiddleware(request);
+  for (const [k, v] of Object.entries(SECURITY_HEADERS)) res.headers.set(k, v);
+  // Staging and previews are never indexed, whatever a page's own tags say.
+  if (process.env.NEXT_PUBLIC_SITE_ENV !== 'production') res.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  return res;
 }
 
 export const config = {
-  matcher: [
-    "/",
-    "/(en|es|pt|fr|de|zh|ja)/:path*",
-    "/((?!api|_next|_vercel|favicon|og|.*\\..*).*)",
-  ],
+  // Pages only: not the API, not Next's internals, not files with an extension.
+  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
 };
