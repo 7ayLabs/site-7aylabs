@@ -38,32 +38,31 @@
       "docs": "Docs",
       "pricing": "Plans",
       "rights": "© {year} 7ayLabs. All rights reserved.",
-      "made": "Built by the people who build Vizzor."
-    }
+      "line": "Ask it something. Check back at the deadline.",
+      "talk": "Talk to us",
+      "xLab": "7ayLabs on X",
+      "xVizzor": "Vizzor on X"
+    },
+    "index": "On this page"
   },
   "home": {
     "hero": {
-      "pill": "Vizzor is live",
       "titleA": "Intelligence",
       "titleB": "you can check.",
       "sub": "7ayLabs is the lab behind Vizzor: crypto intelligence that puts a target, a deadline and a confidence on every call, then grades it in public.",
       "ctaPrimary": "Open Vizzor",
       "ctaSecondary": "See what it does",
-      "newTab": "opens in a new tab",
-      "card": {
-        "label": "Vizzor at a glance",
-        "live": "Live",
-        "title": "Crypto intelligence, graded in public.",
-        "line": "Price calls, whale flow and on-chain forensics in one place.",
-        "chains": "blockchains read live",
-        "editions": "model editions",
-        "languages": "languages"
-      }
+      "newTab": "opens in a new tab"
     },
-    "flagship": {
-      "kicker": "Our product",
-      "titleA": "Vizzor makes calls.",
-      "titleB": "Then it shows you the score.",
+    "index": {
+      "vizzor": "The product",
+      "reach": "Coverage",
+      "method": "How we work",
+      "updates": "Updates",
+      "faq": "Questions"
+    },
+    "product": {
+      "title": "Vizzor makes calls. Then it shows you the score.",
       "lede": "Ask about any token, wallet or tokenized stock in plain words. Vizzor reads the price, the money moving on-chain and the story behind it, and answers with a call you can hold it to.",
       "ctaSite": "Visit vizzor.ai",
       "ctaMore": "How it works",
@@ -86,8 +85,153 @@
         }
       }
     },
+    "reach": {
+      "title": "{count} blockchains, read live.",
+      "lede": "Vizzor reads each network directly, so a wallet or a transfer is looked up where it actually happened."
+    },
+    "method": {
+      "title": "Four rules we build by.",
+      "lede": "They are the reason Vizzor publishes its misses.",
+      "items": {
+        "receipts": {
+          "title": "Receipts over promises",
+          "line": "If we say something works, there is a public record that shows whether it did."
+        },
+        "plain": {
+          "title": "Plain words",
+          "line": "People should not need a manual to ask a question or to understand the answer."
+        },
+        "privacy": {
+          "title": "Collect less",
+          "line": "We keep the data a feature needs and nothing else. This site sets no tracking cookies."
+        },
+        "ship": {
+          "title": "Ship, then show the work",
+          "line": "Small releases, often, each one written up so you can see what changed."
+        }
+      }
+    },
+    "updates": {
+      "title": "What we shipped.",
+      "all": "All updates"
+    },
+    "faq": {
+      "title": "The short answers."
+    }
+  },
+  "coverage": {
+    "sources": "Reads from",
+    "sourcesNote": "Market and on-chain data sources Vizzor queries. These are integrations, not endorsements.",
+    "builtWith": "Runs on",
+    "builtWithNote": "The model provider behind Vizzor's answers and the network it accepts payments on.",
+    "partners": "Community partners",
+    "partnersNote": "Communities with a room and perks inside Vizzor. Only confirmed partners are listed."
+  },
+  "log": {
+    "tags": {
+      "product": "Vizzor",
+      "company": "7ayLabs"
+    }
+  },
+  "questions": {
+    "what": {
+      "q": "What is 7ayLabs?",
+      "a": "An independent software lab. We design, build and run our own products. The first one is Vizzor."
+    },
+    "vizzor": {
+      "q": "What is Vizzor?",
+      "a": "Crypto intelligence. You ask about a token, a wallet or a tokenized stock, and it answers with a price call, a trade plan and the on-chain evidence. Every call has a deadline and gets graded in public when it arrives."
+    },
+    "relation": {
+      "q": "How are 7ayLabs and Vizzor related?",
+      "a": "7ayLabs is the company. Vizzor is the product we build and operate. This site is about the company; vizzor.ai is where the product lives."
+    },
+    "free": {
+      "q": "Can I try Vizzor for free?",
+      "a": "Yes. There is a free plan, and paid plans add deeper models and more daily answers. Current plans are on vizzor.ai."
+    },
+    "work": {
+      "q": "How do I reach the team?",
+      "a": "Use the contact page for partnerships, press and anything about the company. For help using Vizzor, start with its docs."
+    }
+  },
+  "demo": {
+    "title": "A call, start to finish",
+    "youAsk": "You ask",
+    "direction": "Direction",
+    "up": "Up",
+    "down": "Down",
+    "target": "Target",
+    "deadline": "Deadline",
+    "confidence": "Confidence",
+    "notYet": "Not graded yet.",
+    "waiting": "Waiting for the deadline.",
+    "gradedRight": "The deadline hit. The call was right.",
+    "gradedWrong": "The deadline hit. The call was wrong, and it stays on the record.",
+    "right": "Right",
+    "wrong": "Wrong",
+    "play": "Play the example",
+    "pause": "Pause the example",
+    "steps": {
+      "ask": "Ask",
+      "call": "Call",
+      "wait": "Wait",
+      "grade": "Grade"
+    },
+    "note": "An illustration with made-up values, not a real call.",
+    "rounds": [
+      {
+        "question": "ETH, next 4 hours",
+        "direction": "up",
+        "target": "+2.4%",
+        "deadline": "4 hours",
+        "confidence": "68%"
+      },
+      {
+        "question": "SOL, next day",
+        "direction": "down",
+        "target": "−3.1%",
+        "deadline": "24 hours",
+        "confidence": "61%"
+      }
+    ]
+  },
+  "vizzorPage": {
+    "meta": {
+      "title": "Vizzor",
+      "description": "Vizzor is crypto intelligence by 7ayLabs: price calls with a target, a deadline and a confidence, trade plans, whale flow and on-chain forensics. Every call is graded in public."
+    },
+    "title": "Crypto intelligence, graded in public.",
+    "lede": "Vizzor reads price, on-chain flow and the narrative behind any token, wallet or tokenized stock. Every call carries a target, a deadline and a confidence score, and gets graded when the deadline hits.",
+    "ctaApp": "Open the app",
+    "ctaSite": "Visit vizzor.ai",
+    "index": {
+      "how": "How a call works",
+      "desks": "The four desks",
+      "editions": "The model",
+      "features": "Around the call",
+      "record": "The record",
+      "reach": "Coverage"
+    },
+    "how": {
+      "title": "Ask. Get a call. See the grade.",
+      "lede": "Three steps, and the third one is the part most tools skip.",
+      "steps": {
+        "ask": {
+          "title": "Ask in plain words",
+          "line": "Something like \"ETH, 4 hours, $500 at 10x\". No forms and no query language."
+        },
+        "call": {
+          "title": "Get a call and a plan",
+          "line": "A direction, a target, a deadline and a confidence, with an entry, two take-profit levels and a stop."
+        },
+        "grade": {
+          "title": "See how it turned out",
+          "line": "When the deadline arrives the call is marked right or wrong and added to the public record."
+        }
+      }
+    },
     "desks": {
-      "kicker": "Inside Vizzor",
       "title": "Four desks, one floor.",
       "lede": "Each desk does one job well, and every one of them feeds the call.",
       "items": {
@@ -113,120 +257,7 @@
         }
       }
     },
-    "reach": {
-      "kicker": "Coverage",
-      "title": "{count} blockchains, read live.",
-      "lede": "Vizzor reads each network directly, so a wallet or a transfer is looked up where it actually happened.",
-      "chainsLabel": "The {count} blockchains Vizzor reads",
-      "sources": "Reads from",
-      "sourcesNote": "Market and on-chain data sources Vizzor queries. These are integrations, not endorsements.",
-      "builtWith": "Runs on",
-      "builtWithNote": "The model provider behind Vizzor's answers and the network it accepts payments on.",
-      "partners": "Community partners",
-      "partnersNote": "Communities with a room and perks inside Vizzor. Only confirmed partners are listed.",
-      "newTab": "opens in a new tab"
-    },
-    "kinetic": {
-      "words": ["Graded calls", "Whale flow", "On-chain", "Smart money", "Receipts", "Plain words"]
-    },
-    "updates": {
-      "kicker": "Updates",
-      "title": "What we shipped.",
-      "all": "All updates",
-      "read": "Read",
-      "tags": {
-        "product": "Vizzor",
-        "company": "7ayLabs"
-      }
-    },
-    "faq": {
-      "kicker": "Questions",
-      "title": "The short answers.",
-      "items": {
-        "what": {
-          "q": "What is 7ayLabs?",
-          "a": "An independent software lab. We design, build and run our own products. The first one is Vizzor."
-        },
-        "vizzor": {
-          "q": "What is Vizzor?",
-          "a": "Crypto intelligence. You ask about a token, a wallet or a tokenized stock, and it answers with a price call, a trade plan and the on-chain evidence. Every call has a deadline and gets graded in public when it arrives."
-        },
-        "relation": {
-          "q": "How are 7ayLabs and Vizzor related?",
-          "a": "7ayLabs is the company. Vizzor is the product we build and operate. This site is about the company; vizzor.ai is where the product lives."
-        },
-        "free": {
-          "q": "Can I try Vizzor for free?",
-          "a": "Yes. There is a free plan, and paid plans add deeper models and more daily answers. Current plans are on vizzor.ai."
-        },
-        "work": {
-          "q": "How do I reach the team?",
-          "a": "Use the contact page for partnerships, press and anything about the company. For help using Vizzor, start with its docs."
-        }
-      }
-    },
-    "closing": {
-      "title": "Make your first call.",
-      "lede": "Open Vizzor, ask about the asset you are watching, and check back when the deadline hits.",
-      "ctaPrimary": "Open Vizzor",
-      "ctaSecondary": "Talk to us"
-    }
-  },
-  "principles": {
-    "kicker": "How we work",
-    "title": "Four rules we build by.",
-    "lede": "They are the reason Vizzor publishes its misses.",
-    "items": {
-      "receipts": {
-        "title": "Receipts over promises",
-        "line": "If we say something works, there is a public record that shows whether it did."
-      },
-      "plain": {
-        "title": "Plain words",
-        "line": "People should not need a manual to ask a question or to understand the answer."
-      },
-      "privacy": {
-        "title": "Collect less",
-        "line": "We keep the data a feature needs and nothing else. This site sets no tracking cookies."
-      },
-      "ship": {
-        "title": "Ship, then show the work",
-        "line": "Small releases, often, each one written up so you can see what changed."
-      }
-    }
-  },
-  "vizzorPage": {
-    "meta": {
-      "title": "Vizzor",
-      "description": "Vizzor is crypto intelligence by 7ayLabs: price calls with a target, a deadline and a confidence, trade plans, whale flow and on-chain forensics. Every call is graded in public."
-    },
-    "kicker": "Vizzor, by 7ayLabs",
-    "titleA": "Crypto intelligence,",
-    "titleB": "graded in public.",
-    "lede": "Vizzor reads price, on-chain flow and the narrative behind any token, wallet or tokenized stock. Every call carries a target, a deadline and a confidence score, and gets graded when the deadline hits.",
-    "ctaApp": "Open the app",
-    "ctaSite": "Visit vizzor.ai",
-    "how": {
-      "kicker": "How a call works",
-      "title": "Ask. Get a call. See the grade.",
-      "lede": "Three steps, and the third one is the part most tools skip.",
-      "steps": {
-        "ask": {
-          "title": "Ask in plain words",
-          "line": "Something like \"ETH, 4 hours, $500 at 10x\". No forms and no query language."
-        },
-        "call": {
-          "title": "Get a call and a plan",
-          "line": "A direction, a target, a deadline and a confidence, with an entry, two take-profit levels and a stop."
-        },
-        "grade": {
-          "title": "See how it turned out",
-          "line": "When the deadline arrives the call is marked right or wrong and added to the public record."
-        }
-      }
-    },
     "editions": {
-      "kicker": "The model",
       "title": "One model, three editions.",
       "lede": "The model behind Vizzor is called ChronoVisor. It comes in three editions, one per plan.",
       "plans": {
@@ -243,7 +274,6 @@
       "pricing": "See current plans"
     },
     "features": {
-      "kicker": "Also inside",
       "title": "Everything around the call.",
       "items": {
         "whales": {
@@ -285,7 +315,6 @@
       }
     },
     "receipts": {
-      "kicker": "Receipts",
       "title": "A record nobody can quietly edit.",
       "lede": "A track record only means something if the misses stay in it. Vizzor's does.",
       "points": {
@@ -293,12 +322,6 @@
         "sealed": "The record is sealed every day, so past calls cannot be changed afterwards.",
         "misses": "Wrong calls are shown next to right ones, with the same weight."
       }
-    },
-    "closing": {
-      "title": "See it for yourself.",
-      "lede": "The fastest way to judge Vizzor is to ask it something and come back at the deadline.",
-      "ctaPrimary": "Open Vizzor",
-      "ctaSecondary": "Talk to us"
     }
   },
   "aboutPage": {
@@ -306,23 +329,34 @@
       "title": "About",
       "description": "7ayLabs is an independent software lab that builds and operates Vizzor. What we believe and how we work."
     },
-    "kicker": "About 7ayLabs",
     "title": "We build things you can check.",
     "lede": "7ayLabs is an independent software lab. We design, build and operate our own products, and we would rather show a result than describe one.",
+    "index": {
+      "mission": "Why we exist",
+      "method": "How we work",
+      "facts": "The basics"
+    },
     "mission": {
-      "kicker": "Why we exist",
       "title": "Confident claims are cheap. Proof is not.",
       "p1": "Markets are full of predictions that are never looked at again. The ones that land get repeated; the ones that miss disappear.",
       "p2": "We think software can do better. A tool that gives advice should also keep score, in the open, where the people relying on it can see.",
       "p3": "That idea became Vizzor, our first product. It is what we work on every day."
     },
     "facts": {
-      "kicker": "At a glance",
       "title": "The basics.",
-      "product": { "k": "Product" },
-      "role": { "k": "What we do", "v": "Build and run Vizzor" },
-      "code": { "k": "Code" },
-      "news": { "k": "News" }
+      "product": {
+        "k": "Product"
+      },
+      "role": {
+        "k": "What we do",
+        "v": "Build and run Vizzor"
+      },
+      "code": {
+        "k": "Code"
+      },
+      "news": {
+        "k": "News"
+      }
     },
     "ctaContact": "Get in touch",
     "ctaVizzor": "About Vizzor"
@@ -332,7 +366,6 @@
       "title": "Updates",
       "description": "Product releases and company news from 7ayLabs and Vizzor."
     },
-    "kicker": "Updates",
     "title": "What we shipped.",
     "lede": "Releases of Vizzor and news from the lab, newest first.",
     "empty": "Nothing published yet.",
@@ -344,7 +377,6 @@
       "title": "Contact",
       "description": "Write to 7ayLabs about partnerships, press, security or anything about the company."
     },
-    "kicker": "Contact",
     "title": "Talk to us.",
     "lede": "Partnerships, press, security reports or a question about the company. A person reads every message.",
     "elsewhere": {
@@ -394,7 +426,6 @@
       "title": "Privacy",
       "description": "What 7aylabs.com collects, why, and how to have it removed."
     },
-    "kicker": "Legal",
     "title": "Privacy",
     "updated": "Last updated {date}",
     "intro": "This page covers 7aylabs.com only. Vizzor has its own privacy policy on vizzor.ai, because it is a different service that handles different data.",

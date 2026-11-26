@@ -4,12 +4,10 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
-import { display, mono, sans } from '../fonts';
+import { sans } from '../fonts';
 import { ThemeProvider, themeBootScript } from '@/components/layout/theme-provider';
 import { SiteNav } from '@/components/layout/site-nav';
 import { SiteFooter } from '@/components/layout/site-footer';
-import { PageField } from '@/components/landing/v4/page-field';
-import { LandFx } from '@/components/landing/v4/land-fx';
 import { organizationJsonLd } from '@/lib/seo';
 import { SITE, isProduction } from '@/lib/site';
 
@@ -21,8 +19,8 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#f5f5f7' },
-    { media: '(prefers-color-scheme: dark)', color: '#070708' },
+    { media: '(prefers-color-scheme: light)', color: '#edf1ef' },
+    { media: '(prefers-color-scheme: dark)', color: '#0a1311' },
   ],
 };
 
@@ -70,7 +68,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale as Locale}
-      className={`${sans.variable} ${mono.variable} ${display.variable}`}
+      className={sans.variable}
       suppressHydrationWarning
     >
       <head>
@@ -86,9 +84,7 @@ export default async function LocaleLayout({
             <a href="#main" className="skip-link">
               {t('skip')}
             </a>
-            <div className="relative isolate flex min-h-dvh flex-col">
-              <PageField />
-              <LandFx />
+            <div className="flex min-h-dvh flex-col">
               <SiteNav />
               <main id="main" className="flex-1">
                 {children}

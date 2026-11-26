@@ -46,7 +46,7 @@ export function LanguageSwitch({ align = 'right' }: { align?: 'left' | 'right' }
         aria-expanded={open}
         aria-label={t('language')}
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex h-11 items-center gap-1.5 rounded-full px-3 text-[13.5px] font-semibold text-[var(--fg-2)] transition-colors duration-200 hover:text-[var(--fg)]"
+        className="inline-flex h-11 items-center gap-1.5 rounded px-2.5 text-[14px] font-semibold text-[var(--fg-2)] transition-colors duration-200 hover:text-[var(--fg)]"
       >
         <Globe size={16} strokeWidth={1.75} aria-hidden />
         <span className="uppercase">{locale}</span>
@@ -54,7 +54,7 @@ export function LanguageSwitch({ align = 'right' }: { align?: 'left' | 'right' }
       {open ? (
         <div
           role="menu"
-          className={`l-glass l-menu absolute top-[calc(100%+8px)] z-50 min-w-[168px] rounded-[18px] p-1.5 ${
+          className={`absolute top-[calc(100%+6px)] z-50 min-w-[168px] rounded-md border border-[var(--line-strong)] bg-[var(--surface)] p-1 ${
             align === 'right' ? 'right-0' : 'left-0'
           }`}
         >
@@ -69,7 +69,7 @@ export function LanguageSwitch({ align = 'right' }: { align?: 'left' | 'right' }
                 setOpen(false);
                 router.replace(pathname, { locale: l });
               }}
-              className="flex min-h-11 w-full items-center justify-between gap-4 rounded-[12px] px-3 text-left text-[14px] font-medium text-[var(--fg)] transition-colors duration-200 hover:bg-[var(--surface-2)]"
+              className="flex min-h-11 w-full items-center justify-between gap-4 rounded px-3 text-left text-[15px] font-medium text-[var(--fg)] transition-colors duration-200 hover:text-[var(--accent)]"
             >
               {NAMES[l]}
               {l === locale ? <Check size={15} strokeWidth={2.25} aria-hidden /> : null}

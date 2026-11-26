@@ -27,7 +27,7 @@ export function ThemeToggle() {
       onClick={cycle}
       aria-label={nextLabel}
       title={nextLabel}
-      className="relative inline-flex h-11 w-11 items-center justify-center rounded-full text-[var(--fg-2)] transition-colors duration-200 hover:text-[var(--fg)]"
+      className="relative inline-flex h-11 w-11 items-center justify-center rounded text-[var(--fg-2)] transition-colors duration-200 hover:text-[var(--fg)]"
     >
       <Sun size={17} strokeWidth={1.75} aria-hidden className={iconClass(theme === 'light', 'rotate-90')} />
       <Moon size={17} strokeWidth={1.75} aria-hidden className={iconClass(theme === 'dark', '-rotate-90')} />

@@ -8,8 +8,8 @@ export function GET(): Response {
       description: 'The lab behind Vizzor.',
       start_url: '/',
       display: 'standalone',
-      background_color: '#070708',
-      theme_color: '#070708',
+      background_color: '#0a1311',
+      theme_color: '#0a1311',
       icons: [
         { src: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
         { src: '/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },

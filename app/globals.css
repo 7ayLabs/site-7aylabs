@@ -1,80 +1,63 @@
 @import 'tailwindcss';
 
 /*
- * 7aylabs.com — one design system for the whole site.
+ * 7aylabs.com design system.
  *
- * Monochrome liquid glass, shared with the Vizzor landing so the company and
- * its product read as one family. Depth comes from translucent glass laid over
- * a single live render, never from coloured light. Colour is reserved for the
- * brand marks of the networks and partners we name.
+ * The site is flat: one ground, ink, hairlines, and the lab's own teal. There
+ * is no glass, blur or shadow. Two more colours exist and each means one
+ * thing: green marks a call that was right, red one that was wrong.
  *
- * `@theme inline` on purpose: utilities inline `var(--bg)` etc. instead of
- * emitting their own custom properties, so the theme tokens below stay the
- * single source of truth and flip with `data-theme`.
+ * Type is one family, Archivo, at two widths: headlines are set tall and
+ * narrow, text at normal width. (Vizzor's headlines are wide; the lab's are
+ * tall. Same family tree, different voice.)
  */
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
-  --color-border: var(--border);
-  --color-border-hi: var(--border-hi);
   --color-fg: var(--fg);
   --color-fg-2: var(--fg-2);
   --color-fg-3: var(--fg-3);
-  --color-accent: var(--fg);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-right: var(--right);
+  --color-wrong: var(--wrong);
 
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono: var(--font-mono), ui-monospace, 'SF Mono', Menlo, monospace;
-  --font-display: var(--font-display), var(--font-sans), system-ui, sans-serif;
 }
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 :root {
   color-scheme: light;
-  --bg: #f5f5f7;
-  --surface: #ffffff;
-  --surface-2: #ececf0;
-  --border: #e2e2e8;
-  --border-hi: rgba(10, 10, 14, 0.18);
-  --fg: #0a0a0e;
-  --fg-2: #4a4a55;
-  --fg-3: #6a6a75;
-  --accent: var(--fg);
-  --danger: #b91c1c;
-  --ok: #15803d;
-  --up: #15803d;
-
-  /* Glass: a whisper of fill, a hairline, and a specular top edge. */
-  --l-glass-fill: rgba(255, 255, 255, 0.55);
-  --l-glass-fill-hi: rgba(255, 255, 255, 0.75);
-  --l-glass-edge: rgba(255, 255, 255, 0.9);
-  --l-glass-line: rgba(10, 10, 14, 0.08);
-  --l-glass-shade: 0 1px 2px rgba(10, 10, 14, 0.04), 0 12px 32px -12px rgba(10, 10, 14, 0.12);
-  --l-hairline: rgba(10, 10, 14, 0.08);
-  --l-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --bg: #edf1ef;
+  --surface: #f7f9f8;
+  --fg: #0d1614;
+  --fg-2: #3d4a46;
+  --fg-3: #5c6a65;
+  --line: rgba(13, 22, 20, 0.16);
+  --line-strong: rgba(13, 22, 20, 0.5);
+  --accent: #0f6b59;
+  --accent-fill: #178e77;
+  --on-accent: #ffffff;
+  --right: #12734a;
+  --wrong: #b3261e;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-theme='dark'] {
   color-scheme: dark;
-  --bg: #070708;
-  --surface: #0e0e10;
-  --surface-2: #151518;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-hi: rgba(255, 255, 255, 0.2);
-  --fg: #f5f5f7;
-  --fg-2: #a1a1aa;
-  --fg-3: #85858f;
-  --danger: #f87171;
-  --ok: #4ade80;
-  --up: #4ade80;
-
-  --l-glass-fill: rgba(255, 255, 255, 0.035);
-  --l-glass-fill-hi: rgba(255, 255, 255, 0.06);
-  --l-glass-edge: rgba(255, 255, 255, 0.14);
-  --l-glass-line: rgba(255, 255, 255, 0.08);
-  --l-glass-shade: 0 1px 0 rgba(0, 0, 0, 0.4), 0 20px 40px -20px rgba(0, 0, 0, 0.6);
-  --l-hairline: rgba(255, 255, 255, 0.08);
+  --bg: #0a1311;
+  --surface: #101b18;
+  --fg: #e9f0ed;
+  --fg-2: #a9b8b3;
+  --fg-3: #83938d;
+  --line: rgba(233, 240, 237, 0.16);
+  --line-strong: rgba(233, 240, 237, 0.5);
+  --accent: #45c9a8;
+  --accent-fill: #1fa58a;
+  --on-accent: #04110e;
+  --right: #4fd08f;
+  --wrong: #ff7a6e;
 }
 
 @layer base {
@@ -82,7 +65,7 @@
     background: var(--bg);
     color: var(--fg);
     -webkit-text-size-adjust: 100%;
-    scroll-padding-top: 96px;
+    scroll-padding-top: 88px;
   }
   @media (prefers-reduced-motion: no-preference) {
     html {
@@ -94,18 +77,18 @@
     background: var(--bg);
     color: var(--fg);
     font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    font-stretch: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
   }
   ::selection {
-    background: var(--fg);
-    color: var(--bg);
+    background: var(--accent-fill);
+    color: var(--on-accent);
   }
   :focus-visible {
-    outline: 2px solid var(--fg);
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
-    border-radius: 4px;
+    border-radius: 2px;
   }
   a,
   button {
@@ -113,9 +96,93 @@
   }
 }
 
-.mono {
-  font-family: var(--font-mono), ui-monospace, monospace;
+/* ── Type ──────────────────────────────────────────────────────────────── */
+
+/* Headlines: Archivo at its narrowest and heaviest. */
+.t-display {
+  font-stretch: 62%;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 0.9;
+  text-wrap: balance;
+}
+.t-hero {
+  font-size: clamp(3.4rem, 1rem + 11.5vw, 11.5rem);
+  line-height: 0.84;
+}
+.t-title {
+  font-size: clamp(2.4rem, 1.3rem + 4.2vw, 5rem);
+}
+.t-head {
+  font-stretch: 68%;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2.1rem);
+  line-height: 1.02;
+}
+.t-lede {
+  font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.3125rem);
+  line-height: 1.55;
+  color: var(--fg-2);
+  max-width: 58ch;
+}
+.t-note {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--fg-3);
+}
+.t-num {
   font-variant-numeric: tabular-nums;
+}
+
+/* ── Actions ───────────────────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3.25rem;
+  padding: 0 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition:
+    background-color 200ms var(--ease),
+    color 200ms var(--ease),
+    border-color 200ms var(--ease);
+}
+.btn-ink {
+  background: var(--fg);
+  color: var(--bg);
+}
+.btn-ink:hover {
+  background: var(--accent-fill);
+  color: var(--on-accent);
+}
+.btn-line {
+  border: 1px solid var(--line-strong);
+  color: var(--fg);
+}
+.btn-line:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* A text link inside running copy or a list. */
+.link {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition:
+    color 200ms var(--ease),
+    text-decoration-color 200ms var(--ease);
+}
+.link:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
 }
 
 .skip-link {
@@ -124,429 +191,140 @@
   top: -4rem;
   z-index: 100;
   padding: 0.75rem 1rem;
-  border-radius: 999px;
+  border-radius: 6px;
   background: var(--fg);
   color: var(--bg);
   font-weight: 700;
-  transition: top 200ms var(--l-ease);
 }
 .skip-link:focus {
   top: 1rem;
 }
 
-/* Form fields share the glass vocabulary. */
-.l-field {
+/* ── Forms ─────────────────────────────────────────────────────────────── */
+
+.field {
   width: 100%;
   min-height: 3.25rem;
-  padding: 0.85rem 1.1rem;
-  border-radius: 18px;
+  padding: 0.8rem 0.95rem;
+  border-radius: 6px;
   color: var(--fg);
   font-size: 1rem;
-  background: linear-gradient(180deg, var(--l-glass-fill-hi), var(--l-glass-fill));
-  border: 1px solid var(--l-glass-line);
-  box-shadow: inset 0 1px 0 var(--l-glass-edge);
-  transition: border-color 300ms var(--l-ease);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  transition: border-color 200ms var(--ease);
 }
-.l-field::placeholder {
+.field::placeholder {
   color: var(--fg-3);
 }
-.l-field:hover {
-  border-color: var(--border-hi);
+.field:hover {
+  border-color: var(--fg);
 }
-.l-field:focus-visible {
-  outline: 2px solid var(--fg);
+.field:focus-visible {
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
-  border-radius: 18px;
+  border-radius: 6px;
 }
-.l-field[aria-invalid='true'] {
-  border-color: var(--danger);
+.field[aria-invalid='true'] {
+  border-color: var(--wrong);
 }
 
-/* Long-form copy (update posts, legal). */
-.l-prose {
+/* ── Long-form copy (update posts, legal) ──────────────────────────────── */
+
+.prose {
   color: var(--fg-2);
   font-size: 1.0625rem;
   line-height: 1.7;
-  max-width: 68ch;
+  max-width: 66ch;
 }
-.l-prose > * + * {
-  margin-top: 1.25em;
+.prose > * + * {
+  margin-top: 1.2em;
 }
-.l-prose h2,
-.l-prose h3 {
-  font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
+.prose h2,
+.prose h3 {
+  font-stretch: 68%;
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1.05;
+  margin-top: 2em;
+}
+.prose h2 {
+  font-size: 1.9rem;
+}
+.prose h3 {
+  font-size: 1.45rem;
+}
+.prose strong {
   color: var(--fg);
   font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  margin-top: 2.2em;
 }
-.l-prose h2 {
-  font-size: 1.5rem;
-}
-.l-prose h3 {
-  font-size: 1.2rem;
-}
-.l-prose strong {
-  color: var(--fg);
-  font-weight: 600;
-}
-.l-prose a {
+.prose a {
   color: var(--fg);
   text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 4px;
 }
-.l-prose ul {
+.prose a:hover {
+  color: var(--accent);
+}
+.prose ul {
   list-style: disc;
-  padding-left: 1.25em;
+  padding-left: 1.2em;
 }
-.l-prose ol {
+.prose ol {
   list-style: decimal;
-  padding-left: 1.25em;
+  padding-left: 1.2em;
 }
-.l-prose li + li {
-  margin-top: 0.5em;
-}
-.l-prose code {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.9em;
-  padding: 0.1em 0.35em;
-  border-radius: 6px;
-  background: color-mix(in oklab, var(--fg) 8%, transparent);
+.prose li + li {
+  margin-top: 0.45em;
 }
 
-/* Page-load veil for the hero: words rise out of their masks. */
-[data-hero-mask] {
+/* ── The call demo ─────────────────────────────────────────────────────── */
+
+/* The deadline bar fills over the "waiting" step. */
+.demo-bar {
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+.demo-bar[data-run] {
+  animation: demo-fill var(--demo-wait, 2600ms) linear forwards;
+}
+.demo-bar[data-done] {
+  transform: scaleX(1);
+}
+@keyframes demo-fill {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* The grade lands like a rubber stamp: once, with a little overshoot. */
+.demo-stamp {
+  transform: rotate(-6deg);
+}
+.demo-stamp[data-land] {
+  animation: demo-stamp 520ms var(--ease) both;
+}
+@keyframes demo-stamp {
+  from {
+    opacity: 0;
+    transform: rotate(-14deg) scale(1.9);
+  }
+  60% {
+    opacity: 1;
+    transform: rotate(-4deg) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-6deg) scale(1);
+  }
+}
+
+/* Hero: lines rise out of their masks on load (set up by HeroEntrance). */
+[data-mask] {
   display: block;
   overflow: hidden;
-  padding-bottom: 0.08em;
-}
-
-/* ── Type ──────────────────────────────────────────────────────────────── */
-
-.l-display {
-  font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.035em;
-  line-height: 0.98;
-  font-kerning: normal;
-  text-wrap: balance;
-}
-
-.l-hero-title {
-  font-size: clamp(2.3rem, 0.7rem + 5vw, 6rem);
-}
-
-.l-section-title {
-  font-size: clamp(1.8rem, 0.95rem + 3vw, 4.25rem);
-  line-height: 1.02;
-}
-
-.l-card-title {
-  font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  font-size: clamp(1.15rem, 1rem + 0.5vw, 1.45rem);
-  line-height: 1.12;
-}
-
-.l-lede {
-  font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
-  line-height: 1.6;
-  color: var(--fg-2);
-  max-width: 60ch;
-}
-
-.l-kicker {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--fg-3);
-}
-
-/* ── Liquid glass ─────────────────────────────────────────────────────── */
-
-/*
- * The glass recipe: translucent fill, strong backdrop blur with a saturation
- * lift (so the render behind reads as liquid, not frosted plastic), a
- * hairline border, and a specular highlight along the top edge drawn with an
- * inset shadow. Neutral shade only; no coloured light.
- */
-.l-glass {
-  background: linear-gradient(180deg, var(--l-glass-fill-hi), var(--l-glass-fill));
-  border: 1px solid var(--l-glass-line);
-  box-shadow:
-    inset 0 1px 0 var(--l-glass-edge),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.02),
-    var(--l-glass-shade);
-  -webkit-backdrop-filter: blur(28px) saturate(170%);
-  backdrop-filter: blur(28px) saturate(170%);
-}
-
-/* Kept for markup compatibility: a ring is now just the glass hairline. */
-.l-ring {
-  position: relative;
-}
-
-/* Tilt targets ease back when the pointer leaves. */
-[data-tilt] {
-  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-  transition: transform 600ms var(--l-ease);
-  will-change: transform;
-}
-[data-magnetic] {
-  transform: translate3d(var(--tx, 0px), var(--ty, 0px), 0);
-  transition:
-    transform 500ms var(--l-ease),
-    background-color 300ms var(--l-ease),
-    color 300ms var(--l-ease);
-}
-
-/* ── Buttons ───────────────────────────────────────────────────────────── */
-
-.l-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  height: 3.25rem;
-  padding: 0 1.6rem;
-  border-radius: 999px;
-  font-size: 0.9375rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-  transition:
-    transform 500ms var(--l-ease),
-    background-color 300ms var(--l-ease),
-    border-color 300ms var(--l-ease),
-    color 300ms var(--l-ease);
-}
-.l-btn:focus-visible {
-  outline: 2px solid var(--fg);
-  outline-offset: 3px;
-}
-.l-btn-primary {
-  color: var(--bg);
-  background: var(--fg);
-}
-.l-btn-primary:hover {
-  background: color-mix(in oklab, var(--fg) 86%, var(--bg));
-}
-.l-btn-ghost {
-  color: var(--fg);
-  background: linear-gradient(180deg, var(--l-glass-fill-hi), var(--l-glass-fill));
-  border: 1px solid var(--l-glass-line);
-  box-shadow: inset 0 1px 0 var(--l-glass-edge);
-  -webkit-backdrop-filter: blur(20px) saturate(170%);
-  backdrop-filter: blur(20px) saturate(170%);
-}
-.l-btn-ghost:hover {
-  border-color: var(--border-hi);
-}
-/* ── Small parts ──────────────────────────────────────────────────────── */
-
-.l-live-dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 999px;
-  background: var(--up);
-}
-
-/* Edge section: flow dashes travel toward the token. */
-.l-flow-dash {
-  animation: l-flow 3s linear infinite;
-}
-@keyframes l-flow {
-  to {
-    stroke-dashoffset: -112;
-  }
-}
-
-/*
- * The footer wordmark: the name at page width, filled (never stroked — a
- * stroke traces the variable font's overlapping contours) and fading from a
- * faint ink at the top into the page ground, like type sunk into glass.
- */
-.l-wordmark {
-  background-image: linear-gradient(
-    180deg,
-    color-mix(in oklab, var(--fg) 16%, transparent) 0%,
-    color-mix(in oklab, var(--fg) 7%, transparent) 55%,
-    transparent 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .l-flow-dash {
-    animation: none;
-  }
-  [data-tilt],
-  [data-magnetic] {
-    transform: none !important;
-  }
-}
-
-/* ── Header capsule ───────────────────────────────────────────────────── */
-/*
- * The capsule carries more tint than a card: it floats over headlines, and
- * a blurred white headline behind thin glass reads as a smear.
- *
- * Its fill and blur live on a pseudo-element, NOT on the capsule itself:
- * an element with `backdrop-filter` becomes a backdrop root, and the
- * dropdown panels nested inside it could then only blur the capsule, not
- * the page. With the glass on ::before the panels blur the page for real.
- */
-.l-nav {
-  position: relative;
-  background: transparent;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-}
-.l-nav::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  background: color-mix(in oklab, var(--bg) 62%, transparent);
-  -webkit-backdrop-filter: blur(22px) saturate(180%);
-  backdrop-filter: blur(22px) saturate(180%);
-  transition: background-color 500ms var(--l-ease);
-}
-.l-nav[data-tight]::before {
-  background: color-mix(in oklab, var(--bg) 78%, transparent);
-}
-
-/* ── Scroll-driven reveals ────────────────────────────────────────────── */
-/*
- * Set by LandingReveal when the browser supports view timelines. Copy rises
- * in as it enters and settles by the time it is a third of the way up; the
- * animation is bound to scroll position, so scrolling back up plays it in
- * reverse. Frames (video, panels) scale in from slightly smaller.
- */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    /* A fixed scroll distance, not a share of the element: a tall table or
-       chart used to stay half-revealed (soft, see-through) for its whole
-       height while it was read. */
-    [data-scroll-driven] [data-reveal] {
-      animation: l-rise linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 220px;
-    }
-    [data-scroll-driven] [data-reveal-frame] {
-      animation: l-settle linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 260px;
-    }
-  }
-}
-/* No blur and no scale: both soften text and charts mid-scroll, and a
-   filter on a parent breaks the glass (backdrop-filter) of panels inside. */
-@keyframes l-rise {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 36px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-@keyframes l-settle {
-  from {
-    opacity: 0;
-    transform: scale(0.94);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* Chrome type: polished silver clipped to the letters. Reflective, not lit. */
-.l-chrome {
-  background-image: linear-gradient(
-    180deg,
-    #fdfdff 0%,
-    #c9cbd3 22%,
-    #6b6e78 46%,
-    #f1f2f6 52%,
-    #9a9da8 70%,
-    #e7e8ee 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-:root:not([data-theme='dark']) .l-chrome {
-  background-image: linear-gradient(
-    180deg,
-    #2a2b31 0%,
-    #74777f 30%,
-    #15161a 50%,
-    #8c8f97 62%,
-    #3a3c43 100%
-  );
-}
-
-/* Dropdown panels: solid, never see-through (owner's call) — the page
-   surface colour with the glass hairline and specular top edge, so the
-   panel still reads as part of the capsule's family. */
-.l-menu {
-  background: var(--surface);
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
-}
-/* ── Ticks: a check that draws itself in as its list scrolls into view ─── */
-.l-tick {
-  display: inline-grid;
-  flex: none;
-  place-items: center;
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 999px;
-  color: var(--l-tone, var(--fg));
-  background: color-mix(in oklab, var(--l-tone, var(--fg)) 13%, transparent);
-  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--l-tone, var(--fg)) 32%, transparent);
-}
-.l-tick path {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 0;
-}
-
-@keyframes l-tick-pop {
-  from {
-    opacity: 0;
-    transform: scale(0.55);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-@keyframes l-tick-draw {
-  from { stroke-dashoffset: 1; }
-  to { stroke-dashoffset: 0; }
-}
-
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .l-tick {
-      animation: l-tick-pop linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 100%;
-    }
-    .l-tick path {
-      animation: l-tick-draw linear both;
-      animation-timeline: view();
-      animation-range: entry 40% cover 35%;
-    }
-  }
+  padding-bottom: 0.06em;
+  margin-bottom: -0.06em;
 }
 
 @media (prefers-reduced-motion: reduce) {

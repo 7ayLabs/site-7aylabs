@@ -38,32 +38,31 @@
       "docs": "Documentación",
       "pricing": "Planes",
       "rights": "© {year} 7ayLabs. Todos los derechos reservados.",
-      "made": "Hecho por el equipo que hace Vizzor."
-    }
+      "line": "Pregúntale algo. Vuelve cuando venza el plazo.",
+      "talk": "Escríbenos",
+      "xLab": "7ayLabs en X",
+      "xVizzor": "Vizzor en X"
+    },
+    "index": "En esta página"
   },
   "home": {
     "hero": {
-      "pill": "Vizzor ya está disponible",
       "titleA": "Inteligencia que",
       "titleB": "puedes comprobar.",
       "sub": "7ayLabs es el laboratorio detrás de Vizzor: inteligencia cripto que pone un objetivo, un plazo y un nivel de confianza en cada predicción, y luego la califica en público.",
       "ctaPrimary": "Abrir Vizzor",
       "ctaSecondary": "Ver qué hace",
-      "newTab": "se abre en una pestaña nueva",
-      "card": {
-        "label": "Vizzor en resumen",
-        "live": "En vivo",
-        "title": "Inteligencia cripto, calificada en público.",
-        "line": "Predicciones de precio, movimientos de ballenas y análisis on-chain en un solo lugar.",
-        "chains": "blockchains leídas en vivo",
-        "editions": "ediciones del modelo",
-        "languages": "idiomas"
-      }
+      "newTab": "se abre en una pestaña nueva"
     },
-    "flagship": {
-      "kicker": "Nuestro producto",
-      "titleA": "Vizzor hace predicciones.",
-      "titleB": "Y después te muestra el resultado.",
+    "index": {
+      "vizzor": "El producto",
+      "reach": "Cobertura",
+      "method": "Cómo trabajamos",
+      "updates": "Novedades",
+      "faq": "Preguntas"
+    },
+    "product": {
+      "title": "Vizzor hace predicciones. Y después te muestra el resultado.",
       "lede": "Pregunta por cualquier token, wallet o acción tokenizada con tus propias palabras. Vizzor lee el precio, el dinero que se mueve on-chain y la historia detrás, y responde con una predicción que puedes exigirle.",
       "ctaSite": "Ir a vizzor.ai",
       "ctaMore": "Cómo funciona",
@@ -86,8 +85,153 @@
         }
       }
     },
+    "reach": {
+      "title": "{count} blockchains, leídas en vivo.",
+      "lede": "Vizzor lee cada red directamente, así una wallet o una transferencia se consulta donde realmente ocurrió."
+    },
+    "method": {
+      "title": "Cuatro reglas con las que construimos.",
+      "lede": "Son la razón por la que Vizzor publica sus fallos.",
+      "items": {
+        "receipts": {
+          "title": "Recibos antes que promesas",
+          "line": "Si decimos que algo funciona, hay un registro público que muestra si funcionó."
+        },
+        "plain": {
+          "title": "Palabras simples",
+          "line": "Nadie debería necesitar un manual para hacer una pregunta ni para entender la respuesta."
+        },
+        "privacy": {
+          "title": "Recoger menos",
+          "line": "Guardamos los datos que una función necesita y nada más. Este sitio no usa cookies de rastreo."
+        },
+        "ship": {
+          "title": "Publicar y mostrar el trabajo",
+          "line": "Versiones pequeñas y frecuentes, cada una explicada para que veas qué cambió."
+        }
+      }
+    },
+    "updates": {
+      "title": "Lo que publicamos.",
+      "all": "Todas las novedades"
+    },
+    "faq": {
+      "title": "Las respuestas cortas."
+    }
+  },
+  "coverage": {
+    "sources": "Lee datos de",
+    "sourcesNote": "Fuentes de datos de mercado y on-chain que consulta Vizzor. Son integraciones, no avales.",
+    "builtWith": "Funciona con",
+    "builtWithNote": "El proveedor del modelo detrás de las respuestas de Vizzor y la red en la que acepta pagos.",
+    "partners": "Comunidades aliadas",
+    "partnersNote": "Comunidades con sala y beneficios dentro de Vizzor. Solo aparecen alianzas confirmadas."
+  },
+  "log": {
+    "tags": {
+      "product": "Vizzor",
+      "company": "7ayLabs"
+    }
+  },
+  "questions": {
+    "what": {
+      "q": "¿Qué es 7ayLabs?",
+      "a": "Un laboratorio de software independiente. Diseñamos, construimos y operamos nuestros propios productos. El primero es Vizzor."
+    },
+    "vizzor": {
+      "q": "¿Qué es Vizzor?",
+      "a": "Inteligencia cripto. Preguntas por un token, una wallet o una acción tokenizada y responde con una predicción de precio, un plan de operación y la evidencia on-chain. Cada predicción tiene un plazo y se califica en público cuando llega."
+    },
+    "relation": {
+      "q": "¿Cómo se relacionan 7ayLabs y Vizzor?",
+      "a": "7ayLabs es la empresa. Vizzor es el producto que construimos y operamos. Este sitio trata de la empresa; el producto vive en vizzor.ai."
+    },
+    "free": {
+      "q": "¿Puedo probar Vizzor gratis?",
+      "a": "Sí. Hay un plan gratuito, y los planes de pago añaden modelos más profundos y más respuestas al día. Los planes actuales están en vizzor.ai."
+    },
+    "work": {
+      "q": "¿Cómo contacto al equipo?",
+      "a": "Usa la página de contacto para alianzas, prensa y todo lo relacionado con la empresa. Para ayuda con Vizzor, empieza por su documentación."
+    }
+  },
+  "demo": {
+    "title": "Una predicción, de principio a fin",
+    "youAsk": "Tú preguntas",
+    "direction": "Dirección",
+    "up": "Sube",
+    "down": "Baja",
+    "target": "Objetivo",
+    "deadline": "Plazo",
+    "confidence": "Confianza",
+    "notYet": "Aún sin calificar.",
+    "waiting": "Esperando a que venza el plazo.",
+    "gradedRight": "Venció el plazo. La predicción acertó.",
+    "gradedWrong": "Venció el plazo. La predicción falló, y se queda en el historial.",
+    "right": "Acierto",
+    "wrong": "Fallo",
+    "play": "Reproducir el ejemplo",
+    "pause": "Pausar el ejemplo",
+    "steps": {
+      "ask": "Pregunta",
+      "call": "Predicción",
+      "wait": "Espera",
+      "grade": "Nota"
+    },
+    "note": "Una ilustración con valores inventados, no una predicción real.",
+    "rounds": [
+      {
+        "question": "ETH, próximas 4 horas",
+        "direction": "up",
+        "target": "+2,4 %",
+        "deadline": "4 horas",
+        "confidence": "68 %"
+      },
+      {
+        "question": "SOL, próximo día",
+        "direction": "down",
+        "target": "−3,1 %",
+        "deadline": "24 horas",
+        "confidence": "61 %"
+      }
+    ]
+  },
+  "vizzorPage": {
+    "meta": {
+      "title": "Vizzor",
+      "description": "Vizzor es inteligencia cripto de 7ayLabs: predicciones de precio con objetivo, plazo y confianza, planes de operación, movimientos de ballenas y análisis on-chain. Cada predicción se califica en público."
+    },
+    "title": "Inteligencia cripto, calificada en público.",
+    "lede": "Vizzor lee el precio, el flujo on-chain y la narrativa detrás de cualquier token, wallet o acción tokenizada. Cada predicción lleva un objetivo, un plazo y un nivel de confianza, y se califica cuando vence el plazo.",
+    "ctaApp": "Abrir la app",
+    "ctaSite": "Ir a vizzor.ai",
+    "index": {
+      "how": "Cómo funciona una predicción",
+      "desks": "Las cuatro mesas",
+      "editions": "El modelo",
+      "features": "Alrededor de la predicción",
+      "record": "El historial",
+      "reach": "Cobertura"
+    },
+    "how": {
+      "title": "Pregunta. Recibe una predicción. Mira la nota.",
+      "lede": "Tres pasos, y el tercero es el que casi todas las herramientas se saltan.",
+      "steps": {
+        "ask": {
+          "title": "Pregunta con tus palabras",
+          "line": "Algo como «ETH, 4 horas, $500 a 10x». Sin formularios ni lenguaje de consultas."
+        },
+        "call": {
+          "title": "Recibe una predicción y un plan",
+          "line": "Una dirección, un objetivo, un plazo y un nivel de confianza, con una entrada, dos tomas de ganancias y un stop."
+        },
+        "grade": {
+          "title": "Mira cómo terminó",
+          "line": "Cuando llega el plazo, la predicción se marca como acierto o fallo y se suma al historial público."
+        }
+      }
+    },
     "desks": {
-      "kicker": "Dentro de Vizzor",
       "title": "Cuatro mesas, un mismo piso.",
       "lede": "Cada mesa hace bien una sola cosa, y todas alimentan la predicción.",
       "items": {
@@ -113,120 +257,7 @@
         }
       }
     },
-    "reach": {
-      "kicker": "Cobertura",
-      "title": "{count} blockchains, leídas en vivo.",
-      "lede": "Vizzor lee cada red directamente, así una wallet o una transferencia se consulta donde realmente ocurrió.",
-      "chainsLabel": "Las {count} blockchains que lee Vizzor",
-      "sources": "Lee datos de",
-      "sourcesNote": "Fuentes de datos de mercado y on-chain que consulta Vizzor. Son integraciones, no avales.",
-      "builtWith": "Funciona con",
-      "builtWithNote": "El proveedor del modelo detrás de las respuestas de Vizzor y la red en la que acepta pagos.",
-      "partners": "Comunidades aliadas",
-      "partnersNote": "Comunidades con sala y beneficios dentro de Vizzor. Solo aparecen alianzas confirmadas.",
-      "newTab": "se abre en una pestaña nueva"
-    },
-    "kinetic": {
-      "words": ["Predicciones calificadas", "Ballenas", "On-chain", "Dinero inteligente", "Recibos", "Palabras simples"]
-    },
-    "updates": {
-      "kicker": "Novedades",
-      "title": "Lo que publicamos.",
-      "all": "Todas las novedades",
-      "read": "Leer",
-      "tags": {
-        "product": "Vizzor",
-        "company": "7ayLabs"
-      }
-    },
-    "faq": {
-      "kicker": "Preguntas",
-      "title": "Las respuestas cortas.",
-      "items": {
-        "what": {
-          "q": "¿Qué es 7ayLabs?",
-          "a": "Un laboratorio de software independiente. Diseñamos, construimos y operamos nuestros propios productos. El primero es Vizzor."
-        },
-        "vizzor": {
-          "q": "¿Qué es Vizzor?",
-          "a": "Inteligencia cripto. Preguntas por un token, una wallet o una acción tokenizada y responde con una predicción de precio, un plan de operación y la evidencia on-chain. Cada predicción tiene un plazo y se califica en público cuando llega."
-        },
-        "relation": {
-          "q": "¿Cómo se relacionan 7ayLabs y Vizzor?",
-          "a": "7ayLabs es la empresa. Vizzor es el producto que construimos y operamos. Este sitio trata de la empresa; el producto vive en vizzor.ai."
-        },
-        "free": {
-          "q": "¿Puedo probar Vizzor gratis?",
-          "a": "Sí. Hay un plan gratuito, y los planes de pago añaden modelos más profundos y más respuestas al día. Los planes actuales están en vizzor.ai."
-        },
-        "work": {
-          "q": "¿Cómo contacto al equipo?",
-          "a": "Usa la página de contacto para alianzas, prensa y todo lo relacionado con la empresa. Para ayuda con Vizzor, empieza por su documentación."
-        }
-      }
-    },
-    "closing": {
-      "title": "Haz tu primera predicción.",
-      "lede": "Abre Vizzor, pregunta por el activo que sigues y vuelve cuando venza el plazo.",
-      "ctaPrimary": "Abrir Vizzor",
-      "ctaSecondary": "Escríbenos"
-    }
-  },
-  "principles": {
-    "kicker": "Cómo trabajamos",
-    "title": "Cuatro reglas con las que construimos.",
-    "lede": "Son la razón por la que Vizzor publica sus fallos.",
-    "items": {
-      "receipts": {
-        "title": "Recibos antes que promesas",
-        "line": "Si decimos que algo funciona, hay un registro público que muestra si funcionó."
-      },
-      "plain": {
-        "title": "Palabras simples",
-        "line": "Nadie debería necesitar un manual para hacer una pregunta ni para entender la respuesta."
-      },
-      "privacy": {
-        "title": "Recoger menos",
-        "line": "Guardamos los datos que una función necesita y nada más. Este sitio no usa cookies de rastreo."
-      },
-      "ship": {
-        "title": "Publicar y mostrar el trabajo",
-        "line": "Versiones pequeñas y frecuentes, cada una explicada para que veas qué cambió."
-      }
-    }
-  },
-  "vizzorPage": {
-    "meta": {
-      "title": "Vizzor",
-      "description": "Vizzor es inteligencia cripto de 7ayLabs: predicciones de precio con objetivo, plazo y confianza, planes de operación, movimientos de ballenas y análisis on-chain. Cada predicción se califica en público."
-    },
-    "kicker": "Vizzor, de 7ayLabs",
-    "titleA": "Inteligencia cripto,",
-    "titleB": "calificada en público.",
-    "lede": "Vizzor lee el precio, el flujo on-chain y la narrativa detrás de cualquier token, wallet o acción tokenizada. Cada predicción lleva un objetivo, un plazo y un nivel de confianza, y se califica cuando vence el plazo.",
-    "ctaApp": "Abrir la app",
-    "ctaSite": "Ir a vizzor.ai",
-    "how": {
-      "kicker": "Cómo funciona una predicción",
-      "title": "Pregunta. Recibe una predicción. Mira la nota.",
-      "lede": "Tres pasos, y el tercero es el que casi todas las herramientas se saltan.",
-      "steps": {
-        "ask": {
-          "title": "Pregunta con tus palabras",
-          "line": "Algo como «ETH, 4 horas, $500 a 10x». Sin formularios ni lenguaje de consultas."
-        },
-        "call": {
-          "title": "Recibe una predicción y un plan",
-          "line": "Una dirección, un objetivo, un plazo y un nivel de confianza, con una entrada, dos tomas de ganancias y un stop."
-        },
-        "grade": {
-          "title": "Mira cómo terminó",
-          "line": "Cuando llega el plazo, la predicción se marca como acierto o fallo y se suma al historial público."
-        }
-      }
-    },
     "editions": {
-      "kicker": "El modelo",
       "title": "Un modelo, tres ediciones.",
       "lede": "El modelo detrás de Vizzor se llama ChronoVisor. Viene en tres ediciones, una por plan.",
       "plans": {
@@ -243,7 +274,6 @@
       "pricing": "Ver los planes actuales"
     },
     "features": {
-      "kicker": "También incluye",
       "title": "Todo lo que rodea a la predicción.",
       "items": {
         "whales": {
@@ -285,7 +315,6 @@
       }
     },
     "receipts": {
-      "kicker": "Recibos",
       "title": "Un historial que nadie puede editar en silencio.",
       "lede": "Un historial solo vale algo si los fallos siguen ahí. En el de Vizzor siguen.",
       "points": {
@@ -293,12 +322,6 @@
         "sealed": "El historial se sella todos los días, así que las predicciones pasadas no se pueden cambiar después.",
         "misses": "Los fallos se muestran junto a los aciertos, con el mismo peso."
       }
-    },
-    "closing": {
-      "title": "Compruébalo tú mismo.",
-      "lede": "La forma más rápida de juzgar a Vizzor es preguntarle algo y volver cuando venza el plazo.",
-      "ctaPrimary": "Abrir Vizzor",
-      "ctaSecondary": "Escríbenos"
     }
   },
   "aboutPage": {
@@ -306,23 +329,34 @@
       "title": "Nosotros",
       "description": "7ayLabs es un laboratorio de software independiente que construye y opera Vizzor. En qué creemos y cómo trabajamos."
     },
-    "kicker": "Sobre 7ayLabs",
     "title": "Hacemos cosas que puedes comprobar.",
     "lede": "7ayLabs es un laboratorio de software independiente. Diseñamos, construimos y operamos nuestros propios productos, y preferimos mostrar un resultado antes que describirlo.",
+    "index": {
+      "mission": "Por qué existimos",
+      "method": "Cómo trabajamos",
+      "facts": "Lo básico"
+    },
     "mission": {
-      "kicker": "Por qué existimos",
       "title": "Afirmar con seguridad es barato. Probarlo no.",
       "p1": "Los mercados están llenos de predicciones que nadie vuelve a revisar. Las que aciertan se repiten; las que fallan desaparecen.",
       "p2": "Creemos que el software puede hacerlo mejor. Una herramienta que da consejos también debería llevar la cuenta, a la vista de quienes confían en ella.",
       "p3": "Esa idea se convirtió en Vizzor, nuestro primer producto. En eso trabajamos todos los días."
     },
     "facts": {
-      "kicker": "En resumen",
       "title": "Lo básico.",
-      "product": { "k": "Producto" },
-      "role": { "k": "Qué hacemos", "v": "Construir y operar Vizzor" },
-      "code": { "k": "Código" },
-      "news": { "k": "Noticias" }
+      "product": {
+        "k": "Producto"
+      },
+      "role": {
+        "k": "Qué hacemos",
+        "v": "Construir y operar Vizzor"
+      },
+      "code": {
+        "k": "Código"
+      },
+      "news": {
+        "k": "Noticias"
+      }
     },
     "ctaContact": "Contáctanos",
     "ctaVizzor": "Sobre Vizzor"
@@ -332,7 +366,6 @@
       "title": "Novedades",
       "description": "Lanzamientos de producto y noticias de 7ayLabs y Vizzor."
     },
-    "kicker": "Novedades",
     "title": "Lo que publicamos.",
     "lede": "Versiones de Vizzor y noticias del laboratorio, de la más reciente a la más antigua.",
     "empty": "Todavía no hay publicaciones.",
@@ -344,7 +377,6 @@
       "title": "Contacto",
       "description": "Escribe a 7ayLabs sobre alianzas, prensa, seguridad o cualquier tema de la empresa."
     },
-    "kicker": "Contacto",
     "title": "Escríbenos.",
     "lede": "Alianzas, prensa, reportes de seguridad o una pregunta sobre la empresa. Una persona lee cada mensaje.",
     "elsewhere": {
@@ -394,7 +426,6 @@
       "title": "Privacidad",
       "description": "Qué recoge 7aylabs.com, para qué, y cómo pedir que se elimine."
     },
-    "kicker": "Legal",
     "title": "Privacidad",
     "updated": "Última actualización: {date}",
     "intro": "Esta página cubre solo 7aylabs.com. Vizzor tiene su propia política de privacidad en vizzor.ai, porque es un servicio distinto que maneja datos distintos.",

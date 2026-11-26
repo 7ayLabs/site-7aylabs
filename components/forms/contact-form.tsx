@@ -8,7 +8,7 @@
  */
 import { useId, useRef, useState, type FormEvent } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { ArrowUpRight, Check, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 
 const TOPICS = ['general', 'vizzor', 'partnership', 'press', 'security'] as const;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -81,11 +81,11 @@ export function ContactForm() {
   });
   const err = (f: Field) =>
     errors[f] ? (
-      <p id={`${id}-${f}-err`} className="mt-1.5 text-[13.5px] text-[var(--danger)]">
+      <p id={`${id}-${f}-err`} className="mt-1.5 text-[13.5px] text-[var(--wrong)]">
         {errors[f]}
       </p>
     ) : null;
-  const labelCls = 'block text-[14px] font-semibold text-[var(--fg)]';
+  const labelCls = 'block text-[15.5px] font-semibold text-[var(--fg)]';
 
   return (
     <form ref={formRef} onSubmit={onSubmit} noValidate className="grid gap-5">
@@ -94,7 +94,7 @@ export function ContactForm() {
           <label htmlFor={`${id}-name`} className={labelCls}>
             {t('name')}
           </label>
-          <input id={`${id}-name`} name="name" type="text" required autoComplete="name" maxLength={120} className="l-field mt-2" {...fieldProps('name')} />
+          <input id={`${id}-name`} name="name" type="text" required autoComplete="name" maxLength={120} className="field mt-2" {...fieldProps('name')} />
           {err('name')}
         </div>
         <div>
@@ -109,7 +109,7 @@ export function ContactForm() {
             autoComplete="email"
             inputMode="email"
             maxLength={254}
-            className="l-field mt-2"
+            className="field mt-2"
             {...fieldProps('email')}
           />
           {err('email')}
@@ -120,7 +120,7 @@ export function ContactForm() {
         <label htmlFor={`${id}-topic`} className={labelCls}>
           {t('topic')}
         </label>
-        <select id={`${id}-topic`} name="topic" defaultValue="general" className="l-field mt-2 appearance-none">
+        <select id={`${id}-topic`} name="topic" defaultValue="general" className="field mt-2 appearance-none">
           {TOPICS.map((k) => (
             <option key={k} value={k}>
               {t(`topics.${k}`)}
@@ -133,7 +133,7 @@ export function ContactForm() {
         <label htmlFor={`${id}-message`} className={labelCls}>
           {t('message')}
         </label>
-        <textarea id={`${id}-message`} name="message" required rows={6} maxLength={4000} className="l-field mt-2 resize-y" {...fieldProps('message')} />
+        <textarea id={`${id}-message`} name="message" required rows={6} maxLength={4000} className="field mt-2 resize-y" {...fieldProps('message')} />
         {err('message')}
       </div>
 
@@ -141,22 +141,16 @@ export function ContactForm() {
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-[40ch] text-[13.5px] leading-relaxed text-[var(--fg-3)]">{t('privacy')}</p>
-        <button type="submit" disabled={state === 'sending'} className="l-btn l-btn-primary w-full disabled:opacity-60 sm:w-auto">
+        <button type="submit" disabled={state === 'sending'} className="btn btn-ink w-full disabled:opacity-60 sm:w-auto">
           <span>{state === 'sending' ? t('sending') : t('submit')}</span>
-          {state === 'sending' ? (
-            <Loader2 size={16} aria-hidden className="animate-spin" />
-          ) : state === 'done' ? (
-            <Check size={16} strokeWidth={2.5} aria-hidden />
-          ) : (
-            <ArrowUpRight size={16} strokeWidth={2.25} aria-hidden />
-          )}
+          {state === 'sending' ? <Loader2 size={16} aria-hidden className="animate-spin" /> : null}
         </button>
       </div>
 
       <p
         role="status"
         aria-live="polite"
-        className={`min-h-6 text-[15px] font-medium ${state === 'error' ? 'text-[var(--danger)]' : 'text-[var(--fg)]'}`}
+        className={`min-h-6 text-[15px] font-medium ${state === 'error' ? 'text-[var(--wrong)]' : 'text-[var(--fg)]'}`}
       >
         {status}
       </p>

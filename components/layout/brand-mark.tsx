@@ -24,13 +24,3 @@ export function BrandMark({ className = 'h-7 w-auto', priority = false }: { clas
     </>
   );
 }
-
-/** The Vizzor mark, as its own site draws it. */
-export function VizzorMark({ className = 'h-6 w-auto' }: { className?: string }) {
-  return (
-    <>
-      <Image src="/brand/vizzor_darkicon.png" alt="" width={364} height={535} className={`block dark:hidden ${className}`} />
-      <Image src="/brand/vizzor_icon.png" alt="" width={364} height={535} className={`hidden dark:block ${className}`} />
-    </>
-  );
-}

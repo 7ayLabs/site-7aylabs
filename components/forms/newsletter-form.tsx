@@ -8,7 +8,7 @@
  */
 import { useId, useState, type FormEvent } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { ArrowRight, Check, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 
 type State = 'idle' | 'sending' | 'done' | 'error';
 
@@ -47,8 +47,8 @@ export function NewsletterForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="w-full max-w-[440px]">
-      <label htmlFor={`${id}-email`} className="text-[14px] font-semibold text-[var(--fg)]">
+    <form onSubmit={onSubmit} noValidate className="w-full max-w-[480px]">
+      <label htmlFor={`${id}-email`} className="text-[16.5px] font-semibold text-[var(--fg)]">
         {t('label')}
       </label>
       <div className="mt-2 flex gap-2">
@@ -62,30 +62,23 @@ export function NewsletterForm() {
           placeholder={t('placeholder')}
           aria-invalid={state === 'error' ? true : undefined}
           aria-describedby={`${id}-status`}
-          className="l-field !rounded-full"
+          className="field"
         />
         {/* Honeypot: off-screen, out of the tab order, ignored by assistive tech. */}
         <input type="text" name="company" tabIndex={-1} autoComplete="off" aria-hidden className="absolute -left-[9999px] h-0 w-0 opacity-0" />
         <button
           type="submit"
           disabled={state === 'sending'}
-          aria-label={t('submit')}
-          className="l-btn l-btn-primary !w-[3.25rem] shrink-0 !px-0 disabled:opacity-60"
+          className="btn btn-ink shrink-0 disabled:opacity-60"
         >
-          {state === 'sending' ? (
-            <Loader2 size={18} aria-hidden className="animate-spin" />
-          ) : state === 'done' ? (
-            <Check size={18} strokeWidth={2.5} aria-hidden />
-          ) : (
-            <ArrowRight size={18} strokeWidth={2.25} aria-hidden />
-          )}
+          {state === 'sending' ? <Loader2 size={18} aria-hidden className="animate-spin" /> : t('submit')}
         </button>
       </div>
       <p
         id={`${id}-status`}
         role="status"
         aria-live="polite"
-        className={`mt-2 min-h-5 text-[13.5px] ${state === 'error' ? 'text-[var(--danger)]' : 'text-[var(--fg-2)]'}`}
+        className={`mt-2 min-h-5 text-[13.5px] ${state === 'error' ? 'text-[var(--wrong)]' : 'text-[var(--fg-2)]'}`}
       >
         {message || t('hint')}
       </p>

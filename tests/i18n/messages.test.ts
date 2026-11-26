@@ -3,15 +3,16 @@ import en from '@/messages/en.json';
 import es from '@/messages/es.json';
 import fr from '@/messages/fr.json';
 
-type Tree = { [k: string]: Tree | string | string[] };
+type Tree = { [k: string]: Tree | string | Tree[] };
 
+// Lists are walked by position, so `rounds.0.question` is a key like any other.
 function keys(node: Tree, prefix = ''): string[] {
   return Object.entries(node).flatMap(([k, v]) =>
-    typeof v === 'string' || Array.isArray(v) ? [`${prefix}${k}`] : keys(v, `${prefix}${k}.`),
+    typeof v === 'string' ? [`${prefix}${k}`] : keys(v as Tree, `${prefix}${k}.`),
   );
 }
 function leaves(node: Tree): string[] {
-  return Object.values(node).flatMap((v) => (typeof v === 'string' ? [v] : Array.isArray(v) ? v : leaves(v)));
+  return Object.values(node).flatMap((v) => (typeof v === 'string' ? [v] : leaves(v as Tree)));
 }
 const placeholders = (s: string) => (s.match(/\{[a-zA-Z]+\}/g) ?? []).sort().join(',');
 function at(node: Tree, key: string): unknown {
@@ -31,12 +32,11 @@ describe('messages', () => {
   it.each([
     ['es', es],
     ['fr', fr],
-  ])('%s keeps the same placeholders and list lengths', (_name, bundle) => {
+  ])('%s keeps the same placeholders', (_name, bundle) => {
     for (const k of base) {
       const a = at(en as Tree, k);
       const b = at(bundle as Tree, k);
-      if (Array.isArray(a)) expect((b as string[]).length, k).toBe(a.length);
-      else expect(placeholders(b as string), k).toBe(placeholders(a as string));
+      expect(placeholders(b as string), k).toBe(placeholders(a as string));
     }
   });
 

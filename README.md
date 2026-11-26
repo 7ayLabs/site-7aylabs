@@ -6,7 +6,7 @@ The 7ayLabs company site, [7aylabs.com](https://7aylabs.com). It presents the co
 
 - Next.js 15 (App Router, standalone output), React 19, TypeScript (strict)
 - Tailwind CSS 4, with the design tokens in `app/globals.css`
-- GSAP for motion, raw WebGL for the page backdrop and the glass icons
+- One typeface (Archivo, two widths); GSAP for the single page-load sequence
 - next-intl: English (root), Spanish (`/es`), French (`/fr`)
 - SQLite (better-sqlite3) for newsletter sign-ups and contact messages
 - pnpm 9.15, Node 22
@@ -35,7 +35,7 @@ pnpm build
 |---|---|
 | `app/[locale]/` | Pages: home, `/vizzor`, `/about`, `/updates`, `/contact`, `/legal/privacy` |
 | `app/api/` | `contact`, `newsletter`, `health` |
-| `components/` | `home/` sections, `layout/` chrome, `landing/` motion and WebGL, `ui/` primitives, `forms/` |
+| `components/` | `site/` page sections and the call demo, `layout/` header and footer, `forms/`, `ui/` |
 | `content/updates/` | Update posts, one file per post and language: `<slug>.<locale>.mdx` |
 | `messages/` | All interface text, one JSON file per language |
 | `lib/site.ts` | Facts about the company and Vizzor shown on the site |

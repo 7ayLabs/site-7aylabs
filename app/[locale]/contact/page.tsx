@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { ArrowUpRight } from 'lucide-react';
 import type { Locale } from '@/i18n/routing';
 import { ContactForm } from '@/components/forms/contact-form';
-import { LandingReveal } from '@/components/landing/landing-reveal';
-import { WRAP } from '@/components/ui/section';
+import { WRAP } from '@/components/site/layout';
 import { pageMetadata } from '@/lib/seo';
 import { SITE, VIZZOR } from '@/lib/site';
 
@@ -20,58 +18,40 @@ export default async function ContactPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('contactPage');
+  const chrome = await getTranslations('chrome');
 
   const elsewhere = [
     { label: t('elsewhere.vizzorHelp'), href: VIZZOR.docs },
-    { label: 'X · 7ayLabs', href: SITE.x },
+    { label: chrome('footer.xLab'), href: SITE.x },
     { label: 'GitHub', href: SITE.github },
   ];
 
   return (
-    <section>
-      <LandingReveal>
-        <div className={`${WRAP} grid gap-12 pb-20 pt-20 sm:pb-32 sm:pt-28 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16`}>
-          <div>
-            <p data-reveal className="l-kicker">
-              {t('kicker')}
-            </p>
-            <h1 data-reveal className="l-display l-hero-title mt-5 text-[var(--fg)]">
-              {t('title')}
-            </h1>
-            <p data-reveal className="l-lede mt-8">
-              {t('lede')}
-            </p>
+    <section className={`${WRAP} grid gap-14 pb-24 pt-10 sm:pt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-20`}>
+      <div>
+        <h1 className="t-display t-hero sm:text-[clamp(4rem,8vw,8.5rem)] text-[var(--fg)]">{t('title')}</h1>
+        <p className="t-lede mt-8">{t('lede')}</p>
 
-            <div data-reveal className="mt-12">
-              <h2 className="l-kicker">{t('elsewhere.title')}</h2>
-              <ul className="mt-3">
-                {elsewhere.map((e) => (
-                  <li key={e.href} className="border-b border-[var(--l-hairline)]">
-                    <a
-                      href={e.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group flex min-h-14 items-center justify-between text-[16px] font-semibold text-[var(--fg)]"
-                    >
-                      {e.label}
-                      <ArrowUpRight
-                        size={16}
-                        strokeWidth={2}
-                        aria-hidden
-                        className="text-[var(--fg-3)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                      />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+        <h2 className="mt-12 text-[16.5px] font-semibold text-[var(--fg)]">{t('elsewhere.title')}</h2>
+        <ul className="mt-3 border-b border-[var(--line)]">
+          {elsewhere.map((e) => (
+            <li key={e.href} className="border-t border-[var(--line)]">
+              <a
+                href={e.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex min-h-14 items-center text-[1.15rem] text-[var(--fg)] transition-colors duration-200 hover:text-[var(--accent)]"
+              >
+                {e.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-          <div data-reveal className="l-glass self-start rounded-[32px] p-6 sm:p-10">
-            <ContactForm />
-          </div>
-        </div>
-      </LandingReveal>
+      <div className="self-start border-t-[3px] border-[var(--fg)] pt-8 lg:mt-4">
+        <ContactForm />
+      </div>
     </section>
   );
 }

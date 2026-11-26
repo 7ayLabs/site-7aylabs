@@ -68,7 +68,7 @@ export function MobileMenu() {
               className="fixed inset-0 z-50 flex flex-col bg-[var(--bg)] px-5 pb-8 pt-5 md:hidden"
             >
               <div className="flex items-center justify-between">
-                <span className="l-kicker">{t('menu.title')}</span>
+                <span className="t-note">{t('menu.title')}</span>
                 <button
                   type="button"
                   aria-label={t('menu.close')}
@@ -83,14 +83,14 @@ export function MobileMenu() {
                 {NAV_ITEMS.map((item) => {
                   const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
                   return (
-                    <li key={item.key} className="border-b border-[var(--l-hairline)]">
+                    <li key={item.key} className="border-b border-[var(--line)]">
                       <Link
                         href={item.href}
                         aria-current={active ? 'page' : undefined}
-                        className="l-display flex min-h-16 items-center justify-between py-4 text-[28px] text-[var(--fg)]"
+                        className="t-display flex min-h-16 items-center justify-between py-3 text-[44px] text-[var(--fg)]"
                       >
                         {t(`nav.${item.key}`)}
-                        {active ? <span aria-hidden className="h-2 w-2 rounded-full bg-[var(--fg)]" /> : null}
+                        {active ? <span aria-hidden className="h-2.5 w-2.5 bg-[var(--accent)]" /> : null}
                       </Link>
                     </li>
                   );
@@ -102,7 +102,7 @@ export function MobileMenu() {
                   <LanguageSwitch align="left" />
                   <ThemeToggle />
                 </div>
-                <a href={VIZZOR.app} target="_blank" rel="noopener noreferrer" className="l-btn l-btn-primary w-full">
+                <a href={VIZZOR.app} target="_blank" rel="noopener noreferrer" className="btn btn-ink w-full">
                   <span>{t('openVizzor')}</span>
                   <ArrowUpRight size={16} strokeWidth={2.25} aria-hidden />
                 </a>
