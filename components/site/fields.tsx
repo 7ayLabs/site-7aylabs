@@ -5,6 +5,7 @@
  */
 import { getTranslations } from 'next-intl/server';
 import { AppWindow, Blocks, BrainCircuit, Cpu } from 'lucide-react';
+import { GlassIcon } from './glass3d/glass-icon';
 
 const FIELDS = [
   { key: 'apps', Icon: AppWindow },
@@ -18,17 +19,11 @@ export async function Fields() {
 
   return (
     <ul className="fan" data-stagger>
-      {FIELDS.map(({ key, Icon }, i) => (
+      {FIELDS.map(({ key, Icon }) => (
         <li key={key} data-reveal tabIndex={0} className="glass glass-live flex flex-col overflow-hidden rounded-[26px] p-7 focus-visible:outline-offset-4">
-          <span
-            aria-hidden
-            className="float grid h-16 w-16 place-items-center rounded-[18px] bg-[var(--accent-fill)] text-[var(--on-accent)] shadow-[0_18px_30px_-14px_var(--accent-fill)]"
-            style={{ '--d': `${i * -1900}ms` } as React.CSSProperties}
-          >
-            <Icon size={28} strokeWidth={1.5} />
-          </span>
-          <h3 className="t-display mt-auto pt-12 text-[clamp(2.4rem,3.4vw,3.4rem)] text-[var(--fg)]">{t(`${key}.title`)}</h3>
-          <p className="mt-3 min-w-[15rem] max-w-[34ch] text-[16.5px] leading-relaxed text-[var(--fg-2)]">{t(`${key}.line`)}</p>
+          <GlassIcon shape={key} size={150} fallback={<Icon size={44} strokeWidth={1.3} />} className="-ml-4 -mt-3" />
+          <h3 className="t-display mt-auto pt-6 text-[clamp(1.6rem,2.1vw,2.2rem)] text-[var(--fg)]">{t(`${key}.title`)}</h3>
+          <p className="mt-3 max-w-[34ch] text-[16.5px] leading-relaxed text-[var(--fg-2)]">{t(`${key}.line`)}</p>
         </li>
       ))}
     </ul>

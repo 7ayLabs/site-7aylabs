@@ -8,6 +8,7 @@ import { Block, Indexed, Tiles } from '@/components/site/layout';
 import { Log } from '@/components/site/log';
 import { ProductList } from '@/components/site/product-list';
 import { Questions } from '@/components/site/questions';
+import { Stack } from '@/components/site/stack';
 import { pageMetadata } from '@/lib/seo';
 import { listUpdates } from '@/lib/updates';
 
@@ -32,7 +33,7 @@ export default async function HomePage({ params }: Props) {
   const chrome = await getTranslations('chrome');
   const posts = listUpdates(locale as Locale).slice(0, 3);
 
-  const index = (['fields', 'products', 'method', 'updates', 'faq'] as const)
+  const index = (['fields', 'products', 'stack', 'method', 'updates', 'faq'] as const)
     .filter((id) => id !== 'updates' || posts.length > 0)
     .map((id) => ({ id, label: t(`index.${id}`) }));
 
@@ -47,6 +48,10 @@ export default async function HomePage({ params }: Props) {
 
         <Block id="products" title={products('title')} lede={products('lede')}>
           <ProductList />
+        </Block>
+
+        <Block id="stack" title={t('stack.title')} lede={t('stack.lede')}>
+          <Stack />
         </Block>
 
         <Block id="method" title={t('method.title')} lede={t('method.lede')}>

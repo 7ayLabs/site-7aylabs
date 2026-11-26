@@ -25,7 +25,7 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ loc
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: 72,
-          background: '#050b1c',
+          background: '#02040b',
           color: '#e8f0ff',
           fontFamily: 'sans-serif',
         }}

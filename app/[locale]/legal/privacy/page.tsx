@@ -29,7 +29,7 @@ export default async function PrivacyPage({ params }: Props) {
   return (
     <section className={`${WRAP} pb-24 pt-10 sm:pt-16`}>
       <div className="max-w-[760px]">
-        <h1 className="t-display t-hero sm:text-[clamp(4rem,8vw,8.5rem)] text-[var(--fg)]">{t('title')}</h1>
+        <h1 className="t-display t-hero sm:text-[clamp(2.8rem,5vw,5.5rem)] text-[var(--fg)]">{t('title')}</h1>
         <p className="t-note mt-6">{t('updated', { date })}</p>
         <div className="prose mt-10 border-t border-[var(--line-strong)] pt-10">
           <p>{t('intro')}</p>

@@ -66,7 +66,7 @@ export function CallDemo() {
   const value = (v: string) => (called ? v : '—');
   const cell = 'flex flex-col-reverse gap-1.5 border-t border-[var(--line)] py-3.5';
   const dt = 't-note';
-  const dd = 't-num text-[1.35rem] font-semibold leading-none text-[var(--fg)]';
+  const dd = 't-num text-[1.2rem] font-semibold leading-none text-[var(--fg)]';
 
   return (
     <figure className="glass self-start overflow-hidden rounded-[20px]">
@@ -134,7 +134,7 @@ export function CallDemo() {
               <span
                 key={round}
                 data-land=""
-                className={`demo-stamp t-display inline-flex h-12 shrink-0 items-center gap-2 rounded-[4px] border-[3px] px-3 text-[1.7rem] uppercase ${
+                className={`demo-stamp t-display inline-flex h-12 shrink-0 items-center gap-2 rounded-[6px] border-[3px] px-3 text-[1.15rem] uppercase ${
                   right ? 'border-[var(--right)] text-[var(--right)]' : 'border-[var(--wrong)] text-[var(--wrong)]'
                 }`}
               >

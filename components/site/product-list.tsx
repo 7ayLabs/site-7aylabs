@@ -8,7 +8,8 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { VIZZOR } from '@/lib/site';
-import { CHAIN_COUNT } from '@/lib/vizzor/chains';
+import { ChainMark } from '@/components/ui/chain-mark';
+import { CHAIN_COUNT, INTEL_SAMPLE } from '@/lib/vizzor/chains';
 import { CallDemo } from './call-demo';
 import { Platforms } from './platforms';
 
@@ -28,8 +29,16 @@ export async function ProductList() {
               </span>
               <span>{t('vizzor.kind')}</span>
             </p>
-            <h3 className="t-display mt-5 text-[clamp(4rem,9vw,7.5rem)] leading-[0.82] text-[var(--fg)]">Vizzor</h3>
+            <h3 className="t-display mt-5 text-[clamp(3rem,6vw,5.25rem)] leading-[0.95] text-[var(--fg)]">Vizzor</h3>
             <p className="mt-6 max-w-[48ch] text-[1.15rem] leading-relaxed text-[var(--fg-2)]">{t('vizzor.line', { count: CHAIN_COUNT })}</p>
+            <p aria-hidden className="mt-6 flex items-center">
+              {INTEL_SAMPLE.map((c, i) => (
+                <span key={c} className="rounded-full ring-2 ring-[var(--bg)]" style={{ marginLeft: i === 0 ? 0 : -9 }}>
+                  <ChainMark chain={c} size={30} />
+                </span>
+              ))}
+              <span className="t-note t-num ml-3 font-semibold">+{CHAIN_COUNT - INTEL_SAMPLE.length}</span>
+            </p>
             <div className="mt-auto flex flex-col gap-3 pt-8 sm:flex-row">
               <Link href="/vizzor" className="btn btn-ink">
                 {t('vizzor.more')}

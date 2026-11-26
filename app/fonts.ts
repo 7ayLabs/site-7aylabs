@@ -1,15 +1,30 @@
-import { Archivo } from 'next/font/google';
+import { Geist, Geist_Mono, Sora } from 'next/font/google';
 
 /**
- * One family for the whole site: Archivo, loaded with its width axis.
+ * Three faces, each with one job.
  *
- * Headlines use it at its narrowest and heaviest, text at normal width. The
- * file is downloaded at build time and served from our own origin, so no
- * request goes to a third party at runtime.
+ * Sora for headlines: a geometric display face drawn for a blockchain
+ * project, so it carries the lab's field in its shapes. Geist for text: calm
+ * and very legible at small sizes. Geist Mono for numbers and readouts, so
+ * columns of figures line up.
+ *
+ * All three are downloaded at build time and served from our own origin.
  */
-export const sans = Archivo({
+export const display = Sora({
   subsets: ['latin'],
-  axes: ['wdth'],
+  variable: '--font-display',
+  display: 'swap',
+});
+
+export const sans = Geist({
+  subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
+});
+
+export const mono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+  preload: false,
 });

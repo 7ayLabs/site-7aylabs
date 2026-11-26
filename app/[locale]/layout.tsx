@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
-import { sans } from '../fonts';
+import { display, mono, sans } from '../fonts';
 import { ThemeProvider, themeBootScript } from '@/components/layout/theme-provider';
 import { SiteNav } from '@/components/layout/site-nav';
 import { SiteFooter } from '@/components/layout/site-footer';
@@ -21,7 +21,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#e9f0fb' },
-    { media: '(prefers-color-scheme: dark)', color: '#050b1c' },
+    { media: '(prefers-color-scheme: dark)', color: '#02040b' },
   ],
 };
 
@@ -69,7 +69,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale as Locale}
-      className={sans.variable}
+      className={`${sans.variable} ${display.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
       <head>

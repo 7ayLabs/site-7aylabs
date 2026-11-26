@@ -49,7 +49,7 @@ export default async function VizzorPage({ params }: Props) {
             <ol className="grid content-start gap-3" data-stagger>
               {STEPS.map((s, i) => (
                 <li key={s} data-reveal className="glass grid grid-cols-[3.5rem_minmax(0,1fr)] gap-x-4 rounded-[22px] p-6">
-                  <span aria-hidden className="t-display text-[3.2rem] leading-none text-[var(--accent)]">
+                  <span aria-hidden className="t-display text-[2.6rem] leading-none text-[var(--accent)]">
                     {i + 1}
                   </span>
                   <span>
@@ -67,7 +67,7 @@ export default async function VizzorPage({ params }: Props) {
           <dl className="grid gap-4 md:grid-cols-2" data-stagger>
             {DESKS.map((d) => (
               <div key={d} data-reveal className="glass glass-live flex min-h-[13rem] flex-col justify-end rounded-[26px] p-7">
-                <dt className="t-display text-[3rem] text-[var(--fg)]">{t(`desks.items.${d}.name`)}</dt>
+                <dt className="t-display text-[2.1rem] text-[var(--fg)]">{t(`desks.items.${d}.name`)}</dt>
                 <dd className="mt-3">
                   <p className="max-w-[54ch] text-[1.1rem] leading-snug text-[var(--fg)]">{t(`desks.items.${d}.line`)}</p>
                   <p className="t-note mt-2">{t(`desks.items.${d}.reach`, { count: CHAIN_COUNT })}</p>
@@ -82,7 +82,7 @@ export default async function VizzorPage({ params }: Props) {
             {VIZZOR.editions.map((e) => (
               <li key={e.id} data-reveal className="glass glass-live rounded-[22px] p-6 sm:p-7">
                 <p className="t-note font-semibold">{t(`editions.plans.${e.plan}`)}</p>
-                <h3 className="t-display mt-3 text-[3.4rem] text-[var(--fg)]">{e.name}</h3>
+                <h3 className="t-display mt-3 text-[2.4rem] text-[var(--fg)]">{e.name}</h3>
                 <p className="mt-4 text-[16.5px] leading-relaxed text-[var(--fg-2)]">{t(`editions.items.${e.id}`)}</p>
               </li>
             ))}

@@ -87,7 +87,7 @@ export function MobileMenu() {
                       <Link
                         href={item.href}
                         aria-current={active ? 'page' : undefined}
-                        className="t-display flex min-h-16 items-center justify-between py-3 text-[44px] text-[var(--fg)]"
+                        className="t-display flex min-h-16 items-center justify-between py-3 text-[32px] text-[var(--fg)]"
                       >
                         {t(`nav.${item.key}`)}
                         {active ? <span aria-hidden className="h-2.5 w-2.5 bg-[var(--accent)]" /> : null}

@@ -6,7 +6,7 @@ The 7ayLabs company site, [7aylabs.com](https://7aylabs.com). It presents the co
 
 - Next.js 15 (App Router, standalone output), React 19, TypeScript (strict)
 - Tailwind CSS 4, with the design tokens in `app/globals.css`
-- One typeface (Archivo, two widths); GSAP for the single page-load sequence
+- Sora, Geist and Geist Mono; liquid glass in CSS, 3D glass icons from a small ray-marching WebGL renderer of our own
 - next-intl: English (root), Spanish (`/es`), French (`/fr`)
 - SQLite (better-sqlite3) for newsletter sign-ups and contact messages
 - pnpm 9.15, Node 22

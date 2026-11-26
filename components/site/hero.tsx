@@ -5,13 +5,14 @@
 import { getTranslations } from 'next-intl/server';
 import { AppWindow, ArrowUpRight, Blocks, BrainCircuit, Cpu } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { GlassIcon } from './glass3d/glass-icon';
 import { WRAP } from './layout';
 
 const PANES = [
-  { key: 'apps', Icon: AppWindow, cls: 'left-[2%] top-[4%] w-[58%]', r: '-7deg', k: '18px' },
-  { key: 'software', Icon: Cpu, cls: 'right-[0%] top-[20%] w-[54%]', r: '5deg', k: '-12px' },
-  { key: 'intelligence', Icon: BrainCircuit, cls: 'left-[8%] top-[46%] w-[62%]', r: '3deg', k: '26px' },
-  { key: 'onchain', Icon: Blocks, cls: 'right-[4%] top-[66%] w-[52%]', r: '-4deg', k: '-20px' },
+  { key: 'apps', Icon: AppWindow, cls: 'left-[0%] top-[6%] w-[46%]', r: '-7deg', k: '18px' },
+  { key: 'software', Icon: Cpu, cls: 'right-[0%] top-[14%] w-[48%]', r: '5deg', k: '-12px' },
+  { key: 'intelligence', Icon: BrainCircuit, cls: 'left-[2%] top-[70%] w-[54%]', r: '3deg', k: '26px' },
+  { key: 'onchain', Icon: Blocks, cls: 'right-[2%] top-[78%] w-[44%]', r: '-4deg', k: '-20px' },
 ] as const;
 
 export async function Hero() {
@@ -22,7 +23,7 @@ export async function Hero() {
     <section className={`${WRAP} pb-10 pt-10 sm:pt-16`}>
       <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-6">
         <div>
-          <h1 className="t-display type-settle max-w-[10ch] text-[clamp(3.6rem,1rem+9.6vw,10.5rem)] leading-[0.84] text-[var(--fg)]">{t('title')}</h1>
+          <h1 className="t-display type-settle max-w-[11ch] text-[clamp(2.9rem,1rem+6.1vw,7rem)] leading-[0.96] text-[var(--fg)]">{t('title')}</h1>
           <div data-reveal className="mt-9">
             <p className="t-lede">{t('sub')}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -37,18 +38,20 @@ export async function Hero() {
         </div>
 
         {/* Decorative: the same four fields are listed as text further down. */}
-        <div aria-hidden data-parallax className="stack relative hidden h-[34rem] lg:block">
-          <span className="drop glass absolute left-[18%] top-[14%] h-[64%] w-[64%]" />
+        <div aria-hidden data-parallax className="stack relative hidden h-[32rem] lg:block">
+          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <GlassIcon shape="lab" size={460} />
+          </span>
           {PANES.map(({ key, Icon, cls, r, k }) => (
             <span
               key={key}
-              className={`stack-pane glass absolute flex items-center gap-4 rounded-[22px] px-5 py-5 ${cls}`}
+              className={`stack-pane glass absolute flex items-center gap-4 rounded-[20px] px-4 py-4 ${cls}`}
               style={{ '--r': r, '--k': k } as React.CSSProperties}
             >
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[14px] bg-[var(--accent-fill)] text-[var(--on-accent)]">
                 <Icon size={22} strokeWidth={1.6} />
               </span>
-              <span className="t-display text-[2.4rem] text-[var(--fg)]">{fields(`${key}.title`)}</span>
+              <span className="t-display text-[1.5rem] text-[var(--fg)]">{fields(`${key}.title`)}</span>
             </span>
           ))}
         </div>
@@ -61,7 +64,7 @@ export async function Hero() {
           <li>
             <Link href="/vizzor" className="glass glass-live group flex min-h-[6rem] items-center gap-4 rounded-[20px] px-5 py-4">
               <span className="min-w-0 flex-1">
-                <span className="t-display block text-[2.5rem] text-[var(--fg)]">Vizzor</span>
+                <span className="t-display block text-[1.9rem] text-[var(--fg)]">Vizzor</span>
                 <span className="mt-1 block truncate text-[15px] text-[var(--fg-2)]">{t('board.vizzorLine')}</span>
               </span>
               <span className="inline-flex shrink-0 items-center gap-2 text-[14.5px] font-semibold text-[var(--fg)]">
@@ -78,7 +81,7 @@ export async function Hero() {
           </li>
           <li className="flex min-h-[6rem] items-center gap-4 rounded-[20px] border border-dashed border-[var(--line-strong)] px-5 py-4">
             <span className="min-w-0 flex-1">
-              <span className="t-display block text-[2.5rem] text-[var(--fg-3)]">{t('board.nextName')}</span>
+              <span className="t-display block text-[1.9rem] text-[var(--fg-3)]">{t('board.nextName')}</span>
               <span className="mt-1 block text-[15px] text-[var(--fg-2)]">{t('board.nextLine')}</span>
             </span>
             <span className="shrink-0 text-[14.5px] font-semibold text-[var(--fg-2)]">{t('board.building')}</span>

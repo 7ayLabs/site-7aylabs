@@ -66,7 +66,8 @@
       "products": "Products",
       "method": "How we work",
       "updates": "Updates",
-      "faq": "Questions"
+      "faq": "Questions",
+      "stack": "Infrastructure"
     },
     "fields": {
       "title": "Four kinds of work, one lab.",
@@ -118,6 +119,34 @@
     },
     "faq": {
       "title": "The short answers."
+    },
+    "stack": {
+      "title": "How the lab is wired.",
+      "lede": "Every product sits on the same five layers. We build and run all of them ourselves.",
+      "layers": {
+        "interface": {
+          "name": "Interface",
+          "line": "The apps people use, on the web and installed on a phone, in three languages."
+        },
+        "engine": {
+          "name": "Engine",
+          "line": "Our own service. It gathers the data, runs the models and keeps the public record."
+        },
+        "models": {
+          "name": "Intelligence",
+          "line": "ChronoVisor, our model layer, built on Claude. It reasons over the data and explains its answer."
+        },
+        "chains": {
+          "name": "Chains",
+          "line": "{count} blockchains read directly, and the wallets people already use."
+        },
+        "ground": {
+          "name": "Ground",
+          "line": "Our own servers on a private network, with nightly backups and every release checked before it ships."
+        }
+      },
+      "more": "and {count} more",
+      "wallets": "Wallets"
     }
   },
   "products": {

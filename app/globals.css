@@ -7,9 +7,7 @@
  * both themes. Two more colours exist and each means one thing: green marks a call
  * that was right, red one that was wrong.
  *
- * Type is one family, Archivo, at two widths: headlines are set tall and
- * narrow, text at normal width. (Vizzor's headlines are wide; the lab's are
- * tall. Same family tree, different voice.)
+ * Type: Sora for headlines, Geist for text, Geist Mono for figures.
  */
 @theme inline {
   --color-bg: var(--bg);
@@ -23,6 +21,8 @@
   --color-wrong: var(--wrong);
 
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: var(--font-display), var(--font-sans), system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, 'SF Mono', Menlo, monospace;
 }
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
@@ -31,13 +31,13 @@
   color-scheme: light;
   --bg: #e9f0fb;
   --surface: #f5f9ff;
-  --fg: #071a3d;
-  --fg-2: #33456b;
+  --fg: #030b1f;
+  --fg-2: #2b3a5c;
   --fg-3: #56678b;
-  --line: rgba(7, 26, 61, 0.14);
-  --line-strong: rgba(7, 26, 61, 0.42);
-  --accent: #0b3fa8;
-  --accent-fill: #1d5fe0;
+  --line: rgba(3, 11, 31, 0.14);
+  --line-strong: rgba(3, 11, 31, 0.42);
+  --accent: #082a78;
+  --accent-fill: #1447c4;
   --accent-soft: #7db8ff;
   --on-accent: #ffffff;
   --right: #12734a;
@@ -47,7 +47,7 @@
   --glass-line: rgba(7, 26, 61, 0.12);
   --glass-edge: rgba(255, 255, 255, 0.95);
   --glass-shade: 0 1px 1px rgba(7, 26, 61, 0.04), 0 26px 50px -28px rgba(11, 63, 168, 0.4);
-  --blob-a: rgba(29, 95, 224, 0.42);
+  --blob-a: rgba(16, 60, 180, 0.36);
   --blob-b: rgba(125, 184, 255, 0.7);
   --blob-c: rgba(255, 255, 255, 0.9);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -55,27 +55,27 @@
 
 [data-theme='dark'] {
   color-scheme: dark;
-  --bg: #050b1c;
-  --surface: #0a1430;
+  --bg: #02040b;
+  --surface: #070c1a;
   --fg: #e8f0ff;
   --fg-2: #a8b8d8;
   --fg-3: #8696ba;
   --line: rgba(232, 240, 255, 0.15);
   --line-strong: rgba(232, 240, 255, 0.46);
   --accent: #8cc0ff;
-  --accent-fill: #2f6fed;
+  --accent-fill: #2459d6;
   --accent-soft: #7db8ff;
   --on-accent: #ffffff;
   --right: #4fd08f;
   --wrong: #ff7a6e;
-  --glass: rgba(140, 180, 255, 0.045);
-  --glass-hi: rgba(160, 195, 255, 0.1);
-  --glass-line: rgba(160, 195, 255, 0.16);
+  --glass: rgba(140, 180, 255, 0.035);
+  --glass-hi: rgba(160, 195, 255, 0.075);
+  --glass-line: rgba(160, 195, 255, 0.13);
   --glass-edge: rgba(200, 222, 255, 0.3);
   --glass-shade: 0 1px 0 rgba(0, 0, 0, 0.4), 0 30px 60px -32px rgba(0, 6, 30, 0.9);
-  --blob-a: rgba(47, 111, 237, 0.34);
-  --blob-b: rgba(125, 184, 255, 0.2);
-  --blob-c: rgba(22, 52, 150, 0.6);
+  --blob-a: rgba(24, 62, 160, 0.34);
+  --blob-b: rgba(96, 156, 255, 0.11);
+  --blob-c: rgba(6, 16, 58, 0.85);
 }
 
 @layer base {
@@ -96,7 +96,6 @@
     min-height: 100dvh;
     color: var(--fg);
     font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-    font-stretch: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -117,26 +116,28 @@
 
 /* ── Type ──────────────────────────────────────────────────────────────── */
 
-/* Headlines: Archivo at its narrowest and heaviest. */
+/* Headlines: Sora, heavy and tightly tracked. */
 .t-display {
-  font-stretch: 62%;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-  line-height: 0.9;
+  font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1;
   text-wrap: balance;
 }
 .t-hero {
-  font-size: clamp(3.4rem, 1rem + 11.5vw, 11.5rem);
-  line-height: 0.84;
+  font-size: clamp(2.7rem, 1rem + 6vw, 6.75rem);
+  line-height: 0.98;
 }
 .t-title {
-  font-size: clamp(2.4rem, 1.3rem + 4.2vw, 5rem);
+  font-size: clamp(2rem, 1.2rem + 2.9vw, 3.75rem);
+  line-height: 1.02;
 }
 .t-head {
-  font-stretch: 68%;
-  font-weight: 700;
-  font-size: clamp(1.5rem, 1.2rem + 1vw, 2.1rem);
-  line-height: 1.02;
+  font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  font-size: clamp(1.25rem, 1.1rem + 0.55vw, 1.6rem);
+  line-height: 1.12;
 }
 .t-lede {
   font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.3125rem);
@@ -150,7 +151,9 @@
   color: var(--fg-3);
 }
 .t-num {
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
 }
 
 /* ── Actions ───────────────────────────────────────────────────────────── */
@@ -260,17 +263,18 @@
 }
 .prose h2,
 .prose h3 {
-  font-stretch: 68%;
-  font-weight: 700;
+  font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.03em;
   color: var(--fg);
-  line-height: 1.05;
+  line-height: 1.12;
   margin-top: 2em;
 }
 .prose h2 {
-  font-size: 1.9rem;
+  font-size: 1.6rem;
 }
 .prose h3 {
-  font-size: 1.45rem;
+  font-size: 1.25rem;
 }
 .prose strong {
   color: var(--fg);
@@ -505,17 +509,17 @@ html[data-js] [data-reveal='scale'] {
   }
 }
 
-/* The hero headline arrives wide and tightens to the lab's narrow voice:
-   the one thing this typeface can do that no other effect imitates. */
+/* The hero headline arrives light and loose, then gains its weight and
+   tightens: the variable font doing the entrance itself. */
 .type-settle {
   animation: type-settle 1500ms var(--ease) both;
 }
 @keyframes type-settle {
   from {
     opacity: 0;
-    font-stretch: 112%;
-    letter-spacing: 0.02em;
-    transform: translate3d(0, 0.18em, 0);
+    font-weight: 250;
+    letter-spacing: 0.01em;
+    transform: translate3d(0, 0.2em, 0);
   }
 }
 
@@ -598,24 +602,6 @@ html[data-js] [data-reveal='scale'] {
   will-change: transform;
 }
 
-/* A drop of liquid glass that slowly changes shape. */
-.drop {
-  border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%;
-  animation: morph 18s ease-in-out infinite alternate;
-}
-@keyframes morph {
-  33% {
-    border-radius: 42% 58% 46% 54% / 56% 42% 58% 44%;
-  }
-  66% {
-    border-radius: 52% 48% 60% 40% / 44% 58% 42% 56%;
-  }
-  to {
-    border-radius: 46% 54% 42% 58% / 58% 46% 54% 42%;
-    transform: rotate(8deg) scale(1.05);
-  }
-}
-
 /* ── Fields: three columns; the one in use opens up ────────────────────── */
 .fan {
   display: grid;
@@ -633,11 +619,48 @@ html[data-js] [data-reveal='scale'] {
   }
   .fan:has(> :hover) > :not(:hover),
   .fan:has(> :focus-within) > :not(:focus-within) {
-    flex-grow: 0.72;
+    flex-grow: 0.9;
   }
   .fan > :hover,
   .fan > :focus-within {
-    flex-grow: 1.7;
+    flex-grow: 1.35;
+  }
+}
+
+/* ── The stack: layers joined by a line a signal travels down ──────────── */
+.rail {
+  position: relative;
+}
+.rail::after {
+  content: '';
+  position: absolute;
+  left: -0.9rem;
+  top: 1.5rem;
+  width: 2px;
+  height: 5rem;
+  border-radius: 2px;
+  background: linear-gradient(180deg, transparent, var(--accent-soft), transparent);
+  animation: signal 4.5s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+}
+@keyframes signal {
+  from {
+    transform: translateY(-2rem);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(var(--rail-run, 30rem));
+    opacity: 0;
+  }
+}
+@media (max-width: 639px) {
+  .rail::after {
+    display: none;
   }
 }
 

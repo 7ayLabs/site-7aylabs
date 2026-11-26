@@ -33,7 +33,7 @@ export function Block({
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-40 py-16 sm:py-24">
       <div data-reveal className="grid items-end gap-x-16 gap-y-5 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
-        <h2 id={`${id}-title`} className="t-display t-title max-w-[16ch] text-[var(--fg)]">
+        <h2 id={`${id}-title`} className="t-display t-title max-w-[18ch] text-[var(--fg)]">
           {title}
         </h2>
         {lede ? <p className="t-lede lg:pb-2">{lede}</p> : null}
@@ -48,7 +48,7 @@ export function Block({
 export function PageHead({ title, lede, children }: { title: ReactNode; lede: ReactNode; children?: ReactNode }) {
   return (
     <section className={`${WRAP} pb-12 pt-12 sm:pb-16 sm:pt-20`}>
-      <h1 className="t-display type-settle max-w-[17ch] text-[clamp(3.2rem,1rem+7.4vw,8.5rem)] leading-[0.86] text-[var(--fg)]">{title}</h1>
+      <h1 className="t-display type-settle max-w-[17ch] text-[clamp(2.6rem,1rem+5vw,6rem)] leading-[0.98] text-[var(--fg)]">{title}</h1>
       <p data-reveal className="t-lede mt-8">
         {lede}
       </p>
