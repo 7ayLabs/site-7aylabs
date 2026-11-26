@@ -1,0 +1,30 @@
+# gitleaks configuration for site-7aylabs
+#
+# Uses the built-in ruleset. The only additions are an allowlist for
+# placeholder values that appear in templates and documentation, so the
+# scan reports accidental commits and nothing else.
+
+title = "site-7aylabs gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Placeholders and documented examples that look like secrets"
+
+# Files that legitimately contain example values.
+paths = [
+  '''(^|/)\.env\.example$''',
+  '''(^|/)tests/.*\.test\.tsx?$''',
+  '''(^|/)pnpm-lock\.yaml$''',
+]
+
+# Common placeholder values. `regexTarget = "match"` hands the allowlist the
+# whole matched text, so these are unanchored unless noted.
+regexTarget = "match"
+regexes = [
+  '''(?i)\b(example|placeholder|changeme|dummy|fake|test)[-_]?(secret|token|key|password)\b''',
+  '''ci-only-not-a-secret''',
+  '''0{16,}''',
+  '''1{16,}''',
+]

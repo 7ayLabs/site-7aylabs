@@ -1,0 +1,60 @@
+name: DB backup
+
+# Nightly verified backup of the site SQLite databases (contact messages
+# and other form submissions), production and staging.
+#
+# The host also runs the same script from a systemd timer, so backups keep
+# happening if this schedule is ever paused (GitHub disables scheduled
+# workflows in repositories with no activity for 60 days). What this
+# workflow adds is visibility: IT FAILS RED when no verified backup was
+# produced. The script checks each snapshot (PRAGMA integrity_check, at
+# least one table) before keeping it, and exits non-zero if an existing
+# database could not be backed up or if nothing was verified.
+#
+# The script is installed on the host by scripts/bootstrap-host.sh as
+# /usr/local/sbin/site-db-backup, root-owned; the deploy user may run
+# exactly that program through sudo.
+#
+# Repository secrets: the same as deploy.yml.
+
+on:
+  schedule:
+    # 04:17 UTC daily, off the hour to avoid the scheduler's busy minutes.
+    - cron: '17 4 * * *'
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Which database to back up
+        type: choice
+        options: [all, prod, staging]
+        default: all
+
+concurrency:
+  group: db-backup
+  cancel-in-progress: false
+
+permissions: {}
+
+jobs:
+  backup:
+    name: Verified backup on the host
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          sparse-checkout: .github/actions
+
+      # Any non-zero exit from the script fails the job.
+      - name: Run the backup
+        uses: ./.github/actions/vps-ssh
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          user: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || '22' }}
+          known-hosts: ${{ secrets.VPS_KNOWN_HOSTS }}
+          command: sudo -n /usr/local/sbin/site-db-backup ${{ inputs.target || 'all' }}
+          timeout-minutes: '8'

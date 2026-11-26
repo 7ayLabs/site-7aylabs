@@ -1,0 +1,88 @@
+name: VPS SSH
+description: >
+  Runs one command on the host over plain OpenSSH, optionally sending a file
+  on stdin (used to upload a tarball). The host key is pinned: the
+  known-hosts input is required and StrictHostKeyChecking is on, so a
+  machine answering on the same address with a different key is refused.
+  The private key is written to the runner's temp directory and removed
+  when the step ends.
+
+inputs:
+  host:
+    description: SSH host
+    required: true
+  user:
+    description: SSH user
+    required: true
+  key:
+    description: Private key (secret)
+    required: true
+  port:
+    description: SSH port
+    required: false
+    default: '22'
+  known-hosts:
+    description: known_hosts line(s) for the host, from `ssh-keyscan -p <port> <host>`
+    required: true
+  command:
+    description: Command line to run on the host
+    required: true
+  stdin-file:
+    description: Local file to send on the command's stdin (optional)
+    required: false
+    default: ''
+  timeout-minutes:
+    description: Hard cap on the remote call
+    required: false
+    default: '10'
+
+runs:
+  using: composite
+  steps:
+    - name: Run over SSH
+      shell: bash
+      env:
+        SSH_HOST: ${{ inputs.host }}
+        SSH_USER: ${{ inputs.user }}
+        SSH_KEY: ${{ inputs.key }}
+        SSH_PORT: ${{ inputs.port }}
+        SSH_KNOWN: ${{ inputs.known-hosts }}
+        SSH_CMD: ${{ inputs.command }}
+        STDIN_FILE: ${{ inputs.stdin-file }}
+        TMO: ${{ inputs.timeout-minutes }}
+      run: |
+        set -euo pipefail
+        for v in SSH_HOST SSH_USER SSH_KEY SSH_KNOWN SSH_CMD; do
+          if [ -z "${!v}" ]; then
+            echo "::error::vps-ssh: ${v} is empty. Set the matching repository secret (see docs/ops/runbook.md)."
+            exit 1
+          fi
+        done
+        PORT="${SSH_PORT:-22}"
+        case "$PORT" in ''|*[!0-9]*) echo "::error::vps-ssh: port is not a number"; exit 1 ;; esac
+        case "$TMO"  in ''|*[!0-9]*) echo "::error::vps-ssh: timeout-minutes is not a number"; exit 1 ;; esac
+        # Commands are fixed strings plus a commit sha or image tag. Refuse
+        # anything a shell on the other side could read as more than that.
+        if ! [[ "$SSH_CMD" =~ ^[A-Za-z0-9._/:=\ -]{1,400}$ ]]; then
+          echo "::error::vps-ssh: the command contains characters this action refuses"
+          exit 1
+        fi
+
+        d="$(mktemp -d "${RUNNER_TEMP:-/tmp}/vps-ssh.XXXXXX")"
+        trap 'rm -rf "$d"' EXIT
+        chmod 700 "$d"
+        printf '%s\n' "$SSH_KEY"   > "$d/key";         chmod 600 "$d/key"
+        printf '%s\n' "$SSH_KNOWN" > "$d/known_hosts"; chmod 600 "$d/known_hosts"
+
+        opts=(-i "$d/key" -p "$PORT"
+              -o BatchMode=yes -o IdentitiesOnly=yes
+              -o StrictHostKeyChecking=yes -o UserKnownHostsFile="$d/known_hosts"
+              -o GlobalKnownHostsFile=/dev/null
+              -o ServerAliveInterval=30 -o ConnectTimeout=20)
+
+        if [ -n "$STDIN_FILE" ]; then
+          [ -f "$STDIN_FILE" ] || { echo "::error::vps-ssh: stdin-file not found"; exit 1; }
+          timeout "$((TMO * 60))" ssh "${opts[@]}" "${SSH_USER}@${SSH_HOST}" "$SSH_CMD" < "$STDIN_FILE"
+        else
+          timeout "$((TMO * 60))" ssh "${opts[@]}" "${SSH_USER}@${SSH_HOST}" "$SSH_CMD" < /dev/null
+        fi
