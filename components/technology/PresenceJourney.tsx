@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { UserCheck, Radar, BadgeCheck, type LucideIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import SectionLabel from "@/components/ui/SectionLabel";
-import Badge from "@/components/ui/Badge";
+import ProtocolFlow3D from "./ProtocolFlow3D";
 import {
   staggerContainer,
   slideInLeft,
@@ -21,44 +21,6 @@ const STEPS_VISUAL: readonly StepVisual[] = [
   { color: "#C084FC", icon: Radar },
   { color: "#22D3EE", icon: BadgeCheck },
 ] as const;
-
-/* ── Vertical flow diagram ── */
-function ProtocolFlowIllustration() {
-  return (
-    <div className="flex flex-col items-center gap-0 w-full max-w-[200px] mx-auto">
-      {STEPS_VISUAL.map((step, i) => (
-        <div key={i} className="flex flex-col items-center">
-          {/* Node */}
-          <div
-            className="w-14 h-14 rounded-2xl flex items-center justify-center"
-            style={{
-              backgroundColor: `${step.color}15`,
-              border: `1px solid ${step.color}25`,
-            }}
-          >
-            <step.icon
-              className="w-7 h-7"
-              style={{ color: step.color }}
-              strokeWidth={1.5}
-              aria-hidden="true"
-            />
-          </div>
-
-          {/* Connecting line (except last) */}
-          {i < STEPS_VISUAL.length - 1 && (
-            <div
-              className="w-[2px] h-10 my-2"
-              style={{
-                background: `linear-gradient(180deg, ${step.color}, ${STEPS_VISUAL[i + 1].color})`,
-              }}
-              aria-hidden="true"
-            />
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}
 
 export default function PresenceJourney() {
   const reduceMotion = useReducedMotion();
@@ -77,12 +39,12 @@ export default function PresenceJourney() {
           variants={reduceMotion ? undefined : staggerContainer}
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
         >
-          {/* ── Visual side (left on desktop) ── */}
+          {/* ── Visual side (left on desktop) — transparent, 3D illustration ── */}
           <motion.div
             variants={reduceMotion ? undefined : slideInLeft}
-            className="relative rounded-3xl bg-bg-tertiary p-8 md:p-12 flex items-center justify-center min-h-[400px] lg:min-h-[480px] overflow-hidden order-2 lg:order-1"
+            className="relative flex items-center justify-center min-h-[440px] lg:min-h-[520px] order-2 lg:order-1"
           >
-            <ProtocolFlowIllustration />
+            <ProtocolFlow3D />
           </motion.div>
 
           {/* ── Text side (right on desktop) ── */}
@@ -104,29 +66,36 @@ export default function PresenceJourney() {
               {t("subtitle")}
             </p>
 
-            {/* 3 steps as numbered vertical flow */}
+            {/* 3 steps — minimal: number + icon + text-only badge */}
             <div className="space-y-8">
               {STEPS_VISUAL.map((step, i) => (
                 <div key={i} className="flex gap-5">
-                  {/* Step number */}
+                  {/* Step number — text-only */}
                   <div
-                    className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold"
-                    style={{
-                      backgroundColor: `${step.color}15`,
-                      color: step.color,
-                      border: `1px solid ${step.color}30`,
-                    }}
+                    className="flex-shrink-0 font-mono text-sm font-bold tracking-wider pt-1"
+                    style={{ color: step.color }}
                   >
                     {t(`steps.${i}.number`)}
                   </div>
 
-                  <div>
-                    <h3 className="font-display font-semibold text-lg text-fg mb-1 tracking-tight">
-                      {t(`steps.${i}.title`)}
-                    </h3>
-                    <Badge variant="glass" className="mb-2">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <step.icon
+                        className="w-4 h-4 flex-shrink-0"
+                        style={{ color: step.color }}
+                        strokeWidth={1.25}
+                        aria-hidden="true"
+                      />
+                      <h3 className="font-display font-semibold text-lg text-fg tracking-tight">
+                        {t(`steps.${i}.title`)}
+                      </h3>
+                    </div>
+                    <span
+                      className="block text-[11px] uppercase tracking-[0.18em] mb-2 font-medium opacity-80"
+                      style={{ color: step.color }}
+                    >
                       {t(`steps.${i}.badge`)}
-                    </Badge>
+                    </span>
                     <p className="text-fg-secondary text-sm leading-relaxed">
                       {t(`steps.${i}.description`)}
                     </p>

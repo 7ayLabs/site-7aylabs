@@ -93,9 +93,9 @@
     "titleLine1Accent": "プレゼンス",
     "titleLine2Start": "",
     "titleLine2Accent": "レイヤー",
-    "subtitle": "体をスキャンせずに人間であることを証明する唯一のチェーン。オーブなし。自撮りなし。ただ、そこにいるだけ。",
-    "ctaPrimary": "早期アクセスを取得",
-    "ctaSecondary": "詳しく見る",
+    "subtitle": "モバイルキャリア。でも、あなたのもの。eSIMはオンチェーンで起動し、あなたの番号は合意の中で生き、キャリアに発言権はない。",
+    "ctaPrimary": "アーリーアクセス",
+    "ctaSecondary": "仕組みを見る",
     "features": {
       "0": {
         "label": "ボット耐性",
@@ -111,13 +111,13 @@
       }
     },
     "typewriterPhrases": {
-      "0": "a carrier without a corporation.",
-      "1": "your number, witnessed not billed.",
-      "2": "eSIM by consensus, not contract.",
-      "3": "phones don't need permission anymore."
+      "0": "企業のないキャリア。",
+      "1": "あなたの番号、請求ではなく証言。",
+      "2": "契約ではなく合意でeSIM。",
+      "3": "電話に許可は要らない。"
     },
-    "labelEyebrow": "decentralized mobile carrier · L1",
-    "title": "Your number. Your phone. Your call."
+    "labelEyebrow": "分散型モバイルキャリア · L1",
+    "title": "あなたの番号。あなたの電話。あなたの選択。"
   },
   "about": {
     "label": "機能紹介",
@@ -154,58 +154,58 @@
   },
   "howItWorks": {
     "label": "仕組み",
-    "title": "シグナルから主権へ",
-    "subtitle": "3つのステップ。ハードウェア不要。生体認証不要。物理法則だけ。",
+    "title": "三つのステップで加入者から主権者へ",
+    "subtitle": "契約も、サポートへの電話も、「折り返します」もなし — オンチェーンで三回動かせば、電話はオン。",
     "aria": "7aychainがあなたの存在を検証する仕組み",
     "steps": {
       "0": {
         "number": "01",
-        "title": "現れる",
-        "description": "アプリを開いて1タップ。あなたのデバイスが「ここにいます」という封印された証明を送信します。パスワード不要、セルフィー不要、特別なハードウェア不要。",
+        "title": "番号を確保",
+        "description": "番号をオンチェーンでロック。アイデンティティとデバイスに紐づける。請求システムは一切持っていない。",
         "iconAlt": "信号アークでネットワークに接続するスマートフォン"
       },
       "1": {
         "number": "02",
-        "title": "検証される",
-        "description": "ネットワーク全体のバリデーターがあなたの接続タイミングを測定し、本当にそこにいることを確認します。GPSなし、オラクルなし — 光速だけです。",
+        "title": "あとは証人が引き継ぐ",
+        "description": "ローカル証人があなたの実在を証言。合意が形成され、eSIMがエポックに封印される — GPSなし、オーブなし、企業証明なし。",
         "iconAlt": "位置を三角測量する3つのバリデーター"
       },
       "2": {
         "number": "03",
-        "title": "証明を所有する",
-        "description": "あなたのプレゼンスがオンチェーンで封印されます — 永続的で、主権的で、偽造不可能。あなたが所有し、誰も奪うことはできません。",
+        "title": "電話が接続。それだけ。",
+        "description": "チェーンがアタッチリースを発行。デバイスはネイティブの7AYサービスに接続される。書類ではなく、ステークが裏付ける。",
         "iconAlt": "チェックマーク付きの六角形シールがブロックにチェーンされている"
       }
     }
   },
   "whyChain": {
-    "title": "なぜ",
-    "titleAccent": "7aychain",
+    "title": "なぜチェーンがキャリアを動かすのか",
+    "titleAccent": "(そして通信会社ではない)",
     "titleEnd": "？",
-    "subtitle": "すべてのチェーンは暗号技術を信頼しています。7aychainはアイデンティティを物理的現実に紐づけます — AI、ボット、偽アカウントが絶対に偽造できない唯一のものです。",
+    "subtitle": "通信会社はあなたの番号、アイデンティティ、データを所有する。7aychainはそれを反転させる — サービス権はオンチェーンに、電話は合意に従い、誰もあなたを所有しない。",
     "cards": {
       "0": {
-        "title": "デフォルトでボット耐性",
-        "description": "虹彩スキャンなし。指紋なし。ネットワークがあなたの接続タイミングを測定し、物理的に存在していることを検証します — ボットには絶対に偽造できません。",
+        "title": "番号はあなたのもの",
+        "description": "番号、eSIM、サービス権はオンチェーンであなたに紐づく。誰かが切れる請求記録ではない。",
         "iconAlt": "測定ノード付き信号波"
       },
       "1": {
-        "title": "初日からプライバシー保護",
-        "description": "あなたのアイデンティティはあなたのもの。ネットワークはあなたが誰であるかを知ることなく、どこかにいたことを証明します。個人データのオンチェーン記録はゼロです。",
+        "title": "合意がイエスと言う",
+        "description": "起動にはローカル証人の定足数が必要。誰一人として回線を付与・剥奪できない。チェーンが唯一の権威。",
         "iconAlt": "ゼロ知識証明リング付きの鍵"
       },
       "2": {
-        "title": "自動で人間のみ",
-        "description": "プロトコルがリアルな行動に基づいてすべての参加者をスコアリングし、CAPTCHAもオーブも手動レビューもなしに人間と機械を判別します。",
+        "title": "ステーク、さもなくばスラッシュ",
+        "description": "バリデータは7AYをステークする。嘘をつけば没収。誠実が唯一の儲かるゲーム。ゲーム理論 > カスタマーサービス。",
         "iconAlt": "人間検証チェックマーク付きシールド"
       },
       "3": {
-        "title": "本当に公正なガバナンス",
-        "description": "投票権はトークンの保有量ではなく、実際の参加に紐づきます。あなたの声はウォレットの規模ではなく、ネットワーク上の検証済みプレゼンスに応じて拡大します。",
+        "title": "ボットは現れない",
+        "description": "ウォレットは安い。実在は安くない。ボットは数百万のアカウントを作れるが、物理的にここにいると証言する証人定足数は得られない。",
         "iconAlt": "ケイパビリティノード付きデリゲーションツリー"
       }
     },
-    "labelEyebrow": "why this works"
+    "labelEyebrow": "なぜ機能するか"
   },
   "network": {
     "label": "Network",
@@ -468,14 +468,14 @@
     }
   },
   "newsletter": {
-    "title": "プレゼンスエコノミーに参加する",
-    "subtitle": "プロトコルのマイルストーン、バリデーターのアップデート、早期アクセス情報を、いち早く行動する方にお届けします。",
-    "cta": "プロトコルの最新情報を受け取る",
-    "trustLine": "シグナルのみ。ノイズなし。いつでも登録解除できます。",
+    "title": "プレゼンスキャリアにチューニング",
+    "subtitle": "プロトコルのリリース、デブネットのマイルストーン、バリデータの動向、ガバナンス提案。シグナルのみ — ハイプもスパムもなし。",
+    "cta": "登録",
+    "trustLine": "いつでも解除可能。メールはプロトコル更新のみに使用。",
     "emailPlaceholder": "you@domain.com",
-    "errorMessage": "that didn't work. try again in a sec.",
-    "labelEyebrow": "stay in sync",
-    "successMessage": "you're in. inbox incoming."
+    "errorMessage": "うまくいきませんでした。少し後でもう一度お試しください。",
+    "labelEyebrow": "同期し続ける",
+    "successMessage": "登録完了。受信箱を確認してください。"
   },
   "devnetStatus": {
     "statusIndicator": "Devnet稼働中",
@@ -517,135 +517,135 @@
     "cta": "もう一度試す"
   },
   "technologyPage": {
-    "label": "テクノロジー",
+    "label": "Protocol",
     "title": "Proof of Presence",
     "accentWord": "Presence",
     "description": {
-      "0": "7aychainは、インターネット信号の物理法則を利用して、実在の人間が実在の場所にいることを検証します。カメラなし。生体認証なし。特殊なハードウェアなし。",
-      "1": "AIが絶対に偽造できない唯一のもの、「そこにいること」のために構築されたLayer 1。"
+      "0": "人間であることがコンセンサスとなる、初のL1。KYCなし。生体認証なし。セルフィーなし。ワンタップと、あなたが本物だと知る分散型ネットワークだけ。",
+      "1": "ボットと偽ウォレットに溢れた世界のために構築された — まだ偽造できない唯一のこと、それは「そこにいる」こと。"
     }
   },
   "techHowItWorks": {
     "label": "仕組み",
-    "title": "プロトコルを支える",
-    "titleAccent": "原理",
-    "subtitle": "物理法則に基づく検証を可能にする4つの基盤。",
+    "title": "Proof of Presenceで構築された",
+    "titleAccent": "L1",
+    "subtitle": "4つの柱。偽造不可能な唯一の証明 — あなたが、ここに、いま。",
     "principles": {
       "0": {
-        "title": "物理法則に基づく",
-        "description": "インターネット信号は光速で伝播します。複数のバリデーターからのタイミングを測定することで、ネットワークがあなたの現実世界の位置を特定します — GPSは不要です。"
+        "title": "トラストレス検証",
+        "description": "バリデーターが複数の独立ノードからあなたの存在を確認する。中央集権的な権限なし。許可不要。操作不可能な分散型ネットワークだけ。"
       },
       "1": {
-        "title": "デフォルトでプライバシー保護",
-        "description": "ネットワークはあなたの所在地を知ることなく、あなたが存在していたことを証明します。位置データはハッシュとしてコミットされ、ZK証明で検証され、プレーンテキストで保存されることはありません。"
+        "title": "デフォルトでプライベート",
+        "description": "あなたの存在は、身元や位置を公開せずに検証される。チェーンはあなたが現れたことを知る。どこにいたかは誰も知らない。我々ですら。"
       },
       "2": {
-        "title": "経済的に保護",
-        "description": "すべてのバリデーターがリスクを負っています。誰かの位置について虚偽を報告すればステークを失います。誠実さが唯一の利益を生む戦略です。"
+        "title": "ステーキングによるセキュリティ",
+        "description": "すべてのバリデーターは7AYをステークする。不正を働けばスラッシングされる。誠実な検証だけが唯一の収益ゲームだ。"
       },
       "3": {
-        "title": "AIによる偽造が不可能",
-        "description": "AIはテキスト、画像、合成アイデンティティを生成できます。しかし、座標上に物理的に存在することはできません。プレゼンスこそが、自動化に耐える人間性の証明です。"
+        "title": "設計レベルでボット耐性",
+        "description": "ボットは100万のウォレットを作れる。物理的に現れることはできない。Presenceこそ、Web3に欠けていたSybil耐性レイヤーだ。"
       }
     }
   },
   "presenceJourney": {
-    "label": "プロトコルフロー",
-    "title": "シグナルから",
-    "titleAccent": "封印された証明",
-    "subtitle": "3つのステップ。仲介者なし。あなたのプレゼンス — 検証され、永続的に記録されます。",
+    "label": "Protocol Flow",
+    "title": "タップから",
+    "titleAccent": "on-chain証明へ",
+    "subtitle": "3ステップ。仲介者ゼロ。あなたが本物であるという検証可能な証明。",
     "steps": {
       "0": {
         "number": "01",
-        "title": "あなたが現れる",
-        "badge": "宣言 + コミット",
-        "description": "あなたのデバイスが封印されたコミットメント — 場所を明かさずに「ここにいます」と伝える暗号学的ハッシュ — を送信します。1タップ。生体認証なし。ハードウェアなし。"
+        "title": "あなたがタップする。チェーンが耳を澄ます。",
+        "badge": "Commit",
+        "description": "ワンタップで封印済みクレームをネットワークに送信 — いま、ここに存在しているという署名済みコミットメント。個人データの露出なし。身元確認不要。"
       },
       "1": {
         "number": "02",
-        "title": "ネットワークが測定する",
-        "badge": "証明 + 三角測量",
-        "description": "バリデーターのサークルが複数のポイントから独立してあなたの信号タイミングを測定します。あなたが共有しなくても位置を推定します。"
+        "title": "バリデーターが検証する。",
+        "badge": "Attest",
+        "description": "ランダムに選ばれたバリデーターのセットが、複数のノードから独立にあなたの存在を確認する。一つの事実についてコンセンサスに達する：あなたは物理的にそこにいた。"
       },
       "2": {
         "number": "03",
-        "title": "証明が封印される",
-        "badge": "確定",
-        "description": "十分なバリデーターが合意すると、あなたのプレゼンスがオンチェーンでロックされます — あなたが物理的に存在していたという改ざん不可能な記録です。永遠にあなたのものです。"
+        "title": "証明が封印される。永遠にあなたのもの。",
+        "badge": "Finalize",
+        "description": "バリデーターがクオラムに達すると、あなたの証明はon-chainで確定する。改ざん不可能、検閲耐性のある、検証済み人間であるというレシート。あらゆるプロトコルで利用可能。"
       }
     }
   },
   "architectureLayers": {
-    "label": "アーキテクチャ",
+    "label": "Architecture",
     "title": "4つのレイヤー、",
-    "titleAccent": "1つのプロトコル",
-    "subtitle": "各レイヤーはその下のレイヤーの上に構築されます — ローレベルのネットワーキングからあなたが操作するアプリケーションまで。",
+    "titleAccent": "1つのソブリンチェーン",
+    "subtitle": "モジュラーでコンポーザブルなスタック — コアコンセンサスから、ビルダーがその上にデプロイするアプリまで。すべてのレイヤーがオープンソース。",
     "layers": {
       "0": {
-        "title": "ネットワーク基盤",
-        "description": "ノードがピアを発見し、コンセンサスに達し、ブロックを生成する仕組み。すべてのバリデーターがプロトコルによって強制される同じルールに従います。",
+        "title": "Consensus Layer",
+        "description": "高速ファイナリティ、分散型バリデーション、リアルタイムのプレゼンスラウンド用に設計されたネットワーク。単一障害点なし。中央集権的ゲートキーパーなし。",
         "items": {
-          "0": "コンセンサス",
-          "1": "ブロック生成",
-          "2": "P2Pネットワーキング",
-          "3": "ファイナリティ"
+          "0": "高速ファイナリティ",
+          "1": "分散型バリデーション",
+          "2": "P2Pネットワーク",
+          "3": "スラッシング"
         }
       },
       "1": {
-        "title": "プレゼンスエンジン",
-        "description": "コアイノベーション：複数のポイントからネットワークタイミングを測定し、現実世界の位置を特定します。バリデーターがサークルを形成し、測定し、検証します — すべてGPSなし。",
+        "title": "Presence Engine",
+        "description": "他のどのチェーンも持たないネイティブプリミティブ：あなたをdoxxすることなく、現実世界の本物の人間であることを検証できる分散型バリデーターネットワーク。",
         "items": {
-          "0": "三角測量",
-          "1": "ウィットネスサークル",
-          "2": "位置推定",
-          "3": "検証ラウンド"
+          "0": "バリデーターサークル",
+          "1": "プレゼンス検証",
+          "2": "封印済みコミットメント",
+          "3": "リアルタイムラウンド"
         }
       },
       "2": {
-        "title": "セキュリティとプライバシー",
-        "description": "多層防御：バリデーターは実際の価値をステークし、紛争はオンチェーンで解決され、ZK証明が正確な位置情報を秘匿します。",
+        "title": "Privacy & Security",
+        "description": "あらゆるレイヤーでの多層防御。バリデーターステーキング、on-chain紛争解決、そして明かさずに検証するゼロ知識証明。",
         "items": {
           "0": "ステーキングとスラッシング",
-          "1": "紛争解決",
+          "1": "on-chain紛争解決",
           "2": "ZK証明",
-          "3": "異常検知"
+          "3": "Sybil防御"
         }
       },
       "3": {
-        "title": "アプリケーション",
-        "description": "検証されたプレゼンスの上に構築されるもの：公正なガバナンス、セキュアデータボールト、トラストネットワーク、コーディネーションツール。",
+        "title": "Application Layer",
+        "description": "人間がon-chainプリミティブになったとき何が作れるか：ボット耐性airdrops、一人一票DAOs、アクセス制限drops、そして本当に意味を持つトラストグラフ。",
         "items": {
-          "0": "ガバナンス",
-          "1": "データボールト",
-          "2": "トラストグラフ",
-          "3": "グループ管理"
+          "0": "Sybil耐性DAOs",
+          "1": "ボット耐性drops",
+          "2": "アクセス制限",
+          "3": "トラストグラフ"
         }
       }
     }
   },
   "privacyZK": {
-    "label": "ゼロ知識証明",
-    "title": "位置は検証されますが、",
-    "titleAccent": "明かされません",
+    "label": "Zero-Knowledge",
+    "title": "on-chainで検証。",
+    "titleAccent": "off-chainでは不可視。",
     "description": {
-      "0": "ゼロ知識証明により、ネットワークはあなたがある場所にいたことを確認できますが、その場所がどこかは知ることができません。あなたのデータはあなたの管理下に残ります。",
-      "1": "あなたの信号を測定するバリデーターでさえ、座標を見ることはありません。確認するのはただ一つ：「はい、この人は物理的に存在していました」。"
+      "0": "ゼロ知識証明により、チェーンはあなたが存在していたことを検証できる — どこ、いつ、誰かについて何も知ることなく。証明、露出なし。",
+      "1": "あなたの存在を確認するバリデーターですら、あなたのデータを一切見ない。彼らが証明するのは一つの事実：「この人間は本物だった。」チェーンが必要とするのはそれだけ。誰もそれ以上は得られない。"
     },
     "verified": "検証済み",
-    "redactedPosition": "位置: ████████",
+    "redactedPosition": "Position: ████████",
     "redactedPositionAria": "秘匿された位置データ",
     "pillars": {
       "0": {
-        "title": "コミットリビール",
-        "description": "まずプレゼンスの封印されたハッシュを送信します。ロックされた後にのみデータをリビールします — 改ざんとフロントランニングを防止します。"
+        "title": "Commit → Reveal",
+        "description": "あなたのクレームは誰かが見る前に封印される。バリデーターが処理する前にロックされる。最初から検閲耐性とフロントラン防止を備える。"
       },
       "1": {
-        "title": "ゼロ知識証明",
-        "description": "「この人はここにいた」ことを場所を明かさずに検証する数学的証明。ネットワークはあなたの位置を一切知りません。"
+        "title": "ZK証明",
+        "description": "「ここ」を明かさず「私はここにいた」を検証する証明。チェーンは確認する。誰もあなたのデータを知り得ない。それがすべてのポイントだ。"
       },
       "2": {
-        "title": "リプレイ保護",
-        "description": "各証明は再利用を防止する一意の識別子を生成します — 完全な匿名性を維持しながらリプレイ攻撃をブロックします。"
+        "title": "リンク不可能な証明",
+        "description": "各証明はワンタイム — 二重請求を防ぎつつ、あなたのウォレット、デバイス、履歴へのすべてのリンクを切断する。毎回、完全なプライバシー。"
       }
     }
   },
@@ -1782,54 +1782,54 @@
     }
   },
   "heroPromise": {
-    "eyebrow": "the promise",
-    "prose": "no corporation in the middle. service authorized by witnesses, not towers. your number — yours, forever.",
-    "line1": "no telco.",
-    "line2": "no KYC.",
-    "line3": "no surveillance.",
-    "line4": "just presence."
+    "eyebrow": "約束",
+    "prose": "間に企業はない。サービスは塔ではなく証人によって認可される。あなたの番号は永遠にあなたのもの。",
+    "line1": "キャリアなし。",
+    "line2": "KYCなし。",
+    "line3": "監視なし。",
+    "line4": "ただ、存在。"
   },
   "statsBand": {
-    "ctaPrimary": "read the docs",
-    "labelEyebrow": "by the numbers",
-    "subtitle": "real subscribers. real attestations. on-chain authorization for every attach — happening right now.",
-    "title": "the carrier, in motion",
+    "ctaPrimary": "ドキュメントを読む",
+    "labelEyebrow": "数字で",
+    "subtitle": "実在の加入者。実際の証言。すべてのアタッチに対するオンチェーン認可 — 今この瞬間も。",
+    "title": "稼働中のキャリア",
     "stats": {
       "0": {
         "value": "100k+",
-        "label": "active subscribers"
+        "label": "アクティブ加入者"
       },
       "1": {
         "value": "12s",
-        "label": "avg attach time"
+        "label": "平均アタッチ時間"
       },
       "2": {
         "value": "$0.001",
-        "label": "avg attach cost"
+        "label": "平均アタッチコスト"
       },
       "3": {
         "value": "99.97%",
-        "label": "sybil resistance"
+        "label": "シビル耐性"
       }
     }
   },
   "useCasesPreview": {
-    "ctaSeeAll": "see all use cases",
-    "labelEyebrow": "what it unlocks",
-    "subtitle": "mobile primitives without a middleman. eSIM in seconds. roam anywhere. port your number with a tap. all consensus-gated.",
-    "title": "phones, but the rules are different",
+    "ctaSeeAll": "すべてのユースケースを見る",
+    "labelEyebrow": "解放されるもの",
+    "subtitle": "中間業者なしのモバイルプリミティブ。数秒でeSIM。どこでもローミング。タップで番号ポータビリティ。すべて合意でゲート。",
+    "title": "電話、しかしルールは別物",
     "cards": {
       "0": {
-        "title": "sovereign eSIM",
-        "description": "activate an eSIM with a Proof of Presence. no telco approval. no billing relationship. consensus is enough."
+        "title": "主権eSIM",
+        "description": "プレゼンス証明でeSIMを起動。通信会社の承認不要。請求関係不要。合意で十分。"
       },
       "1": {
-        "title": "borderless roaming",
-        "description": "fly anywhere. local witnesses attest you're there. the chain issues a regional service lease in seconds. same number, every region."
+        "title": "国境のないローミング",
+        "description": "どこへでも。ローカル証人が実在を証言。チェーンが数秒で地域リースを発行。同じ番号、すべての地域。"
       },
       "2": {
-        "title": "number portability, on-chain",
-        "description": "move your number between devices without a support call. consensus-gated. anti-SIM-swap. instant."
+        "title": "オンチェーン番号ポータビリティ",
+        "description": "サポートに電話せず番号をデバイス間で移動。合意でゲート。SIMスワップ対策。即時。"
       }
     }
   }

@@ -93,9 +93,9 @@
     "titleLine1Accent": "presença",
     "titleLine2Start": "",
     "titleLine2Accent": "",
-    "subtitle": "A única chain que prova que você é humano — sem escanear seu corpo. Sem orbs. Sem selfies. Apenas apareça.",
-    "ctaPrimary": "Acesso Antecipado",
-    "ctaSecondary": "Saiba Mais",
+    "subtitle": "Uma operadora móvel. Mas sua. O eSIM ativa on-chain, seu número vive em consenso, a operadora não tem voto.",
+    "ctaPrimary": "acesso antecipado",
+    "ctaSecondary": "ver como funciona",
     "features": {
       "0": {
         "label": "Prova à Prova de Bots",
@@ -111,13 +111,13 @@
       }
     },
     "typewriterPhrases": {
-      "0": "a carrier without a corporation.",
-      "1": "your number, witnessed not billed.",
-      "2": "eSIM by consensus, not contract.",
-      "3": "phones don't need permission anymore."
+      "0": "uma operadora sem corporação.",
+      "1": "seu número, testemunhado não cobrado.",
+      "2": "eSIM por consenso, não por contrato.",
+      "3": "celulares não precisam mais de permissão."
     },
-    "labelEyebrow": "decentralized mobile carrier · L1",
-    "title": "Your number. Your phone. Your call."
+    "labelEyebrow": "operadora móvel descentralizada · L1",
+    "title": "Seu número. Seu telefone. Sua decisão."
   },
   "about": {
     "label": "O Que Faz",
@@ -153,59 +153,59 @@
     }
   },
   "howItWorks": {
-    "label": "Como Funciona",
-    "title": "Do Sinal à Soberania",
-    "subtitle": "Três passos. Sem hardware. Sem biometria. Apenas física.",
+    "label": "como funciona",
+    "title": "de assinante a soberano em três passos",
+    "subtitle": "sem contrato, sem ligação ao suporte, sem \"vamos retornar\" — só três movimentos on-chain e seu celular está ligado.",
     "aria": "Como a 7aychain verifica sua presença",
     "steps": {
       "0": {
         "number": "01",
-        "title": "Apareça",
-        "description": "Abra o app e toque uma vez. Seu dispositivo envia uma prova selada que diz “estou aqui” — sem senhas, sem selfies, sem hardware especial.",
+        "title": "reivindique seu número",
+        "description": "trave um número on-chain. ligue-o à sua identidade e ao seu dispositivo. nenhum sistema de cobrança tem cópia.",
         "iconAlt": "Celular conectando-se à rede com arcos de sinal"
       },
       "1": {
         "number": "02",
-        "title": "Seja Verificado",
-        "description": "Validadores por toda a rede medem o timing da sua conexão para confirmar que você realmente está lá. Sem GPS, sem oráculos — apenas a velocidade da luz.",
+        "title": "as testemunhas fazem o resto",
+        "description": "testemunhas locais atestam que você está fisicamente aqui. o consenso se forma. seu eSIM é selado em uma época — sem GPS, sem orb, sem prova-de-corporação.",
         "iconAlt": "Três validadores triangulando uma posição"
       },
       "2": {
         "number": "03",
-        "title": "Seja Dono da Sua Prova",
-        "description": "Sua presença é selada on-chain — permanente, soberana e impossível de forjar. Você é dono dela. Ninguém pode tirá-la de você.",
+        "title": "o celular conecta. é isso.",
+        "description": "a chain emite uma autorização de conexão. seu aparelho conecta ao serviço nativo 7AY. respaldado por stake, não por papelada.",
         "iconAlt": "Selo hexagonal com marca de verificação encadeado a blocos"
       }
     }
   },
   "whyChain": {
-    "title": "Por que",
-    "titleAccent": "7aychain",
+    "title": "por que uma chain comanda a operadora",
+    "titleAccent": "(e a telco não)",
     "titleEnd": "?",
-    "subtitle": "Toda chain confia em criptografia. A 7aychain ancora identidade à realidade física — a única coisa que IA, bots e contas falsas nunca conseguem forjar.",
+    "subtitle": "as telcos são donas do seu número, sua identidade e seus dados. a 7aychain inverte isso — seus direitos de serviço vivem on-chain, seu celular obedece ao consenso, ninguém é dono de você.",
     "cards": {
       "0": {
-        "title": "Anti-Bot por Padrão",
-        "description": "Sem escaneamento de íris. Sem impressões digitais. A rede mede o timing da sua conexão para verificar que você está fisicamente presente — algo que bots simplesmente não conseguem falsificar.",
+        "title": "você é dono do número",
+        "description": "seu número, eSIM e direitos de serviço se ligam a você on-chain. sem um registro de cobrança que alguém pode desligar.",
         "iconAlt": "Onda de sinal com nós de medição"
       },
       "1": {
-        "title": "Privado Desde o Primeiro Dia",
-        "description": "Sua identidade continua sendo sua. A rede prova que você esteve em algum lugar sem nunca descobrir quem você é. Zero dados pessoais on-chain.",
+        "title": "o consenso diz sim",
+        "description": "ativação precisa de quórum de testemunhas locais. nenhum terceiro concede ou revoga sua linha. a chain é a única autoridade.",
         "iconAlt": "Cadeado com anéis de prova de conhecimento zero"
       },
       "2": {
-        "title": "Apenas Humanos, Automaticamente",
-        "description": "O protocolo pontua cada participante com base em comportamento real — separando humanos de máquinas sem CAPTCHAs, orbs ou revisão manual.",
+        "title": "stake ou slash",
+        "description": "validadores fazem stake de 7AY. mentem, perdem. honestidade é o único jogo lucrativo. teoria dos jogos > atendimento ao cliente.",
         "iconAlt": "Escudo com marca de verificação humana"
       },
       "3": {
-        "title": "Governança Realmente Justa",
-        "description": "Poder de voto vinculado a participação real, não a quantidade de tokens. Sua voz cresce com sua presença verificada na rede — não com o tamanho da sua carteira.",
+        "title": "bots não aparecem",
+        "description": "wallets são baratas. presença não é. bots podem criar milhões de contas; não conseguem o quórum de testemunhas dizendo que estão fisicamente aqui.",
         "iconAlt": "Árvore de delegação com nós de capacidade"
       }
     },
-    "labelEyebrow": "why this works"
+    "labelEyebrow": "por que isso funciona"
   },
   "network": {
     "label": "Rede",
@@ -468,14 +468,14 @@
     }
   },
   "newsletter": {
-    "title": "Junte-se à Economia de Presença",
-    "subtitle": "Marcos do protocolo, atualizações de validadores e drops de acesso antecipado — entregues para quem aparece primeiro.",
-    "cta": "Receber Atualizações do Protocolo",
-    "trustLine": "Apenas sinal. Sem ruído. Cancele quando quiser.",
-    "emailPlaceholder": "you@domain.com",
-    "errorMessage": "that didn't work. try again in a sec.",
-    "labelEyebrow": "stay in sync",
-    "successMessage": "you're in. inbox incoming."
+    "title": "sintonize com a operadora de presença",
+    "subtitle": "lançamentos do protocolo, marcos do devnet, novidades de validadores, propostas de governança. só sinal — sem hype, sem spam.",
+    "cta": "inscrever-me",
+    "trustLine": "cancele quando quiser. email usado só para atualizações do protocolo.",
+    "emailPlaceholder": "voce@dominio.com",
+    "errorMessage": "algo deu errado. tente de novo em instantes.",
+    "labelEyebrow": "fique por dentro",
+    "successMessage": "está dentro. olho na caixa de entrada."
   },
   "devnetStatus": {
     "statusIndicator": "Devnet Ativa",
@@ -517,135 +517,135 @@
     "cta": "Tentar novamente"
   },
   "technologyPage": {
-    "label": "Tecnologia",
+    "label": "Protocolo",
     "title": "Proof of Presence",
     "accentWord": "Presence",
     "description": {
-      "0": "A 7aychain verifica humanos reais em lugares reais usando a física dos sinais de internet. Sem câmeras. Sem biometria. Sem hardware especial.",
-      "1": "Uma L1 construída para a única coisa que a IA nunca consegue falsificar: estar em algum lugar."
+      "0": "A primeira L1 onde ser humano é o consenso. Sem KYC. Sem biometria. Sem selfies. Apenas um toque e uma rede descentralizada que sabe que você é real.",
+      "1": "Construída para um mundo dominado por bots e wallets falsas — onde a única coisa que ainda não pode ser forjada é estar presente."
     }
   },
   "techHowItWorks": {
     "label": "Como Funciona",
-    "title": "Os Princípios por Trás do",
-    "titleAccent": "Protocolo",
-    "subtitle": "Quatro fundamentos que tornam a verificação baseada em física possível.",
+    "title": "Uma L1 Construída sobre",
+    "titleAccent": "Proof of Presence",
+    "subtitle": "Quatro pilares. Uma prova infalsificável: você, aqui, agora.",
     "principles": {
       "0": {
-        "title": "Enraizado na Física",
-        "description": "Sinais de internet viajam na velocidade da luz. Medindo o timing de múltiplos validadores, a rede fixa sua localização no mundo real — sem GPS necessário."
+        "title": "Verificação Trustless",
+        "description": "Validadores confirmam sua presença a partir de múltiplos nós independentes. Sem autoridade central. Sem permissões. Apenas uma rede descentralizada que não pode ser manipulada."
       },
       "1": {
         "title": "Privado por Padrão",
-        "description": "A rede prova que você esteve presente sem saber onde. Sua localização é registrada como hash, verificada por provas ZK e nunca armazenada em texto plano."
+        "description": "Sua presença é verificada sem expor sua identidade ou localização. A chain sabe que você apareceu. Ninguém sabe onde. Nem nós."
       },
       "2": {
-        "title": "Economicamente Protegido",
-        "description": "Todo validador tem pele no jogo. Minta sobre a localização de alguém e perde seu stake. Honestidade é a única estratégia lucrativa."
+        "title": "Segurança com Staking",
+        "description": "Todo validador faz stake de 7AY. Age de forma desonesta, leva slashing. Validar com honestidade é o único jogo lucrativo."
       },
       "3": {
-        "title": "Infalsificável por IA",
-        "description": "IA gera texto, imagens e identidades sintéticas. Ela não pode existir fisicamente em uma coordenada. Presença é a prova de humanidade que resiste à automação."
+        "title": "Anti-Bot por Design",
+        "description": "Bots conseguem criar um milhão de wallets. Não conseguem estar fisicamente presentes. Presence é a camada de resistência Sybil que faltava na Web3."
       }
     }
   },
   "presenceJourney": {
     "label": "Fluxo do Protocolo",
-    "title": "Do Sinal à",
-    "titleAccent": "Prova Selada",
-    "subtitle": "Três passos. Sem intermediários. Sua presença — verificada e permanente.",
+    "title": "Do Toque à",
+    "titleAccent": "Prova On-Chain",
+    "subtitle": "Três passos. Zero intermediários. Uma prova verificável de que você é real.",
     "steps": {
       "0": {
         "number": "01",
-        "title": "Você Aparece",
-        "badge": "Declarar + Commit",
-        "description": "Seu dispositivo envia um compromisso selado — um hash criptográfico que diz “Estou aqui” sem revelar onde. Um toque. Sem biometria. Sem hardware."
+        "title": "Você Toca. A Chain Escuta.",
+        "badge": "Commit",
+        "description": "Um toque envia seu claim selado para a rede — um compromisso assinado de que você está presente, agora. Sem dados pessoais expostos. Sem identidade exigida."
       },
       "1": {
         "number": "02",
-        "title": "A Rede Mede Você",
-        "badge": "Atestar + Triangular",
-        "description": "Um círculo de validadores mede independentemente o timing do seu sinal de múltiplos pontos. Eles estimam sua posição — sem que você a compartilhe."
+        "title": "Validadores Verificam.",
+        "badge": "Atestar",
+        "description": "Um conjunto aleatório de validadores confirma sua presença de forma independente a partir de múltiplos nós. Chegam a consenso sobre um fato: você esteve fisicamente ali."
       },
       "2": {
         "number": "03",
-        "title": "Sua Prova É Selada",
+        "title": "Prova Selada. Sua Para Sempre.",
         "badge": "Finalizar",
-        "description": "Quando validadores suficientes concordam, sua presença é registrada on-chain — um registro imutável de que você esteve fisicamente lá. Você é dono dele para sempre."
+        "description": "Quando os validadores atingem quórum, sua prova é finalizada on-chain. Um recibo imutável e resistente à censura de que você é um humano verificado. Seu para usar em qualquer protocolo."
       }
     }
   },
   "architectureLayers": {
     "label": "Arquitetura",
     "title": "Quatro Camadas,",
-    "titleAccent": "Um Protocolo",
-    "subtitle": "Cada camada se constrói sobre a anterior — da rede bruta até as apps com as quais você interage.",
+    "titleAccent": "Uma Chain Soberana",
+    "subtitle": "Um stack modular e componível — do consenso base às apps que os builders deployam por cima. Toda camada open-source.",
     "layers": {
       "0": {
-        "title": "Fundação de Rede",
-        "description": "Como os nós descobrem peers, alcançam consenso e produzem blocos. Todo validador segue as mesmas regras, aplicadas pelo protocolo.",
+        "title": "Camada de Consenso",
+        "description": "Finalidade rápida, validação descentralizada e uma rede projetada para rodadas de presença em tempo real. Sem ponto único de falha. Sem gatekeepers centralizados.",
         "items": {
-          "0": "Consenso",
-          "1": "Produção de blocos",
-          "2": "Rede P2P",
-          "3": "Finalidade"
+          "0": "Finalidade rápida",
+          "1": "Validação descentralizada",
+          "2": "Rede peer-to-peer",
+          "3": "Slashing"
         }
       },
       "1": {
         "title": "Motor de Presença",
-        "description": "A inovação central: medir timing de rede de múltiplos pontos para fixar sua posição no mundo real. Validadores formam círculos, medem e verificam — tudo sem GPS.",
+        "description": "A primitiva nativa que mais ninguém tem: uma rede descentralizada de validadores que pode verificar que você é um humano real no mundo real — sem doxxar você.",
         "items": {
-          "0": "Triangulação",
-          "1": "Círculos de testemunhas",
-          "2": "Estimativa de posição",
-          "3": "Rodadas de verificação"
+          "0": "Círculos de validadores",
+          "1": "Verificação de presença",
+          "2": "Compromissos selados",
+          "3": "Rodadas em tempo real"
         }
       },
       "2": {
-        "title": "Segurança e Privacidade",
-        "description": "Defesa em profundidade: validadores fazem stake de valor real, disputas resolvem-se on-chain e provas ZK mantêm sua localização exata privada.",
+        "title": "Privacidade e Segurança",
+        "description": "Defesa em profundidade em cada camada. Staking de validadores, resolução de disputas on-chain e provas de conhecimento zero que verificam sem revelar.",
         "items": {
           "0": "Staking e slashing",
-          "1": "Resolução de disputas",
+          "1": "Disputas on-chain",
           "2": "Provas ZK",
-          "3": "Detecção de anomalias"
+          "3": "Defesa contra Sybil"
         }
       },
       "3": {
-        "title": "Aplicações",
-        "description": "O que se constrói sobre presença verificada: governança justa, cofres seguros, redes de confiança e ferramentas de coordenação.",
+        "title": "Camada de Aplicação",
+        "description": "O que você constrói quando humanos viram primitivas on-chain: airdrops anti-bot, DAOs de um-humano-um-voto, drops com acesso restrito e grafos de confiança que realmente significam algo.",
         "items": {
-          "0": "Governança",
-          "1": "Cofres de dados",
-          "2": "Grafos de confiança",
-          "3": "Gerenciamento de grupos"
+          "0": "DAOs à prova de Sybil",
+          "1": "Drops à prova de bots",
+          "2": "Acesso restrito",
+          "3": "Grafos de confiança"
         }
       }
     }
   },
   "privacyZK": {
     "label": "Conhecimento Zero",
-    "title": "Sua Localização É Verificada,",
-    "titleAccent": "Nunca Revelada",
+    "title": "Verificado On-Chain.",
+    "titleAccent": "Invisível Off-Chain.",
     "description": {
-      "0": "Provas de conhecimento zero permitem que a rede confirme que você esteve em algum lugar sem saber onde. Seus dados nunca saem do seu controle.",
-      "1": "Até os validadores que medem seu sinal nunca veem suas coordenadas. Eles confirmam uma coisa: “sim, esta pessoa esteve fisicamente presente.”"
+      "0": "Provas de conhecimento zero permitem que a chain verifique que você esteve presente — sem saber nada sobre onde, quando ou quem você é. Prova sem exposição.",
+      "1": "Nem os validadores que confirmam sua presença veem seus dados. Atestam um único fato: “este humano foi real.” É tudo que a chain precisa. É tudo que qualquer um recebe."
     },
     "verified": "Verificado",
     "redactedPosition": "Posição: ████████",
     "redactedPositionAria": "Dados de posição ocultados",
     "pillars": {
       "0": {
-        "title": "Commit-Reveal",
-        "description": "Envie primeiro um hash selado da sua presença. Somente depois de bloqueado você revela os dados — prevenindo adulteração e front-running."
+        "title": "Commit → Reveal",
+        "description": "Seu claim é selado antes que alguém possa vê-lo. Trancado antes que os validadores o processem. Resistente à censura e anti-front-running desde o início."
       },
       "1": {
-        "title": "Provas de Conhecimento Zero",
-        "description": "Provas matemáticas que verificam “esta pessoa esteve aqui” sem revelar onde. A rede nunca vê sua localização."
+        "title": "Provas ZK",
+        "description": "Provas que verificam “eu estive aqui” sem revelar o “aqui.” A chain confirma. Ninguém acessa seus dados. É exatamente esse o ponto."
       },
       "2": {
-        "title": "Proteção contra Replay",
-        "description": "Cada prova gera um identificador único que previne reutilização — bloqueando ataques de replay enquanto mantém você totalmente anônimo."
+        "title": "Provas Não-Vinculáveis",
+        "description": "Cada prova é de uso único — previne duplo-claim enquanto quebra qualquer ligação com sua wallet, dispositivo ou histórico. Privacidade total, toda vez."
       }
     }
   },
@@ -1782,54 +1782,54 @@
     }
   },
   "heroPromise": {
-    "eyebrow": "the promise",
-    "prose": "no corporation in the middle. service authorized by witnesses, not towers. your number — yours, forever.",
-    "line1": "no telco.",
-    "line2": "no KYC.",
-    "line3": "no surveillance.",
-    "line4": "just presence."
+    "eyebrow": "a promessa",
+    "prose": "sem corporação no meio. serviço autorizado por testemunhas, não por torres. seu número — seu, para sempre.",
+    "line1": "sem operadora.",
+    "line2": "sem KYC.",
+    "line3": "sem vigilância.",
+    "line4": "só presença."
   },
   "statsBand": {
-    "ctaPrimary": "read the docs",
-    "labelEyebrow": "by the numbers",
-    "subtitle": "real subscribers. real attestations. on-chain authorization for every attach — happening right now.",
-    "title": "the carrier, in motion",
+    "ctaPrimary": "ler a documentação",
+    "labelEyebrow": "em números",
+    "subtitle": "assinantes reais. atestações reais. autorização on-chain para cada conexão — acontecendo agora.",
+    "title": "a operadora, em movimento",
     "stats": {
       "0": {
         "value": "100k+",
-        "label": "active subscribers"
+        "label": "assinantes ativos"
       },
       "1": {
         "value": "12s",
-        "label": "avg attach time"
+        "label": "tempo médio de conexão"
       },
       "2": {
         "value": "$0.001",
-        "label": "avg attach cost"
+        "label": "custo médio por conexão"
       },
       "3": {
         "value": "99.97%",
-        "label": "sybil resistance"
+        "label": "resistência a sybil"
       }
     }
   },
   "useCasesPreview": {
-    "ctaSeeAll": "see all use cases",
-    "labelEyebrow": "what it unlocks",
-    "subtitle": "mobile primitives without a middleman. eSIM in seconds. roam anywhere. port your number with a tap. all consensus-gated.",
-    "title": "phones, but the rules are different",
+    "ctaSeeAll": "ver todos os casos de uso",
+    "labelEyebrow": "o que destrava",
+    "subtitle": "primitivas móveis sem intermediários. eSIM em segundos. roaming em qualquer lugar. portabilidade com um toque. tudo mediado por consenso.",
+    "title": "celulares, mas as regras são outras",
     "cards": {
       "0": {
-        "title": "sovereign eSIM",
-        "description": "activate an eSIM with a Proof of Presence. no telco approval. no billing relationship. consensus is enough."
+        "title": "eSIM soberana",
+        "description": "ative uma eSIM com prova de presença. sem aprovação da telco. sem relação de cobrança. consenso basta."
       },
       "1": {
-        "title": "borderless roaming",
-        "description": "fly anywhere. local witnesses attest you're there. the chain issues a regional service lease in seconds. same number, every region."
+        "title": "roaming sem fronteiras",
+        "description": "vá pra onde quiser. testemunhas locais atestam que você está lá. a chain emite uma autorização regional em segundos. mesmo número, toda região."
       },
       "2": {
-        "title": "number portability, on-chain",
-        "description": "move your number between devices without a support call. consensus-gated. anti-SIM-swap. instant."
+        "title": "portabilidade on-chain",
+        "description": "mova seu número entre dispositivos sem ligar ao suporte. com consenso. anti-SIM-swap. instantâneo."
       }
     }
   }

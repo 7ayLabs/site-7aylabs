@@ -33,18 +33,8 @@ export default async function TechnologyPage({ params }: { params: Promise<{ loc
 
   return (
     <>
-      {/* Big Hero */}
-      <section className="relative min-h-[85svh] w-full flex flex-col items-center justify-center overflow-hidden pt-24 pb-8 md:pt-20 md:pb-0">
-        {/* Decorative gradient blob */}
-        <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full opacity-30 blur-[120px] pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse, var(--color-accent-primary), var(--color-accent-secondary), transparent)",
-          }}
-          aria-hidden="true"
-        />
-
+      {/* Big Hero — fully transparent, only the layer ambient shows through */}
+      <section className="relative min-h-[85svh] w-full flex flex-col items-center justify-center pt-24 pb-8 md:pt-20 md:pb-0">
         <MotionWrapper variants={staggerContainer} className="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 lg:px-12 max-w-5xl mx-auto">
           {/* Label */}
           <AnimatedDiv variants={fadeUpItem}>
@@ -83,15 +73,6 @@ export default async function TechnologyPage({ params }: { params: Promise<{ loc
             </Button>
           </AnimatedDiv>
         </MotionWrapper>
-
-        {/* Bottom fade */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
-          style={{
-            background: "linear-gradient(to top, var(--color-bg-primary), transparent)",
-          }}
-          aria-hidden="true"
-        />
       </section>
 
       <TechHowItWorks />

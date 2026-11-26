@@ -5,12 +5,11 @@ import {
   Lock,
   EyeOff,
   Fingerprint,
-  MapPin,
   type LucideIcon,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import SectionLabel from "@/components/ui/SectionLabel";
-import Badge from "@/components/ui/Badge";
+import ZK3D from "./ZK3D";
 import {
   staggerContainer,
   slideInLeft,
@@ -27,71 +26,6 @@ const PILLARS_VISUAL: readonly PillarVisual[] = [
   { icon: EyeOff, color: "#C084FC" },
   { icon: Fingerprint, color: "#A78BFA" },
 ] as const;
-
-/* ── ZK illustration — concentric dashed rings with center pin ── */
-function ZKIllustration() {
-  const t = useTranslations("privacyZK");
-
-  return (
-    <div className="relative flex items-center justify-center w-full aspect-square max-w-[320px] mx-auto">
-      {/* Concentric dashed rings (violet-themed) */}
-      {[280, 220, 160].map((size, i) => (
-        <div
-          key={size}
-          className="absolute rounded-full border border-dashed"
-          style={{
-            width: size,
-            height: size,
-            borderColor: `rgba(139, 92, 246, ${0.15 + i * 0.08})`,
-            animation: `slowSpin ${20 + i * 8}s linear infinite${i % 2 === 1 ? " reverse" : ""}`,
-          }}
-          aria-hidden="true"
-        />
-      ))}
-
-      {/* Center pin */}
-      <div className="relative z-10 flex flex-col items-center gap-3">
-        <div
-          className="w-14 h-14 rounded-full bg-[var(--color-accent-violet-dim)] border border-[rgba(139,92,246,0.3)] flex items-center justify-center"
-          style={{ boxShadow: "0 0 20px rgba(139,92,246,0.2)" }}
-        >
-          <MapPin
-            className="w-7 h-7 text-[var(--color-accent-tertiary)]"
-            strokeWidth={1.75}
-            aria-hidden="true"
-          />
-        </div>
-        <Badge variant="violet">{t("verified")}</Badge>
-        <span
-          className="font-mono text-xs text-fg-muted tracking-wider select-none"
-          aria-label={t("redactedPositionAria")}
-        >
-          {t("redactedPosition")}
-        </span>
-      </div>
-
-      {/* Floating validator dots */}
-      {[
-        { top: "12%", left: "18%", delay: "0s" },
-        { top: "8%", right: "22%", delay: "0.5s" },
-        { top: "75%", left: "15%", delay: "1s" },
-        { top: "70%", right: "18%", delay: "1.5s" },
-      ].map((pos, i) => (
-        <div
-          key={i}
-          className="absolute w-2.5 h-2.5 rounded-full bg-[var(--color-accent-tertiary)] opacity-40"
-          style={{
-            top: pos.top,
-            left: pos.left,
-            right: pos.right,
-            animation: `pulse 3s ease-in-out ${pos.delay} infinite`,
-          }}
-          aria-hidden="true"
-        />
-      ))}
-    </div>
-  );
-}
 
 export default function PrivacyZK() {
   const reduceMotion = useReducedMotion();
@@ -127,21 +61,16 @@ export default function PrivacyZK() {
               <p>{t("description.1")}</p>
             </div>
 
-            {/* 3 ZK pillars list */}
-            <div className="space-y-5">
+            {/* 3 ZK pillars — minimal icons, no chips */}
+            <div className="space-y-6">
               {PILLARS_VISUAL.map((pillar, i) => (
                 <div key={i} className="flex gap-4">
-                  <div
-                    className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center mt-0.5"
-                    style={{ backgroundColor: `${pillar.color}12` }}
-                  >
-                    <pillar.icon
-                      className="w-5 h-5"
-                      style={{ color: pillar.color }}
-                      strokeWidth={1.75}
-                      aria-hidden="true"
-                    />
-                  </div>
+                  <pillar.icon
+                    className="flex-shrink-0 w-5 h-5 mt-1"
+                    style={{ color: pillar.color }}
+                    strokeWidth={1.25}
+                    aria-hidden="true"
+                  />
                   <div>
                     <h3 className="font-display font-semibold text-base text-fg mb-1 tracking-tight">
                       {t(`pillars.${i}.title`)}
@@ -155,12 +84,12 @@ export default function PrivacyZK() {
             </div>
           </motion.div>
 
-          {/* ── Visual side (right) ── */}
+          {/* ── Visual side (right) — transparent, 3D illustration ── */}
           <motion.div
             variants={reduceMotion ? undefined : slideInRight}
-            className="relative rounded-3xl bg-bg-tertiary p-8 md:p-12 flex items-center justify-center aspect-square max-w-[520px] mx-auto lg:mx-0 w-full overflow-hidden"
+            className="relative flex items-center justify-center aspect-square max-w-[520px] mx-auto lg:mx-0 w-full"
           >
-            <ZKIllustration />
+            <ZK3D />
           </motion.div>
         </motion.div>
       </div>

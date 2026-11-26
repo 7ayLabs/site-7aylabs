@@ -535,20 +535,20 @@
         "title": "presence layer",
         "description": "witness circles. epoch-bound proofs. the cryptographic foundation under every authorization.",
         "items": {
-          "0": "Consensus",
-          "1": "Block production",
-          "2": "P2P networking",
-          "3": "Finality"
+          "0": "Fast finality",
+          "1": "Decentralized validation",
+          "2": "Peer-to-peer network",
+          "3": "Slashing"
         }
       },
       "1": {
         "title": "identity layer",
         "description": "actor and device bindings. commit-reveal and zero-knowledge keep identity portable, sovereign, unforgeable.",
         "items": {
-          "0": "Triangulation",
-          "1": "Witness circles",
-          "2": "Position estimation",
-          "3": "Verification rounds"
+          "0": "Validator circles",
+          "1": "Presence verification",
+          "2": "Sealed commitments",
+          "3": "Real-time rounds"
         }
       },
       "2": {
@@ -556,19 +556,19 @@
         "description": "number reservation. eSIM commitments. attach leases. regional service nodes. telecom rights as on-chain state.",
         "items": {
           "0": "Staking & slashing",
-          "1": "Dispute resolution",
+          "1": "On-chain disputes",
           "2": "ZK proofs",
-          "3": "Anomaly detection"
+          "3": "Sybil defense"
         }
       },
       "3": {
         "title": "dispute layer",
         "description": "on-chain evidence. slashing. recovery flows. bad witnesses lose stake. compromised lines get recovered.",
         "items": {
-          "0": "Governance",
-          "1": "Data vaults",
-          "2": "Trust graphs",
-          "3": "Group management"
+          "0": "Sybil-proof DAOs",
+          "1": "Bot-proof drops",
+          "2": "Gated access",
+          "3": "Trust graphs"
         }
       }
     }

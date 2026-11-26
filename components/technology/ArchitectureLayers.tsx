@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import SectionLabel from "@/components/ui/SectionLabel";
-import Badge from "@/components/ui/Badge";
 import {
   staggerContainer,
   fadeUpItem,
@@ -35,35 +34,9 @@ export default function ArchitectureLayers() {
 
   return (
     <section
-      className="relative w-full py-28 md:py-36 lg:py-40 overflow-hidden"
+      className="relative w-full py-28 md:py-36 lg:py-40"
       aria-labelledby="architecture-heading"
     >
-      {/* Full-width gradient background */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(23,142,119,0.08) 0%, rgba(0,255,198,0.04) 50%, rgba(139,92,246,0.06) 100%)",
-        }}
-        aria-hidden="true"
-      />
-      {/* Top edge fade */}
-      <div
-        className="absolute top-0 left-0 right-0 h-24 pointer-events-none z-[1]"
-        style={{
-          background: "linear-gradient(to bottom, var(--color-bg-primary), transparent)",
-        }}
-        aria-hidden="true"
-      />
-      {/* Bottom edge fade */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none z-[1]"
-        style={{
-          background: "linear-gradient(to top, var(--color-bg-primary), transparent)",
-        }}
-        aria-hidden="true"
-      />
-
       <div className="relative z-10 max-w-6xl mx-auto px-6 md:px-12">
         <motion.div
           initial="hidden"
@@ -97,64 +70,50 @@ export default function ArchitectureLayers() {
             </motion.p>
           </div>
 
-          {/* ── 2×2 layer cards ── */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {/* ── 2×2 minimal layer cells ── */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-14 md:gap-x-16 md:gap-y-16">
             {LAYERS_VISUAL.map((layer, idx) => (
               <motion.div
                 key={idx}
                 variants={reduceMotion ? undefined : fadeUpItem}
-                className="rounded-3xl p-8 md:p-10 group relative overflow-hidden"
-                style={{
-                  background: "var(--glass-bg)",
-                  border: "1px solid var(--glass-border)",
-                  backdropFilter: "blur(16px)",
-                  WebkitBackdropFilter: "blur(16px)",
-                }}
+                className="group relative pl-6"
               >
-                {/* Left accent bar */}
+                {/* Left accent bar (full-height, thin) */}
                 <div
-                  className="absolute left-0 top-0 bottom-0 w-1 rounded-l-3xl"
-                  style={{ backgroundColor: layer.color }}
+                  className="absolute left-0 top-0 bottom-0 w-px"
+                  style={{
+                    background: `linear-gradient(180deg, ${layer.color}, transparent)`,
+                  }}
                   aria-hidden="true"
                 />
 
-                <div className="flex items-start gap-4 mb-4">
-                  <div
-                    className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
-                    style={{ backgroundColor: `${layer.color}15` }}
-                  >
-                    <layer.icon
-                      className="w-6 h-6"
-                      style={{ color: layer.color }}
-                      strokeWidth={1.75}
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <h3 className="font-display font-bold text-xl md:text-2xl text-fg tracking-tight pt-2">
+                <div className="flex items-center gap-3 mb-3">
+                  <layer.icon
+                    className="w-5 h-5 flex-shrink-0"
+                    style={{ color: layer.color }}
+                    strokeWidth={1.25}
+                    aria-hidden="true"
+                  />
+                  <h3 className="font-display font-bold text-xl md:text-2xl text-fg tracking-tight">
                     {t(`layers.${idx}.title`)}
                   </h3>
                 </div>
 
-                <p className="text-fg-secondary text-sm leading-relaxed mb-5">
+                <p className="text-fg-secondary text-sm md:text-base leading-relaxed mb-5">
                   {t(`layers.${idx}.description`)}
                 </p>
 
-                <div className="flex flex-wrap gap-2">
+                {/* Text-only tag list (no chips) */}
+                <ul className="flex flex-wrap gap-x-5 gap-y-1.5">
                   {Array.from({ length: 4 }, (_, itemIdx) => (
-                    <Badge key={itemIdx} variant="glass">
+                    <li
+                      key={itemIdx}
+                      className="text-[11px] uppercase tracking-[0.16em] text-fg-tertiary font-medium"
+                    >
                       {t(`layers.${idx}.items.${itemIdx}`)}
-                    </Badge>
+                    </li>
                   ))}
-                </div>
-
-                {/* Hover glow */}
-                <div
-                  className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                  style={{
-                    background: `radial-gradient(ellipse at 0% 50%, ${layer.color}10 0%, transparent 60%)`,
-                  }}
-                  aria-hidden="true"
-                />
+                </ul>
               </motion.div>
             ))}
           </div>

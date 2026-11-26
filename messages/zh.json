@@ -93,9 +93,9 @@
     "titleLine1Accent": "存在证明",
     "titleLine2Start": "",
     "titleLine2Accent": "层",
-    "subtitle": "唯一能证明你是真人的链——无需扫描你的身体。没有球形设备。没有自拍。只需到场。",
-    "ctaPrimary": "获取抢先体验",
-    "ctaSecondary": "了解更多",
+    "subtitle": "一个移动运营商。但是你的。eSIM 在链上激活,你的号码活在共识中,运营商没有发言权。",
+    "ctaPrimary": "抢先体验",
+    "ctaSecondary": "了解原理",
     "features": {
       "0": {
         "label": "防机器人",
@@ -111,13 +111,13 @@
       }
     },
     "typewriterPhrases": {
-      "0": "a carrier without a corporation.",
-      "1": "your number, witnessed not billed.",
-      "2": "eSIM by consensus, not contract.",
-      "3": "phones don't need permission anymore."
+      "0": "没有公司的运营商。",
+      "1": "你的号码,被见证而非被计费。",
+      "2": "用共识激活 eSIM,而非合同。",
+      "3": "电话不再需要许可。"
     },
-    "labelEyebrow": "decentralized mobile carrier · L1",
-    "title": "Your number. Your phone. Your call."
+    "labelEyebrow": "去中心化移动运营商 · L1",
+    "title": "你的号码。你的手机。你说了算。"
   },
   "about": {
     "label": "功能介绍",
@@ -153,59 +153,59 @@
     }
   },
   "howItWorks": {
-    "label": "运作方式",
-    "title": "从信号到主权",
-    "subtitle": "三步完成。无需硬件。无需生物识别。纯粹物理。",
+    "label": "工作原理",
+    "title": "三步从订阅者到主权者",
+    "subtitle": "没有合同、没有客服电话、没有「我们稍后回复」 — 三个链上动作,你的手机就上线了。",
     "aria": "7aychain 如何验证你的在场",
     "steps": {
       "0": {
         "number": "01",
-        "title": "到场即可",
-        "description": "打开应用，轻触一下。你的设备发送一个封存证明，表示“我在这里”——无需密码，无需自拍，无需专用硬件。",
+        "title": "锁定你的号码",
+        "description": "在链上锁定一个号码。绑定到你的身份和设备。没有任何计费系统持有副本。",
         "iconAlt": "手机通过信号弧连接到网络"
       },
       "1": {
         "number": "02",
-        "title": "接受验证",
-        "description": "网络中的验证者测量你的连接时序以确认你确实在场。无需 GPS，无需预言机——只凭光速。",
+        "title": "见证人完成剩下的",
+        "description": "本地见证人证明你确实在场。共识形成。你的 eSIM 在一个 epoch 中被密封 — 没有 GPS,没有 orb,没有公司证明。",
         "iconAlt": "三个验证者对一个位置进行三角定位"
       },
       "2": {
         "number": "03",
-        "title": "拥有你的证明",
-        "description": "你的在场被封存在链上——永久、自主、不可伪造。它属于你。没有人能夺走它。",
+        "title": "手机连接。就这么简单。",
+        "description": "链发出附着租约。你的设备连接到原生 7AY 服务。由质押背书,而非纸质文件。",
         "iconAlt": "带有对勾的六边形封印连接到区块"
       }
     }
   },
   "whyChain": {
-    "title": "为什么选择",
-    "titleAccent": "7aychain",
+    "title": "为何由链来运营运营商",
+    "titleAccent": "(而非由运营商运营)",
     "titleEnd": "？",
-    "subtitle": "所有链都信赖密码学。7aychain 将身份锚定到物理现实——那个 AI、机器人和虚假账户永远无法伪造的东西。",
+    "subtitle": "传统运营商拥有你的号码、身份和数据。7aychain 反转这一切 — 你的服务权利活在链上,你的手机服从共识,没人拥有你。",
     "cards": {
       "0": {
-        "title": "天生防机器人",
-        "description": "无需虹膜扫描。无需指纹。网络测量你的连接时序来验证你的物理在场——机器人根本无法伪造。",
+        "title": "号码归你所有",
+        "description": "你的号码、eSIM 和服务权利在链上绑定到你。不是某个公司可以一键关闭的计费记录。",
         "iconAlt": "带有测量节点的信号波"
       },
       "1": {
-        "title": "从第一天起保护隐私",
-        "description": "你的身份始终属于你。网络证明你曾在某处，但永远不知道你是谁。链上零个人数据。",
+        "title": "共识说了算",
+        "description": "服务激活需要本地见证人达成法定人数。任何一方都不能授予或撤销你的线路。链是唯一的权威。",
         "iconAlt": "带有零知识证明环的锁"
       },
       "2": {
-        "title": "自动过滤，只留真人",
-        "description": "协议基于真实行为对每位参与者评分——无需验证码、球形设备或人工审核，自动区分人类与机器。",
+        "title": "质押或被罚没",
+        "description": "验证人质押 7AY。撒谎就被罚没。诚实是唯一赚钱的策略。博弈论 > 客户服务。",
         "iconAlt": "带有人类验证对勾的盾牌"
       },
       "3": {
-        "title": "真正公平的治理",
-        "description": "投票权与真实参与挂钩，而非代币数量。你的话语权随你在网络中经验证的在场而增长——而非你的钱包大小。",
+        "title": "机器人无法到场",
+        "description": "钱包很便宜。在场不是。机器人能创建百万账户;它们无法获得见证人法定人数证明它们物理在场。",
         "iconAlt": "带有能力节点的委托树"
       }
     },
-    "labelEyebrow": "why this works"
+    "labelEyebrow": "为何这样可行"
   },
   "network": {
     "label": "网络",
@@ -468,14 +468,14 @@
     }
   },
   "newsletter": {
-    "title": "加入在场经济",
-    "subtitle": "协议里程碑、验证者动态和抢先体验——优先送达率先到场的人。",
-    "cta": "获取协议动态",
-    "trustLine": "只有干货，没有噪音。随时可退订。",
+    "title": "调到在场运营商频道",
+    "subtitle": "协议发布、devnet 里程碑、验证人动态、治理提案。只发信号 — 不炒作、不垃圾。",
+    "cta": "订阅",
+    "trustLine": "随时取消。邮箱仅用于协议更新。",
     "emailPlaceholder": "you@domain.com",
-    "errorMessage": "that didn't work. try again in a sec.",
-    "labelEyebrow": "stay in sync",
-    "successMessage": "you're in. inbox incoming."
+    "errorMessage": "出了点问题。请稍后再试。",
+    "labelEyebrow": "保持同步",
+    "successMessage": "已加入。注意查收邮箱。"
   },
   "devnetStatus": {
     "statusIndicator": "开发网络运行中",
@@ -517,135 +517,135 @@
     "cta": "重试"
   },
   "technologyPage": {
-    "label": "技术",
+    "label": "协议",
     "title": "Proof of Presence",
     "accentWord": "Presence",
     "description": {
-      "0": "7aychain 利用互联网信号的物理法则验证真实的人在真实的地方。无需摄像头。无需生物识别。无需专用硬件。",
-      "1": "一条为 AI 无法伪造的唯一事物而构建的 Layer 1：身处某地。"
+      "0": "首条以「人类存在」为共识的 L1。无 KYC。无生物识别。无自拍。只需一次轻触,去中心化网络即可确认你是真人。",
+      "1": "为一个被机器人和虚假钱包充斥的世界而生——唯一仍无法伪造的,就是亲临现场。"
     }
   },
   "techHowItWorks": {
     "label": "运作方式",
-    "title": "协议背后的",
-    "titleAccent": "原理",
-    "subtitle": "使基于物理的验证成为可能的四大基石。",
+    "title": "构建于 Proof of Presence 之上的",
+    "titleAccent": "L1",
+    "subtitle": "四大支柱。一份无法伪造的证明：你,此地,此刻。",
     "principles": {
       "0": {
-        "title": "植根于物理法则",
-        "description": "互联网信号以光速传播。通过从多个验证者测量时序，网络锁定你的现实位置——无需 GPS。"
+        "title": "Trustless 验证",
+        "description": "验证者从多个独立节点确认你的在场。无中心权威。无需许可。只有一个无法被操控的去中心化网络。"
       },
       "1": {
-        "title": "默认隐私",
-        "description": "网络证明你曾在场，但不知道你在哪里。你的位置以哈希形式提交，通过 ZK 证明验证，从不以明文存储。"
+        "title": "默认私密",
+        "description": "你的在场得到验证,却不暴露身份或位置。链知道你出现了。无人知晓你在哪。我们也不知道。"
       },
       "2": {
-        "title": "经济安全保障",
-        "description": "每个验证者都有切身利益。对某人的位置撒谎就会失去抵押。诚实是唯一有利可图的策略。"
+        "title": "质押安全",
+        "description": "每位验证者都质押 7AY。行为不诚实,即被罚没。诚实验证是唯一有利可图的玩法。"
       },
       "3": {
-        "title": "AI 无法伪造",
-        "description": "AI 能生成文本、图像和合成身份。但它无法物理存在于某个坐标。在场是抵御自动化的人类证明。"
+        "title": "天生防机器人",
+        "description": "机器人可以批量创建钱包。但它们无法亲身到场。Presence 就是 Web3 一直缺失的 Sybil 抗性层。"
       }
     }
   },
   "presenceJourney": {
     "label": "协议流程",
-    "title": "从信号到",
-    "titleAccent": "封存证明",
-    "subtitle": "三个步骤。没有中间人。你的在场——经验证且永久留存。",
+    "title": "从一次轻触到",
+    "titleAccent": "on-chain 证明",
+    "subtitle": "三步。零中间人。一份你是真人的可验证证明。",
     "steps": {
       "0": {
         "number": "01",
-        "title": "你到场了",
-        "badge": "声明 + 承诺",
-        "description": "你的设备提交一个封存承诺——一个加密哈希表示“我在这里”，但不透露你在何处。一次操作。无需生物识别。无需硬件。"
+        "title": "你轻触。链在聆听。",
+        "badge": "提交",
+        "description": "一次轻触,将你的封存声明发送至网络——一份你此刻在场的签名承诺。无个人数据暴露。无需身份信息。"
       },
       "1": {
         "number": "02",
-        "title": "网络测量你",
-        "badge": "证实 + 三角定位",
-        "description": "一圈验证者独立从多个节点测量你的信号时序。他们估算你的位置——而你无需分享任何信息。"
+        "title": "验证者核实。",
+        "badge": "证实",
+        "description": "一组随机选取的验证者从多个节点独立确认你的在场。他们就一个事实达成共识：你确实在现场。"
       },
       "2": {
         "number": "03",
-        "title": "你的证明被封存",
+        "title": "证明封存。永远归你。",
         "badge": "最终确认",
-        "description": "当足够多的验证者达成共识，你的在场即锁定在链上——一条不可篡改的记录，证明你曾物理在场。它永远属于你。"
+        "description": "当验证者达到法定人数,你的证明即在链上最终确认。一份不可篡改、抗审查的凭据,证明你是经过验证的真人。可在任何协议中使用。"
       }
     }
   },
   "architectureLayers": {
     "label": "架构",
-    "title": "四个层级，",
-    "titleAccent": "一套协议",
-    "subtitle": "每一层构建在其下一层之上——从底层网络到你交互的应用。",
+    "title": "四层架构,",
+    "titleAccent": "一条主权链",
+    "subtitle": "模块化、可组合的技术栈——从基础共识到 builder 在上层部署的应用。每一层皆开源。",
     "layers": {
       "0": {
-        "title": "网络基础",
-        "description": "节点如何发现对等方、达成共识并产出区块。每个验证者都遵循相同的规则，由协议强制执行。",
+        "title": "共识层",
+        "description": "快速最终性、去中心化验证,以及为实时在场轮次设计的网络。无单点故障。无中心化守门人。",
         "items": {
-          "0": "共识",
-          "1": "区块生产",
-          "2": "P2P 网络",
-          "3": "最终性"
+          "0": "快速最终性",
+          "1": "去中心化验证",
+          "2": "点对点网络",
+          "3": "罚没机制"
         }
       },
       "1": {
         "title": "在场引擎",
-        "description": "核心创新：从多个节点测量网络时序以锁定你的现实位置。验证者组成圈、测量并验证——全程无需 GPS。",
+        "description": "别无分号的原生原语:一个去中心化的验证者网络,可以在不暴露你隐私的前提下,验证你是现实世界中的真人。",
         "items": {
-          "0": "三角定位",
-          "1": "见证圈",
-          "2": "位置估算",
-          "3": "验证轮次"
+          "0": "验证者圈",
+          "1": "在场验证",
+          "2": "封存承诺",
+          "3": "实时轮次"
         }
       },
       "2": {
-        "title": "安全与隐私",
-        "description": "纵深防御：验证者抵押真实价值，争议在链上解决，ZK 证明保护你的精确位置隐私。",
+        "title": "隐私与安全",
+        "description": "每一层的纵深防御。验证者质押、on-chain 争议解决,以及验证但不揭示的零知识证明。",
         "items": {
-          "0": "抵押与罚没",
-          "1": "争议解决",
+          "0": "质押与罚没",
+          "1": "On-chain 争议",
           "2": "ZK 证明",
-          "3": "异常检测"
+          "3": "Sybil 防御"
         }
       },
       "3": {
         "title": "应用层",
-        "description": "基于经验证的在场构建的应用：公平治理、安全数据保险库、信任网络和协调工具。",
+        "description": "当人类成为 on-chain 原语,你能构建什么:抗机器人 airdrops、一人一票 DAOs、限制访问的 drops,以及真正有意义的信任图谱。",
         "items": {
-          "0": "治理",
-          "1": "数据保险库",
-          "2": "信任图谱",
-          "3": "群组管理"
+          "0": "Sybil 抗性 DAOs",
+          "1": "抗机器人 drops",
+          "2": "限制访问",
+          "3": "信任图谱"
         }
       }
     }
   },
   "privacyZK": {
-    "label": "零知识证明",
-    "title": "你的位置经过验证，",
-    "titleAccent": "但从不泄露",
+    "label": "零知识",
+    "title": "On-chain 已验证。",
+    "titleAccent": "Off-chain 始终隐形。",
     "description": {
-      "0": "零知识证明让网络确认你曾在某个位置，而不知道该位置在哪里。你的数据从未离开你的掌控。",
-      "1": "即便是测量你信号的验证者也永远看不到你的坐标。他们只确认一件事：“是的，此人曾物理在场。”"
+      "0": "零知识证明让链能验证你曾在场——而不获取任何关于地点、时间或身份的信息。证明,无需暴露。",
+      "1": "即便确认你在场的验证者,也从未看过你的数据。他们只证实一个事实：“此人是真实的。” 链需要的仅此而已。任何人能获取的也仅此而已。"
     },
     "verified": "已验证",
-    "redactedPosition": "位置：████████",
+    "redactedPosition": "位置: ████████",
     "redactedPositionAria": "已隐去的位置数据",
     "pillars": {
       "0": {
-        "title": "承诺-揭示",
-        "description": "首先提交在场数据的封存哈希。只有在锁定后才揭示数据——防止篡改和抢跑。"
+        "title": "承诺 → 揭示",
+        "description": "你的声明在任何人看到之前即已封存。在验证者处理之前即已锁定。从一开始就抗审查、防抢跑。"
       },
       "1": {
-        "title": "零知识证明",
-        "description": "数学证明验证“此人曾在这里”但不透露具体位置。网络永远看不到你的位置。"
+        "title": "ZK 证明",
+        "description": "验证“我曾在此”却不揭示“此”的证明。链做确认。无人获取你的数据。这就是全部要义。"
       },
       "2": {
-        "title": "重放保护",
-        "description": "每个证明生成一个唯一标识符以防止重复使用——在保持完全匿名的同时阻止重放攻击。"
+        "title": "不可关联证明",
+        "description": "每份证明仅限一次使用——防止重复领取,同时切断与你钱包、设备或历史记录的一切关联。每次都是完全隐私。"
       }
     }
   },
@@ -1782,54 +1782,54 @@
     }
   },
   "heroPromise": {
-    "eyebrow": "the promise",
-    "prose": "no corporation in the middle. service authorized by witnesses, not towers. your number — yours, forever.",
-    "line1": "no telco.",
-    "line2": "no KYC.",
-    "line3": "no surveillance.",
-    "line4": "just presence."
+    "eyebrow": "承诺",
+    "prose": "中间没有公司。服务由见证人授权,不是基站。你的号码 — 永远是你的。",
+    "line1": "没有运营商。",
+    "line2": "没有 KYC。",
+    "line3": "没有监控。",
+    "line4": "只有在场。"
   },
   "statsBand": {
-    "ctaPrimary": "read the docs",
-    "labelEyebrow": "by the numbers",
-    "subtitle": "real subscribers. real attestations. on-chain authorization for every attach — happening right now.",
-    "title": "the carrier, in motion",
+    "ctaPrimary": "查阅文档",
+    "labelEyebrow": "用数字说话",
+    "subtitle": "真实订阅者。真实证明。每次附着都有链上授权 — 此刻正在发生。",
+    "title": "运行中的运营商",
     "stats": {
       "0": {
         "value": "100k+",
-        "label": "active subscribers"
+        "label": "活跃订阅者"
       },
       "1": {
         "value": "12s",
-        "label": "avg attach time"
+        "label": "平均附着时间"
       },
       "2": {
         "value": "$0.001",
-        "label": "avg attach cost"
+        "label": "平均附着成本"
       },
       "3": {
         "value": "99.97%",
-        "label": "sybil resistance"
+        "label": "Sybil 抗性"
       }
     }
   },
   "useCasesPreview": {
-    "ctaSeeAll": "see all use cases",
-    "labelEyebrow": "what it unlocks",
-    "subtitle": "mobile primitives without a middleman. eSIM in seconds. roam anywhere. port your number with a tap. all consensus-gated.",
-    "title": "phones, but the rules are different",
+    "ctaSeeAll": "查看所有用例",
+    "labelEyebrow": "解锁了什么",
+    "subtitle": "没有中介的移动原语。秒级 eSIM。任意漫游。一键号码可携。一切由共识把关。",
+    "title": "还是手机,但规则不同",
     "cards": {
       "0": {
-        "title": "sovereign eSIM",
-        "description": "activate an eSIM with a Proof of Presence. no telco approval. no billing relationship. consensus is enough."
+        "title": "主权 eSIM",
+        "description": "用一次在场证明激活 eSIM。无需运营商批准。无需计费关系。共识就够。"
       },
       "1": {
-        "title": "borderless roaming",
-        "description": "fly anywhere. local witnesses attest you're there. the chain issues a regional service lease in seconds. same number, every region."
+        "title": "无国界漫游",
+        "description": "去任何地方。本地见证人证明你在场。链在几秒内签发区域服务租约。同一号码,任何区域。"
       },
       "2": {
-        "title": "number portability, on-chain",
-        "description": "move your number between devices without a support call. consensus-gated. anti-SIM-swap. instant."
+        "title": "链上号码可携",
+        "description": "在设备间移动号码,无需呼叫客服。由共识把关。防 SIM 互换。即时。"
       }
     }
   }
