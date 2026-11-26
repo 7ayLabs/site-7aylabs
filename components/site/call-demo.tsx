@@ -69,7 +69,7 @@ export function CallDemo() {
   const dd = 't-num text-[1.35rem] font-semibold leading-none text-[var(--fg)]';
 
   return (
-    <figure className="rounded-[10px] border border-[var(--line-strong)] bg-[var(--surface)]">
+    <figure className="glass self-start overflow-hidden rounded-[20px]">
       <div className="flex items-center justify-between gap-4 border-b border-[var(--line)] py-2 pl-5 pr-2">
         <figcaption className="text-[15px] font-semibold text-[var(--fg)]">{t('title')}</figcaption>
         <button

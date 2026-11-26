@@ -81,7 +81,7 @@ export function MobileMenu() {
 
               <ul className="mt-8 flex flex-col">
                 {NAV_ITEMS.map((item) => {
-                  const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+                  const active = pathname === item.href || pathname.startsWith(`${item.href}/`) || (item.key === 'products' && pathname === '/vizzor');
                   return (
                     <li key={item.key} className="border-b border-[var(--line)]">
                       <Link

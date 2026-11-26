@@ -19,8 +19,8 @@ const OLD_LOCALES = 'es|pt|fr|de|zh|ja';
 const MOVED: ReadonlyArray<readonly [string, string]> = [
   ['/technology', '/vizzor'],
   ['/tech', '/vizzor'],
-  ['/ecosystem', '/vizzor'],
-  ['/services', '/vizzor'],
+  ['/ecosystem', '/products'],
+  ['/services', '/products'],
   ['/use-cases', '/vizzor'],
   ['/use-cases/:slug', '/vizzor'],
   ['/why-presence', '/about'],

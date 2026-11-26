@@ -15,7 +15,7 @@ export function NavBar({ children }: { children: ReactNode }) {
 
   return (
     <header
-      className={`sticky top-0 z-40 border-b bg-[var(--bg)] transition-colors duration-300 ${
+      className={`glass-bar sticky top-0 z-40 border-b transition-colors duration-300 ${
         moved ? 'border-[var(--line)]' : 'border-transparent'
       }`}
     >

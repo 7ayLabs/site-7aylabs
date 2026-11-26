@@ -3,9 +3,9 @@
 /*
  * 7aylabs.com design system.
  *
- * The site is flat: one ground, ink, hairlines, and the lab's own teal. There
- * is no glass, blur or shadow. Two more colours exist and each means one
- * thing: green marks a call that was right, red one that was wrong.
+ * Clear liquid glass over slowly drifting colour, ink type, and the lab's own
+ * teal. Two more colours exist and each means one thing: green marks a call
+ * that was right, red one that was wrong.
  *
  * Type is one family, Archivo, at two widths: headlines are set tall and
  * narrow, text at normal width. (Vizzor's headlines are wide; the lab's are
@@ -41,6 +41,14 @@
   --on-accent: #ffffff;
   --right: #12734a;
   --wrong: #b3261e;
+  --glass: rgba(255, 255, 255, 0.32);
+  --glass-hi: rgba(255, 255, 255, 0.58);
+  --glass-line: rgba(13, 22, 20, 0.12);
+  --glass-edge: rgba(255, 255, 255, 0.95);
+  --glass-shade: 0 1px 1px rgba(13, 22, 20, 0.04), 0 22px 44px -26px rgba(13, 22, 20, 0.32);
+  --blob-a: rgba(23, 142, 119, 0.42);
+  --blob-b: rgba(64, 132, 201, 0.3);
+  --blob-c: rgba(255, 255, 255, 0.85);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -58,6 +66,14 @@
   --on-accent: #04110e;
   --right: #4fd08f;
   --wrong: #ff7a6e;
+  --glass: rgba(233, 240, 237, 0.04);
+  --glass-hi: rgba(233, 240, 237, 0.085);
+  --glass-line: rgba(233, 240, 237, 0.13);
+  --glass-edge: rgba(233, 240, 237, 0.24);
+  --glass-shade: 0 1px 0 rgba(0, 0, 0, 0.4), 0 28px 54px -30px rgba(0, 0, 0, 0.85);
+  --blob-a: rgba(31, 165, 138, 0.34);
+  --blob-b: rgba(52, 116, 190, 0.3);
+  --blob-c: rgba(69, 201, 168, 0.18);
 }
 
 @layer base {
@@ -72,9 +88,10 @@
       scroll-behavior: smooth;
     }
   }
+  /* No background on body: it would paint over the fixed backdrop, which
+     sits behind everything on a negative layer. The ground is on <html>. */
   body {
     min-height: 100dvh;
-    background: var(--bg);
     color: var(--fg);
     font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
     font-stretch: 100%;
@@ -327,7 +344,255 @@
   margin-bottom: -0.06em;
 }
 
+/* ── Liquid glass ──────────────────────────────────────────────────────── */
+/*
+ * The lab's glass: a clear pane, not frosted plastic. A thin fill, a strong
+ * blur with a saturation lift so the colour drifting behind it reads as
+ * liquid, a hairline, and a bright top edge. Tinted by the teal behind it,
+ * never by a colour of its own.
+ */
+.glass {
+  position: relative;
+  background: linear-gradient(180deg, var(--glass-hi), var(--glass));
+  border: 1px solid var(--glass-line);
+  box-shadow:
+    inset 0 1px 0 var(--glass-edge),
+    var(--glass-shade);
+  -webkit-backdrop-filter: blur(26px) saturate(175%);
+  backdrop-filter: blur(26px) saturate(175%);
+}
+
+/* A pane that answers the pointer: a soft teal light follows it across the
+   surface, and the pane lifts a little. Position comes from PointerFx. */
+.glass-live {
+  transition:
+    transform 500ms var(--ease),
+    border-color 300ms var(--ease);
+}
+.glass-live::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    380px circle at var(--mx, 50%) var(--my, 0%),
+    color-mix(in oklab, var(--accent-fill) 26%, transparent),
+    transparent 62%
+  );
+  transition: opacity 400ms var(--ease);
+}
+@media (hover: hover) {
+  .glass-live:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in oklab, var(--accent) 45%, var(--glass-line));
+  }
+  .glass-live:hover::after {
+    opacity: 1;
+  }
+}
+
+/* The header: a full-width pane the page slides under. */
+.glass-bar {
+  background: color-mix(in oklab, var(--bg) 58%, transparent);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  backdrop-filter: blur(22px) saturate(180%);
+}
+
+/* ── Backdrop: slow colour drifting behind the glass ───────────────────── */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--bg);
+}
+.backdrop i {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform;
+}
+.backdrop i:nth-child(1) {
+  width: 62vmax;
+  height: 62vmax;
+  left: -18vmax;
+  top: -24vmax;
+  background: var(--blob-a);
+  animation: drift-a 34s ease-in-out infinite alternate;
+}
+.backdrop i:nth-child(2) {
+  width: 52vmax;
+  height: 52vmax;
+  right: -16vmax;
+  top: 22vh;
+  background: var(--blob-b);
+  animation: drift-b 42s ease-in-out infinite alternate;
+}
+.backdrop i:nth-child(3) {
+  width: 44vmax;
+  height: 44vmax;
+  left: 24vw;
+  bottom: -26vmax;
+  background: var(--blob-c);
+  animation: drift-c 38s ease-in-out infinite alternate;
+}
+/* A fine grain so the gradients never band. */
+.backdrop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@keyframes drift-a {
+  to {
+    transform: translate3d(22vw, 18vh, 0) scale(1.18);
+  }
+}
+@keyframes drift-b {
+  to {
+    transform: translate3d(-26vw, -14vh, 0) scale(0.86);
+  }
+}
+@keyframes drift-c {
+  to {
+    transform: translate3d(-14vw, -22vh, 0) scale(1.24);
+  }
+}
+
+/* ── Motion ────────────────────────────────────────────────────────────── */
+
+/* Scroll reveals. Content is only held back once the boot script has set
+   `data-js`; RevealFx then marks each piece as it enters the window. If that
+   script never runs, the failsafe shows everything after a moment. */
+html[data-js] [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  animation: reveal-failsafe 1ms linear 4s forwards;
+}
+html[data-js] [data-reveal][data-in] {
+  opacity: 1;
+  transform: none;
+  animation: none;
+  transition:
+    opacity 900ms var(--ease) var(--d, 0ms),
+    transform 1100ms var(--ease) var(--d, 0ms);
+}
+html[data-js] [data-reveal='scale'] {
+  transform: scale(0.955);
+}
+@keyframes reveal-failsafe {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Each page settles in when the route changes. */
+.page-enter {
+  animation: page-in 700ms var(--ease) both;
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+}
+
+/* The hero headline arrives wide and tightens to the lab's narrow voice:
+   the one thing this typeface can do that no other effect imitates. */
+.type-settle {
+  animation: type-settle 1500ms var(--ease) both;
+}
+@keyframes type-settle {
+  from {
+    opacity: 0;
+    font-stretch: 112%;
+    letter-spacing: 0.02em;
+    transform: translate3d(0, 0.18em, 0);
+  }
+}
+
+/* A light sweeps across the primary button on hover. */
+.btn-ink {
+  position: relative;
+  overflow: hidden;
+}
+.btn-ink::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.38) 50%, transparent 65%);
+  transform: translateX(-120%);
+  transition: transform 800ms var(--ease);
+}
+.btn-ink:hover::after {
+  transform: translateX(120%);
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn {
+  transition:
+    background-color 200ms var(--ease),
+    color 200ms var(--ease),
+    border-color 200ms var(--ease),
+    transform 300ms var(--ease);
+}
+.btn-line {
+  background: linear-gradient(180deg, var(--glass-hi), var(--glass));
+  border-color: var(--glass-line);
+  box-shadow: inset 0 1px 0 var(--glass-edge);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  backdrop-filter: blur(18px) saturate(170%);
+}
+
+/* A live status: the dot breathes. */
+.pulse {
+  position: relative;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--right);
+}
+.pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--right);
+  animation: pulse 2.2s ease-out infinite;
+}
+@keyframes pulse {
+  to {
+    transform: scale(3.4);
+    opacity: 0;
+  }
+}
+
+/* The field glyphs float, each on its own beat. */
+.float {
+  animation: float 7s ease-in-out infinite alternate;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes float {
+  to {
+    transform: translate3d(0, -10px, 0) rotate(4deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .backdrop i {
+    animation: none !important;
+  }
+  html[data-js] [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
   *,
   *::before,
   *::after {

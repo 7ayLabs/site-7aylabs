@@ -12,7 +12,7 @@ export function NavLinks() {
   return (
     <ul className="ml-auto hidden items-center gap-7 md:flex">
       {NAV_ITEMS.map((item) => {
-        const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+        const active = pathname === item.href || pathname.startsWith(`${item.href}/`) || (item.key === 'products' && pathname === '/vizzor');
         return (
           <li key={item.key}>
             <Link

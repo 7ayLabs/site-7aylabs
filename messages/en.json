@@ -1,8 +1,8 @@
 {
   "meta": {
-    "title": "7ayLabs · The lab behind Vizzor",
-    "description": "7ayLabs is an independent software lab. Our product, Vizzor, is crypto intelligence that puts a target, a deadline and a confidence on every call, then grades it in public.",
-    "og": "The lab behind Vizzor."
+    "title": "7ayLabs · A laboratory for apps, software and intelligence",
+    "description": "7ayLabs is an independent laboratory. We design, build and run our own apps, software and intelligence products. The first one, Vizzor, is live.",
+    "og": "A laboratory for apps, software and intelligence."
   },
   "chrome": {
     "skip": "Skip to content",
@@ -12,7 +12,7 @@
     "language": "Change language",
     "nav": {
       "label": "Main",
-      "vizzor": "Vizzor",
+      "products": "Products",
       "about": "About",
       "updates": "Updates",
       "contact": "Contact"
@@ -28,7 +28,7 @@
       "toLight": "Switch to light mode"
     },
     "footer": {
-      "tagline": "An independent software lab. We build Vizzor: crypto intelligence, graded in public.",
+      "tagline": "An independent laboratory for apps, software and intelligence.",
       "company": "Company",
       "product": "Vizzor",
       "follow": "Follow",
@@ -38,56 +38,53 @@
       "docs": "Docs",
       "pricing": "Plans",
       "rights": "© {year} 7ayLabs. All rights reserved.",
-      "line": "Ask it something. Check back at the deadline.",
+      "line": "See what comes out of the lab.",
       "talk": "Talk to us",
       "xLab": "7ayLabs on X",
-      "xVizzor": "Vizzor on X"
+      "xVizzor": "Vizzor on X",
+      "seeProducts": "See the products"
     },
     "index": "On this page"
   },
   "home": {
     "hero": {
-      "titleA": "Intelligence",
-      "titleB": "you can check.",
-      "sub": "7ayLabs is the lab behind Vizzor: crypto intelligence that puts a target, a deadline and a confidence on every call, then grades it in public.",
-      "ctaPrimary": "Open Vizzor",
-      "ctaSecondary": "See what it does",
-      "newTab": "opens in a new tab"
+      "title": "A laboratory for apps, software and intelligence.",
+      "sub": "7ayLabs designs, builds and runs its own products. Each one starts as an experiment and ships when it holds up. The first, Vizzor, is live.",
+      "ctaPrimary": "See the products",
+      "ctaSecondary": "How we work",
+      "board": {
+        "title": "In the lab right now",
+        "live": "Live",
+        "building": "In development",
+        "vizzorLine": "Crypto intelligence, graded in public",
+        "nextName": "The next product",
+        "nextLine": "Not announced yet. We show things when they work."
+      }
     },
     "index": {
-      "vizzor": "The product",
-      "reach": "Coverage",
+      "fields": "What we build",
+      "products": "Products",
       "method": "How we work",
       "updates": "Updates",
       "faq": "Questions"
     },
-    "product": {
-      "title": "Vizzor makes calls. Then it shows you the score.",
-      "lede": "Ask about any token, wallet or tokenized stock in plain words. Vizzor reads the price, the money moving on-chain and the story behind it, and answers with a call you can hold it to.",
-      "ctaSite": "Visit vizzor.ai",
-      "ctaMore": "How it works",
-      "points": {
-        "graded": {
-          "title": "Every call is graded",
-          "line": "Each one carries a target, a deadline and a confidence. When the deadline hits, it is marked right or wrong, in public."
+    "fields": {
+      "title": "Three kinds of work, one lab.",
+      "lede": "Most of what we make sits where these three meet.",
+      "items": {
+        "apps": {
+          "title": "Apps",
+          "line": "Products people open every day, on the web and on their phones, built to be understood without a manual."
         },
-        "plans": {
-          "title": "A plan, not just an opinion",
-          "line": "An entry, two take-profit levels and a stop, so you know what to do if the call is right and when to leave if it is not."
+        "software": {
+          "title": "Software",
+          "line": "The engines, tools and infrastructure underneath: the parts nobody sees and everything depends on."
         },
-        "onchain": {
-          "title": "It follows the money",
-          "line": "Large holders, smart money and suspicious flows, traced across blockchains instead of guessed from a chart."
-        },
-        "plain": {
-          "title": "You ask in your own words",
-          "line": "No query language and no dashboards to learn. English, Spanish or French."
+        "intelligence": {
+          "title": "Intelligence",
+          "line": "Models and agents that read data, reason about it and answer in plain words, with their work shown."
         }
       }
-    },
-    "reach": {
-      "title": "{count} blockchains, read live.",
-      "lede": "Vizzor reads each network directly, so a wallet or a transfer is looked up where it actually happened."
     },
     "method": {
       "title": "Four rules we build by.",
@@ -119,6 +116,29 @@
       "title": "The short answers."
     }
   },
+  "products": {
+    "title": "Out of the lab.",
+    "lede": "A product leaves the lab when it works in public. One has so far, and more are being built.",
+    "vizzor": {
+      "kind": "Intelligence",
+      "line": "Vizzor makes price calls with a target, a deadline and a confidence, then grades every one in public. It also traces wallets and follows large holders across {count} blockchains.",
+      "more": "About Vizzor",
+      "open": "Open Vizzor"
+    },
+    "next": {
+      "title": "More is being built.",
+      "line": "We do not announce products before they work. Subscribe below and you will hear about the next one the day it ships.",
+      "cta": "Talk to us about it"
+    }
+  },
+  "productsPage": {
+    "meta": {
+      "title": "Products",
+      "description": "What 7ayLabs has shipped and what it is building. Vizzor, crypto intelligence graded in public, is live."
+    },
+    "title": "Products.",
+    "lede": "Everything that has left the lab, and a word on what has not yet."
+  },
   "coverage": {
     "sources": "Reads from",
     "sourcesNote": "Market and on-chain data sources Vizzor queries. These are integrations, not endorsements.",
@@ -136,7 +156,7 @@
   "questions": {
     "what": {
       "q": "What is 7ayLabs?",
-      "a": "An independent software lab. We design, build and run our own products. The first one is Vizzor."
+      "a": "An independent laboratory. We design, build and run our own apps, software and intelligence products. The first one is Vizzor."
     },
     "vizzor": {
       "q": "What is Vizzor?",
@@ -144,7 +164,7 @@
     },
     "relation": {
       "q": "How are 7ayLabs and Vizzor related?",
-      "a": "7ayLabs is the company. Vizzor is the product we build and operate. This site is about the company; vizzor.ai is where the product lives."
+      "a": "7ayLabs is the company and the lab. Vizzor is the first product to come out of it. This site is about the lab; vizzor.ai is where that product lives."
     },
     "free": {
       "q": "Can I try Vizzor for free?",
@@ -153,6 +173,10 @@
     "work": {
       "q": "How do I reach the team?",
       "a": "Use the contact page for partnerships, press and anything about the company. For help using Vizzor, start with its docs."
+    },
+    "more": {
+      "q": "Will there be more products?",
+      "a": "Yes. Others are in development. We announce a product when it works in public, not before."
     }
   },
   "demo": {
@@ -322,6 +346,10 @@
         "sealed": "The record is sealed every day, so past calls cannot be changed afterwards.",
         "misses": "Wrong calls are shown next to right ones, with the same weight."
       }
+    },
+    "reach": {
+      "title": "{count} blockchains, read live.",
+      "lede": "Vizzor reads each network directly, so a wallet or a transfer is looked up where it actually happened."
     }
   },
   "aboutPage": {
@@ -330,7 +358,7 @@
       "description": "7ayLabs is an independent software lab that builds and operates Vizzor. What we believe and how we work."
     },
     "title": "We build things you can check.",
-    "lede": "7ayLabs is an independent software lab. We design, build and operate our own products, and we would rather show a result than describe one.",
+    "lede": "7ayLabs is an independent laboratory for apps, software and intelligence. We design, build and run our own products, and we would rather show a result than describe one.",
     "index": {
       "mission": "Why we exist",
       "method": "How we work",
@@ -340,7 +368,7 @@
       "title": "Confident claims are cheap. Proof is not.",
       "p1": "Markets are full of predictions that are never looked at again. The ones that land get repeated; the ones that miss disappear.",
       "p2": "We think software can do better. A tool that gives advice should also keep score, in the open, where the people relying on it can see.",
-      "p3": "That idea became Vizzor, our first product. It is what we work on every day."
+      "p3": "That idea became Vizzor, our first product. The same rule applies to everything else we are building."
     },
     "facts": {
       "title": "The basics.",
@@ -349,7 +377,7 @@
       },
       "role": {
         "k": "What we do",
-        "v": "Build and run Vizzor"
+        "v": "Build and run our own products"
       },
       "code": {
         "k": "Code"

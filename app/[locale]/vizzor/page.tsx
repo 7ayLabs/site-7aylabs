@@ -25,7 +25,6 @@ export default async function VizzorPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('vizzorPage');
-  const home = await getTranslations('home');
   const chrome = await getTranslations('chrome');
 
   const index = (['how', 'desks', 'editions', 'features', 'record', 'reach'] as const).map((id) => ({ id, label: t(`index.${id}`) }));
@@ -47,9 +46,9 @@ export default async function VizzorPage({ params }: Props) {
         <Block id="how" title={t('how.title')} lede={t('how.lede')}>
           <div className="grid gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,440px)] xl:gap-16">
             {/* A real sequence, so it is numbered. */}
-            <ol className="border-b border-[var(--line)]">
+            <ol className="border-b border-[var(--line)]" data-stagger>
               {STEPS.map((s, i) => (
-                <li key={s} className="grid grid-cols-[3.5rem_minmax(0,1fr)] gap-x-4 border-t border-[var(--line)] py-6">
+                <li key={s} data-reveal className="grid grid-cols-[3.5rem_minmax(0,1fr)] gap-x-4 border-t border-[var(--line)] py-6">
                   <span aria-hidden className="t-display text-[3.2rem] leading-none text-[var(--accent)]">
                     {i + 1}
                   </span>
@@ -65,9 +64,9 @@ export default async function VizzorPage({ params }: Props) {
         </Block>
 
         <Block id="desks" title={t('desks.title')} lede={t('desks.lede')}>
-          <dl className="border-b border-[var(--line)]">
+          <dl className="border-b border-[var(--line)]" data-stagger>
             {DESKS.map((d) => (
-              <div key={d} className="grid gap-x-10 gap-y-2 border-t border-[var(--line)] py-6 sm:grid-cols-[220px_minmax(0,1fr)]">
+              <div key={d} data-reveal className="grid gap-x-10 gap-y-2 border-t border-[var(--line)] py-6 sm:grid-cols-[220px_minmax(0,1fr)]">
                 <dt className="t-display text-[2.4rem] text-[var(--fg)]">{t(`desks.items.${d}.name`)}</dt>
                 <dd>
                   <p className="max-w-[54ch] text-[1.2rem] leading-snug text-[var(--fg)]">{t(`desks.items.${d}.line`)}</p>
@@ -79,9 +78,9 @@ export default async function VizzorPage({ params }: Props) {
         </Block>
 
         <Block id="editions" title={t('editions.title')} lede={t('editions.lede')}>
-          <ul className="grid border-l border-t border-[var(--line)] md:grid-cols-3">
+          <ul className="grid gap-4 md:grid-cols-3" data-stagger>
             {VIZZOR.editions.map((e) => (
-              <li key={e.id} className="border-b border-r border-[var(--line)] p-6 sm:p-7">
+              <li key={e.id} data-reveal className="glass glass-live rounded-[22px] p-6 sm:p-7">
                 <p className="t-note font-semibold">{t(`editions.plans.${e.plan}`)}</p>
                 <h3 className="t-display mt-3 text-[3.4rem] text-[var(--fg)]">{e.name}</h3>
                 <p className="mt-4 text-[16.5px] leading-relaxed text-[var(--fg-2)]">{t(`editions.items.${e.id}`)}</p>
@@ -102,9 +101,9 @@ export default async function VizzorPage({ params }: Props) {
         </Block>
 
         <Block id="record" title={t('receipts.title')} lede={t('receipts.lede')}>
-          <ul className="border-b border-[var(--line)]">
+          <ul className="border-b border-[var(--line)]" data-stagger>
             {RECEIPTS.map((k) => (
-              <li key={k} className="flex items-baseline gap-4 border-t border-[var(--line)] py-5 text-[1.2rem] leading-snug text-[var(--fg)]">
+              <li key={k} data-reveal className="flex items-baseline gap-4 border-t border-[var(--line)] py-5 text-[1.2rem] leading-snug text-[var(--fg)]">
                 <span aria-hidden className="font-bold text-[var(--right)]">
                   ✓
                 </span>
@@ -114,7 +113,7 @@ export default async function VizzorPage({ params }: Props) {
           </ul>
         </Block>
 
-        <Block id="reach" title={home('reach.title', { count: CHAIN_COUNT })} lede={home('reach.lede')}>
+        <Block id="reach" title={t('reach.title', { count: CHAIN_COUNT })} lede={t('reach.lede')}>
           <Coverage />
         </Block>
       </Indexed>

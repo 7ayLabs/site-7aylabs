@@ -1,8 +1,8 @@
 {
   "meta": {
-    "title": "7ayLabs · El laboratorio detrás de Vizzor",
-    "description": "7ayLabs es un laboratorio de software independiente. Nuestro producto, Vizzor, es inteligencia cripto que pone un objetivo, un plazo y un nivel de confianza en cada predicción, y luego la califica en público.",
-    "og": "El laboratorio detrás de Vizzor."
+    "title": "7ayLabs · Un laboratorio de apps, software e inteligencia",
+    "description": "7ayLabs es un laboratorio independiente. Diseñamos, construimos y operamos nuestras propias apps, software y productos de inteligencia. El primero, Vizzor, ya está disponible.",
+    "og": "Un laboratorio de apps, software e inteligencia."
   },
   "chrome": {
     "skip": "Ir al contenido",
@@ -12,7 +12,7 @@
     "language": "Cambiar idioma",
     "nav": {
       "label": "Principal",
-      "vizzor": "Vizzor",
+      "products": "Productos",
       "about": "Nosotros",
       "updates": "Novedades",
       "contact": "Contacto"
@@ -28,7 +28,7 @@
       "toLight": "Cambiar a modo claro"
     },
     "footer": {
-      "tagline": "Un laboratorio de software independiente. Hacemos Vizzor: inteligencia cripto, calificada en público.",
+      "tagline": "Un laboratorio independiente de apps, software e inteligencia.",
       "company": "Empresa",
       "product": "Vizzor",
       "follow": "Síguenos",
@@ -38,56 +38,53 @@
       "docs": "Documentación",
       "pricing": "Planes",
       "rights": "© {year} 7ayLabs. Todos los derechos reservados.",
-      "line": "Pregúntale algo. Vuelve cuando venza el plazo.",
+      "line": "Mira lo que sale del laboratorio.",
       "talk": "Escríbenos",
       "xLab": "7ayLabs en X",
-      "xVizzor": "Vizzor en X"
+      "xVizzor": "Vizzor en X",
+      "seeProducts": "Ver los productos"
     },
     "index": "En esta página"
   },
   "home": {
     "hero": {
-      "titleA": "Inteligencia que",
-      "titleB": "puedes comprobar.",
-      "sub": "7ayLabs es el laboratorio detrás de Vizzor: inteligencia cripto que pone un objetivo, un plazo y un nivel de confianza en cada predicción, y luego la califica en público.",
-      "ctaPrimary": "Abrir Vizzor",
-      "ctaSecondary": "Ver qué hace",
-      "newTab": "se abre en una pestaña nueva"
+      "title": "Un laboratorio de apps, software e inteligencia.",
+      "sub": "7ayLabs diseña, construye y opera sus propios productos. Cada uno empieza como un experimento y se publica cuando se sostiene. El primero, Vizzor, ya está disponible.",
+      "ctaPrimary": "Ver los productos",
+      "ctaSecondary": "Cómo trabajamos",
+      "board": {
+        "title": "Ahora mismo en el laboratorio",
+        "live": "En vivo",
+        "building": "En desarrollo",
+        "vizzorLine": "Inteligencia cripto, calificada en público",
+        "nextName": "El próximo producto",
+        "nextLine": "Aún sin anunciar. Mostramos las cosas cuando funcionan."
+      }
     },
     "index": {
-      "vizzor": "El producto",
-      "reach": "Cobertura",
+      "fields": "Qué construimos",
+      "products": "Productos",
       "method": "Cómo trabajamos",
       "updates": "Novedades",
       "faq": "Preguntas"
     },
-    "product": {
-      "title": "Vizzor hace predicciones. Y después te muestra el resultado.",
-      "lede": "Pregunta por cualquier token, wallet o acción tokenizada con tus propias palabras. Vizzor lee el precio, el dinero que se mueve on-chain y la historia detrás, y responde con una predicción que puedes exigirle.",
-      "ctaSite": "Ir a vizzor.ai",
-      "ctaMore": "Cómo funciona",
-      "points": {
-        "graded": {
-          "title": "Cada predicción se califica",
-          "line": "Todas llevan un objetivo, un plazo y un nivel de confianza. Cuando vence el plazo, se marca como acierto o fallo, en público."
+    "fields": {
+      "title": "Tres tipos de trabajo, un laboratorio.",
+      "lede": "Casi todo lo que hacemos está donde estos tres se cruzan.",
+      "items": {
+        "apps": {
+          "title": "Apps",
+          "line": "Productos que la gente abre todos los días, en la web y en el teléfono, hechos para entenderse sin manual."
         },
-        "plans": {
-          "title": "Un plan, no solo una opinión",
-          "line": "Una entrada, dos niveles de toma de ganancias y un stop, para saber qué hacer si acierta y cuándo salir si no."
+        "software": {
+          "title": "Software",
+          "line": "Los motores, herramientas e infraestructura que hay debajo: lo que nadie ve y de lo que todo depende."
         },
-        "onchain": {
-          "title": "Sigue el dinero",
-          "line": "Grandes tenedores, dinero inteligente y flujos sospechosos, rastreados entre blockchains en vez de adivinados en un gráfico."
-        },
-        "plain": {
-          "title": "Preguntas con tus palabras",
-          "line": "Sin lenguaje de consultas ni paneles que aprender. En español, inglés o francés."
+        "intelligence": {
+          "title": "Inteligencia",
+          "line": "Modelos y agentes que leen datos, razonan sobre ellos y responden con palabras simples, mostrando su trabajo."
         }
       }
-    },
-    "reach": {
-      "title": "{count} blockchains, leídas en vivo.",
-      "lede": "Vizzor lee cada red directamente, así una wallet o una transferencia se consulta donde realmente ocurrió."
     },
     "method": {
       "title": "Cuatro reglas con las que construimos.",
@@ -119,6 +116,29 @@
       "title": "Las respuestas cortas."
     }
   },
+  "products": {
+    "title": "Fuera del laboratorio.",
+    "lede": "Un producto sale del laboratorio cuando funciona en público. Hasta ahora ha salido uno, y hay más en construcción.",
+    "vizzor": {
+      "kind": "Inteligencia",
+      "line": "Vizzor hace predicciones de precio con objetivo, plazo y nivel de confianza, y luego califica cada una en público. También rastrea wallets y sigue a los grandes tenedores en {count} blockchains.",
+      "more": "Sobre Vizzor",
+      "open": "Abrir Vizzor"
+    },
+    "next": {
+      "title": "Hay más en construcción.",
+      "line": "No anunciamos productos antes de que funcionen. Suscríbete abajo y sabrás del próximo el día que salga.",
+      "cta": "Hablemos de ello"
+    }
+  },
+  "productsPage": {
+    "meta": {
+      "title": "Productos",
+      "description": "Lo que 7ayLabs ha publicado y lo que está construyendo. Vizzor, inteligencia cripto calificada en público, ya está disponible."
+    },
+    "title": "Productos.",
+    "lede": "Todo lo que ha salido del laboratorio, y unas palabras sobre lo que aún no."
+  },
   "coverage": {
     "sources": "Lee datos de",
     "sourcesNote": "Fuentes de datos de mercado y on-chain que consulta Vizzor. Son integraciones, no avales.",
@@ -136,7 +156,7 @@
   "questions": {
     "what": {
       "q": "¿Qué es 7ayLabs?",
-      "a": "Un laboratorio de software independiente. Diseñamos, construimos y operamos nuestros propios productos. El primero es Vizzor."
+      "a": "Un laboratorio independiente. Diseñamos, construimos y operamos nuestras propias apps, software y productos de inteligencia. El primero es Vizzor."
     },
     "vizzor": {
       "q": "¿Qué es Vizzor?",
@@ -144,7 +164,7 @@
     },
     "relation": {
       "q": "¿Cómo se relacionan 7ayLabs y Vizzor?",
-      "a": "7ayLabs es la empresa. Vizzor es el producto que construimos y operamos. Este sitio trata de la empresa; el producto vive en vizzor.ai."
+      "a": "7ayLabs es la empresa y el laboratorio. Vizzor es el primer producto que salió de él. Este sitio trata del laboratorio; ese producto vive en vizzor.ai."
     },
     "free": {
       "q": "¿Puedo probar Vizzor gratis?",
@@ -153,6 +173,10 @@
     "work": {
       "q": "¿Cómo contacto al equipo?",
       "a": "Usa la página de contacto para alianzas, prensa y todo lo relacionado con la empresa. Para ayuda con Vizzor, empieza por su documentación."
+    },
+    "more": {
+      "q": "¿Habrá más productos?",
+      "a": "Sí. Hay otros en desarrollo. Anunciamos un producto cuando funciona en público, no antes."
     }
   },
   "demo": {
@@ -322,6 +346,10 @@
         "sealed": "El historial se sella todos los días, así que las predicciones pasadas no se pueden cambiar después.",
         "misses": "Los fallos se muestran junto a los aciertos, con el mismo peso."
       }
+    },
+    "reach": {
+      "title": "{count} blockchains, leídas en vivo.",
+      "lede": "Vizzor lee cada red directamente, así una wallet o una transferencia se consulta donde realmente ocurrió."
     }
   },
   "aboutPage": {
@@ -330,7 +358,7 @@
       "description": "7ayLabs es un laboratorio de software independiente que construye y opera Vizzor. En qué creemos y cómo trabajamos."
     },
     "title": "Hacemos cosas que puedes comprobar.",
-    "lede": "7ayLabs es un laboratorio de software independiente. Diseñamos, construimos y operamos nuestros propios productos, y preferimos mostrar un resultado antes que describirlo.",
+    "lede": "7ayLabs es un laboratorio independiente de apps, software e inteligencia. Diseñamos, construimos y operamos nuestros propios productos, y preferimos mostrar un resultado antes que describirlo.",
     "index": {
       "mission": "Por qué existimos",
       "method": "Cómo trabajamos",
@@ -340,7 +368,7 @@
       "title": "Afirmar con seguridad es barato. Probarlo no.",
       "p1": "Los mercados están llenos de predicciones que nadie vuelve a revisar. Las que aciertan se repiten; las que fallan desaparecen.",
       "p2": "Creemos que el software puede hacerlo mejor. Una herramienta que da consejos también debería llevar la cuenta, a la vista de quienes confían en ella.",
-      "p3": "Esa idea se convirtió en Vizzor, nuestro primer producto. En eso trabajamos todos los días."
+      "p3": "Esa idea se convirtió en Vizzor, nuestro primer producto. La misma regla vale para todo lo demás que estamos construyendo."
     },
     "facts": {
       "title": "Lo básico.",
@@ -349,7 +377,7 @@
       },
       "role": {
         "k": "Qué hacemos",
-        "v": "Construir y operar Vizzor"
+        "v": "Construir y operar nuestros productos"
       },
       "code": {
         "k": "Código"

@@ -34,10 +34,14 @@ export function Block({
 }) {
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="border-t border-[var(--line-strong)] pb-20 pt-8 sm:pb-28 sm:pt-10">
-      <h2 id={`${id}-title`} className="t-display t-title max-w-[18ch] text-[var(--fg)]">
+      <h2 id={`${id}-title`} data-reveal className="t-display t-title max-w-[18ch] text-[var(--fg)]">
         {title}
       </h2>
-      {lede ? <p className="t-lede mt-6">{lede}</p> : null}
+      {lede ? (
+        <p data-reveal className="t-lede mt-6">
+          {lede}
+        </p>
+      ) : null}
       {children ? <div className="mt-10 sm:mt-14">{children}</div> : null}
     </section>
   );
@@ -47,7 +51,7 @@ export function Block({
 export function PageHead({ title, lede, children }: { title: ReactNode; lede: ReactNode; children?: ReactNode }) {
   return (
     <section className={`${WRAP} pb-14 pt-10 sm:pb-20 sm:pt-16`}>
-      <h1 className="t-display t-hero max-w-[17ch] text-[var(--fg)] sm:text-[clamp(4rem,8vw,8.5rem)]">{title}</h1>
+      <h1 className="t-display t-hero type-settle max-w-[17ch] text-[var(--fg)] sm:text-[clamp(4rem,8vw,8.5rem)]">{title}</h1>
       <p className="t-lede mt-8">{lede}</p>
       {children}
     </section>
@@ -57,9 +61,9 @@ export function PageHead({ title, lede, children }: { title: ReactNode; lede: Re
 /** A plain two-column list of statements: a head and one sentence each. */
 export function Statements({ items }: { items: { title: string; line: string }[] }) {
   return (
-    <ul className="grid gap-x-14 gap-y-10 sm:grid-cols-2">
+    <ul className="grid gap-x-14 gap-y-10 sm:grid-cols-2" data-stagger>
       {items.map((it) => (
-        <li key={it.title}>
+        <li key={it.title} data-reveal>
           <h3 className="t-head text-[var(--fg)]">{it.title}</h3>
           <p className="mt-2.5 max-w-[46ch] text-[16.5px] leading-relaxed text-[var(--fg-2)]">{it.line}</p>
         </li>

@@ -30,15 +30,15 @@ export async function SiteFooter() {
           <div>
             <p className="t-display t-title max-w-[12ch] text-[var(--fg)]">{t('footer.line')}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href={VIZZOR.app} target="_blank" rel="noopener noreferrer" className="btn btn-ink">
-                {t('openVizzor')}
-              </a>
+              <Link href="/products" className="btn btn-ink">
+                {t('footer.seeProducts')}
+              </Link>
               <Link href="/contact" className="btn btn-line">
                 {t('footer.talk')}
               </Link>
             </div>
           </div>
-          <div className="lg:pt-3">
+          <div className="glass self-start rounded-[22px] p-6 sm:p-7">
             <NewsletterForm />
           </div>
         </div>
@@ -52,7 +52,7 @@ export async function SiteFooter() {
           <nav aria-label={t('footer.company')}>
             <h2 className="text-[15.5px] font-semibold text-[var(--fg)]">{t('footer.company')}</h2>
             <ul className="mt-1">
-              {NAV_ITEMS.filter((i) => i.key !== 'vizzor').map((n) => (
+              {NAV_ITEMS.map((n) => (
                 <li key={n.key}>
                   <Link href={n.href} className={item}>
                     {t(`nav.${n.key}`)}

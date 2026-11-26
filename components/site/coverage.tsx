@@ -30,16 +30,16 @@ export async function Coverage() {
 
   return (
     <>
-      <ul className="grid grid-cols-2 border-l border-t border-[var(--line)] sm:grid-cols-4 xl:grid-cols-6">
+      <ul data-reveal="scale" className="glass grid grid-cols-2 overflow-hidden rounded-[20px] sm:grid-cols-4 xl:grid-cols-6">
         {CHAINS.map((c) => (
-          <li key={c.id} className="flex min-h-14 items-center gap-3 border-b border-r border-[var(--line)] px-3.5">
+          <li key={c.id} className="-mb-px -mr-px flex min-h-14 items-center gap-3 border-b border-r border-[var(--glass-line)] px-3.5 transition-colors duration-300 hover:bg-[color-mix(in_oklab,var(--accent-fill)_12%,transparent)]">
             <ChainMark chain={c.id} size={24} />
             <span className="truncate text-[15px] font-medium text-[var(--fg)]">{c.name}</span>
           </li>
         ))}
       </ul>
 
-      <dl className="mt-12 border-b border-[var(--line)]">
+      <dl data-reveal className="mt-12 border-b border-[var(--line)]">
         <Row head={t('sources')} note={t('sourcesNote')}>
           {list.format([...DATA_SOURCES])}
         </Row>

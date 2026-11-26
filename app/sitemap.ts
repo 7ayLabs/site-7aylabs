@@ -5,6 +5,7 @@ import { listUpdates } from '@/lib/updates';
 
 const PAGES = [
   { path: '/', priority: 1 },
+  { path: '/products', priority: 0.9 },
   { path: '/vizzor', priority: 0.9 },
   { path: '/about', priority: 0.7 },
   { path: '/updates', priority: 0.7 },

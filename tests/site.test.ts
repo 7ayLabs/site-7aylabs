@@ -7,7 +7,7 @@ import { getUpdate, listSlugs, listUpdates } from '@/lib/updates';
 import { CHAINS, CHAIN_COUNT, INTEL_SAMPLE, MAJOR_CHAINS } from '@/lib/vizzor/chains';
 import { normalizeEmail, cleanText } from '@/lib/api/validation';
 
-const PAGES = new Set(['/', '/vizzor', '/about', '/updates', '/contact']);
+const PAGES = new Set(['/', '/products', '/vizzor', '/about', '/updates', '/contact']);
 
 describe('legacy redirects', () => {
   it('every old address lands on a page that exists', () => {

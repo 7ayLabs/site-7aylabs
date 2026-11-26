@@ -5,7 +5,7 @@ export function GET(): Response {
     JSON.stringify({
       name: '7ayLabs',
       short_name: '7ayLabs',
-      description: 'The lab behind Vizzor.',
+      description: 'A laboratory for apps, software and intelligence.',
       start_url: '/',
       display: 'standalone',
       background_color: '#0a1311',

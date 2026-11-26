@@ -4,7 +4,7 @@
  */
 import { getTranslations } from 'next-intl/server';
 
-const ITEMS = ['what', 'vizzor', 'relation', 'free', 'work'] as const;
+const ITEMS = ['what', 'vizzor', 'relation', 'more', 'free', 'work'] as const;
 
 export async function Questions() {
   const t = await getTranslations('questions');
@@ -20,7 +20,7 @@ export async function Questions() {
   };
 
   return (
-    <div className="border-b border-[var(--line)]">
+    <div data-reveal className="border-b border-[var(--line)]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {ITEMS.map((k) => (
         <details key={k} className="group border-t border-[var(--line)]">

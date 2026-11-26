@@ -8,9 +8,9 @@ export async function Log({ posts, locale }: { posts: UpdateMeta[]; locale: Loca
   const t = await getTranslations('log');
 
   return (
-    <ul className="border-b border-[var(--line)]">
+    <ul className="border-b border-[var(--line)]" data-stagger>
       {posts.map((p) => (
-        <li key={p.slug} className="border-t border-[var(--line)]">
+        <li key={p.slug} data-reveal className="border-t border-[var(--line)]">
           <Link href={`/updates/${p.slug}`} className="group grid gap-x-10 gap-y-2 py-6 sm:grid-cols-[220px_minmax(0,1fr)]">
             <span className="t-note t-num">
               <time dateTime={p.date}>{formatDate(p.date, locale)}</time>

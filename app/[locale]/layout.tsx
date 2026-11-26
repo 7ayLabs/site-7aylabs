@@ -8,6 +8,7 @@ import { sans } from '../fonts';
 import { ThemeProvider, themeBootScript } from '@/components/layout/theme-provider';
 import { SiteNav } from '@/components/layout/site-nav';
 import { SiteFooter } from '@/components/layout/site-footer';
+import { PageFx } from '@/components/site/fx';
 import { organizationJsonLd } from '@/lib/seo';
 import { SITE, isProduction } from '@/lib/site';
 
@@ -84,6 +85,12 @@ export default async function LocaleLayout({
             <a href="#main" className="skip-link">
               {t('skip')}
             </a>
+            <div aria-hidden className="backdrop">
+              <i />
+              <i />
+              <i />
+            </div>
+            <PageFx />
             <div className="flex min-h-dvh flex-col">
               <SiteNav />
               <main id="main" className="flex-1">

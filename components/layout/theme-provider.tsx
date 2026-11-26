@@ -92,4 +92,4 @@ export function useTheme(): ThemeContextValue {
 }
 
 /** Runs before first paint. Kept tiny and dependency-free. */
-export const themeBootScript = `(function(){try{var k='${KEY}',s=localStorage.getItem(k),d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.dataset.theme=(s==='light'||s==='dark')?s:(d?'dark':'light');}catch(e){document.documentElement.dataset.theme='dark';}})();`;
+export const themeBootScript = `(function(){document.documentElement.dataset.js='';try{var k='${KEY}',s=localStorage.getItem(k),d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.dataset.theme=(s==='light'||s==='dark')?s:(d?'dark':'light');}catch(e){document.documentElement.dataset.theme='dark';}})();`;
