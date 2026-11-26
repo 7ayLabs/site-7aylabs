@@ -2,25 +2,23 @@ import type { ReactNode } from 'react';
 import { PageIndex, type IndexItem } from './page-index';
 
 /** The site's measure: one max width and gutter everywhere. */
-export const WRAP = 'mx-auto max-w-[1400px] px-5 sm:px-8';
+export const WRAP = 'mx-auto max-w-[1360px] px-5 sm:px-8';
 
-/**
- * Indexed — a page body with its table of contents beside it.
- *
- * From `lg` the index sits in a narrow left column and stays in view while
- * the blocks scroll past, marking the one being read. Below `lg` it is left
- * out: the page is short enough to scroll.
- */
+/** A page body with its section strip floating above the blocks. */
 export function Indexed({ items, label, children }: { items: IndexItem[]; label: string; children: ReactNode }) {
   return (
-    <div className={`${WRAP} grid gap-x-16 lg:grid-cols-[200px_minmax(0,1fr)]`}>
+    <div className={WRAP}>
       <PageIndex items={items} label={label} />
-      <div className="min-w-0">{children}</div>
+      {children}
     </div>
   );
 }
 
-/** One block of an indexed page: a rule, a headline, an optional lede, content. */
+/**
+ * One section of a page. The head is split: the headline on the left, the
+ * lede set against it on the right, and a line of light that draws itself
+ * across when the section arrives.
+ */
 export function Block({
   id,
   title,
@@ -33,16 +31,15 @@ export function Block({
   children?: ReactNode;
 }) {
   return (
-    <section id={id} aria-labelledby={`${id}-title`} className="border-t border-[var(--line-strong)] pb-20 pt-8 sm:pb-28 sm:pt-10">
-      <h2 id={`${id}-title`} data-reveal className="t-display t-title max-w-[18ch] text-[var(--fg)]">
-        {title}
-      </h2>
-      {lede ? (
-        <p data-reveal className="t-lede mt-6">
-          {lede}
-        </p>
-      ) : null}
-      {children ? <div className="mt-10 sm:mt-14">{children}</div> : null}
+    <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-40 py-16 sm:py-24">
+      <div data-reveal className="grid items-end gap-x-16 gap-y-5 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
+        <h2 id={`${id}-title`} className="t-display t-title max-w-[16ch] text-[var(--fg)]">
+          {title}
+        </h2>
+        {lede ? <p className="t-lede lg:pb-2">{lede}</p> : null}
+        <span aria-hidden className="rule-draw col-span-full mt-3 block h-px bg-gradient-to-r from-[var(--accent-fill)] via-[var(--accent-soft)] to-transparent" />
+      </div>
+      {children ? <div className="mt-10 sm:mt-12">{children}</div> : null}
     </section>
   );
 }
@@ -50,22 +47,28 @@ export function Block({
 /** The head of an inner page. */
 export function PageHead({ title, lede, children }: { title: ReactNode; lede: ReactNode; children?: ReactNode }) {
   return (
-    <section className={`${WRAP} pb-14 pt-10 sm:pb-20 sm:pt-16`}>
-      <h1 className="t-display t-hero type-settle max-w-[17ch] text-[var(--fg)] sm:text-[clamp(4rem,8vw,8.5rem)]">{title}</h1>
-      <p className="t-lede mt-8">{lede}</p>
+    <section className={`${WRAP} pb-12 pt-12 sm:pb-16 sm:pt-20`}>
+      <h1 className="t-display type-settle max-w-[17ch] text-[clamp(3.2rem,1rem+7.4vw,8.5rem)] leading-[0.86] text-[var(--fg)]">{title}</h1>
+      <p data-reveal className="t-lede mt-8">
+        {lede}
+      </p>
       {children}
     </section>
   );
 }
 
-/** A plain two-column list of statements: a head and one sentence each. */
-export function Statements({ items }: { items: { title: string; line: string }[] }) {
+/**
+ * Tiles — statements as glass panes laid out as a mosaic: wide and narrow
+ * panes alternate so the grid does not read as a row of identical cards.
+ */
+export function Tiles({ items }: { items: { title: string; line: string }[] }) {
+  const span = (i: number) => (i % 4 === 0 || i % 4 === 3 ? 'lg:col-span-7' : 'lg:col-span-5');
   return (
-    <ul className="grid gap-x-14 gap-y-10 sm:grid-cols-2" data-stagger>
-      {items.map((it) => (
-        <li key={it.title} data-reveal>
+    <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-12" data-stagger>
+      {items.map((it, i) => (
+        <li key={it.title} data-reveal className={`glass glass-live flex min-h-[11.5rem] flex-col justify-end rounded-[24px] p-7 ${span(i)}`}>
           <h3 className="t-head text-[var(--fg)]">{it.title}</h3>
-          <p className="mt-2.5 max-w-[46ch] text-[16.5px] leading-relaxed text-[var(--fg-2)]">{it.line}</p>
+          <p className="mt-2.5 max-w-[48ch] text-[16.5px] leading-relaxed text-[var(--fg-2)]">{it.line}</p>
         </li>
       ))}
     </ul>

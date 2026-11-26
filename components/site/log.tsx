@@ -8,15 +8,15 @@ export async function Log({ posts, locale }: { posts: UpdateMeta[]; locale: Loca
   const t = await getTranslations('log');
 
   return (
-    <ul className="border-b border-[var(--line)]" data-stagger>
+    <ul className="grid gap-4 md:grid-cols-2" data-stagger>
       {posts.map((p) => (
-        <li key={p.slug} data-reveal className="border-t border-[var(--line)]">
-          <Link href={`/updates/${p.slug}`} className="group grid gap-x-10 gap-y-2 py-6 sm:grid-cols-[220px_minmax(0,1fr)]">
-            <span className="t-note t-num">
+        <li key={p.slug} data-reveal>
+          <Link href={`/updates/${p.slug}`} className="glass glass-live group flex h-full min-h-[15rem] flex-col gap-5 rounded-[26px] p-7">
+            <span className="t-note t-num flex items-center justify-between gap-4">
               <time dateTime={p.date}>{formatDate(p.date, locale)}</time>
-              <span className="mt-0.5 block font-semibold text-[var(--fg-2)]">{t(`tags.${p.tag}`)}</span>
+              <span className="rounded-full bg-[color-mix(in_oklab,var(--accent-fill)_16%,transparent)] px-3 py-1 font-semibold text-[var(--accent)]">{t(`tags.${p.tag}`)}</span>
             </span>
-            <span>
+            <span className="mt-auto">
               <span className="t-head block text-[var(--fg)] transition-colors duration-200 group-hover:text-[var(--accent)]">{p.title}</span>
               <span className="mt-2 block max-w-[62ch] text-[16.5px] leading-relaxed text-[var(--fg-2)]">{p.summary}</span>
             </span>

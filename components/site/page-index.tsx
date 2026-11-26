@@ -1,11 +1,11 @@
 'use client';
 
 /**
- * PageIndex — the table of contents beside an indexed page. It marks the
- * block currently being read (the last one whose top has passed the upper
- * third of the window).
+ * SectionStrip — a pane of glass under the header listing the page's
+ * sections. It marks the one being read and keeps that tab in view when the
+ * strip itself has to scroll sideways on a narrow screen.
  */
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export interface IndexItem {
   id: string;
@@ -14,11 +14,12 @@ export interface IndexItem {
 
 export function PageIndex({ items, label }: { items: IndexItem[]; label: string }) {
   const [active, setActive] = useState(items[0]?.id ?? '');
+  const listRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     let raf = 0;
     const measure = () => {
-      const line = window.innerHeight * 0.33;
+      const line = window.innerHeight * 0.36;
       let current = items[0]?.id ?? '';
       for (const it of items) {
         const el = document.getElementById(it.id);
@@ -40,24 +41,27 @@ export function PageIndex({ items, label }: { items: IndexItem[]; label: string 
     };
   }, [items]);
 
+  useEffect(() => {
+    const list = listRef.current;
+    const tab = list?.querySelector<HTMLElement>('[aria-current="location"]');
+    if (!list || !tab) return;
+    list.scrollTo({ left: tab.offsetLeft - list.clientWidth / 2 + tab.clientWidth / 2, behavior: 'smooth' });
+  }, [active]);
+
   return (
-    <nav aria-label={label} className="hidden lg:block">
-      <ul className="sticky top-[92px] border-t border-[var(--line-strong)] pt-6">
+    <nav aria-label={label} className="sticky top-[84px] z-30 -mx-1 mb-6">
+      <ul ref={listRef} className="glass strip mx-auto flex w-max max-w-full gap-1 overflow-x-auto rounded-full p-1.5">
         {items.map((it) => {
           const on = it.id === active;
           return (
-            <li key={it.id}>
+            <li key={it.id} className="shrink-0">
               <a
                 href={`#${it.id}`}
                 aria-current={on ? 'location' : undefined}
-                className={`flex min-h-11 items-center gap-3 text-[15.5px] font-semibold transition-colors duration-200 hover:text-[var(--accent)] ${
-                  on ? 'text-[var(--fg)]' : 'text-[var(--fg-3)]'
+                className={`inline-flex min-h-11 items-center rounded-full px-4 text-[14.5px] font-semibold transition-colors duration-300 ${
+                  on ? 'bg-[var(--accent-fill)] text-[var(--on-accent)]' : 'text-[var(--fg-2)] hover:text-[var(--fg)]'
                 }`}
               >
-                <span
-                  aria-hidden
-                  className={`h-[2px] bg-[var(--accent-fill)] transition-[width] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${on ? 'w-6' : 'w-0'}`}
-                />
                 {it.label}
               </a>
             </li>

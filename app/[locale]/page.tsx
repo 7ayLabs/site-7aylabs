@@ -4,7 +4,7 @@ import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { Fields } from '@/components/site/fields';
 import { Hero } from '@/components/site/hero';
-import { Block, Indexed, Statements } from '@/components/site/layout';
+import { Block, Indexed, Tiles } from '@/components/site/layout';
 import { Log } from '@/components/site/log';
 import { ProductList } from '@/components/site/product-list';
 import { Questions } from '@/components/site/questions';
@@ -50,7 +50,7 @@ export default async function HomePage({ params }: Props) {
         </Block>
 
         <Block id="method" title={t('method.title')} lede={t('method.lede')}>
-          <Statements items={METHOD.map((k) => ({ title: t(`method.items.${k}.title`), line: t(`method.items.${k}.line`) }))} />
+          <Tiles items={METHOD.map((k) => ({ title: t(`method.items.${k}.title`), line: t(`method.items.${k}.line`) }))} />
         </Block>
 
         {posts.length > 0 ? (

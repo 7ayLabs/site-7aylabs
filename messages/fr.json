@@ -1,8 +1,8 @@
 {
   "meta": {
-    "title": "7ayLabs · Un laboratoire d'apps, de logiciels et d'intelligence",
-    "description": "7ayLabs est un laboratoire indépendant. Nous concevons, construisons et exploitons nos propres apps, logiciels et produits d'intelligence. Le premier, Vizzor, est en ligne.",
-    "og": "Un laboratoire d'apps, de logiciels et d'intelligence."
+    "title": "7ayLabs · Un laboratoire Web3 complet",
+    "description": "7ayLabs est un laboratoire Web3 complet. Nous concevons, construisons et exploitons nos propres apps, logiciels, produits d'intelligence et on-chain. Le premier, Vizzor, est en ligne.",
+    "og": "Un laboratoire Web3 complet."
   },
   "chrome": {
     "skip": "Aller au contenu",
@@ -28,7 +28,7 @@
       "toLight": "Passer en mode clair"
     },
     "footer": {
-      "tagline": "Un laboratoire indépendant d'apps, de logiciels et d'intelligence.",
+      "tagline": "Un laboratoire Web3 complet : apps, logiciels, intelligence et on-chain.",
       "company": "Entreprise",
       "product": "Vizzor",
       "follow": "Suivre",
@@ -48,8 +48,8 @@
   },
   "home": {
     "hero": {
-      "title": "Un laboratoire d'apps, de logiciels et d'intelligence.",
-      "sub": "7ayLabs conçoit, construit et exploite ses propres produits. Chacun commence comme une expérience et sort quand il tient la route. Le premier, Vizzor, est en ligne.",
+      "title": "Un laboratoire Web3 complet.",
+      "sub": "7ayLabs conçoit, construit et exploite ses propres apps, logiciels, produits d'intelligence et on-chain. Chacun commence comme une expérience et sort quand il tient la route. Le premier, Vizzor, est en ligne.",
       "ctaPrimary": "Voir les produits",
       "ctaSecondary": "Notre méthode",
       "board": {
@@ -69,8 +69,8 @@
       "faq": "Questions"
     },
     "fields": {
-      "title": "Trois types de travail, un laboratoire.",
-      "lede": "Presque tout ce que nous faisons se situe là où ces trois se croisent.",
+      "title": "Quatre types de travail, un laboratoire.",
+      "lede": "Presque tout ce que nous faisons se situe là où ces quatre se croisent.",
       "items": {
         "apps": {
           "title": "Apps",
@@ -83,6 +83,10 @@
         "intelligence": {
           "title": "Intelligence",
           "line": "Des modèles et des agents qui lisent les données, raisonnent et répondent avec des mots simples, en montrant leur travail."
+        },
+        "onchain": {
+          "title": "On-chain",
+          "line": "Des wallets, des paiements et des contrats réglés sur des blockchains publiques, où chacun peut vérifier ce qui s'est passé."
         }
       }
     },
@@ -129,6 +133,17 @@
       "title": "D'autres sont en construction.",
       "line": "Nous n'annonçons pas un produit avant qu'il fonctionne. Abonnez-vous ci-dessous et vous saurez pour le prochain le jour de sa sortie.",
       "cta": "Parlons-en"
+    },
+    "platforms": {
+      "title": "Où fonctionne Vizzor",
+      "note": "En ligne veut dire ouvert à tous aujourd'hui. En test veut dire construit et en marche sur notre site de test, puis publié une fois éprouvé.",
+      "live": "En ligne",
+      "testing": "En test",
+      "items": {
+        "web": "Prévisions, intel, marchés et communautés",
+        "hyperliquid": "Passer des ordres depuis une prévision",
+        "polymarket": "Marchés de prédiction"
+      }
     }
   },
   "productsPage": {
@@ -144,8 +159,9 @@
     "sourcesNote": "Sources de données de marché et on-chain interrogées par Vizzor. Ce sont des intégrations, pas des recommandations.",
     "builtWith": "Fonctionne avec",
     "builtWithNote": "Le fournisseur du modèle derrière les réponses de Vizzor et le réseau sur lequel il accepte les paiements.",
-    "partners": "Communautés partenaires",
-    "partnersNote": "Des communautés avec un salon et des avantages dans Vizzor. Seuls les partenariats confirmés sont listés."
+    "partners": "Partenaire",
+    "partnersNote": "CB, l'équipe derrière la communauté Casa Blanca, utilise Vizzor dans ses salons.",
+    "partnerSub": "Communauté Casa Blanca"
   },
   "log": {
     "tags": {
@@ -156,7 +172,7 @@
   "questions": {
     "what": {
       "q": "Qu'est-ce que 7ayLabs ?",
-      "a": "Un laboratoire indépendant. Nous concevons, construisons et exploitons nos propres apps, logiciels et produits d'intelligence. Le premier est Vizzor."
+      "a": "Un laboratoire Web3 complet. Nous concevons, construisons et exploitons nos propres apps, logiciels, produits d'intelligence et on-chain. Le premier est Vizzor."
     },
     "vizzor": {
       "q": "Qu'est-ce que Vizzor ?",
@@ -358,7 +374,7 @@
       "description": "7ayLabs est un laboratoire logiciel indépendant qui construit et exploite Vizzor. Ce en quoi nous croyons et comment nous travaillons."
     },
     "title": "Nous faisons des choses vérifiables.",
-    "lede": "7ayLabs est un laboratoire indépendant d'apps, de logiciels et d'intelligence. Nous concevons, construisons et exploitons nos propres produits, et nous préférons montrer un résultat plutôt que le décrire.",
+    "lede": "7ayLabs est un laboratoire Web3 complet : apps, logiciels, intelligence et on-chain. Nous concevons, construisons et exploitons nos propres produits, et nous préférons montrer un résultat plutôt que le décrire.",
     "index": {
       "mission": "Notre raison d'être",
       "method": "Notre méthode",

@@ -24,9 +24,9 @@ export async function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-24 border-t border-[var(--line-strong)]">
-      <div className="mx-auto max-w-[1400px] px-5 sm:px-8">
-        <div className="grid gap-10 py-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-20 lg:py-20">
+    <footer className="mt-16">
+      <div className="mx-auto max-w-[1360px] px-5 sm:px-8">
+        <div data-reveal="scale" className="glass grid gap-10 rounded-[36px] p-7 sm:p-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-20">
           <div>
             <p className="t-display t-title max-w-[12ch] text-[var(--fg)]">{t('footer.line')}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -38,12 +38,12 @@ export async function SiteFooter() {
               </Link>
             </div>
           </div>
-          <div className="glass self-start rounded-[22px] p-6 sm:p-7">
+          <div className="self-center">
             <NewsletterForm />
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-8 border-t border-[var(--line)] py-10 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 py-12 sm:grid-cols-4">
           <div className="col-span-2 sm:col-span-1">
             <BrandMark className="h-8 w-auto" />
             <p className="t-note mt-4 max-w-[28ch]">{t('footer.tagline')}</p>

@@ -8,8 +8,8 @@ export function GET(): Response {
       description: 'A laboratory for apps, software and intelligence.',
       start_url: '/',
       display: 'standalone',
-      background_color: '#0a1311',
-      theme_color: '#0a1311',
+      background_color: '#050b1c',
+      theme_color: '#050b1c',
       icons: [
         { src: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
         { src: '/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },

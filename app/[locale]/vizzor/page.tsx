@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Locale } from '@/i18n/routing';
 import { CallDemo } from '@/components/site/call-demo';
 import { Coverage } from '@/components/site/coverage';
-import { Block, Indexed, PageHead, Statements } from '@/components/site/layout';
+import { Block, Indexed, PageHead, Tiles } from '@/components/site/layout';
 import { pageMetadata } from '@/lib/seo';
 import { VIZZOR } from '@/lib/site';
 import { CHAIN_COUNT } from '@/lib/vizzor/chains';
@@ -44,11 +44,11 @@ export default async function VizzorPage({ params }: Props) {
 
       <Indexed items={index} label={chrome('index')}>
         <Block id="how" title={t('how.title')} lede={t('how.lede')}>
-          <div className="grid gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,440px)] xl:gap-16">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,440px)] lg:gap-14">
             {/* A real sequence, so it is numbered. */}
-            <ol className="border-b border-[var(--line)]" data-stagger>
+            <ol className="grid content-start gap-3" data-stagger>
               {STEPS.map((s, i) => (
-                <li key={s} data-reveal className="grid grid-cols-[3.5rem_minmax(0,1fr)] gap-x-4 border-t border-[var(--line)] py-6">
+                <li key={s} data-reveal className="glass grid grid-cols-[3.5rem_minmax(0,1fr)] gap-x-4 rounded-[22px] p-6">
                   <span aria-hidden className="t-display text-[3.2rem] leading-none text-[var(--accent)]">
                     {i + 1}
                   </span>
@@ -64,12 +64,12 @@ export default async function VizzorPage({ params }: Props) {
         </Block>
 
         <Block id="desks" title={t('desks.title')} lede={t('desks.lede')}>
-          <dl className="border-b border-[var(--line)]" data-stagger>
+          <dl className="grid gap-4 md:grid-cols-2" data-stagger>
             {DESKS.map((d) => (
-              <div key={d} data-reveal className="grid gap-x-10 gap-y-2 border-t border-[var(--line)] py-6 sm:grid-cols-[220px_minmax(0,1fr)]">
-                <dt className="t-display text-[2.4rem] text-[var(--fg)]">{t(`desks.items.${d}.name`)}</dt>
-                <dd>
-                  <p className="max-w-[54ch] text-[1.2rem] leading-snug text-[var(--fg)]">{t(`desks.items.${d}.line`)}</p>
+              <div key={d} data-reveal className="glass glass-live flex min-h-[13rem] flex-col justify-end rounded-[26px] p-7">
+                <dt className="t-display text-[3rem] text-[var(--fg)]">{t(`desks.items.${d}.name`)}</dt>
+                <dd className="mt-3">
+                  <p className="max-w-[54ch] text-[1.1rem] leading-snug text-[var(--fg)]">{t(`desks.items.${d}.line`)}</p>
                   <p className="t-note mt-2">{t(`desks.items.${d}.reach`, { count: CHAIN_COUNT })}</p>
                 </dd>
               </div>
@@ -97,13 +97,13 @@ export default async function VizzorPage({ params }: Props) {
         </Block>
 
         <Block id="features" title={t('features.title')}>
-          <Statements items={FEATURES.map((k) => ({ title: t(`features.items.${k}.title`), line: t(`features.items.${k}.line`) }))} />
+          <Tiles items={FEATURES.map((k) => ({ title: t(`features.items.${k}.title`), line: t(`features.items.${k}.line`) }))} />
         </Block>
 
         <Block id="record" title={t('receipts.title')} lede={t('receipts.lede')}>
-          <ul className="border-b border-[var(--line)]" data-stagger>
+          <ul className="glass rounded-[26px] px-7" data-stagger>
             {RECEIPTS.map((k) => (
-              <li key={k} data-reveal className="flex items-baseline gap-4 border-t border-[var(--line)] py-5 text-[1.2rem] leading-snug text-[var(--fg)]">
+              <li key={k} data-reveal className="flex items-baseline gap-4 border-t border-[var(--glass-line)] py-5 first:border-t-0 text-[1.2rem] leading-snug text-[var(--fg)]">
                 <span aria-hidden className="font-bold text-[var(--right)]">
                   ✓
                 </span>

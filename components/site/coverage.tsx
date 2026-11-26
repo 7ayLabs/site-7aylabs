@@ -14,7 +14,7 @@ import { CHAINS } from '@/lib/vizzor/chains';
 
 function Row({ head, note, children }: { head: string; note: string; children: React.ReactNode }) {
   return (
-    <div className="grid gap-x-10 gap-y-3 border-t border-[var(--line)] py-6 sm:grid-cols-[220px_minmax(0,1fr)]">
+    <div className="grid gap-x-10 gap-y-3 border-t border-[var(--line)] py-6 sm:grid-cols-[260px_minmax(0,1fr)]">
       <dt>
         <span className="text-[16.5px] font-semibold text-[var(--fg)]">{head}</span>
         <span className="t-note mt-1 block max-w-[30ch]">{note}</span>
@@ -56,9 +56,12 @@ export async function Coverage() {
                   rel="noopener noreferrer"
                   className="group inline-flex min-h-11 items-center gap-4 font-semibold transition-colors duration-200 hover:text-[var(--accent)]"
                 >
-                  <Image src={p.logo.onLight} alt="" width={p.logo.width} height={p.logo.height} unoptimized className="block h-9 w-auto dark:hidden" />
-                  <Image src={p.logo.onDark} alt="" width={p.logo.width} height={p.logo.height} unoptimized className="hidden h-9 w-auto dark:block" />
-                  {p.name}
+                  <Image src={p.logo.onLight} alt="" width={p.logo.width} height={p.logo.height} unoptimized className="block h-11 w-auto dark:hidden" />
+                  <Image src={p.logo.onDark} alt="" width={p.logo.width} height={p.logo.height} unoptimized className="hidden h-11 w-auto dark:block" />
+                  <span>
+                    <span className="block">{p.name}</span>
+                    <span className="t-note block font-normal">{t('partnerSub')}</span>
+                  </span>
                 </a>
               </li>
             ))}

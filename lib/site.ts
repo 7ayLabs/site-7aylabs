@@ -33,22 +33,35 @@ export const VIZZOR = {
 } as const;
 
 /** Where Vizzor takes its data from. Integrations, not partnerships. */
-export const DATA_SOURCES = ['CoinGecko', 'DexScreener', 'DefiLlama', 'Helius', 'Hyperliquid', 'Polymarket'] as const;
+export const DATA_SOURCES = ['CoinGecko', 'DexScreener', 'DefiLlama', 'Helius'] as const;
 
 /** What Vizzor runs on. */
 export const BUILT_WITH = ['Claude by Anthropic', 'Solana'] as const;
 
-/** Confirmed community partners, with the marks their team supplied. */
+/**
+ * The platforms Vizzor works on.
+ *
+ * `live` means on for everyone in production. `testing` means built and
+ * running on Vizzor's staging, not yet released. Change one word here when a
+ * platform ships; the page follows.
+ */
+export const PLATFORMS = [
+  { id: 'web', name: 'Vizzor web app', status: 'live', href: 'https://app.vizzor.ai' },
+  { id: 'hyperliquid', name: 'Hyperliquid', status: 'testing', href: null },
+  { id: 'polymarket', name: 'Polymarket', status: 'testing', href: null },
+] as const;
+
+/** Confirmed partners, with the marks their team supplied. */
 export const PARTNERS = [
   {
-    id: 'casablanca',
-    name: 'Casa Blanca',
-    href: 'https://x.com/casaweb3',
+    id: 'cb',
+    name: 'CB',
+    href: 'https://cblabs.agency',
     logo: {
-      onDark: '/partners/casablanca-house-white.svg',
-      onLight: '/partners/casablanca-house-black.svg',
-      width: 3652,
-      height: 1759,
+      onDark: '/partners/casablanca-cb-white.svg',
+      onLight: '/partners/casablanca-cb-black.svg',
+      width: 1643,
+      height: 1772,
     },
   },
 ] as const;

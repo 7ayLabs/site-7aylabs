@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
-import { Block, Indexed, PageHead, Statements } from '@/components/site/layout';
+import { Block, Indexed, PageHead, Tiles } from '@/components/site/layout';
 import { pageMetadata } from '@/lib/seo';
 import { SITE, VIZZOR } from '@/lib/site';
 
@@ -37,7 +37,7 @@ export default async function AboutPage({ params }: Props) {
 
       <Indexed items={index} label={chrome('index')}>
         <Block id="mission" title={t('mission.title')}>
-          <div className="grid max-w-[62ch] gap-5 text-[1.2rem] leading-[1.6] text-[var(--fg-2)]">
+          <div data-reveal className="glass grid max-w-[78ch] gap-5 rounded-[26px] p-7 text-[1.2rem] leading-[1.6] text-[var(--fg-2)] sm:p-10">
             <p>{t('mission.p1')}</p>
             <p>{t('mission.p2')}</p>
             <p className="text-[var(--fg)]">{t('mission.p3')}</p>
@@ -45,13 +45,13 @@ export default async function AboutPage({ params }: Props) {
         </Block>
 
         <Block id="method" title={home('method.title')} lede={home('method.lede')}>
-          <Statements items={METHOD.map((k) => ({ title: home(`method.items.${k}.title`), line: home(`method.items.${k}.line`) }))} />
+          <Tiles items={METHOD.map((k) => ({ title: home(`method.items.${k}.title`), line: home(`method.items.${k}.line`) }))} />
         </Block>
 
         <Block id="facts" title={t('facts.title')}>
-          <dl className="border-b border-[var(--line)]">
+          <dl className="glass rounded-[26px] px-7">
             {facts.map((f) => (
-              <div key={f.k} className="grid gap-x-10 gap-y-1 border-t border-[var(--line)] py-5 sm:grid-cols-[220px_minmax(0,1fr)]">
+              <div key={f.k} className="grid gap-x-10 gap-y-1 border-t border-[var(--glass-line)] py-5 first:border-t-0 sm:grid-cols-[220px_minmax(0,1fr)]">
                 <dt className="text-[16.5px] font-semibold text-[var(--fg)]">{f.k}</dt>
                 <dd className="text-[1.2rem] text-[var(--fg)]">
                   {f.href ? (

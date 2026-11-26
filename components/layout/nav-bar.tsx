@@ -14,12 +14,14 @@ export function NavBar({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <header
-      className={`glass-bar sticky top-0 z-40 border-b transition-colors duration-300 ${
-        moved ? 'border-[var(--line)]' : 'border-transparent'
-      }`}
-    >
-      {children}
+    <header className="pointer-events-none sticky top-0 z-40 px-3 pt-3 sm:px-5">
+      <div
+        className={`glass pointer-events-auto mx-auto max-w-[1360px] rounded-[20px] transition-shadow duration-500 ${
+          moved ? '' : 'shadow-none'
+        }`}
+      >
+        {children}
+      </div>
     </header>
   );
 }

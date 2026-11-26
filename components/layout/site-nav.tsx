@@ -18,7 +18,7 @@ export async function SiteNav() {
 
   return (
     <NavBar>
-      <nav aria-label={t('nav.label')} className="mx-auto flex h-[68px] max-w-[1400px] items-center gap-6 px-5 sm:px-8">
+      <nav aria-label={t('nav.label')} className="flex h-[60px] items-center gap-6 pl-5 pr-2">
         <Link href="/" aria-label={t('home')} className="inline-flex shrink-0 items-center">
           <BrandMark className="h-7 w-auto" priority />
         </Link>

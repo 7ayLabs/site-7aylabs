@@ -60,9 +60,22 @@ export function PageFx(): null {
       last = e;
       if (!raf) raf = requestAnimationFrame(apply);
     };
+    // Parallax roots get the pointer as -1…1 from the centre of the window.
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const onLean = (e: PointerEvent) => {
+      if (reduced) return;
+      const px = ((e.clientX / window.innerWidth) * 2 - 1).toFixed(3);
+      const py = ((e.clientY / window.innerHeight) * 2 - 1).toFixed(3);
+      for (const el of document.querySelectorAll<HTMLElement>('[data-parallax]')) {
+        el.style.setProperty('--px', px);
+        el.style.setProperty('--py', py);
+      }
+    };
+    window.addEventListener('pointermove', onLean, { passive: true });
     window.addEventListener('pointermove', onMove, { passive: true });
     return () => {
       window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointermove', onLean);
       cancelAnimationFrame(raf);
     };
   }, []);

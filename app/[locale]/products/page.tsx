@@ -27,7 +27,7 @@ export default async function ProductsPage({ params }: Props) {
         <ProductList />
       </section>
       <section className={`${WRAP} pb-24`} aria-labelledby="fields-title">
-        <h2 id="fields-title" data-reveal className="t-display t-title max-w-[18ch] border-t border-[var(--line-strong)] pt-8 text-[var(--fg)] sm:pt-10">
+        <h2 id="fields-title" data-reveal className="t-display t-title max-w-[18ch] pt-8 text-[var(--fg)] sm:pt-10">
           {home('fields.title')}
         </h2>
         <p data-reveal className="t-lede mb-12 mt-6">

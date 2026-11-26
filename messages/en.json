@@ -1,8 +1,8 @@
 {
   "meta": {
-    "title": "7ayLabs · A laboratory for apps, software and intelligence",
-    "description": "7ayLabs is an independent laboratory. We design, build and run our own apps, software and intelligence products. The first one, Vizzor, is live.",
-    "og": "A laboratory for apps, software and intelligence."
+    "title": "7ayLabs · A full Web3 laboratory",
+    "description": "7ayLabs is a full Web3 laboratory. We design, build and run our own apps, software, intelligence and on-chain products. The first one, Vizzor, is live.",
+    "og": "A full Web3 laboratory."
   },
   "chrome": {
     "skip": "Skip to content",
@@ -28,7 +28,7 @@
       "toLight": "Switch to light mode"
     },
     "footer": {
-      "tagline": "An independent laboratory for apps, software and intelligence.",
+      "tagline": "A full Web3 laboratory: apps, software, intelligence and on-chain.",
       "company": "Company",
       "product": "Vizzor",
       "follow": "Follow",
@@ -48,8 +48,8 @@
   },
   "home": {
     "hero": {
-      "title": "A laboratory for apps, software and intelligence.",
-      "sub": "7ayLabs designs, builds and runs its own products. Each one starts as an experiment and ships when it holds up. The first, Vizzor, is live.",
+      "title": "A full Web3 laboratory.",
+      "sub": "7ayLabs designs, builds and runs its own apps, software, intelligence and on-chain products. Each one starts as an experiment and ships when it holds up. The first, Vizzor, is live.",
       "ctaPrimary": "See the products",
       "ctaSecondary": "How we work",
       "board": {
@@ -69,8 +69,8 @@
       "faq": "Questions"
     },
     "fields": {
-      "title": "Three kinds of work, one lab.",
-      "lede": "Most of what we make sits where these three meet.",
+      "title": "Four kinds of work, one lab.",
+      "lede": "Most of what we make sits where these four meet.",
       "items": {
         "apps": {
           "title": "Apps",
@@ -83,6 +83,10 @@
         "intelligence": {
           "title": "Intelligence",
           "line": "Models and agents that read data, reason about it and answer in plain words, with their work shown."
+        },
+        "onchain": {
+          "title": "On-chain",
+          "line": "Wallets, payments and contracts that settle on public blockchains, where anyone can check what happened."
         }
       }
     },
@@ -129,6 +133,17 @@
       "title": "More is being built.",
       "line": "We do not announce products before they work. Subscribe below and you will hear about the next one the day it ships.",
       "cta": "Talk to us about it"
+    },
+    "platforms": {
+      "title": "Where Vizzor runs",
+      "note": "Live means open to everyone today. In testing means built and running on our test site, and released once it is proven.",
+      "live": "Live",
+      "testing": "In testing",
+      "items": {
+        "web": "Predictions, intel, markets and communities",
+        "hyperliquid": "Placing trades from a call",
+        "polymarket": "Prediction markets"
+      }
     }
   },
   "productsPage": {
@@ -144,8 +159,9 @@
     "sourcesNote": "Market and on-chain data sources Vizzor queries. These are integrations, not endorsements.",
     "builtWith": "Runs on",
     "builtWithNote": "The model provider behind Vizzor's answers and the network it accepts payments on.",
-    "partners": "Community partners",
-    "partnersNote": "Communities with a room and perks inside Vizzor. Only confirmed partners are listed."
+    "partners": "Partner",
+    "partnersNote": "CB, the team behind the Casa Blanca community, runs Vizzor inside its rooms.",
+    "partnerSub": "Casa Blanca community"
   },
   "log": {
     "tags": {
@@ -156,7 +172,7 @@
   "questions": {
     "what": {
       "q": "What is 7ayLabs?",
-      "a": "An independent laboratory. We design, build and run our own apps, software and intelligence products. The first one is Vizzor."
+      "a": "A full Web3 laboratory. We design, build and run our own apps, software, intelligence and on-chain products. The first one is Vizzor."
     },
     "vizzor": {
       "q": "What is Vizzor?",
@@ -358,7 +374,7 @@
       "description": "7ayLabs is an independent software lab that builds and operates Vizzor. What we believe and how we work."
     },
     "title": "We build things you can check.",
-    "lede": "7ayLabs is an independent laboratory for apps, software and intelligence. We design, build and run our own products, and we would rather show a result than describe one.",
+    "lede": "7ayLabs is a full Web3 laboratory: apps, software, intelligence and on-chain. We design, build and run our own products, and we would rather show a result than describe one.",
     "index": {
       "mission": "Why we exist",
       "method": "How we work",

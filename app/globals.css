@@ -3,8 +3,8 @@
 /*
  * 7aylabs.com design system.
  *
- * Clear liquid glass over slowly drifting colour, ink type, and the lab's own
- * teal. Two more colours exist and each means one thing: green marks a call
+ * Clear liquid glass over slowly drifting blue: deep navy and light blue in
+ * both themes. Two more colours exist and each means one thing: green marks a call
  * that was right, red one that was wrong.
  *
  * Type is one family, Archivo, at two widths: headlines are set tall and
@@ -29,51 +29,53 @@
 
 :root {
   color-scheme: light;
-  --bg: #edf1ef;
-  --surface: #f7f9f8;
-  --fg: #0d1614;
-  --fg-2: #3d4a46;
-  --fg-3: #5c6a65;
-  --line: rgba(13, 22, 20, 0.16);
-  --line-strong: rgba(13, 22, 20, 0.5);
-  --accent: #0f6b59;
-  --accent-fill: #178e77;
+  --bg: #e9f0fb;
+  --surface: #f5f9ff;
+  --fg: #071a3d;
+  --fg-2: #33456b;
+  --fg-3: #56678b;
+  --line: rgba(7, 26, 61, 0.14);
+  --line-strong: rgba(7, 26, 61, 0.42);
+  --accent: #0b3fa8;
+  --accent-fill: #1d5fe0;
+  --accent-soft: #7db8ff;
   --on-accent: #ffffff;
   --right: #12734a;
   --wrong: #b3261e;
-  --glass: rgba(255, 255, 255, 0.32);
-  --glass-hi: rgba(255, 255, 255, 0.58);
-  --glass-line: rgba(13, 22, 20, 0.12);
+  --glass: rgba(255, 255, 255, 0.3);
+  --glass-hi: rgba(255, 255, 255, 0.6);
+  --glass-line: rgba(7, 26, 61, 0.12);
   --glass-edge: rgba(255, 255, 255, 0.95);
-  --glass-shade: 0 1px 1px rgba(13, 22, 20, 0.04), 0 22px 44px -26px rgba(13, 22, 20, 0.32);
-  --blob-a: rgba(23, 142, 119, 0.42);
-  --blob-b: rgba(64, 132, 201, 0.3);
-  --blob-c: rgba(255, 255, 255, 0.85);
+  --glass-shade: 0 1px 1px rgba(7, 26, 61, 0.04), 0 26px 50px -28px rgba(11, 63, 168, 0.4);
+  --blob-a: rgba(29, 95, 224, 0.42);
+  --blob-b: rgba(125, 184, 255, 0.7);
+  --blob-c: rgba(255, 255, 255, 0.9);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-theme='dark'] {
   color-scheme: dark;
-  --bg: #0a1311;
-  --surface: #101b18;
-  --fg: #e9f0ed;
-  --fg-2: #a9b8b3;
-  --fg-3: #83938d;
-  --line: rgba(233, 240, 237, 0.16);
-  --line-strong: rgba(233, 240, 237, 0.5);
-  --accent: #45c9a8;
-  --accent-fill: #1fa58a;
-  --on-accent: #04110e;
+  --bg: #050b1c;
+  --surface: #0a1430;
+  --fg: #e8f0ff;
+  --fg-2: #a8b8d8;
+  --fg-3: #8696ba;
+  --line: rgba(232, 240, 255, 0.15);
+  --line-strong: rgba(232, 240, 255, 0.46);
+  --accent: #8cc0ff;
+  --accent-fill: #2f6fed;
+  --accent-soft: #7db8ff;
+  --on-accent: #ffffff;
   --right: #4fd08f;
   --wrong: #ff7a6e;
-  --glass: rgba(233, 240, 237, 0.04);
-  --glass-hi: rgba(233, 240, 237, 0.085);
-  --glass-line: rgba(233, 240, 237, 0.13);
-  --glass-edge: rgba(233, 240, 237, 0.24);
-  --glass-shade: 0 1px 0 rgba(0, 0, 0, 0.4), 0 28px 54px -30px rgba(0, 0, 0, 0.85);
-  --blob-a: rgba(31, 165, 138, 0.34);
-  --blob-b: rgba(52, 116, 190, 0.3);
-  --blob-c: rgba(69, 201, 168, 0.18);
+  --glass: rgba(140, 180, 255, 0.045);
+  --glass-hi: rgba(160, 195, 255, 0.1);
+  --glass-line: rgba(160, 195, 255, 0.16);
+  --glass-edge: rgba(200, 222, 255, 0.3);
+  --glass-shade: 0 1px 0 rgba(0, 0, 0, 0.4), 0 30px 60px -32px rgba(0, 6, 30, 0.9);
+  --blob-a: rgba(47, 111, 237, 0.34);
+  --blob-b: rgba(125, 184, 255, 0.2);
+  --blob-c: rgba(22, 52, 150, 0.6);
 }
 
 @layer base {
@@ -378,7 +380,7 @@
   opacity: 0;
   background: radial-gradient(
     380px circle at var(--mx, 50%) var(--my, 0%),
-    color-mix(in oklab, var(--accent-fill) 26%, transparent),
+    color-mix(in oklab, var(--accent-soft) 34%, transparent),
     transparent 62%
   );
   transition: opacity 400ms var(--ease);
@@ -583,6 +585,79 @@ html[data-js] [data-reveal='scale'] {
   to {
     transform: translate3d(0, -10px, 0) rotate(4deg);
   }
+}
+
+/* ── Hero: three panes of glass that lean with the pointer ─────────────── */
+.stack {
+  perspective: 1400px;
+}
+.stack-pane {
+  transform: translate3d(calc(var(--px, 0) * var(--k, 10px)), calc(var(--py, 0) * var(--k, 10px)), 0)
+    rotateX(calc(var(--py, 0) * -5deg)) rotateY(calc(var(--px, 0) * 7deg)) rotate(var(--r, 0deg));
+  transition: transform 900ms var(--ease);
+  will-change: transform;
+}
+
+/* A drop of liquid glass that slowly changes shape. */
+.drop {
+  border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%;
+  animation: morph 18s ease-in-out infinite alternate;
+}
+@keyframes morph {
+  33% {
+    border-radius: 42% 58% 46% 54% / 56% 42% 58% 44%;
+  }
+  66% {
+    border-radius: 52% 48% 60% 40% / 44% 58% 42% 56%;
+  }
+  to {
+    border-radius: 46% 54% 42% 58% / 58% 46% 54% 42%;
+    transform: rotate(8deg) scale(1.05);
+  }
+}
+
+/* ── Fields: three columns; the one in use opens up ────────────────────── */
+.fan {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 900px) {
+  .fan {
+    display: flex;
+    min-height: 26rem;
+  }
+  .fan > * {
+    flex: 1 1 0;
+    min-width: 0;
+    transition: flex-grow 700ms var(--ease);
+  }
+  .fan:has(> :hover) > :not(:hover),
+  .fan:has(> :focus-within) > :not(:focus-within) {
+    flex-grow: 0.72;
+  }
+  .fan > :hover,
+  .fan > :focus-within {
+    flex-grow: 1.7;
+  }
+}
+
+/* The section strip: a pane of glass that stays under the header. */
+.strip {
+  scrollbar-width: none;
+}
+.strip::-webkit-scrollbar {
+  display: none;
+}
+
+/* A hairline of light blue that draws itself under section titles. */
+.rule-draw {
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 1200ms var(--ease) 150ms;
+}
+[data-in] > .rule-draw,
+.rule-draw[data-in] {
+  transform: scaleX(1);
 }
 
 @media (prefers-reduced-motion: reduce) {

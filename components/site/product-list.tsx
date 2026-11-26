@@ -10,6 +10,7 @@ import { Link } from '@/i18n/navigation';
 import { VIZZOR } from '@/lib/site';
 import { CHAIN_COUNT } from '@/lib/vizzor/chains';
 import { CallDemo } from './call-demo';
+import { Platforms } from './platforms';
 
 export async function ProductList() {
   const t = await getTranslations('products');
@@ -17,7 +18,7 @@ export async function ProductList() {
 
   return (
     <div className="grid gap-4">
-      <article data-reveal="scale" className="glass rounded-[26px] p-6 sm:p-9">
+      <article data-reveal="scale" className="glass rounded-[32px] p-6 sm:p-10">
         <div className="grid gap-10 xl:grid-cols-[minmax(0,1fr)_minmax(0,430px)] xl:gap-14">
           <div className="flex flex-col">
             <p className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[15px] font-semibold text-[var(--fg-2)]">
@@ -40,11 +41,14 @@ export async function ProductList() {
           </div>
           <CallDemo />
         </div>
+        <div className="mt-10 border-t border-[var(--glass-line)] pt-8">
+          <Platforms />
+        </div>
       </article>
 
       <article
         data-reveal
-        className="flex flex-col gap-5 rounded-[26px] border border-dashed border-[var(--line-strong)] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-9"
+        className="flex flex-col gap-5 rounded-[32px] border border-dashed border-[var(--line-strong)] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-9"
       >
         <div>
           <h3 className="t-head text-[var(--fg)]">{t('next.title')}</h3>
