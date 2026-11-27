@@ -5,7 +5,7 @@ export function GET(): Response {
     JSON.stringify({
       name: '7ayLabs',
       short_name: '7ayLabs',
-      description: 'The Web3 laboratory. Software you can check.',
+      description: 'The Web3 lab that publishes its misses. Nothing ships on a promise.',
       start_url: '/',
       display: 'standalone',
       background_color: '#050505',
