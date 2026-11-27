@@ -368,34 +368,57 @@
   backdrop-filter: blur(26px) saturate(175%);
 }
 
-/* A pane that answers the pointer: a soft teal light follows it across the
-   surface, and the pane lifts a little. Position comes from PointerFx. */
+/* A pane that answers the pointer: it tilts toward it, a soft light follows
+   it across the surface, and the same light runs along the pane's edge.
+   Position and tilt come from PageFx. */
 .glass-live {
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translate3d(0, var(--lift, 0px), 0);
   transition:
     transform 500ms var(--ease),
     border-color 300ms var(--ease);
 }
-.glass-live::after {
+html[data-js] [data-reveal][data-in].glass-live {
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translate3d(0, var(--lift, 0px), 0);
+}
+.glass-live::after,
+.glass-live::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
   opacity: 0;
+  transition: opacity 400ms var(--ease);
+}
+.glass-live::after {
   background: radial-gradient(
     380px circle at var(--mx, 50%) var(--my, 0%),
-    color-mix(in oklab, var(--accent-soft) 34%, transparent),
+    color-mix(in oklab, var(--fg) 13%, transparent),
     transparent 62%
   );
-  transition: opacity 400ms var(--ease);
+}
+/* The edge light: a gradient shown only in a 1px ring around the pane. */
+.glass-live::before {
+  inset: -1px;
+  padding: 1px;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 0%), var(--fg), transparent 70%);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
 }
 @media (hover: hover) {
   .glass-live:hover {
-    transform: translateY(-4px);
-    border-color: color-mix(in oklab, var(--accent) 45%, var(--glass-line));
+    --lift: -5px;
   }
   .glass-live:hover::after {
     opacity: 1;
+  }
+  .glass-live:hover::before {
+    opacity: 0.7;
   }
 }
 
@@ -575,6 +598,62 @@ html[data-js]:not([data-fx]) [data-reveal] {
   }
   to {
     transform: translate3d(0, -36px, 0);
+  }
+}
+
+/* Section titles arrive word by word, each rising out of its own mask, and
+   drop back when the title leaves. */
+html[data-js] .words .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+html[data-js] .words .w > i {
+  display: inline-block;
+  font-style: normal;
+  transform: translate3d(0, 108%, 0) rotate(5deg);
+  transform-origin: left bottom;
+  transition: transform 700ms var(--ease);
+}
+html[data-js] [data-in] .words .w > i,
+html[data-js] .words[data-in] .w > i {
+  transform: none;
+  transition: transform 1100ms var(--ease) calc(var(--i, 0) * 70ms + 80ms);
+}
+
+/* Buttons lean a little toward the pointer (offsets from PageFx). */
+.btn {
+  translate: var(--tx, 0px) var(--ty, 0px);
+}
+
+/* The status strip: figures separated by hairlines, one row on wide screens. */
+.status {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.status > * {
+  padding: 1.1rem 1.25rem;
+  border-top: 1px solid var(--glass-line);
+  border-left: 1px solid var(--glass-line);
+}
+.status > :nth-child(-n + 2) {
+  border-top: 0;
+}
+.status > :nth-child(odd) {
+  border-left: 0;
+}
+@media (min-width: 900px) {
+  .status {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .status > * {
+    border-top: 0;
+    border-left: 1px solid var(--glass-line);
+  }
+  .status > :first-child {
+    border-left: 0;
   }
 }
 
@@ -762,6 +841,12 @@ html[data-js]:not([data-fx]) [data-reveal] {
   html[data-js] [data-reveal] {
     opacity: 1 !important;
     transform: none !important;
+  }
+  html[data-js] .words .w > i {
+    transform: none !important;
+  }
+  .btn {
+    translate: none;
   }
   *,
   *::before,

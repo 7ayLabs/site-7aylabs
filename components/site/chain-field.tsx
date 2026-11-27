@@ -3,8 +3,10 @@
 /**
  * ChainField — the page's animated ground: a blockchain at work.
  *
- * Three lanes of blocks drift past at different depths, each block linked to
- * the next and stamped with a short hash. Transactions leave one block and
+ * A grid floor runs to a horizon. Above it a network of nodes links and
+ * unlinks as they pass, brightening near the pointer. Three lanes of blocks
+ * drift past at different depths, each block linked to the next and stamped
+ * with a short hash; a new block arrives with a widening outline. Transactions leave one block and
  * arc across to another, a ring marking where they land. Coins turn slowly
  * as they rise. Scrolling moves the lanes against each other, so the field
  * answers the page in both directions.
@@ -51,6 +53,12 @@ interface Tx {
   dur: number;
   label: string | null;
 }
+interface Node {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+}
 interface Coin {
   x: number;
   y: number;
@@ -83,6 +91,8 @@ export function ChainField(): ReactElement {
     ];
     const txs: Tx[] = [];
     const coins: Coin[] = [];
+    const nodes: Node[] = [];
+    const ptr = { x: -9999, y: -9999 };
 
     const laneY = (l: Lane): number => {
       const span = h + l.size * 4;
@@ -93,6 +103,11 @@ export function ChainField(): ReactElement {
       for (const l of lanes) {
         l.blocks = [];
         for (let x = -l.gap; x < w + l.gap * 2; x += l.gap) l.blocks.push({ x, hash: hash(), born: -10 });
+      }
+      nodes.length = 0;
+      const nn = Math.min(46, Math.max(14, Math.round((w * h) / 42000)));
+      for (let i = 0; i < nn; i++) {
+        nodes.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 10, vy: (Math.random() - 0.5) * 10 });
       }
       coins.length = 0;
       const n = Math.max(4, Math.round(w / 260));
@@ -155,6 +170,61 @@ export function ChainField(): ReactElement {
       ctx.lineWidth = 1;
       ctx.textBaseline = 'top';
 
+      // The floor: a grid running to a horizon, sliding toward the reader and
+      // with the scroll, so the whole field has a ground to stand on.
+      {
+        const horizon = h * 0.6;
+        const flow = (time * 0.09 + scrollY * 0.0009) % 1;
+        ctx.strokeStyle = `rgba(${ink},${base * 0.5})`;
+        for (let i = 0; i < 16; i++) {
+          const z = (i + flow) / 16;
+          const y = horizon + (h - horizon) * z * z;
+          ctx.globalAlpha = Math.min(1, z * 1.6);
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(w, y);
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 0.75;
+        const cx0 = w / 2;
+        for (let i = -12; i <= 12; i++) {
+          ctx.beginPath();
+          ctx.moveTo(cx0 + i * 26, horizon);
+          ctx.lineTo(cx0 + i * w * 0.115, h);
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+      }
+
+      // The network: nodes that link when they pass near each other, and
+      // light up near the pointer.
+      for (const n of nodes) {
+        n.x += n.vx * dt;
+        n.y += n.vy * dt;
+        if (n.x < -20) n.x = w + 20;
+        if (n.x > w + 20) n.x = -20;
+        if (n.y < -20) n.y = h + 20;
+        if (n.y > h + 20) n.y = -20;
+      }
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i]!;
+        const near = Math.max(0, 1 - Math.hypot(a.x - ptr.x, a.y - ptr.y) / 240);
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j]!;
+          const d = Math.hypot(a.x - b.x, a.y - b.y);
+          if (d > 190) continue;
+          ctx.strokeStyle = `rgba(${ink},${base * (1 - d / 190) * (0.7 + near * 2.2)})`;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+        ctx.fillStyle = `rgba(${ink},${base * (1.4 + near * 4)})`;
+        ctx.beginPath();
+        ctx.arc(a.x, a.y, 1.6 + near * 2.2, 0, 6.283);
+        ctx.fill();
+      }
+
       // Lanes of linked blocks.
       for (const l of lanes) {
         const y = laneY(l);
@@ -188,6 +258,13 @@ export function ChainField(): ReactElement {
           ctx.fill();
           ctx.strokeStyle = `rgba(${ink},${a * (1 + fresh)})`;
           ctx.stroke();
+          if (fresh > 0) {
+            // A newly added block announces itself with a widening outline.
+            const grow = (1 - fresh) * l.size * 0.55;
+            rounded(b.x - grow, y - grow, l.size + grow * 2, l.size * 0.2 + grow * 0.4);
+            ctx.strokeStyle = `rgba(${ink},${a * fresh * 1.2})`;
+            ctx.stroke();
+          }
           // Rows inside it: the transactions it holds.
           ctx.strokeStyle = `rgba(${ink},${a * 0.75})`;
           for (let i = 0; i < 3; i++) {
@@ -297,6 +374,10 @@ export function ChainField(): ReactElement {
       scrollY = window.scrollY;
       if (reduced) draw(3000, 0);
     };
+    const onPointer = (e: PointerEvent): void => {
+      ptr.x = e.clientX;
+      ptr.y = e.clientY;
+    };
     const onVisible = (): void => {
       if (!document.hidden && !reduced && !raf) {
         last = performance.now();
@@ -317,12 +398,14 @@ export function ChainField(): ReactElement {
     });
     mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     window.addEventListener('scroll', onScroll, { passive: true });
+    if (!reduced) window.addEventListener('pointermove', onPointer, { passive: true });
     window.addEventListener('resize', onResize);
     document.addEventListener('visibilitychange', onVisible);
     return () => {
       cancelAnimationFrame(raf);
       mo.disconnect();
       window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('pointermove', onPointer);
       window.removeEventListener('resize', onResize);
       document.removeEventListener('visibilitychange', onVisible);
     };

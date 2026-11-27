@@ -29,7 +29,7 @@ const SHAPE_ID: Record<GlassShape, number> = { apps: 0, software: 1, intelligenc
  * inside its canvas: an object cut off by a straight edge is the one thing a
  * 3D icon must never do.
  */
-const REACH: Record<GlassShape, number> = { apps: 1.02, software: 1.0, intelligence: 1.08, onchain: 1.0, ground: 0.98, lab: 1.12 };
+const REACH: Record<GlassShape, number> = { apps: 1.06, software: 1.02, intelligence: 1.1, onchain: 1.06, ground: 1.0, lab: 1.14 };
 const zoomFor = (shape: GlassShape): number => (0.5 * 3.1 * 0.78) / REACH[shape];
 
 const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
@@ -53,21 +53,27 @@ float sdCyl(vec3 p,float r,float h,float e){vec2 d=abs(vec2(length(p.xz),p.y))-v
 
 float map(vec3 p){
   float t=uT;
+  // It hangs in the air, rising and settling.
+  p.y-=.035*sin(t*.9);
   // A slow turn, an easy sway, and a lean toward the pointer.
   p.xz*=rot(t*.38+.5*sin(t*.23)+uPtr.x*.6);
   p.xy*=rot(.26+.14*sin(t*.41));
   p.yz*=rot(.12*sin(t*.31)-uPtr.y*.4);
   if(uShape<.5){
     // Apps: two rounded panes, one in front of the other.
-    float a=sdBox(p-vec3(-.12,.1,-.16),vec3(.52,.4,.035),.07);
-    float b=sdBox(p-vec3(.14,-.12,.16),vec3(.52,.4,.035),.07);
-    return min(a,b);
+    float open=.05*sin(t*.8);
+    float a=sdBox(p-vec3(-.17,.14,-.24-open),vec3(.46,.36,.03),.065);
+    float b=sdBox(p-vec3(0.,0.,0.),vec3(.46,.36,.03),.065);
+    float c=sdBox(p-vec3(.17,-.14,.24+open),vec3(.46,.36,.03),.065);
+    return min(a,min(b,c));
   }
   if(uShape<1.5){
     // Software: a core block inside a ring that tumbles around it.
-    float core=sdBox(p,vec3(.3),.09);
+    vec3 c=p;c.xz*=rot(-t*.5);
+    float core=sdBox(c,vec3(.26),.1);
     vec3 q=p;q.xy*=rot(t*.7);q.yz*=rot(1.1);
-    return min(core,sdTorus(q,vec2(.74,.065)));
+    vec3 q2=p;q2.yz*=rot(-t*.55);q2.xy*=rot(.5);
+    return min(core,min(sdTorus(q,vec2(.72,.05)),sdTorus(q2.yxz,vec2(.56,.04))));
   }
   if(uShape<2.5){
     // Intelligence: drops of glass that merge and part.
@@ -81,10 +87,10 @@ float map(vec3 p){
   }
   if(uShape<3.5){
     // On-chain: two links, one through the other.
-    vec3 a=p-vec3(-.27,0.,0.);
-    vec3 b=p-vec3(.27,0.,0.);b.yz*=rot(1.5708);
-    a.xy*=rot(1.5708);b.xy*=rot(1.5708);
-    return min(sdTorus(a,vec2(.42,.11)),sdTorus(b,vec2(.42,.11)));
+    vec3 a=p-vec3(-.46,0.,0.);a.xy*=rot(1.5708);
+    vec3 b=p;b.yz*=rot(1.5708);b.xy*=rot(1.5708);
+    vec3 c=p-vec3(.46,0.,0.);c.xy*=rot(1.5708);
+    return min(sdTorus(a,vec2(.3,.085)),min(sdTorus(b,vec2(.3,.085)),sdTorus(c,vec2(.3,.085))));
   }
   if(uShape<4.5){
     // Ground: three slabs stacked, breathing apart.
@@ -116,7 +122,11 @@ vec3 env(vec3 d){
   float side=smoothstep(.75,1.,d.x)*.5;
   // Black and white: a grey studio, dark below and light above.
   vec3 sky=vec3(mix(.04,.7,smoothstep(-.6,.9,d.y)));
-  return sky*mix(.75,1.15,uDark)+vec3(1.)*strip*1.7+vec3(.8)*side;
+  // A window to one side: four panes, the reflection every polished render has.
+  vec2 wv=vec2(d.z*.9+.1,d.y);
+  float win=step(.55,d.x)*smoothstep(.62,.56,abs(wv.x))*smoothstep(.5,.44,abs(wv.y-.18));
+  win*=smoothstep(.0,.035,abs(wv.x))*smoothstep(.0,.035,abs(wv.y-.18));
+  return sky*mix(.75,1.15,uDark)+vec3(1.)*strip*1.7+vec3(.8)*side+vec3(1.)*win*1.25;
 }
 
 void main(){
@@ -137,7 +147,14 @@ void main(){
   if(hit<.5){
     // A soft, anti-aliased rim where the ray only just missed.
     float edge=smoothstep(px*2.2,0.,near)*.55*frame;
-    gl_FragColor=vec4(vec3(mix(.15,.9,uDark))*edge,edge);
+    // What the object leaves on the ground under it: a shadow on the light
+    // theme, a pool of light on the dark one. It tightens as the object dips.
+    float bob=.5+.5*sin(uT*.9);
+    vec2 g=vec2(uv.x,(uv.y+.4)*(5.5+bob));
+    float pool=exp(-dot(g,g)*mix(9.,7.,bob))*mix(.26,.16,bob)*frame;
+    vec3 pc=vec3(uDark);
+    float pa=pool*mix(1.,.55,uDark);
+    gl_FragColor=vec4(vec3(mix(.15,.9,uDark))*edge+pc*pa,edge+pa);
     return;
   }
   vec3 p=ro+rd*t;

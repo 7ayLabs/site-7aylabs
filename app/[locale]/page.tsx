@@ -9,6 +9,7 @@ import { Log } from '@/components/site/log';
 import { ProductList } from '@/components/site/product-list';
 import { Questions } from '@/components/site/questions';
 import { Stack } from '@/components/site/stack';
+import { Status } from '@/components/site/status';
 import { pageMetadata } from '@/lib/seo';
 import { listUpdates } from '@/lib/updates';
 
@@ -38,6 +39,8 @@ export default async function HomePage({ params }: Props) {
       <Hero />
 
       <Indexed>
+        <Status locale={locale as Locale} />
+
         <Block id="fields" title={t('fields.title')} lede={t('fields.lede')}>
           <Fields />
         </Block>

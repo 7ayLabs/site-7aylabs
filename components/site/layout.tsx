@@ -8,6 +8,23 @@ export function Indexed({ children }: { children: ReactNode }) {
   return <div className={WRAP}>{children}</div>;
 }
 
+/** A string as words that rise one by one (styled by `.words`). */
+export function Words({ text }: { text: string }) {
+  const words = text.split(' ');
+  return (
+    <span className="words">
+      {words.map((w, i) => (
+        <span key={i}>
+          <span className="w">
+            <i style={{ '--i': i } as React.CSSProperties}>{w}</i>
+          </span>
+          {i < words.length - 1 ? ' ' : null}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 /**
  * One section of a page. The head is split: the headline on the left, the
  * lede set against it on the right, and a line of light that draws itself
@@ -27,8 +44,8 @@ export function Block({
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-28 py-16 sm:py-24">
       <div data-reveal className="grid items-end gap-x-16 gap-y-5 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
-        <h2 id={`${id}-title`} className="t-display t-title scroll-drift max-w-[18ch] text-[var(--fg)]">
-          {title}
+        <h2 id={`${id}-title`} className="t-display t-title max-w-[18ch] text-[var(--fg)]">
+          {typeof title === 'string' ? <Words text={title} /> : title}
         </h2>
         {lede ? <p className="t-lede lg:pb-2">{lede}</p> : null}
         <span aria-hidden className="rule-draw col-span-full mt-3 block h-px bg-gradient-to-r from-[var(--accent-fill)] via-[var(--accent-soft)] to-transparent" />

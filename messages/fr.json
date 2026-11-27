@@ -153,6 +153,13 @@
       },
       "more": "et {count} de plus",
       "wallets": "Wallets"
+    },
+    "status": {
+      "title": "État du laboratoire",
+      "products": "produit en ligne",
+      "chains": "blockchains lues",
+      "languages": "langues",
+      "latest": "dernière note"
     }
   },
   "products": {

@@ -5,14 +5,15 @@
 import { getTranslations } from 'next-intl/server';
 import { AppWindow, ArrowUpRight, Blocks, BrainCircuit, Cpu } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { Decode } from './decode';
 import { GlassIcon } from './glass3d/glass-icon';
 import { WRAP } from './layout';
 
 const PANES = [
   { key: 'apps', Icon: AppWindow, cls: 'left-[0%] top-[6%] w-[46%]', r: '-7deg', k: '18px' },
   { key: 'software', Icon: Cpu, cls: 'right-[0%] top-[14%] w-[48%]', r: '5deg', k: '-12px' },
-  { key: 'intelligence', Icon: BrainCircuit, cls: 'left-[2%] top-[70%] w-[54%]', r: '3deg', k: '26px' },
-  { key: 'onchain', Icon: Blocks, cls: 'right-[2%] top-[78%] w-[44%]', r: '-4deg', k: '-20px' },
+  { key: 'intelligence', Icon: BrainCircuit, cls: 'left-[0%] top-[62%] w-[54%]', r: '3deg', k: '26px' },
+  { key: 'onchain', Icon: Blocks, cls: 'right-[0%] top-[70%] w-[44%]', r: '-4deg', k: '-20px' },
 ] as const;
 
 export async function Hero() {
@@ -25,7 +26,7 @@ export async function Hero() {
         <div>
           <h1 className="t-display type-settle max-w-[11ch] text-[clamp(2.9rem,1rem+6.1vw,7rem)] leading-[0.96] text-[var(--fg)]">{t('title')}</h1>
           <p data-reveal className="t-head mt-6 text-[var(--fg-2)]">
-            {t('slogan')}
+            <Decode text={t('slogan')} duration={1100} />
           </p>
           <div data-reveal className="mt-6">
             <p className="t-lede">{t('sub')}</p>
@@ -41,7 +42,7 @@ export async function Hero() {
         </div>
 
         {/* Decorative: the same four fields are listed as text further down. */}
-        <div aria-hidden data-parallax className="stack scroll-lift relative hidden h-[34rem] lg:block">
+        <div aria-hidden data-parallax className="stack relative hidden h-[34rem] lg:block">
           <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <GlassIcon shape="lab" size={600} />
           </span>

@@ -153,6 +153,13 @@
       },
       "more": "and {count} more",
       "wallets": "Wallets"
+    },
+    "status": {
+      "title": "Lab status",
+      "products": "product live",
+      "chains": "blockchains read",
+      "languages": "languages",
+      "latest": "latest note"
     }
   },
   "products": {
