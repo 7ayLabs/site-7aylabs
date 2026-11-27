@@ -1,12 +1,13 @@
 {
   "meta": {
-    "title": "7ayLabs · Le labo Web3. Conçu pour le Web3, prouvé en public",
-    "description": "7ayLabs est un laboratoire Web3. Nous concevons, construisons et exploitons nos propres apps, logiciels, IA et produits on-chain, à commencer par Vizzor : l'intelligence crypto notée en public.",
-    "og": "Ne croyez pas. Vérifiez.",
-    "slogan": "Ne croyez pas. Vérifiez.",
+    "title": "7ayLabs · Labo d’intelligence on-chain : scanner, tracer, décoder",
+    "description": "7ayLabs construit des instruments qui lisent les blockchains publiques : scanners, traceurs de wallets et modèles qui transforment des blocs en réponses. Première sortie : Vizzor.",
+    "og": "Chaque bloc laisse un signal.",
+    "slogan": "Chaque bloc laisse un signal.",
     "keywords": [
-      "laboratoire Web3",
-      "studio logiciel Web3",
+      "intelligence on-chain",
+      "scanner de blockchain",
+      "traceur de wallets",
       "intelligence crypto",
       "produits on-chain",
       "agents IA",
@@ -40,7 +41,7 @@
       "toLight": "Passer en mode clair"
     },
     "footer": {
-      "tagline": "Le labo Web3. Ne croyez pas. Vérifiez.",
+      "tagline": "Scanner. Tracer. Décoder.",
       "company": "Entreprise",
       "product": "Vizzor",
       "follow": "Suivre",
@@ -58,14 +59,14 @@
       "links": "Site"
     },
     "sections": {
-      "lab": "Labo",
-      "products": "Produits",
-      "stack": "Couches",
-      "method": "Méthode",
-      "reach": "Couverture",
-      "updates": "Notes",
-      "faq": "FAQ",
-      "contact": "Contact"
+      "lab": "Instruments",
+      "products": "Sorties",
+      "stack": "Parcours",
+      "method": "Protocole",
+      "updates": "Registre",
+      "faq": "Requêtes",
+      "contact": "Canal",
+      "console": "Console"
     },
     "talk": "Parlons-en",
     "block": "Bloc",
@@ -74,10 +75,10 @@
   },
   "home": {
     "hero": {
-      "title": "Conçu pour le Web3. Prouvé en public.",
-      "sub": "7ayLabs est un laboratoire Web3 complet. Nous livrons des apps, des moteurs, de l'intelligence et des produits on-chain, et chacun doit tenir en public avant de quitter la paillasse. Le premier : Vizzor.",
-      "ctaPrimary": "Explorer Vizzor",
-      "ctaSecondary": "Voir le labo",
+      "title": "Scanner. Tracer. Décoder.",
+      "sub": "7ayLabs construit les instruments qui lisent les chaînes publiques : des scanners qui extraient l'activité brute, des traceurs qui suivent l'argent et des modèles qui disent ce que cela signifie. Le premier sorti du labo est Vizzor.",
+      "ctaPrimary": "Ouvrir la console",
+      "ctaSecondary": "Voir la sortie 01",
       "board": {
         "title": "En ce moment au laboratoire",
         "live": "En ligne",
@@ -86,137 +87,145 @@
         "nextName": "Le prochain produit",
         "nextLine": "Pas encore annoncé. Nous montrons les choses quand elles marchent."
       },
-      "slogan": "Ne croyez pas. Vérifiez.",
-      "pill": "Laboratoire Web3",
+      "slogan": "Chaque bloc laisse un signal.",
+      "pill": "Labo d'intelligence on-chain",
       "scroll": "Défiler"
     },
     "fields": {
-      "title": "Quatre bureaux. Un seul labo.",
-      "lede": "Apps, moteurs, intelligence et on-chain, construits côte à côte par la même équipe, pour que chaque produit sorte avec les quatre.",
+      "title": "Quatre instruments sur une paillasse.",
+      "lede": "Chacun fait un seul travail et alimente le suivant. Ensemble, ils prennent un bloc brut et rendent une réponse.",
       "items": {
         "apps": {
-          "title": "Apps",
-          "line": "Des produits que l'on ouvre chaque jour, sur le web et sur téléphone. Sans mode d'emploi."
+          "title": "Livrer",
+          "line": "Puis cela devient un produit qu'on ouvre et qu'on utilise. Sans mode d'emploi ni syntaxe spéciale."
         },
         "software": {
-          "title": "Logiciels",
-          "line": "Les moteurs et l'outillage en dessous : ce que personne ne voit et sur quoi tout repose."
+          "title": "Tracer",
+          "line": "Des wallets suivis de chaîne en chaîne, pour voir l'argent pendant qu'il bouge encore."
         },
         "intelligence": {
-          "title": "Intelligence",
-          "line": "Des modèles et des agents qui lisent les données, raisonnent et montrent leur travail."
+          "title": "Décoder",
+          "line": "ChronoVisor, notre propre modèle, transforme cette activité en réponse et montre comment il y est arrivé."
         },
         "onchain": {
-          "title": "On-chain",
-          "line": "Des wallets, des paiements et des contrats réglés sur des chaînes publiques, où chacun peut vérifier."
+          "title": "Scanner",
+          "line": "Des blocs lus à la source : transferts, soldes, contrats. La chaîne elle-même, pas un résumé."
         }
       }
     },
     "method": {
-      "title": "Des règles que nous ne brisons pas.",
-      "lede": "Quatre règles derrière tout ce que nous livrons. C'est pour elles que Vizzor montre ses erreurs.",
+      "title": "Protocole du labo.",
+      "lede": "Quatre règles qu'une sortie respecte avant de quitter la paillasse.",
       "items": {
         "receipts": {
-          "title": "Des preuves plutôt que des promesses",
-          "line": "Si nous disons qu'une chose fonctionne, un registre public montre si c'était vrai."
+          "title": "Lire à la source",
+          "line": "Les données viennent de la chaîne elle-même. Pas de résumés d'autrui, pas de chiffres empruntés."
         },
         "plain": {
-          "title": "Des mots simples",
-          "line": "Personne ne devrait avoir besoin d'un manuel pour poser une question ou comprendre la réponse."
+          "title": "Des mots simples, dans les deux sens",
+          "line": "Vous demandez comme vous parlez. L'instrument se charge de traduire."
         },
         "privacy": {
-          "title": "Collecter moins",
-          "line": "Nous gardons les données dont une fonction a besoin, et rien d'autre. Ce site n'utilise aucun cookie de suivi."
+          "title": "Seulement ce que le travail exige",
+          "line": "Aucun traceur ici. Un e-mail ou un message n'est conservé que si vous l'envoyez."
         },
         "ship": {
-          "title": "Livrer, puis montrer le travail",
-          "line": "De petites versions, souvent, chacune expliquée pour que vous voyiez ce qui a changé."
+          "title": "Chaque sortie, par écrit",
+          "line": "Chacune a sa note datée le jour où elle sort, les ennuyeuses aussi."
         }
       },
       "table": {
         "rule": "Règle",
-        "practice": "Ce que nous faisons",
-        "check": "Où le vérifier",
+        "practice": "En pratique",
+        "check": "Vérifiez vous-même",
         "rows": {
           "receipts": {
-            "practice": "Chaque prévision de Vizzor est notée à son échéance, juste ou fausse.",
-            "check": "L'historique public sur vizzor.ai"
+            "practice": "Chaque chiffre affiché par un instrument est lu sur la chaîne qu'il décrit.",
+            "check": "Le parcours, un bloc plus haut"
           },
           "plain": {
-            "practice": "Vous demandez avec vos mots. Ni langage de requête, ni tableau de bord à apprendre.",
-            "check": "Ouvrez Vizzor et posez une question"
+            "practice": "Ni langage de requête ni tableau de bord à apprendre avant la première réponse.",
+            "check": "Le premier écran de n'importe quelle sortie"
           },
           "privacy": {
-            "practice": "Ce site ne conserve un e-mail ou un message que si vous l'envoyez. Aucun traceur.",
+            "practice": "Ce site ne conserve un e-mail ou un message que si vous l'envoyez.",
             "check": "Notre page de confidentialité"
           },
           "ship": {
-            "practice": "Chaque version est expliquée le jour de sa sortie.",
-            "check": "Notes du laboratoire"
+            "practice": "Chaque sortie est rédigée le jour où elle sort.",
+            "check": "Le registre du labo"
           }
         }
       }
     },
     "updates": {
-      "title": "Tout frais sorti du labo.",
+      "title": "Le registre du labo.",
       "all": "Toutes les nouveautés",
-      "lede": "Sorties, versions et nouvelles, au fil de l’eau."
+      "lede": "Chaque sortie, datée et écrite. Le bloc le plus récent en haut."
     },
     "faq": {
-      "title": "Pas de blabla. Des réponses.",
-      "lede": "Les questions que nous entendons le plus, sans discours commercial."
+      "title": "Lancez une requête.",
+      "lede": "Celles que nous recevons le plus. Toute autre va droit à une personne."
     },
     "stack": {
-      "title": "Cinq couches. Zéro intermédiaire.",
-      "lede": "De l'écran aux serveurs, nous construisons et exploitons chaque couche nous-mêmes.",
+      "title": "Du bloc brut à la réponse.",
+      "lede": "Quatre sauts et le sol qui les porte. Tous sont à nous : quand un saut lâche, la réparation est déjà dans la pièce.",
       "layers": {
         "interface": {
-          "name": "Interface",
-          "line": "Les apps que l'on ouvre, sur le web et installées sur un téléphone."
+          "name": "Surface",
+          "line": "La réponse arrive sur un écran utilisable par tous : d'abord le web, installable sur un téléphone."
         },
         "engine": {
-          "name": "Moteur",
-          "line": "Notre propre service. Il rassemble les données, fait tourner les modèles et tient l'historique public."
+          "name": "Indexeur",
+          "line": "Notre moteur trie l'activité brute : qui a envoyé quoi, à qui et quand."
         },
         "models": {
-          "name": "Intelligence",
-          "line": "ChronoVisor, notre propre couche de modèles. Elle raisonne sur les données et montre son travail."
+          "name": "Modèle",
+          "line": "ChronoVisor lit le registre trié et doit montrer son raisonnement."
         },
         "chains": {
-          "name": "Chaînes",
-          "line": "{count} blockchains lues directement, et les wallets que les gens utilisent déjà."
+          "name": "Source",
+          "line": "{count} chaînes publiques, lues bloc par bloc au nœud. Rien de seconde main."
         },
         "ground": {
-          "name": "Socle",
-          "line": "Nos propres serveurs sur un réseau privé, avec des sauvegardes chaque nuit et chaque version vérifiée avant sa sortie."
+          "name": "Sol",
+          "line": "Tout tourne sur nos propres serveurs, sur un réseau privé, sauvegardé chaque nuit."
         }
       },
-      "more": "et {count} de plus",
-      "wallets": "Wallets"
+      "more": "et {count} de plus"
     },
     "status": {
       "title": "État du laboratoire",
-      "products": "produit en ligne",
-      "chains": "chaînes lues",
-      "wallets": "wallets pris en charge"
-    },
-    "reach": {
-      "title": "{count} chaînes. Lues en direct.",
-      "lede": "Vizzor lit chaque réseau directement : un wallet ou un transfert est consulté là où il a réellement eu lieu."
+      "products": "sortie en ligne",
+      "chains": "chaînes scannées",
+      "instruments": "instruments sur la paillasse"
     },
     "contact": {
-      "title": "Vous construisez quelque chose ? Parlons-en.",
-      "lede": "Partenariats, presse, sécurité ou simple question. Une personne lit chaque message."
+      "title": "Ouvrez un canal.",
+      "lede": "Vous construisez on-chain, ou ce que nous construisons vous intrigue ? Une personne lit chaque message."
+    },
+    "console": {
+      "title": "Regardez un bloc devenir une réponse.",
+      "lede": "Tout le travail en cinq lignes. L'activité brute entre en haut ; en bas sort quelque chose sur quoi une personne peut agir.",
+      "head": "console du labo",
+      "note": "Exécution d'exemple. Adresses et chiffres illustratifs.",
+      "rows": {
+        "scan": "Lu à la source. 184 transferts, 12 contrats touchés.",
+        "track": "Un gros wallet envoie 1 200 ETH vers un exchange.",
+        "flag": "Un wallet alimenté il y a quelques minutes se met à acheter le même token.",
+        "decode": "Le modèle le confronte au prix et à l'historique.",
+        "ship": "La réponse arrive à la personne qui a demandé."
+      }
     }
   },
   "products": {
-    "title": "Annoncez. Prouvez.",
-    "lede": "Vizzor donne à chaque prévision une cible, une échéance et un niveau de confiance, puis la note en public. Réussites et erreurs restent dans l'historique.",
+    "title": "La sortie 01 est en ligne.",
+    "lede": "Vizzor est le premier instrument sorti du labo : une intelligence crypto qu'on interroge avec ses propres mots. Il scanne, trace et décode, puis s'engage sur une réponse.",
     "vizzor": {
       "kind": "Intelligence crypto",
       "live": "En ligne",
       "open": "Ouvrir Vizzor",
-      "more": "Comment ça marche",
+      "more": "Voir comment ça marche",
       "tape": "Prévisions d'exemple",
       "tapeNote": "Valeurs illustratives, pas de vraies prévisions.",
       "right": "Juste",
@@ -224,23 +233,23 @@
       "tabs": {
         "predict": {
           "name": "Predict",
-          "title": "Une prévision dont on peut demander compte.",
-          "line": "Direction, cible, échéance et confiance, avec une entrée, deux prises de bénéfices et un stop."
+          "title": "Une prévision avec une échéance.",
+          "line": "Direction, cible et confiance d'emblée, avec l'entrée, deux sorties et le stop si vous comptez agir."
         },
         "whales": {
           "name": "Baleines",
-          "title": "Voyez bouger les gros en premier.",
-          "line": "Les plus gros wallets suivis pendant qu'ils bougent, avec une carte de chaleur de la destination de l'argent."
+          "title": "Les gros wallets bougent avant le graphique.",
+          "line": "Vizzor les surveille et montre où va l'argent pendant qu'il est encore en route."
         },
         "forensics": {
           "name": "Forensique",
-          "title": "Suivez les fonds.",
-          "line": "Tracez l'argent de wallet en wallet et d'une chaîne à l'autre après un piratage ou un mouvement suspect."
+          "title": "Les fonds volés laissent une trace.",
+          "line": "Suivez-la de wallet en wallet et de chaîne en chaîne, sur une carte lisible."
         },
         "markets": {
           "name": "Marchés",
-          "title": "Tout le tableau d'un coup d'œil.",
-          "line": "Cartes de chaleur et plus fortes variations, avec une prévision à un geste."
+          "title": "Tout le marché sur un écran.",
+          "line": "Chaleur, mouvements et volume, avec une prévision à un geste de chacun."
         }
       },
       "slip": {
@@ -252,12 +261,13 @@
         "entry": "Entrée",
         "tp": "Prise de bénéfices",
         "stop": "Stop"
-      }
+      },
+      "line": "Posez une question sur un token, un wallet ou une transaction avec vos mots. Vizzor scanne, trace et décode, puis répond."
     },
     "next": {
-      "title": "D'autres sont en construction.",
-      "line": "Nous n'annonçons pas un produit avant qu'il fonctionne. Abonnez-vous ci-dessous et vous saurez pour le prochain le jour de sa sortie.",
-      "cta": "Parlons-en"
+      "title": "La sortie 02 est sur la paillasse.",
+      "line": "Ni nom ni date tant qu'il ne marche pas devant des gens. Laissez un e-mail ci-dessous et vous recevrez un seul message, le jour de sa sortie.",
+      "cta": "Posez-nous la question"
     },
     "platforms": {
       "title": "Où fonctionne Vizzor",
@@ -273,15 +283,16 @@
   },
   "productsPage": {
     "meta": {
-      "title": "Produits",
-      "description": "Les produits du laboratoire Web3 7ayLabs. Vizzor, l'intelligence crypto notée en public, est en ligne ; d'autres sont en développement."
+      "title": "Sorties · Les instruments du labo 7ayLabs",
+      "description": "Chaque produit que 7ayLabs a sorti et ce qui est encore sur la paillasse. Vizzor, l'intelligence crypto qui scanne, trace et décode, est en ligne.",
+      "crumb": "Produits"
     },
-    "title": "Produits.",
-    "lede": "Tout ce qui est sorti du laboratoire, chaque chose avec son statut réel, et un mot honnête sur ce qui ne l'est pas encore."
+    "title": "Sorties.",
+    "lede": "Chaque instrument sorti du labo, avec son vrai statut. Un pour l’instant, d’autres sur la paillasse."
   },
   "coverage": {
     "trusted": "Ils nous font confiance",
-    "trustedNote": "La communauté Casa Blanca utilise Vizzor dans ses salons."
+    "trustedNote": "Les traders de Casa Blanca utilisent Vizzor dans leurs propres salons."
   },
   "log": {
     "tags": {
@@ -292,27 +303,27 @@
   "questions": {
     "what": {
       "q": "Qu'est-ce que 7ayLabs ?",
-      "a": "Un laboratoire Web3 complet. Nous concevons, construisons et exploitons nos propres apps, logiciels, produits d'intelligence et on-chain. Le premier est Vizzor."
+      "a": "Un labo d'intelligence on-chain. Nous construisons des outils qui scannent les chaînes publiques, tracent les wallets et décodent ce que l'activité signifie. Vizzor est le premier publié."
     },
     "vizzor": {
-      "q": "Qu'est-ce que Vizzor ?",
-      "a": "Une intelligence crypto. Vous posez une question sur un token, un wallet ou une action tokenisée, et il répond par une prévision de prix, un plan de trade et les preuves on-chain. Chaque prévision a une échéance et est notée en public quand elle arrive."
+      "q": "Qu'a sorti le labo ?",
+      "a": "Un instrument pour l'instant : Vizzor, une intelligence crypto qu'on interroge avec ses propres mots. Il a son propre site sur vizzor.ai."
     },
     "relation": {
-      "q": "Quel est le lien entre 7ayLabs et Vizzor ?",
-      "a": "7ayLabs est l'entreprise et le laboratoire. Vizzor est le premier produit qui en est sorti. Ce site parle du laboratoire ; ce produit se trouve sur vizzor.ai."
+      "q": "7ayLabs, est-ce la même chose que Vizzor ?",
+      "a": "Non. 7ayLabs est le labo et Vizzor est sa première sortie. Ce site parle du labo et de ce qu'il construit."
     },
     "free": {
-      "q": "Puis-je essayer Vizzor gratuitement ?",
-      "a": "Oui. Il existe une offre gratuite, et les offres payantes ajoutent des modèles plus poussés et davantage de réponses par jour. Les offres actuelles sont sur vizzor.ai."
+      "q": "Quelles chaînes le labo lit-il ?",
+      "a": "Les grandes chaînes publiques, dont Bitcoin, Ethereum et Solana. La liste complète est sur la page Vizzor."
     },
     "work": {
-      "q": "Comment joindre l'équipe ?",
-      "a": "Utilisez la page de contact pour les partenariats, la presse et tout ce qui concerne l'entreprise. Pour de l'aide sur Vizzor, commencez par sa documentation."
+      "q": "Comment joindre le labo ?",
+      "a": "Par la page de contact, pour les partenariats, la presse, la sécurité ou une simple question. Pour de l'aide sur Vizzor, sa documentation est plus rapide."
     },
     "more": {
-      "q": "Y aura-t-il d'autres produits ?",
-      "a": "Oui. D'autres sont en développement. Nous annonçons un produit quand il fonctionne en public, pas avant."
+      "q": "Qu'y a-t-il sur la paillasse ?",
+      "a": "D'autres instruments pour lire les chaînes. Chacun aura un nom et une date quand il marchera devant des gens, pas avant."
     }
   },
   "demo": {
@@ -358,75 +369,76 @@
   },
   "vizzorPage": {
     "meta": {
-      "title": "Vizzor",
-      "description": "Vizzor est l'intelligence crypto du laboratoire Web3 7ayLabs : prévisions de prix avec cible, échéance et confiance, mouvements des baleines et analyse on-chain. Chaque prévision est notée en public."
+      "title": "Vizzor · Intelligence crypto par IA, notée en public",
+      "description": "Vizzor est l'intelligence crypto du labo 7ayLabs : prévisions de prix avec cible, échéance et confiance, suivi des baleines et analyse forensique on-chain. Chaque prévision est notée en public.",
+      "crumb": "Vizzor"
     },
-    "title": "L'intelligence crypto, notée en public.",
-    "lede": "Vizzor lit le prix, les flux on-chain et le récit derrière n'importe quel token, wallet ou action tokenisée. Chaque prévision porte une cible, une échéance et un niveau de confiance, et elle est notée à l'échéance.",
+    "title": "Chaque prévision a une échéance. Chaque échéance a un verdict.",
+    "lede": "Vizzor lit le prix, les flux on-chain et l'histoire derrière un token, un wallet ou une action tokenisée, et s'engage sur une prévision. Ensuite il attend l'horloge, comme tout le monde.",
     "ctaApp": "Ouvrir l'app",
     "ctaSite": "Aller sur vizzor.ai",
     "how": {
-      "title": "Demandez. Recevez une prévision. Voyez la note.",
-      "lede": "Trois étapes, et la troisième est celle que la plupart des outils oublient.",
+      "title": "Demandez. Recevez la prévision. Regardez l'horloge.",
+      "lede": "Trois étapes. La plupart des outils s'arrêtent à la deuxième.",
       "steps": {
         "ask": {
-          "title": "Demandez avec vos mots",
-          "line": "Par exemple « ETH, 4 heures, 500 $ en 10x ». Ni formulaire ni langage de requête."
+          "title": "Dites-le à votre façon",
+          "line": "« ETH, 4 heures, 500 $ en 10x ». C'est déjà une question complète."
         },
         "call": {
-          "title": "Recevez une prévision et un plan",
-          "line": "Une direction, une cible, une échéance et un niveau de confiance, avec une entrée, deux prises de bénéfices et un stop."
+          "title": "Il s'engage",
+          "line": "Direction, cible, échéance et confiance, avec un plan : une entrée, deux sorties et un stop."
         },
         "grade": {
-          "title": "Voyez le résultat",
-          "line": "À l'échéance, la prévision est marquée juste ou fausse et ajoutée à l'historique public."
+          "title": "L'horloge décide",
+          "line": "À l'échéance, la prévision est marquée juste ou fausse et ajoutée à l'historique. Sans retouche."
         }
       }
     },
     "desks": {
-      "title": "Quatre bureaux, un seul étage.",
-      "lede": "Chaque bureau fait bien une seule chose, et tous alimentent la prévision.",
+      "title": "Quatre bureaux pour une prévision.",
+      "lede": "Chacun fait un seul travail. Aucun ne se cache derrière les autres.",
       "items": {
         "predict": {
           "name": "Predict",
-          "line": "Une prévision de prix avec cible, échéance et confiance, et un plan de trade construit autour.",
+          "line": "La prévision elle-même : cible, échéance, confiance et un plan de trade autour.",
           "reach": "Principaux actifs et actions tokenisées"
         },
         "intel": {
           "name": "Intel",
-          "line": "Mouvements des baleines, smart money, suivi de wallets et veille des piratages.",
+          "line": "Flux des baleines, smart money, suivi de wallets et veille des piratages.",
           "reach": "{count} blockchains, lues en direct"
         },
         "markets": {
           "name": "Marchés",
-          "line": "Les prix, une carte de chaleur du marché et les plus fortes variations, avec une prévision à un geste.",
+          "line": "Les prix, une carte de chaleur et les mouvements du jour.",
           "reach": "Crypto et actions tokenisées"
         },
         "record": {
           "name": "Historique",
-          "line": "Chaque prévision faite par Vizzor et son issue. Les erreurs restent sur la page.",
+          "line": "Tout ce que Vizzor a annoncé et comment chaque chose s'est terminée. Erreurs comprises.",
           "reach": "Public, pour tout le monde"
         }
       }
     },
     "editions": {
-      "title": "Un modèle, trois éditions.",
-      "lede": "Le modèle derrière Vizzor s'appelle ChronoVisor. Il existe en trois éditions, une par offre.",
+      "title": "Un modèle, trois profondeurs.",
+      "lede": "ChronoVisor existe en trois éditions. Votre offre décide jusqu'où il lit et combien de fois il répond.",
       "plans": {
         "free": "Offre gratuite",
         "pro": "Offre Pro",
         "elite": "Offre Elite"
       },
       "items": {
-        "zonda": "L'édition de tous les jours. De quoi poser une question, recevoir une prévision et suivre l'historique.",
-        "kat": "Des lectures plus poussées et bien plus de réponses par jour, pour ceux qui tradent activement.",
-        "zuor": "Le modèle complet, avec l'analyse forensique on-chain et sans limite quotidienne."
+        "zonda": "Demandez, recevez une prévision, suivez l'historique. Assez pour le juger.",
+        "kat": "Lit plus en profondeur et répond bien plus souvent. Pour ceux qui tradent tous les jours.",
+        "zuor": "Le modèle entier, forensique compris, sans plafond quotidien."
       },
       "note": "Les prix et le contenu de chaque offre sont tenus à jour sur le site de Vizzor.",
       "pricing": "Voir les offres actuelles"
     },
     "features": {
-      "title": "Tout ce qui entoure la prévision.",
+      "title": "Autour de la prévision.",
       "items": {
         "whales": {
           "title": "Terminal des baleines",
@@ -463,8 +475,8 @@
       }
     },
     "receipts": {
-      "title": "Un historique que personne ne peut modifier discrètement.",
-      "lede": "Un historique n'a de valeur que si les erreurs y restent. Dans celui de Vizzor, elles restent.",
+      "title": "Un historique que personne ne peut arranger.",
+      "lede": "Un historique ne vaut quelque chose que tant que les mauvais jours y sont encore.",
       "points": {
         "public": "Chaque prévision est publiée avant que son issue soit connue.",
         "sealed": "L'historique est scellé chaque jour : les prévisions passées ne peuvent plus être changées.",
@@ -478,19 +490,20 @@
   },
   "aboutPage": {
     "meta": {
-      "title": "À propos",
-      "description": "À propos de 7ayLabs, le laboratoire Web3 derrière Vizzor : sa raison d'être, ses règles de construction et comment joindre l'équipe."
+      "title": "À propos · Le labo d'intelligence on-chain derrière Vizzor",
+      "description": "À propos de 7ayLabs, le labo d'intelligence on-chain derrière Vizzor : sa raison d'être, son protocole de construction et comment joindre l'équipe.",
+      "crumb": "À propos"
     },
-    "title": "Un laboratoire qui montre son travail.",
-    "lede": "7ayLabs est un laboratoire Web3 complet : apps, logiciels, intelligence et on-chain. Nous concevons, construisons et exploitons nos propres produits, et nous préférons montrer un résultat plutôt que le décrire.",
+    "title": "Lire les chaînes, c’est notre métier.",
+    "lede": "7ayLabs est un labo d'intelligence on-chain. Nous construisons nous-mêmes les scanners, les traceurs et les modèles, et nous les exploitons nous-mêmes.",
     "mission": {
-      "title": "Affirmer avec assurance ne coûte rien. Prouver, si.",
-      "p1": "Les marchés sont pleins de prévisions que personne ne relit. Celles qui tombent juste sont répétées ; celles qui échouent disparaissent.",
-      "p2": "Nous pensons que le logiciel peut faire mieux. Un outil qui donne des conseils devrait aussi tenir les comptes, au grand jour, sous les yeux de ceux qui s'y fient.",
-      "p3": "Cette idée est devenue Vizzor, notre premier produit. La même règle vaut pour tout ce que nous construisons d'autre."
+      "title": "Les chaînes publiques sont ouvertes. Le difficile, c’est de les lire.",
+      "p1": "Tout ce qui se passe sur une chaîne publique est visible, et presque rien n'est lisible. Des millions de transferts par jour, et ceux qui comptent ressemblent à tous les autres.",
+      "p2": "Nous avons ouvert le labo pour construire les instruments qui comblent cet écart : lire à la source, suivre ce qui bouge et dire clairement ce que cela signifie.",
+      "p3": "Vizzor est le premier. La même paillasse construit le suivant."
     },
     "facts": {
-      "title": "L'essentiel.",
+      "title": "Sur le papier.",
       "product": {
         "k": "Produit"
       },
@@ -510,22 +523,24 @@
   },
   "updatesPage": {
     "meta": {
-      "title": "Nouveautés",
-      "description": "Notes de version et actualités de 7ayLabs, le laboratoire Web3, et de son produit Vizzor."
+      "title": "Registre · Sorties et nouvelles du labo",
+      "description": "Notes de version et actualités de 7ayLabs, le labo d'intelligence on-chain, et de son produit Vizzor.",
+      "crumb": "Notes"
     },
-    "title": "Notes du laboratoire.",
-    "lede": "Les versions de nos produits et les nouvelles du laboratoire, de la plus récente à la plus ancienne.",
+    "title": "Le registre du labo.",
+    "lede": "Chaque sortie, datée et écrite. Le bloc le plus récent en haut.",
     "empty": "Rien de publié pour l'instant.",
     "back": "Toutes les nouveautés",
     "fallback": "Cet article n'est pas encore traduit ; il est donc affiché en anglais."
   },
   "contactPage": {
     "meta": {
-      "title": "Contact",
-      "description": "Contactez 7ayLabs, le laboratoire Web3, au sujet de partenariats, de la presse, de la sécurité ou de l'entreprise."
+      "title": "Contact · Ouvrez un canal avec le labo",
+      "description": "Contactez 7ayLabs, le labo d'intelligence on-chain, au sujet de partenariats, de la presse, de la sécurité ou de l'entreprise.",
+      "crumb": "Contact"
     },
-    "title": "Parlez au laboratoire.",
-    "lede": "Partenariats, presse, signalements de sécurité ou une question sur l'entreprise. Une personne lit chaque message.",
+    "title": "Ouvrez un canal.",
+    "lede": "Partenariats, presse, signalement de sécurité ou simple question. Ça arrive dans une boîte qu'un humain lit.",
     "elsewhere": {
       "title": "Plus rapide pour certaines choses",
       "vizzorHelp": "Aide pour utiliser Vizzor"
@@ -533,10 +548,10 @@
   },
   "forms": {
     "newsletter": {
-      "label": "Recevez nos nouveautés par e-mail",
+      "label": "Un e-mail quand quelque chose sort",
       "placeholder": "vous@exemple.com",
       "submit": "S'abonner",
-      "hint": "De temps en temps, et seulement sur ce que nous livrons.",
+      "hint": "Ni résumé hebdo ni relances. Seulement les sorties.",
       "done": "Vous êtes sur la liste. Merci.",
       "invalid": "Cette adresse e-mail semble incorrecte. Vérifiez-la et réessayez.",
       "rateLimited": "Trop d'essais. Attendez une minute et réessayez.",
@@ -557,7 +572,7 @@
       "privacy": "Nous utilisons ce que vous envoyez uniquement pour vous répondre.",
       "submit": "Envoyer le message",
       "sending": "Envoi",
-      "done": "Message envoyé. Nous vous répondrons par e-mail.",
+      "done": "Message envoyé. Votre référence est {ref}. Nous vous répondrons par e-mail.",
       "invalid": "Un élément du formulaire n'est pas valide. Vérifiez les champs et réessayez.",
       "rateLimited": "Trop de messages en peu de temps. Attendez une minute et réessayez.",
       "error": "Nous n'avons pas pu l'envoyer. Réessayez dans un instant.",
@@ -610,14 +625,34 @@
     "contactLink": "utilisez la page de contact"
   },
   "notFound": {
-    "title": "Cette page a été déplacée ou n'a jamais existé.",
-    "lede": "Le site a été reconstruit : certains anciens liens ne mènent plus nulle part. Ceux-ci, si.",
+    "title": "Ce bloc n'a jamais été miné.",
+    "lede": "Le site a été refait et certains anciens liens sont partis avec. Ceux-ci marchent toujours.",
     "home": "Aller à l'accueil",
     "vizzor": "À propos de Vizzor"
   },
   "error": {
-    "title": "Un problème est survenu de notre côté.",
-    "lede": "La page n'a pas pu s'afficher. Réessayer suffit généralement.",
+    "title": "Celle-là, c'est pour nous.",
+    "lede": "La page n'a pas chargé. Un second essai suffit en général.",
     "retry": "Réessayer"
+  },
+  "unsubscribePage": {
+    "meta": {
+      "title": "Se désabonner",
+      "description": "Ne plus recevoir les nouveautés de 7ayLabs."
+    },
+    "title": "Quitter la liste.",
+    "lede": "Un clic. Revenez quand vous voulez.",
+    "button": "Me désabonner",
+    "done": "C'est fait. Vous ne recevrez plus d'e-mails de notre part.",
+    "invalid": "Ce lien n'est plus valide. Passez par la page de contact et nous vous retirerons à la main.",
+    "error": "Impossible pour l'instant. Réessayez dans un instant.",
+    "back": "Retour à 7ayLabs"
+  },
+  "emails": {
+    "welcomeSubject": "Vous êtes sur la liste 7ayLabs",
+    "welcomeBody": "Merci de votre abonnement. Vous aurez de nos nouvelles seulement quand nous livrons quelque chose.",
+    "unsubLine": "Pour ne plus recevoir ces e-mails : {url}",
+    "contactSubject": "Nous avons bien reçu votre message ({ref})",
+    "contactBody": "Merci d'avoir écrit à 7ayLabs. Une personne lira votre message et répondra à cette adresse. Votre référence est {ref}."
   }
 }

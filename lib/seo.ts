@@ -60,7 +60,14 @@ export function pageMetadata(opts: {
  * the product it publishes. Search engines use this to connect the company,
  * its product and its profiles.
  */
-export function organizationJsonLd(opts: { description: string; slogan: string; keywords: readonly string[]; locale: Locale }) {
+export function organizationJsonLd(opts: {
+  description: string;
+  slogan: string;
+  keywords: readonly string[];
+  locale: Locale;
+  /** The main pages, as search engines should list them under the site. */
+  nav: readonly { name: string; description: string; path: string }[];
+}) {
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -102,6 +109,16 @@ export function organizationJsonLd(opts: { description: string; slogan: string; 
         publisher: { '@id': `${SITE.url}/#organization` },
         sameAs: [VIZZOR.x],
       },
+      // The site's main pages. Search engines draw the links they show under
+      // a result ("sitelinks") from the site's structure; this states it.
+      ...opts.nav.map((n, i) => ({
+        '@type': 'SiteNavigationElement',
+        '@id': `${SITE.url}/#nav-${i + 1}`,
+        position: i + 1,
+        name: n.name,
+        description: n.description,
+        url: localeUrl(n.path, opts.locale),
+      })),
     ],
   };
 }

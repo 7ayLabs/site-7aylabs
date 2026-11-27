@@ -11,7 +11,7 @@ import { Link, usePathname } from '@/i18n/navigation';
 import { NAV_SECTIONS } from './nav-config';
 
 /** Every block of the home page, in order (the hero is block 0). */
-const BLOCKS = ['lab', 'products', 'stack', 'method', 'reach', 'updates', 'faq', 'contact'] as const;
+const BLOCKS = ['lab', 'console', 'products', 'stack', 'method', 'updates', 'faq', 'contact'] as const;
 
 export function NavLinks() {
   const t = useTranslations('chrome');

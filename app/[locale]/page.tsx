@@ -7,6 +7,7 @@ import { BigStats } from '@/components/site/big-stats';
 import { Coverage } from '@/components/site/coverage';
 import { Fields } from '@/components/site/fields';
 import { Hero } from '@/components/site/hero';
+import { LabConsole } from '@/components/site/lab-console';
 import { Block, Indexed } from '@/components/site/layout';
 import { Log } from '@/components/site/log';
 import { ProductList } from '@/components/site/product-list';
@@ -16,7 +17,6 @@ import { Stack } from '@/components/site/stack';
 import { pageMetadata } from '@/lib/seo';
 import { VIZZOR } from '@/lib/site';
 import { listUpdates } from '@/lib/updates';
-import { CHAIN_COUNT } from '@/lib/vizzor/chains';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-type SectionKey = 'lab' | 'products' | 'stack' | 'method' | 'reach' | 'updates' | 'faq' | 'contact';
+type SectionKey = 'lab' | 'console' | 'products' | 'stack' | 'method' | 'updates' | 'faq' | 'contact';
 
 /**
  * The home page is built as a chain: the hero is the genesis block, and each
@@ -57,20 +57,21 @@ export default async function HomePage({ params }: Props) {
           </div>
         </Block>
 
-        <Block {...head('products', '02')} title={products('title')} lede={products('lede')}>
-          <ProductList />
+        <Block {...head('console', '02')} title={t('console.title')} lede={t('console.lede')}>
+          <LabConsole />
         </Block>
 
-        <Block {...head('stack', '03')} title={t('stack.title')} lede={t('stack.lede')}>
+        <Block {...head('products', '03')} title={products('title')} lede={products('lede')}>
+          <ProductList />
+          <Coverage chains={false} />
+        </Block>
+
+        <Block {...head('stack', '04')} title={t('stack.title')} lede={t('stack.lede')}>
           <Stack />
         </Block>
 
-        <Block {...head('method', '04')} title={t('method.title')} lede={t('method.lede')}>
+        <Block {...head('method', '05')} title={t('method.title')} lede={t('method.lede')}>
           <Rules />
-        </Block>
-
-        <Block {...head('reach', '05')} title={t('reach.title', { count: CHAIN_COUNT })} lede={t('reach.lede')}>
-          <Coverage />
         </Block>
 
         {posts.length > 0 ? (

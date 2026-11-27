@@ -69,14 +69,45 @@ export function dbHealthy(): boolean {
   }
 }
 
-export function upsertSubscriber(email: string, locale: string): void {
-  getDb()
-    .prepare(
-      `INSERT INTO newsletter_subscribers (email, locale) VALUES (?, ?)
-       ON CONFLICT(email) DO UPDATE SET active = 1, locale = excluded.locale,
-         updated_at = strftime('%Y-%m-%dT%H:%M:%fZ','now')`,
-    )
-    .run(email, locale);
+export interface Subscriber {
+  id: number;
+  email: string;
+  locale: string;
+  active: number;
+}
+
+/**
+ * Add an address to the list, or switch it back on if it had unsubscribed.
+ * `isNew` is true when the address was not on the active list before, which
+ * is when a welcome email is due.
+ */
+export function subscribe(email: string, locale: string): { id: number; isNew: boolean } {
+  const db = getDb();
+  const before = db.prepare('SELECT id, active FROM newsletter_subscribers WHERE email = ?').get(email) as
+    | { id: number; active: number }
+    | undefined;
+  db.prepare(
+    `INSERT INTO newsletter_subscribers (email, locale) VALUES (?, ?)
+     ON CONFLICT(email) DO UPDATE SET active = 1, locale = excluded.locale,
+       updated_at = strftime('%Y-%m-%dT%H:%M:%fZ','now')`,
+  ).run(email, locale);
+  const row = db.prepare('SELECT id FROM newsletter_subscribers WHERE email = ?').get(email) as { id: number };
+  return { id: row.id, isNew: !before || before.active === 0 };
+}
+
+export function getSubscriber(id: number): Subscriber | null {
+  const row = getDb().prepare('SELECT id, email, locale, active FROM newsletter_subscribers WHERE id = ?').get(id) as
+    | Subscriber
+    | undefined;
+  return row ?? null;
+}
+
+/** Switch an address off. The row stays, so a later re-subscribe is a known return. */
+export function unsubscribe(id: number): boolean {
+  const res = getDb()
+    .prepare(`UPDATE newsletter_subscribers SET active = 0, updated_at = strftime('%Y-%m-%dT%H:%M:%fZ','now') WHERE id = ?`)
+    .run(id);
+  return res.changes > 0;
 }
 
 export interface ContactInput {

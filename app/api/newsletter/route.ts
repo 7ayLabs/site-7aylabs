@@ -1,4 +1,5 @@
-import { upsertSubscriber } from '@/lib/db';
+import { subscribe } from '@/lib/db';
+import { sendWelcome } from '@/lib/api/notify';
 import { clientIp, json, normalizeEmail, originAllowed, pickLocale, rateLimited, readJson } from '@/lib/api/validation';
 
 export const runtime = 'nodejs';
@@ -18,7 +19,9 @@ export async function POST(req: Request): Promise<Response> {
   try {
     // An address that is already subscribed gets the same answer as a new
     // one, so the endpoint cannot be used to test who is on the list.
-    upsertSubscriber(email, pickLocale(body.locale));
+    const locale = pickLocale(body.locale);
+    const { id, isNew } = subscribe(email, locale);
+    if (isNew) await sendWelcome({ id, email, locale });
     return json({ ok: true });
   } catch (err) {
     console.error('[newsletter] store failed:', err instanceof Error ? err.message : 'unknown error');

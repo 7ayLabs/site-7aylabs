@@ -1,5 +1,6 @@
 /**
- * Fields — the lab's four kinds of work, as columns of glass. The column
+ * Fields — the lab's four instruments (scan, track, decode, ship), in the
+ * order the work flows, as columns of glass. The column
  * under the pointer (or holding keyboard focus) opens up and shows its
  * description in full; the others step back.
  */
@@ -8,10 +9,10 @@ import { AppWindow, Blocks, BrainCircuit, Cpu } from 'lucide-react';
 import { GlassIcon } from './glass3d/glass-icon';
 
 const FIELDS = [
-  { key: 'apps', Icon: AppWindow },
+  { key: 'onchain', Icon: Blocks },
   { key: 'software', Icon: Cpu },
   { key: 'intelligence', Icon: BrainCircuit },
-  { key: 'onchain', Icon: Blocks },
+  { key: 'apps', Icon: AppWindow },
 ] as const;
 
 export async function Fields() {

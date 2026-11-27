@@ -3,19 +3,21 @@
  * own data and counted up each time they come into view.
  */
 import { getTranslations } from 'next-intl/server';
-import { WALLETS } from '@/components/ui/web3-marks';
 import { PLATFORMS } from '@/lib/site';
 import { CHAIN_COUNT } from '@/lib/vizzor/chains';
 import { Count } from './count';
 
 const LIVE_PRODUCTS = PLATFORMS.some((p) => p.id === 'web' && p.status === 'live') ? 1 : 0;
 
+/** Scan, track, decode, ship: the four in `fields.tsx`. */
+const INSTRUMENTS = 4;
+
 export async function BigStats() {
   const t = await getTranslations('home.status');
   const items = [
     { n: LIVE_PRODUCTS, label: t('products') },
     { n: CHAIN_COUNT, label: t('chains') },
-    { n: WALLETS.length, label: t('wallets') },
+    { n: INSTRUMENTS, label: t('instruments') },
   ];
 
   return (

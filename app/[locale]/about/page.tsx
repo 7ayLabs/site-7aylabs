@@ -33,7 +33,7 @@ export default async function AboutPage({ params }: Props) {
   const meta = await getTranslations('meta');
   const crumbs = breadcrumbJsonLd(locale as Locale, [
     { name: meta('home'), path: '/' },
-    { name: t('meta.title'), path: '/about' },
+    { name: t('meta.crumb'), path: '/about' },
   ]);
 
   return (

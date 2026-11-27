@@ -28,8 +28,10 @@ export async function POST(req: Request): Promise<Response> {
   const entry = { name, email, topic, message, locale: pickLocale(body.locale), ipHash: hashIp(ip) };
   try {
     const id = insertContact(entry);
-    await notifyContact(entry, id);
-    return json({ ok: true });
+    // A reference the sender can quote; it is the message's own number.
+    const ref = `7AY-${String(id).padStart(5, '0')}`;
+    await notifyContact(entry, ref);
+    return json({ ok: true, ref });
   } catch (err) {
     console.error('[contact] store failed:', err instanceof Error ? err.message : 'unknown error');
     return json({ ok: false, error: 'server' }, 500);

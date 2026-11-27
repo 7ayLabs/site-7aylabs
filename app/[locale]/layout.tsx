@@ -14,6 +14,15 @@ import { JsonLd } from '@/components/site/json-ld';
 import { organizationJsonLd } from '@/lib/seo';
 import { SITE, isProduction } from '@/lib/site';
 
+/** The pages listed as the site's navigation in its structured data. */
+const NAV_PAGES = [
+  { ns: 'vizzorPage', path: '/vizzor' },
+  { ns: 'productsPage', path: '/products' },
+  { ns: 'aboutPage', path: '/about' },
+  { ns: 'updatesPage', path: '/updates' },
+  { ns: 'contactPage', path: '/contact' },
+] as const;
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -32,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: 'meta' });
   return {
     metadataBase: new URL(SITE.url),
-    title: { default: t('title'), template: `%s · ${SITE.name}` },
+    title: { default: t('title'), template: `%s | ${SITE.name}` },
     description: t('description'),
     keywords: t.raw('keywords') as string[],
     category: 'technology',
@@ -49,6 +58,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         { url: '/favicon.ico', sizes: 'any' },
         { url: '/favicon.svg', type: 'image/svg+xml' },
         { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+        { url: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
       ],
       apple: '/apple-touch-icon.png',
     },
@@ -71,6 +81,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   const t = await getTranslations({ locale, namespace: 'chrome' });
   const meta = await getTranslations({ locale, namespace: 'meta' });
+  const nav = await getTranslations({ locale });
 
   return (
     <html
@@ -86,6 +97,7 @@ export default async function LocaleLayout({
             slogan: meta('slogan'),
             keywords: meta.raw('keywords') as string[],
             locale: locale as Locale,
+            nav: NAV_PAGES.map((n) => ({ name: nav(`${n.ns}.meta.crumb`), description: nav(`${n.ns}.meta.description`), path: n.path })),
           })}
         />
       </head>

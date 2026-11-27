@@ -366,3 +366,24 @@ restore.
 | Disk filling up | Old images or logs. | `docker system df`, `docker image prune -af --filter until=72h`. Container logs are capped at 3 x 10 MB each. |
 | Container restarts in a loop, `OOMKilled` | The 512 MB memory limit. | `docker inspect -f '{{.State.OOMKilled}}' site-7aylabs`. Raise `mem_limit` in the overlay if the usage is legitimate. |
 | Locked out of SSH | Key lost, or sshd settings wrong. | Use the Vultr web console to log in as root, fix `/etc/ssh/sshd_config.d/00-site-hardening.conf` or the `authorized_keys` file, then `systemctl restart ssh`. |
+
+## Reading what the site has stored
+
+`/opt/7aylabs-site/scripts/site-data.sh` runs on the host as the `deploy` user. It reads the database from inside the site's container, so it needs no extra access.
+
+```bash
+scripts/site-data.sh messages prod 20      # the last 20 contact messages
+scripts/site-data.sh subscribers prod      # how many active subscribers
+scripts/site-data.sh export prod > subs.csv
+scripts/site-data.sh handled prod 12       # mark message 12 as handled
+```
+
+Use `staging` in place of `prod` for the staging database.
+
+## Email (optional)
+
+With `RESEND_API_KEY` set in the host env file, the site sends a welcome email with an unsubscribe link to new subscribers and a receipt to people who use the contact form, and copies each contact message to `CONTACT_NOTIFY_TO`. Without the key nothing is sent; everything is still stored. Unsubscribe links are signed with `SITE_SECRET`, or with `RATE_LIMIT_SALT` when `SITE_SECRET` is not set.
+
+## Language by country
+
+A first-time visitor to an address with no language in it is sent to English, Spanish or French by `middleware.ts` (rules in `lib/geo.ts`): the language they chose before, then their country, then their browser's languages. The country comes from the `CF-IPCountry` header, which Cloudflare adds when **IP Geolocation** is on for the zone (Network settings). With it off, the site still works and falls back to the browser's languages. Crawlers are never redirected.

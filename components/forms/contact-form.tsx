@@ -62,8 +62,9 @@ export function ContactForm() {
         }),
       });
       if (res.ok) {
+        const out = (await res.json().catch(() => ({}))) as { ref?: string };
         setState('done');
-        setStatus(t('done'));
+        setStatus(t('done', { ref: out.ref ?? '7AY' }));
         form.reset();
       } else {
         setState('error');
