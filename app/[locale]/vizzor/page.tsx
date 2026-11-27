@@ -25,9 +25,7 @@ export default async function VizzorPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('vizzorPage');
-  const chrome = await getTranslations('chrome');
 
-  const index = (['how', 'desks', 'editions', 'features', 'record', 'reach'] as const).map((id) => ({ id, label: t(`index.${id}`) }));
 
   return (
     <>
@@ -42,7 +40,7 @@ export default async function VizzorPage({ params }: Props) {
         </div>
       </PageHead>
 
-      <Indexed items={index} label={chrome('index')}>
+      <Indexed>
         <Block id="how" title={t('how.title')} lede={t('how.lede')}>
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,440px)] lg:gap-14">
             {/* A real sequence, so it is numbered. */}

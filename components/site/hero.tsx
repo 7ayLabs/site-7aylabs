@@ -38,9 +38,9 @@ export async function Hero() {
         </div>
 
         {/* Decorative: the same four fields are listed as text further down. */}
-        <div aria-hidden data-parallax className="stack relative hidden h-[32rem] lg:block">
+        <div aria-hidden data-parallax className="stack scroll-lift relative hidden h-[34rem] lg:block">
           <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <GlassIcon shape="lab" size={460} />
+            <GlassIcon shape="lab" size={600} />
           </span>
           {PANES.map(({ key, Icon, cls, r, k }) => (
             <span

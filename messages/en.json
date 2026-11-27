@@ -43,8 +43,7 @@
       "xLab": "7ayLabs on X",
       "xVizzor": "Vizzor on X",
       "seeProducts": "See the products"
-    },
-    "index": "On this page"
+    }
   },
   "home": {
     "hero": {
@@ -60,14 +59,6 @@
         "nextName": "The next product",
         "nextLine": "Not announced yet. We show things when they work."
       }
-    },
-    "index": {
-      "fields": "What we build",
-      "products": "Products",
-      "method": "How we work",
-      "updates": "Updates",
-      "faq": "Questions",
-      "stack": "Infrastructure"
     },
     "fields": {
       "title": "Four kinds of work, one lab.",
@@ -274,14 +265,6 @@
     "lede": "Vizzor reads price, on-chain flow and the narrative behind any token, wallet or tokenized stock. Every call carries a target, a deadline and a confidence score, and gets graded when the deadline hits.",
     "ctaApp": "Open the app",
     "ctaSite": "Visit vizzor.ai",
-    "index": {
-      "how": "How a call works",
-      "desks": "The four desks",
-      "editions": "The model",
-      "features": "Around the call",
-      "record": "The record",
-      "reach": "Coverage"
-    },
     "how": {
       "title": "Ask. Get a call. See the grade.",
       "lede": "Three steps, and the third one is the part most tools skip.",
@@ -404,11 +387,6 @@
     },
     "title": "We build things you can check.",
     "lede": "7ayLabs is a full Web3 laboratory: apps, software, intelligence and on-chain. We design, build and run our own products, and we would rather show a result than describe one.",
-    "index": {
-      "mission": "Why we exist",
-      "method": "How we work",
-      "facts": "The basics"
-    },
     "mission": {
       "title": "Confident claims are cheap. Proof is not.",
       "p1": "Markets are full of predictions that are never looked at again. The ones that land get repeated; the ones that miss disappear.",

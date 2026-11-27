@@ -21,7 +21,7 @@ export async function Fields() {
     <ul className="fan" data-stagger>
       {FIELDS.map(({ key, Icon }) => (
         <li key={key} data-reveal tabIndex={0} className="glass glass-live flex flex-col overflow-hidden rounded-[26px] p-7 focus-visible:outline-offset-4">
-          <GlassIcon shape={key} size={150} fallback={<Icon size={44} strokeWidth={1.3} />} className="-ml-4 -mt-3" />
+          <GlassIcon shape={key} size={190} fallback={<Icon size={44} strokeWidth={1.3} />} className="-ml-7 -mt-6" />
           <h3 className="t-display mt-auto pt-6 text-[clamp(1.6rem,2.1vw,2.2rem)] text-[var(--fg)]">{t(`${key}.title`)}</h3>
           <p className="mt-3 max-w-[34ch] text-[16.5px] leading-relaxed text-[var(--fg-2)]">{t(`${key}.line`)}</p>
         </li>

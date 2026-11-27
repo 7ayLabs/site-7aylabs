@@ -1,17 +1,11 @@
 import type { ReactNode } from 'react';
-import { PageIndex, type IndexItem } from './page-index';
 
 /** The site's measure: one max width and gutter everywhere. */
 export const WRAP = 'mx-auto max-w-[1360px] px-5 sm:px-8';
 
-/** A page body with its section strip floating above the blocks. */
-export function Indexed({ items, label, children }: { items: IndexItem[]; label: string; children: ReactNode }) {
-  return (
-    <div className={WRAP}>
-      <PageIndex items={items} label={label} />
-      {children}
-    </div>
-  );
+/** A page body: the site's measure around a run of blocks. */
+export function Indexed({ children }: { children: ReactNode }) {
+  return <div className={WRAP}>{children}</div>;
 }
 
 /**
@@ -31,9 +25,9 @@ export function Block({
   children?: ReactNode;
 }) {
   return (
-    <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-40 py-16 sm:py-24">
+    <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-28 py-16 sm:py-24">
       <div data-reveal className="grid items-end gap-x-16 gap-y-5 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
-        <h2 id={`${id}-title`} className="t-display t-title max-w-[18ch] text-[var(--fg)]">
+        <h2 id={`${id}-title`} className="t-display t-title scroll-drift max-w-[18ch] text-[var(--fg)]">
           {title}
         </h2>
         {lede ? <p className="t-lede lg:pb-2">{lede}</p> : null}

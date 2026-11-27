@@ -43,8 +43,7 @@
       "xLab": "7ayLabs en X",
       "xVizzor": "Vizzor en X",
       "seeProducts": "Ver los productos"
-    },
-    "index": "En esta página"
+    }
   },
   "home": {
     "hero": {
@@ -60,14 +59,6 @@
         "nextName": "El próximo producto",
         "nextLine": "Aún sin anunciar. Mostramos las cosas cuando funcionan."
       }
-    },
-    "index": {
-      "fields": "Qué construimos",
-      "products": "Productos",
-      "method": "Cómo trabajamos",
-      "updates": "Novedades",
-      "faq": "Preguntas",
-      "stack": "Infraestructura"
     },
     "fields": {
       "title": "Cuatro tipos de trabajo, un laboratorio.",
@@ -274,14 +265,6 @@
     "lede": "Vizzor lee el precio, el flujo on-chain y la narrativa detrás de cualquier token, wallet o acción tokenizada. Cada predicción lleva un objetivo, un plazo y un nivel de confianza, y se califica cuando vence el plazo.",
     "ctaApp": "Abrir la app",
     "ctaSite": "Ir a vizzor.ai",
-    "index": {
-      "how": "Cómo funciona una predicción",
-      "desks": "Las cuatro mesas",
-      "editions": "El modelo",
-      "features": "Alrededor de la predicción",
-      "record": "El historial",
-      "reach": "Cobertura"
-    },
     "how": {
       "title": "Pregunta. Recibe una predicción. Mira la nota.",
       "lede": "Tres pasos, y el tercero es el que casi todas las herramientas se saltan.",
@@ -404,11 +387,6 @@
     },
     "title": "Hacemos cosas que puedes comprobar.",
     "lede": "7ayLabs es un laboratorio Web3 completo: apps, software, inteligencia y on-chain. Diseñamos, construimos y operamos nuestros propios productos, y preferimos mostrar un resultado antes que describirlo.",
-    "index": {
-      "mission": "Por qué existimos",
-      "method": "Cómo trabajamos",
-      "facts": "Lo básico"
-    },
     "mission": {
       "title": "Afirmar con seguridad es barato. Probarlo no.",
       "p1": "Los mercados están llenos de predicciones que nadie vuelve a revisar. Las que aciertan se repiten; las que fallan desaparecen.",

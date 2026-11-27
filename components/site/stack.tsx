@@ -83,7 +83,7 @@ export async function Stack() {
     <ol className="rail grid gap-3" data-stagger style={{ '--rail-run': `${LAYERS.length * 8.2}rem` } as React.CSSProperties}>
       {LAYERS.map((l) => (
         <li key={l.key} data-reveal className="glass glass-live relative grid items-center gap-x-6 gap-y-4 rounded-[26px] p-4 sm:grid-cols-[6.5rem_minmax(0,1fr)] sm:p-5 lg:grid-cols-[6.5rem_minmax(0,1fr)_auto]">
-          <GlassIcon shape={l.shape} size={104} fallback={l.fallback} className="-m-1" />
+          <GlassIcon shape={l.shape} size={132} fallback={l.fallback} className="-m-4" />
           <div>
             <h3 className="t-head text-[var(--fg)]">{t(`layers.${l.key}.name`)}</h3>
             <p className="mt-1.5 max-w-[56ch] text-[16px] leading-relaxed text-[var(--fg-2)]">{t(`layers.${l.key}.line`, { count: CHAIN_COUNT })}</p>

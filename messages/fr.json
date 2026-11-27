@@ -43,8 +43,7 @@
       "xLab": "7ayLabs sur X",
       "xVizzor": "Vizzor sur X",
       "seeProducts": "Voir les produits"
-    },
-    "index": "Sur cette page"
+    }
   },
   "home": {
     "hero": {
@@ -60,14 +59,6 @@
         "nextName": "Le prochain produit",
         "nextLine": "Pas encore annoncé. Nous montrons les choses quand elles marchent."
       }
-    },
-    "index": {
-      "fields": "Ce que nous faisons",
-      "products": "Produits",
-      "method": "Notre méthode",
-      "updates": "Nouveautés",
-      "faq": "Questions",
-      "stack": "Infrastructure"
     },
     "fields": {
       "title": "Quatre types de travail, un laboratoire.",
@@ -274,14 +265,6 @@
     "lede": "Vizzor lit le prix, les flux on-chain et le récit derrière n'importe quel token, wallet ou action tokenisée. Chaque prévision porte une cible, une échéance et un niveau de confiance, et elle est notée à l'échéance.",
     "ctaApp": "Ouvrir l'app",
     "ctaSite": "Aller sur vizzor.ai",
-    "index": {
-      "how": "Comment marche une prévision",
-      "desks": "Les quatre bureaux",
-      "editions": "Le modèle",
-      "features": "Autour de la prévision",
-      "record": "L'historique",
-      "reach": "Couverture"
-    },
     "how": {
       "title": "Demandez. Recevez une prévision. Voyez la note.",
       "lede": "Trois étapes, et la troisième est celle que la plupart des outils oublient.",
@@ -404,11 +387,6 @@
     },
     "title": "Nous faisons des choses vérifiables.",
     "lede": "7ayLabs est un laboratoire Web3 complet : apps, logiciels, intelligence et on-chain. Nous concevons, construisons et exploitons nos propres produits, et nous préférons montrer un résultat plutôt que le décrire.",
-    "index": {
-      "mission": "Notre raison d'être",
-      "method": "Notre méthode",
-      "facts": "L'essentiel"
-    },
     "mission": {
       "title": "Affirmer avec assurance ne coûte rien. Prouver, si.",
       "p1": "Les marchés sont pleins de prévisions que personne ne relit. Celles qui tombent juste sont répétées ; celles qui échouent disparaissent.",

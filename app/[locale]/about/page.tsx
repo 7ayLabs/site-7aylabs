@@ -21,9 +21,7 @@ export default async function AboutPage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations('aboutPage');
   const home = await getTranslations('home');
-  const chrome = await getTranslations('chrome');
 
-  const index = (['mission', 'method', 'facts'] as const).map((id) => ({ id, label: t(`index.${id}`) }));
   const facts = [
     { k: t('facts.product.k'), v: VIZZOR.name, href: VIZZOR.site },
     { k: t('facts.role.k'), v: t('facts.role.v') },
@@ -35,7 +33,7 @@ export default async function AboutPage({ params }: Props) {
     <>
       <PageHead title={t('title')} lede={t('lede')} />
 
-      <Indexed items={index} label={chrome('index')}>
+      <Indexed>
         <Block id="mission" title={t('mission.title')}>
           <div data-reveal className="glass grid max-w-[78ch] gap-5 rounded-[26px] p-7 text-[1.2rem] leading-[1.6] text-[var(--fg-2)] sm:p-10">
             <p>{t('mission.p1')}</p>

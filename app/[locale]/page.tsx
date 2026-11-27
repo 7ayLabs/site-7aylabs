@@ -30,18 +30,14 @@ export default async function HomePage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations('home');
   const products = await getTranslations('products');
-  const chrome = await getTranslations('chrome');
   const posts = listUpdates(locale as Locale).slice(0, 3);
 
-  const index = (['fields', 'products', 'stack', 'method', 'updates', 'faq'] as const)
-    .filter((id) => id !== 'updates' || posts.length > 0)
-    .map((id) => ({ id, label: t(`index.${id}`) }));
 
   return (
     <>
       <Hero />
 
-      <Indexed items={index} label={chrome('index')}>
+      <Indexed>
         <Block id="fields" title={t('fields.title')} lede={t('fields.lede')}>
           <Fields />
         </Block>

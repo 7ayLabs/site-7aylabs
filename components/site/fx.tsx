@@ -3,9 +3,9 @@
 /**
  * PageFx — the page's ambient behaviour, mounted once.
  *
- *  - Reveals: every `[data-reveal]` gets `data-in` when it enters the window
- *    (once). Siblings inside a `[data-stagger]` parent arrive one after the
- *    other. Re-scanned on each route change.
+ *  - Reveals: every `[data-reveal]` carries `data-in` while it is inside the
+ *    window, in both scroll directions. Siblings inside a `[data-stagger]`
+ *    parent arrive one after the other. Re-scanned on each route change.
  *  - Pointer light: `.glass-live` panes receive the pointer position as
  *    `--mx` / `--my`, which the stylesheet turns into a soft moving light.
  *
@@ -18,7 +18,8 @@ export function PageFx(): null {
   const pathname = usePathname();
 
   useEffect(() => {
-    const els = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]:not([data-in])'));
+    const root = document.documentElement;
+    const els = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
     if (els.length === 0) return;
     if (!('IntersectionObserver' in window)) {
       els.forEach((el) => el.setAttribute('data-in', ''));
@@ -26,21 +27,29 @@ export function PageFx(): null {
     }
     for (const group of document.querySelectorAll<HTMLElement>('[data-stagger]')) {
       Array.from(group.querySelectorAll<HTMLElement>(':scope > [data-reveal]')).forEach((el, i) => {
-        el.style.setProperty('--d', `${Math.min(i, 8) * 80}ms`);
+        el.style.setProperty('--d', `${Math.min(i, 8) * 70}ms`);
       });
     }
+    // Both ways: a piece arrives when it enters the window and leaves when it
+    // exits, so scrolling back up plays the page again. `data-from` says which
+    // edge it left by, and so which way it comes back in.
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
+          const el = e.target as HTMLElement;
           if (e.isIntersecting) {
-            e.target.setAttribute('data-in', '');
-            io.unobserve(e.target);
+            el.setAttribute('data-in', '');
+          } else {
+            el.removeAttribute('data-in');
+            el.setAttribute('data-from', e.boundingClientRect.top < 0 ? 'top' : 'bottom');
           }
         }
       },
-      { threshold: 0.08, rootMargin: '0px 0px -6% 0px' },
+      { threshold: 0.06, rootMargin: '-4% 0px -6% 0px' },
     );
     els.forEach((el) => io.observe(el));
+    // From here the stylesheet's "script never ran" failsafe stands down.
+    root.dataset.fx = '';
     return () => io.disconnect();
   }, [pathname]);
 

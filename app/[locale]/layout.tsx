@@ -8,6 +8,7 @@ import { display, mono, sans } from '../fonts';
 import { ThemeProvider, themeBootScript } from '@/components/layout/theme-provider';
 import { SiteNav } from '@/components/layout/site-nav';
 import { SiteFooter } from '@/components/layout/site-footer';
+import { ChainField } from '@/components/site/chain-field';
 import { PageFx } from '@/components/site/fx';
 import { organizationJsonLd } from '@/lib/seo';
 import { SITE, isProduction } from '@/lib/site';
@@ -89,7 +90,9 @@ export default async function LocaleLayout({
               <i />
               <i />
               <i />
+              <ChainField />
             </div>
+            <div aria-hidden className="scroll-progress" />
             <PageFx />
             <div className="flex min-h-dvh flex-col">
               <SiteNav />

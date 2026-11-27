@@ -12,12 +12,27 @@
  * colour at the edges. They turn slowly. Nothing is loaded: no models, no
  * textures.
  *
- * Cost: 30 frames a second at most, only for icons on screen, paused when
- * the tab is hidden; one still frame under reduced motion.
+ * Each shape's camera is set from how far the shape reaches (`REACH`), and
+ * the image fades out before the canvas edge, so an object is never cut off
+ * by its own frame.
+ *
+ * Cost: drawn at the display's frame rate, only for icons on screen, paused
+ * when the tab is hidden; one still frame under reduced motion.
  */
 export type GlassShape = 'apps' | 'software' | 'intelligence' | 'onchain' | 'ground' | 'lab';
 
 const SHAPE_ID: Record<GlassShape, number> = { apps: 0, software: 1, intelligence: 2, onchain: 3, ground: 4, lab: 5 };
+
+/**
+ * How far each shape reaches from its centre at any moment of its motion,
+ * with room to spare. The camera is set from this so a shape always fits
+ * inside its canvas: an object cut off by a straight edge is the one thing a
+ * 3D icon must never do.
+ */
+const REACH: Record<GlassShape, number> = { apps: 1.02, software: 1.0, intelligence: 1.08, onchain: 1.0, ground: 0.98, lab: 1.12 };
+const zoomFor = (shape: GlassShape): number => (0.5 * 3.1 * 0.78) / REACH[shape];
+
+const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
 
 const VERT = `attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}`;
 
@@ -27,6 +42,8 @@ uniform vec2 uRes;
 uniform float uT;
 uniform float uShape;
 uniform float uDark;
+uniform float uZoom;
+uniform vec2 uPtr;
 
 mat2 rot(float a){float c=cos(a),s=sin(a);return mat2(c,-s,s,c);}
 float smin(float a,float b,float k){float h=clamp(.5+.5*(b-a)/k,0.,1.);return mix(b,a,h)-k*h*(1.-h);}
@@ -36,8 +53,10 @@ float sdCyl(vec3 p,float r,float h,float e){vec2 d=abs(vec2(length(p.xz),p.y))-v
 
 float map(vec3 p){
   float t=uT;
-  p.xz*=rot(t*.45);
-  p.xy*=rot(.28+.12*sin(t*.5));
+  // A slow turn, an easy sway, and a lean toward the pointer.
+  p.xz*=rot(t*.38+.5*sin(t*.23)+uPtr.x*.6);
+  p.xy*=rot(.26+.14*sin(t*.41));
+  p.yz*=rot(.12*sin(t*.31)-uPtr.y*.4);
   if(uShape<.5){
     // Apps: two rounded panes, one in front of the other.
     float a=sdBox(p-vec3(-.12,.1,-.16),vec3(.52,.4,.035),.07);
@@ -75,11 +94,15 @@ float map(vec3 p){
     return min(d,sdCyl(p-vec3(0.,-.36-g,0.),.62,.07,.05));
   }
   // Lab: one large drop with a smaller one circling into it.
-  float d=length(p*vec3(1.,.92,1.))-.6;
-  vec3 o=vec3(.78*cos(t*.9),.3*sin(t*1.3),.78*sin(t*.9));
-  d=smin(d,length(p-o)-.24,.42);
-  vec3 o2=vec3(-.6*cos(t*.6),-.5*sin(t*.8),.5*sin(t*.6));
-  return smin(d,length(p-o2)-.15,.36);
+  // The body breathes: its surface ripples slowly, like liquid held together.
+  float wob=.035*sin(p.x*5.+t*1.1)*sin(p.y*4.6-t*.9)*sin(p.z*5.4+t*.7);
+  float d=length(p*vec3(1.,.94,1.))-.54+wob;
+  vec3 o=vec3(.62*cos(t*.8),.26*sin(t*1.15),.62*sin(t*.8));
+  d=smin(d,length(p-o)-.2,.4);
+  vec3 o2=vec3(-.5*cos(t*.55),-.44*sin(t*.72),.44*sin(t*.55));
+  d=smin(d,length(p-o2)-.13,.34);
+  vec3 o3=vec3(.34*sin(t*.6),.58*cos(t*.5),-.36*cos(t*.6));
+  return smin(d,length(p-o3)-.1,.3);
 }
 
 vec3 normal(vec3 p){
@@ -98,31 +121,55 @@ vec3 env(vec3 d){
 void main(){
   vec2 uv=(gl_FragCoord.xy-.5*uRes)/min(uRes.x,uRes.y);
   vec3 ro=vec3(0.,0.,3.1);
-  vec3 rd=normalize(vec3(uv,-1.75));
-  float t=0.;float hit=0.;
-  for(int i=0;i<56;i++){
+  vec3 rd=normalize(vec3(uv,-uZoom));
+  float px=1.6/(min(uRes.x,uRes.y)*uZoom);
+  float t=0.;float hit=0.;float near=1e3;
+  for(int i=0;i<72;i++){
     float d=map(ro+rd*t);
-    if(d<.0016){hit=1.;break;}
-    t+=d*.9;
+    near=min(near,d/max(t,.001));
+    if(d<.0012){hit=1.;break;}
+    t+=d*.88;
     if(t>6.)break;
   }
-  if(hit<.5){gl_FragColor=vec4(0.);return;}
+  // Nothing may be cut by the frame: fade out before the edge of the canvas.
+  float frame=smoothstep(.5,.4,max(abs(uv.x),abs(uv.y)));
+  if(hit<.5){
+    // A soft, anti-aliased rim where the ray only just missed.
+    float edge=smoothstep(px*2.2,0.,near)*.55*frame;
+    gl_FragColor=vec4(vec3(.45,.68,1.)*edge,edge);
+    return;
+  }
   vec3 p=ro+rd*t;
   vec3 n=normal(p);
-  float fres=pow(1.-max(dot(n,-rd),0.),2.6);
+  float fres=pow(1.-max(dot(n,-rd),0.),2.4);
   vec3 r=reflect(rd,n);
+  // How much glass the light crosses: march the bent ray to the far side.
+  vec3 rin=refract(rd,n,.72);
+  float thick=0.;
+  vec3 q=p-n*.02;
+  for(int i=0;i<14;i++){
+    float d=-map(q+rin*thick);
+    if(d<.004)break;
+    thick+=max(d,.02);
+  }
+  vec3 nb=-normal(q+rin*thick);
+  vec3 rout=refract(rin,nb,1.38);
+  if(dot(rout,rout)<.01)rout=reflect(rin,nb);
   // The edges split into colour a little, as thick glass does.
-  vec3 refl=vec3(env(r+vec3(.035,0.,0.)).r,env(r).g,env(r-vec3(.035,0.,0.)).b);
-  // What shows through the body: the light behind, bent by the surface.
-  vec3 through=env(refract(rd,n,.74))*vec3(.55,.75,1.);
-  vec3 tint=mix(vec3(.16,.38,.95),vec3(.5,.74,1.),uDark);
-  vec3 col=mix(through*tint,refl,fres*.85+.08);
+  vec3 refl=vec3(env(r+vec3(.04,0.,0.)).r,env(r).g,env(r-vec3(.04,0.,0.)).b);
+  vec3 tint=mix(vec3(.14,.36,.95),vec3(.46,.72,1.),uDark);
+  // Thicker glass holds more of its colour (absorption).
+  vec3 absorb=exp(-thick*mix(vec3(2.4,1.25,.35),vec3(1.7,.9,.3),uDark));
+  vec3 through=env(rout)*mix(tint,vec3(1.),absorb*.75);
+  vec3 col=mix(through,refl,clamp(fres*.9+.06,0.,1.));
   vec3 l=normalize(vec3(.5,.85,.6));
-  col+=pow(max(dot(r,l),0.),70.)*1.25;
-  col+=pow(max(dot(n,l),0.),2.)*tint*.22;
+  vec3 l2=normalize(vec3(-.7,.3,.5));
+  col+=pow(max(dot(r,l),0.),90.)*1.5;
+  col+=pow(max(dot(r,l2),0.),40.)*vec3(.5,.72,1.)*.45;
+  col+=pow(max(dot(n,l),0.),2.)*tint*.2;
   // A rim of light blue, stronger on the dark ground where glass would vanish.
-  col+=fres*vec3(.3,.58,1.)*mix(.25,.95,uDark);
-  float a=clamp(mix(.32,.46,uDark)+fres*.8+pow(max(dot(r,l),0.),30.),0.,1.);
+  col+=fres*vec3(.3,.58,1.)*mix(.3,1.,uDark);
+  float a=clamp(mix(.3,.42,uDark)+(1.-absorb.g)*.28+fres*.8+pow(max(dot(r,l),0.),30.),0.,1.)*frame;
   gl_FragColor=vec4(col*a,a);
 }`;
 
@@ -137,7 +184,7 @@ interface Target {
 
 let gl: WebGLRenderingContext | null = null;
 let glCanvas: HTMLCanvasElement | null = null;
-let uniforms: Record<'uRes' | 'uT' | 'uShape' | 'uDark', WebGLUniformLocation | null> | null = null;
+let uniforms: Record<'uRes' | 'uT' | 'uShape' | 'uDark' | 'uZoom' | 'uPtr', WebGLUniformLocation | null> | null = null;
 let failed = false;
 const targets = new Set<Target>();
 let raf = 0;
@@ -159,7 +206,10 @@ function init(): boolean {
     if (!s) return null;
     ctx.shaderSource(s, src);
     ctx.compileShader(s);
-    return ctx.getShaderParameter(s, ctx.COMPILE_STATUS) ? s : null;
+    if (ctx.getShaderParameter(s, ctx.COMPILE_STATUS)) return s;
+    // Without WebGL the flat icon stays; say why, for whoever is debugging.
+    console.warn('[glass3d] shader did not compile:', ctx.getShaderInfoLog(s));
+    return null;
   };
   const vs = compile(ctx.VERTEX_SHADER, VERT);
   const fs = compile(ctx.FRAGMENT_SHADER, FRAG);
@@ -187,6 +237,8 @@ function init(): boolean {
     uT: ctx.getUniformLocation(prog, 'uT'),
     uShape: ctx.getUniformLocation(prog, 'uShape'),
     uDark: ctx.getUniformLocation(prog, 'uDark'),
+    uZoom: ctx.getUniformLocation(prog, 'uZoom'),
+    uPtr: ctx.getUniformLocation(prog, 'uPtr'),
   };
   gl = ctx;
   return true;
@@ -209,6 +261,8 @@ function drawOne(t: Target, time: number): void {
   gl.uniform1f(uniforms.uT, time + SHAPE_ID[t.shape] * 1.7);
   gl.uniform1f(uniforms.uShape, SHAPE_ID[t.shape]);
   gl.uniform1f(uniforms.uDark, document.documentElement.dataset.theme === 'dark' ? 1 : 0);
+  gl.uniform1f(uniforms.uZoom, zoomFor(t.shape));
+  gl.uniform2f(uniforms.uPtr, pointer.x, pointer.y);
   gl.drawArrays(gl.TRIANGLES, 0, 3);
   t.ctx.clearRect(0, 0, w, h);
   t.ctx.drawImage(glCanvas, 0, 0);
@@ -221,8 +275,10 @@ function drawOne(t: Target, time: number): void {
 function loop(now: number): void {
   raf = 0;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (now - lastFrame >= 32 || reduced) {
+  if (now - lastFrame >= 15 || reduced) {
     lastFrame = now;
+    pointer.x += (pointer.tx - pointer.x) * 0.06;
+    pointer.y += (pointer.ty - pointer.y) * 0.06;
     for (const t of targets) {
       if (!t.visible) continue;
       if (reduced && t.drawn) continue;
@@ -263,6 +319,16 @@ export function registerGlass(canvas: HTMLCanvasElement, shape: GlassShape, onFi
       { rootMargin: '120px' },
     );
     document.addEventListener('visibilitychange', schedule);
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      window.addEventListener(
+        'pointermove',
+        (e) => {
+          pointer.tx = (e.clientX / window.innerWidth) * 2 - 1;
+          pointer.ty = (e.clientY / window.innerHeight) * 2 - 1;
+        },
+        { passive: true },
+      );
+    }
     // A theme flip must redraw the still frames shown under reduced motion.
     new MutationObserver(() => {
       for (const t of targets) t.drawn = false;
