@@ -1,48 +1,18 @@
-import { ImageResponse } from 'next/og';
 import { getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
+import { OG_SIZE, renderOg } from '@/lib/og';
 
-export const size = { width: 1200, height: 630 };
+export const size = OG_SIZE;
 export const contentType = 'image/png';
-export const alt = '7ayLabs';
+export const alt = '7ayLabs · The Web3 lab';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-/** The share card: the name, the line, nothing else. Monochrome like the site. */
-export default async function OpenGraphImage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function Image({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'meta' });
-
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          padding: 72,
-          background: '#050505',
-          color: '#f4f4f4',
-          fontFamily: 'sans-serif',
-        }}
-      >
-        <div style={{ display: 'flex', fontSize: 34, fontWeight: 700, letterSpacing: -1 }}>7ayLabs</div>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', fontSize: 92, fontWeight: 700, letterSpacing: -4, lineHeight: 1 }}>{t('og')}</div>
-          <div style={{ display: 'flex', marginTop: 28, fontSize: 30, color: '#b4b4b4', maxWidth: 900, lineHeight: 1.35 }}>
-            {t('description')}
-          </div>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 24, color: '#8c8c8c' }}>
-          <span>7aylabs.com</span>
-          <span>vizzor.ai</span>
-        </div>
-      </div>
-    ),
-    size,
-  );
+  const t = await getTranslations({ locale, namespace: 'home.hero' });
+  const c = await getTranslations({ locale, namespace: 'chrome' });
+  return renderOg({ stamp: `${c('block')} 00 · ${c('genesis')}`, title: t('title'), line: t('slogan') });
 }

@@ -1,12 +1,11 @@
 /**
  * Hero — the genesis block of the page, centred: the block stamp, the claim,
- * the slogan, what the lab is, and two actions. A drop of liquid glass sits
- * above the title, and the four desks hang either side on wide screens.
+ * the slogan, what the lab is, and two actions. The four desks hang either
+ * side on wide screens.
  */
 import { getTranslations } from 'next-intl/server';
 import { AppWindow, Blocks, BrainCircuit, Cpu } from 'lucide-react';
 import { Decode } from './decode';
-import { GlassIcon } from './glass3d/glass-icon';
 import { HeroFlow } from './hero-flow';
 import { WRAP, blockHash } from './layout';
 
@@ -47,9 +46,6 @@ export async function Hero() {
         </div>
 
         <div className="relative mx-auto flex max-w-[880px] flex-col items-center text-center">
-          <span aria-hidden className="-mb-6 -mt-4">
-            <GlassIcon shape="lab" size={230} />
-          </span>
           <p className="type-settle flex flex-wrap items-center justify-center gap-3 text-[14px] font-semibold text-[var(--fg-2)]">
             <span className="glass inline-flex min-h-10 items-center gap-2.5 rounded-[12px] px-3.5 text-[var(--fg)]">
               <span className="pulse" aria-hidden />

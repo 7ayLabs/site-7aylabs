@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "7ayLabs · Le labo Web3. Conçu pour le Web3, prouvé en public",
-    "description": "7ayLabs est un laboratoire Web3. Nous concevons, construisons et exploitons nos propres apps, logiciels, IA et produits on-chain, à commencer par Vizzor : l'intelligence crypto notée en public.",
+    "title": "7ayLabs · Labo Web3 : apps, IA et produits on-chain",
+    "description": "7ayLabs est un laboratoire Web3. Nous construisons et exploitons nos propres apps, IA et produits on-chain. Le premier : Vizzor, l'intelligence crypto qui note chaque prévision en public.",
     "og": "Ne croyez pas. Vérifiez.",
     "slogan": "Ne croyez pas. Vérifiez.",
     "keywords": [
@@ -273,8 +273,9 @@
   },
   "productsPage": {
     "meta": {
-      "title": "Produits",
-      "description": "Les produits du laboratoire Web3 7ayLabs. Vizzor, l'intelligence crypto notée en public, est en ligne ; d'autres sont en développement."
+      "title": "Produits Web3 : apps, IA et outils on-chain",
+      "description": "Les produits du laboratoire Web3 7ayLabs. Vizzor, l'intelligence crypto notée en public, est en ligne ; d'autres sont en développement.",
+      "crumb": "Produits"
     },
     "title": "Produits.",
     "lede": "Tout ce qui est sorti du laboratoire, chaque chose avec son statut réel, et un mot honnête sur ce qui ne l'est pas encore."
@@ -358,8 +359,9 @@
   },
   "vizzorPage": {
     "meta": {
-      "title": "Vizzor",
-      "description": "Vizzor est l'intelligence crypto du laboratoire Web3 7ayLabs : prévisions de prix avec cible, échéance et confiance, mouvements des baleines et analyse on-chain. Chaque prévision est notée en public."
+      "title": "Vizzor · Intelligence crypto par IA, notée en public",
+      "description": "Vizzor est l'intelligence crypto du laboratoire Web3 7ayLabs : prévisions de prix avec cible, échéance et confiance, mouvements des baleines et analyse on-chain. Chaque prévision est notée en public.",
+      "crumb": "Vizzor"
     },
     "title": "L'intelligence crypto, notée en public.",
     "lede": "Vizzor lit le prix, les flux on-chain et le récit derrière n'importe quel token, wallet ou action tokenisée. Chaque prévision porte une cible, une échéance et un niveau de confiance, et elle est notée à l'échéance.",
@@ -478,8 +480,9 @@
   },
   "aboutPage": {
     "meta": {
-      "title": "À propos",
-      "description": "À propos de 7ayLabs, le laboratoire Web3 derrière Vizzor : sa raison d'être, ses règles de construction et comment joindre l'équipe."
+      "title": "À propos · Le labo Web3 derrière Vizzor",
+      "description": "À propos de 7ayLabs, le laboratoire Web3 derrière Vizzor : sa raison d'être, ses règles de construction et comment joindre l'équipe.",
+      "crumb": "À propos"
     },
     "title": "Un laboratoire qui montre son travail.",
     "lede": "7ayLabs est un laboratoire Web3 complet : apps, logiciels, intelligence et on-chain. Nous concevons, construisons et exploitons nos propres produits, et nous préférons montrer un résultat plutôt que le décrire.",
@@ -510,8 +513,9 @@
   },
   "updatesPage": {
     "meta": {
-      "title": "Nouveautés",
-      "description": "Notes de version et actualités de 7ayLabs, le laboratoire Web3, et de son produit Vizzor."
+      "title": "Notes du labo · Sorties et nouvelles",
+      "description": "Notes de version et actualités de 7ayLabs, le laboratoire Web3, et de son produit Vizzor.",
+      "crumb": "Notes"
     },
     "title": "Notes du laboratoire.",
     "lede": "Les versions de nos produits et les nouvelles du laboratoire, de la plus récente à la plus ancienne.",
@@ -521,8 +525,9 @@
   },
   "contactPage": {
     "meta": {
-      "title": "Contact",
-      "description": "Contactez 7ayLabs, le laboratoire Web3, au sujet de partenariats, de la presse, de la sécurité ou de l'entreprise."
+      "title": "Contact · Parlez au labo",
+      "description": "Contactez 7ayLabs, le laboratoire Web3, au sujet de partenariats, de la presse, de la sécurité ou de l'entreprise.",
+      "crumb": "Contact"
     },
     "title": "Parlez au laboratoire.",
     "lede": "Partenariats, presse, signalements de sécurité ou une question sur l'entreprise. Une personne lit chaque message.",
@@ -557,7 +562,7 @@
       "privacy": "Nous utilisons ce que vous envoyez uniquement pour vous répondre.",
       "submit": "Envoyer le message",
       "sending": "Envoi",
-      "done": "Message envoyé. Nous vous répondrons par e-mail.",
+      "done": "Message envoyé. Votre référence est {ref}. Nous vous répondrons par e-mail.",
       "invalid": "Un élément du formulaire n'est pas valide. Vérifiez les champs et réessayez.",
       "rateLimited": "Trop de messages en peu de temps. Attendez une minute et réessayez.",
       "error": "Nous n'avons pas pu l'envoyer. Réessayez dans un instant.",
@@ -619,5 +624,25 @@
     "title": "Un problème est survenu de notre côté.",
     "lede": "La page n'a pas pu s'afficher. Réessayer suffit généralement.",
     "retry": "Réessayer"
+  },
+  "unsubscribePage": {
+    "meta": {
+      "title": "Se désabonner",
+      "description": "Ne plus recevoir les nouveautés de 7ayLabs."
+    },
+    "title": "Se désabonner.",
+    "lede": "Un clic et vous quittez la liste. Vous pourrez vous réabonner quand vous voulez.",
+    "button": "Me désabonner",
+    "done": "C'est fait. Vous ne recevrez plus d'e-mails de notre part.",
+    "invalid": "Ce lien n'est plus valide. Passez par la page de contact et nous vous retirerons à la main.",
+    "error": "Impossible pour l'instant. Réessayez dans un instant.",
+    "back": "Retour à 7ayLabs"
+  },
+  "emails": {
+    "welcomeSubject": "Vous êtes sur la liste 7ayLabs",
+    "welcomeBody": "Merci de votre abonnement. Vous aurez de nos nouvelles seulement quand nous livrons quelque chose.",
+    "unsubLine": "Pour ne plus recevoir ces e-mails : {url}",
+    "contactSubject": "Nous avons bien reçu votre message ({ref})",
+    "contactBody": "Merci d'avoir écrit à 7ayLabs. Une personne lira votre message et répondra à cette adresse. Votre référence est {ref}."
   }
 }

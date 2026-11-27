@@ -6,7 +6,7 @@ import { afterAll, beforeEach } from 'vitest';
 // Every test file gets its own throwaway database directory.
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'site-7aylabs-test-'));
 process.env.SITE_DATA_DIR = dir;
-process.env.RATE_LIMIT_SALT = 'test-salt';
+process.env.RATE_LIMIT_SALT = 'test-salt-long-enough-to-sign-with';
 delete process.env.RESEND_API_KEY;
 delete process.env.ALLOWED_ORIGINS;
 

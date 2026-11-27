@@ -24,7 +24,7 @@ export default async function ProductsPage({ params }: Props) {
   const meta = await getTranslations('meta');
   const crumbs = breadcrumbJsonLd(locale as Locale, [
     { name: meta('home'), path: '/' },
-    { name: t('meta.title'), path: '/products' },
+    { name: t('meta.crumb'), path: '/products' },
   ]);
 
   return (

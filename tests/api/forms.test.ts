@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { POST as contact } from '@/app/api/contact/route';
 import { POST as newsletter } from '@/app/api/newsletter/route';
 import { GET as health } from '@/app/api/health/route';
+import { POST as unsubscribe } from '@/app/api/newsletter/unsubscribe/route';
+import { unsubscribeToken } from '@/lib/api/tokens';
 import { getDb } from '@/lib/db';
 
 function post(url: string, body: unknown, headers: Record<string, string> = {}): Request {
@@ -102,3 +104,38 @@ describe('/api/health', () => {
     expect(await res.json()).toMatchObject({ status: 'healthy', sha: 'abc123', subsystems: { sqlite: { ok: true } } });
   });
 });
+
+describe('/api/newsletter/unsubscribe', () => {
+  it('switches a subscriber off with a valid signed link, and only then', async () => {
+    await newsletter(post('/api/newsletter', { email: 'leave@example.org' }, { 'x-real-ip': '198.51.100.40' }));
+    const row = getDb().prepare('SELECT id, email FROM newsletter_subscribers WHERE email = ?').get('leave@example.org') as { id: number; email: string };
+    const token = unsubscribeToken(row.id, row.email)!;
+    expect(token).toMatch(/^[0-9a-f]{40}$/);
+
+    const bad = await unsubscribe(post('/api/newsletter/unsubscribe', { s: row.id, t: 'f'.repeat(40) }));
+    expect(bad.status).toBe(400);
+    const other = await unsubscribe(post('/api/newsletter/unsubscribe', { s: row.id + 999, t: token }));
+    expect(other.status).toBe(400);
+    expect((getDb().prepare('SELECT active FROM newsletter_subscribers WHERE id = ?').get(row.id) as { active: number }).active).toBe(1);
+
+    const ok = await unsubscribe(post('/api/newsletter/unsubscribe', { s: row.id, t: token }));
+    expect(ok.status).toBe(200);
+    expect((getDb().prepare('SELECT active FROM newsletter_subscribers WHERE id = ?').get(row.id) as { active: number }).active).toBe(0);
+  });
+
+  it('lets someone come back after leaving', async () => {
+    await newsletter(post('/api/newsletter', { email: 'leave@example.org' }, { 'x-real-ip': '198.51.100.41' }));
+    const row = getDb().prepare('SELECT active FROM newsletter_subscribers WHERE email = ?').get('leave@example.org') as { active: number };
+    expect(row.active).toBe(1);
+  });
+});
+
+describe('contact reference', () => {
+  it('returns a reference the sender can quote', async () => {
+    const res = await contact(
+      post('/api/contact', { name: 'Ada', email: 'ada@example.org', message: 'A question about the lab and its work.' }, { 'x-real-ip': '198.51.100.42' }),
+    );
+    expect((await res.json()).ref).toMatch(/^7AY-\d{5}$/);
+  });
+});
+

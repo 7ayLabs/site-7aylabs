@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "7ayLabs · The Web3 lab. Built for Web3, proven in public",
-    "description": "7ayLabs is a Web3 laboratory. We design, build and run our own apps, software, AI and on-chain products, starting with Vizzor: crypto intelligence graded in public.",
+    "title": "7ayLabs · Web3 lab: apps, AI and on-chain products",
+    "description": "7ayLabs is a Web3 lab. We build and run our own apps, AI and on-chain products. First out: Vizzor, crypto intelligence that grades every call in public.",
     "og": "Don't trust. Check.",
     "slogan": "Don't trust. Check.",
     "keywords": [
@@ -273,8 +273,9 @@
   },
   "productsPage": {
     "meta": {
-      "title": "Products",
-      "description": "Products from the 7ayLabs Web3 laboratory. Vizzor, crypto intelligence graded in public, is live; more are in development."
+      "title": "Web3 products: apps, AI and on-chain tools",
+      "description": "Products from the 7ayLabs Web3 laboratory. Vizzor, crypto intelligence graded in public, is live; more are in development.",
+      "crumb": "Products"
     },
     "title": "Products.",
     "lede": "Everything that has left the lab, each with its real status, and an honest word on what has not yet."
@@ -358,8 +359,9 @@
   },
   "vizzorPage": {
     "meta": {
-      "title": "Vizzor",
-      "description": "Vizzor is crypto intelligence from the 7ayLabs Web3 laboratory: price calls with a target, a deadline and a confidence, whale flow and on-chain forensics. Every call is graded in public."
+      "title": "Vizzor · AI crypto intelligence, graded in public",
+      "description": "Vizzor is crypto intelligence from the 7ayLabs Web3 laboratory: price calls with a target, a deadline and a confidence, whale flow and on-chain forensics. Every call is graded in public.",
+      "crumb": "Vizzor"
     },
     "title": "Crypto intelligence, graded in public.",
     "lede": "Vizzor reads price, on-chain flow and the narrative behind any token, wallet or tokenized stock. Every call carries a target, a deadline and a confidence score, and gets graded when the deadline hits.",
@@ -478,8 +480,9 @@
   },
   "aboutPage": {
     "meta": {
-      "title": "About",
-      "description": "About 7ayLabs, the Web3 laboratory behind Vizzor: why it exists, the rules it builds by, and how to reach the team."
+      "title": "About · The Web3 lab behind Vizzor",
+      "description": "About 7ayLabs, the Web3 laboratory behind Vizzor: why it exists, the rules it builds by, and how to reach the team.",
+      "crumb": "About"
     },
     "title": "A lab that shows its work.",
     "lede": "7ayLabs is a full Web3 laboratory: apps, software, intelligence and on-chain. We design, build and run our own products, and we would rather show a result than describe one.",
@@ -510,8 +513,9 @@
   },
   "updatesPage": {
     "meta": {
-      "title": "Updates",
-      "description": "Release notes and company news from 7ayLabs, the Web3 laboratory, and its product Vizzor."
+      "title": "Lab notes · Releases and news",
+      "description": "Release notes and company news from 7ayLabs, the Web3 laboratory, and its product Vizzor.",
+      "crumb": "Lab notes"
     },
     "title": "Lab notes.",
     "lede": "Releases of our products and news from the lab, newest first.",
@@ -521,8 +525,9 @@
   },
   "contactPage": {
     "meta": {
-      "title": "Contact",
-      "description": "Contact 7ayLabs, the Web3 laboratory, about partnerships, press, security or the company."
+      "title": "Contact · Talk to the lab",
+      "description": "Contact 7ayLabs, the Web3 laboratory, about partnerships, press, security or the company.",
+      "crumb": "Contact"
     },
     "title": "Talk to the lab.",
     "lede": "Partnerships, press, security reports or a question about the company. A person reads every message.",
@@ -557,7 +562,7 @@
       "privacy": "We use what you send only to answer you.",
       "submit": "Send message",
       "sending": "Sending",
-      "done": "Message sent. We will reply by email.",
+      "done": "Message sent. Your reference is {ref}. We will reply by email.",
       "invalid": "Something in the form is not valid. Check the fields and try again.",
       "rateLimited": "Too many messages in a short time. Wait a minute and try again.",
       "error": "We could not send that. Try again in a moment.",
@@ -619,5 +624,25 @@
     "title": "Something broke on our side.",
     "lede": "The page could not be shown. Trying again usually fixes it.",
     "retry": "Try again"
+  },
+  "unsubscribePage": {
+    "meta": {
+      "title": "Unsubscribe",
+      "description": "Stop receiving 7ayLabs updates."
+    },
+    "title": "Unsubscribe.",
+    "lede": "One click and you are off the list. You can subscribe again any time.",
+    "button": "Unsubscribe me",
+    "done": "Done. You will not get more emails from us.",
+    "invalid": "This link is not valid any more. Use the contact page and we will remove you by hand.",
+    "error": "We could not do that right now. Try again in a moment.",
+    "back": "Back to 7ayLabs"
+  },
+  "emails": {
+    "welcomeSubject": "You are on the 7ayLabs list",
+    "welcomeBody": "Thanks for subscribing. You will hear from us only when we ship something.",
+    "unsubLine": "To stop these emails: {url}",
+    "contactSubject": "We got your message ({ref})",
+    "contactBody": "Thanks for writing to 7ayLabs. A person will read your message and reply to this address. Your reference is {ref}."
   }
 }
