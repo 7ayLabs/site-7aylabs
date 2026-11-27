@@ -11,6 +11,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Check, Globe } from 'lucide-react';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { routing, type Locale } from '@/i18n/routing';
+import { LOCALE_COOKIE, LOCALE_COOKIE_MAX_AGE } from '@/lib/geo';
 
 const NAMES: Record<Locale, string> = { en: 'English', es: 'Español', fr: 'Français' };
 
@@ -67,6 +68,8 @@ export function LanguageSwitch({ align = 'right' }: { align?: 'left' | 'right' }
               lang={l}
               onClick={() => {
                 setOpen(false);
+                // A choice made here outranks what the visitor's country suggests.
+                document.cookie = `${LOCALE_COOKIE}=${l}; path=/; max-age=${LOCALE_COOKIE_MAX_AGE}; samesite=lax`;
                 router.replace(pathname, { locale: l });
               }}
               className="flex min-h-11 w-full items-center justify-between gap-4 rounded px-3 text-left text-[15px] font-medium text-[var(--fg)] transition-colors duration-200 hover:text-[var(--accent)]"

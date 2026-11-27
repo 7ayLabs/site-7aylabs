@@ -383,3 +383,7 @@ Use `staging` in place of `prod` for the staging database.
 ## Email (optional)
 
 With `RESEND_API_KEY` set in the host env file, the site sends a welcome email with an unsubscribe link to new subscribers and a receipt to people who use the contact form, and copies each contact message to `CONTACT_NOTIFY_TO`. Without the key nothing is sent; everything is still stored. Unsubscribe links are signed with `SITE_SECRET`, or with `RATE_LIMIT_SALT` when `SITE_SECRET` is not set.
+
+## Language by country
+
+A first-time visitor to an address with no language in it is sent to English, Spanish or French by `middleware.ts` (rules in `lib/geo.ts`): the language they chose before, then their country, then their browser's languages. The country comes from the `CF-IPCountry` header, which Cloudflare adds when **IP Geolocation** is on for the zone (Network settings). With it off, the site still works and falls back to the browser's languages. Crawlers are never redirected.
