@@ -1025,6 +1025,59 @@ html[data-js]:not([data-fx]) [data-focus] {
   }
 }
 
+/* Lab console: five lines, one light sweeping each in turn. */
+.console {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.console-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.35rem 1rem;
+  align-items: baseline;
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid var(--glass-line);
+  overflow: hidden;
+}
+.console-row:last-child {
+  border-bottom: 0;
+}
+.console-row > :nth-child(n + 3) {
+  grid-column: 2;
+}
+@media (min-width: 900px) {
+  .console-row {
+    grid-template-columns: 2.5rem 9rem 13rem 1fr;
+    padding: 1.35rem 1.75rem;
+  }
+  .console-row > :nth-child(n + 3) {
+    grid-column: auto;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .console-row::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--fg) 13%, transparent), transparent);
+    transform: translateX(-100%);
+    animation: console-sweep 7.5s linear infinite;
+    animation-delay: calc(var(--i) * 1.5s);
+  }
+}
+@keyframes console-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  18%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .backdrop i {
     animation: none !important;

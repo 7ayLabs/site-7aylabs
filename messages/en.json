@@ -1,12 +1,13 @@
 {
   "meta": {
-    "title": "7ayLabs · The lab that publishes its misses",
-    "description": "7ayLabs builds apps, engines, models and on-chain tools, and runs them in public. First out: Vizzor, crypto intelligence that puts a deadline on every call and grades it.",
-    "og": "Nothing ships on a promise.",
-    "slogan": "Nothing ships on a promise.",
+    "title": "7ayLabs · On-chain intelligence lab: scan, track, decode",
+    "description": "7ayLabs builds instruments that read public blockchains: scanners, wallet trackers and models that turn raw blocks into answers. First release: Vizzor.",
+    "og": "Every block leaves a signal.",
+    "slogan": "Every block leaves a signal.",
     "keywords": [
-      "product laboratory",
-      "software studio",
+      "on-chain intelligence",
+      "blockchain scanner",
+      "wallet tracker",
       "crypto intelligence",
       "on-chain products",
       "AI agents",
@@ -40,7 +41,7 @@
       "toLight": "Switch to light mode"
     },
     "footer": {
-      "tagline": "The lab that publishes its misses.",
+      "tagline": "Scan. Track. Decode.",
       "company": "Company",
       "product": "Vizzor",
       "follow": "Follow",
@@ -58,14 +59,14 @@
       "links": "Site"
     },
     "sections": {
-      "lab": "Lab",
-      "products": "Products",
-      "stack": "Stack",
-      "method": "Method",
-      "reach": "Coverage",
-      "updates": "Notes",
-      "faq": "FAQ",
-      "contact": "Contact"
+      "lab": "Instruments",
+      "products": "Releases",
+      "stack": "Pipeline",
+      "method": "Protocol",
+      "updates": "Ledger",
+      "faq": "Queries",
+      "contact": "Channel",
+      "console": "Console"
     },
     "talk": "Talk to us",
     "block": "Block",
@@ -74,10 +75,10 @@
   },
   "home": {
     "hero": {
-      "title": "A lab that publishes its misses.",
-      "sub": "7ayLabs builds apps, engines, models and on-chain tools, then runs them where anyone can watch. Vizzor went first: it puts a deadline on every crypto call and marks it right or wrong when the clock runs out.",
-      "ctaPrimary": "Watch Vizzor work",
-      "ctaSecondary": "Meet the lab",
+      "title": "Scan. Track. Decode.",
+      "sub": "7ayLabs builds the instruments that read public chains: scanners that pull the raw activity, trackers that follow the money, and models that say what it means. The first one out of the lab is Vizzor.",
+      "ctaPrimary": "Open the console",
+      "ctaSecondary": "See release 01",
       "board": {
         "title": "In the lab right now",
         "live": "Live",
@@ -86,35 +87,35 @@
         "nextName": "The next product",
         "nextLine": "Not announced yet. We show things when they work."
       },
-      "slogan": "Nothing ships on a promise.",
-      "pill": "Product laboratory",
+      "slogan": "Every block leaves a signal.",
+      "pill": "On-chain intelligence lab",
       "scroll": "Scroll"
     },
     "fields": {
-      "title": "One bench, four trades.",
-      "lede": "The person who trains the model sits beside the one who draws the screen. That is deliberate: a product gets good when its parts are allowed to argue.",
+      "title": "Four instruments on one bench.",
+      "lede": "Each does a single job and feeds the next. Together they take a raw block and hand back an answer.",
       "items": {
         "apps": {
-          "title": "Apps",
-          "line": "What you actually touch. If it needs a tutorial, we got it wrong."
+          "title": "Ship",
+          "line": "Then it becomes a product a person can open and use. No manual, no special syntax."
         },
         "software": {
-          "title": "Software",
-          "line": "The plumbing: data in, answers out, records kept. Dull when it works, which is the point."
+          "title": "Track",
+          "line": "Wallets followed from chain to chain, so money on the move shows up while it is still moving."
         },
         "intelligence": {
-          "title": "Intelligence",
-          "line": "Models that have to explain themselves. An answer with no reasoning behind it does not leave the building."
+          "title": "Decode",
+          "line": "ChronoVisor, our own model, turns that activity into an answer and shows how it got there."
         },
         "onchain": {
-          "title": "On-chain",
-          "line": "Wallets, payments and contracts on public chains, where the ledger does the vouching."
+          "title": "Scan",
+          "line": "Blocks read at the source: transfers, balances, contracts. The chain itself, not a summary of it."
         }
       }
     },
     "method": {
-      "title": "House rules.",
-      "lede": "Four of them. They cost us speed and we keep them anyway.",
+      "title": "Lab protocol.",
+      "lede": "Four rules a release clears before it leaves the bench.",
       "items": {
         "receipts": {
           "title": "The record beats the pitch",
@@ -158,17 +159,17 @@
       }
     },
     "updates": {
-      "title": "What shipped, and when.",
+      "title": "The lab ledger.",
       "all": "All updates",
-      "lede": "Dated notes, newest on top. No roadmap theatre."
+      "lede": "Every release, dated and written down. Newest block on top."
     },
     "faq": {
-      "title": "Asked often, answered straight.",
-      "lede": "If yours is missing, the contact form reaches a person."
+      "title": "Run a query.",
+      "lede": "The ones we get most. Anything else goes straight to a person."
     },
     "stack": {
-      "title": "We own every layer, down to the metal.",
-      "lede": "Screen, engine, model, chain, server: all built here. When something breaks, the person who can fix it is already in the room.",
+      "title": "From raw block to answer, in five hops.",
+      "lede": "Chain, engine, model, screen, server. Every hop is ours, so when one fails the fix is already in the room.",
       "layers": {
         "interface": {
           "name": "Interface",
@@ -196,22 +197,31 @@
     },
     "status": {
       "title": "Lab status",
-      "products": "product in the wild",
-      "chains": "chains read",
+      "products": "release live",
+      "chains": "chains scanned",
       "wallets": "wallets supported"
     },
-    "reach": {
-      "title": "{count} chains, read at the source.",
-      "lede": "Not somebody's summary of a blockchain. Vizzor asks the network itself, so a transfer is looked up where it happened."
-    },
     "contact": {
-      "title": "Tell us what you are building.",
-      "lede": "Or just ask something. Every message is read by a person."
+      "title": "Open a channel.",
+      "lede": "Building on-chain, or curious about what we are building? A person reads every message."
+    },
+    "console": {
+      "title": "Watch a block become an answer.",
+      "lede": "The whole job in five lines. Raw activity goes in at the top; something a person can act on comes out at the bottom.",
+      "head": "lab console",
+      "note": "Example run. Addresses and figures are illustrative.",
+      "rows": {
+        "scan": "Read at the source. 184 transfers, 12 contracts touched.",
+        "track": "A large wallet sends 1,200 ETH toward an exchange.",
+        "flag": "A wallet funded minutes ago starts buying the same token.",
+        "decode": "The model weighs it against price and history.",
+        "ship": "The answer reaches the person who asked."
+      }
     }
   },
   "products": {
-    "title": "Vizzor calls it. The clock decides.",
-    "lede": "Target, deadline, confidence. When time is up the call gets its mark, and the mark stays, whichever way it went.",
+    "title": "Release 01 is live.",
+    "lede": "Vizzor is the first instrument out of the lab: crypto intelligence you ask in plain words. It scans, tracks and decodes, then commits to an answer.",
     "vizzor": {
       "kind": "Crypto intelligence",
       "live": "Live",
@@ -255,7 +265,7 @@
       }
     },
     "next": {
-      "title": "The next one is still on the bench.",
+      "title": "Release 02 is on the bench.",
       "line": "No name and no date until it works in front of people. Leave an email below and you get one message, the day it ships.",
       "cta": "Ask us about it"
     },
@@ -273,12 +283,12 @@
   },
   "productsPage": {
     "meta": {
-      "title": "Products · What 7ayLabs has shipped",
-      "description": "What 7ayLabs has shipped and what is still on the bench. Vizzor, crypto intelligence that grades every call in public, is live.",
+      "title": "Releases · Instruments from the 7ayLabs lab",
+      "description": "Every product 7ayLabs has released and what is still on the bench. Vizzor, crypto intelligence that scans, tracks and decodes, is live.",
       "crumb": "Products"
     },
-    "title": "Out in the wild.",
-    "lede": "What has left the bench, each with its real status, and one honest line about what has not."
+    "title": "Releases.",
+    "lede": "Every instrument that has left the lab, with its real status. One so far, more on the bench."
   },
   "coverage": {
     "trusted": "Trusted by",
@@ -293,7 +303,7 @@
   "questions": {
     "what": {
       "q": "What is 7ayLabs?",
-      "a": "A lab. We build our own products and run them in public. Vizzor is the first."
+      "a": "A lab for on-chain intelligence. We build tools that scan public chains, track wallets and decode what the activity means. Vizzor is the first one released."
     },
     "vizzor": {
       "q": "What is Vizzor?",
@@ -360,7 +370,7 @@
   "vizzorPage": {
     "meta": {
       "title": "Vizzor · AI crypto intelligence, graded in public",
-      "description": "Vizzor is crypto intelligence from the 7ayLabs laboratory: price calls with a target, a deadline and a confidence, whale flow and on-chain forensics. Every call is graded in public.",
+      "description": "Vizzor is crypto intelligence from the 7ayLabs lab: price calls with a target, a deadline and a confidence, whale tracking and on-chain forensics. Every call is graded in public.",
       "crumb": "Vizzor"
     },
     "title": "Every call gets a deadline. Every deadline gets a verdict.",
@@ -480,17 +490,17 @@
   },
   "aboutPage": {
     "meta": {
-      "title": "About · The lab behind Vizzor",
-      "description": "About 7ayLabs, the laboratory behind Vizzor: why it exists, the rules it builds by, and how to reach the team.",
+      "title": "About · The on-chain intelligence lab behind Vizzor",
+      "description": "About 7ayLabs, the on-chain intelligence lab behind Vizzor: why it exists, the protocol it builds by, and how to reach the team.",
       "crumb": "About"
     },
-    "title": "We would rather be checked than believed.",
-    "lede": "7ayLabs is a lab. We build our own products, run them ourselves, and leave the results where anyone can look.",
+    "title": "We read chains for a living.",
+    "lede": "7ayLabs is a lab for on-chain intelligence. We build the scanners, the trackers and the models ourselves, and we run them ourselves.",
     "mission": {
-      "title": "Predictions are cheap until someone keeps score.",
-      "p1": "Crypto is full of confident calls nobody revisits. The right ones get quoted for years. The wrong ones are quietly deleted.",
-      "p2": "We thought a tool that gives advice should carry its own scoreboard, in public, where the people leaning on it can read it.",
-      "p3": "That became Vizzor. The same rule now applies to everything else on our bench."
+      "title": "Public chains are open. Reading them is the hard part.",
+      "p1": "Everything on a public chain is visible, and almost none of it is legible. Millions of transfers a day, and the ones that matter look like all the rest.",
+      "p2": "We started the lab to build the instruments that close that gap: read at the source, follow what moves, and say plainly what it means.",
+      "p3": "Vizzor is the first of them. The same bench is building the next."
     },
     "facts": {
       "title": "On paper.",
@@ -513,23 +523,23 @@
   },
   "updatesPage": {
     "meta": {
-      "title": "Lab notes · Releases and news",
-      "description": "Release notes and company news from 7ayLabs, the laboratory, and its product Vizzor.",
+      "title": "Ledger · Releases and news from the lab",
+      "description": "Release notes and company news from 7ayLabs, the on-chain intelligence lab, and its product Vizzor.",
       "crumb": "Lab notes"
     },
-    "title": "What shipped, and when.",
-    "lede": "Dated notes, newest on top. No roadmap theatre.",
+    "title": "The lab ledger.",
+    "lede": "Every release, dated and written down. Newest block on top.",
     "empty": "Nothing published yet.",
     "back": "All updates",
     "fallback": "This post has not been translated yet, so it is shown in English."
   },
   "contactPage": {
     "meta": {
-      "title": "Contact · Talk to the lab",
-      "description": "Contact 7ayLabs, the laboratory, about partnerships, press, security or the company.",
+      "title": "Contact · Open a channel to the lab",
+      "description": "Contact 7ayLabs, the on-chain intelligence lab, about partnerships, press, security or the company.",
       "crumb": "Contact"
     },
-    "title": "Talk to a person.",
+    "title": "Open a channel.",
     "lede": "Partnerships, press, a security report or a plain question. It lands in an inbox a human reads.",
     "elsewhere": {
       "title": "Faster for some things",
@@ -615,7 +625,7 @@
     "contactLink": "use the contact page"
   },
   "notFound": {
-    "title": "Nothing lives at this address.",
+    "title": "This block was never mined.",
     "lede": "The site was rebuilt and some old links went with it. These still work.",
     "home": "Go to the home page",
     "vizzor": "About Vizzor"

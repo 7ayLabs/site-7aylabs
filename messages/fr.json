@@ -1,12 +1,13 @@
 {
   "meta": {
-    "title": "7ayLabs · Le labo qui publie ses erreurs",
-    "description": "7ayLabs construit des apps, des moteurs, des modèles et des outils on-chain, et les fait tourner en public. Le premier : Vizzor, l'intelligence crypto qui met une échéance sur chaque prévision et la note.",
-    "og": "Ici, rien ne sort sur une promesse.",
-    "slogan": "Ici, rien ne sort sur une promesse.",
+    "title": "7ayLabs · Labo d’intelligence on-chain : scanner, tracer, décoder",
+    "description": "7ayLabs construit des instruments qui lisent les blockchains publiques : scanners, traceurs de wallets et modèles qui transforment des blocs en réponses. Première sortie : Vizzor.",
+    "og": "Chaque bloc laisse un signal.",
+    "slogan": "Chaque bloc laisse un signal.",
     "keywords": [
-      "laboratoire de produits",
-      "studio logiciel",
+      "intelligence on-chain",
+      "scanner de blockchain",
+      "traceur de wallets",
       "intelligence crypto",
       "produits on-chain",
       "agents IA",
@@ -40,7 +41,7 @@
       "toLight": "Passer en mode clair"
     },
     "footer": {
-      "tagline": "Le labo qui publie ses erreurs.",
+      "tagline": "Scanner. Tracer. Décoder.",
       "company": "Entreprise",
       "product": "Vizzor",
       "follow": "Suivre",
@@ -58,14 +59,14 @@
       "links": "Site"
     },
     "sections": {
-      "lab": "Labo",
-      "products": "Produits",
-      "stack": "Couches",
-      "method": "Méthode",
-      "reach": "Couverture",
-      "updates": "Notes",
-      "faq": "FAQ",
-      "contact": "Contact"
+      "lab": "Instruments",
+      "products": "Sorties",
+      "stack": "Parcours",
+      "method": "Protocole",
+      "updates": "Registre",
+      "faq": "Requêtes",
+      "contact": "Canal",
+      "console": "Console"
     },
     "talk": "Parlons-en",
     "block": "Bloc",
@@ -74,10 +75,10 @@
   },
   "home": {
     "hero": {
-      "title": "Un labo qui publie ses erreurs.",
-      "sub": "7ayLabs construit des apps, des moteurs, des modèles et des outils on-chain, puis les fait tourner là où chacun peut regarder. Vizzor est passé le premier : il met une échéance sur chaque prévision crypto et la marque juste ou fausse quand le temps est écoulé.",
-      "ctaPrimary": "Voir Vizzor à l’œuvre",
-      "ctaSecondary": "Découvrir le labo",
+      "title": "Scanner. Tracer. Décoder.",
+      "sub": "7ayLabs construit les instruments qui lisent les chaînes publiques : des scanners qui extraient l'activité brute, des traceurs qui suivent l'argent et des modèles qui disent ce que cela signifie. Le premier sorti du labo est Vizzor.",
+      "ctaPrimary": "Ouvrir la console",
+      "ctaSecondary": "Voir la sortie 01",
       "board": {
         "title": "En ce moment au laboratoire",
         "live": "En ligne",
@@ -86,35 +87,35 @@
         "nextName": "Le prochain produit",
         "nextLine": "Pas encore annoncé. Nous montrons les choses quand elles marchent."
       },
-      "slogan": "Ici, rien ne sort sur une promesse.",
-      "pill": "Laboratoire de produits",
+      "slogan": "Chaque bloc laisse un signal.",
+      "pill": "Labo d'intelligence on-chain",
       "scroll": "Défiler"
     },
     "fields": {
-      "title": "Une paillasse, quatre métiers.",
-      "lede": "Celle qui entraîne le modèle est assise à côté de celui qui dessine l'écran. C'est voulu : un produit devient bon quand ses parties ont le droit de se disputer.",
+      "title": "Quatre instruments sur une paillasse.",
+      "lede": "Chacun fait un seul travail et alimente le suivant. Ensemble, ils prennent un bloc brut et rendent une réponse.",
       "items": {
         "apps": {
-          "title": "Apps",
-          "line": "Ce que vous touchez vraiment. S'il faut un tutoriel, nous avons raté."
+          "title": "Livrer",
+          "line": "Puis cela devient un produit qu'on ouvre et qu'on utilise. Sans mode d'emploi ni syntaxe spéciale."
         },
         "software": {
-          "title": "Logiciels",
-          "line": "La plomberie : des données entrent, des réponses sortent, tout est consigné. Ennuyeuse quand elle marche, et c'est le but."
+          "title": "Tracer",
+          "line": "Des wallets suivis de chaîne en chaîne, pour voir l'argent pendant qu'il bouge encore."
         },
         "intelligence": {
-          "title": "Intelligence",
-          "line": "Des modèles tenus de s'expliquer. Une réponse sans raisonnement ne quitte pas le bâtiment."
+          "title": "Décoder",
+          "line": "ChronoVisor, notre propre modèle, transforme cette activité en réponse et montre comment il y est arrivé."
         },
         "onchain": {
-          "title": "On-chain",
-          "line": "Wallets, paiements et contrats sur des chaînes publiques, où le registre se porte garant à notre place."
+          "title": "Scanner",
+          "line": "Des blocs lus à la source : transferts, soldes, contrats. La chaîne elle-même, pas un résumé."
         }
       }
     },
     "method": {
-      "title": "Règles de la maison.",
-      "lede": "Il y en a quatre. Elles nous coûtent de la vitesse et nous les gardons quand même.",
+      "title": "Protocole du labo.",
+      "lede": "Quatre règles qu'une sortie respecte avant de quitter la paillasse.",
       "items": {
         "receipts": {
           "title": "L'historique l'emporte sur le discours",
@@ -158,17 +159,17 @@
       }
     },
     "updates": {
-      "title": "Ce qui est sorti, et quand.",
+      "title": "Le registre du labo.",
       "all": "Toutes les nouveautés",
-      "lede": "Des notes datées, la plus récente en haut. Pas de théâtre de roadmap."
+      "lede": "Chaque sortie, datée et écrite. Le bloc le plus récent en haut."
     },
     "faq": {
-      "title": "Souvent posées, répondues net.",
-      "lede": "S'il manque la vôtre, le formulaire de contact arrive chez une personne."
+      "title": "Lancez une requête.",
+      "lede": "Celles que nous recevons le plus. Toute autre va droit à une personne."
     },
     "stack": {
-      "title": "Chaque couche est à nous, jusqu'au métal.",
-      "lede": "Écran, moteur, modèle, chaîne, serveur : tout est fait ici. Quand quelque chose casse, la personne qui sait le réparer est déjà dans la pièce.",
+      "title": "Du bloc brut à la réponse, en cinq sauts.",
+      "lede": "Chaîne, moteur, modèle, écran, serveur. Chaque saut est à nous : quand l'un lâche, la réparation est déjà dans la pièce.",
       "layers": {
         "interface": {
           "name": "Interface",
@@ -196,22 +197,31 @@
     },
     "status": {
       "title": "État du laboratoire",
-      "products": "produit dans la nature",
-      "chains": "chaînes lues",
+      "products": "sortie en ligne",
+      "chains": "chaînes scannées",
       "wallets": "wallets pris en charge"
     },
-    "reach": {
-      "title": "{count} chaînes, lues à la source.",
-      "lede": "Pas le résumé que quelqu'un a fait d'une blockchain. Vizzor interroge le réseau lui-même : un transfert est consulté là où il a eu lieu."
-    },
     "contact": {
-      "title": "Dites-nous ce que vous construisez.",
-      "lede": "Ou posez simplement une question. Chaque message est lu par une personne."
+      "title": "Ouvrez un canal.",
+      "lede": "Vous construisez on-chain, ou ce que nous construisons vous intrigue ? Une personne lit chaque message."
+    },
+    "console": {
+      "title": "Regardez un bloc devenir une réponse.",
+      "lede": "Tout le travail en cinq lignes. L'activité brute entre en haut ; en bas sort quelque chose sur quoi une personne peut agir.",
+      "head": "console du labo",
+      "note": "Exécution d'exemple. Adresses et chiffres illustratifs.",
+      "rows": {
+        "scan": "Lu à la source. 184 transferts, 12 contrats touchés.",
+        "track": "Un gros wallet envoie 1 200 ETH vers un exchange.",
+        "flag": "Un wallet alimenté il y a quelques minutes se met à acheter le même token.",
+        "decode": "Le modèle le confronte au prix et à l'historique.",
+        "ship": "La réponse arrive à la personne qui a demandé."
+      }
     }
   },
   "products": {
-    "title": "Vizzor l'annonce. L'horloge tranche.",
-    "lede": "Cible, échéance, confiance. Quand le temps est écoulé, la prévision reçoit sa note, et la note reste, dans un sens comme dans l'autre.",
+    "title": "La sortie 01 est en ligne.",
+    "lede": "Vizzor est le premier instrument sorti du labo : une intelligence crypto qu'on interroge avec ses propres mots. Il scanne, trace et décode, puis s'engage sur une réponse.",
     "vizzor": {
       "kind": "Intelligence crypto",
       "live": "En ligne",
@@ -255,7 +265,7 @@
       }
     },
     "next": {
-      "title": "Le suivant est encore sur la paillasse.",
+      "title": "La sortie 02 est sur la paillasse.",
       "line": "Ni nom ni date tant qu'il ne marche pas devant des gens. Laissez un e-mail ci-dessous et vous recevrez un seul message, le jour de sa sortie.",
       "cta": "Posez-nous la question"
     },
@@ -273,12 +283,12 @@
   },
   "productsPage": {
     "meta": {
-      "title": "Produits · Ce que 7ayLabs a livré",
-      "description": "Ce que 7ayLabs a livré et ce qui est encore sur la paillasse. Vizzor, l'intelligence crypto qui note chaque prévision en public, est en ligne.",
+      "title": "Sorties · Les instruments du labo 7ayLabs",
+      "description": "Chaque produit que 7ayLabs a sorti et ce qui est encore sur la paillasse. Vizzor, l'intelligence crypto qui scanne, trace et décode, est en ligne.",
       "crumb": "Produits"
     },
-    "title": "Déjà dans la nature.",
-    "lede": "Ce qui a quitté la paillasse, chaque chose avec son vrai statut, et une ligne honnête sur ce qui ne l'a pas encore fait."
+    "title": "Sorties.",
+    "lede": "Chaque instrument sorti du labo, avec son vrai statut. Un pour l’instant, d’autres sur la paillasse."
   },
   "coverage": {
     "trusted": "Ils nous font confiance",
@@ -293,7 +303,7 @@
   "questions": {
     "what": {
       "q": "Qu'est-ce que 7ayLabs ?",
-      "a": "Un laboratoire. Nous construisons nos propres produits et les faisons tourner en public. Vizzor est le premier."
+      "a": "Un labo d'intelligence on-chain. Nous construisons des outils qui scannent les chaînes publiques, tracent les wallets et décodent ce que l'activité signifie. Vizzor est le premier publié."
     },
     "vizzor": {
       "q": "Qu'est-ce que Vizzor ?",
@@ -360,7 +370,7 @@
   "vizzorPage": {
     "meta": {
       "title": "Vizzor · Intelligence crypto par IA, notée en public",
-      "description": "Vizzor est l'intelligence crypto du laboratoire 7ayLabs : prévisions de prix avec cible, échéance et confiance, mouvements des baleines et analyse on-chain. Chaque prévision est notée en public.",
+      "description": "Vizzor est l'intelligence crypto du labo 7ayLabs : prévisions de prix avec cible, échéance et confiance, suivi des baleines et analyse forensique on-chain. Chaque prévision est notée en public.",
       "crumb": "Vizzor"
     },
     "title": "Chaque prévision a une échéance. Chaque échéance a un verdict.",
@@ -480,17 +490,17 @@
   },
   "aboutPage": {
     "meta": {
-      "title": "À propos · Le labo derrière Vizzor",
-      "description": "À propos de 7ayLabs, le laboratoire derrière Vizzor : sa raison d'être, ses règles de construction et comment joindre l'équipe.",
+      "title": "À propos · Le labo d'intelligence on-chain derrière Vizzor",
+      "description": "À propos de 7ayLabs, le labo d'intelligence on-chain derrière Vizzor : sa raison d'être, son protocole de construction et comment joindre l'équipe.",
       "crumb": "À propos"
     },
-    "title": "Nous préférons être vérifiés qu'être crus.",
-    "lede": "7ayLabs est un laboratoire. Nous construisons nos produits, les exploitons nous-mêmes et laissons les résultats là où chacun peut regarder.",
+    "title": "Lire les chaînes, c’est notre métier.",
+    "lede": "7ayLabs est un labo d'intelligence on-chain. Nous construisons nous-mêmes les scanners, les traceurs et les modèles, et nous les exploitons nous-mêmes.",
     "mission": {
-      "title": "Prévoir ne coûte rien tant que personne ne tient les comptes.",
-      "p1": "La crypto est pleine de prévisions assurées que personne ne relit. Les bonnes sont citées pendant des années. Les mauvaises sont effacées sans bruit.",
-      "p2": "Nous avons pensé qu'un outil qui donne des conseils devait porter son propre tableau de score, en public, là où ceux qui s'y fient peuvent le lire.",
-      "p3": "C'est devenu Vizzor. La même règle vaut désormais pour tout le reste de notre paillasse."
+      "title": "Les chaînes publiques sont ouvertes. Le difficile, c’est de les lire.",
+      "p1": "Tout ce qui se passe sur une chaîne publique est visible, et presque rien n'est lisible. Des millions de transferts par jour, et ceux qui comptent ressemblent à tous les autres.",
+      "p2": "Nous avons ouvert le labo pour construire les instruments qui comblent cet écart : lire à la source, suivre ce qui bouge et dire clairement ce que cela signifie.",
+      "p3": "Vizzor est le premier. La même paillasse construit le suivant."
     },
     "facts": {
       "title": "Sur le papier.",
@@ -513,23 +523,23 @@
   },
   "updatesPage": {
     "meta": {
-      "title": "Notes du labo · Sorties et nouvelles",
-      "description": "Notes de version et actualités de 7ayLabs, le laboratoire, et de son produit Vizzor.",
+      "title": "Registre · Sorties et nouvelles du labo",
+      "description": "Notes de version et actualités de 7ayLabs, le labo d'intelligence on-chain, et de son produit Vizzor.",
       "crumb": "Notes"
     },
-    "title": "Ce qui est sorti, et quand.",
-    "lede": "Des notes datées, la plus récente en haut. Pas de théâtre de roadmap.",
+    "title": "Le registre du labo.",
+    "lede": "Chaque sortie, datée et écrite. Le bloc le plus récent en haut.",
     "empty": "Rien de publié pour l'instant.",
     "back": "Toutes les nouveautés",
     "fallback": "Cet article n'est pas encore traduit ; il est donc affiché en anglais."
   },
   "contactPage": {
     "meta": {
-      "title": "Contact · Parlez au labo",
-      "description": "Contactez 7ayLabs, le laboratoire, au sujet de partenariats, de la presse, de la sécurité ou de l'entreprise.",
+      "title": "Contact · Ouvrez un canal avec le labo",
+      "description": "Contactez 7ayLabs, le labo d'intelligence on-chain, au sujet de partenariats, de la presse, de la sécurité ou de l'entreprise.",
       "crumb": "Contact"
     },
-    "title": "Parlez à une personne.",
+    "title": "Ouvrez un canal.",
     "lede": "Partenariats, presse, signalement de sécurité ou simple question. Ça arrive dans une boîte qu'un humain lit.",
     "elsewhere": {
       "title": "Plus rapide pour certaines choses",
@@ -615,7 +625,7 @@
     "contactLink": "utilisez la page de contact"
   },
   "notFound": {
-    "title": "Rien ne vit à cette adresse.",
+    "title": "Ce bloc n'a jamais été miné.",
     "lede": "Le site a été refait et certains anciens liens sont partis avec. Ceux-ci marchent toujours.",
     "home": "Aller à l'accueil",
     "vizzor": "À propos de Vizzor"

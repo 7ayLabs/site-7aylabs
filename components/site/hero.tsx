@@ -65,10 +65,10 @@ export async function Hero() {
             {t('sub')}
           </p>
           <div data-reveal className="mt-8 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row">
-            <a href="#vizzor" className="btn btn-ink">
+            <a href="#console" className="btn btn-ink">
               {t('ctaPrimary')}
             </a>
-            <a href="#lab" className="btn btn-line">
+            <a href="#vizzor" className="btn btn-line">
               {t('ctaSecondary')}
             </a>
           </div>

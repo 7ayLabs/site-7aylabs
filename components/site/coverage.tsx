@@ -10,11 +10,12 @@ import { ChainMark } from '@/components/ui/chain-mark';
 import { PARTNERS } from '@/lib/site';
 import { CHAINS } from '@/lib/vizzor/chains';
 
-export async function Coverage() {
+export async function Coverage({ chains = true }: { chains?: boolean }) {
   const t = await getTranslations('coverage');
 
   return (
     <>
+      {chains ? (
       <ul data-reveal="scale" className="glass grid grid-cols-2 overflow-hidden rounded-[22px] sm:grid-cols-4 xl:grid-cols-6">
         {CHAINS.map((c) => (
           <li
@@ -26,6 +27,7 @@ export async function Coverage() {
           </li>
         ))}
       </ul>
+      ) : null}
 
       <div data-reveal className="mt-6">
         {PARTNERS.map((p) => (
