@@ -51,6 +51,7 @@ jobs:
     timeout-minutes: 15
     permissions:
       contents: read
+      packages: read
     steps:
       # The workflow's own ref, with full history: the action and the
       # deploy helper come from here, the overlay from the target commit.
@@ -120,6 +121,25 @@ jobs:
           stdin-file: ${{ runner.temp }}/site-upload.tar
           timeout-minutes: '3'
 
+      - name: Write the registry token to a file
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          ( umask 077; printf '%s' "$GH_TOKEN" > "$RUNNER_TEMP/registry-token" )
+
+      - name: Sign the host in to the registry
+        uses: ./.github/actions/vps-ssh
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          user: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || '22' }}
+          known-hosts: ${{ secrets.VPS_KNOWN_HOSTS }}
+          command: docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          stdin-file: ${{ runner.temp }}/registry-token
+          timeout-minutes: '2'
+
       # Pulls first: if the tag is gone from the registry, the helper stops
       # before touching the running container.
       - name: Recreate the service with the old image
@@ -167,3 +187,19 @@ jobs:
           known-hosts: ${{ secrets.VPS_KNOWN_HOSTS }}
           command: bash /opt/7aylabs-site/scripts/site-deploy.sh pin ${{ inputs.target }} ${{ steps.r.outputs.image }}
           timeout-minutes: '3'
+
+      - name: Sign the host out of the registry
+        if: always()
+        uses: ./.github/actions/vps-ssh
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          user: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || '22' }}
+          known-hosts: ${{ secrets.VPS_KNOWN_HOSTS }}
+          command: docker logout ghcr.io
+          timeout-minutes: '2'
+
+      - name: Remove the token file
+        if: always()
+        run: rm -f "$RUNNER_TEMP/registry-token"
