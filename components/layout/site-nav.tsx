@@ -1,11 +1,9 @@
 /**
- * SiteNav — a plain bar across the top: the logo, the pages, the two
- * preferences, and the way into the product. It sticks, and gains a rule
- * under it once the page has moved (NavBar).
+ * SiteNav — a compact glass capsule centred at the top: the logo, the home
+ * page's sections, the two preferences, and the way to reach us.
  */
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { VIZZOR } from '@/lib/site';
 import { BrandMark } from './brand-mark';
 import { LanguageSwitch } from './language-switch';
 import { MobileMenu } from './mobile-menu';
@@ -18,27 +16,21 @@ export async function SiteNav() {
 
   return (
     <NavBar>
-      <nav aria-label={t('nav.label')} className="flex h-[60px] items-center gap-6 pl-5 pr-2">
-        <Link href="/" aria-label={t('home')} className="inline-flex shrink-0 items-center">
-          <BrandMark className="h-7 w-auto" priority />
+      <nav aria-label={t('nav.label')} className="flex h-[56px] items-center gap-2 pl-4 pr-1.5">
+        <Link href="/" aria-label={t('home')} className="mr-2 inline-flex shrink-0 items-center">
+          <BrandMark className="h-6 w-auto" priority />
         </Link>
 
         <NavLinks />
 
-        <div className="ml-auto flex shrink-0 items-center gap-1 md:ml-0">
-          <div className="hidden items-center md:flex">
+        <div className="ml-auto flex shrink-0 items-center lg:ml-1">
+          <div className="hidden items-center lg:flex">
             <LanguageSwitch />
             <ThemeToggle />
           </div>
-          <a
-            href={VIZZOR.app}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${t('openVizzor')} (${t('newTab')})`}
-            className="btn btn-ink ml-2 !min-h-11 !px-4 !text-[14.5px]"
-          >
-            {t('openVizzor')}
-          </a>
+          <Link href="/#contact" className="btn btn-ink ml-1 !min-h-11 !rounded-[12px] !px-4 !text-[14.5px]">
+            {t('talk')}
+          </Link>
           <MobileMenu />
         </div>
       </nav>

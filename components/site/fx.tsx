@@ -20,7 +20,7 @@ export function PageFx(): null {
 
   useEffect(() => {
     const root = document.documentElement;
-    const els = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+    const els = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal], [data-focus]'));
     if (els.length === 0) return;
     if (!('IntersectionObserver' in window)) {
       els.forEach((el) => el.setAttribute('data-in', ''));

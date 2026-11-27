@@ -54,12 +54,38 @@
       "talk": "Escríbenos",
       "xLab": "7ayLabs en X",
       "xVizzor": "Vizzor en X",
-      "seeProducts": "Ver los productos"
+      "seeProducts": "Ver los productos",
+      "links": "Sitio"
+    },
+    "sections": {
+      "lab": "Lab",
+      "products": "Productos",
+      "stack": "Capas",
+      "method": "Método",
+      "reach": "Cobertura",
+      "updates": "Notas",
+      "faq": "FAQ",
+      "contact": "Contacto"
+    },
+    "talk": "Hablemos",
+    "hints": {
+      "products": {
+        "text": "¿Quieres probarlo?",
+        "cta": "Abrir Vizzor"
+      },
+      "stack": {
+        "text": "¿Construyes algo?",
+        "cta": "Hablemos"
+      },
+      "updates": {
+        "text": "¿Quieres la próxima nota?",
+        "cta": "Suscríbete"
+      }
     }
   },
   "home": {
     "hero": {
-      "title": "El laboratorio Web3.",
+      "title": "El laboratorio|Web3",
       "sub": "7ayLabs diseña, construye y opera sus propias apps, software, inteligencia y productos on-chain. Cada uno empieza como un experimento y sale del laboratorio solo cuando se sostiene en público. El primero, Vizzor, ya está disponible.",
       "ctaPrimary": "Ver los productos",
       "ctaSecondary": "Cómo trabajamos",
@@ -71,10 +97,12 @@
         "nextName": "El próximo producto",
         "nextLine": "Aún sin anunciar. Mostramos las cosas cuando funcionan."
       },
-      "slogan": "Software que puedes comprobar."
+      "slogan": "Software que puedes comprobar.",
+      "pill": "Laboratorio Web3",
+      "scroll": "Desliza"
     },
     "fields": {
-      "title": "Cuatro disciplinas. Una mesa.",
+      "title": "Cuatro disciplinas,|una mesa",
       "lede": "Apps, software, inteligencia y on-chain se construyen aquí lado a lado, por las mismas personas, para que cada producto tenga las cuatro.",
       "items": {
         "apps": {
@@ -96,7 +124,7 @@
       }
     },
     "method": {
-      "title": "Reglas del laboratorio.",
+      "title": "Las reglas|del laboratorio",
       "lede": "Cuatro hábitos detrás de todo lo que publicamos. Por ellos Vizzor publica sus fallos.",
       "items": {
         "receipts": {
@@ -115,19 +143,42 @@
           "title": "Publicar y mostrar el trabajo",
           "line": "Versiones pequeñas y frecuentes, cada una explicada para que veas qué cambió."
         }
+      },
+      "table": {
+        "rule": "Regla",
+        "practice": "Qué hacemos",
+        "check": "Dónde comprobarlo",
+        "rows": {
+          "receipts": {
+            "practice": "Cada predicción de Vizzor se califica al vencer su plazo, acierto o fallo.",
+            "check": "El historial público en vizzor.ai"
+          },
+          "plain": {
+            "practice": "Preguntas con tus palabras, en tres idiomas. Sin lenguaje de consultas.",
+            "check": "Abre Vizzor y escribe una pregunta"
+          },
+          "privacy": {
+            "practice": "Este sitio guarda un correo o un mensaje solo si lo envías. Sin rastreadores.",
+            "check": "Nuestra página de privacidad"
+          },
+          "ship": {
+            "practice": "Cada versión se explica el día que sale.",
+            "check": "Notas del laboratorio"
+          }
+        }
       }
     },
     "updates": {
-      "title": "Notas del laboratorio.",
+      "title": "Notas del|laboratorio",
       "all": "Todas las novedades",
       "lede": "Versiones y noticias, escritas según ocurren."
     },
     "faq": {
-      "title": "Respuestas directas.",
+      "title": "Respuestas|directas",
       "lede": "Las preguntas que más nos hacen, sin discurso de venta."
     },
     "stack": {
-      "title": "Cinco capas, todas nuestras.",
+      "title": "Cinco capas,|todas nuestras",
       "lede": "De la pantalla a los servidores, cada capa bajo nuestros productos se construye y se opera en casa.",
       "layers": {
         "interface": {
@@ -158,12 +209,30 @@
       "title": "Estado del laboratorio",
       "products": "producto en vivo",
       "chains": "blockchains leídas",
-      "languages": "idiomas",
-      "latest": "última nota"
-    }
+      "languages": "idiomas"
+    },
+    "reach": {
+      "title": "{count} blockchains,|leídas en vivo",
+      "lede": "Vizzor lee cada red directamente, así una wallet o una transferencia se consulta donde realmente ocurrió."
+    },
+    "contact": {
+      "title": "¿Listo para ver|lo que funciona?",
+      "lede": "Cuéntanos qué estás construyendo o qué quieres saber. Una persona lee cada mensaje."
+    },
+    "hub": {
+      "title": "Todo a lo que se conecta Vizzor",
+      "center": "Vizzor",
+      "note": "Cadenas, fuentes de datos y el modelo que hay detrás, en un solo producto."
+    },
+    "words": [
+      "Apps",
+      "Software",
+      "Inteligencia",
+      "On-chain"
+    ]
   },
   "products": {
-    "title": "Lo que ya salió del laboratorio.",
+    "title": "Lo que ya salió|del laboratorio",
     "lede": "Un producto sale cuando funciona en público, no cuando se anuncia. Hasta ahora ha salido uno, y hay más en la mesa.",
     "vizzor": {
       "kind": "Inteligencia",

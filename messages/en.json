@@ -54,12 +54,38 @@
       "talk": "Talk to us",
       "xLab": "7ayLabs on X",
       "xVizzor": "Vizzor on X",
-      "seeProducts": "See the products"
+      "seeProducts": "See the products",
+      "links": "Site"
+    },
+    "sections": {
+      "lab": "Lab",
+      "products": "Products",
+      "stack": "Stack",
+      "method": "Method",
+      "reach": "Coverage",
+      "updates": "Notes",
+      "faq": "FAQ",
+      "contact": "Contact"
+    },
+    "talk": "Talk to us",
+    "hints": {
+      "products": {
+        "text": "Want to try it?",
+        "cta": "Open Vizzor"
+      },
+      "stack": {
+        "text": "Building something?",
+        "cta": "Talk to us"
+      },
+      "updates": {
+        "text": "Want the next note?",
+        "cta": "Subscribe"
+      }
     }
   },
   "home": {
     "hero": {
-      "title": "The Web3 laboratory.",
+      "title": "The Web3|laboratory",
       "sub": "7ayLabs designs, builds and runs its own apps, software, intelligence and on-chain products. Each one starts as an experiment and leaves the lab only when it holds up in public. The first, Vizzor, is live.",
       "ctaPrimary": "See the products",
       "ctaSecondary": "How we work",
@@ -71,10 +97,12 @@
         "nextName": "The next product",
         "nextLine": "Not announced yet. We show things when they work."
       },
-      "slogan": "Software you can check."
+      "slogan": "Software you can check.",
+      "pill": "Web3 laboratory",
+      "scroll": "Scroll"
     },
     "fields": {
-      "title": "Four disciplines. One bench.",
+      "title": "Four disciplines,|one bench",
       "lede": "Apps, software, intelligence and on-chain work are built side by side here, by the same people, so every product gets all four.",
       "items": {
         "apps": {
@@ -96,7 +124,7 @@
       }
     },
     "method": {
-      "title": "Rules of the lab.",
+      "title": "The rules|of the lab",
       "lede": "Four habits behind everything we ship. They are why Vizzor publishes its misses.",
       "items": {
         "receipts": {
@@ -115,19 +143,42 @@
           "title": "Ship, then show the work",
           "line": "Small releases, often, each one written up so you can see what changed."
         }
+      },
+      "table": {
+        "rule": "Rule",
+        "practice": "What we do",
+        "check": "Where to check",
+        "rows": {
+          "receipts": {
+            "practice": "Every Vizzor call is graded when its deadline arrives, right or wrong.",
+            "check": "The public record on vizzor.ai"
+          },
+          "plain": {
+            "practice": "You ask in your own words, in three languages. No query language.",
+            "check": "Open Vizzor and type a question"
+          },
+          "privacy": {
+            "practice": "This site stores an email or a message only if you send one. No trackers.",
+            "check": "Our privacy page"
+          },
+          "ship": {
+            "practice": "Each release is written up the day it ships.",
+            "check": "Notes from the lab"
+          }
+        }
       }
     },
     "updates": {
-      "title": "Lab notes.",
+      "title": "Notes from|the lab",
       "all": "All updates",
       "lede": "Releases and news, written up as they happen."
     },
     "faq": {
-      "title": "Straight answers.",
+      "title": "Straight|answers",
       "lede": "The questions we hear most, without the pitch."
     },
     "stack": {
-      "title": "Five layers, all ours.",
+      "title": "Five layers,|all ours",
       "lede": "From the screen down to the servers, every layer under our products is built and run in-house.",
       "layers": {
         "interface": {
@@ -158,12 +209,30 @@
       "title": "Lab status",
       "products": "product live",
       "chains": "blockchains read",
-      "languages": "languages",
-      "latest": "latest note"
-    }
+      "languages": "languages"
+    },
+    "reach": {
+      "title": "{count} blockchains,|read live",
+      "lede": "Vizzor reads each network directly, so a wallet or a transfer is looked up where it actually happened."
+    },
+    "contact": {
+      "title": "Ready to see|what works?",
+      "lede": "Tell us what you are building or what you want to know. A person reads every message."
+    },
+    "hub": {
+      "title": "Everything Vizzor connects to",
+      "center": "Vizzor",
+      "note": "Chains, data sources and the model behind it, on one product."
+    },
+    "words": [
+      "Apps",
+      "Software",
+      "Intelligence",
+      "On-chain"
+    ]
   },
   "products": {
-    "title": "What has left the lab.",
+    "title": "What has|left the lab",
     "lede": "A product ships when it works in public, not when it is announced. One has so far, and more are on the bench.",
     "vizzor": {
       "kind": "Intelligence",

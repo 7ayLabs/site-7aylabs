@@ -24,12 +24,13 @@ function Row({ head, note, children }: { head: string; note: string; children: R
   );
 }
 
-export async function Coverage() {
+export async function Coverage({ grid = true }: { grid?: boolean }) {
   const t = await getTranslations('coverage');
   const list = new Intl.ListFormat(undefined, { style: 'long', type: 'conjunction' });
 
   return (
     <>
+      {grid ? (
       <ul data-reveal="scale" className="glass grid grid-cols-2 overflow-hidden rounded-[20px] sm:grid-cols-4 xl:grid-cols-6">
         {CHAINS.map((c) => (
           <li key={c.id} className="-mb-px -mr-px flex min-h-14 items-center gap-3 border-b border-r border-[var(--glass-line)] px-3.5 transition-colors duration-300 hover:bg-[color-mix(in_oklab,var(--accent-fill)_12%,transparent)]">
@@ -38,6 +39,7 @@ export async function Coverage() {
           </li>
         ))}
       </ul>
+      ) : null}
 
       <dl data-reveal className="mt-12 border-b border-[var(--line)]">
         <Row head={t('sources')} note={t('sourcesNote')}>

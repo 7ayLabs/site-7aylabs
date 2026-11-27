@@ -163,7 +163,7 @@ export function ChainField(): ReactElement {
     const draw = (now: number, dt: number): void => {
       const dark = document.documentElement.dataset.theme === 'dark';
       const ink = dark ? '255,255,255' : '0,0,0';
-      const base = dark ? 0.16 : 0.13;
+      const base = dark ? 0.11 : 0.1;
       const time = now / 1000;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, w, h);

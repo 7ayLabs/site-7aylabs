@@ -1,97 +1,44 @@
 /**
- * Hero — what the lab is, with its four kinds of work as panes of glass that
- * lean toward the pointer, and under it what is on the bench right now.
+ * Hero — centred, over ribbons of light: a pill that says what this is, the
+ * two-tone title, the slogan, two actions, and a cue to scroll.
  */
 import { getTranslations } from 'next-intl/server';
-import { AppWindow, ArrowUpRight, Blocks, BrainCircuit, Cpu } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Decode } from './decode';
-import { GlassIcon } from './glass3d/glass-icon';
-import { WRAP } from './layout';
-
-const PANES = [
-  { key: 'apps', Icon: AppWindow, cls: 'left-[0%] top-[6%] w-[46%]', r: '-7deg', k: '18px' },
-  { key: 'software', Icon: Cpu, cls: 'right-[0%] top-[14%] w-[48%]', r: '5deg', k: '-12px' },
-  { key: 'intelligence', Icon: BrainCircuit, cls: 'left-[0%] top-[62%] w-[54%]', r: '3deg', k: '26px' },
-  { key: 'onchain', Icon: Blocks, cls: 'right-[0%] top-[70%] w-[44%]', r: '-4deg', k: '-20px' },
-] as const;
+import { HeroFlow } from './hero-flow';
+import { Duo, WRAP } from './layout';
 
 export async function Hero() {
   const t = await getTranslations('home.hero');
-  const fields = await getTranslations('home.fields.items');
 
   return (
-    <section className={`${WRAP} pb-10 pt-10 sm:pt-16`}>
-      <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-6">
-        <div>
-          <h1 className="t-display type-settle max-w-[11ch] text-[clamp(2.9rem,1rem+6.1vw,7rem)] leading-[0.96] text-[var(--fg)]">{t('title')}</h1>
-          <p data-reveal className="t-head mt-6 text-[var(--fg-2)]">
-            <Decode text={t('slogan')} duration={1100} />
-          </p>
-          <div data-reveal className="mt-6">
-            <p className="t-lede">{t('sub')}</p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/products" className="btn btn-ink">
-                {t('ctaPrimary')}
-              </Link>
-              <Link href="/about" className="btn btn-line">
-                {t('ctaSecondary')}
-              </Link>
-            </div>
-          </div>
+    <section className="relative isolate -mt-[88px] flex min-h-[100svh] items-center overflow-hidden pt-[88px]">
+      <HeroFlow />
+      {/* A soft pool of the page colour behind the copy, so it always reads. */}
+      <div aria-hidden className="absolute inset-0 bg-[radial-gradient(60%_46%_at_50%_50%,color-mix(in_oklab,var(--bg)_82%,transparent),transparent_100%)]" />
+      <div className={`${WRAP} relative w-full pb-24 pt-10 text-center`}>
+        <p className="glass type-settle inline-flex min-h-10 items-center rounded-full px-4 text-[14.5px] font-semibold text-[var(--fg)]">{t('pill')}</p>
+        <div className="type-settle mx-auto mt-8 max-w-[1000px]">
+          <Duo as="h1" text={t('title')} size="duo-hero" />
         </div>
-
-        {/* Decorative: the same four fields are listed as text further down. */}
-        <div aria-hidden data-parallax className="stack relative hidden h-[34rem] lg:block">
-          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <GlassIcon shape="lab" size={600} />
-          </span>
-          {PANES.map(({ key, Icon, cls, r, k }) => (
-            <span
-              key={key}
-              className={`stack-pane glass absolute flex items-center gap-4 rounded-[20px] px-4 py-4 ${cls}`}
-              style={{ '--r': r, '--k': k } as React.CSSProperties}
-            >
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[14px] bg-[var(--accent-fill)] text-[var(--on-accent)]">
-                <Icon size={22} strokeWidth={1.6} />
-              </span>
-              <span className="t-display text-[1.5rem] text-[var(--fg)]">{fields(`${key}.title`)}</span>
-            </span>
-          ))}
+        <p data-reveal className="t-head mx-auto mt-8 max-w-[30ch] !font-normal text-[var(--fg-2)]">
+          <Decode text={t('slogan')} duration={1100} />
+        </p>
+        <p data-reveal className="t-lede mx-auto mt-5 !max-w-[62ch]">
+          {t('sub')}
+        </p>
+        <div data-reveal className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+          <a href="#products" className="btn btn-ink">
+            {t('ctaPrimary')}
+          </a>
+          <Link href="/about" className="btn btn-line">
+            {t('ctaSecondary')}
+          </Link>
         </div>
       </div>
-
-      {/* The bench: what is in the lab right now. */}
-      <aside data-reveal="scale" aria-label={t('board.title')} className="glass mt-14 rounded-[28px] p-2 sm:mt-20">
-        <p className="px-5 pb-2 pt-3 text-[15px] font-semibold text-[var(--fg-2)]">{t('board.title')}</p>
-        <ul className="grid gap-2 md:grid-cols-2">
-          <li>
-            <Link href="/vizzor" className="glass glass-live group flex min-h-[6rem] items-center gap-4 rounded-[20px] px-5 py-4">
-              <span className="min-w-0 flex-1">
-                <span className="t-display block text-[1.9rem] text-[var(--fg)]">Vizzor</span>
-                <span className="mt-1 block truncate text-[15px] text-[var(--fg-2)]">{t('board.vizzorLine')}</span>
-              </span>
-              <span className="inline-flex shrink-0 items-center gap-2 text-[14.5px] font-semibold text-[var(--fg)]">
-                <span className="pulse" aria-hidden />
-                {t('board.live')}
-              </span>
-              <ArrowUpRight
-                size={20}
-                strokeWidth={2}
-                aria-hidden
-                className="shrink-0 text-[var(--fg-3)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--accent)]"
-              />
-            </Link>
-          </li>
-          <li className="flex min-h-[6rem] items-center gap-4 rounded-[20px] border border-dashed border-[var(--line-strong)] px-5 py-4">
-            <span className="min-w-0 flex-1">
-              <span className="t-display block text-[1.9rem] text-[var(--fg-3)]">{t('board.nextName')}</span>
-              <span className="mt-1 block text-[15px] text-[var(--fg-2)]">{t('board.nextLine')}</span>
-            </span>
-            <span className="shrink-0 text-[14.5px] font-semibold text-[var(--fg-2)]">{t('board.building')}</span>
-          </li>
-        </ul>
-      </aside>
+      <a href="#lab" aria-label={t('scroll')} className="absolute bottom-7 left-1/2 -translate-x-1/2">
+        <span className="cue" />
+      </a>
     </section>
   );
 }

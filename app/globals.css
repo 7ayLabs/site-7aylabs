@@ -834,6 +834,215 @@ html[data-js] .words[data-in] .w > i {
   transform: scaleX(1);
 }
 
+/* ── Section structure ─────────────────────────────────────────────────── */
+
+/* Two-tone titles: a light first line, a heavy upper-case second line. */
+.duo {
+  font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+.duo .lite {
+  display: block;
+  font-weight: 300;
+  color: var(--fg-2);
+}
+.duo .bold {
+  display: block;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.035em;
+  color: var(--fg);
+}
+.duo-hero {
+  font-size: clamp(2.6rem, 1rem + 6.4vw, 7rem);
+}
+.duo-title {
+  font-size: clamp(1.9rem, 1.1rem + 2.8vw, 3.6rem);
+}
+
+/* The divider that opens a section: a numbered pill on a hairline, with a
+   point of light travelling along the line. */
+.divider {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.divider::before,
+.divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  height: 1px;
+}
+.divider::before {
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, transparent, var(--line-strong) 20%, var(--line-strong) 80%, transparent);
+  opacity: 0.6;
+}
+.divider::after {
+  left: 0;
+  width: 22%;
+  background: linear-gradient(90deg, transparent, var(--fg), transparent);
+  animation: divider-run 6s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+}
+@keyframes divider-run {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  15%,
+  85% {
+    opacity: 1;
+  }
+  to {
+    transform: translateX(460%);
+    opacity: 0;
+  }
+}
+
+/* Sections come into focus: sharp and full when read, soft when not. */
+html[data-js] [data-focus] {
+  opacity: 0.25;
+  filter: blur(7px);
+  transform: scale(0.985);
+  transition:
+    opacity 700ms var(--ease),
+    filter 700ms var(--ease),
+    transform 900ms var(--ease);
+}
+html[data-js] [data-focus][data-in] {
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+html[data-js]:not([data-fx]) [data-focus] {
+  animation: reveal-failsafe-focus 1ms linear 4s forwards;
+}
+@keyframes reveal-failsafe-focus {
+  to {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+/* Marquees: two copies of the row slide by; the second is hidden from
+   assistive tech. They pause under the pointer. */
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--dur, 40s) linear infinite;
+}
+.marquee[data-reverse] .marquee-track {
+  animation-direction: reverse;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Giant kinetic words; the second row is glass, drawn as outlined type. */
+.kinetic {
+  font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  font-size: clamp(3rem, 9vw, 8.5rem);
+  line-height: 0.95;
+  white-space: nowrap;
+  color: var(--fg);
+}
+.kinetic-glass {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--line-strong);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--fg) 55%, transparent), color-mix(in oklab, var(--fg) 6%, transparent) 55%, color-mix(in oklab, var(--fg) 34%, transparent));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Hub and spokes: light runs along each line toward the centre. */
+.spoke {
+  stroke: var(--line-strong);
+  stroke-width: 1;
+  opacity: 0.55;
+}
+.spoke-light {
+  stroke: var(--fg);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-dasharray: 6 94;
+  animation: spoke 3.4s linear infinite;
+  animation-delay: var(--d, 0s);
+}
+@keyframes spoke {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* The scroll cue under the hero. */
+.cue {
+  width: 1.5rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--line-strong);
+  display: grid;
+  justify-items: center;
+  padding-top: 0.42rem;
+}
+.cue::after {
+  content: '';
+  width: 3px;
+  height: 7px;
+  border-radius: 3px;
+  background: var(--fg);
+  animation: cue 1.8s var(--ease) infinite;
+}
+@keyframes cue {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(11px);
+    opacity: 0;
+  }
+}
+
+/* The rules table: the lab's column stands forward. */
+.rules th,
+.rules td {
+  padding: 1.05rem 1.15rem;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid var(--glass-line);
+}
+.rules thead th {
+  border-top: 0;
+}
+.rules .lead {
+  background: color-mix(in oklab, var(--fg) 7%, transparent);
+  box-shadow: inset 0 2px 0 var(--fg);
+}
+.rules tbody .lead {
+  box-shadow: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .backdrop i {
     animation: none !important;
@@ -844,6 +1053,16 @@ html[data-js] .words[data-in] .w > i {
   }
   html[data-js] .words .w > i {
     transform: none !important;
+  }
+  html[data-js] [data-focus] {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+  .marquee-track,
+  .divider::after,
+  .spoke-light {
+    animation: none !important;
   }
   .btn {
     translate: none;
