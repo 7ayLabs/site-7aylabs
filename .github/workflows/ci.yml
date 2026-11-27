@@ -25,12 +25,15 @@ permissions:
 
 jobs:
   # ────────────────────────────────────────────────────────────────────
-  # app: typecheck, lint, test, build, dependency audit
+  # lint + build: typecheck, lint, test, then build and dependency audit
   # ────────────────────────────────────────────────────────────────────
-  app:
-    name: Typecheck, lint, test, build
+  # Two jobs, named for the two status checks the `main` branch protection
+  # requires ("Lint and Typecheck", "Build Project"). Renaming either one
+  # means updating the branch protection in the same change.
+  lint:
+    name: Lint and Typecheck
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 15
     permissions:
       contents: read
     steps:
@@ -59,6 +62,30 @@ jobs:
 
       - name: Test
         run: pnpm test
+
+  build:
+    name: Build Project
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4.3.0
+        with:
+          version: 9.15.0
+          run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
 
       - name: Build
         run: pnpm build
