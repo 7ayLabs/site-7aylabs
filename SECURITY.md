@@ -1,11 +1,15 @@
 # Security policy
 
-<!-- TODO: confirm that security@7aylabs.com is a monitored mailbox before publishing. -->
-
 ## Reporting a vulnerability
 
-Email **security@7aylabs.com**. Please do not open a public issue or pull
-request for a security problem.
+Report it privately, either way:
+
+- **GitHub:** open the repository's Security tab and choose "Report a
+  vulnerability". The report is visible only to the maintainers.
+- **The site:** send it through <https://7aylabs.com/contact> with the topic
+  set to "Security".
+
+Please do not open a public issue or pull request for a security problem.
 
 Include what you can:
 
@@ -30,7 +34,7 @@ In scope:
 
 Out of scope:
 
-- other 7ayLabs products and domains (report those to the same address and
+- other 7ayLabs products and domains (report those the same way and
   we will route them);
 - denial of service by volume, and anything that needs sending large
   amounts of traffic;

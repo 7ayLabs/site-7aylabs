@@ -598,7 +598,7 @@
       },
       "collect": {
         "title": "What we collect",
-        "body": "If you subscribe to updates: your email address and the language you were reading in. If you send a message: your name, email address, topic and the message itself, plus a scrambled fingerprint of your network address that we use to stop abuse and cannot turn back into the address. We do not use analytics, advertising trackers or tracking cookies. Your theme choice is stored in your own browser and never sent to us."
+        "body": "If you subscribe to updates: your email address and the language you were reading in. If you send a message: your name, email address, topic and the message itself, plus a scrambled fingerprint of your network address that we use to stop abuse and cannot turn back into the address. We do not use analytics, advertising trackers or tracking cookies. Your theme choice is stored in your own browser and never sent to us. One cookie remembers the language you read the site in, so the next visit opens in it; it holds a two-letter language code and nothing about you."
       },
       "use": {
         "title": "What we use it for",
