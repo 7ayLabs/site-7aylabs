@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Locale } from '@/i18n/routing';
 import { CallDemo } from '@/components/site/call-demo';
+import { CallTape } from '@/components/site/call-tape';
+import { Platforms } from '@/components/site/platforms';
+import { VizzorShowcase } from '@/components/site/vizzor-showcase';
 import { Coverage } from '@/components/site/coverage';
 import { Block, Indexed, PageHead, Tiles } from '@/components/site/layout';
 import { JsonLd } from '@/components/site/json-ld';
@@ -70,6 +73,9 @@ export default async function VizzorPage({ params }: Props) {
         </Block>
 
         <Block id="desks" title={t('desks.title')} lede={t('desks.lede')}>
+          <div data-reveal className="glass mb-4 rounded-[26px] p-6 sm:p-10">
+            <VizzorShowcase />
+          </div>
           <dl className="grid gap-4 md:grid-cols-2" data-stagger>
             {DESKS.map((d) => (
               <div key={d} data-reveal className="glass glass-live flex min-h-[13rem] flex-col justify-end rounded-[26px] p-7">
@@ -107,6 +113,9 @@ export default async function VizzorPage({ params }: Props) {
         </Block>
 
         <Block id="record" title={t('receipts.title')} lede={t('receipts.lede')}>
+          <div data-reveal className="glass mb-4 rounded-[26px] px-6 py-6 sm:px-10">
+            <CallTape />
+          </div>
           <ul className="glass rounded-[26px] px-7" data-stagger>
             {RECEIPTS.map((k) => (
               <li key={k} data-reveal className="flex items-baseline gap-4 border-t border-[var(--glass-line)] py-5 first:border-t-0 text-[1.2rem] leading-snug text-[var(--fg)]">
@@ -120,6 +129,9 @@ export default async function VizzorPage({ params }: Props) {
         </Block>
 
         <Block id="reach" title={t('reach.title', { count: CHAIN_COUNT })} lede={t('reach.lede')}>
+          <div data-reveal className="glass mb-4 rounded-[26px] p-6 sm:p-10">
+            <Platforms />
+          </div>
           <Coverage />
         </Block>
       </Indexed>

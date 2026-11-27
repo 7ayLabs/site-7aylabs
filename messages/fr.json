@@ -118,20 +118,20 @@
       "lede": "Quatre règles qu'une sortie respecte avant de quitter la paillasse.",
       "items": {
         "receipts": {
-          "title": "L'historique l'emporte sur le discours",
-          "line": "Si nous disons que ça marche, une page publique montre si c'était vrai."
+          "title": "Lire à la source",
+          "line": "Les données viennent de la chaîne elle-même. Pas de résumés d'autrui, pas de chiffres empruntés."
         },
         "plain": {
-          "title": "Pas de mode d'emploi",
-          "line": "Si une question exige une syntaxe spéciale, le produit n'est pas fini."
+          "title": "Des mots simples, dans les deux sens",
+          "line": "Vous demandez comme vous parlez. L'instrument se charge de traduire."
         },
         "privacy": {
-          "title": "Seulement ce dont la fonction a besoin",
-          "line": "Ce site garde un e-mail si vous nous en donnez un. Rien ne vous suit."
+          "title": "Seulement ce que le travail exige",
+          "line": "Aucun traceur ici. Un e-mail ou un message n'est conservé que si vous l'envoyez."
         },
         "ship": {
-          "title": "Petit, souvent, par écrit",
-          "line": "Chaque version a sa note le jour de sa sortie, les ennuyeuses aussi."
+          "title": "Chaque sortie, par écrit",
+          "line": "Chacune a sa note datée le jour où elle sort, les ennuyeuses aussi."
         }
       },
       "table": {
@@ -140,20 +140,20 @@
         "check": "Vérifiez vous-même",
         "rows": {
           "receipts": {
-            "practice": "Chaque prévision de Vizzor est marquée juste ou fausse à son échéance. Les fausses restent affichées.",
-            "check": "L'historique public sur vizzor.ai"
+            "practice": "Chaque chiffre affiché par un instrument est lu sur la chaîne qu'il décrit.",
+            "check": "Le parcours, un bloc plus haut"
           },
           "plain": {
-            "practice": "Tapez la question comme vous la diriez à voix haute.",
-            "check": "Ouvrez Vizzor et posez une question"
+            "practice": "Ni langage de requête ni tableau de bord à apprendre avant la première réponse.",
+            "check": "Le premier écran de n'importe quelle sortie"
           },
           "privacy": {
-            "practice": "Aucun traceur. Un e-mail ou un message n'est conservé que si vous l'envoyez.",
+            "practice": "Ce site ne conserve un e-mail ou un message que si vous l'envoyez.",
             "check": "Notre page de confidentialité"
           },
           "ship": {
-            "practice": "Chaque version est rédigée le jour de sa sortie.",
-            "check": "Notes du laboratoire"
+            "practice": "Chaque sortie est rédigée le jour où elle sort.",
+            "check": "Le registre du labo"
           }
         }
       }
@@ -168,38 +168,37 @@
       "lede": "Celles que nous recevons le plus. Toute autre va droit à une personne."
     },
     "stack": {
-      "title": "Du bloc brut à la réponse, en cinq sauts.",
-      "lede": "Chaîne, moteur, modèle, écran, serveur. Chaque saut est à nous : quand l'un lâche, la réparation est déjà dans la pièce.",
+      "title": "Du bloc brut à la réponse.",
+      "lede": "Quatre sauts et le sol qui les porte. Tous sont à nous : quand un saut lâche, la réparation est déjà dans la pièce.",
       "layers": {
         "interface": {
-          "name": "Interface",
-          "line": "D'abord le web, et installable sur un téléphone."
+          "name": "Surface",
+          "line": "La réponse arrive sur un écran utilisable par tous : d'abord le web, installable sur un téléphone."
         },
         "engine": {
-          "name": "Moteur",
-          "line": "Récupère les données, fait tourner les modèles et consigne chaque prévision avant que son issue soit connue."
+          "name": "Indexeur",
+          "line": "Notre moteur trie l'activité brute : qui a envoyé quoi, à qui et quand."
         },
         "models": {
-          "name": "Intelligence",
-          "line": "ChronoVisor, notre propre modèle. Il lit le marché et doit montrer comment il est arrivé à sa réponse."
+          "name": "Modèle",
+          "line": "ChronoVisor lit le registre trié et doit montrer son raisonnement."
         },
         "chains": {
-          "name": "Chaînes",
-          "line": "{count} blockchains lues à la source, plus les wallets que les gens ont déjà."
+          "name": "Source",
+          "line": "{count} chaînes publiques, lues bloc par bloc au nœud. Rien de seconde main."
         },
         "ground": {
-          "name": "Socle",
-          "line": "Nos propres serveurs sur un réseau privé, sauvegardés chaque nuit. Aucune version ne sort avec un test en échec."
+          "name": "Sol",
+          "line": "Tout tourne sur nos propres serveurs, sur un réseau privé, sauvegardé chaque nuit."
         }
       },
-      "more": "et {count} de plus",
-      "wallets": "Wallets"
+      "more": "et {count} de plus"
     },
     "status": {
       "title": "État du laboratoire",
       "products": "sortie en ligne",
       "chains": "chaînes scannées",
-      "wallets": "wallets pris en charge"
+      "instruments": "instruments sur la paillasse"
     },
     "contact": {
       "title": "Ouvrez un canal.",
@@ -262,7 +261,8 @@
         "entry": "Entrée",
         "tp": "Prise de bénéfices",
         "stop": "Stop"
-      }
+      },
+      "line": "Posez une question sur un token, un wallet ou une transaction avec vos mots. Vizzor scanne, trace et décode, puis répond."
     },
     "next": {
       "title": "La sortie 02 est sur la paillasse.",
@@ -306,24 +306,24 @@
       "a": "Un labo d'intelligence on-chain. Nous construisons des outils qui scannent les chaînes publiques, tracent les wallets et décodent ce que l'activité signifie. Vizzor est le premier publié."
     },
     "vizzor": {
-      "q": "Qu'est-ce que Vizzor ?",
-      "a": "Une intelligence crypto. Posez une question sur un token, un wallet ou une action tokenisée et il répond par une prévision avec une cible, une échéance et un niveau de confiance. À l'échéance, elle est marquée juste ou fausse, au vu de tous."
+      "q": "Qu'a sorti le labo ?",
+      "a": "Un instrument pour l'instant : Vizzor, une intelligence crypto qu'on interroge avec ses propres mots. Il a son propre site sur vizzor.ai."
     },
     "relation": {
-      "q": "Quel est le lien entre 7ayLabs et Vizzor ?",
-      "a": "7ayLabs est le laboratoire. Vizzor est la première chose qui en est sortie. Ce site parle du laboratoire ; le produit vit sur vizzor.ai."
+      "q": "7ayLabs, est-ce la même chose que Vizzor ?",
+      "a": "Non. 7ayLabs est le labo et Vizzor est sa première sortie. Ce site parle du labo et de ce qu'il construit."
     },
     "free": {
-      "q": "Puis-je essayer Vizzor gratuitement ?",
-      "a": "Oui. L'offre gratuite permet de poser des questions, de recevoir des prévisions et de suivre l'historique. Les offres payantes lisent plus en profondeur et répondent davantage par jour. Les offres actuelles sont sur vizzor.ai."
+      "q": "Quelles chaînes le labo lit-il ?",
+      "a": "Les grandes chaînes publiques, dont Bitcoin, Ethereum et Solana. La liste complète est sur la page Vizzor."
     },
     "work": {
-      "q": "Comment joindre l'équipe ?",
+      "q": "Comment joindre le labo ?",
       "a": "Par la page de contact, pour les partenariats, la presse, la sécurité ou une simple question. Pour de l'aide sur Vizzor, sa documentation est plus rapide."
     },
     "more": {
-      "q": "Y aura-t-il d'autres produits ?",
-      "a": "Oui, et ils sont en construction en ce moment. Vous entendrez parler de chacun quand il marchera, pas avant."
+      "q": "Qu'y a-t-il sur la paillasse ?",
+      "a": "D'autres instruments pour lire les chaînes. Chacun aura un nom et une date quand il marchera devant des gens, pas avant."
     }
   },
   "demo": {

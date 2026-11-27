@@ -118,20 +118,20 @@
       "lede": "Four rules a release clears before it leaves the bench.",
       "items": {
         "receipts": {
-          "title": "The record beats the pitch",
-          "line": "If we say it works, a public page shows whether it did."
+          "title": "Read the source",
+          "line": "Data comes off the chain itself. No scraped summaries, no borrowed numbers."
         },
         "plain": {
-          "title": "No manual",
-          "line": "If a question needs special syntax, the product is not finished."
+          "title": "Plain words in, plain words out",
+          "line": "You ask the way you talk. The instrument does the translating."
         },
         "privacy": {
-          "title": "Take only what the feature needs",
-          "line": "This site keeps an email if you hand us one. Nothing follows you around."
+          "title": "Take only what the job needs",
+          "line": "No trackers here. An email or a message is stored only if you send it."
         },
         "ship": {
-          "title": "Small, often, written down",
-          "line": "Every release gets a note the day it lands, the dull ones too."
+          "title": "Write down every release",
+          "line": "Each one gets a dated note the day it lands, the dull ones too."
         }
       },
       "table": {
@@ -140,20 +140,20 @@
         "check": "Check it yourself",
         "rows": {
           "receipts": {
-            "practice": "Every Vizzor call is marked right or wrong at its deadline. The wrong ones stay up.",
-            "check": "The public record on vizzor.ai"
+            "practice": "Every figure an instrument shows is read from the chain it describes.",
+            "check": "The pipeline, one block up"
           },
           "plain": {
-            "practice": "Type the question the way you would say it out loud.",
-            "check": "Open Vizzor and type a question"
+            "practice": "No query language and no dashboard to learn before the first answer.",
+            "check": "The first screen of any release"
           },
           "privacy": {
-            "practice": "No trackers. An email or a message is stored only if you send it.",
+            "practice": "This site stores an email or a message only if you send one.",
             "check": "Our privacy page"
           },
           "ship": {
             "practice": "Each release is written up the day it lands.",
-            "check": "Notes from the lab"
+            "check": "The lab ledger"
           }
         }
       }
@@ -168,38 +168,37 @@
       "lede": "The ones we get most. Anything else goes straight to a person."
     },
     "stack": {
-      "title": "From raw block to answer, in five hops.",
-      "lede": "Chain, engine, model, screen, server. Every hop is ours, so when one fails the fix is already in the room.",
+      "title": "From raw block to answer.",
+      "lede": "Four hops and the ground under them. Every one is ours, so when a hop fails the fix is already in the room.",
       "layers": {
         "interface": {
-          "name": "Interface",
-          "line": "Web first, and installable on a phone."
+          "name": "Surface",
+          "line": "The answer lands on a screen a person can use: web first, installable on a phone."
         },
         "engine": {
-          "name": "Engine",
-          "line": "Pulls the data, runs the models and writes every call down before its outcome is known."
+          "name": "Indexer",
+          "line": "Our engine sorts the raw activity: who sent what, to whom, and when."
         },
         "models": {
-          "name": "Intelligence",
-          "line": "ChronoVisor, our own model. It reads the market and has to show how it reached its answer."
+          "name": "Model",
+          "line": "ChronoVisor reads the sorted record and has to show its reasoning."
         },
         "chains": {
-          "name": "Chains",
-          "line": "{count} blockchains read at the source, plus the wallets people already carry."
+          "name": "Source",
+          "line": "{count} public chains, read block by block at the node. Nothing second-hand."
         },
         "ground": {
           "name": "Ground",
-          "line": "Our own servers on a private network, backed up every night. No release goes out with a failing check."
+          "line": "All of it runs on our own servers, on a private network, backed up every night."
         }
       },
-      "more": "and {count} more",
-      "wallets": "Wallets"
+      "more": "and {count} more"
     },
     "status": {
       "title": "Lab status",
       "products": "release live",
       "chains": "chains scanned",
-      "wallets": "wallets supported"
+      "instruments": "instruments on the bench"
     },
     "contact": {
       "title": "Open a channel.",
@@ -262,7 +261,8 @@
         "entry": "Entry",
         "tp": "Take profit",
         "stop": "Stop"
-      }
+      },
+      "line": "Ask about a token, a wallet or a transaction in plain words. Vizzor scans, tracks and decodes, then answers."
     },
     "next": {
       "title": "Release 02 is on the bench.",
@@ -306,24 +306,24 @@
       "a": "A lab for on-chain intelligence. We build tools that scan public chains, track wallets and decode what the activity means. Vizzor is the first one released."
     },
     "vizzor": {
-      "q": "What is Vizzor?",
-      "a": "Crypto intelligence. Ask about a token, a wallet or a tokenized stock and it answers with a call that has a target, a deadline and a confidence. At the deadline the call is marked right or wrong, where everyone can see."
+      "q": "What has the lab released?",
+      "a": "One instrument so far: Vizzor, crypto intelligence you ask in plain words. It has its own site at vizzor.ai."
     },
     "relation": {
-      "q": "How are 7ayLabs and Vizzor related?",
-      "a": "7ayLabs is the lab. Vizzor is the first thing to come out of it. This site covers the lab; the product lives at vizzor.ai."
+      "q": "Is 7ayLabs the same as Vizzor?",
+      "a": "No. 7ayLabs is the lab and Vizzor is its first release. This site is about the lab and what it builds."
     },
     "free": {
-      "q": "Can I try Vizzor for free?",
-      "a": "Yes. The free plan lets you ask, get calls and follow the record. Paid plans read deeper and answer more per day. Current plans are on vizzor.ai."
+      "q": "Which chains does the lab read?",
+      "a": "The major public chains, Bitcoin, Ethereum and Solana among them. The full list is on the Vizzor page."
     },
     "work": {
-      "q": "How do I reach the team?",
+      "q": "How do I reach the lab?",
       "a": "Through the contact page, for partnerships, press, security or a plain question. For help with Vizzor itself, its docs are faster."
     },
     "more": {
-      "q": "Will there be more products?",
-      "a": "Yes, and they are being built now. You will hear about each one when it works, not before."
+      "q": "What is on the bench?",
+      "a": "More instruments for reading chains. Each gets a name and a date once it works in front of people, not before."
     }
   },
   "demo": {

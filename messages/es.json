@@ -118,20 +118,20 @@
       "lede": "Cuatro reglas que un lanzamiento cumple antes de salir de la mesa.",
       "items": {
         "receipts": {
-          "title": "El historial gana al discurso",
-          "line": "Si decimos que funciona, una página pública muestra si funcionó."
+          "title": "Leer en origen",
+          "line": "Los datos salen de la cadena misma. Sin resúmenes ajenos ni cifras prestadas."
         },
         "plain": {
-          "title": "Sin manual",
-          "line": "Si una pregunta necesita sintaxis especial, el producto no está terminado."
+          "title": "Palabras claras de ida y de vuelta",
+          "line": "Preguntas como hablas. El instrumento se encarga de traducir."
         },
         "privacy": {
-          "title": "Solo lo que la función necesita",
-          "line": "Este sitio guarda un correo si nos lo das. Nada te sigue por ahí."
+          "title": "Solo lo que el trabajo necesita",
+          "line": "Aquí no hay rastreadores. Un correo o un mensaje se guarda solo si lo envías."
         },
         "ship": {
-          "title": "Poco, seguido y por escrito",
-          "line": "Cada versión lleva su nota el día que sale, también las aburridas."
+          "title": "Cada lanzamiento, por escrito",
+          "line": "Cada uno lleva su nota con fecha el día que sale, también los aburridos."
         }
       },
       "table": {
@@ -140,20 +140,20 @@
         "check": "Compruébalo tú",
         "rows": {
           "receipts": {
-            "practice": "Cada predicción de Vizzor se marca como acierto o fallo al vencer su plazo. Los fallos se quedan a la vista.",
-            "check": "El historial público en vizzor.ai"
+            "practice": "Cada cifra que muestra un instrumento se lee de la cadena que describe.",
+            "check": "El recorrido, un bloque más arriba"
           },
           "plain": {
-            "practice": "Escribe la pregunta como la dirías en voz alta.",
-            "check": "Abre Vizzor y escribe una pregunta"
+            "practice": "Sin lenguaje de consultas ni paneles que aprender antes de la primera respuesta.",
+            "check": "La primera pantalla de cualquier lanzamiento"
           },
           "privacy": {
-            "practice": "Sin rastreadores. Un correo o un mensaje se guarda solo si lo envías.",
+            "practice": "Este sitio guarda un correo o un mensaje solo si lo envías.",
             "check": "Nuestra página de privacidad"
           },
           "ship": {
-            "practice": "Cada versión se escribe el día que sale.",
-            "check": "Notas del laboratorio"
+            "practice": "Cada lanzamiento se escribe el día que sale.",
+            "check": "El registro del laboratorio"
           }
         }
       }
@@ -168,38 +168,37 @@
       "lede": "Las que más recibimos. Cualquier otra va directo a una persona."
     },
     "stack": {
-      "title": "Del bloque en bruto a la respuesta, en cinco saltos.",
-      "lede": "Cadena, motor, modelo, pantalla, servidor. Cada salto es nuestro, así que cuando uno falla el arreglo ya está en la sala.",
+      "title": "Del bloque en bruto a la respuesta.",
+      "lede": "Cuatro saltos y el suelo que los sostiene. Todos son nuestros, así que cuando uno falla el arreglo ya está en la sala.",
       "layers": {
         "interface": {
-          "name": "Interfaz",
-          "line": "Primero web, e instalable en el teléfono."
+          "name": "Superficie",
+          "line": "La respuesta llega a una pantalla que cualquiera puede usar: primero web, instalable en el teléfono."
         },
         "engine": {
-          "name": "Motor",
-          "line": "Trae los datos, ejecuta los modelos y anota cada predicción antes de conocer su resultado."
+          "name": "Indexador",
+          "line": "Nuestro motor ordena la actividad en bruto: quién envió qué, a quién y cuándo."
         },
         "models": {
-          "name": "Inteligencia",
-          "line": "ChronoVisor, nuestro propio modelo. Lee el mercado y tiene que mostrar cómo llegó a su respuesta."
+          "name": "Modelo",
+          "line": "ChronoVisor lee el registro ordenado y tiene que mostrar su razonamiento."
         },
         "chains": {
-          "name": "Cadenas",
-          "line": "{count} blockchains leídas en origen, más las wallets que la gente ya lleva encima."
+          "name": "Origen",
+          "line": "{count} cadenas públicas, leídas bloque a bloque en el nodo. Nada de segunda mano."
         },
         "ground": {
-          "name": "Base",
-          "line": "Nuestros propios servidores en una red privada, con respaldo cada noche. Ninguna versión sale con una prueba fallando."
+          "name": "Suelo",
+          "line": "Todo corre en nuestros propios servidores, en una red privada, con respaldo cada noche."
         }
       },
-      "more": "y {count} más",
-      "wallets": "Wallets"
+      "more": "y {count} más"
     },
     "status": {
       "title": "Estado del laboratorio",
       "products": "lanzamiento activo",
       "chains": "cadenas escaneadas",
-      "wallets": "wallets compatibles"
+      "instruments": "instrumentos en la mesa"
     },
     "contact": {
       "title": "Abre un canal.",
@@ -262,7 +261,8 @@
         "entry": "Entrada",
         "tp": "Toma de ganancias",
         "stop": "Stop"
-      }
+      },
+      "line": "Pregunta por un token, una wallet o una transacción con tus palabras. Vizzor escanea, rastrea y descifra, y después responde."
     },
     "next": {
       "title": "El lanzamiento 02 sigue en la mesa.",
@@ -306,24 +306,24 @@
       "a": "Un laboratorio de inteligencia on-chain. Construimos herramientas que escanean cadenas públicas, rastrean wallets y descifran qué significa la actividad. Vizzor es la primera publicada."
     },
     "vizzor": {
-      "q": "¿Qué es Vizzor?",
-      "a": "Inteligencia cripto. Pregunta por un token, una wallet o una acción tokenizada y responde con una predicción que tiene objetivo, plazo y confianza. Al vencer el plazo se marca como acierto o fallo, a la vista de todos."
+      "q": "¿Qué ha lanzado el laboratorio?",
+      "a": "Un instrumento por ahora: Vizzor, inteligencia cripto a la que preguntas con tus palabras. Tiene su propio sitio en vizzor.ai."
     },
     "relation": {
-      "q": "¿Cómo se relacionan 7ayLabs y Vizzor?",
-      "a": "7ayLabs es el laboratorio. Vizzor es lo primero que salió de él. Este sitio trata del laboratorio; el producto vive en vizzor.ai."
+      "q": "¿7ayLabs es lo mismo que Vizzor?",
+      "a": "No. 7ayLabs es el laboratorio y Vizzor es su primer lanzamiento. Este sitio trata del laboratorio y de lo que construye."
     },
     "free": {
-      "q": "¿Puedo probar Vizzor gratis?",
-      "a": "Sí. El plan gratuito te deja preguntar, recibir predicciones y seguir el historial. Los de pago leen más a fondo y responden más veces al día. Los planes actuales están en vizzor.ai."
+      "q": "¿Qué cadenas lee el laboratorio?",
+      "a": "Las principales cadenas públicas, entre ellas Bitcoin, Ethereum y Solana. La lista completa está en la página de Vizzor."
     },
     "work": {
-      "q": "¿Cómo contacto al equipo?",
+      "q": "¿Cómo contacto al laboratorio?",
       "a": "Por la página de contacto, para alianzas, prensa, seguridad o una pregunta cualquiera. Para ayuda con Vizzor, su documentación es más rápida."
     },
     "more": {
-      "q": "¿Habrá más productos?",
-      "a": "Sí, y se están construyendo ahora. Sabrás de cada uno cuando funcione, no antes."
+      "q": "¿Qué hay en la mesa?",
+      "a": "Más instrumentos para leer cadenas. Cada uno tendrá nombre y fecha cuando funcione delante de la gente, no antes."
     }
   },
   "demo": {

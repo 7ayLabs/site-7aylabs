@@ -1,14 +1,13 @@
 /**
- * Stack — how the lab is wired: the five layers every product sits on, from
- * what people touch down to the servers. A signal travels down the line that
- * joins them. It is a real order (each layer rests on the next), so it reads
+ * Stack — the lab's pipeline: the path a block takes to become an answer
+ * (source, indexer, model, surface) and the ground it all runs on. A signal
+ * travels down the line that joins them. It is a real order, so it reads
  * top to bottom as a list.
  */
 import { getTranslations } from 'next-intl/server';
 import { AppWindow, Blocks, BrainCircuit, Cpu, Server } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { ChainMark } from '@/components/ui/chain-mark';
-import { Disc, WALLETS } from '@/components/ui/web3-marks';
 import { CHAIN_COUNT, type ChainId } from '@/lib/vizzor/chains';
 import { GlassIcon } from './glass3d/glass-icon';
 import type { GlassShape } from './glass3d/renderer';
@@ -16,10 +15,10 @@ import type { GlassShape } from './glass3d/renderer';
 const SHOWN: readonly ChainId[] = ['ethereum', 'solana', 'bitcoin', 'base', 'arbitrum', 'bnb', 'tron', 'ton'];
 
 const LAYERS: { key: 'interface' | 'engine' | 'models' | 'chains' | 'ground'; shape: GlassShape; fallback: ReactNode }[] = [
-  { key: 'interface', shape: 'apps', fallback: <AppWindow size={30} strokeWidth={1.5} /> },
+  { key: 'chains', shape: 'onchain', fallback: <Blocks size={30} strokeWidth={1.5} /> },
   { key: 'engine', shape: 'software', fallback: <Cpu size={30} strokeWidth={1.5} /> },
   { key: 'models', shape: 'intelligence', fallback: <BrainCircuit size={30} strokeWidth={1.5} /> },
-  { key: 'chains', shape: 'onchain', fallback: <Blocks size={30} strokeWidth={1.5} /> },
+  { key: 'interface', shape: 'apps', fallback: <AppWindow size={30} strokeWidth={1.5} /> },
   { key: 'ground', shape: 'ground', fallback: <Server size={30} strokeWidth={1.5} /> },
 ];
 
@@ -48,15 +47,6 @@ export async function Stack() {
             ))}
           </Overlap>
           <span className="t-note font-semibold">{t('more', { count: CHAIN_COUNT - SHOWN.length })}</span>
-        </span>
-        <span className="flex items-center gap-3">
-          <Overlap>
-            {WALLETS.map((w) => (
-              <Disc key={w.id} Icon={w.Icon} size={28} />
-            ))}
-          </Overlap>
-          <span className="t-note font-semibold">{t('wallets')}</span>
-          <span className="sr-only">{WALLETS.map((w) => w.name).join(', ')}</span>
         </span>
       </div>
     ),
