@@ -17,6 +17,6 @@ export function GET(): Response {
       return `<item><title>${esc(p.title)}</title><link>${url}</link><guid isPermaLink="true">${url}</guid><pubDate>${new Date(`${p.date}T00:00:00Z`).toUTCString()}</pubDate><description>${esc(p.summary)}</description></item>`;
     })
     .join('');
-  const xml = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>${SITE.name} lab notes</title><link>${SITE.url}/updates</link><atom:link href="${SITE.url}/feed.xml" rel="self" type="application/rss+xml"/><description>Releases and news from 7ayLabs, the Web3 laboratory.</description><language>en</language>${items}</channel></rss>`;
+  const xml = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>${SITE.name} lab notes</title><link>${SITE.url}/updates</link><atom:link href="${SITE.url}/feed.xml" rel="self" type="application/rss+xml"/><description>Releases and news from 7ayLabs, the product laboratory.</description><language>en</language>${items}</channel></rss>`;
   return new Response(xml, { headers: { 'content-type': 'application/rss+xml; charset=utf-8' } });
 }

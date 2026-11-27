@@ -1,12 +1,12 @@
 {
   "meta": {
-    "title": "7ayLabs · El laboratorio Web3 que publica sus fallos",
+    "title": "7ayLabs · El laboratorio que publica sus fallos",
     "description": "7ayLabs construye apps, motores, modelos y herramientas on-chain, y los opera a la vista de todos. El primero: Vizzor, inteligencia cripto que pone plazo a cada predicción y la califica.",
     "og": "Aquí nada sale con una promesa.",
     "slogan": "Aquí nada sale con una promesa.",
     "keywords": [
-      "laboratorio Web3",
-      "estudio de software Web3",
+      "laboratorio de productos",
+      "estudio de software",
       "inteligencia cripto",
       "productos on-chain",
       "agentes de IA",
@@ -40,7 +40,7 @@
       "toLight": "Cambiar a modo claro"
     },
     "footer": {
-      "tagline": "El laboratorio Web3 que publica sus fallos.",
+      "tagline": "El laboratorio que publica sus fallos.",
       "company": "Empresa",
       "product": "Vizzor",
       "follow": "Síguenos",
@@ -74,7 +74,7 @@
   },
   "home": {
     "hero": {
-      "title": "Un laboratorio Web3 que publica sus fallos.",
+      "title": "Un laboratorio que publica sus fallos.",
       "sub": "7ayLabs construye apps, motores, modelos y herramientas on-chain, y luego los opera donde cualquiera puede mirar. Vizzor fue el primero: pone plazo a cada predicción cripto y la marca como acierto o fallo cuando se acaba el tiempo.",
       "ctaPrimary": "Ver a Vizzor en acción",
       "ctaSecondary": "Conocer el laboratorio",
@@ -87,7 +87,7 @@
         "nextLine": "Aún sin anunciar. Mostramos las cosas cuando funcionan."
       },
       "slogan": "Aquí nada sale con una promesa.",
-      "pill": "Laboratorio Web3",
+      "pill": "Laboratorio de productos",
       "scroll": "Desliza"
     },
     "fields": {
@@ -293,7 +293,7 @@
   "questions": {
     "what": {
       "q": "¿Qué es 7ayLabs?",
-      "a": "Un laboratorio Web3. Construimos nuestros propios productos y los operamos en público. Vizzor es el primero."
+      "a": "Un laboratorio. Construimos nuestros propios productos y los operamos en público. Vizzor es el primero."
     },
     "vizzor": {
       "q": "¿Qué es Vizzor?",
@@ -360,7 +360,7 @@
   "vizzorPage": {
     "meta": {
       "title": "Vizzor · Inteligencia cripto con IA, calificada en público",
-      "description": "Vizzor es la inteligencia cripto del laboratorio Web3 7ayLabs: predicciones de precio con objetivo, plazo y confianza, movimientos de ballenas y análisis on-chain. Cada predicción se califica en público.",
+      "description": "Vizzor es la inteligencia cripto del laboratorio 7ayLabs: predicciones de precio con objetivo, plazo y confianza, movimientos de ballenas y análisis on-chain. Cada predicción se califica en público.",
       "crumb": "Vizzor"
     },
     "title": "Cada predicción tiene plazo. Cada plazo tiene veredicto.",
@@ -480,12 +480,12 @@
   },
   "aboutPage": {
     "meta": {
-      "title": "Nosotros · El laboratorio Web3 detrás de Vizzor",
-      "description": "Sobre 7ayLabs, el laboratorio Web3 detrás de Vizzor: por qué existe, las reglas con las que construye y cómo contactar al equipo.",
+      "title": "Nosotros · El laboratorio detrás de Vizzor",
+      "description": "Sobre 7ayLabs, el laboratorio detrás de Vizzor: por qué existe, las reglas con las que construye y cómo contactar al equipo.",
       "crumb": "Nosotros"
     },
     "title": "Preferimos que nos comprueben a que nos crean.",
-    "lede": "7ayLabs es un laboratorio Web3. Construimos nuestros productos, los operamos nosotros y dejamos los resultados donde cualquiera puede mirar.",
+    "lede": "7ayLabs es un laboratorio. Construimos nuestros productos, los operamos nosotros y dejamos los resultados donde cualquiera puede mirar.",
     "mission": {
       "title": "Predecir es barato hasta que alguien lleva la cuenta.",
       "p1": "Cripto está lleno de predicciones seguras que nadie vuelve a revisar. Las acertadas se citan durante años. Las fallidas se borran en silencio.",
@@ -514,7 +514,7 @@
   "updatesPage": {
     "meta": {
       "title": "Notas del laboratorio · Versiones y noticias",
-      "description": "Notas de versión y noticias de 7ayLabs, el laboratorio Web3, y de su producto Vizzor.",
+      "description": "Notas de versión y noticias de 7ayLabs, el laboratorio, y de su producto Vizzor.",
       "crumb": "Notas"
     },
     "title": "Qué salió, y cuándo.",
@@ -526,7 +526,7 @@
   "contactPage": {
     "meta": {
       "title": "Contacto · Habla con el laboratorio",
-      "description": "Contacta a 7ayLabs, el laboratorio Web3, sobre alianzas, prensa, seguridad o la empresa.",
+      "description": "Contacta a 7ayLabs, el laboratorio, sobre alianzas, prensa, seguridad o la empresa.",
       "crumb": "Contacto"
     },
     "title": "Habla con una persona.",

@@ -4,7 +4,7 @@ import { OG_SIZE, renderOg } from '@/lib/og';
 
 export const size = OG_SIZE;
 export const contentType = 'image/png';
-export const alt = '7ayLabs · The Web3 lab';
+export const alt = '7ayLabs · The lab';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

@@ -15,7 +15,7 @@ export function GET(): Response {
   const platforms = PLATFORMS.map((p) => `- ${p.name}: ${p.status === 'live' ? 'live' : 'in testing, not yet released'}`).join('\n');
   const body = `# ${SITE.name}
 
-> 7ayLabs is a Web3 laboratory. It designs, builds and runs its own apps, software, intelligence and on-chain products. Its first product, Vizzor, is live.
+> 7ayLabs is a product laboratory. It designs, builds and runs its own apps, software, intelligence and on-chain products. Its first product, Vizzor, is live.
 
 ## Pages
 - [Home](${SITE.url}): what the lab is and what it builds
