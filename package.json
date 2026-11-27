@@ -1,52 +1,60 @@
 {
   "name": "site-7aylabs",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "license": "MIT",
   "type": "module",
-  "packageManager": "pnpm@9.0.6",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/7ayLabs/site-7aylabs.git"
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=20.11"
   },
   "scripts": {
     "dev": "next dev",
-    "build": "NEXT_PRIVATE_STANDALONE=true next build",
+    "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "serve:local": "docker compose -f docker-compose.local.yml up --build",
-    "postinstall": "prisma generate",
-    "db:generate": "prisma generate",
-    "db:push": "prisma db push",
-    "db:studio": "prisma studio",
-    "db:migrate": "prisma migrate dev"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
-    "@prisma/client": "^6.19.2",
-    "autoprefixer": "^10.4.21",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "framer-motion": "^11.18.2",
-    "lucide-react": "^0.460.0",
-    "next": "15.4.10",
-    "next-intl": "^4.8.3",
-    "postcss": "^8.5.6",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-intersection-observer": "^10.0.0",
-    "tailwind-merge": "^3.4.0",
-    "tailwind-variants": "^0.2.1",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5.9.2"
+    "@web3icons/react": "^4.1.17",
+    "better-sqlite3": "^12.10.0",
+    "gray-matter": "^4.0.3",
+    "lucide-react": "^0.469.0",
+    "next": "^15.5.28",
+    "next-intl": "^4.13.0",
+    "next-mdx-remote": "^6.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
-    "@types/node": "24.5.2",
-    "@types/react": "^19.2.7",
-    "@types/react-dom": "^19.2.3",
-    "eslint": "^9.36.0",
-    "eslint-config-next": "^15.5.3",
-    "prettier": "^3.6.2",
-    "prisma": "^6.19.2",
-    "sharp": "^0.34.5"
+    "@eslint/eslintrc": "^3.3.6",
+    "@fontsource/sora": "^5.3.0",
+    "@tailwindcss/postcss": "4.3.0",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^15.5.28",
+    "postcss": "^8.4.49",
+    "tailwindcss": "4.3.0",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.65.0",
+    "vitest": "^3.2.6"
+  },
+  "pnpm": {
+    "overrides": {
+      "next": ">=15.5.28 <15.6.0",
+      "postcss": ">=8.5.18",
+      "gray-matter>js-yaml": ">=3.15.2 <4"
+    },
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "esbuild",
+      "sharp"
+    ]
   }
 }

@@ -1,46 +1,51 @@
+# Build context for the site image. Anything not needed by `pnpm install`
+# or `pnpm build` stays out, so the context is small and no local secret or
+# database can end up in a layer.
+
+# Dependencies and build output (rebuilt inside the image)
 node_modules
-.next/cache
+.next
 out
 dist
 build
 coverage
+*.tsbuildinfo
 
-.DS_Store
-.vscode
-.idea
-
+# Local state and secrets
 .env
 .env.*
-*.local
-*.pid
-*.seed
+!.env.example
+.data
+backups
+*.db
+*.db-wal
+*.db-shm
+*.pem
+*.key
 *.log
-*.secret
+*.pid
 
+# VCS, editor and tooling
 .git
 .gitignore
 .gitattributes
+.github
+.gitleaks.toml
+.claude
+.vscode
+.idea
+.DS_Store
 
-__tests__/
-test/
-tests/
-docs/
+# Not part of the app bundle
+tests
+docs
+# (root-level Markdown only: patterns without `**/` do not recurse)
 *.md
+LICENSE
+Dockerfile
+.dockerignore
+docker-compose*.yml
+scripts/*.sh
 
-assets/p-k/
-backups/
-videos/
-scripts/
-raw/
-public/uploads/
-public/videos/
-
-jenkins/
-cloudflared/
-nginx/
-
-*.tar
-*.zip
-*.tgz
-*.gz
-*.bak
+# The update posts are needed at build time and at runtime
+!content/**

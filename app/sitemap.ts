@@ -1,47 +1,34 @@
-import type { MetadataRoute } from "next";
-import { routing } from "@/i18n/routing";
+import type { MetadataRoute } from 'next';
+import { routing } from '@/i18n/routing';
+import { localeUrl } from '@/lib/seo';
+import { listUpdates } from '@/lib/updates';
 
-const BASE_URL = "https://7aylabs.com";
+const PAGES = [
+  { path: '/', priority: 1 },
+  { path: '/products', priority: 0.9 },
+  { path: '/vizzor', priority: 0.9 },
+  { path: '/about', priority: 0.7 },
+  { path: '/updates', priority: 0.7 },
+  { path: '/contact', priority: 0.5 },
+  { path: '/legal/privacy', priority: 0.2 },
+] as const;
 
-const pages = [
-  { path: "/", priority: 1.0, changeFrequency: "weekly" as const },
-  { path: "/about", priority: 0.8, changeFrequency: "monthly" as const },
-  { path: "/technology", priority: 0.9, changeFrequency: "monthly" as const },
-  { path: "/why-presence", priority: 0.8, changeFrequency: "monthly" as const },
-  { path: "/use-cases", priority: 0.8, changeFrequency: "monthly" as const },
-  { path: "/devnet", priority: 0.9, changeFrequency: "weekly" as const },
-  { path: "/validators", priority: 0.9, changeFrequency: "monthly" as const },
-  { path: "/ecosystem", priority: 0.8, changeFrequency: "monthly" as const },
-  { path: "/glossary", priority: 0.7, changeFrequency: "monthly" as const },
-  { path: "/updates", priority: 0.6, changeFrequency: "weekly" as const },
-  { path: "/waitlist", priority: 0.7, changeFrequency: "monthly" as const },
-  { path: "/newsletter", priority: 0.6, changeFrequency: "monthly" as const },
-];
+function entry(path: string, priority: number, lastModified?: string): MetadataRoute.Sitemap {
+  const languages: Record<string, string> = {};
+  for (const l of routing.locales) languages[l] = localeUrl(path, l);
+  return routing.locales.map((l) => ({
+    url: localeUrl(path, l),
+    ...(lastModified ? { lastModified } : {}),
+    priority,
+    alternates: { languages },
+  }));
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const entries: MetadataRoute.Sitemap = [];
-
-  for (const page of pages) {
-    for (const locale of routing.locales) {
-      const prefix = locale === routing.defaultLocale ? "" : `/${locale}`;
-      const url = `${BASE_URL}${prefix}${page.path === "/" ? "" : page.path}`;
-
-      // Build alternates for this page across all locales
-      const languages: Record<string, string> = {};
-      for (const altLocale of routing.locales) {
-        const altPrefix = altLocale === routing.defaultLocale ? "" : `/${altLocale}`;
-        languages[altLocale] = `${BASE_URL}${altPrefix}${page.path === "/" ? "" : page.path}`;
-      }
-
-      entries.push({
-        url: url || BASE_URL,
-        lastModified: new Date(),
-        changeFrequency: page.changeFrequency,
-        priority: page.priority,
-        alternates: { languages },
-      });
-    }
-  }
-
-  return entries;
+  const posts = listUpdates(routing.defaultLocale);
+  const newest = posts[0]?.date;
+  return [
+    ...PAGES.flatMap((p) => entry(p.path, p.priority, p.path === '/' || p.path === '/updates' ? newest : undefined)),
+    ...posts.flatMap((p) => entry(`/updates/${p.slug}`, 0.6, p.date)),
+  ];
 }

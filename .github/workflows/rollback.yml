@@ -1,0 +1,205 @@
+name: Rollback
+
+# Puts production or staging back on an image that was built earlier,
+# WITHOUT rebuilding. Manual only. The next real deploy supersedes it.
+#
+#   Actions -> Rollback -> Run workflow
+#     image_sha: commit sha of the last good release (7 to 40 hex characters)
+#     target:    prod | staging
+#
+# or:  gh workflow run rollback.yml -f image_sha=<sha> -f target=prod
+#
+# Every deploy pushes `<branch>-<full sha>` (see deploy.yml). This workflow
+# resolves the sha, checks that it is a commit on the target's branch (main
+# for prod, testing for staging), and runs that exact tag. The short-sha tag
+# is not used: the same commit can be built for both targets, and the two
+# images differ in their baked NEXT_PUBLIC_* values.
+#
+# Repository secrets: the same as deploy.yml.
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_sha:
+        description: Commit sha of the last good release (7 to 40 hex characters)
+        required: true
+        type: string
+      target:
+        description: Which environment to roll back
+        required: true
+        type: choice
+        options: [prod, staging]
+        default: prod
+
+concurrency:
+  # The SAME group the matching deploy runs in (deploy.yml uses
+  # `deploy-<branch>`), so a rollback and a deploy queue behind each other
+  # instead of recreating the container at the same time.
+  group: deploy-${{ inputs.target == 'staging' && 'testing' || 'main' }}
+  cancel-in-progress: false
+
+permissions: {}
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: 7aylabs/site-7aylabs
+
+jobs:
+  rollback:
+    name: Roll ${{ inputs.target }} back to ${{ inputs.image_sha }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      # The workflow's own ref, with full history: the action and the
+      # deploy helper come from here, the overlay from the target commit.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+
+      - name: Resolve the release
+        id: r
+        env:
+          INPUT_SHA: ${{ inputs.image_sha }}
+          TARGET: ${{ inputs.target }}
+        run: |
+          set -euo pipefail
+          if ! printf '%s' "$INPUT_SHA" | grep -qE '^[0-9a-f]{7,40}$'; then
+            echo "::error::image_sha must be 7 to 40 lowercase hex characters"
+            exit 1
+          fi
+          case "$TARGET" in
+            prod)    BRANCH=main;    HOST_URL=https://7aylabs.com;      OVERLAY=docker-compose.prod.yml ;;
+            staging) BRANCH=testing; HOST_URL=https://test.7aylabs.com; OVERLAY=docker-compose.staging.yml ;;
+            *) echo "::error::target must be prod or staging"; exit 1 ;;
+          esac
+          git fetch --quiet origin "$BRANCH"
+          FULL="$(git rev-parse --verify --quiet "${INPUT_SHA}^{commit}" || true)"
+          if [ -z "$FULL" ]; then
+            echo "::error::No commit matches $INPUT_SHA (or the prefix is ambiguous)."
+            exit 1
+          fi
+          if ! git merge-base --is-ancestor "$FULL" "origin/$BRANCH"; then
+            echo "::error::$FULL is not a commit on $BRANCH, so no $TARGET image was built from it."
+            exit 1
+          fi
+          {
+            echo "full_sha=$FULL"
+            echo "host_url=$HOST_URL"
+            echo "overlay=$OVERLAY"
+            echo "image=${REGISTRY}/${IMAGE_NAME}:${BRANCH}-${FULL}"
+          } >> "$GITHUB_OUTPUT"
+          echo "::notice::Rolling $TARGET back to ${BRANCH}-${FULL}"
+
+      # The overlay as it was at that commit, in case ports, volumes or
+      # limits changed since. The helper script comes from the current ref.
+      - name: Pack the overlay from that commit
+        env:
+          FULL_SHA: ${{ steps.r.outputs.full_sha }}
+          OVERLAY: ${{ steps.r.outputs.overlay }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/up/scripts"
+          if ! git show "${FULL_SHA}:${OVERLAY}" > "$RUNNER_TEMP/up/${OVERLAY}"; then
+            echo "::error::$OVERLAY does not exist at $FULL_SHA. That release predates this pipeline and cannot be rolled back to from here."
+            exit 1
+          fi
+          cp scripts/site-deploy.sh "$RUNNER_TEMP/up/scripts/site-deploy.sh"
+          tar -cf "$RUNNER_TEMP/site-upload.tar" -C "$RUNNER_TEMP/up" "$OVERLAY" scripts/site-deploy.sh
+
+      - name: Upload to the host
+        uses: ./.github/actions/vps-ssh
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          user: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || '22' }}
+          known-hosts: ${{ secrets.VPS_KNOWN_HOSTS }}
+          command: tar -xf - -C /opt/7aylabs-site --no-same-owner
+          stdin-file: ${{ runner.temp }}/site-upload.tar
+          timeout-minutes: '3'
+
+      - name: Write the registry token to a file
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          ( umask 077; printf '%s' "$GH_TOKEN" > "$RUNNER_TEMP/registry-token" )
+
+      - name: Sign the host in to the registry
+        uses: ./.github/actions/vps-ssh
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          user: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || '22' }}
+          known-hosts: ${{ secrets.VPS_KNOWN_HOSTS }}
+          command: docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          stdin-file: ${{ runner.temp }}/registry-token
+          timeout-minutes: '2'
+
+      # Pulls first: if the tag is gone from the registry, the helper stops
+      # before touching the running container.
+      - name: Recreate the service with the old image
+        uses: ./.github/actions/vps-ssh
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          user: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || '22' }}
+          known-hosts: ${{ secrets.VPS_KNOWN_HOSTS }}
+          command: bash /opt/7aylabs-site/scripts/site-deploy.sh deploy ${{ inputs.target }} ${{ steps.r.outputs.image }} ${{ steps.r.outputs.full_sha }}
+          timeout-minutes: '8'
+
+      - name: Smoke test
+        env:
+          HOST_URL: ${{ steps.r.outputs.host_url }}
+          TARGET: ${{ inputs.target }}
+          EXPECTED_SHA: ${{ steps.r.outputs.full_sha }}
+        run: |
+          set -euo pipefail
+          for i in $(seq 1 24); do
+            sleep 5
+            BODY="$(curl -fsS --max-time 10 -H 'Cache-Control: no-cache' "$HOST_URL/api/health?t=$(date +%s)" || true)"
+            STATUS="$(printf '%s' "$BODY" | jq -r '.status // "down"' 2>/dev/null || echo down)"
+            DB="$(printf '%s' "$BODY" | jq -r '.subsystems.sqlite.ok // false' 2>/dev/null || echo false)"
+            SHA="$(printf '%s' "$BODY" | jq -r '.sha // "unknown"' 2>/dev/null || echo unknown)"
+            echo "attempt $i: status=$STATUS sqlite=$DB sha=$SHA"
+            if [ "$STATUS" = "healthy" ] && [ "$DB" = "true" ] && [ "$SHA" = "$EXPECTED_SHA" ]; then
+              echo "$TARGET is healthy after the rollback (sha=$SHA)"
+              exit 0
+            fi
+          done
+          echo "::error::Health check failed after the rollback at $HOST_URL. The image was NOT pinned; inspect the host." >&2
+          exit 1
+
+      # Move the pin, so a hand-run `up` or a reboot does not undo the
+      # rollback.
+      - name: Pin the image on the host
+        uses: ./.github/actions/vps-ssh
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          user: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || '22' }}
+          known-hosts: ${{ secrets.VPS_KNOWN_HOSTS }}
+          command: bash /opt/7aylabs-site/scripts/site-deploy.sh pin ${{ inputs.target }} ${{ steps.r.outputs.image }}
+          timeout-minutes: '3'
+
+      - name: Sign the host out of the registry
+        if: always()
+        uses: ./.github/actions/vps-ssh
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          user: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || '22' }}
+          known-hosts: ${{ secrets.VPS_KNOWN_HOSTS }}
+          command: docker logout ghcr.io
+          timeout-minutes: '2'
+
+      - name: Remove the token file
+        if: always()
+        run: rm -f "$RUNNER_TEMP/registry-token"

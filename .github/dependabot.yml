@@ -1,0 +1,51 @@
+version: 2
+updates:
+  # Application dependencies. Patch and minor updates arrive weekly as two
+  # grouped pull requests; major updates come one by one so each gets a
+  # proper review. The commit prefix satisfies commit-conventions.yml.
+  - package-ecosystem: npm
+    directory: "/"
+    target-branch: testing
+    schedule:
+      interval: weekly
+      day: monday
+    groups:
+      patch-updates:
+        applies-to: version-updates
+        update-types:
+          - patch
+      minor-updates:
+        applies-to: version-updates
+        update-types:
+          - minor
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps)"
+    labels:
+      - dependencies
+
+  # Workflow actions. Every `uses:` is pinned to a full commit sha with the
+  # version in a trailing comment; Dependabot bumps both together, so a
+  # moved tag can never change what runs.
+  - package-ecosystem: github-actions
+    directory: "/"
+    target-branch: testing
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "chore(deps)"
+    labels:
+      - dependencies
+
+  # Docker base image digest (node:22-alpine in the Dockerfile).
+  - package-ecosystem: docker
+    directory: "/"
+    target-branch: testing
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "chore(deps)"
+    labels:
+      - dependencies

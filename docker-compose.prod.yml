@@ -1,0 +1,81 @@
+# docker-compose.prod.yml: production overlay for 7aylabs.com
+#
+# Repo-canonical and CI-deployed: every deploy uploads this file (and
+# docker-compose.staging.yml) to /opt/7aylabs-site/ before recreating the
+# service. Edits made by hand on the host are overwritten by the next deploy.
+#
+# It is an overlay on the base /opt/7aylabs-site/docker-compose.yml that
+# scripts/bootstrap-host.sh writes. Run it through the host helper, which
+# passes the right files and env file:
+#
+#   /opt/7aylabs-site/scripts/site-deploy.sh status prod
+#
+# or by hand:
+#
+#   cd /opt/7aylabs-site
+#   docker compose --env-file .env -f docker-compose.yml -f docker-compose.prod.yml ps
+#
+# Never run `docker compose down` here: staging shares the project.
+
+services:
+  site-7aylabs:
+    # SITE_IMAGE is pinned in /opt/7aylabs-site/.env by the deploy workflow
+    # after a release passes its smoke test.
+    image: ${SITE_IMAGE:-ghcr.io/7aylabs/site-7aylabs:latest}
+    container_name: site-7aylabs
+    restart: always
+    init: true
+
+    # SQLite lives at /app/.data/site.db. The image pre-creates /app/.data
+    # owned by uid 1001, and the named volume inherits that on first use.
+    volumes:
+      - site-7aylabs-db:/app/.data
+
+    # Runtime configuration comes from the host env file (mode 600, never in
+    # git). The values below are fixed here so a hand edit cannot change them.
+    env_file:
+      - /opt/7aylabs-site/.env
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      HOSTNAME: 0.0.0.0
+      SITE_DATA_DIR: /app/.data
+
+    # Loopback only. nginx on the host proxies 7aylabs.com to this port and
+    # the Cloudflare Tunnel is the only way in from outside.
+    ports:
+      - "127.0.0.1:7140:3000"
+
+    # Hardening. The root filesystem is read-only; the only writable paths
+    # are the database volume and two small in-memory mounts. If a future
+    # Next.js version needs another writable path, add a tmpfs for it here
+    # rather than removing `read_only`.
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+      - /app/.next/cache:size=96m,uid=1001,gid=1001,mode=0755
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 512m
+    pids_limit: 256
+
+    # Same probe as the image HEALTHCHECK, repeated so `docker compose ps`
+    # shows it without reading the Dockerfile.
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  site-7aylabs-db:
+    name: site-7aylabs-db

@@ -48,3 +48,7 @@ next-env.d.ts
 .cache/
 .vercel/
 .turbo/
+
+# Local SQLite data
+.data/
+coverage/

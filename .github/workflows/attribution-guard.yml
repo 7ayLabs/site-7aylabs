@@ -1,0 +1,54 @@
+name: Attribution Guard
+
+# Keeps AI-assistant attribution out of the history (BRANCHING.md: commits
+# and pull requests carry no AI attribution and no co-author trailers for
+# tools). Scans only the NEW commits of a push or pull request, and matches
+# the specific trailers, not any mention of a model's name, so ordinary copy
+# is never a false positive. Unlike a local git hook, it cannot be skipped.
+
+on:
+  pull_request:
+  push:
+    branches: [main, testing, 'epic/**', 'feat/**', 'fix/**', 'hotfix/**']
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    name: No AI attribution in commit messages
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+
+      - name: Scan new commit messages
+        env:
+          EVENT: ${{ github.event_name }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+          PUSH_BEFORE: ${{ github.event.before }}
+          PUSH_AFTER: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT" = "pull_request" ]; then
+            RANGE="$PR_BASE..$PR_HEAD"
+          elif [ -n "${PUSH_BEFORE:-}" ] && [ "$PUSH_BEFORE" != "0000000000000000000000000000000000000000" ]; then
+            RANGE="$PUSH_BEFORE..$PUSH_AFTER"
+          else
+            RANGE="HEAD~1..HEAD"   # first push of a new branch: check the tip
+          fi
+          echo "Scanning commit messages in: $RANGE"
+
+          # Specific attribution trailers only.
+          PATTERN='🤖 [Gg]enerated with|[Gg]enerated with \[?[Cc]laude [Cc]ode|noreply@anthropic\.com|[Cc]o-[Aa]uthored-[Bb]y:.*([Aa]nthropic|[Cc]laude|[Cc]opilot|[Cc]ursor)'
+
+          if git log --format='%B' "$RANGE" | grep -nE "$PATTERN"; then
+            echo "::error::AI-assistant attribution found in a new commit message (see above). Remove it and push again. See BRANCHING.md."
+            exit 1
+          fi
+          echo "No AI attribution trailers in the new commits."

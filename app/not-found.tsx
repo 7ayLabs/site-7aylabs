@@ -1,37 +1,18 @@
-import { Button } from "@/components/ui";
+import Link from 'next/link';
+import { display, sans } from './fonts';
 
-export default function NotFound() {
+/** Reached only for paths outside every locale; the locale 404 handles the rest. */
+export default function RootNotFound() {
   return (
-    <main
-      id="main-content"
-      className="relative flex min-h-screen items-center justify-center bg-bg overflow-hidden"
-    >
-      {/* Decorative gradient */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 600px 400px at 50% 40%, rgba(20,184,166,0.08), transparent 70%)",
-        }}
-      />
-
-      <div className="relative text-center px-6">
-        <h1 className="text-8xl sm:text-9xl font-bold gradient-text select-none">
-          404
-        </h1>
-        <p className="mt-4 text-lg text-fg-tertiary">
-          This page could not be found.
-        </p>
-        <p className="mt-2 text-sm text-fg-faint">
-          The page you are looking for does not exist or has been moved.
-        </p>
-        <div className="mt-10">
-          <Button href="/" size="lg">
-            Back to Home
-          </Button>
-        </div>
-      </div>
-    </main>
+    <html lang="en" data-theme="dark" className={`${sans.variable} ${display.variable}`}>
+      <body>
+        <main className="mx-auto flex min-h-dvh max-w-[1400px] flex-col items-start justify-center px-5 sm:px-8">
+                    <h1 className="t-display t-hero text-[var(--fg)]">Page not found.</h1>
+          <Link href="/" className="btn btn-ink mt-10">
+            Back to 7ayLabs
+          </Link>
+        </main>
+      </body>
+    </html>
   );
 }

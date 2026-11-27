@@ -1,127 +1,276 @@
 name: CI
 
+# Every pull request into an integration or release branch is checked, no
+# matter what the head branch is called. The push list adds the working
+# prefixes from BRANCHING.md so a branch is also checked before its pull
+# request exists.
 on:
-  push:
-    branches: [main, develop]
   pull_request:
-    branches: [main, develop]
+    branches: [main, testing, 'epic/**']
+  push:
+    branches:
+      - main
+      - testing
+      - 'epic/**'
+      - 'feat/**'
+      - 'fix/**'
+      - 'hotfix/**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
-  setup:
-    name: Setup Environment
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Enable pnpm
-        run: |
-          corepack enable
-          corepack prepare pnpm@9.12.3 --activate
-          pnpm --version
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
-
+  # ────────────────────────────────────────────────────────────────────
+  # lint + build: typecheck, lint, test, then build and dependency audit
+  # ────────────────────────────────────────────────────────────────────
+  # Two jobs, named for the two status checks the `main` branch protection
+  # requires ("Lint and Typecheck", "Build Project"). Renaming either one
+  # means updating the branch protection in the same change.
   lint:
     name: Lint and Typecheck
     runs-on: ubuntu-latest
-    needs: setup
-
+    timeout-minutes: 15
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4.3.0
         with:
-          node-version: 20
+          version: 9.15.0
+          run_install: false
 
-      - name: Enable pnpm
-        run: |
-          corepack enable
-          corepack prepare pnpm@9.12.3 --activate
-          pnpm --version
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+          cache: pnpm
 
-      - name: Install Dependencies
+      - name: Install
         run: pnpm install --frozen-lockfile
 
-      - name: Run ESLint
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint
         run: pnpm lint
 
-      - name: Type Check (TypeScript)
-        run: pnpm tsc --noEmit
-
-  security:
-    name: Security Audit
-    runs-on: ubuntu-latest
-    needs: [lint]
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Enable pnpm
-        run: |
-          corepack enable
-          corepack prepare pnpm@9.12.3 --activate
-          pnpm --version
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Audit Dependencies
-        run: pnpm audit --audit-level=moderate || true
+      - name: Test
+        run: pnpm test
 
   build:
     name: Build Project
     runs-on: ubuntu-latest
-    needs: [lint, security]
-
+    timeout-minutes: 20
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4.3.0
         with:
-          node-version: 20
+          version: 9.15.0
+          run_install: false
 
-      - name: Enable pnpm
-        run: |
-          corepack enable
-          corepack prepare pnpm@9.12.3 --activate
-          pnpm --version
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+          cache: pnpm
 
-      - name: Install Dependencies
+      - name: Install
         run: pnpm install --frozen-lockfile
 
-      - name: Cache Next.js Build
-        uses: actions/cache@v4
-        with:
-          path: .next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}
-
-      - name: Build Next.js
+      - name: Build
         run: pnpm build
+        env:
+          GIT_SHA: ${{ github.sha }}
+          BUILD_TIME: ci
+          NEXT_PUBLIC_SITE_URL: https://7aylabs.com
+          NEXT_PUBLIC_SITE_ENV: production
+          SITE_DATA_DIR: ${{ runner.temp }}/site-data
 
-      - name: Verify Build Output
-        run: test -d .next || (echo "Build failed — no .next folder" && exit 1)
+      # Blocking gate on high and critical advisories in production
+      # dependencies. `pnpm audit` sometimes fails while talking to the
+      # registry, which is not a finding, so that case is retried. A run
+      # that completes and reports an advisory fails at once, and so does a
+      # run that never completes: an unverified audit is not a clean one.
+      - name: Dependency audit (prod, high+)
+        run: |
+          for i in 1 2 3; do
+            if out="$(pnpm audit --audit-level high --prod 2>&1)"; then
+              echo "$out"; echo "Audit clean."; exit 0
+            else
+              code=$?
+            fi
+            echo "$out"
+            if echo "$out" | grep -qiE "not valid JSON|Unexpected token|ENOTFOUND|ETIMEDOUT|socket hang up|ECONNRESET|EAI_AGAIN|50[0-9] "; then
+              echo "::warning::pnpm audit could not reach the registry (attempt $i/3), retrying"
+              sleep 10
+              continue
+            fi
+            echo "::error::pnpm audit found high or critical advisories in production dependencies (see above)"
+            exit "$code"
+          done
+          echo "::error::pnpm audit did not complete after 3 attempts; dependency safety has not been verified."
+          exit 1
 
-      - name: Upload Build Artifacts (if failed)
-        if: failure()
-        uses: actions/upload-artifact@v4
+  # ────────────────────────────────────────────────────────────────────
+  # image: build the production image and boot it the way the host does
+  # (same compose overlay: read-only root, dropped capabilities, named
+  # volume). Catches a broken Dockerfile, a native module that does not
+  # load, or a path the read-only filesystem blocks, before a deploy does.
+  # ────────────────────────────────────────────────────────────────────
+  image:
+    name: Build and boot the image
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
+
+      - name: Build
+        uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25 # v5.4.0
         with:
-          name: build-logs
-          path: .next
+          context: .
+          push: false
+          load: true
+          tags: ghcr.io/7aylabs/site-7aylabs:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max,ignore-error=true
+          build-args: |
+            GIT_SHA=${{ github.sha }}
+            BUILD_TIME=ci
+            NEXT_PUBLIC_SITE_URL=https://7aylabs.com
+            NEXT_PUBLIC_SITE_ENV=production
+
+      - name: Boot with the production overlay and check health
+        env:
+          EXPECTED_SHA: ${{ github.sha }}
+          SITE_IMAGE: ghcr.io/7aylabs/site-7aylabs:ci
+        run: |
+          set -euo pipefail
+          # The overlay reads its env file from the host path, so recreate
+          # that path here with throwaway values.
+          sudo mkdir -p /opt/7aylabs-site
+          sudo chown "$(id -u):$(id -g)" /opt/7aylabs-site
+          {
+            echo "ALLOWED_ORIGINS=https://7aylabs.com"
+            echo "RATE_LIMIT_SALT=ci-only-not-a-secret"
+            echo "SITE_DATA_DIR=/app/.data"
+          } > /opt/7aylabs-site/.env
+          # Same content as the base file scripts/bootstrap-host.sh writes.
+          printf 'name: 7aylabs-site\nservices: {}\n' > /opt/7aylabs-site/docker-compose.yml
+          cp docker-compose.prod.yml /opt/7aylabs-site/
+
+          compose() {
+            docker compose --project-directory /opt/7aylabs-site \
+              --env-file /opt/7aylabs-site/.env \
+              -f /opt/7aylabs-site/docker-compose.yml \
+              -f /opt/7aylabs-site/docker-compose.prod.yml "$@"
+          }
+          compose up -d --no-deps site-7aylabs
+
+          for i in $(seq 1 20); do
+            sleep 3
+            BODY="$(curl -fsS --max-time 5 http://127.0.0.1:7140/api/health || true)"
+            STATUS="$(printf '%s' "$BODY" | jq -r '.status // "down"' 2>/dev/null || echo down)"
+            DB="$(printf '%s' "$BODY" | jq -r '.subsystems.sqlite.ok // false' 2>/dev/null || echo false)"
+            SHA="$(printf '%s' "$BODY" | jq -r '.sha // "unknown"' 2>/dev/null || echo unknown)"
+            echo "attempt $i: status=$STATUS sqlite=$DB sha=$SHA"
+            if [ "$STATUS" = "healthy" ] && [ "$DB" = "true" ] && [ "$SHA" = "$EXPECTED_SHA" ]; then
+              # The home page must render too, not only the health route.
+              CODE="$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 10 http://127.0.0.1:7140/)"
+              echo "GET / -> $CODE"
+              [ "$CODE" = "200" ] || { compose logs --no-color --tail 80; exit 1; }
+              echo "Image boots and reports healthy."
+              exit 0
+            fi
+          done
+          echo "::error::The image did not become healthy under the production overlay"
+          compose logs --no-color --tail 120
+          exit 1
+
+  # ────────────────────────────────────────────────────────────────────
+  # infra: shell scripts and workflow files
+  # ────────────────────────────────────────────────────────────────────
+  infra:
+    name: Lint scripts and compose files
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Shell syntax and shellcheck
+        run: |
+          set -euo pipefail
+          for f in scripts/*.sh; do
+            bash -n "$f"
+            shellcheck "$f"
+          done
+
+      - name: Compose overlays parse
+        run: |
+          set -euo pipefail
+          printf 'name: 7aylabs-site\nservices: {}\n' > "$RUNNER_TEMP/base.yml"
+          # The overlays name their env files by host path; `config` wants
+          # them to exist.
+          sudo mkdir -p /opt/7aylabs-site
+          sudo touch /opt/7aylabs-site/.env /opt/7aylabs-site/.env.staging
+          for overlay in docker-compose.prod.yml docker-compose.staging.yml; do
+            docker compose -f "$RUNNER_TEMP/base.yml" -f "$overlay" config --quiet
+          done
+
+  # ────────────────────────────────────────────────────────────────────
+  # secret-scan: the whole history, every run
+  # ────────────────────────────────────────────────────────────────────
+  secret-scan:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          # Full history so the scan sees every commit, not just HEAD.
+          fetch-depth: 0
+
+      # The gitleaks binary is downloaded directly and checked against a
+      # pinned checksum, instead of going through a wrapper action.
+      - name: Install gitleaks
+        env:
+          GITLEAKS_VERSION: "8.30.1"
+          # sha256 of gitleaks_8.30.1_linux_x64.tar.gz, from the release's
+          # gitleaks_8.30.1_checksums.txt. Bump both together.
+          GITLEAKS_SHA256: "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb"
+        run: |
+          set -euo pipefail
+          curl -sSfL -o /tmp/gitleaks.tar.gz \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          # Refuse a binary that is not the one pinned above.
+          echo "${GITLEAKS_SHA256}  /tmp/gitleaks.tar.gz" | sha256sum -c -
+          tar -xzf /tmp/gitleaks.tar.gz -C /tmp gitleaks
+          sudo mv /tmp/gitleaks /usr/local/bin/gitleaks
+          gitleaks version
+
+      - name: Scan repository for leaked secrets
+        run: >
+          gitleaks detect
+          --source .
+          --config .gitleaks.toml
+          --redact
+          --no-banner
+          --verbose

@@ -1,52 +1,39 @@
-import { NextRequest } from "next/server";
-import { isValidEmail, sanitizeInput, checkRateLimit, getClientIp, isAllowedOrigin, validateFieldLength } from "@/lib/api/validation";
-import { successResponse, errorResponse } from "@/lib/api/response";
-import { prisma } from "@/lib/db/prisma";
-import type { ContactRequest } from "@/types/api";
+import { insertContact } from '@/lib/db';
+import { notifyContact } from '@/lib/api/notify';
+import { cleanText, clientIp, hashIp, json, normalizeEmail, originAllowed, pickLocale, rateLimited, readJson } from '@/lib/api/validation';
 
-export async function POST(request: NextRequest) {
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
+const TOPICS = new Set(['general', 'vizzor', 'partnership', 'press', 'security']);
+
+export async function POST(req: Request): Promise<Response> {
+  if (!originAllowed(req)) return json({ ok: false, error: 'forbidden' }, 403);
+
+  const ip = clientIp(req);
+  if (rateLimited(`contact:${ip}`, 5)) return json({ ok: false, error: 'rate_limited' }, 429);
+
+  const body = await readJson(req);
+  if (!body) return json({ ok: false, error: 'invalid' }, 400);
+
+  // Honeypot: a filled hidden field means a script. Answer as if it worked.
+  if (typeof body.company === 'string' && body.company.trim() !== '') return json({ ok: true });
+
+  const email = normalizeEmail(body.email);
+  const name = cleanText(body.name, 120);
+  const message = cleanText(body.message, 4000);
+  const topic = typeof body.topic === 'string' && TOPICS.has(body.topic) ? body.topic : 'general';
+  if (!email || name.length < 2 || message.length < 10) return json({ ok: false, error: 'invalid' }, 400);
+
+  const entry = { name, email, topic, message, locale: pickLocale(body.locale), ipHash: hashIp(ip) };
   try {
-    if (!isAllowedOrigin(request)) {
-      return errorResponse("Forbidden.", 403);
-    }
-
-    const ip = getClientIp(request);
-    if (!checkRateLimit(ip)) {
-      return errorResponse("Too many requests. Try again later.", 429);
-    }
-
-    const body: unknown = await request.json();
-
-    if (!body || typeof body !== "object") {
-      return errorResponse("Invalid request body.");
-    }
-
-    const { email, name, subject, message } = body as ContactRequest;
-    const errors: string[] = [];
-
-    if (!isValidEmail(email)) errors.push("A valid email address is required.");
-    if (!name || typeof name !== "string" || !name.trim()) errors.push("Name is required.");
-    if (!message || typeof message !== "string" || !message.trim()) errors.push("Message is required.");
-
-    if (errors.length > 0) {
-      return errorResponse("Validation failed.", 400, errors);
-    }
-
-    if (!validateFieldLength(email, "email") || !validateFieldLength(name, "name") || !validateFieldLength(subject, "subject") || !validateFieldLength(message, "message")) {
-      return errorResponse("Input exceeds maximum allowed length.");
-    }
-
-    await prisma.contactMessage.create({
-      data: {
-        email: email.trim().toLowerCase(),
-        name: sanitizeInput(name),
-        subject: subject ? sanitizeInput(subject) : undefined,
-        message: sanitizeInput(message),
-      },
-    });
-
-    return successResponse("Your message has been received.");
-  } catch {
-    return errorResponse("Internal server error.", 500);
+    const id = insertContact(entry);
+    // A reference the sender can quote; it is the message's own number.
+    const ref = `7AY-${String(id).padStart(5, '0')}`;
+    await notifyContact(entry, ref);
+    return json({ ok: true, ref });
+  } catch (err) {
+    console.error('[contact] store failed:', err instanceof Error ? err.message : 'unknown error');
+    return json({ ok: false, error: 'server' }, 500);
   }
 }

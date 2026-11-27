@@ -1,0 +1,72 @@
+# docker-compose.staging.yml: staging overlay for test.7aylabs.com
+#
+# Repo-canonical and CI-deployed, like docker-compose.prod.yml. Staging runs
+# on the same host as production but shares neither its env file nor its
+# database volume.
+#
+#   /opt/7aylabs-site/scripts/site-deploy.sh status staging
+#
+# or by hand (note the staging env file; it carries SITE_STAGING_IMAGE):
+#
+#   cd /opt/7aylabs-site
+#   docker compose --env-file .env.staging -f docker-compose.yml -f docker-compose.staging.yml ps
+#
+# Never run `docker compose down` here: production shares the project.
+
+services:
+  site-7aylabs-staging:
+    # SITE_STAGING_IMAGE is pinned in /opt/7aylabs-site/.env.staging by the
+    # deploy workflow after a release passes its smoke test.
+    image: ${SITE_STAGING_IMAGE:-ghcr.io/7aylabs/site-7aylabs:testing}
+    container_name: site-7aylabs-staging
+    restart: always
+    init: true
+
+    # A separate volume from production: test submissions never mix with
+    # real ones.
+    volumes:
+      - site-7aylabs-staging-db:/app/.data
+
+    env_file:
+      - /opt/7aylabs-site/.env.staging
+    environment:
+      # Production runtime mode on purpose, so staging behaves like prod.
+      # What makes it staging is the build (NEXT_PUBLIC_SITE_ENV=staging)
+      # and the values in the env file.
+      NODE_ENV: production
+      PORT: "3000"
+      HOSTNAME: 0.0.0.0
+      SITE_DATA_DIR: /app/.data
+
+    # Loopback only. nginx proxies test.7aylabs.com to this port and adds
+    # `X-Robots-Tag: noindex, nofollow`.
+    ports:
+      - "127.0.0.1:7141:3000"
+
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+      - /app/.next/cache:size=96m,uid=1001,gid=1001,mode=0755
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 512m
+    pids_limit: 256
+
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  site-7aylabs-staging-db:
+    name: site-7aylabs-staging-db

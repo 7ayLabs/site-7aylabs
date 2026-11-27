@@ -1,59 +1,299 @@
 name: Deploy
 
+# Branch-driven deploy with two environments on one host:
+#
+#   main     ->  https://7aylabs.com       (production)  on every push
+#   testing  ->  https://test.7aylabs.com  (staging)     on request
+#
+# Staging is deployed when somebody wants to look at it:
+#
+#     gh workflow run deploy.yml --ref testing
+#
+# CI still runs on every push to `testing`, so a broken commit is caught
+# either way. Production deploys on merge, because a merge to `main` is the
+# request. A manual run from `main` redeploys production.
+#
+# Flow: resolve -> build-and-push -> deploy (upload, recreate, smoke test,
+# pin). The image is pinned in the host env file only after the public
+# smoke test passes, so the pin always names a release that worked.
+#
+# Repository secrets: VPS_HOST, VPS_USER, VPS_SSH_KEY, VPS_KNOWN_HOSTS,
+# VPS_PORT (optional, default 22). See docs/ops/runbook.md.
+
 on:
   push:
-    branches: [main, testing]
+    branches: [main]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - '.github/dependabot.yml'
+  workflow_dispatch:
 
-permissions:
-  contents: read
+concurrency:
+  # One deploy per target at a time. A second one waits instead of
+  # cancelling the first: a deploy cut off halfway is worse than a late one.
+  # rollback.yml uses the same groups.
+  group: deploy-${{ github.ref_name }}
+  cancel-in-progress: false
+
+permissions: {}
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: 7aylabs/site-7aylabs
 
 jobs:
-  build-and-push:
-    name: Build & Push Docker Image
+  # ────────────────────────────────────────────────────────────────────
+  # resolve: map the branch to the parameters every later step reads, so
+  # build, deploy and smoke test are written once.
+  # ────────────────────────────────────────────────────────────────────
+  resolve:
     runs-on: ubuntu-latest
-
+    timeout-minutes: 2
+    permissions: {}
+    outputs:
+      target:    ${{ steps.r.outputs.target }}
+      image_tag: ${{ steps.r.outputs.image_tag }}
+      host_url:  ${{ steps.r.outputs.host_url }}
+      site_env:  ${{ steps.r.outputs.site_env }}
+      image:     ${{ steps.r.outputs.image }}
+      build_time: ${{ steps.r.outputs.build_time }}
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Set Docker image tag
-        id: meta
+      - id: r
+        env:
+          REF_NAME: ${{ github.ref_name }}
+          REF_TYPE: ${{ github.ref_type }}
+          SHA: ${{ github.sha }}
         run: |
-          if [ "${{ github.ref_name }}" = "main" ]; then
-            echo "tag=imzzaidd/site-7aylabs:latest" >> "$GITHUB_OUTPUT"
-          elif [ "${{ github.ref_name }}" = "testing" ]; then
-            echo "tag=imzzaidd/site-7aylabs:staging" >> "$GITHUB_OUTPUT"
+          set -euo pipefail
+          if [ "$REF_TYPE" != "branch" ]; then
+            echo "::error::Deploys run from the main or testing branch, not from a tag."
+            exit 1
           fi
+          case "$REF_NAME" in
+            main)
+              {
+                echo "target=prod"
+                echo "image_tag=latest"
+                echo "host_url=https://7aylabs.com"
+                echo "site_env=production"
+              } >> "$GITHUB_OUTPUT"
+              ;;
+            testing)
+              {
+                echo "target=staging"
+                echo "image_tag=testing"
+                echo "host_url=https://test.7aylabs.com"
+                echo "site_env=staging"
+              } >> "$GITHUB_OUTPUT"
+              ;;
+            *)
+              echo "::error::Unsupported deploy branch: $REF_NAME (only main and testing deploy)"
+              exit 1
+              ;;
+          esac
+          # The immutable tag the host runs. `<branch>-<full sha>` cannot be
+          # confused between targets, unlike the short-sha tag.
+          echo "image=${REGISTRY}/${IMAGE_NAME}:${REF_NAME}-${SHA}" >> "$GITHUB_OUTPUT"
+          echo "build_time=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_OUTPUT"
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Login to DockerHub
-        uses: docker/login-action@v3
+  # ────────────────────────────────────────────────────────────────────
+  # build-and-push: one image per target, three tags:
+  #   <env tag>             latest | testing (what the overlays default to)
+  #   <branch>-<full sha>   immutable, what the host is pinned to
+  #   <short sha>           convenience tag
+  # ────────────────────────────────────────────────────────────────────
+  build-and-push:
+    runs-on: ubuntu-latest
+    needs: resolve
+    timeout-minutes: 25
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          ref: ${{ github.sha }}
 
-      - name: Build and Push Docker Image
-        uses: docker/build-push-action@v6
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
+
+      - name: Login to GHCR
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3.7.0
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@c299e40c65443455700f0fdfc63efafe5b349051 # v5.10.0
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=${{ needs.resolve.outputs.image_tag }}
+            type=raw,value=${{ github.ref_name }}-${{ github.sha }}
+            type=sha,prefix=,format=short
+
+      - name: Build and push
+        uses: docker/build-push-action@ca052bb54ab0790a636c9b5f226502c73d547a25 # v5.4.0
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tag }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          # One plain image manifest per tag, so the registry page stays
+          # readable and `docker pull` needs no platform selection.
+          provenance: false
           cache-from: type=gha
-          cache-to: type=gha,mode=max
+          # The cache is an optimisation, never a reason to fail a deploy.
+          cache-to: type=gha,mode=max,ignore-error=true
+          # The `deps` stage (keyed on the lockfile) stays cached. The app
+          # build is never restored from cache: GIT_SHA is also consumed in
+          # the runner stage, so a stale build layer could otherwise ship
+          # old code under a new sha and pass the smoke test.
+          no-cache-filters: build
+          # NEXT_PUBLIC_* values are inlined into the bundle at build time,
+          # so they come from the resolve job, not from the host env file.
+          build-args: |
+            GIT_SHA=${{ github.sha }}
+            BUILD_TIME=${{ needs.resolve.outputs.build_time }}
+            NEXT_PUBLIC_SITE_URL=${{ needs.resolve.outputs.host_url }}
+            NEXT_PUBLIC_SITE_ENV=${{ needs.resolve.outputs.site_env }}
 
-  trigger-jenkins:
-    name: Trigger Jenkins Deploy
-    needs: build-and-push
-    if: github.ref_name == 'testing'
+  # ────────────────────────────────────────────────────────────────────
+  # deploy: upload the overlays and helper from this commit, recreate the
+  # one service, smoke-test the public URL, then pin the image.
+  # ────────────────────────────────────────────────────────────────────
+  deploy:
     runs-on: ubuntu-latest
+    needs: [resolve, build-and-push]
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      packages: read
     steps:
-      - name: Trigger Jenkins pipeline
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: ${{ github.sha }}
+
+      # The overlays and the deploy helper are repo-canonical: the host
+      # always runs the versions from the commit being deployed.
+      - name: Pack the files the host needs
         run: |
-          CRUMB=$(curl -sf -u "${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_TOKEN }}" \
-            "${{ secrets.JENKINS_URL }}/crumbIssuer/api/json" | jq -r '.crumb')
-          curl -sf -X POST \
-            -u "${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_TOKEN }}" \
-            -H "Jenkins-Crumb: $CRUMB" \
-            "${{ secrets.JENKINS_URL }}/job/7ayLabsPipeline/job/testing/build"
+          set -euo pipefail
+          tar -cf "$RUNNER_TEMP/site-upload.tar" \
+            docker-compose.prod.yml docker-compose.staging.yml \
+            scripts/site-deploy.sh scripts/site-data.sh
+
+      - name: Upload to the host
+        uses: ./.github/actions/vps-ssh
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          user: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || '22' }}
+          known-hosts: ${{ secrets.VPS_KNOWN_HOSTS }}
+          command: tar -xf - -C /opt/7aylabs-site --no-same-owner
+          stdin-file: ${{ runner.temp }}/site-upload.tar
+          timeout-minutes: '3'
+
+      # The image package is private, so the host signs in to the registry
+      # for this deploy with this job's own token: read-only, and expired
+      # when the job ends. It is sent on stdin, never on a command line, and
+      # the host is signed out again in the last step whatever happens.
+      - name: Write the registry token to a file
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          ( umask 077; printf '%s' "$GH_TOKEN" > "$RUNNER_TEMP/registry-token" )
+
+      - name: Sign the host in to the registry
+        uses: ./.github/actions/vps-ssh
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          user: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || '22' }}
+          known-hosts: ${{ secrets.VPS_KNOWN_HOSTS }}
+          command: docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          stdin-file: ${{ runner.temp }}/registry-token
+          timeout-minutes: '2'
+
+      # Pulls the image, recreates only this target's service (never
+      # `down`), and waits until the container reports healthy with this
+      # commit's sha on its loopback port.
+      - name: Recreate the service
+        uses: ./.github/actions/vps-ssh
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          user: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || '22' }}
+          known-hosts: ${{ secrets.VPS_KNOWN_HOSTS }}
+          command: bash /opt/7aylabs-site/scripts/site-deploy.sh deploy ${{ needs.resolve.outputs.target }} ${{ needs.resolve.outputs.image }} ${{ github.sha }}
+          timeout-minutes: '8'
+
+      # The public check: through Cloudflare, the tunnel and nginx. The sha
+      # must be this commit's, which proves the container was replaced and
+      # that the hostname reaches this host.
+      - name: Smoke test
+        env:
+          HOST_URL: ${{ needs.resolve.outputs.host_url }}
+          TARGET: ${{ needs.resolve.outputs.target }}
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          echo "Smoke-testing $TARGET at $HOST_URL/api/health"
+          for i in $(seq 1 24); do
+            sleep 5
+            BODY="$(curl -fsS --max-time 10 -H 'Cache-Control: no-cache' "$HOST_URL/api/health?t=$(date +%s)" || true)"
+            STATUS="$(printf '%s' "$BODY" | jq -r '.status // "down"' 2>/dev/null || echo down)"
+            DB="$(printf '%s' "$BODY" | jq -r '.subsystems.sqlite.ok // false' 2>/dev/null || echo false)"
+            SHA="$(printf '%s' "$BODY" | jq -r '.sha // "unknown"' 2>/dev/null || echo unknown)"
+            echo "attempt $i: status=$STATUS sqlite=$DB sha=$SHA"
+            if [ "$STATUS" = "healthy" ] && [ "$DB" = "true" ] && [ "$SHA" = "$EXPECTED_SHA" ]; then
+              if [ "$TARGET" = "staging" ]; then
+                # Staging must never be indexable.
+                HEADERS="$(curl -fsS --max-time 10 -o /dev/null -D - "$HOST_URL/api/health" || true)"
+                if ! printf '%s\n' "$HEADERS" | grep -iE '^x-robots-tag:.*noindex' >/dev/null; then
+                  echo "::error::$HOST_URL does not send X-Robots-Tag: noindex. Check the staging server block in nginx."
+                  exit 1
+                fi
+              fi
+              echo "$TARGET is healthy at $HOST_URL (sha=$SHA)"
+              exit 0
+            fi
+          done
+          echo "::error::Smoke test failed at $HOST_URL after 24 attempts. The container is running the new image (the previous step verified it on the host), so check the public path: DNS, the tunnel, nginx. The image was NOT pinned." >&2
+          exit 1
+
+      # Only now does the host env file name this image, so a hand-run
+      # `up` or a reboot starts a release that passed its smoke test.
+      - name: Pin the image on the host
+        uses: ./.github/actions/vps-ssh
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          user: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || '22' }}
+          known-hosts: ${{ secrets.VPS_KNOWN_HOSTS }}
+          command: bash /opt/7aylabs-site/scripts/site-deploy.sh pin ${{ needs.resolve.outputs.target }} ${{ needs.resolve.outputs.image }}
+          timeout-minutes: '3'
+
+      - name: Sign the host out of the registry
+        if: always()
+        uses: ./.github/actions/vps-ssh
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          user: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || '22' }}
+          known-hosts: ${{ secrets.VPS_KNOWN_HOSTS }}
+          command: docker logout ghcr.io
+          timeout-minutes: '2'
+
+      - name: Remove the token file
+        if: always()
+        run: rm -f "$RUNNER_TEMP/registry-token"

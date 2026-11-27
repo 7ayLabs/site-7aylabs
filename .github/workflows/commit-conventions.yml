@@ -1,0 +1,109 @@
+name: Commit Conventions
+
+# Validates commit subjects against the type and scope lists in
+# BRANCHING.md. That document is the source of truth; this is what enforces
+# it. A CI check is used instead of a local git hook because a hook can be
+# skipped with `--no-verify`.
+#
+# Only the NEW commits of a push or pull request are checked, so history
+# that predates the rule never trips it.
+#
+# Release pull requests (an epic or `testing` into `main`) are skipped: they
+# carry integration history that was already checked on the branches that
+# introduced it and cannot be reworded without rewriting a shared branch.
+# For the same reason a push is walked along its first-parent chain only:
+# what landed ON the branch, not what arrived through a merge.
+
+on:
+  pull_request:
+  push:
+    branches: [main, testing, 'epic/**', 'feat/**', 'fix/**', 'hotfix/**']
+
+permissions:
+  contents: read
+
+jobs:
+  subjects:
+    name: Conventional commit subjects
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+
+      - name: Check new commit subjects
+        env:
+          EVENT: ${{ github.event_name }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+          PR_BASE_REF: ${{ github.event.pull_request.base.ref }}
+          PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          PUSH_BEFORE: ${{ github.event.before }}
+          PUSH_AFTER: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          if [ "$EVENT" = "pull_request" ] && [ "${PR_BASE_REF:-}" = "main" ]; then
+            case "${PR_HEAD_REF:-}" in
+              epic/*|testing)
+                echo "::notice::Release PR ${PR_HEAD_REF} -> main: integration history, already checked on the branches that introduced it. Skipping the subject scan."
+                exit 0
+                ;;
+            esac
+          fi
+
+          WALK=''
+          if [ "$EVENT" = "pull_request" ]; then
+            RANGE="$PR_BASE..$PR_HEAD"
+          elif [ -n "${PUSH_BEFORE:-}" ] && [ "$PUSH_BEFORE" != "0000000000000000000000000000000000000000" ]; then
+            RANGE="$PUSH_BEFORE..$PUSH_AFTER"
+            WALK='--first-parent'
+          else
+            RANGE="HEAD~1..HEAD"   # first push of a new branch: check the tip
+          fi
+          echo "Checking commit subjects in: $RANGE ${WALK:-(full walk)}"
+
+          # Keep in sync with BRANCHING.md.
+          TYPES='feat|fix|refactor|test|docs|chore|perf|build|ci|style|revert|merge|release|security|copy'
+          SCOPES='home|vizzor|about|updates|contact|legal|nav|footer|ui|motion|i18n|seo|api|db|ci|deploy|infra|docker|deps|docs|release|security|config|archive|en|es|fr'
+
+          FAILED=0
+          while IFS= read -r line; do
+            [ -z "$line" ] && continue
+            SHA="${line%% *}"
+            SUBJECT="${line#* }"
+
+            # Merge commits created for a pull request cannot be reworded;
+            # skip them rather than fail a green PR.
+            case "$SUBJECT" in
+              "Merge pull request "*|"Merge branch "*|"Merge remote-tracking branch "*) continue ;;
+            esac
+
+            if ! printf '%s' "$SUBJECT" | grep -qE "^($TYPES)(\(($SCOPES)\))?!?: .+"; then
+              echo "::error::$SHA: subject does not match 'type(scope): description'"
+              echo "    $SUBJECT"
+              FAILED=1
+              continue
+            fi
+            # Lowercase after the colon.
+            DESC="${SUBJECT#*: }"
+            case "$DESC" in
+              [A-Z]*)
+                echo "::error::$SHA: description must start lowercase"
+                echo "    $SUBJECT"
+                FAILED=1
+                ;;
+            esac
+          done < <(git log ${WALK} --format='%h %s' "$RANGE")
+
+          if [ "$FAILED" -ne 0 ]; then
+            echo ""
+            echo "Allowed types:  $TYPES"
+            echo "Allowed scopes: $SCOPES"
+            echo "See BRANCHING.md. If a scope is missing, add it there and here in the same commit."
+            exit 1
+          fi
+          echo "All new commit subjects match the convention."

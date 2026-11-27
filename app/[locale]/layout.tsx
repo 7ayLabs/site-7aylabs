@@ -1,176 +1,127 @@
-import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Syne, JetBrains_Mono } from "next/font/google";
-import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
-import { notFound } from "next/navigation";
-import { routing } from "@/i18n/routing";
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import CustomCursor from "@/components/ui/CustomCursor";
+import type { Metadata, Viewport } from 'next';
+import type { ReactNode } from 'react';
+import { notFound } from 'next/navigation';
+import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
+import { routing, type Locale } from '@/i18n/routing';
+import { display, mono, sans } from '../fonts';
+import { ThemeProvider, themeBootScript } from '@/components/layout/theme-provider';
+import { SiteNav } from '@/components/layout/site-nav';
+import { SiteFooter } from '@/components/layout/site-footer';
+import { ChainField } from '@/components/site/chain-field';
+import { PageFx } from '@/components/site/fx';
+import { JsonLd } from '@/components/site/json-ld';
+import { organizationJsonLd } from '@/lib/seo';
+import { SITE, isProduction } from '@/lib/site';
 
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-plus-jakarta",
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800"],
-});
-
-const syne = Syne({
-  subsets: ["latin"],
-  variable: "--font-syne",
-  display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
-const LOCALE_OG_MAP: Record<string, string> = {
-  en: "en_US", es: "es_ES", pt: "pt_BR", fr: "fr_FR",
-  de: "de_DE", zh: "zh_CN", ja: "ja_JP",
-};
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "metadata.home" });
-
-  // Build hreflang alternates
-  const languages: Record<string, string> = {};
-  for (const l of routing.locales) {
-    languages[l] = l === routing.defaultLocale
-      ? "https://7aylabs.com"
-      : `https://7aylabs.com/${l}`;
-  }
-
-  return {
-    title: {
-      default: t("title"),
-      template: t("titleTemplate"),
-    },
-    description: t("description"),
-    keywords: [
-      "7ayLabs", "7aychain", "Proof of Presence", "PoP protocol",
-      "presence layer", "Layer 1 blockchain", "Web3 infrastructure",
-      "$7AY token", "witness circles", "network latency triangulation",
-      "Substrate", "Sybil resistance", "human verification blockchain",
-      "zero knowledge presence", "Polkadot SDK", "DePIN protocol",
-      "presence-based consensus", "proof of personhood",
-    ],
-    metadataBase: new URL("https://7aylabs.com"),
-    alternates: { canonical: "/", languages },
-    openGraph: {
-      title: t("ogTitle"),
-      description: t("ogDescription"),
-      url: "https://7aylabs.com",
-      siteName: "7ayLabs",
-      images: [
-        {
-          url: "/og/7aylabs-og.png",
-          width: 1200,
-          height: 630,
-          alt: t("ogImageAlt"),
-        },
-      ],
-      type: "website",
-      locale: LOCALE_OG_MAP[locale] || "en_US",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: t("twitterTitle"),
-      description: t("twitterDescription"),
-      images: ["/og/7aylabs-og.png"],
-      creator: "@7aylabs",
-    },
-    icons: {
-      icon: [
-        { url: "/favicon.ico", sizes: "any" },
-        { url: "/favicon.svg", type: "image/svg+xml" },
-        { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-      ],
-      apple: "/apple-touch-icon.png",
-    },
-    manifest: "/site.webmanifest",
-    category: "technology",
-    applicationName: "7ayLabs",
-    creator: "7ayLabs",
-    publisher: "7ayLabs",
-  };
-}
+/** The pages listed as the site's navigation in its structured data. */
+const NAV_PAGES = [
+  { ns: 'vizzorPage', path: '/vizzor' },
+  { ns: 'productsPage', path: '/products' },
+  { ns: 'aboutPage', path: '/about' },
+  { ns: 'updatesPage', path: '/updates' },
+  { ns: 'contactPage', path: '/contact' },
+] as const;
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f4f4f4' },
+    { media: '(prefers-color-scheme: dark)', color: '#050505' },
+  ],
+};
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'meta' });
+  return {
+    metadataBase: new URL(SITE.url),
+    title: { default: t('title'), template: `%s | ${SITE.name}` },
+    description: t('description'),
+    keywords: t.raw('keywords') as string[],
+    category: 'technology',
+    applicationName: SITE.name,
+    authors: [{ name: SITE.name, url: SITE.url }],
+    creator: SITE.name,
+    publisher: SITE.name,
+    // Staging and previews must never be indexed.
+    robots: isProduction
+      ? { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } }
+      : { index: false, follow: false },
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: 'any' },
+        { url: '/favicon.svg', type: 'image/svg+xml' },
+        { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+        { url: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+      ],
+      apple: '/apple-touch-icon.png',
+    },
+    manifest: '/site.webmanifest',
+    formatDetection: { telephone: false },
+  };
 }
 
 export default async function LocaleLayout({
   children,
   params,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-
-  if (!hasLocale(routing.locales, locale)) {
-    notFound();
-  }
-
+  if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
+
   const messages = await getMessages();
+  const t = await getTranslations({ locale, namespace: 'chrome' });
+  const meta = await getTranslations({ locale, namespace: 'meta' });
+  const nav = await getTranslations({ locale });
 
   return (
     <html
-      lang={locale}
-      className={`scroll-smooth ${plusJakarta.variable} ${syne.variable} ${jetbrainsMono.variable}`}
+      lang={locale as Locale}
+      className={`${sans.variable} ${display.variable} ${mono.variable}`}
       suppressHydrationWarning
     >
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{document.documentElement.setAttribute('data-theme',window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark')}catch(e){document.documentElement.setAttribute('data-theme','dark')}})()`,
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": "Organization",
-                  name: "7ayLabs",
-                  url: "https://7aylabs.com",
-                  logo: "https://7aylabs.com/7aylabs_white_logo.svg",
-                  sameAs: [
-                    "https://x.com/7ayLabs",
-                    "https://github.com/7ayLabs",
-                  ],
-                },
-                {
-                  "@type": "WebSite",
-                  name: "7ayLabs",
-                  url: "https://7aylabs.com",
-                },
-              ],
-            }),
-          }}
+        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
+        <JsonLd
+          data={organizationJsonLd({
+            description: meta('description'),
+            slogan: meta('slogan'),
+            keywords: meta.raw('keywords') as string[],
+            locale: locale as Locale,
+            nav: NAV_PAGES.map((n) => ({ name: nav(`${n.ns}.meta.crumb`), description: nav(`${n.ns}.meta.description`), path: n.path })),
+          })}
         />
       </head>
-      <body className="min-h-screen antialiased bg-bg text-fg">
+      <body>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
-            <CustomCursor />
-            <a href="#main-content" className="skip-to-content">
-              {/* Not translated — screen reader utility, always English */}
-              Skip to main content
+            <a href="#main" className="skip-link">
+              {t('skip')}
             </a>
-            {children}
+            <div aria-hidden className="backdrop">
+              <i />
+              <i />
+              <i />
+              <ChainField />
+            </div>
+            <div aria-hidden className="scroll-progress" />
+            <PageFx />
+            <div className="flex min-h-dvh flex-col">
+              <SiteNav />
+              <main id="main" className="flex-1">
+                {children}
+              </main>
+              <SiteFooter />
+            </div>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
