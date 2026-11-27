@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "7ayLabs · Web3 lab: apps, AI and on-chain products",
-    "description": "7ayLabs is a Web3 lab. We build and run our own apps, AI and on-chain products. First out: Vizzor, crypto intelligence that grades every call in public.",
-    "og": "Don't trust. Check.",
-    "slogan": "Don't trust. Check.",
+    "title": "7ayLabs · The Web3 lab that publishes its misses",
+    "description": "7ayLabs builds apps, engines, models and on-chain tools, and runs them in public. First out: Vizzor, crypto intelligence that puts a deadline on every call and grades it.",
+    "og": "Nothing ships on a promise.",
+    "slogan": "Nothing ships on a promise.",
     "keywords": [
       "Web3 laboratory",
       "Web3 software studio",
@@ -40,7 +40,7 @@
       "toLight": "Switch to light mode"
     },
     "footer": {
-      "tagline": "The Web3 lab. Don't trust. Check.",
+      "tagline": "The Web3 lab that publishes its misses.",
       "company": "Company",
       "product": "Vizzor",
       "follow": "Follow",
@@ -74,10 +74,10 @@
   },
   "home": {
     "hero": {
-      "title": "Built for Web3. Proven in public.",
-      "sub": "7ayLabs is a full Web3 lab. We ship apps, engines, intelligence and on-chain products, and each one has to hold up in public before it leaves the bench. First out: Vizzor.",
-      "ctaPrimary": "Explore Vizzor",
-      "ctaSecondary": "See the lab",
+      "title": "A Web3 lab that publishes its misses.",
+      "sub": "7ayLabs builds apps, engines, models and on-chain tools, then runs them where anyone can watch. Vizzor went first: it puts a deadline on every crypto call and marks it right or wrong when the clock runs out.",
+      "ctaPrimary": "Watch Vizzor work",
+      "ctaSecondary": "Meet the lab",
       "board": {
         "title": "In the lab right now",
         "live": "Live",
@@ -86,109 +86,109 @@
         "nextName": "The next product",
         "nextLine": "Not announced yet. We show things when they work."
       },
-      "slogan": "Don't trust. Check.",
+      "slogan": "Nothing ships on a promise.",
       "pill": "Web3 laboratory",
       "scroll": "Scroll"
     },
     "fields": {
-      "title": "Four desks. One lab.",
-      "lede": "Apps, engines, intelligence and on-chain, built side by side by the same crew, so every product ships with all four.",
+      "title": "One bench, four trades.",
+      "lede": "The person who trains the model sits beside the one who draws the screen. That is deliberate: a product gets good when its parts are allowed to argue.",
       "items": {
         "apps": {
           "title": "Apps",
-          "line": "Products people open every day, on the web and on their phones. No manual needed."
+          "line": "What you actually touch. If it needs a tutorial, we got it wrong."
         },
         "software": {
           "title": "Software",
-          "line": "The engines and tooling underneath: what nobody sees and everything rides on."
+          "line": "The plumbing: data in, answers out, records kept. Dull when it works, which is the point."
         },
         "intelligence": {
           "title": "Intelligence",
-          "line": "Models and agents that read the data, reason about it and show their work."
+          "line": "Models that have to explain themselves. An answer with no reasoning behind it does not leave the building."
         },
         "onchain": {
           "title": "On-chain",
-          "line": "Wallets, payments and contracts that settle on public chains, where anyone can check."
+          "line": "Wallets, payments and contracts on public chains, where the ledger does the vouching."
         }
       }
     },
     "method": {
-      "title": "Rules we do not break.",
-      "lede": "Four rules behind everything we ship. They are why Vizzor shows its misses.",
+      "title": "House rules.",
+      "lede": "Four of them. They cost us speed and we keep them anyway.",
       "items": {
         "receipts": {
-          "title": "Receipts over promises",
-          "line": "If we say something works, there is a public record that shows whether it did."
+          "title": "The record beats the pitch",
+          "line": "If we say it works, a public page shows whether it did."
         },
         "plain": {
-          "title": "Plain words",
-          "line": "People should not need a manual to ask a question or to understand the answer."
+          "title": "No manual",
+          "line": "If a question needs special syntax, the product is not finished."
         },
         "privacy": {
-          "title": "Collect less",
-          "line": "We keep the data a feature needs and nothing else. This site sets no tracking cookies."
+          "title": "Take only what the feature needs",
+          "line": "This site keeps an email if you hand us one. Nothing follows you around."
         },
         "ship": {
-          "title": "Ship, then show the work",
-          "line": "Small releases, often, each one written up so you can see what changed."
+          "title": "Small, often, written down",
+          "line": "Every release gets a note the day it lands, the dull ones too."
         }
       },
       "table": {
         "rule": "Rule",
-        "practice": "What we do",
-        "check": "Where to check",
+        "practice": "In practice",
+        "check": "Check it yourself",
         "rows": {
           "receipts": {
-            "practice": "Every Vizzor call is graded when its deadline arrives, right or wrong.",
+            "practice": "Every Vizzor call is marked right or wrong at its deadline. The wrong ones stay up.",
             "check": "The public record on vizzor.ai"
           },
           "plain": {
-            "practice": "You ask in your own words. No query language, no dashboards to learn.",
+            "practice": "Type the question the way you would say it out loud.",
             "check": "Open Vizzor and type a question"
           },
           "privacy": {
-            "practice": "This site stores an email or a message only if you send one. No trackers.",
+            "practice": "No trackers. An email or a message is stored only if you send it.",
             "check": "Our privacy page"
           },
           "ship": {
-            "practice": "Each release is written up the day it ships.",
+            "practice": "Each release is written up the day it lands.",
             "check": "Notes from the lab"
           }
         }
       }
     },
     "updates": {
-      "title": "Fresh from the lab.",
+      "title": "What shipped, and when.",
       "all": "All updates",
-      "lede": "Drops, releases and news, as they ship."
+      "lede": "Dated notes, newest on top. No roadmap theatre."
     },
     "faq": {
-      "title": "No fluff. Just answers.",
-      "lede": "The questions we hear most, minus the pitch."
+      "title": "Asked often, answered straight.",
+      "lede": "If yours is missing, the contact form reaches a person."
     },
     "stack": {
-      "title": "Five layers. Zero middlemen.",
-      "lede": "From the screen down to the servers, we build and run every layer ourselves.",
+      "title": "We own every layer, down to the metal.",
+      "lede": "Screen, engine, model, chain, server: all built here. When something breaks, the person who can fix it is already in the room.",
       "layers": {
         "interface": {
           "name": "Interface",
-          "line": "The apps people open, on the web and installed on a phone."
+          "line": "Web first, and installable on a phone."
         },
         "engine": {
           "name": "Engine",
-          "line": "Our own service. It gathers the data, runs the models and keeps the public record."
+          "line": "Pulls the data, runs the models and writes every call down before its outcome is known."
         },
         "models": {
           "name": "Intelligence",
-          "line": "ChronoVisor, our own model layer. It reasons over the data and shows its work."
+          "line": "ChronoVisor, our own model. It reads the market and has to show how it reached its answer."
         },
         "chains": {
           "name": "Chains",
-          "line": "{count} blockchains read directly, and the wallets people already use."
+          "line": "{count} blockchains read at the source, plus the wallets people already carry."
         },
         "ground": {
           "name": "Ground",
-          "line": "Our own servers on a private network, with nightly backups and every release checked before it ships."
+          "line": "Our own servers on a private network, backed up every night. No release goes out with a failing check."
         }
       },
       "more": "and {count} more",
@@ -196,27 +196,27 @@
     },
     "status": {
       "title": "Lab status",
-      "products": "product live",
+      "products": "product in the wild",
       "chains": "chains read",
       "wallets": "wallets supported"
     },
     "reach": {
-      "title": "{count} chains. Read live.",
-      "lede": "Vizzor reads each network directly, so a wallet or a transfer is looked up where it actually happened."
+      "title": "{count} chains, read at the source.",
+      "lede": "Not somebody's summary of a blockchain. Vizzor asks the network itself, so a transfer is looked up where it happened."
     },
     "contact": {
-      "title": "Building something? Talk to us.",
-      "lede": "Partnerships, press, security or just a question. A person reads every message."
+      "title": "Tell us what you are building.",
+      "lede": "Or just ask something. Every message is read by a person."
     }
   },
   "products": {
-    "title": "Call it. Prove it.",
-    "lede": "Vizzor puts a target, a deadline and a confidence on every call, then grades it in public. Hits and misses stay on the record.",
+    "title": "Vizzor calls it. The clock decides.",
+    "lede": "Target, deadline, confidence. When time is up the call gets its mark, and the mark stays, whichever way it went.",
     "vizzor": {
       "kind": "Crypto intelligence",
       "live": "Live",
       "open": "Open Vizzor",
-      "more": "How it works",
+      "more": "See how it works",
       "tape": "Example calls",
       "tapeNote": "Illustrative values, not real calls.",
       "right": "Hit",
@@ -224,23 +224,23 @@
       "tabs": {
         "predict": {
           "name": "Predict",
-          "title": "A call you can hold it to.",
-          "line": "Direction, target, deadline and confidence, with an entry, two take-profits and a stop."
+          "title": "A call with a deadline on it.",
+          "line": "Direction, target and confidence up front, with the entry, two exits and the stop if you mean to act on it."
         },
         "whales": {
           "name": "Whales",
-          "title": "See size move first.",
-          "line": "The biggest wallets tracked as they move, with a heatmap of where the money is going."
+          "title": "Big wallets move before the chart does.",
+          "line": "Vizzor watches them and shows where the money is heading while it is still on its way."
         },
         "forensics": {
           "name": "Forensics",
-          "title": "Follow the funds.",
-          "line": "Trace money wallet to wallet and across chains after a hack or a suspicious move."
+          "title": "Stolen funds leave a trail.",
+          "line": "Follow it wallet to wallet and chain to chain, on a map you can actually read."
         },
         "markets": {
           "name": "Markets",
-          "title": "The whole board at a glance.",
-          "line": "Heatmaps and movers, with a call one tap away."
+          "title": "The whole market on one screen.",
+          "line": "Heat, movers and volume, with a call one tap from any of them."
         }
       },
       "slip": {
@@ -255,9 +255,9 @@
       }
     },
     "next": {
-      "title": "More is being built.",
-      "line": "We do not announce products before they work. Subscribe below and you will hear about the next one the day it ships.",
-      "cta": "Talk to us about it"
+      "title": "The next one is still on the bench.",
+      "line": "No name and no date until it works in front of people. Leave an email below and you get one message, the day it ships.",
+      "cta": "Ask us about it"
     },
     "platforms": {
       "title": "Where Vizzor runs",
@@ -273,16 +273,16 @@
   },
   "productsPage": {
     "meta": {
-      "title": "Web3 products: apps, AI and on-chain tools",
-      "description": "Products from the 7ayLabs Web3 laboratory. Vizzor, crypto intelligence graded in public, is live; more are in development.",
+      "title": "Products · What 7ayLabs has shipped",
+      "description": "What 7ayLabs has shipped and what is still on the bench. Vizzor, crypto intelligence that grades every call in public, is live.",
       "crumb": "Products"
     },
-    "title": "Products.",
-    "lede": "Everything that has left the lab, each with its real status, and an honest word on what has not yet."
+    "title": "Out in the wild.",
+    "lede": "What has left the bench, each with its real status, and one honest line about what has not."
   },
   "coverage": {
     "trusted": "Trusted by",
-    "trustedNote": "Casa Blanca's community runs Vizzor inside its rooms."
+    "trustedNote": "Casa Blanca's traders use Vizzor inside their own rooms."
   },
   "log": {
     "tags": {
@@ -293,27 +293,27 @@
   "questions": {
     "what": {
       "q": "What is 7ayLabs?",
-      "a": "A full Web3 laboratory. We design, build and run our own apps, software, intelligence and on-chain products. The first one is Vizzor."
+      "a": "A Web3 lab. We build our own products and run them in public. Vizzor is the first."
     },
     "vizzor": {
       "q": "What is Vizzor?",
-      "a": "Crypto intelligence. You ask about a token, a wallet or a tokenized stock, and it answers with a price call, a trade plan and the on-chain evidence. Every call has a deadline and gets graded in public when it arrives."
+      "a": "Crypto intelligence. Ask about a token, a wallet or a tokenized stock and it answers with a call that has a target, a deadline and a confidence. At the deadline the call is marked right or wrong, where everyone can see."
     },
     "relation": {
       "q": "How are 7ayLabs and Vizzor related?",
-      "a": "7ayLabs is the company and the lab. Vizzor is the first product to come out of it. This site is about the lab; vizzor.ai is where that product lives."
+      "a": "7ayLabs is the lab. Vizzor is the first thing to come out of it. This site covers the lab; the product lives at vizzor.ai."
     },
     "free": {
       "q": "Can I try Vizzor for free?",
-      "a": "Yes. There is a free plan, and paid plans add deeper models and more daily answers. Current plans are on vizzor.ai."
+      "a": "Yes. The free plan lets you ask, get calls and follow the record. Paid plans read deeper and answer more per day. Current plans are on vizzor.ai."
     },
     "work": {
       "q": "How do I reach the team?",
-      "a": "Use the contact page for partnerships, press and anything about the company. For help using Vizzor, start with its docs."
+      "a": "Through the contact page, for partnerships, press, security or a plain question. For help with Vizzor itself, its docs are faster."
     },
     "more": {
       "q": "Will there be more products?",
-      "a": "Yes. Others are in development. We announce a product when it works in public, not before."
+      "a": "Yes, and they are being built now. You will hear about each one when it works, not before."
     }
   },
   "demo": {
@@ -363,35 +363,35 @@
       "description": "Vizzor is crypto intelligence from the 7ayLabs Web3 laboratory: price calls with a target, a deadline and a confidence, whale flow and on-chain forensics. Every call is graded in public.",
       "crumb": "Vizzor"
     },
-    "title": "Crypto intelligence, graded in public.",
-    "lede": "Vizzor reads price, on-chain flow and the narrative behind any token, wallet or tokenized stock. Every call carries a target, a deadline and a confidence score, and gets graded when the deadline hits.",
+    "title": "Every call gets a deadline. Every deadline gets a verdict.",
+    "lede": "Vizzor reads price, on-chain flow and the story behind a token, wallet or tokenized stock, and commits to a call. Then it waits for the clock like everyone else.",
     "ctaApp": "Open the app",
     "ctaSite": "Visit vizzor.ai",
     "how": {
-      "title": "Ask. Get a call. See the grade.",
-      "lede": "Three steps, and the third one is the part most tools skip.",
+      "title": "Ask it. Get a call. Watch the clock.",
+      "lede": "Three steps. Most tools stop after the second.",
       "steps": {
         "ask": {
-          "title": "Ask in plain words",
-          "line": "Something like \"ETH, 4 hours, $500 at 10x\". No forms and no query language."
+          "title": "Say it your way",
+          "line": "“ETH, 4 hours, $500 at 10x.” That is a complete question."
         },
         "call": {
-          "title": "Get a call and a plan",
-          "line": "A direction, a target, a deadline and a confidence, with an entry, two take-profit levels and a stop."
+          "title": "It commits",
+          "line": "Direction, target, deadline and confidence, with a plan: an entry, two exits and a stop."
         },
         "grade": {
-          "title": "See how it turned out",
-          "line": "When the deadline arrives the call is marked right or wrong and added to the public record."
+          "title": "The clock rules",
+          "line": "At the deadline the call is marked right or wrong and added to the record. No edits."
         }
       }
     },
     "desks": {
-      "title": "Four desks, one floor.",
-      "lede": "Each desk does one job well, and every one of them feeds the call.",
+      "title": "Four desks feeding one call.",
+      "lede": "Each does one job. None of them gets to hide behind the others.",
       "items": {
         "predict": {
           "name": "Predict",
-          "line": "A price call with a target, a deadline and a confidence, plus a trade plan built around it.",
+          "line": "The call itself: target, deadline, confidence and a trade plan around it.",
           "reach": "Top assets and tokenized stocks"
         },
         "intel": {
@@ -401,34 +401,34 @@
         },
         "markets": {
           "name": "Markets",
-          "line": "Prices, a market heatmap and movers, with a call one tap away.",
+          "line": "Prices, a heatmap and the day's movers.",
           "reach": "Crypto and tokenized stocks"
         },
         "record": {
           "name": "Track record",
-          "line": "Every call Vizzor has made and how it turned out. Misses stay on the page.",
+          "line": "Everything Vizzor has called and how each one ended. Misses included.",
           "reach": "Public, for everyone"
         }
       }
     },
     "editions": {
-      "title": "One model, three editions.",
-      "lede": "The model behind Vizzor is called ChronoVisor. It comes in three editions, one per plan.",
+      "title": "One model, three depths.",
+      "lede": "ChronoVisor comes in three editions. Your plan decides how deep it reads and how often it answers.",
       "plans": {
         "free": "Free plan",
         "pro": "Pro plan",
         "elite": "Elite plan"
       },
       "items": {
-        "zonda": "The everyday edition. Enough to ask, get a call and follow the record.",
-        "kat": "Deeper reads and many more answers a day, for people who trade actively.",
-        "zuor": "The full model, with on-chain forensics and no daily cap."
+        "zonda": "Ask, get a call, follow the record. Enough to judge it.",
+        "kat": "Reads deeper and answers far more often. For people who trade every day.",
+        "zuor": "The whole model, forensics included, with no daily ceiling."
       },
       "note": "Prices and what each plan includes are kept up to date on Vizzor's own site.",
       "pricing": "See current plans"
     },
     "features": {
-      "title": "Everything around the call.",
+      "title": "Around the call.",
       "items": {
         "whales": {
           "title": "Whale terminal",
@@ -465,8 +465,8 @@
       }
     },
     "receipts": {
-      "title": "A record nobody can quietly edit.",
-      "lede": "A track record only means something if the misses stay in it. Vizzor's does.",
+      "title": "A record nobody gets to tidy up.",
+      "lede": "A track record means something only while the bad days are still in it.",
       "points": {
         "public": "Every call is published before its outcome is known.",
         "sealed": "The record is sealed every day, so past calls cannot be changed afterwards.",
@@ -484,16 +484,16 @@
       "description": "About 7ayLabs, the Web3 laboratory behind Vizzor: why it exists, the rules it builds by, and how to reach the team.",
       "crumb": "About"
     },
-    "title": "A lab that shows its work.",
-    "lede": "7ayLabs is a full Web3 laboratory: apps, software, intelligence and on-chain. We design, build and run our own products, and we would rather show a result than describe one.",
+    "title": "We would rather be checked than believed.",
+    "lede": "7ayLabs is a Web3 lab. We build our own products, run them ourselves, and leave the results where anyone can look.",
     "mission": {
-      "title": "Confident claims are cheap. Proof is not.",
-      "p1": "Markets are full of predictions that are never looked at again. The ones that land get repeated; the ones that miss disappear.",
-      "p2": "We think software can do better. A tool that gives advice should also keep score, in the open, where the people relying on it can see.",
-      "p3": "That idea became Vizzor, our first product. The same rule applies to everything else we are building."
+      "title": "Predictions are cheap until someone keeps score.",
+      "p1": "Crypto is full of confident calls nobody revisits. The right ones get quoted for years. The wrong ones are quietly deleted.",
+      "p2": "We thought a tool that gives advice should carry its own scoreboard, in public, where the people leaning on it can read it.",
+      "p3": "That became Vizzor. The same rule now applies to everything else on our bench."
     },
     "facts": {
-      "title": "The basics.",
+      "title": "On paper.",
       "product": {
         "k": "Product"
       },
@@ -517,8 +517,8 @@
       "description": "Release notes and company news from 7ayLabs, the Web3 laboratory, and its product Vizzor.",
       "crumb": "Lab notes"
     },
-    "title": "Lab notes.",
-    "lede": "Releases of our products and news from the lab, newest first.",
+    "title": "What shipped, and when.",
+    "lede": "Dated notes, newest on top. No roadmap theatre.",
     "empty": "Nothing published yet.",
     "back": "All updates",
     "fallback": "This post has not been translated yet, so it is shown in English."
@@ -529,8 +529,8 @@
       "description": "Contact 7ayLabs, the Web3 laboratory, about partnerships, press, security or the company.",
       "crumb": "Contact"
     },
-    "title": "Talk to the lab.",
-    "lede": "Partnerships, press, security reports or a question about the company. A person reads every message.",
+    "title": "Talk to a person.",
+    "lede": "Partnerships, press, a security report or a plain question. It lands in an inbox a human reads.",
     "elsewhere": {
       "title": "Faster for some things",
       "vizzorHelp": "Help using Vizzor"
@@ -538,10 +538,10 @@
   },
   "forms": {
     "newsletter": {
-      "label": "Get our updates by email",
+      "label": "One email when something ships",
       "placeholder": "you@example.com",
       "submit": "Subscribe",
-      "hint": "Occasional, and only about what we ship.",
+      "hint": "No digest, no drip. Releases only.",
       "done": "You are on the list. Thank you.",
       "invalid": "That email address does not look right. Check it and try again.",
       "rateLimited": "Too many tries. Wait a minute and try again.",
@@ -615,14 +615,14 @@
     "contactLink": "use the contact page"
   },
   "notFound": {
-    "title": "This page moved or never existed.",
-    "lede": "The site was rebuilt, so some old links no longer lead anywhere. These do.",
+    "title": "Nothing lives at this address.",
+    "lede": "The site was rebuilt and some old links went with it. These still work.",
     "home": "Go to the home page",
     "vizzor": "About Vizzor"
   },
   "error": {
-    "title": "Something broke on our side.",
-    "lede": "The page could not be shown. Trying again usually fixes it.",
+    "title": "That one is on us.",
+    "lede": "The page failed to load. A second try usually does it.",
     "retry": "Try again"
   },
   "unsubscribePage": {
@@ -630,8 +630,8 @@
       "title": "Unsubscribe",
       "description": "Stop receiving 7ayLabs updates."
     },
-    "title": "Unsubscribe.",
-    "lede": "One click and you are off the list. You can subscribe again any time.",
+    "title": "Leave the list.",
+    "lede": "One click. Come back whenever you like.",
     "button": "Unsubscribe me",
     "done": "Done. You will not get more emails from us.",
     "invalid": "This link is not valid any more. Use the contact page and we will remove you by hand.",
