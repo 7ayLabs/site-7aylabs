@@ -1,6 +1,7 @@
 /**
- * SiteNav — a compact glass capsule centred at the top: the logo, the home
- * page's sections, the two preferences, and the way to reach us.
+ * SiteNav — a rail of glass across the top: the logo, the home page's
+ * sections, a counter of the block being read, the two preferences, and the
+ * way to reach us.
  */
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
@@ -16,14 +17,14 @@ export async function SiteNav() {
 
   return (
     <NavBar>
-      <nav aria-label={t('nav.label')} className="flex h-[56px] items-center gap-2 pl-4 pr-1.5">
-        <Link href="/" aria-label={t('home')} className="mr-2 inline-flex shrink-0 items-center">
+      <nav aria-label={t('nav.label')} className="flex h-[56px] items-center gap-3 pl-5 pr-1.5">
+        <Link href="/" aria-label={t('home')} className="mr-3 inline-flex shrink-0 items-center">
           <BrandMark className="h-6 w-auto" priority />
         </Link>
 
         <NavLinks />
 
-        <div className="ml-auto flex shrink-0 items-center lg:ml-1">
+        <div className="ml-auto flex shrink-0 items-center xl:ml-3">
           <div className="hidden items-center lg:flex">
             <LanguageSwitch />
             <ThemeToggle />

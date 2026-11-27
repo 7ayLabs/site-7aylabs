@@ -1,50 +1,83 @@
 import type { ReactNode } from 'react';
 
 /** The site's measure: one max width and gutter everywhere. */
-export const WRAP = 'mx-auto max-w-[1240px] px-5 sm:px-8';
+export const WRAP = 'mx-auto max-w-[1280px] px-5 sm:px-8';
 
-/** A page body: the site's measure around a run of sections. */
+/** A page body: the site's measure around a run of blocks. */
 export function Indexed({ children }: { children: ReactNode }) {
   return <div className={WRAP}>{children}</div>;
 }
 
-/**
- * Duo — a two-tone title. The text is written "light part|bold part": the
- * first is set light, the second heavy and upper-case on its own line. A
- * title with no bar is all bold.
- */
-export function Duo({ text, as: Tag = 'h2', id, size = 'duo-title' }: { text: string; as?: 'h1' | 'h2'; id?: string; size?: string }) {
-  const [a, b] = text.includes('|') ? (text.split('|') as [string, string]) : ['', text];
+/** A string as words that rise one by one (styled by `.words`). */
+export function Words({ text }: { text: string }) {
+  const words = text.split(' ');
   return (
-    <Tag id={id} className={`duo ${size}`}>
-      {a ? <span className="lite">{a}</span> : null}
-      <span className="bold">{b}</span>
-    </Tag>
+    <span className="words">
+      {words.map((w, i) => (
+        <span key={i}>
+          <span className="w">
+            <i style={{ '--i': i } as React.CSSProperties}>{w}</i>
+          </span>
+          {i < words.length - 1 ? ' ' : null}
+        </span>
+      ))}
+    </span>
   );
 }
 
-/** The divider that opens a numbered section: "01 | Lab" on a hairline. */
-export function Divider({ n, label }: { n: string; label: string }) {
+/**
+ * A short hash for a block, derived from its id (FNV-1a). It is the same on
+ * every render and for every visitor: a stamp, like a block's own hash, not
+ * a random decoration.
+ */
+export function blockHash(id: string): string {
+  let h = 0x811c9dc5;
+  const seed = `7aylabs:${id}`;
+  for (let i = 0; i < seed.length; i++) {
+    h ^= seed.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  const hex = (h.toString(16).padStart(8, '0') + Math.imul(h ^ 0x9e3779b9, 0x85ebca6b).toString(16).replace('-', '').padStart(8, '0')).slice(0, 12);
+  return `0x${hex.slice(0, 4)}…${hex.slice(-4)}`;
+}
+
+/**
+ * The header that opens a block: its number, its name, and its hash, with a
+ * rule running out to the hash. Above it hangs the link to the block before.
+ */
+export function BlockHeader({ id, n, label, blockWord }: { id: string; n: string; label: string; blockWord: string }) {
   return (
-    <div className="divider" aria-hidden>
-      <span className="glass relative z-10 inline-flex min-h-10 items-center gap-3 rounded-full px-4 text-[14px] font-semibold text-[var(--fg-2)]">
-        <span className="t-num text-[var(--fg)]">{n}</span>
-        <span className="h-3.5 w-px bg-[var(--line-strong)]" />
-        {label}
-      </span>
+    <div aria-hidden>
+      <div className="block-link">
+        <span className="link-light" />
+      </div>
+      <div className="block-head mt-3">
+        <span className="glass inline-flex min-h-10 items-center gap-3 rounded-[12px] px-3.5 text-[14px] font-semibold text-[var(--fg)]">
+          <span className="grid h-5 w-5 place-items-center rounded-[5px] bg-[var(--fg)] text-[var(--bg)]">
+            <span className="block h-2 w-2 rounded-[2px] bg-[var(--bg)]" />
+          </span>
+          <span className="t-num">
+            {blockWord} {n}
+          </span>
+          <span className="h-3.5 w-px bg-[var(--line-strong)]" />
+          <span className="text-[var(--fg-2)]">{label}</span>
+        </span>
+        <span className="t-num t-note col-start-3">{blockHash(id)}</span>
+      </div>
     </div>
   );
 }
 
 /**
- * Block — one section of a page: an optional numbered divider, a centred
- * two-tone title and lede, then the content. The whole section sharpens out
- * of a blur as it comes into view and softens again when it leaves.
+ * Block — one section of a page, and one block of the chain the page is
+ * built as. Under its header the title sits left with its words rising in,
+ * the lede set against it on the right; then the content.
  */
 export function Block({
   id,
   n,
   label,
+  blockWord,
   title,
   lede,
   children,
@@ -52,19 +85,22 @@ export function Block({
   id: string;
   n?: string;
   label?: string;
+  blockWord?: string;
   title: string;
   lede?: ReactNode;
   children?: ReactNode;
 }) {
   return (
-    <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-24 py-14 sm:py-20">
-      {n && label ? <Divider n={n} label={label} /> : null}
-      <div data-reveal className={`mx-auto max-w-[820px] text-center ${n ? 'mt-12 sm:mt-16' : ''}`}>
-        <Duo id={`${id}-title`} text={title} />
-        {lede ? <p className="t-lede mx-auto mt-6">{lede}</p> : null}
+    <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-24 pb-10 sm:pb-14">
+      {n && label ? <BlockHeader id={id} n={n} label={label} blockWord={blockWord ?? 'Block'} /> : null}
+      <div data-reveal className="mt-10 grid items-end gap-x-16 gap-y-5 sm:mt-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
+        <h2 id={`${id}-title`} className="t-display t-title max-w-[18ch] text-[var(--fg)]">
+          <Words text={title} />
+        </h2>
+        {lede ? <p className="t-lede lg:pb-2">{lede}</p> : null}
       </div>
       {children ? (
-        <div data-focus className="mt-12 sm:mt-16">
+        <div data-focus className="mt-10 sm:mt-14">
           {children}
         </div>
       ) : null}
@@ -72,17 +108,15 @@ export function Block({
   );
 }
 
-/** The head of an inner page, centred like the home sections. */
+/** The head of an inner page. */
 export function PageHead({ title, lede, children }: { title: string; lede: ReactNode; children?: ReactNode }) {
   return (
-    <section className={`${WRAP} pb-10 pt-14 text-center sm:pb-14 sm:pt-24`}>
-      <div className="type-settle mx-auto max-w-[900px]">
-        <Duo as="h1" text={title} size="duo-hero" />
-      </div>
-      <p data-reveal className="t-lede mx-auto mt-8">
+    <section className={`${WRAP} pb-12 pt-12 sm:pb-16 sm:pt-20`}>
+      <h1 className="t-display type-settle max-w-[17ch] text-[clamp(2.6rem,1rem+5vw,6rem)] leading-[0.98] text-[var(--fg)]">{title}</h1>
+      <p data-reveal className="t-lede mt-8">
         {lede}
       </p>
-      {children ? <div className="mt-8 flex justify-center">{children}</div> : null}
+      {children}
     </section>
   );
 }

@@ -68,24 +68,13 @@
       "contact": "Contact"
     },
     "talk": "Parlons-en",
-    "hints": {
-      "products": {
-        "text": "Envie d'essayer ?",
-        "cta": "Ouvrir Vizzor"
-      },
-      "stack": {
-        "text": "Vous construisez quelque chose ?",
-        "cta": "Parlons-en"
-      },
-      "updates": {
-        "text": "Envie de la prochaine note ?",
-        "cta": "S'abonner"
-      }
-    }
+    "block": "Bloc",
+    "genesis": "Genèse",
+    "height": "Bloc {n} sur {total}"
   },
   "home": {
     "hero": {
-      "title": "Le laboratoire|Web3",
+      "title": "Le laboratoire Web3.",
       "sub": "7ayLabs conçoit, construit et exploite ses propres apps, logiciels, produits d'intelligence et on-chain. Chacun commence comme une expérience et ne quitte le laboratoire que lorsqu'il tient en public. Le premier, Vizzor, est en ligne.",
       "ctaPrimary": "Voir les produits",
       "ctaSecondary": "Notre méthode",
@@ -102,7 +91,7 @@
       "scroll": "Défiler"
     },
     "fields": {
-      "title": "Quatre disciplines,|une paillasse",
+      "title": "Quatre disciplines, une paillasse.",
       "lede": "Apps, logiciels, intelligence et on-chain se construisent ici côte à côte, par les mêmes personnes, pour que chaque produit ait les quatre.",
       "items": {
         "apps": {
@@ -124,7 +113,7 @@
       }
     },
     "method": {
-      "title": "Les règles|du laboratoire",
+      "title": "Les règles du laboratoire.",
       "lede": "Quatre habitudes derrière tout ce que nous livrons. C'est pour elles que Vizzor publie ses erreurs.",
       "items": {
         "receipts": {
@@ -169,16 +158,16 @@
       }
     },
     "updates": {
-      "title": "Notes du|laboratoire",
+      "title": "Notes du laboratoire.",
       "all": "Toutes les nouveautés",
       "lede": "Les sorties et les nouvelles, écrites au fil de l’eau."
     },
     "faq": {
-      "title": "Réponses|directes",
+      "title": "Réponses directes.",
       "lede": "Les questions que nous entendons le plus, sans discours commercial."
     },
     "stack": {
-      "title": "Cinq couches,|toutes à nous",
+      "title": "Cinq couches, toutes à nous.",
       "lede": "De l'écran aux serveurs, chaque couche sous nos produits est construite et exploitée en interne.",
       "layers": {
         "interface": {
@@ -212,27 +201,16 @@
       "languages": "langues"
     },
     "reach": {
-      "title": "{count} blockchains,|lues en direct",
+      "title": "{count} blockchains, lues en direct.",
       "lede": "Vizzor lit chaque réseau directement : un wallet ou un transfert est consulté là où il a réellement eu lieu."
     },
     "contact": {
-      "title": "Prêt à voir|ce qui marche ?",
+      "title": "Prêt à voir ce qui marche ?",
       "lede": "Dites-nous ce que vous construisez ou ce que vous voulez savoir. Une personne lit chaque message."
-    },
-    "hub": {
-      "title": "Tout ce à quoi Vizzor se connecte",
-      "center": "Vizzor",
-      "note": "Chaînes, sources de données et le modèle derrière, sur un seul produit."
-    },
-    "words": [
-      "Apps",
-      "Logiciels",
-      "Intelligence",
-      "On-chain"
-    ]
+    }
   },
   "products": {
-    "title": "Ce qui est sorti|du laboratoire",
+    "title": "Ce qui est sorti du laboratoire.",
     "lede": "Un produit sort quand il fonctionne en public, pas quand il est annoncé. Un seul l'a fait pour l'instant, et d'autres sont sur la paillasse.",
     "vizzor": {
       "kind": "Intelligence",
@@ -266,13 +244,8 @@
     "lede": "Tout ce qui est sorti du laboratoire, chaque chose avec son statut réel, et un mot honnête sur ce qui ne l'est pas encore."
   },
   "coverage": {
-    "sources": "Lit les données de",
-    "sourcesNote": "Sources de données de marché et on-chain interrogées par Vizzor. Ce sont des intégrations, pas des recommandations.",
-    "builtWith": "Fonctionne avec",
-    "builtWithNote": "Le fournisseur du modèle derrière les réponses de Vizzor et le réseau sur lequel il accepte les paiements.",
-    "partners": "Partenaire",
-    "partnersNote": "CB, l'équipe derrière la communauté Casa Blanca, utilise Vizzor dans ses salons.",
-    "partnerSub": "Communauté Casa Blanca"
+    "trusted": "Ils nous font confiance",
+    "trustedNote": "La communauté Casa Blanca utilise Vizzor dans ses salons."
   },
   "log": {
     "tags": {

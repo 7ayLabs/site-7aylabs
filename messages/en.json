@@ -68,24 +68,13 @@
       "contact": "Contact"
     },
     "talk": "Talk to us",
-    "hints": {
-      "products": {
-        "text": "Want to try it?",
-        "cta": "Open Vizzor"
-      },
-      "stack": {
-        "text": "Building something?",
-        "cta": "Talk to us"
-      },
-      "updates": {
-        "text": "Want the next note?",
-        "cta": "Subscribe"
-      }
-    }
+    "block": "Block",
+    "genesis": "Genesis",
+    "height": "Block {n} of {total}"
   },
   "home": {
     "hero": {
-      "title": "The Web3|laboratory",
+      "title": "The Web3 laboratory.",
       "sub": "7ayLabs designs, builds and runs its own apps, software, intelligence and on-chain products. Each one starts as an experiment and leaves the lab only when it holds up in public. The first, Vizzor, is live.",
       "ctaPrimary": "See the products",
       "ctaSecondary": "How we work",
@@ -102,7 +91,7 @@
       "scroll": "Scroll"
     },
     "fields": {
-      "title": "Four disciplines,|one bench",
+      "title": "Four disciplines, one bench.",
       "lede": "Apps, software, intelligence and on-chain work are built side by side here, by the same people, so every product gets all four.",
       "items": {
         "apps": {
@@ -124,7 +113,7 @@
       }
     },
     "method": {
-      "title": "The rules|of the lab",
+      "title": "The rules of the lab.",
       "lede": "Four habits behind everything we ship. They are why Vizzor publishes its misses.",
       "items": {
         "receipts": {
@@ -169,16 +158,16 @@
       }
     },
     "updates": {
-      "title": "Notes from|the lab",
+      "title": "Notes from the lab.",
       "all": "All updates",
       "lede": "Releases and news, written up as they happen."
     },
     "faq": {
-      "title": "Straight|answers",
+      "title": "Straight answers.",
       "lede": "The questions we hear most, without the pitch."
     },
     "stack": {
-      "title": "Five layers,|all ours",
+      "title": "Five layers, all ours.",
       "lede": "From the screen down to the servers, every layer under our products is built and run in-house.",
       "layers": {
         "interface": {
@@ -212,27 +201,16 @@
       "languages": "languages"
     },
     "reach": {
-      "title": "{count} blockchains,|read live",
+      "title": "{count} blockchains, read live.",
       "lede": "Vizzor reads each network directly, so a wallet or a transfer is looked up where it actually happened."
     },
     "contact": {
-      "title": "Ready to see|what works?",
+      "title": "Ready to see what works?",
       "lede": "Tell us what you are building or what you want to know. A person reads every message."
-    },
-    "hub": {
-      "title": "Everything Vizzor connects to",
-      "center": "Vizzor",
-      "note": "Chains, data sources and the model behind it, on one product."
-    },
-    "words": [
-      "Apps",
-      "Software",
-      "Intelligence",
-      "On-chain"
-    ]
+    }
   },
   "products": {
-    "title": "What has|left the lab",
+    "title": "What has left the lab.",
     "lede": "A product ships when it works in public, not when it is announced. One has so far, and more are on the bench.",
     "vizzor": {
       "kind": "Intelligence",
@@ -266,13 +244,8 @@
     "lede": "Everything that has left the lab, each with its real status, and an honest word on what has not yet."
   },
   "coverage": {
-    "sources": "Reads from",
-    "sourcesNote": "Market and on-chain data sources Vizzor queries. These are integrations, not endorsements.",
-    "builtWith": "Runs on",
-    "builtWithNote": "The model provider behind Vizzor's answers and the network it accepts payments on.",
-    "partners": "Partner",
-    "partnersNote": "CB, the team behind the Casa Blanca community, runs Vizzor inside its rooms.",
-    "partnerSub": "Casa Blanca community"
+    "trusted": "Trusted by",
+    "trustedNote": "Casa Blanca's community runs Vizzor inside its rooms."
   },
   "log": {
     "tags": {

@@ -18,11 +18,11 @@ export async function BigStats() {
   ];
 
   return (
-    <dl aria-label={t('title')} className="grid gap-y-10 sm:grid-cols-3" data-stagger>
+    <dl aria-label={t('title')} className="glass grid overflow-hidden rounded-[22px] sm:grid-cols-3" data-stagger>
       {items.map((it) => (
-        <div key={it.label} data-reveal className="flex flex-col-reverse items-center gap-3 text-center">
-          <dt className="text-[13.5px] font-semibold uppercase tracking-[0.14em] text-[var(--fg-2)]">{it.label}</dt>
-          <dd className="t-display t-num text-[clamp(4.5rem,11vw,9rem)] font-extrabold leading-[0.9] text-[var(--fg)]">
+        <div key={it.label} data-reveal className="-mb-px -mr-px flex flex-col-reverse gap-3 border-b border-r border-[var(--glass-line)] p-7">
+          <dt className="text-[15px] font-medium text-[var(--fg-2)]">{it.label}</dt>
+          <dd className="t-display t-num text-[clamp(3.5rem,7vw,6rem)] font-bold leading-[0.9] text-[var(--fg)]">
             <Count to={it.n} />
           </dd>
         </div>

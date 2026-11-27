@@ -32,12 +32,6 @@ export const VIZZOR = {
   ],
 } as const;
 
-/** Where Vizzor takes its data from. Integrations, not partnerships. */
-export const DATA_SOURCES = ['CoinGecko', 'DexScreener', 'DefiLlama', 'Helius'] as const;
-
-/** What Vizzor runs on. */
-export const BUILT_WITH = ['Claude by Anthropic', 'Solana'] as const;
-
 /**
  * The platforms Vizzor works on.
  *
@@ -51,11 +45,11 @@ export const PLATFORMS = [
   { id: 'polymarket', name: 'Polymarket', status: 'testing', href: null },
 ] as const;
 
-/** Confirmed partners, with the marks their team supplied. */
+/** Who trusts the lab's work, with the marks their team supplied. */
 export const PARTNERS = [
   {
-    id: 'cb',
-    name: 'CB',
+    id: 'casablanca',
+    name: 'Casa Blanca',
     href: 'https://cblabs.agency',
     logo: {
       onDark: '/partners/casablanca-cb-white.svg',

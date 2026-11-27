@@ -1,75 +1,59 @@
 /**
- * Coverage — what Vizzor reads and who it works with.
- *
- * The blockchains are shown all at once, as a grid of their own marks: the
- * number in the headline is the number of tiles. Under it, three plain rows
- * say where the data comes from, what the product runs on, and which
- * communities are confirmed partners. None of it is a "trusted by" wall.
+ * Coverage — every blockchain Vizzor reads, as a grid of their own marks
+ * (the number in the headline is the number of tiles), and under it who
+ * trusts the lab's work.
  */
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
+import { ArrowUpRight } from 'lucide-react';
 import { ChainMark } from '@/components/ui/chain-mark';
-import { BUILT_WITH, DATA_SOURCES, PARTNERS } from '@/lib/site';
+import { PARTNERS } from '@/lib/site';
 import { CHAINS } from '@/lib/vizzor/chains';
 
-function Row({ head, note, children }: { head: string; note: string; children: React.ReactNode }) {
-  return (
-    <div className="grid gap-x-10 gap-y-3 border-t border-[var(--line)] py-6 sm:grid-cols-[260px_minmax(0,1fr)]">
-      <dt>
-        <span className="text-[16.5px] font-semibold text-[var(--fg)]">{head}</span>
-        <span className="t-note mt-1 block max-w-[30ch]">{note}</span>
-      </dt>
-      <dd className="text-[1.25rem] leading-snug text-[var(--fg)]">{children}</dd>
-    </div>
-  );
-}
-
-export async function Coverage({ grid = true }: { grid?: boolean }) {
+export async function Coverage() {
   const t = await getTranslations('coverage');
-  const list = new Intl.ListFormat(undefined, { style: 'long', type: 'conjunction' });
 
   return (
     <>
-      {grid ? (
-      <ul data-reveal="scale" className="glass grid grid-cols-2 overflow-hidden rounded-[20px] sm:grid-cols-4 xl:grid-cols-6">
+      <ul data-reveal="scale" className="glass grid grid-cols-2 overflow-hidden rounded-[22px] sm:grid-cols-4 xl:grid-cols-6">
         {CHAINS.map((c) => (
-          <li key={c.id} className="-mb-px -mr-px flex min-h-14 items-center gap-3 border-b border-r border-[var(--glass-line)] px-3.5 transition-colors duration-300 hover:bg-[color-mix(in_oklab,var(--accent-fill)_12%,transparent)]">
+          <li
+            key={c.id}
+            className="-mb-px -mr-px flex min-h-14 items-center gap-3 border-b border-r border-[var(--glass-line)] px-3.5 transition-colors duration-300 hover:bg-[color-mix(in_oklab,var(--fg)_8%,transparent)]"
+          >
             <ChainMark chain={c.id} size={24} />
             <span className="truncate text-[15px] font-medium text-[var(--fg)]">{c.name}</span>
           </li>
         ))}
       </ul>
-      ) : null}
 
-      <dl data-reveal className="mt-12 border-b border-[var(--line)]">
-        <Row head={t('sources')} note={t('sourcesNote')}>
-          {list.format([...DATA_SOURCES])}
-        </Row>
-        <Row head={t('builtWith')} note={t('builtWithNote')}>
-          {list.format([...BUILT_WITH])}
-        </Row>
-        <Row head={t('partners')} note={t('partnersNote')}>
-          <ul className="flex flex-wrap gap-x-8 gap-y-4">
-            {PARTNERS.map((p) => (
-              <li key={p.id}>
-                <a
-                  href={p.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex min-h-11 items-center gap-4 font-semibold transition-colors duration-200 hover:text-[var(--accent)]"
-                >
-                  <Image src={p.logo.onLight} alt="" width={p.logo.width} height={p.logo.height} unoptimized className="block h-11 w-auto dark:hidden" />
-                  <Image src={p.logo.onDark} alt="" width={p.logo.width} height={p.logo.height} unoptimized className="hidden h-11 w-auto dark:block" />
-                  <span>
-                    <span className="block">{p.name}</span>
-                    <span className="t-note block font-normal">{t('partnerSub')}</span>
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </Row>
-      </dl>
+      <div data-reveal className="mt-6">
+        {PARTNERS.map((p) => (
+          <a
+            key={p.id}
+            href={p.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="glass glass-live group flex flex-col gap-5 rounded-[22px] p-6 sm:flex-row sm:items-center sm:p-7"
+          >
+            <span className="t-note font-semibold sm:w-[11rem]">{t('trusted')}</span>
+            <span className="flex flex-1 items-center gap-5">
+              <Image src={p.logo.onLight} alt="" width={p.logo.width} height={p.logo.height} unoptimized className="block h-14 w-auto dark:hidden" />
+              <Image src={p.logo.onDark} alt="" width={p.logo.width} height={p.logo.height} unoptimized className="hidden h-14 w-auto dark:block" />
+              <span>
+                <span className="t-display block text-[1.9rem] text-[var(--fg)]">{p.name}</span>
+                <span className="mt-1 block text-[15px] text-[var(--fg-2)]">{t('trustedNote')}</span>
+              </span>
+            </span>
+            <ArrowUpRight
+              size={20}
+              strokeWidth={2}
+              aria-hidden
+              className="hidden shrink-0 text-[var(--fg-3)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--fg)] sm:block"
+            />
+          </a>
+        ))}
+      </div>
     </>
   );
 }
