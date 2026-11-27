@@ -10,6 +10,7 @@ import { SiteNav } from '@/components/layout/site-nav';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { ChainField } from '@/components/site/chain-field';
 import { PageFx } from '@/components/site/fx';
+import { JsonLd } from '@/components/site/json-ld';
 import { organizationJsonLd } from '@/lib/seo';
 import { SITE, isProduction } from '@/lib/site';
 
@@ -21,8 +22,8 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#e9f0fb' },
-    { media: '(prefers-color-scheme: dark)', color: '#02040b' },
+    { media: '(prefers-color-scheme: light)', color: '#f4f4f4' },
+    { media: '(prefers-color-scheme: dark)', color: '#050505' },
   ],
 };
 
@@ -33,12 +34,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     metadataBase: new URL(SITE.url),
     title: { default: t('title'), template: `%s · ${SITE.name}` },
     description: t('description'),
+    keywords: t.raw('keywords') as string[],
+    category: 'technology',
     applicationName: SITE.name,
     authors: [{ name: SITE.name, url: SITE.url }],
     creator: SITE.name,
     publisher: SITE.name,
     // Staging and previews must never be indexed.
-    robots: isProduction ? { index: true, follow: true } : { index: false, follow: false },
+    robots: isProduction
+      ? { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } }
+      : { index: false, follow: false },
     icons: {
       icon: [
         { url: '/favicon.ico', sizes: 'any' },
@@ -75,9 +80,13 @@ export default async function LocaleLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd(meta('description'))) }}
+        <JsonLd
+          data={organizationJsonLd({
+            description: meta('description'),
+            slogan: meta('slogan'),
+            keywords: meta.raw('keywords') as string[],
+            locale: locale as Locale,
+          })}
         />
       </head>
       <body>

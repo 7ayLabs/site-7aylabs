@@ -6,7 +6,9 @@
  * It plays the four moments of a Vizzor call in a loop: the question, the
  * call (direction, target, deadline, confidence), the wait, and the grade.
  * Rounds alternate between a call that was right and one that was wrong,
- * because showing the misses is the whole point.
+ * because showing the misses is the whole point. In a black-and-white
+ * system the two grades differ by form: right is a solid stamp, wrong an
+ * outlined one, each with its own mark.
  *
  * It is an illustration with made-up values and says so. The reader can
  * pause it or jump to any step; under reduced motion it starts paused on
@@ -135,7 +137,7 @@ export function CallDemo() {
                 key={round}
                 data-land=""
                 className={`demo-stamp t-display inline-flex h-12 shrink-0 items-center gap-2 rounded-[6px] border-[3px] px-3 text-[1.15rem] uppercase ${
-                  right ? 'border-[var(--right)] text-[var(--right)]' : 'border-[var(--wrong)] text-[var(--wrong)]'
+                  right ? 'border-[var(--fg)] bg-[var(--fg)] text-[var(--bg)]' : 'border-[var(--fg)] text-[var(--fg)]'
                 }`}
               >
                 <span aria-hidden>{right ? '✓' : '✕'}</span>

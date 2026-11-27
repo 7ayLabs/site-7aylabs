@@ -6,6 +6,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ArrowLeft } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { routing, type Locale } from '@/i18n/routing';
+import { JsonLd } from '@/components/site/json-ld';
 import { WRAP } from '@/components/site/layout';
 import { localeUrl, pageMetadata } from '@/lib/seo';
 import { SITE } from '@/lib/site';
@@ -55,7 +56,7 @@ export default async function UpdatePage({ params }: Props) {
 
   return (
     <article>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd data={jsonLd} />
         <div className={`${WRAP} pb-20 pt-10 sm:pb-28 sm:pt-16`}>
           <div className="max-w-[760px]">
             <Link

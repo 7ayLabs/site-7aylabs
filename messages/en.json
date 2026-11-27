@@ -1,8 +1,20 @@
 {
   "meta": {
-    "title": "7ayLabs · A full Web3 laboratory",
-    "description": "7ayLabs is a full Web3 laboratory. We design, build and run our own apps, software, intelligence and on-chain products. The first one, Vizzor, is live.",
-    "og": "A full Web3 laboratory."
+    "title": "7ayLabs · The Web3 laboratory for apps, software and intelligence",
+    "description": "7ayLabs is a Web3 laboratory. We design, build and run our own apps, software, AI and on-chain products, starting with Vizzor: crypto intelligence graded in public.",
+    "og": "Software you can check.",
+    "slogan": "Software you can check.",
+    "keywords": [
+      "Web3 laboratory",
+      "Web3 software studio",
+      "crypto intelligence",
+      "on-chain products",
+      "AI agents",
+      "blockchain apps",
+      "Vizzor",
+      "7ayLabs"
+    ],
+    "home": "Home"
   },
   "chrome": {
     "skip": "Skip to content",
@@ -28,7 +40,7 @@
       "toLight": "Switch to light mode"
     },
     "footer": {
-      "tagline": "A full Web3 laboratory: apps, software, intelligence and on-chain.",
+      "tagline": "The Web3 laboratory. Software you can check.",
       "company": "Company",
       "product": "Vizzor",
       "follow": "Follow",
@@ -38,7 +50,7 @@
       "docs": "Docs",
       "pricing": "Plans",
       "rights": "© {year} 7ayLabs. All rights reserved.",
-      "line": "See what comes out of the lab.",
+      "line": "Come see what works.",
       "talk": "Talk to us",
       "xLab": "7ayLabs on X",
       "xVizzor": "Vizzor on X",
@@ -47,8 +59,8 @@
   },
   "home": {
     "hero": {
-      "title": "A full Web3 laboratory.",
-      "sub": "7ayLabs designs, builds and runs its own apps, software, intelligence and on-chain products. Each one starts as an experiment and ships when it holds up. The first, Vizzor, is live.",
+      "title": "The Web3 laboratory.",
+      "sub": "7ayLabs designs, builds and runs its own apps, software, intelligence and on-chain products. Each one starts as an experiment and leaves the lab only when it holds up in public. The first, Vizzor, is live.",
       "ctaPrimary": "See the products",
       "ctaSecondary": "How we work",
       "board": {
@@ -58,11 +70,12 @@
         "vizzorLine": "Crypto intelligence, graded in public",
         "nextName": "The next product",
         "nextLine": "Not announced yet. We show things when they work."
-      }
+      },
+      "slogan": "Software you can check."
     },
     "fields": {
-      "title": "Four kinds of work, one lab.",
-      "lede": "Most of what we make sits where these four meet.",
+      "title": "Four disciplines. One bench.",
+      "lede": "Apps, software, intelligence and on-chain work are built side by side here, by the same people, so every product gets all four.",
       "items": {
         "apps": {
           "title": "Apps",
@@ -83,8 +96,8 @@
       }
     },
     "method": {
-      "title": "Four rules we build by.",
-      "lede": "They are the reason Vizzor publishes its misses.",
+      "title": "Rules of the lab.",
+      "lede": "Four habits behind everything we ship. They are why Vizzor publishes its misses.",
       "items": {
         "receipts": {
           "title": "Receipts over promises",
@@ -105,15 +118,17 @@
       }
     },
     "updates": {
-      "title": "What we shipped.",
-      "all": "All updates"
+      "title": "Lab notes.",
+      "all": "All updates",
+      "lede": "Releases and news, written up as they happen."
     },
     "faq": {
-      "title": "The short answers."
+      "title": "Straight answers.",
+      "lede": "The questions we hear most, without the pitch."
     },
     "stack": {
-      "title": "How the lab is wired.",
-      "lede": "Every product sits on the same five layers. We build and run all of them ourselves.",
+      "title": "Five layers, all ours.",
+      "lede": "From the screen down to the servers, every layer under our products is built and run in-house.",
       "layers": {
         "interface": {
           "name": "Interface",
@@ -141,8 +156,8 @@
     }
   },
   "products": {
-    "title": "Out of the lab.",
-    "lede": "A product leaves the lab when it works in public. One has so far, and more are being built.",
+    "title": "What has left the lab.",
+    "lede": "A product ships when it works in public, not when it is announced. One has so far, and more are on the bench.",
     "vizzor": {
       "kind": "Intelligence",
       "line": "Vizzor makes price calls with a target, a deadline and a confidence, then grades every one in public. It also traces wallets and follows large holders across {count} blockchains.",
@@ -169,10 +184,10 @@
   "productsPage": {
     "meta": {
       "title": "Products",
-      "description": "What 7ayLabs has shipped and what it is building. Vizzor, crypto intelligence graded in public, is live."
+      "description": "Products from the 7ayLabs Web3 laboratory. Vizzor, crypto intelligence graded in public, is live; more are in development."
     },
     "title": "Products.",
-    "lede": "Everything that has left the lab, and a word on what has not yet."
+    "lede": "Everything that has left the lab, each with its real status, and an honest word on what has not yet."
   },
   "coverage": {
     "sources": "Reads from",
@@ -259,7 +274,7 @@
   "vizzorPage": {
     "meta": {
       "title": "Vizzor",
-      "description": "Vizzor is crypto intelligence by 7ayLabs: price calls with a target, a deadline and a confidence, trade plans, whale flow and on-chain forensics. Every call is graded in public."
+      "description": "Vizzor is crypto intelligence from the 7ayLabs Web3 laboratory: price calls with a target, a deadline and a confidence, whale flow and on-chain forensics. Every call is graded in public."
     },
     "title": "Crypto intelligence, graded in public.",
     "lede": "Vizzor reads price, on-chain flow and the narrative behind any token, wallet or tokenized stock. Every call carries a target, a deadline and a confidence score, and gets graded when the deadline hits.",
@@ -383,9 +398,9 @@
   "aboutPage": {
     "meta": {
       "title": "About",
-      "description": "7ayLabs is an independent software lab that builds and operates Vizzor. What we believe and how we work."
+      "description": "About 7ayLabs, the Web3 laboratory behind Vizzor: why it exists, the rules it builds by, and how to reach the team."
     },
-    "title": "We build things you can check.",
+    "title": "A lab that shows its work.",
     "lede": "7ayLabs is a full Web3 laboratory: apps, software, intelligence and on-chain. We design, build and run our own products, and we would rather show a result than describe one.",
     "mission": {
       "title": "Confident claims are cheap. Proof is not.",
@@ -415,10 +430,10 @@
   "updatesPage": {
     "meta": {
       "title": "Updates",
-      "description": "Product releases and company news from 7ayLabs and Vizzor."
+      "description": "Release notes and company news from 7ayLabs, the Web3 laboratory, and its product Vizzor."
     },
-    "title": "What we shipped.",
-    "lede": "Releases of Vizzor and news from the lab, newest first.",
+    "title": "Lab notes.",
+    "lede": "Releases of our products and news from the lab, newest first.",
     "empty": "Nothing published yet.",
     "back": "All updates",
     "fallback": "This post has not been translated yet, so it is shown in English."
@@ -426,9 +441,9 @@
   "contactPage": {
     "meta": {
       "title": "Contact",
-      "description": "Write to 7ayLabs about partnerships, press, security or anything about the company."
+      "description": "Contact 7ayLabs, the Web3 laboratory, about partnerships, press, security or the company."
     },
-    "title": "Talk to us.",
+    "title": "Talk to the lab.",
     "lede": "Partnerships, press, security reports or a question about the company. A person reads every message.",
     "elsewhere": {
       "title": "Faster for some things",

@@ -25,19 +25,19 @@ export default async function OpenGraphImage({ params }: { params: Promise<{ loc
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: 72,
-          background: '#02040b',
-          color: '#e8f0ff',
+          background: '#050505',
+          color: '#f4f4f4',
           fontFamily: 'sans-serif',
         }}
       >
         <div style={{ display: 'flex', fontSize: 34, fontWeight: 700, letterSpacing: -1 }}>7ayLabs</div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', fontSize: 92, fontWeight: 700, letterSpacing: -4, lineHeight: 1 }}>{t('og')}</div>
-          <div style={{ display: 'flex', marginTop: 28, fontSize: 30, color: '#a8b8d8', maxWidth: 900, lineHeight: 1.35 }}>
+          <div style={{ display: 'flex', marginTop: 28, fontSize: 30, color: '#b4b4b4', maxWidth: 900, lineHeight: 1.35 }}>
             {t('description')}
           </div>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 24, color: '#8cc0ff' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 24, color: '#8c8c8c' }}>
           <span>7aylabs.com</span>
           <span>vizzor.ai</span>
         </div>

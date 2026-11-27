@@ -3,7 +3,7 @@ import en from '@/messages/en.json';
 import es from '@/messages/es.json';
 import fr from '@/messages/fr.json';
 
-type Tree = { [k: string]: Tree | string | Tree[] };
+type Tree = { [k: string]: Tree | string | Tree[] | string[] };
 
 // Lists are walked by position, so `rounds.0.question` is a key like any other.
 function keys(node: Tree, prefix = ''): string[] {

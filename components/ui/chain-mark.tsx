@@ -1,9 +1,8 @@
 /**
  * ChainMark — a blockchain's own mark on a round disc.
  *
- * Uses the `background` variant: a full tile in the brand's colour with the
- * glyph knocked out, clipped to a circle. It is the one variant that reads on
- * both a light and a dark ground.
+ * Uses the `mono` variant, in the page's ink on a plain disc: the site is
+ * black and white, and a network's shape identifies it without its colour.
  */
 import type { ComponentType } from 'react';
 import NetworkAlgorand from '@web3icons/react/icons/networks/NetworkAlgorand';
@@ -80,10 +79,10 @@ export function ChainMark({ chain, size = 28 }: { chain: ChainId; size?: number 
   return (
     <span
       aria-hidden
-      className="inline-grid shrink-0 place-items-center overflow-hidden rounded-full"
+      className="inline-grid shrink-0 place-items-center overflow-hidden rounded-full bg-[var(--surface)] text-[var(--fg)] shadow-[inset_0_0_0_1px_var(--line)]"
       style={{ width: size, height: size }}
     >
-      <Icon variant="background" size={size} />
+      <Icon variant="mono" size={Math.round(size * 0.66)} />
     </span>
   );
 }

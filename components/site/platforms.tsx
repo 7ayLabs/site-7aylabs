@@ -10,7 +10,7 @@ import { Globe, LineChart } from 'lucide-react';
 import { PLATFORMS } from '@/lib/site';
 
 function Mark({ id }: { id: (typeof PLATFORMS)[number]['id'] }) {
-  if (id === 'hyperliquid') return <ExchangeHyperliquid variant="branded" size={26} />;
+  if (id === 'hyperliquid') return <ExchangeHyperliquid variant="mono" size={24} />;
   const Icon = id === 'web' ? Globe : LineChart;
   return <Icon size={22} strokeWidth={1.6} className="text-[var(--accent)]" />;
 }
@@ -26,7 +26,7 @@ export async function Platforms() {
           const live = p.status === 'live';
           const body = (
             <>
-              <span aria-hidden className="glass grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-[14px]">
+              <span aria-hidden className="glass grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-[14px] text-[var(--fg)]">
                 <Mark id={p.id} />
               </span>
               <span className="min-w-0 flex-1">

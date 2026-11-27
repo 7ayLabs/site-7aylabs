@@ -3,9 +3,9 @@
 /*
  * 7aylabs.com design system.
  *
- * Clear liquid glass over slowly drifting blue: deep navy and light blue in
- * both themes. Two more colours exist and each means one thing: green marks a call
- * that was right, red one that was wrong.
+ * Black and white only. Clear liquid glass over slowly drifting light and
+ * shade, in a light theme and a dark one. No hue anywhere: emphasis comes
+ * from weight, size and inversion.
  *
  * Type: Sora for headlines, Geist for text, Geist Mono for figures.
  */
@@ -29,53 +29,53 @@
 
 :root {
   color-scheme: light;
-  --bg: #e9f0fb;
-  --surface: #f5f9ff;
-  --fg: #030b1f;
-  --fg-2: #2b3a5c;
-  --fg-3: #56678b;
-  --line: rgba(3, 11, 31, 0.14);
-  --line-strong: rgba(3, 11, 31, 0.42);
-  --accent: #082a78;
-  --accent-fill: #1447c4;
-  --accent-soft: #7db8ff;
+  --bg: #f4f4f4;
+  --surface: #ffffff;
+  --fg: #0a0a0a;
+  --fg-2: #3d3d3d;
+  --fg-3: #666666;
+  --line: rgba(10, 10, 10, 0.14);
+  --line-strong: rgba(10, 10, 10, 0.44);
+  --accent: #0a0a0a;
+  --accent-fill: #0a0a0a;
+  --accent-soft: #8a8a8a;
   --on-accent: #ffffff;
-  --right: #12734a;
-  --wrong: #b3261e;
-  --glass: rgba(255, 255, 255, 0.3);
-  --glass-hi: rgba(255, 255, 255, 0.6);
-  --glass-line: rgba(7, 26, 61, 0.12);
-  --glass-edge: rgba(255, 255, 255, 0.95);
-  --glass-shade: 0 1px 1px rgba(7, 26, 61, 0.04), 0 26px 50px -28px rgba(11, 63, 168, 0.4);
-  --blob-a: rgba(16, 60, 180, 0.36);
-  --blob-b: rgba(125, 184, 255, 0.7);
-  --blob-c: rgba(255, 255, 255, 0.9);
+  --right: #0a0a0a;
+  --wrong: #0a0a0a;
+  --glass: rgba(255, 255, 255, 0.34);
+  --glass-hi: rgba(255, 255, 255, 0.68);
+  --glass-line: rgba(10, 10, 10, 0.12);
+  --glass-edge: rgba(255, 255, 255, 0.98);
+  --glass-shade: 0 1px 1px rgba(10, 10, 10, 0.04), 0 26px 50px -28px rgba(10, 10, 10, 0.34);
+  --blob-a: rgba(10, 10, 10, 0.2);
+  --blob-b: rgba(255, 255, 255, 0.95);
+  --blob-c: rgba(120, 120, 120, 0.22);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-theme='dark'] {
   color-scheme: dark;
-  --bg: #02040b;
-  --surface: #070c1a;
-  --fg: #e8f0ff;
-  --fg-2: #a8b8d8;
-  --fg-3: #8696ba;
-  --line: rgba(232, 240, 255, 0.15);
-  --line-strong: rgba(232, 240, 255, 0.46);
-  --accent: #8cc0ff;
-  --accent-fill: #2459d6;
-  --accent-soft: #7db8ff;
-  --on-accent: #ffffff;
-  --right: #4fd08f;
-  --wrong: #ff7a6e;
-  --glass: rgba(140, 180, 255, 0.035);
-  --glass-hi: rgba(160, 195, 255, 0.075);
-  --glass-line: rgba(160, 195, 255, 0.13);
-  --glass-edge: rgba(200, 222, 255, 0.3);
-  --glass-shade: 0 1px 0 rgba(0, 0, 0, 0.4), 0 30px 60px -32px rgba(0, 6, 30, 0.9);
-  --blob-a: rgba(24, 62, 160, 0.34);
-  --blob-b: rgba(96, 156, 255, 0.11);
-  --blob-c: rgba(6, 16, 58, 0.85);
+  --bg: #050505;
+  --surface: #0e0e0e;
+  --fg: #f4f4f4;
+  --fg-2: #b4b4b4;
+  --fg-3: #8c8c8c;
+  --line: rgba(255, 255, 255, 0.15);
+  --line-strong: rgba(255, 255, 255, 0.46);
+  --accent: #f4f4f4;
+  --accent-fill: #f4f4f4;
+  --accent-soft: #9a9a9a;
+  --on-accent: #050505;
+  --right: #f4f4f4;
+  --wrong: #f4f4f4;
+  --glass: rgba(255, 255, 255, 0.035);
+  --glass-hi: rgba(255, 255, 255, 0.08);
+  --glass-line: rgba(255, 255, 255, 0.14);
+  --glass-edge: rgba(255, 255, 255, 0.3);
+  --glass-shade: 0 1px 0 rgba(0, 0, 0, 0.5), 0 30px 60px -32px rgba(0, 0, 0, 0.95);
+  --blob-a: rgba(255, 255, 255, 0.13);
+  --blob-b: rgba(160, 160, 160, 0.1);
+  --blob-c: rgba(255, 255, 255, 0.06);
 }
 
 @layer base {
@@ -179,8 +179,8 @@
   color: var(--bg);
 }
 .btn-ink:hover {
-  background: var(--accent-fill);
-  color: var(--on-accent);
+  background: color-mix(in oklab, var(--fg) 82%, var(--bg));
+  color: var(--bg);
 }
 .btn-line {
   border: 1px solid var(--line-strong);
@@ -612,7 +612,7 @@ html[data-js]:not([data-fx]) [data-reveal] {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.38) 50%, transparent 65%);
+  background: linear-gradient(105deg, transparent 35%, color-mix(in oklab, var(--bg) 45%, transparent) 50%, transparent 65%);
   transform: translateX(-120%);
   transition: transform 800ms var(--ease);
 }

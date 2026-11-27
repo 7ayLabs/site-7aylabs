@@ -4,7 +4,8 @@ import type { Locale } from '@/i18n/routing';
 import { CallDemo } from '@/components/site/call-demo';
 import { Coverage } from '@/components/site/coverage';
 import { Block, Indexed, PageHead, Tiles } from '@/components/site/layout';
-import { pageMetadata } from '@/lib/seo';
+import { JsonLd } from '@/components/site/json-ld';
+import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
 import { VIZZOR } from '@/lib/site';
 import { CHAIN_COUNT } from '@/lib/vizzor/chains';
 
@@ -27,8 +28,15 @@ export default async function VizzorPage({ params }: Props) {
   const t = await getTranslations('vizzorPage');
 
 
+  const meta = await getTranslations('meta');
+  const crumbs = breadcrumbJsonLd(locale as Locale, [
+    { name: meta('home'), path: '/' },
+    { name: t('meta.title'), path: '/vizzor' },
+  ]);
+
   return (
     <>
+      <JsonLd data={crumbs} />
       <PageHead title={t('title')} lede={t('lede')}>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
           <a href={VIZZOR.app} target="_blank" rel="noopener noreferrer" className="btn btn-ink">
@@ -102,7 +110,7 @@ export default async function VizzorPage({ params }: Props) {
           <ul className="glass rounded-[26px] px-7" data-stagger>
             {RECEIPTS.map((k) => (
               <li key={k} data-reveal className="flex items-baseline gap-4 border-t border-[var(--glass-line)] py-5 first:border-t-0 text-[1.2rem] leading-snug text-[var(--fg)]">
-                <span aria-hidden className="font-bold text-[var(--right)]">
+                <span aria-hidden className="font-bold text-[var(--fg)]">
                   ✓
                 </span>
                 {t(`receipts.points.${k}`)}

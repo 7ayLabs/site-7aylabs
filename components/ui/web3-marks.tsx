@@ -1,6 +1,6 @@
 /**
- * Wallet and token marks from the web3icons set, each on a round disc so a
- * row of them reads evenly on a light or a dark ground.
+ * Wallet and token marks from the web3icons set, in the page's ink on a
+ * plain disc, like the chain marks.
  */
 import type { ComponentType } from 'react';
 import TokenSOL from '@web3icons/react/icons/tokens/TokenSOL';
@@ -23,8 +23,12 @@ export const WALLETS = [
 
 export function Disc({ Icon, size = 28 }: { Icon: Icon; size?: number }) {
   return (
-    <span aria-hidden className="inline-grid shrink-0 place-items-center overflow-hidden rounded-full" style={{ width: size, height: size }}>
-      <Icon variant="background" size={size} />
+    <span
+      aria-hidden
+      className="inline-grid shrink-0 place-items-center overflow-hidden rounded-full bg-[var(--surface)] text-[var(--fg)] shadow-[inset_0_0_0_1px_var(--line)]"
+      style={{ width: size, height: size }}
+    >
+      <Icon variant="mono" size={Math.round(size * 0.62)} />
     </span>
   );
 }

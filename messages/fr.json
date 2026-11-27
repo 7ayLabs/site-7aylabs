@@ -1,8 +1,20 @@
 {
   "meta": {
-    "title": "7ayLabs · Un laboratoire Web3 complet",
-    "description": "7ayLabs est un laboratoire Web3 complet. Nous concevons, construisons et exploitons nos propres apps, logiciels, produits d'intelligence et on-chain. Le premier, Vizzor, est en ligne.",
-    "og": "Un laboratoire Web3 complet."
+    "title": "7ayLabs · Le laboratoire Web3 d'apps, de logiciels et d'intelligence",
+    "description": "7ayLabs est un laboratoire Web3. Nous concevons, construisons et exploitons nos propres apps, logiciels, IA et produits on-chain, à commencer par Vizzor : l'intelligence crypto notée en public.",
+    "og": "Des logiciels que l'on peut vérifier.",
+    "slogan": "Des logiciels que l'on peut vérifier.",
+    "keywords": [
+      "laboratoire Web3",
+      "studio logiciel Web3",
+      "intelligence crypto",
+      "produits on-chain",
+      "agents IA",
+      "apps blockchain",
+      "Vizzor",
+      "7ayLabs"
+    ],
+    "home": "Accueil"
   },
   "chrome": {
     "skip": "Aller au contenu",
@@ -28,7 +40,7 @@
       "toLight": "Passer en mode clair"
     },
     "footer": {
-      "tagline": "Un laboratoire Web3 complet : apps, logiciels, intelligence et on-chain.",
+      "tagline": "Le laboratoire Web3. Des logiciels que l'on peut vérifier.",
       "company": "Entreprise",
       "product": "Vizzor",
       "follow": "Suivre",
@@ -38,7 +50,7 @@
       "docs": "Documentation",
       "pricing": "Offres",
       "rights": "© {year} 7ayLabs. Tous droits réservés.",
-      "line": "Voyez ce qui sort du laboratoire.",
+      "line": "Venez voir ce qui marche.",
       "talk": "Nous écrire",
       "xLab": "7ayLabs sur X",
       "xVizzor": "Vizzor sur X",
@@ -47,8 +59,8 @@
   },
   "home": {
     "hero": {
-      "title": "Un laboratoire Web3 complet.",
-      "sub": "7ayLabs conçoit, construit et exploite ses propres apps, logiciels, produits d'intelligence et on-chain. Chacun commence comme une expérience et sort quand il tient la route. Le premier, Vizzor, est en ligne.",
+      "title": "Le laboratoire Web3.",
+      "sub": "7ayLabs conçoit, construit et exploite ses propres apps, logiciels, produits d'intelligence et on-chain. Chacun commence comme une expérience et ne quitte le laboratoire que lorsqu'il tient en public. Le premier, Vizzor, est en ligne.",
       "ctaPrimary": "Voir les produits",
       "ctaSecondary": "Notre méthode",
       "board": {
@@ -58,11 +70,12 @@
         "vizzorLine": "L'intelligence crypto, notée en public",
         "nextName": "Le prochain produit",
         "nextLine": "Pas encore annoncé. Nous montrons les choses quand elles marchent."
-      }
+      },
+      "slogan": "Des logiciels que l'on peut vérifier."
     },
     "fields": {
-      "title": "Quatre types de travail, un laboratoire.",
-      "lede": "Presque tout ce que nous faisons se situe là où ces quatre se croisent.",
+      "title": "Quatre disciplines. Une seule paillasse.",
+      "lede": "Apps, logiciels, intelligence et on-chain se construisent ici côte à côte, par les mêmes personnes, pour que chaque produit ait les quatre.",
       "items": {
         "apps": {
           "title": "Apps",
@@ -83,8 +96,8 @@
       }
     },
     "method": {
-      "title": "Quatre règles que nous suivons.",
-      "lede": "C'est pour elles que Vizzor publie ses erreurs.",
+      "title": "Les règles du laboratoire.",
+      "lede": "Quatre habitudes derrière tout ce que nous livrons. C'est pour elles que Vizzor publie ses erreurs.",
       "items": {
         "receipts": {
           "title": "Des preuves plutôt que des promesses",
@@ -105,15 +118,17 @@
       }
     },
     "updates": {
-      "title": "Ce que nous avons livré.",
-      "all": "Toutes les nouveautés"
+      "title": "Notes du laboratoire.",
+      "all": "Toutes les nouveautés",
+      "lede": "Les sorties et les nouvelles, écrites au fil de l’eau."
     },
     "faq": {
-      "title": "Les réponses courtes."
+      "title": "Réponses directes.",
+      "lede": "Les questions que nous entendons le plus, sans discours commercial."
     },
     "stack": {
-      "title": "Comment le laboratoire est câblé.",
-      "lede": "Chaque produit repose sur les mêmes cinq couches. Nous les construisons et les exploitons toutes nous-mêmes.",
+      "title": "Cinq couches, toutes à nous.",
+      "lede": "De l'écran aux serveurs, chaque couche sous nos produits est construite et exploitée en interne.",
       "layers": {
         "interface": {
           "name": "Interface",
@@ -141,8 +156,8 @@
     }
   },
   "products": {
-    "title": "Sortis du laboratoire.",
-    "lede": "Un produit quitte le laboratoire quand il fonctionne en public. Un seul l'a fait pour l'instant, et d'autres sont en construction.",
+    "title": "Ce qui est sorti du laboratoire.",
+    "lede": "Un produit sort quand il fonctionne en public, pas quand il est annoncé. Un seul l'a fait pour l'instant, et d'autres sont sur la paillasse.",
     "vizzor": {
       "kind": "Intelligence",
       "line": "Vizzor fait des prévisions de prix avec une cible, une échéance et un niveau de confiance, puis note chacune en public. Il suit aussi les wallets et les gros détenteurs sur {count} blockchains.",
@@ -169,10 +184,10 @@
   "productsPage": {
     "meta": {
       "title": "Produits",
-      "description": "Ce que 7ayLabs a livré et ce qu'il construit. Vizzor, l'intelligence crypto notée en public, est en ligne."
+      "description": "Les produits du laboratoire Web3 7ayLabs. Vizzor, l'intelligence crypto notée en public, est en ligne ; d'autres sont en développement."
     },
     "title": "Produits.",
-    "lede": "Tout ce qui est sorti du laboratoire, et un mot sur ce qui ne l'est pas encore."
+    "lede": "Tout ce qui est sorti du laboratoire, chaque chose avec son statut réel, et un mot honnête sur ce qui ne l'est pas encore."
   },
   "coverage": {
     "sources": "Lit les données de",
@@ -259,7 +274,7 @@
   "vizzorPage": {
     "meta": {
       "title": "Vizzor",
-      "description": "Vizzor est l'intelligence crypto de 7ayLabs : prévisions de prix avec cible, échéance et confiance, plans de trade, mouvements des baleines et analyse on-chain. Chaque prévision est notée en public."
+      "description": "Vizzor est l'intelligence crypto du laboratoire Web3 7ayLabs : prévisions de prix avec cible, échéance et confiance, mouvements des baleines et analyse on-chain. Chaque prévision est notée en public."
     },
     "title": "L'intelligence crypto, notée en public.",
     "lede": "Vizzor lit le prix, les flux on-chain et le récit derrière n'importe quel token, wallet ou action tokenisée. Chaque prévision porte une cible, une échéance et un niveau de confiance, et elle est notée à l'échéance.",
@@ -383,9 +398,9 @@
   "aboutPage": {
     "meta": {
       "title": "À propos",
-      "description": "7ayLabs est un laboratoire logiciel indépendant qui construit et exploite Vizzor. Ce en quoi nous croyons et comment nous travaillons."
+      "description": "À propos de 7ayLabs, le laboratoire Web3 derrière Vizzor : sa raison d'être, ses règles de construction et comment joindre l'équipe."
     },
-    "title": "Nous faisons des choses vérifiables.",
+    "title": "Un laboratoire qui montre son travail.",
     "lede": "7ayLabs est un laboratoire Web3 complet : apps, logiciels, intelligence et on-chain. Nous concevons, construisons et exploitons nos propres produits, et nous préférons montrer un résultat plutôt que le décrire.",
     "mission": {
       "title": "Affirmer avec assurance ne coûte rien. Prouver, si.",
@@ -415,10 +430,10 @@
   "updatesPage": {
     "meta": {
       "title": "Nouveautés",
-      "description": "Sorties produit et actualités de 7ayLabs et de Vizzor."
+      "description": "Notes de version et actualités de 7ayLabs, le laboratoire Web3, et de son produit Vizzor."
     },
-    "title": "Ce que nous avons livré.",
-    "lede": "Les versions de Vizzor et les nouvelles du laboratoire, de la plus récente à la plus ancienne.",
+    "title": "Notes du laboratoire.",
+    "lede": "Les versions de nos produits et les nouvelles du laboratoire, de la plus récente à la plus ancienne.",
     "empty": "Rien de publié pour l'instant.",
     "back": "Toutes les nouveautés",
     "fallback": "Cet article n'est pas encore traduit ; il est donc affiché en anglais."
@@ -426,9 +441,9 @@
   "contactPage": {
     "meta": {
       "title": "Contact",
-      "description": "Écrivez à 7ayLabs au sujet de partenariats, de la presse, de la sécurité ou de l'entreprise."
+      "description": "Contactez 7ayLabs, le laboratoire Web3, au sujet de partenariats, de la presse, de la sécurité ou de l'entreprise."
     },
-    "title": "Écrivez-nous.",
+    "title": "Parlez au laboratoire.",
     "lede": "Partenariats, presse, signalements de sécurité ou une question sur l'entreprise. Une personne lit chaque message.",
     "elsewhere": {
       "title": "Plus rapide pour certaines choses",

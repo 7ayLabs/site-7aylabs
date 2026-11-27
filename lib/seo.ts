@@ -13,7 +13,11 @@ export function pageAlternates(path: string, locale: Locale): Metadata['alternat
   const languages: Record<string, string> = {};
   for (const l of routing.locales) languages[l] = localeUrl(path, l);
   languages['x-default'] = localeUrl(path, routing.defaultLocale);
-  return { canonical: localeUrl(path, locale), languages };
+  return {
+    canonical: localeUrl(path, locale),
+    languages,
+    types: { 'application/rss+xml': `${SITE.url}/feed.xml` },
+  };
 }
 
 const OG_LOCALE: Record<Locale, string> = { en: 'en_US', es: 'es_ES', fr: 'fr_FR' };
@@ -38,19 +42,25 @@ export function pageMetadata(opts: {
       title: opts.title,
       description: opts.description,
       locale: OG_LOCALE[opts.locale],
-      ...(opts.publishedTime ? { publishedTime: opts.publishedTime } : {}),
+      alternateLocale: routing.locales.filter((l) => l !== opts.locale).map((l) => OG_LOCALE[l]),
+      ...(opts.publishedTime ? { publishedTime: opts.publishedTime, authors: [SITE.name] } : {}),
     },
     twitter: {
       card: 'summary_large_image',
       site: SITE.xHandle,
+      creator: SITE.xHandle,
       title: opts.title,
       description: opts.description,
     },
   };
 }
 
-/** Organization + product structured data for the whole site. */
-export function organizationJsonLd(description: string) {
+/**
+ * Site-wide structured data: who the organisation is, what the site is, and
+ * the product it publishes. Search engines use this to connect the company,
+ * its product and its profiles.
+ */
+export function organizationJsonLd(opts: { description: string; slogan: string; keywords: readonly string[]; locale: Locale }) {
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -59,15 +69,25 @@ export function organizationJsonLd(description: string) {
         '@id': `${SITE.url}/#organization`,
         name: SITE.name,
         url: SITE.url,
-        logo: `${SITE.url}/android-chrome-512x512.png`,
-        description,
+        logo: { '@type': 'ImageObject', url: `${SITE.url}/android-chrome-512x512.png`, width: 512, height: 512 },
+        description: opts.description,
+        slogan: opts.slogan,
+        knowsAbout: [...opts.keywords],
         sameAs: [SITE.x, SITE.github],
+        contactPoint: {
+          '@type': 'ContactPoint',
+          contactType: 'customer support',
+          url: localeUrl('/contact', opts.locale),
+          availableLanguage: ['en', 'es', 'fr'],
+        },
+        makesOffer: { '@type': 'Offer', itemOffered: { '@id': `${VIZZOR.site}/#product` } },
       },
       {
         '@type': 'WebSite',
         '@id': `${SITE.url}/#website`,
         url: SITE.url,
         name: SITE.name,
+        description: opts.description,
         publisher: { '@id': `${SITE.url}/#organization` },
         inLanguage: [...routing.locales],
       },
@@ -78,9 +98,24 @@ export function organizationJsonLd(description: string) {
         url: VIZZOR.site,
         applicationCategory: 'FinanceApplication',
         operatingSystem: 'Web',
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', url: VIZZOR.pricing },
         publisher: { '@id': `${SITE.url}/#organization` },
         sameAs: [VIZZOR.x],
       },
     ],
+  };
+}
+
+/** The trail from the home page to this one, for breadcrumb rich results. */
+export function breadcrumbJsonLd(locale: Locale, trail: readonly { name: string; path: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: trail.map((t, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: t.name,
+      item: localeUrl(t.path, locale),
+    })),
   };
 }

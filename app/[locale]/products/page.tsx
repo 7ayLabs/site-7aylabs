@@ -4,7 +4,8 @@ import type { Locale } from '@/i18n/routing';
 import { Fields } from '@/components/site/fields';
 import { PageHead, WRAP } from '@/components/site/layout';
 import { ProductList } from '@/components/site/product-list';
-import { pageMetadata } from '@/lib/seo';
+import { JsonLd } from '@/components/site/json-ld';
+import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -20,8 +21,15 @@ export default async function ProductsPage({ params }: Props) {
   const t = await getTranslations('productsPage');
   const home = await getTranslations('home');
 
+  const meta = await getTranslations('meta');
+  const crumbs = breadcrumbJsonLd(locale as Locale, [
+    { name: meta('home'), path: '/' },
+    { name: t('meta.title'), path: '/products' },
+  ]);
+
   return (
     <>
+      <JsonLd data={crumbs} />
       <PageHead title={t('title')} lede={t('lede')} />
       <section className={`${WRAP} pb-20`}>
         <ProductList />

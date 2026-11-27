@@ -3,7 +3,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { Block, Indexed, PageHead, Tiles } from '@/components/site/layout';
-import { pageMetadata } from '@/lib/seo';
+import { JsonLd } from '@/components/site/json-ld';
+import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
 import { SITE, VIZZOR } from '@/lib/site';
 
 type Props = { params: Promise<{ locale: string }> };
@@ -29,8 +30,15 @@ export default async function AboutPage({ params }: Props) {
     { k: t('facts.news.k'), v: SITE.xHandle, href: SITE.x },
   ];
 
+  const meta = await getTranslations('meta');
+  const crumbs = breadcrumbJsonLd(locale as Locale, [
+    { name: meta('home'), path: '/' },
+    { name: t('meta.title'), path: '/about' },
+  ]);
+
   return (
     <>
+      <JsonLd data={crumbs} />
       <PageHead title={t('title')} lede={t('lede')} />
 
       <Indexed>

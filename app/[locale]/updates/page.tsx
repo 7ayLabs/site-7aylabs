@@ -3,7 +3,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Locale } from '@/i18n/routing';
 import { PageHead, WRAP } from '@/components/site/layout';
 import { Log } from '@/components/site/log';
-import { pageMetadata } from '@/lib/seo';
+import { JsonLd } from '@/components/site/json-ld';
+import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
 import { listUpdates } from '@/lib/updates';
 
 type Props = { params: Promise<{ locale: string }> };
@@ -20,8 +21,15 @@ export default async function UpdatesPage({ params }: Props) {
   const t = await getTranslations('updatesPage');
   const posts = listUpdates(locale as Locale);
 
+  const meta = await getTranslations('meta');
+  const crumbs = breadcrumbJsonLd(locale as Locale, [
+    { name: meta('home'), path: '/' },
+    { name: t('meta.title'), path: '/updates' },
+  ]);
+
   return (
     <>
+      <JsonLd data={crumbs} />
       <PageHead title={t('title')} lede={t('lede')} />
       <section className={`${WRAP} pb-24`}>
         {posts.length === 0 ? <p className="t-lede">{t('empty')}</p> : <Log posts={posts} locale={locale as Locale} />}

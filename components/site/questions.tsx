@@ -3,6 +3,7 @@
  * browser handles keyboard and assistive tech. Also emitted as FAQPage data.
  */
 import { getTranslations } from 'next-intl/server';
+import { JsonLd } from './json-ld';
 
 const ITEMS = ['what', 'vizzor', 'relation', 'more', 'free', 'work'] as const;
 
@@ -21,7 +22,7 @@ export async function Questions() {
 
   return (
     <div data-reveal className="glass rounded-[28px] px-6 sm:px-9">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd data={jsonLd} />
       {ITEMS.map((k) => (
         <details key={k} className="group border-t border-[var(--glass-line)] first:border-t-0">
           <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-6 py-4 transition-colors duration-200 hover:text-[var(--accent)] [&::-webkit-details-marker]:hidden">

@@ -55,7 +55,7 @@ export default async function HomePage({ params }: Props) {
         </Block>
 
         {posts.length > 0 ? (
-          <Block id="updates" title={t('updates.title')}>
+          <Block id="updates" title={t('updates.title')} lede={t('updates.lede')}>
             <Log posts={posts} locale={locale as Locale} />
             <Link href="/updates" className="btn btn-line mt-10">
               {t('updates.all')}
@@ -63,7 +63,7 @@ export default async function HomePage({ params }: Props) {
           </Block>
         ) : null}
 
-        <Block id="faq" title={t('faq.title')}>
+        <Block id="faq" title={t('faq.title')} lede={t('faq.lede')}>
           <Questions />
         </Block>
       </Indexed>

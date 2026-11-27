@@ -114,8 +114,9 @@ vec3 normal(vec3 p){
 vec3 env(vec3 d){
   float strip=smoothstep(.55,.95,d.y)*smoothstep(.9,.2,abs(d.x));
   float side=smoothstep(.75,1.,d.x)*.5;
-  vec3 sky=mix(vec3(.02,.05,.16),vec3(.25,.5,1.),smoothstep(-.6,.9,d.y));
-  return sky*mix(.9,1.2,uDark)+vec3(1.)*strip*1.7+vec3(.6,.8,1.)*side;
+  // Black and white: a grey studio, dark below and light above.
+  vec3 sky=vec3(mix(.04,.7,smoothstep(-.6,.9,d.y)));
+  return sky*mix(.75,1.15,uDark)+vec3(1.)*strip*1.7+vec3(.8)*side;
 }
 
 void main(){
@@ -136,7 +137,7 @@ void main(){
   if(hit<.5){
     // A soft, anti-aliased rim where the ray only just missed.
     float edge=smoothstep(px*2.2,0.,near)*.55*frame;
-    gl_FragColor=vec4(vec3(.45,.68,1.)*edge,edge);
+    gl_FragColor=vec4(vec3(mix(.15,.9,uDark))*edge,edge);
     return;
   }
   vec3 p=ro+rd*t;
@@ -157,18 +158,19 @@ void main(){
   if(dot(rout,rout)<.01)rout=reflect(rin,nb);
   // The edges split into colour a little, as thick glass does.
   vec3 refl=vec3(env(r+vec3(.04,0.,0.)).r,env(r).g,env(r-vec3(.04,0.,0.)).b);
-  vec3 tint=mix(vec3(.14,.36,.95),vec3(.46,.72,1.),uDark);
+  // Smoked glass on the light ground, clear glass on the dark one.
+  vec3 tint=mix(vec3(.16),vec3(.82),uDark);
   // Thicker glass holds more of its colour (absorption).
-  vec3 absorb=exp(-thick*mix(vec3(2.4,1.25,.35),vec3(1.7,.9,.3),uDark));
+  vec3 absorb=vec3(exp(-thick*mix(1.5,1.1,uDark)));
   vec3 through=env(rout)*mix(tint,vec3(1.),absorb*.75);
   vec3 col=mix(through,refl,clamp(fres*.9+.06,0.,1.));
   vec3 l=normalize(vec3(.5,.85,.6));
   vec3 l2=normalize(vec3(-.7,.3,.5));
   col+=pow(max(dot(r,l),0.),90.)*1.5;
-  col+=pow(max(dot(r,l2),0.),40.)*vec3(.5,.72,1.)*.45;
+  col+=pow(max(dot(r,l2),0.),40.)*.4;
   col+=pow(max(dot(n,l),0.),2.)*tint*.2;
-  // A rim of light blue, stronger on the dark ground where glass would vanish.
-  col+=fres*vec3(.3,.58,1.)*mix(.3,1.,uDark);
+  // A rim of light, stronger on the dark ground where glass would vanish.
+  col+=fres*mix(.12,.85,uDark);
   float a=clamp(mix(.3,.42,uDark)+(1.-absorb.g)*.28+fres*.8+pow(max(dot(r,l),0.),30.),0.,1.)*frame;
   gl_FragColor=vec4(col*a,a);
 }`;

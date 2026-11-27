@@ -5,11 +5,11 @@ export function GET(): Response {
     JSON.stringify({
       name: '7ayLabs',
       short_name: '7ayLabs',
-      description: 'A laboratory for apps, software and intelligence.',
+      description: 'The Web3 laboratory. Software you can check.',
       start_url: '/',
       display: 'standalone',
-      background_color: '#02040b',
-      theme_color: '#02040b',
+      background_color: '#050505',
+      theme_color: '#050505',
       icons: [
         { src: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
         { src: '/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },

@@ -24,7 +24,10 @@ export async function Hero() {
       <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-6">
         <div>
           <h1 className="t-display type-settle max-w-[11ch] text-[clamp(2.9rem,1rem+6.1vw,7rem)] leading-[0.96] text-[var(--fg)]">{t('title')}</h1>
-          <div data-reveal className="mt-9">
+          <p data-reveal className="t-head mt-6 text-[var(--fg-2)]">
+            {t('slogan')}
+          </p>
+          <div data-reveal className="mt-6">
             <p className="t-lede">{t('sub')}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link href="/products" className="btn btn-ink">
