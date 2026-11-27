@@ -598,7 +598,7 @@
       },
       "collect": {
         "title": "Ce que nous collectons",
-        "body": "Si vous vous abonnez aux nouveautés : votre adresse e-mail et la langue dans laquelle vous lisiez. Si vous envoyez un message : votre nom, votre adresse e-mail, le sujet et le message, ainsi qu'une empreinte brouillée de votre adresse réseau, qui sert à bloquer les abus et que nous ne pouvons pas reconvertir en adresse. Nous n'utilisons ni mesure d'audience, ni traceurs publicitaires, ni cookies de suivi. Votre choix de thème est enregistré dans votre propre navigateur et ne nous est jamais envoyé."
+        "body": "Si vous vous abonnez aux nouveautés : votre adresse e-mail et la langue dans laquelle vous lisiez. Si vous envoyez un message : votre nom, votre adresse e-mail, le sujet et le message, ainsi qu'une empreinte brouillée de votre adresse réseau, qui sert à bloquer les abus et que nous ne pouvons pas reconvertir en adresse. Nous n'utilisons ni mesure d'audience, ni traceurs publicitaires, ni cookies de suivi. Votre choix de thème est enregistré dans votre propre navigateur et ne nous est jamais envoyé. Un cookie retient la langue dans laquelle vous lisez le site, pour que la prochaine visite s'ouvre dans celle-ci ; il contient un code de langue de deux lettres et rien sur vous."
       },
       "use": {
         "title": "À quoi cela sert",

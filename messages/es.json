@@ -598,7 +598,7 @@
       },
       "collect": {
         "title": "Qué recogemos",
-        "body": "Si te suscribes a las novedades: tu correo y el idioma en el que estabas leyendo. Si envías un mensaje: tu nombre, correo, tema y el mensaje, además de una huella cifrada de tu dirección de red que usamos para frenar abusos y que no podemos convertir de vuelta en la dirección. No usamos analítica, rastreadores publicitarios ni cookies de rastreo. Tu elección de tema se guarda en tu propio navegador y nunca se nos envía."
+        "body": "Si te suscribes a las novedades: tu correo y el idioma en el que estabas leyendo. Si envías un mensaje: tu nombre, correo, tema y el mensaje, además de una huella cifrada de tu dirección de red que usamos para frenar abusos y que no podemos convertir de vuelta en la dirección. No usamos analítica, rastreadores publicitarios ni cookies de rastreo. Tu elección de tema se guarda en tu propio navegador y nunca se nos envía. Una cookie recuerda el idioma en el que lees el sitio, para que la próxima visita abra en él; contiene un código de idioma de dos letras y nada sobre ti."
       },
       "use": {
         "title": "Para qué lo usamos",

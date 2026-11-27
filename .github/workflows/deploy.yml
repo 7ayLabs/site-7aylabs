@@ -184,7 +184,7 @@ jobs:
           set -euo pipefail
           tar -cf "$RUNNER_TEMP/site-upload.tar" \
             docker-compose.prod.yml docker-compose.staging.yml \
-            scripts/site-deploy.sh scripts/site-data.sh
+            scripts/site-deploy.sh scripts/site-data.sh scripts/site-email.sh
 
       - name: Upload to the host
         uses: ./.github/actions/vps-ssh

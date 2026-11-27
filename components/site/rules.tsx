@@ -13,7 +13,7 @@ export async function Rules() {
 
   return (
     <div className="glass overflow-x-auto rounded-[24px]">
-      <table className="rules w-full min-w-[720px] border-collapse text-[15.5px]">
+      <table className="rules w-full md:min-w-[720px] border-collapse text-[15.5px]">
         <thead>
           <tr className="text-[14px] text-[var(--fg-2)]">
             <th scope="col" className="w-[24%] font-semibold">

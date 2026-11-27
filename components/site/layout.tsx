@@ -62,7 +62,7 @@ export function BlockHeader({ id, n, label, blockWord }: { id: string; n: string
           <span className="h-3.5 w-px bg-[var(--line-strong)]" />
           <span className="text-[var(--fg-2)]">{label}</span>
         </span>
-        <span className="t-num t-note col-start-3">{blockHash(id)}</span>
+        <span className="t-num t-note col-start-3 whitespace-nowrap">{blockHash(id)}</span>
       </div>
     </div>
   );
