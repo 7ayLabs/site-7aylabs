@@ -384,6 +384,14 @@ Use `staging` in place of `prod` for the staging database.
 
 With `RESEND_API_KEY` set in the host env file, the site sends a welcome email with an unsubscribe link to new subscribers and a receipt to people who use the contact form, and copies each contact message to `CONTACT_NOTIFY_TO`. Without the key nothing is sent; everything is still stored. Unsubscribe links are signed with `SITE_SECRET`, or with `RATE_LIMIT_SALT` when `SITE_SECRET` is not set.
 
+To switch it on, sign in to the host as the deploy user and run:
+
+```
+/opt/7aylabs-site/scripts/site-email.sh on team@example.com
+```
+
+It asks for the Resend key (typed hidden, never an argument), stores it for production and staging and restarts both. `status` shows whether email is on; `off` removes the key. Before the first send, the sending domain must be verified in Resend (it gives you DNS records to add): the domain's mail policy rejects unsigned mail, so messages from an unverified domain are refused by the receiver.
+
 ## Language by country
 
 A first-time visitor to an address with no language in it is sent to English, Spanish or French by `middleware.ts` (rules in `lib/geo.ts`): the language they chose before, then their country, then their browser's languages. The country comes from the `CF-IPCountry` header, which Cloudflare adds when **IP Geolocation** is on for the zone (Network settings). With it off, the site still works and falls back to the browser's languages. Crawlers are never redirected.
