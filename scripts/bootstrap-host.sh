@@ -111,11 +111,14 @@ find_asset() {
 }
 
 export DEBIAN_FRONTEND=noninteractive
-apt_install() { apt-get install -y --no-install-recommends "$@" >/dev/null; }
+# A fresh machine usually has its own first update running. Wait for the
+# package lock (up to ten minutes) instead of failing on it.
+APT_WAIT=(-o DPkg::Lock::Timeout=600)
+apt_install() { apt-get "${APT_WAIT[@]}" install -y --no-install-recommends "$@" >/dev/null; }
 
 # ── 1. Base packages ─────────────────────────────────────────────────────
 step "Base packages"
-apt-get update -qq
+apt-get "${APT_WAIT[@]}" update -qq
 apt_install ca-certificates curl gnupg jq openssl sqlite3 ufw fail2ban \
   unattended-upgrades apt-listchanges util-linux
 info "installed"
@@ -311,7 +314,7 @@ fi
 DOCKER_LIST="deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu ${VERSION_CODENAME} stable"
 if [ "$(cat /etc/apt/sources.list.d/docker.list 2>/dev/null || true)" != "$DOCKER_LIST" ]; then
   echo "$DOCKER_LIST" > /etc/apt/sources.list.d/docker.list
-  apt-get update -qq
+  apt-get "${APT_WAIT[@]}" update -qq
 fi
 apt_install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 if [ ! -f /etc/docker/daemon.json ]; then
@@ -461,7 +464,7 @@ fi
 CF_LIST="deb [signed-by=/usr/share/keyrings/cloudflare-public-v2.gpg] https://pkg.cloudflare.com/cloudflared any main"
 if [ "$(cat /etc/apt/sources.list.d/cloudflared.list 2>/dev/null || true)" != "$CF_LIST" ]; then
   echo "$CF_LIST" > /etc/apt/sources.list.d/cloudflared.list
-  apt-get update -qq
+  apt-get "${APT_WAIT[@]}" update -qq
 fi
 apt_install cloudflared
 CLOUDFLARED_BIN="$(command -v cloudflared)"
@@ -470,7 +473,26 @@ info "$("$CLOUDFLARED_BIN" --version 2>/dev/null | head -n 1)"
 if ! id cloudflared >/dev/null 2>&1; then
   adduser --system --group --no-create-home --home /nonexistent --shell /usr/sbin/nologin cloudflared >/dev/null
 fi
-install -d -m 750 -o root -g root /etc/cloudflared
+install -d -m 750 -o root -g cloudflared /etc/cloudflared
+
+# Ingress rules. A tunnel created with the cloudflared CLI takes its routes
+# from this file, not from the dashboard: every hostname goes to nginx on
+# loopback, which picks the site by Host header. Anything else gets a 404.
+# The file holds no secret; it is group-readable so the service user can
+# read it.
+cat > /etc/cloudflared/config.yml <<'CFEOF'
+# Managed by scripts/bootstrap-host.sh
+ingress:
+  - hostname: 7aylabs.com
+    service: http://127.0.0.1:8080
+  - hostname: www.7aylabs.com
+    service: http://127.0.0.1:8080
+  - hostname: test.7aylabs.com
+    service: http://127.0.0.1:8080
+  - service: http_status:404
+CFEOF
+chown root:cloudflared /etc/cloudflared/config.yml
+chmod 640 /etc/cloudflared/config.yml
 
 # The token never goes on a command line or into the unit file (both are
 # readable by any local user). It is written to a root-only file that
@@ -503,7 +525,7 @@ Type=notify
 User=cloudflared
 Group=cloudflared
 EnvironmentFile=${TOKEN_ENV}
-ExecStart=${CLOUDFLARED_BIN} --no-autoupdate tunnel run
+ExecStart=${CLOUDFLARED_BIN} --no-autoupdate --config /etc/cloudflared/config.yml tunnel run
 Restart=on-failure
 RestartSec=5s
 TimeoutStartSec=0
