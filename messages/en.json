@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "7ayLabs · The Web3 laboratory for apps, software and intelligence",
+    "title": "7ayLabs · The Web3 lab. Built for Web3, proven in public",
     "description": "7ayLabs is a Web3 laboratory. We design, build and run our own apps, software, AI and on-chain products, starting with Vizzor: crypto intelligence graded in public.",
-    "og": "Software you can check.",
-    "slogan": "Software you can check.",
+    "og": "Don't trust. Check.",
+    "slogan": "Don't trust. Check.",
     "keywords": [
       "Web3 laboratory",
       "Web3 software studio",
@@ -40,7 +40,7 @@
       "toLight": "Switch to light mode"
     },
     "footer": {
-      "tagline": "The Web3 laboratory. Software you can check.",
+      "tagline": "The Web3 lab. Don't trust. Check.",
       "company": "Company",
       "product": "Vizzor",
       "follow": "Follow",
@@ -74,10 +74,10 @@
   },
   "home": {
     "hero": {
-      "title": "The Web3 laboratory.",
-      "sub": "7ayLabs designs, builds and runs its own apps, software, intelligence and on-chain products. Each one starts as an experiment and leaves the lab only when it holds up in public. The first, Vizzor, is live.",
-      "ctaPrimary": "See the products",
-      "ctaSecondary": "How we work",
+      "title": "Built for Web3. Proven in public.",
+      "sub": "7ayLabs is a full Web3 lab. We ship apps, engines, intelligence and on-chain products, and each one has to hold up in public before it leaves the bench. First out: Vizzor.",
+      "ctaPrimary": "Explore Vizzor",
+      "ctaSecondary": "See the lab",
       "board": {
         "title": "In the lab right now",
         "live": "Live",
@@ -86,35 +86,35 @@
         "nextName": "The next product",
         "nextLine": "Not announced yet. We show things when they work."
       },
-      "slogan": "Software you can check.",
+      "slogan": "Don't trust. Check.",
       "pill": "Web3 laboratory",
       "scroll": "Scroll"
     },
     "fields": {
-      "title": "Four disciplines, one bench.",
-      "lede": "Apps, software, intelligence and on-chain work are built side by side here, by the same people, so every product gets all four.",
+      "title": "Four desks. One lab.",
+      "lede": "Apps, engines, intelligence and on-chain, built side by side by the same crew, so every product ships with all four.",
       "items": {
         "apps": {
           "title": "Apps",
-          "line": "Products people open every day, on the web and on their phones, built to be understood without a manual."
+          "line": "Products people open every day, on the web and on their phones. No manual needed."
         },
         "software": {
           "title": "Software",
-          "line": "The engines, tools and infrastructure underneath: the parts nobody sees and everything depends on."
+          "line": "The engines and tooling underneath: what nobody sees and everything rides on."
         },
         "intelligence": {
           "title": "Intelligence",
-          "line": "Models and agents that read data, reason about it and answer in plain words, with their work shown."
+          "line": "Models and agents that read the data, reason about it and show their work."
         },
         "onchain": {
           "title": "On-chain",
-          "line": "Wallets, payments and contracts that settle on public blockchains, where anyone can check what happened."
+          "line": "Wallets, payments and contracts that settle on public chains, where anyone can check."
         }
       }
     },
     "method": {
-      "title": "The rules of the lab.",
-      "lede": "Four habits behind everything we ship. They are why Vizzor publishes its misses.",
+      "title": "Rules we do not break.",
+      "lede": "Four rules behind everything we ship. They are why Vizzor shows its misses.",
       "items": {
         "receipts": {
           "title": "Receipts over promises",
@@ -143,7 +143,7 @@
             "check": "The public record on vizzor.ai"
           },
           "plain": {
-            "practice": "You ask in your own words, in three languages. No query language.",
+            "practice": "You ask in your own words. No query language, no dashboards to learn.",
             "check": "Open Vizzor and type a question"
           },
           "privacy": {
@@ -158,21 +158,21 @@
       }
     },
     "updates": {
-      "title": "Notes from the lab.",
+      "title": "Fresh from the lab.",
       "all": "All updates",
-      "lede": "Releases and news, written up as they happen."
+      "lede": "Drops, releases and news, as they ship."
     },
     "faq": {
-      "title": "Straight answers.",
-      "lede": "The questions we hear most, without the pitch."
+      "title": "No fluff. Just answers.",
+      "lede": "The questions we hear most, minus the pitch."
     },
     "stack": {
-      "title": "Five layers, all ours.",
-      "lede": "From the screen down to the servers, every layer under our products is built and run in-house.",
+      "title": "Five layers. Zero middlemen.",
+      "lede": "From the screen down to the servers, we build and run every layer ourselves.",
       "layers": {
         "interface": {
           "name": "Interface",
-          "line": "The apps people use, on the web and installed on a phone, in three languages."
+          "line": "The apps people open, on the web and installed on a phone."
         },
         "engine": {
           "name": "Engine",
@@ -180,7 +180,7 @@
         },
         "models": {
           "name": "Intelligence",
-          "line": "ChronoVisor, our model layer, built on Claude. It reasons over the data and explains its answer."
+          "line": "ChronoVisor, our own model layer. It reasons over the data and shows its work."
         },
         "chains": {
           "name": "Chains",
@@ -197,26 +197,62 @@
     "status": {
       "title": "Lab status",
       "products": "product live",
-      "chains": "blockchains read",
-      "languages": "languages"
+      "chains": "chains read",
+      "wallets": "wallets supported"
     },
     "reach": {
-      "title": "{count} blockchains, read live.",
+      "title": "{count} chains. Read live.",
       "lede": "Vizzor reads each network directly, so a wallet or a transfer is looked up where it actually happened."
     },
     "contact": {
-      "title": "Ready to see what works?",
-      "lede": "Tell us what you are building or what you want to know. A person reads every message."
+      "title": "Building something? Talk to us.",
+      "lede": "Partnerships, press, security or just a question. A person reads every message."
     }
   },
   "products": {
-    "title": "What has left the lab.",
-    "lede": "A product ships when it works in public, not when it is announced. One has so far, and more are on the bench.",
+    "title": "Call it. Prove it.",
+    "lede": "Vizzor puts a target, a deadline and a confidence on every call, then grades it in public. Hits and misses stay on the record.",
     "vizzor": {
-      "kind": "Intelligence",
-      "line": "Vizzor makes price calls with a target, a deadline and a confidence, then grades every one in public. It also traces wallets and follows large holders across {count} blockchains.",
-      "more": "About Vizzor",
-      "open": "Open Vizzor"
+      "kind": "Crypto intelligence",
+      "live": "Live",
+      "open": "Open Vizzor",
+      "more": "How it works",
+      "tape": "Example calls",
+      "tapeNote": "Illustrative values, not real calls.",
+      "right": "Hit",
+      "wrong": "Miss",
+      "tabs": {
+        "predict": {
+          "name": "Predict",
+          "title": "A call you can hold it to.",
+          "line": "Direction, target, deadline and confidence, with an entry, two take-profits and a stop."
+        },
+        "whales": {
+          "name": "Whales",
+          "title": "See size move first.",
+          "line": "The biggest wallets tracked as they move, with a heatmap of where the money is going."
+        },
+        "forensics": {
+          "name": "Forensics",
+          "title": "Follow the funds.",
+          "line": "Trace money wallet to wallet and across chains after a hack or a suspicious move."
+        },
+        "markets": {
+          "name": "Markets",
+          "title": "The whole board at a glance.",
+          "line": "Heatmaps and movers, with a call one tap away."
+        }
+      },
+      "slip": {
+        "asset": "ETH",
+        "dir": "Long",
+        "target": "Target",
+        "deadline": "Deadline",
+        "conf": "Confidence",
+        "entry": "Entry",
+        "tp": "Take profit",
+        "stop": "Stop"
+      }
     },
     "next": {
       "title": "More is being built.",
@@ -423,10 +459,6 @@
         "ranking": {
           "title": "Leaderboard and seasons",
           "line": "A public ranking of traders by their own graded calls, with 30-day seasons and daily challenges."
-        },
-        "languages": {
-          "title": "Three languages",
-          "line": "The whole product works in English, Spanish and French."
         }
       }
     },

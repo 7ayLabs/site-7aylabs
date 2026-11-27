@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 const STEPS = ['ask', 'call', 'grade'] as const;
 const DESKS = ['predict', 'intel', 'markets', 'record'] as const;
-const FEATURES = ['whales', 'forensics', 'wallets', 'alerts', 'news', 'skills', 'communities', 'ranking', 'languages'] as const;
+const FEATURES = ['whales', 'forensics', 'wallets', 'alerts', 'news', 'skills', 'communities', 'ranking'] as const;
 const RECEIPTS = ['public', 'sealed', 'misses'] as const;
 
 export default async function VizzorPage({ params }: Props) {

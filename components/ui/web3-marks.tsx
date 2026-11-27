@@ -1,9 +1,16 @@
 /**
- * Wallet and token marks from the web3icons set, in the page's ink on a
- * plain disc, like the chain marks.
+ * Wallet and token marks from the web3icons set, in their own colours on a
+ * round disc, like the chain marks.
  */
 import type { ComponentType } from 'react';
+import TokenAVAX from '@web3icons/react/icons/tokens/TokenAVAX';
+import TokenBNB from '@web3icons/react/icons/tokens/TokenBNB';
+import TokenBTC from '@web3icons/react/icons/tokens/TokenBTC';
+import TokenDOGE from '@web3icons/react/icons/tokens/TokenDOGE';
+import TokenETH from '@web3icons/react/icons/tokens/TokenETH';
+import TokenLINK from '@web3icons/react/icons/tokens/TokenLINK';
 import TokenSOL from '@web3icons/react/icons/tokens/TokenSOL';
+import TokenXRP from '@web3icons/react/icons/tokens/TokenXRP';
 import WalletBackpack from '@web3icons/react/icons/wallets/WalletBackpack';
 import WalletMetamask from '@web3icons/react/icons/wallets/WalletMetamask';
 import WalletPhantom from '@web3icons/react/icons/wallets/WalletPhantom';
@@ -25,14 +32,24 @@ export function Disc({ Icon, size = 28 }: { Icon: Icon; size?: number }) {
   return (
     <span
       aria-hidden
-      className="inline-grid shrink-0 place-items-center overflow-hidden rounded-full bg-[var(--surface)] text-[var(--fg)] shadow-[inset_0_0_0_1px_var(--line)]"
+      className="inline-grid shrink-0 place-items-center overflow-hidden rounded-full"
       style={{ width: size, height: size }}
     >
-      <Icon variant="mono" size={Math.round(size * 0.62)} />
+      <Icon variant="background" size={size} />
     </span>
   );
 }
 
-export function SolanaMark({ size = 24 }: { size?: number }) {
-  return <Disc Icon={TokenSOL as Icon} size={size} />;
-}
+/** Token marks by ticker, for the example call tape. */
+export const TOKENS = {
+  BTC: TokenBTC as Icon,
+  ETH: TokenETH as Icon,
+  SOL: TokenSOL as Icon,
+  BNB: TokenBNB as Icon,
+  XRP: TokenXRP as Icon,
+  AVAX: TokenAVAX as Icon,
+  DOGE: TokenDOGE as Icon,
+  LINK: TokenLINK as Icon,
+} as const;
+
+export type Ticker = keyof typeof TOKENS;

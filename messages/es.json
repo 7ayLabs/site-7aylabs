@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "7ayLabs · El laboratorio Web3 de apps, software e inteligencia",
+    "title": "7ayLabs · El laboratorio Web3. Hecho para Web3, probado en público",
     "description": "7ayLabs es un laboratorio Web3. Diseñamos, construimos y operamos nuestras propias apps, software, IA y productos on-chain, empezando por Vizzor: inteligencia cripto calificada en público.",
-    "og": "Software que puedes comprobar.",
-    "slogan": "Software que puedes comprobar.",
+    "og": "No confíes. Comprueba.",
+    "slogan": "No confíes. Comprueba.",
     "keywords": [
       "laboratorio Web3",
       "estudio de software Web3",
@@ -40,7 +40,7 @@
       "toLight": "Cambiar a modo claro"
     },
     "footer": {
-      "tagline": "El laboratorio Web3. Software que puedes comprobar.",
+      "tagline": "El laboratorio Web3. No confíes. Comprueba.",
       "company": "Empresa",
       "product": "Vizzor",
       "follow": "Síguenos",
@@ -74,10 +74,10 @@
   },
   "home": {
     "hero": {
-      "title": "El laboratorio Web3.",
-      "sub": "7ayLabs diseña, construye y opera sus propias apps, software, inteligencia y productos on-chain. Cada uno empieza como un experimento y sale del laboratorio solo cuando se sostiene en público. El primero, Vizzor, ya está disponible.",
-      "ctaPrimary": "Ver los productos",
-      "ctaSecondary": "Cómo trabajamos",
+      "title": "Hecho para Web3. Probado en público.",
+      "sub": "7ayLabs es un laboratorio Web3 completo. Lanzamos apps, motores, inteligencia y productos on-chain, y cada uno tiene que sostenerse en público antes de salir de la mesa. El primero: Vizzor.",
+      "ctaPrimary": "Explorar Vizzor",
+      "ctaSecondary": "Ver el laboratorio",
       "board": {
         "title": "Ahora mismo en el laboratorio",
         "live": "En vivo",
@@ -86,35 +86,35 @@
         "nextName": "El próximo producto",
         "nextLine": "Aún sin anunciar. Mostramos las cosas cuando funcionan."
       },
-      "slogan": "Software que puedes comprobar.",
+      "slogan": "No confíes. Comprueba.",
       "pill": "Laboratorio Web3",
       "scroll": "Desliza"
     },
     "fields": {
-      "title": "Cuatro disciplinas, una mesa.",
-      "lede": "Apps, software, inteligencia y on-chain se construyen aquí lado a lado, por las mismas personas, para que cada producto tenga las cuatro.",
+      "title": "Cuatro mesas. Un laboratorio.",
+      "lede": "Apps, motores, inteligencia y on-chain, construidos lado a lado por el mismo equipo, para que cada producto salga con los cuatro.",
       "items": {
         "apps": {
           "title": "Apps",
-          "line": "Productos que la gente abre todos los días, en la web y en el teléfono, hechos para entenderse sin manual."
+          "line": "Productos que la gente abre todos los días, en la web y en el teléfono. Sin manual."
         },
         "software": {
           "title": "Software",
-          "line": "Los motores, herramientas e infraestructura que hay debajo: lo que nadie ve y de lo que todo depende."
+          "line": "Los motores y herramientas de abajo: lo que nadie ve y sobre lo que todo corre."
         },
         "intelligence": {
           "title": "Inteligencia",
-          "line": "Modelos y agentes que leen datos, razonan sobre ellos y responden con palabras simples, mostrando su trabajo."
+          "line": "Modelos y agentes que leen los datos, razonan y muestran su trabajo."
         },
         "onchain": {
           "title": "On-chain",
-          "line": "Wallets, pagos y contratos que se liquidan en blockchains públicas, donde cualquiera puede comprobar lo que pasó."
+          "line": "Wallets, pagos y contratos que se liquidan en cadenas públicas, donde cualquiera puede comprobar."
         }
       }
     },
     "method": {
-      "title": "Las reglas del laboratorio.",
-      "lede": "Cuatro hábitos detrás de todo lo que publicamos. Por ellos Vizzor publica sus fallos.",
+      "title": "Reglas que no rompemos.",
+      "lede": "Cuatro reglas detrás de todo lo que lanzamos. Por ellas Vizzor muestra sus fallos.",
       "items": {
         "receipts": {
           "title": "Recibos antes que promesas",
@@ -143,7 +143,7 @@
             "check": "El historial público en vizzor.ai"
           },
           "plain": {
-            "practice": "Preguntas con tus palabras, en tres idiomas. Sin lenguaje de consultas.",
+            "practice": "Preguntas con tus palabras. Sin lenguaje de consultas ni paneles que aprender.",
             "check": "Abre Vizzor y escribe una pregunta"
           },
           "privacy": {
@@ -158,21 +158,21 @@
       }
     },
     "updates": {
-      "title": "Notas del laboratorio.",
+      "title": "Recién salido del laboratorio.",
       "all": "Todas las novedades",
-      "lede": "Versiones y noticias, escritas según ocurren."
+      "lede": "Lanzamientos, versiones y noticias, según salen."
     },
     "faq": {
-      "title": "Respuestas directas.",
+      "title": "Sin relleno. Solo respuestas.",
       "lede": "Las preguntas que más nos hacen, sin discurso de venta."
     },
     "stack": {
-      "title": "Cinco capas, todas nuestras.",
-      "lede": "De la pantalla a los servidores, cada capa bajo nuestros productos se construye y se opera en casa.",
+      "title": "Cinco capas. Cero intermediarios.",
+      "lede": "De la pantalla a los servidores, construimos y operamos cada capa nosotros.",
       "layers": {
         "interface": {
           "name": "Interfaz",
-          "line": "Las apps que la gente usa, en la web e instaladas en el teléfono, en tres idiomas."
+          "line": "Las apps que la gente abre, en la web e instaladas en el teléfono."
         },
         "engine": {
           "name": "Motor",
@@ -180,7 +180,7 @@
         },
         "models": {
           "name": "Inteligencia",
-          "line": "ChronoVisor, nuestra capa de modelos, construida sobre Claude. Razona sobre los datos y explica su respuesta."
+          "line": "ChronoVisor, nuestra propia capa de modelos. Razona sobre los datos y muestra su trabajo."
         },
         "chains": {
           "name": "Cadenas",
@@ -197,26 +197,62 @@
     "status": {
       "title": "Estado del laboratorio",
       "products": "producto en vivo",
-      "chains": "blockchains leídas",
-      "languages": "idiomas"
+      "chains": "cadenas leídas",
+      "wallets": "wallets compatibles"
     },
     "reach": {
-      "title": "{count} blockchains, leídas en vivo.",
+      "title": "{count} cadenas. Leídas en vivo.",
       "lede": "Vizzor lee cada red directamente, así una wallet o una transferencia se consulta donde realmente ocurrió."
     },
     "contact": {
-      "title": "¿Listo para ver lo que funciona?",
-      "lede": "Cuéntanos qué estás construyendo o qué quieres saber. Una persona lee cada mensaje."
+      "title": "¿Construyes algo? Hablemos.",
+      "lede": "Alianzas, prensa, seguridad o solo una pregunta. Una persona lee cada mensaje."
     }
   },
   "products": {
-    "title": "Lo que ya salió del laboratorio.",
-    "lede": "Un producto sale cuando funciona en público, no cuando se anuncia. Hasta ahora ha salido uno, y hay más en la mesa.",
+    "title": "Dilo. Demuéstralo.",
+    "lede": "Vizzor pone un objetivo, un plazo y un nivel de confianza en cada predicción, y luego la califica en público. Aciertos y fallos se quedan en el historial.",
     "vizzor": {
-      "kind": "Inteligencia",
-      "line": "Vizzor hace predicciones de precio con objetivo, plazo y nivel de confianza, y luego califica cada una en público. También rastrea wallets y sigue a los grandes tenedores en {count} blockchains.",
-      "more": "Sobre Vizzor",
-      "open": "Abrir Vizzor"
+      "kind": "Inteligencia cripto",
+      "live": "En vivo",
+      "open": "Abrir Vizzor",
+      "more": "Cómo funciona",
+      "tape": "Predicciones de ejemplo",
+      "tapeNote": "Valores ilustrativos, no predicciones reales.",
+      "right": "Acierto",
+      "wrong": "Fallo",
+      "tabs": {
+        "predict": {
+          "name": "Predict",
+          "title": "Una predicción que puedes exigir.",
+          "line": "Dirección, objetivo, plazo y confianza, con una entrada, dos tomas de ganancias y un stop."
+        },
+        "whales": {
+          "name": "Ballenas",
+          "title": "Mira moverse primero al tamaño.",
+          "line": "Las wallets más grandes, seguidas mientras se mueven, con un mapa de calor de hacia dónde va el dinero."
+        },
+        "forensics": {
+          "name": "Forense",
+          "title": "Sigue los fondos.",
+          "line": "Rastrea el dinero de wallet en wallet y entre cadenas tras un hackeo o un movimiento sospechoso."
+        },
+        "markets": {
+          "name": "Mercados",
+          "title": "Todo el tablero de un vistazo.",
+          "line": "Mapas de calor y los que más se mueven, con una predicción a un toque."
+        }
+      },
+      "slip": {
+        "asset": "ETH",
+        "dir": "Long",
+        "target": "Objetivo",
+        "deadline": "Plazo",
+        "conf": "Confianza",
+        "entry": "Entrada",
+        "tp": "Toma de ganancias",
+        "stop": "Stop"
+      }
     },
     "next": {
       "title": "Hay más en construcción.",
@@ -423,10 +459,6 @@
         "ranking": {
           "title": "Ranking y temporadas",
           "line": "Un ranking público de traders según sus propias predicciones calificadas, con temporadas de 30 días y retos diarios."
-        },
-        "languages": {
-          "title": "Tres idiomas",
-          "line": "Todo el producto funciona en español, inglés y francés."
         }
       }
     },

@@ -6,13 +6,20 @@
  */
 import { getTranslations } from 'next-intl/server';
 import ExchangeHyperliquid from '@web3icons/react/icons/exchanges/ExchangeHyperliquid';
-import { Globe, LineChart } from 'lucide-react';
+import { LineChart } from 'lucide-react';
+import { VizzorMark } from '@/components/layout/brand-mark';
 import { PLATFORMS } from '@/lib/site';
 
+/** Each platform in its own colours: Vizzor's mark, Hyperliquid's, and a
+    tile in Polymarket's blue (their logo is not in the icon set we use). */
 function Mark({ id }: { id: (typeof PLATFORMS)[number]['id'] }) {
-  if (id === 'hyperliquid') return <ExchangeHyperliquid variant="mono" size={24} />;
-  const Icon = id === 'web' ? Globe : LineChart;
-  return <Icon size={22} strokeWidth={1.6} className="text-[var(--accent)]" />;
+  if (id === 'web') return <VizzorMark className="h-6 w-auto" />;
+  if (id === 'hyperliquid') return <ExchangeHyperliquid variant="branded" size={28} />;
+  return (
+    <span className="grid h-full w-full place-items-center bg-[#2e5cff] text-white">
+      <LineChart size={22} strokeWidth={2} />
+    </span>
+  );
 }
 
 export async function Platforms() {
@@ -20,13 +27,13 @@ export async function Platforms() {
 
   return (
     <div data-reveal>
-      <h4 className="t-head text-[var(--fg)]">{t('title')}</h4>
+      <h4 className="t-head text-center text-[var(--fg)]">{t('title')}</h4>
       <ul className="mt-5 grid gap-3 md:grid-cols-3">
         {PLATFORMS.map((p) => {
           const live = p.status === 'live';
           const body = (
             <>
-              <span aria-hidden className="glass grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-[14px] text-[var(--fg)]">
+              <span aria-hidden className="glass grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-[14px]">
                 <Mark id={p.id} />
               </span>
               <span className="min-w-0 flex-1">
@@ -53,7 +60,7 @@ export async function Platforms() {
           );
         })}
       </ul>
-      <p className="t-note mt-4 max-w-[70ch]">{t('note')}</p>
+      <p className="t-note mx-auto mt-4 max-w-[70ch] text-center">{t('note')}</p>
     </div>
   );
 }

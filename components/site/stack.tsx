@@ -9,7 +9,6 @@ import { AppWindow, Blocks, BrainCircuit, Cpu, Server } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { ChainMark } from '@/components/ui/chain-mark';
 import { Disc, WALLETS } from '@/components/ui/web3-marks';
-import { VIZZOR } from '@/lib/site';
 import { CHAIN_COUNT, type ChainId } from '@/lib/vizzor/chains';
 import { GlassIcon } from './glass3d/glass-icon';
 import type { GlassShape } from './glass3d/renderer';
@@ -38,24 +37,8 @@ function Overlap({ children }: { children: ReactNode[] }) {
 
 export async function Stack() {
   const t = await getTranslations('home.stack');
-  const chip = 'glass inline-flex min-h-9 items-center rounded-full px-3.5 text-[14px] font-semibold text-[var(--fg)]';
 
   const extra: Record<string, ReactNode> = {
-    interface: (
-      <ul className="flex flex-wrap gap-2">
-        {VIZZOR.languages.map((l) => (
-          <li key={l} className={chip}>
-            {l}
-          </li>
-        ))}
-      </ul>
-    ),
-    models: (
-      <ul className="flex flex-wrap gap-2">
-        <li className={chip}>ChronoVisor</li>
-        <li className={chip}>Claude</li>
-      </ul>
-    ),
     chains: (
       <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
         <span className="flex items-center gap-3">

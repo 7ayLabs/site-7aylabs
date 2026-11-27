@@ -3,9 +3,10 @@
 /*
  * 7aylabs.com design system.
  *
- * Black and white only. Clear liquid glass over slowly drifting light and
- * shade, in a light theme and a dark one. No hue anywhere: emphasis comes
- * from weight, size and inversion.
+ * Black and white, with colour only where it carries meaning: the brand
+ * marks of chains, wallets and platforms, and green or red for a call's
+ * direction and result. Clear liquid glass over slowly drifting light and
+ * shade, in a light theme and a dark one.
  *
  * Type: Sora for headlines, Geist for text, Geist Mono for figures.
  */
@@ -40,8 +41,8 @@
   --accent-fill: #0a0a0a;
   --accent-soft: #8a8a8a;
   --on-accent: #ffffff;
-  --right: #0a0a0a;
-  --wrong: #0a0a0a;
+  --right: #0f8a55;
+  --wrong: #c92a22;
   --glass: rgba(255, 255, 255, 0.34);
   --glass-hi: rgba(255, 255, 255, 0.68);
   --glass-line: rgba(10, 10, 10, 0.12);
@@ -66,8 +67,8 @@
   --accent-fill: #f4f4f4;
   --accent-soft: #9a9a9a;
   --on-accent: #050505;
-  --right: #f4f4f4;
-  --wrong: #f4f4f4;
+  --right: #3ddc97;
+  --wrong: #ff6b5e;
   --glass: rgba(255, 255, 255, 0.035);
   --glass-hi: rgba(255, 255, 255, 0.08);
   --glass-line: rgba(255, 255, 255, 0.14);
@@ -950,6 +951,80 @@ html[data-js]:not([data-fx]) [data-focus] {
   box-shadow: none;
 }
 
+/* ── Tape: a row that slides by, twice over so the loop has no seam ────── */
+.tape {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.tape-track {
+  display: flex;
+  width: max-content;
+  animation: tape var(--dur, 48s) linear infinite;
+}
+.tape:hover .tape-track {
+  animation-play-state: paused;
+}
+@keyframes tape {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ── Vizzor showcase: small looping scenes, one per desk ───────────────── */
+.scene-rise {
+  animation: scene-rise 700ms var(--ease) both;
+}
+@keyframes scene-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0) scale(0.98);
+  }
+}
+.heat i {
+  animation: heat 3.2s ease-in-out infinite alternate;
+  animation-delay: calc(var(--i) * -0.37s);
+}
+@keyframes heat {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.bubble {
+  animation: bubble 5s ease-in-out infinite alternate;
+  animation-delay: calc(var(--i) * -0.9s);
+}
+@keyframes bubble {
+  to {
+    transform: translate3d(0, -14px, 0) scale(1.06);
+  }
+}
+.trace {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: trace 2.6s var(--ease) forwards;
+}
+@keyframes trace {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.tab-fill {
+  transform-origin: left center;
+  animation: tab-fill var(--hold, 5s) linear forwards;
+}
+@keyframes tab-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .backdrop i {
     animation: none !important;
@@ -966,7 +1041,8 @@ html[data-js]:not([data-fx]) [data-focus] {
     filter: none !important;
     transform: none !important;
   }
-  .link-light {
+  .link-light,
+  .tape-track {
     animation: none !important;
   }
   .btn {
